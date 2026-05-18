@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+
+# Large historical market data. Keep these outside normal Git history.
+GOLD#_*.csv
+
+# Live/demo runtime logs.
+gemini_signal_log.csv
+*.log
+
+# Local archives and temporary outputs.
+_archive_*/
+*.tmp
+
+# Local environment files.
+.env
+.venv/
+venv/

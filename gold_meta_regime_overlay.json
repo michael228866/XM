@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "model_path": "gold_meta_regime_xgb.json",
+  "main_model_path": "gold_barrier_final_xgb.json",
+  "risk_per_trade": 0.028,
+  "risk_rule": [
+    0.4,
+    0.56,
+    0.72,
+    1.0,
+    1.45,
+    1.65
+  ],
+  "regime_features": [
+    "REG_TREND_SCORE",
+    "REG_RET_5",
+    "REG_RET_15",
+    "REG_RET_60",
+    "REG_RANGE_ATR",
+    "REG_BODY_SIGNED",
+    "REG_RET_STD_30",
+    "REG_RET_STD_120",
+    "REG_VOLA_BURST",
+    "REG_ATR_SLOPE_60",
+    "REG_RSI_SLOPE_10",
+    "REG_HOUR",
+    "REG_MONTH",
+    "REG_VOLA_RATIO",
+    "REG_M1_RSI",
+    "REG_ATR",
+    "REG_HOUR_SIN",
+    "REG_HOUR_COS",
+    "REG_DAY_OF_WEEK"
+  ],
+  "model_selection_end_ratio": 0.7,
+  "train_end_ratio": 0.85,
+  "base_threshold": 0.525
+}
