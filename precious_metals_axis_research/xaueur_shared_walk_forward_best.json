@@ -1,0 +1,52 @@
+{
+  "threshold": 0.56,
+  "edge_threshold": 0.0,
+  "tp_atr": 2.4,
+  "sl_atr": 3.4,
+  "max_hold": 168,
+  "direction_mode": "both",
+  "stress_total_r": 8.786,
+  "stress_total_trades": 23,
+  "stress_positive_folds": 2,
+  "stress_passed_folds": 2,
+  "stress_weighted_win_rate": 0.7826,
+  "stress_mean_profit_factor": 3.8051,
+  "stress_worst_fold_r": 3.5359,
+  "stress_max_drawdown_r": -2.1797,
+  "passes_gate": true,
+  "score": 4346.5537,
+  "folds": [
+    {
+      "fold": "fold_1",
+      "test_start": "2023-10-05T15:00:00",
+      "test_end": "2024-12-19T17:00:00",
+      "normal_pnl_r": 5.3874,
+      "normal_trades": 9,
+      "normal_win_rate": 0.8889,
+      "normal_profit_factor": 6.0474,
+      "normal_max_drawdown_r": -1.0673,
+      "stress_pnl_r": 5.2501,
+      "stress_trades": 9,
+      "stress_win_rate": 0.8889,
+      "stress_profit_factor": 5.8136,
+      "stress_max_drawdown_r": -1.0907,
+      "fold_pass": true
+    },
+    {
+      "fold": "fold_2",
+      "test_start": "2024-12-19T18:00:00",
+      "test_end": "2026-05-14T04:00:00",
+      "normal_pnl_r": 3.594,
+      "normal_trades": 14,
+      "normal_win_rate": 0.7143,
+      "normal_profit_factor": 1.8122,
+      "normal_max_drawdown_r": -2.1756,
+      "stress_pnl_r": 3.5359,
+      "stress_trades": 14,
+      "stress_win_rate": 0.7143,
+      "stress_profit_factor": 1.7966,
+      "stress_max_drawdown_r": -2.1797,
+      "fold_pass": true
+    }
+  ]
+}

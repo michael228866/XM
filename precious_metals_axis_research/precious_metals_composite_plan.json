@@ -1,0 +1,153 @@
+{
+  "status": "research_only",
+  "live_files_modified": false,
+  "objective": "Precious-metals composite trading plan with GOLD as anchor and robust non-GOLD metals added only after walk-forward/stress validation.",
+  "selection_rules": {
+    "core_enable": [
+      "4/4 positive walk-forward folds",
+      "at least 3/4 passed folds under stressed spread",
+      "profit factor above 1.25 under stressed spread",
+      "enough trades to avoid thin-sample promotion"
+    ],
+    "watchlist_to_enabled": [
+      "cost-aware walk-forward positive on 4/4 folds",
+      "no single fold dominates total profit",
+      "stress spread test remains positive"
+    ]
+  },
+  "risk_framework": {
+    "portfolio_max_new_positions": 2,
+    "max_enabled_symbols_initial": 2,
+    "same_symbol_max_positions": 1,
+    "satellite_symbols_start_at_weight": 0.0,
+    "dynamic_sizing": "research-only until paper tested; do not apply to gemini.py"
+  },
+  "components": [
+    {
+      "symbol": "GOLD#",
+      "role": "anchor",
+      "status": "enabled_research",
+      "strategy": "existing_gold_high_profit_candidate",
+      "timeframe": "M1 core with multi-timeframe features",
+      "params": {
+        "threshold": 0.525,
+        "edge_threshold": 0.0,
+        "tp_atr": 1.3,
+        "sl_atr": 2.0,
+        "max_hold": 180,
+        "risk_per_trade": 0.028,
+        "max_daily_loss_pct": 0.05,
+        "quality_floor": null
+      },
+      "test_pnl_currency": 4461.81,
+      "win_rate": 0.7088,
+      "profit_factor": 1.8195,
+      "trades": 261,
+      "max_drawdown_pct": 0.306,
+      "stress_total_r": null,
+      "notes": [
+        "Keep as anchor because it already passed the GOLD-specific research gate.",
+        "Needs R-normalized fold export before it can be fairly combined with non-GOLD R results."
+      ]
+    },
+    {
+      "symbol": "SILVER#",
+      "role": "core_satellite",
+      "status": "enabled_research",
+      "strategy": "strict_stress_h1_candidate",
+      "timeframe": "H1",
+      "params": {
+        "threshold": 0.56,
+        "edge_threshold": 0.0,
+        "tp_atr": 3.2,
+        "sl_atr": 4.4,
+        "max_hold": 120,
+        "direction_mode": "long"
+      },
+      "normal_total_r": 31.066,
+      "double_spread_total_r": 26.5994,
+      "stress_total_r": 22.1326,
+      "win_rate": 0.6772,
+      "profit_factor": 1.6171,
+      "trades": 127,
+      "positive_folds": 4,
+      "passed_folds": 4,
+      "max_drawdown_r": 6.76,
+      "notes": [
+        "Best current non-GOLD component.",
+        "Survives 3x spread with 4/4 passed folds."
+      ]
+    },
+    {
+      "symbol": "XAUEUR#",
+      "role": "gold_cross_validation",
+      "status": "watchlist",
+      "strategy": "disabled_until_revalidated",
+      "timeframe": "TBD",
+      "weight": 0.0,
+      "watch_score": 0.0,
+      "reason": "failed_cost_aware_walk_forward",
+      "verdict": "research_candidate",
+      "note": "Raw optimization was promising, but cost-aware walk-forward failed. Do not promote XAUEUR# M5."
+    },
+    {
+      "symbol": "XPTUSD#",
+      "role": "platinum_watchlist",
+      "status": "watchlist",
+      "strategy": "disabled_until_revalidated",
+      "timeframe": "TBD",
+      "weight": 0.0,
+      "watch_score": 0.0,
+      "reason": "failed_walk_forward_needs_regime_filter",
+      "verdict": "strong_research_candidate",
+      "note": "H1 cost-aware smoke is the strongest non-GOLD result so far. Needs walk-forward next."
+    },
+    {
+      "symbol": "XPDUSD#",
+      "role": "palladium_watchlist",
+      "status": "watchlist",
+      "strategy": "disabled_until_revalidated",
+      "timeframe": "TBD",
+      "weight": 0.0,
+      "watch_score": 0.0,
+      "reason": "sample_too_thin",
+      "verdict": "thin_research_candidate",
+      "note": "H1 candidate passes, but test sample is thin at 13 trades."
+    },
+    {
+      "symbol": "GAUCNH#",
+      "role": "supplemental_gold_cross",
+      "status": "watchlist",
+      "strategy": "disabled_until_revalidated",
+      "timeframe": "TBD",
+      "weight": 0.0,
+      "watch_score": 0.0,
+      "reason": "history_too_short",
+      "verdict": "supplemental_only",
+      "note": "Dataset is complete by timeframe but history starts around 2025-09, too short for primary training."
+    }
+  ],
+  "research_weights": {
+    "conservative": {
+      "GOLD#": 0.55,
+      "SILVER#": 0.45
+    },
+    "silver_tilt": {
+      "GOLD#": 0.4,
+      "SILVER#": 0.6
+    }
+  },
+  "current_decision": {
+    "tradable_research_composite": [
+      "GOLD#",
+      "SILVER#"
+    ],
+    "disabled_until_revalidated": [
+      "XAUEUR#",
+      "XPTUSD#",
+      "XPDUSD#",
+      "GAUCNH#"
+    ],
+    "preferred_next_test": "Build a paper portfolio runner for GOLD# + SILVER# first, then add XPTUSD# only after regime-filtered walk-forward passes."
+  }
+}

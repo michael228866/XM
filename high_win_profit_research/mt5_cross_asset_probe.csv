@@ -1,0 +1,10 @@
+symbol,status,m1_bars,digits,trade_mode,mean_atr_m1,median_atr_m1,spec_spread_price,current_spread_price,spec_spread_atr,current_spread_atr,verdict
+GOLD#,ok,50000,2,4,2.088177,1.851071,0.3,0.3,0.1437,0.1437,strong_candidate
+SILVER#,ok,50000,3,4,0.077901,0.068857,0.051,0.051,0.6547,0.6547,research_candidate
+BTCUSD#,ok,50000,2,4,34.118178,27.932143,22.5,22.5,0.6595,0.6595,research_candidate
+ETHUSD#,ok,50000,2,4,1.346143,1.107857,3.45,3.45,2.5629,2.5629,avoid_for_m1
+LTCUSD#,ok,50000,2,4,0.032527,0.027857,0.41,0.41,12.6049,12.6049,avoid_for_m1
+XRPUSD#,ok,50000,5,4,0.000818,0.000693,0.00585,0.00585,7.1473,7.1473,avoid_for_m1
+SOLUSD#,ok,50000,2,4,0.064374,0.054286,0.4,0.4,6.2137,6.2137,avoid_for_m1
+XPTUSD#,ok,50000,2,4,1.454718,1.351429,3.75,3.75,2.5778,2.5778,avoid_for_m1
+XPDUSD#,ok,50000,2,4,1.053469,0.946429,4.6,4.6,4.3665,4.3665,avoid_for_m1

@@ -1,0 +1,23 @@
+{
+  "symbol": "XAUEUR#",
+  "base_timeframe": "M5",
+  "threshold": 0.63,
+  "edge_threshold": 0.05,
+  "tp_atr": 1.5,
+  "sl_atr": 2.2,
+  "max_hold": 240,
+  "direction_mode": "both",
+  "validation_pnl": 20.92,
+  "validation_trades": 256,
+  "validation_win_rate": 0.5977,
+  "validation_profit_factor": 1.0144,
+  "validation_drawdown_pct": -0.1925,
+  "test_pnl": 830.49,
+  "test_trades": 166,
+  "test_win_rate": 0.6867,
+  "test_profit_factor": 1.5414,
+  "test_drawdown_pct": -0.169,
+  "test_max_loss_streak": 4,
+  "passes_gate": true,
+  "score": 1467.323
+}

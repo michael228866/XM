@@ -1,0 +1,7 @@
+symbol,available_timeframes,required_timeframes,ready_for_current_pipeline,missing_timeframes
+GAUCNH#,21,21,True,
+GOLD#,21,21,True,
+SILVER#,21,21,True,
+XAUEUR#,21,21,True,
+XPDUSD#,21,21,True,
+XPTUSD#,21,21,True,

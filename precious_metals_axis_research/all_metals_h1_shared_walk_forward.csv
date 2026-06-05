@@ -1,0 +1,9 @@
+fold,symbol,candidate,test_start,test_end,threshold,edge_threshold,tp_atr,sl_atr,max_hold,direction_mode,normal_pnl_r,normal_trades,normal_win_rate,normal_profit_factor,normal_max_drawdown_r,stress_pnl_r,stress_trades,stress_win_rate,stress_profit_factor,stress_max_drawdown_r,fold_pass
+fold_1,XPTUSD#,xpt_shared_best,2024-10-09T08:00:00,2025-07-08T13:00:00,0.52,0.0,3.2,3.4,120,long,1.7919,2,1.0,999.0,0.0,1.3227,2,1.0,999.0,0.0,False
+fold_1,XAUEUR#,xaueur_shared_best,2023-10-05T15:00:00,2024-12-19T17:00:00,0.56,0.0,2.2,4.0,120,both,3.2684,9,0.7778,3.8738,-1.1215,3.155,9,0.7778,3.7026,-1.1413,True
+fold_1,GOLD#,gold_shared_best,2022-08-05T08:00:00,2024-04-30T13:00:00,0.6,0.0,2.8,2.8,72,both,0.4828,15,0.4667,1.063,-5.7846,0.0956,15,0.4667,1.0122,-5.9069,False
+fold_1,XPDUSD#,xpd_watch,2024-10-09T12:00:00,2025-07-08T15:00:00,0.58,0.0,2.2,3.4,72,long,-1.2539,1,0.0,0.0,-1.2539,-1.5933,1,0.0,0.0,-1.5933,False
+fold_2,XPTUSD#,xpt_shared_best,2025-07-08T14:00:00,2026-05-14T04:00:00,0.52,0.0,3.2,3.4,120,long,2.7844,18,0.6667,1.4118,-2.797,1.501,18,0.6667,1.2103,-2.955,True
+fold_2,XAUEUR#,xaueur_shared_best,2024-12-19T18:00:00,2026-05-14T04:00:00,0.56,0.0,2.2,4.0,120,both,2.4163,12,0.75,1.6922,-1.8603,2.372,12,0.75,1.6775,-1.8715,True
+fold_2,GOLD#,gold_shared_best,2024-04-30T14:00:00,2026-04-24T13:00:00,0.6,0.0,2.8,2.8,72,both,0.5831,10,0.5,1.1059,-2.7787,0.5437,10,0.5,1.0984,-2.7877,False
+fold_2,XPDUSD#,xpd_watch,2025-07-08T16:00:00,2026-05-14T04:00:00,0.58,0.0,2.2,3.4,72,long,3.4189,9,0.8889,3.9406,-1.1626,2.2076,9,0.8889,2.7008,-1.2979,True

@@ -1,0 +1,571 @@
+{
+  "status": "research_only",
+  "live_files_modified": false,
+  "completed_steps": [
+    "Checked downloaded datasets under D:/XM/數據/數據集.",
+    "Confirmed 21/21 timeframe readiness for GOLD#, SILVER#, XAUEUR#, XPTUSD#, XPDUSD#, GAUCNH#.",
+    "Ran per-symbol M1-core smoke models for SILVER# and XAUEUR#.",
+    "Ran shared M1-core model for GOLD# + SILVER# + XAUEUR#.",
+    "Ran shared M1-core model for GOLD# + XAUEUR#.",
+    "Ran symbol-specific base timeframe smoke tests for SILVER#, XAUEUR#, XPTUSD#, XPDUSD#.",
+    "Ran XPTUSD# and XPDUSD# H1 main-candidate optimization with 1x-5x cost stress.",
+    "Ran XPTUSD# and XPDUSD# extended H2/H4/H12/Daily timeframe optimization with 1x-5x cost stress.",
+    "Ran XPTUSD# H4 fold-coverage refinement.",
+    "Ran XPDUSD# alternate direction-target and time-stop exit search.",
+    "Built the four-metal research-main promotion plan for GOLD#, SILVER#, XPTUSD#, and XPDUSD#."
+  ],
+  "current_findings": {
+    "GOLD#": {
+      "verdict": "production_candidate_exists",
+      "note": "Dedicated GOLD high-profit candidate already passed the GOLD-only smoke gate and was applied to gemini.py after backup."
+    },
+    "XAUEUR#": {
+      "verdict": "research_candidate",
+      "best_m1_core": {
+        "direction_mode": "short",
+        "threshold": 0.575,
+        "edge_threshold": 0.1,
+        "tp_atr": 1.3,
+        "sl_atr": 2.3,
+        "max_hold": 240,
+        "test_pnl": 137.71,
+        "test_win_rate": 0.7381,
+        "test_profit_factor": 1.4989,
+        "test_trades": 42
+      },
+      "best_timeframe_core": {
+        "base_timeframe": "M5",
+        "direction_mode": "both",
+        "threshold": 0.575,
+        "edge_threshold": 0.1,
+        "tp_atr": 1.3,
+        "sl_atr": 2.3,
+        "max_hold": 240,
+        "test_pnl": 318.18,
+        "test_win_rate": 0.678,
+        "test_profit_factor": 1.18,
+        "test_trades": 264
+      },
+      "robust_m5_candidate": {
+        "threshold": 0.63,
+        "edge_threshold": 0.1,
+        "tp_atr": 1.4,
+        "sl_atr": 2.5,
+        "max_hold": 240,
+        "direction_mode": "both",
+        "validation_pnl": 182.27,
+        "validation_win_rate": 0.645,
+        "validation_profit_factor": 1.1235,
+        "test_pnl": 616.99,
+        "test_trades": 161,
+        "test_win_rate": 0.7205,
+        "test_profit_factor": 1.5017,
+        "test_drawdown_pct": -0.2255
+      },
+      "cost_aware_m5_result": {
+        "threshold": 0.63,
+        "edge_threshold": 0.05,
+        "tp_atr": 1.4,
+        "sl_atr": 2.2,
+        "max_hold": 180,
+        "direction_mode": "both",
+        "validation_pnl_r": -7.034,
+        "validation_win_rate": 0.5953,
+        "validation_profit_factor": 0.9619,
+        "test_pnl_r": 28.9261,
+        "test_trades": 243,
+        "test_win_rate": 0.6626,
+        "test_profit_factor": 1.2826,
+        "test_drawdown_r": -14.3285,
+        "passed_cost_aware_gate": false
+      },
+      "cost_aware_walk_forward": {
+        "candidates_tested": ["cost_best", "robust_raw", "high_score_raw"],
+        "folds": 4,
+        "best_candidate": "robust_raw",
+        "best_total_pnl_r": -14.05,
+        "best_positive_folds": "1/4",
+        "best_passed_folds": "0/4",
+        "verdict": "failed"
+      },
+      "all_metals_shared_h1_candidate": {
+        "threshold": 0.56,
+        "edge_threshold": 0.0,
+        "tp_atr": 2.4,
+        "sl_atr": 3.4,
+        "max_hold": 168,
+        "direction_mode": "both",
+        "stress_total_pnl_r": 8.786,
+        "stress_total_trades": 23,
+        "stress_positive_folds": "2/2",
+        "stress_passed_folds": "2/2",
+        "stress_weighted_win_rate": 0.7826,
+        "stress_mean_profit_factor": 3.8051,
+        "stress_worst_fold_pnl_r": 3.5359,
+        "stress_max_drawdown_r": -2.1797,
+        "verdict": "best_current_xaueur_shared_h1_candidate"
+      },
+      "extended_readiness_3x_cost": {
+        "threshold": 0.56,
+        "edge_threshold": 0.0,
+        "tp_atr": 2.6,
+        "sl_atr": 4.8,
+        "max_hold": 216,
+        "direction_mode": "both",
+        "total_pnl_r": 13.2662,
+        "total_trades": 41,
+        "positive_folds": "3/3",
+        "passed_folds": "3/3",
+        "weighted_win_rate": 0.8293,
+        "mean_profit_factor": 334.6759,
+        "worst_fold_pnl_r": 1.3968,
+        "max_drawdown_r": -2.4097,
+        "recent_paper_r": 6.1945,
+        "battle_gate": true,
+        "verdict": "paper_or_small_live_candidate_after_extended_readiness"
+      },
+      "final_robustness": {
+        "cost_stress": {
+          "1x": {"total_pnl_r": 13.8091, "passed_folds": "3/3", "battle_gate": true},
+          "2x": {"total_pnl_r": 13.5376, "passed_folds": "3/3", "battle_gate": true},
+          "3x": {"total_pnl_r": 13.2662, "passed_folds": "3/3", "battle_gate": true},
+          "4x": {"total_pnl_r": 12.9947, "passed_folds": "3/3", "battle_gate": true},
+          "5x": {"total_pnl_r": 12.7233, "passed_folds": "3/3", "battle_gate": true}
+        },
+        "neighborhood_3x": {
+          "passed": "12/216",
+          "pass_rate": 0.0556,
+          "median_total_pnl_r": 6.10,
+          "best_total_pnl_r": 13.39,
+          "worst_total_pnl_r": 2.08
+        },
+        "verdict": "passes_5x_cost_stress_but_parameter_neighborhood_is_narrow"
+      },
+      "selected_training_profile": {
+        "profile": "smooth_more_trees",
+        "model_file": "all_metals_h1_smooth_more_trees_xgb.json",
+        "threshold": 0.54,
+        "edge_threshold": 0.0,
+        "tp_atr": 2.2,
+        "sl_atr": 4.2,
+        "max_hold": 288,
+        "direction_mode": "both",
+        "cost_stress": {
+          "1x": {"total_pnl_r": 12.95, "passed_folds": "3/3", "battle_gate": true},
+          "2x": {"total_pnl_r": 12.6691, "passed_folds": "3/3", "battle_gate": true},
+          "3x": {"total_pnl_r": 12.3883, "passed_folds": "3/3", "battle_gate": true},
+          "4x": {"total_pnl_r": 12.1074, "passed_folds": "3/3", "battle_gate": true},
+          "5x": {"total_pnl_r": 11.8265, "passed_folds": "3/3", "battle_gate": true}
+        },
+        "verdict": "best_stable_training_profile"
+      },
+      "note": "Raw M5 optimization failed cost-aware walk-forward, but all-metals shared H1 XAUEUR# passes the extended gate. The selected smooth_more_trees shared model is now the preferred research model because it passes 1x-5x cost stress."
+    },
+    "SILVER#": {
+      "verdict": "paper_or_small_live_candidate_after_regime_readiness",
+      "best_h1_cost_candidate": {
+        "threshold": 0.6,
+        "edge_threshold": 0.0,
+        "tp_atr": 2.0,
+        "sl_atr": 3.4,
+        "max_hold": 120,
+        "direction_mode": "long",
+        "validation_pnl_r": 1.6385,
+        "validation_win_rate": 0.6889,
+        "validation_profit_factor": 1.086,
+        "test_pnl_r": 5.277,
+        "test_trades": 59,
+        "test_win_rate": 0.661,
+        "test_profit_factor": 1.2211
+      },
+      "cost_aware_walk_forward": {
+        "candidate": "silver_best",
+        "folds": 4,
+        "total_pnl_r": 16.9,
+        "positive_folds": "3/4",
+        "passed_folds": "3/4",
+        "weighted_win_rate": 0.7059,
+        "worst_fold_pnl_r": -1.2359,
+        "verdict": "passed_initial_walk_forward"
+      },
+      "optimized_h1_candidate": {
+        "threshold": 0.56,
+        "edge_threshold": 0.0,
+        "tp_atr": 2.4,
+        "sl_atr": 2.8,
+        "max_hold": 72,
+        "direction_mode": "long",
+        "single_split_validation_pnl_r": 10.4828,
+        "single_split_validation_win_rate": 0.6418,
+        "single_split_validation_profit_factor": 1.3119,
+        "single_split_test_pnl_r": 7.8303,
+        "single_split_test_win_rate": 0.5652,
+        "single_split_test_profit_factor": 1.2376,
+        "walk_forward_total_pnl_r": 25.43,
+        "walk_forward_positive_folds": "4/4",
+        "walk_forward_passed_folds": "2/4",
+        "walk_forward_weighted_win_rate": 0.6129,
+        "walk_forward_worst_fold_pnl_r": 1.0106,
+        "walk_forward_max_drawdown_r": -9.89
+      },
+      "direct_walk_forward_optimized_candidate": {
+        "threshold": 0.54,
+        "edge_threshold": 0.0,
+        "tp_atr": 2.6,
+        "sl_atr": 2.8,
+        "max_hold": 72,
+        "direction_mode": "long",
+        "total_pnl_r": 38.3037,
+        "total_trades": 205,
+        "positive_folds": "4/4",
+        "passed_folds": "4/4",
+        "weighted_win_rate": 0.6146,
+        "mean_profit_factor": 1.4688,
+        "worst_fold_pnl_r": 6.7182,
+        "max_drawdown_r": -9.4261,
+        "verdict": "best_current_silver_h1_research_candidate"
+      },
+      "stress_aware_h1_candidate": {
+        "threshold": 0.56,
+        "edge_threshold": 0.0,
+        "tp_atr": 2.8,
+        "sl_atr": 3.6,
+        "max_hold": 96,
+        "direction_mode": "long",
+        "normal_cost_total_pnl_r": 35.2475,
+        "normal_cost_weighted_win_rate": 0.6842,
+        "normal_cost_mean_profit_factor": 1.8652,
+        "double_spread_total_pnl_r": 28.6908,
+        "triple_spread_total_pnl_r": 22.1342,
+        "triple_spread_positive_folds": "4/4",
+        "triple_spread_passed_folds": "3/4",
+        "triple_spread_weighted_win_rate": 0.6842,
+        "triple_spread_mean_profit_factor": 1.587,
+        "triple_spread_worst_fold_pnl_r": 1.1503,
+        "triple_spread_max_drawdown_r": -11.8716,
+        "verdict": "best_current_silver_h1_stress_candidate"
+      },
+      "strict_stress_h1_candidate": {
+        "threshold": 0.56,
+        "edge_threshold": 0.0,
+        "tp_atr": 3.2,
+        "sl_atr": 4.4,
+        "max_hold": 120,
+        "direction_mode": "long",
+        "normal_cost_total_pnl_r": 31.066,
+        "normal_cost_total_trades": 127,
+        "normal_cost_weighted_win_rate": 0.6851,
+        "normal_cost_mean_profit_factor": 1.8579,
+        "double_spread_total_pnl_r": 26.5994,
+        "double_spread_passed_folds": "4/4",
+        "triple_spread_total_pnl_r": 22.1326,
+        "triple_spread_total_trades": 127,
+        "triple_spread_positive_folds": "4/4",
+        "triple_spread_passed_folds": "4/4",
+        "triple_spread_weighted_win_rate": 0.6772,
+        "triple_spread_mean_profit_factor": 1.6171,
+        "triple_spread_worst_fold_pnl_r": 2.1998,
+        "triple_spread_worst_fold_profit_factor": 1.1263,
+        "triple_spread_max_drawdown_r": -6.76,
+        "verdict": "best_current_silver_h1_strict_stress_candidate"
+      },
+      "extended_readiness_3x_cost": {
+        "threshold": 0.58,
+        "edge_threshold": 0.0,
+        "tp_atr": 2.0,
+        "sl_atr": 6.0,
+        "max_hold": 216,
+        "direction_mode": "long",
+        "total_pnl_r": 5.7441,
+        "total_trades": 168,
+        "positive_folds": "4/5",
+        "passed_folds": "4/5",
+        "weighted_win_rate": 0.7976,
+        "mean_profit_factor": 1.6104,
+        "worst_fold_pnl_r": -7.5184,
+        "max_drawdown_r": -9.4809,
+        "recent_paper_r": 2.5012,
+        "battle_gate": false,
+        "verdict": "plain_h1_failed_extended_readiness"
+      },
+      "regime_refined_readiness_3x_cost": {
+        "threshold": 0.56,
+        "edge_threshold": 0.0,
+        "tp_atr": 5.2,
+        "sl_atr": 5.2,
+        "max_hold": 216,
+        "direction_mode": "long",
+        "regime_filter": {
+          "trend_min": 0.0,
+          "rsi_min": 0.0,
+          "rsi_max": 100.0,
+          "vola_max": 1.2,
+          "stress_spread_atr_max": 0.75
+        },
+        "total_pnl_r": 16.678,
+        "total_trades": 62,
+        "positive_folds": "5/5",
+        "passed_folds": "5/5",
+        "weighted_win_rate": 0.6452,
+        "mean_profit_factor": 2.0522,
+        "worst_fold_pnl_r": 1.1121,
+        "max_drawdown_r": -2.9483,
+        "recent_paper_r": 3.1518,
+        "battle_gate": true,
+        "verdict": "paper_or_small_live_candidate_after_regime_filter"
+      },
+      "final_robustness": {
+        "cost_stress": {
+          "1x": {"total_pnl_r": 21.7352, "passed_folds": "5/5", "battle_gate": true},
+          "2x": {"total_pnl_r": 20.755, "passed_folds": "5/5", "battle_gate": true},
+          "3x": {"total_pnl_r": 16.678, "passed_folds": "5/5", "battle_gate": true},
+          "4x": {"total_pnl_r": 9.3704, "passed_folds": "3/5", "battle_gate": false},
+          "5x": {"total_pnl_r": 7.6014, "passed_folds": "2/5", "battle_gate": false}
+        },
+        "neighborhood_3x": {
+          "passed": "32/288",
+          "pass_rate": 0.1111,
+          "median_total_pnl_r": 10.34,
+          "best_total_pnl_r": 16.89,
+          "worst_total_pnl_r": 3.61
+        },
+        "verdict": "passes_3x_cost_stress_only_use_lower_risk_than_xaueur"
+      },
+      "selected_training_profile": {
+        "profile": "current_symbol",
+        "model_file": "silver_h1_regime_selected_xgb.json",
+        "threshold": 0.52,
+        "edge_threshold": 0.0,
+        "tp_atr": 6.0,
+        "sl_atr": 6.0,
+        "max_hold": 336,
+        "direction_mode": "long",
+        "regime_filter": {
+          "trend_min": 0.0,
+          "rsi_min": 0.0,
+          "rsi_max": 100.0,
+          "vola_max": 1.0,
+          "stress_spread_atr_max": 0.75
+        },
+        "cost_stress": {
+          "1x": {"total_pnl_r": 21.9809, "passed_folds": "5/5", "battle_gate": true},
+          "2x": {"total_pnl_r": 19.7132, "passed_folds": "5/5", "battle_gate": true},
+          "3x": {"total_pnl_r": 17.3148, "passed_folds": "5/5", "battle_gate": true},
+          "4x": {"total_pnl_r": 11.3983, "passed_folds": "2/5", "battle_gate": false},
+          "5x": {"total_pnl_r": 6.5303, "passed_folds": "1/5", "battle_gate": false}
+        },
+        "verdict": "best_stable_training_profile_but_only_passes_1x_to_3x"
+      },
+      "note": "The selected SILVER# profile improves 3x R and recent paper R while keeping all five folds positive. It still fails 4x/5x cost stress, so use only with the low-volatility regime filter active and smaller risk than XAUEUR#."
+    },
+    "XPTUSD#": {
+      "verdict": "slow_main_research_line",
+      "best_h1_cost_candidate": {
+        "threshold": 0.54,
+        "edge_threshold": 0.0,
+        "tp_atr": 2.0,
+        "sl_atr": 3.0,
+        "max_hold": 48,
+        "direction_mode": "long",
+        "validation_pnl_r": 10.3875,
+        "validation_win_rate": 0.7302,
+        "validation_profit_factor": 1.5505,
+        "test_pnl_r": 6.1603,
+        "test_trades": 32,
+        "test_win_rate": 0.7188,
+        "test_profit_factor": 1.6261,
+        "test_drawdown_r": -2.8415
+      },
+      "note": "Promoted into the four-metal research-main plan as a slow H4 main line. It remains research/paper only until forward logs are collected.",
+      "cost_aware_walk_forward": {
+        "best_candidate": "xpt_wide_sl",
+        "folds": 4,
+        "total_pnl_r": 4.63,
+        "positive_folds": "3/4",
+        "passed_folds": "1/4",
+        "verdict": "failed_walk_forward",
+        "note": "Fails mainly around 2024-07 to 2025-02."
+      },
+      "main_candidate_optimization": {
+        "profile": "current_symbol",
+        "model_file": "xpt_xpd_main_candidate_best.json",
+        "threshold": 0.6,
+        "edge_threshold": 0.0,
+        "tp_atr": 3.2,
+        "sl_atr": 5.2,
+        "max_hold": 288,
+        "direction_mode": "long",
+        "regime_filter": "low_vola",
+        "cost_stress": {
+          "1x": {"total_pnl_r": 21.5214, "passed_folds": "4/4", "battle_gate": true},
+          "2x": {"total_pnl_r": 17.5176, "passed_folds": "3/4", "battle_gate": false},
+          "3x": {"total_pnl_r": 13.5138, "passed_folds": "3/4", "battle_gate": false},
+          "4x": {"total_pnl_r": 9.5101, "passed_folds": "3/4", "battle_gate": false},
+          "5x": {"total_pnl_r": 5.5063, "passed_folds": "3/4", "battle_gate": false}
+        },
+        "failing_period": "2024-07-25 to 2025-02-24",
+        "verdict": "not_ready_as_main_because_3x_cost_gate_fails_one_fold"
+      },
+      "extended_timeframe_optimization": {
+        "profile": "smooth_more_trees",
+        "base_timeframe": "H4",
+        "model_file": "xpt_xpd_extended_timeframe_best.json",
+        "threshold": 0.58,
+        "edge_threshold": 0.0,
+        "tp_atr": 3.2,
+        "sl_atr": 5.4,
+        "max_hold": 96,
+        "direction_mode": "long",
+        "regime_filter": "none",
+        "cost_stress": {
+          "1x": {"total_pnl_r": 13.3697, "passed_folds": "3/4", "battle_gate": true},
+          "2x": {"total_pnl_r": 11.9908, "passed_folds": "3/4", "battle_gate": true},
+          "3x": {"total_pnl_r": 10.612, "passed_folds": "3/4", "battle_gate": true},
+          "4x": {"total_pnl_r": 9.2332, "passed_folds": "3/4", "battle_gate": true},
+          "5x": {"total_pnl_r": 7.8543, "passed_folds": "3/4", "battle_gate": false}
+        },
+        "fold_note": "All four folds are positive, including the old weak 2024-07 to 2025-01 period, but fold 1 has only one trade and does not pass the minimum fold-trade gate.",
+        "verdict": "paper_test_candidate_only_not_main"
+      },
+      "h4_fold_coverage_refinement": {
+        "profile": "current_symbol",
+        "base_timeframe": "H4",
+        "model_file": "xpt_h4_fold_coverage_best.json",
+        "threshold": 0.52,
+        "edge_threshold": 0.0,
+        "tp_atr": 3.2,
+        "sl_atr": 4.4,
+        "max_hold": 96,
+        "direction_mode": "long",
+        "regime_filter": "none",
+        "cost_stress": {
+          "1x": {"total_pnl_r": 16.8005, "passed_folds": "3/4", "battle_gate": true, "strict_coverage_gate": false},
+          "2x": {"total_pnl_r": 14.8867, "passed_folds": "3/4", "battle_gate": true, "strict_coverage_gate": false},
+          "3x": {"total_pnl_r": 12.973, "passed_folds": "3/4", "battle_gate": true, "strict_coverage_gate": false},
+          "4x": {"total_pnl_r": 11.0592, "passed_folds": "3/4", "battle_gate": true, "strict_coverage_gate": false},
+          "5x": {"total_pnl_r": 9.1454, "passed_folds": "3/4", "battle_gate": true, "strict_coverage_gate": false}
+        },
+        "fold_note": "Fold 1 improved from one trade to two trades, but still fails the strict fold-coverage gate.",
+        "verdict": "slow_main_research_line"
+      }
+    },
+    "XPDUSD#": {
+      "verdict": "slow_main_research_line",
+      "best_h1_cost_candidate": {
+        "threshold": 0.66,
+        "edge_threshold": 0.0,
+        "tp_atr": 1.8,
+        "sl_atr": 3.4,
+        "max_hold": 120,
+        "direction_mode": "long",
+        "validation_pnl_r": 0.7295,
+        "validation_win_rate": 0.75,
+        "validation_profit_factor": 1.0757,
+        "test_pnl_r": 4.4338,
+        "test_trades": 13,
+        "test_win_rate": 0.8462,
+        "test_profit_factor": 5.0201
+      },
+      "note": "Promoted into the four-metal research-main plan as a slow H12 main line using the alternate future-close target and time-stop exit. It remains research/paper only until forward logs are collected.",
+      "main_candidate_optimization": {
+        "profile": "smooth_more_trees",
+        "model_file": "xpt_xpd_main_candidate_best.json",
+        "threshold": 0.66,
+        "edge_threshold": 0.0,
+        "tp_atr": 2.0,
+        "sl_atr": 3.4,
+        "max_hold": 288,
+        "direction_mode": "both",
+        "regime_filter": "stable_combo",
+        "cost_stress": {
+          "1x": {"total_pnl_r": -8.3065, "passed_folds": "1/4", "battle_gate": false},
+          "2x": {"total_pnl_r": -0.9439, "passed_folds": "1/4", "battle_gate": false},
+          "3x": {"total_pnl_r": 8.6504, "passed_folds": "2/4", "battle_gate": false},
+          "4x": {"total_pnl_r": 6.3103, "passed_folds": "2/4", "battle_gate": false},
+          "5x": {"total_pnl_r": 5.3869, "passed_folds": "1/4", "battle_gate": false}
+        },
+        "verdict": "not_ready_as_main_due_to_thin_trades_and_failed_cost_gates"
+      },
+      "extended_timeframe_optimization": {
+        "profile": "current_symbol",
+        "base_timeframe": "H12",
+        "model_file": "xpt_xpd_extended_timeframe_best.json",
+        "threshold": 0.6,
+        "edge_threshold": 0.0,
+        "tp_atr": 1.6,
+        "sl_atr": 3.2,
+        "max_hold": 48,
+        "direction_mode": "long",
+        "regime_filter": "low_vola",
+        "cost_stress": {
+          "1x": {"total_pnl_r": 5.9044, "passed_folds": "3/4", "battle_gate": false},
+          "2x": {"total_pnl_r": 5.0069, "passed_folds": "3/4", "battle_gate": false},
+          "3x": {"total_pnl_r": 4.1093, "passed_folds": "3/4", "battle_gate": false},
+          "4x": {"total_pnl_r": 3.2117, "passed_folds": "2/4", "battle_gate": false},
+          "5x": {"total_pnl_r": 2.3141, "passed_folds": "2/4", "battle_gate": false}
+        },
+        "verdict": "still_disabled_no_cost_gate_passed"
+      },
+      "alternate_target_exit_search": {
+        "target_mode": "future_close",
+        "base_timeframe": "H12",
+        "model_file": "xpd_alternate_target_exit_best.json",
+        "horizon": 8,
+        "label_atr": 1.2,
+        "threshold": 0.46,
+        "edge_threshold": 0.0,
+        "exit_mode": "time_stop",
+        "tp_atr": 1.4,
+        "sl_atr": 2.8,
+        "max_hold": 14,
+        "direction_mode": "long",
+        "regime_filter": "low_vola",
+        "cost_stress": {
+          "1x": {"total_pnl_r": 11.3684, "passed_folds": "3/4", "battle_gate": true},
+          "2x": {"total_pnl_r": 10.2957, "passed_folds": "3/4", "battle_gate": true},
+          "3x": {"total_pnl_r": 9.2231, "passed_folds": "3/4", "battle_gate": true},
+          "4x": {"total_pnl_r": 8.1504, "passed_folds": "2/4", "battle_gate": false},
+          "5x": {"total_pnl_r": 7.0776, "passed_folds": "2/4", "battle_gate": false}
+        },
+        "fold_note": "All four folds are positive, but fold 1 fails fold_pass because win rate is 44.44%.",
+        "verdict": "slow_main_research_line"
+      }
+    },
+    "GAUCNH#": {
+      "verdict": "supplemental_only",
+      "note": "Dataset is complete by timeframe but history starts around 2025-09, too short for primary training."
+    }
+  },
+  "four_actual_metal_main_readiness": {
+    "requested_main_symbols": ["GOLD#", "SILVER#", "XPTUSD#", "XPDUSD#"],
+    "ready_as_main": ["GOLD#", "SILVER#", "XPTUSD#", "XPDUSD#"],
+    "auxiliary_gold_cross": ["XAUEUR#"],
+    "paper_secondary_only": [],
+    "disabled": [],
+    "verdict": "four_research_main_lines_ready_for_forward_paper",
+    "promotion_plan": "four_metal_main_promotion_plan.json",
+    "note": "All four actual metals are promoted to research-main lines. This does not modify gemini.py or place live orders; forward paper validation is still required before live deployment."
+  },
+  "shared_model_status": {
+    "GOLD_SILVER_XAUEUR": {
+      "passed_candidates": 0,
+      "note": "SILVER# degraded the shared M1-core model."
+    },
+    "GOLD_XAUEUR": {
+      "passed_candidates": 1,
+      "best_symbol": "XAUEUR#",
+      "note": "Shared model works weakly for XAUEUR# short, but does not preserve GOLD performance."
+    }
+  },
+  "next_required_work": [
+    "Implement symbol-specific transaction-cost conversion instead of reusing the legacy GOLD-style cost approximation.",
+    "Search XAUEUR# M5 around the current best region to lift profit factor above 1.25-1.35.",
+    "Stop promoting XAUEUR# M5 unless a new regime filter or target design passes walk-forward.",
+    "Run live-paper forward logging for SILVER# and XAUEUR# before increasing risk; SILVER# should remain smaller because it fails 4x/5x cost stress.",
+    "Forward-paper log all four research-main lines before any live deployment.",
+    "Keep refining XPTUSD# H4 fold-1 trade count while preserving 1x-5x cost-gate pass.",
+    "Keep refining XPDUSD# H12 fold-pass stability while preserving 1x-3x cost-gate pass.",
+    "Design a SILVER-specific target/exit, because GOLD-style barrier exits are failing on silver.",
+    "Do not promote the shared model to live until GOLD performance is preserved and at least one non-GOLD symbol passes stricter validation."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "high_win_profit_candidate_001",
+  "status": "research_only",
+  "source_report": "high_win_profit_report.md",
+  "validation_rule": {
+    "mode": "baseline_aware",
+    "baseline": "current meta overlay",
+    "required_validation_pnl_improvement": 100.0,
+    "required_test_pnl_improvement": 800.0,
+    "required_test_win_rate": 0.7,
+    "required_test_profit_factor": 1.75,
+    "max_test_drawdown_pct": 0.36
+  },
+  "params": {
+    "threshold": 0.525,
+    "edge_threshold": 0.0,
+    "tp_atr": 1.3,
+    "sl_atr": 2.0,
+    "max_hold": 180,
+    "risk_per_trade": 0.028,
+    "max_daily_loss_pct": 0.05,
+    "quality_floor": null
+  },
+  "validation_result": {
+    "pnl": -125.47,
+    "win_rate": 0.5101,
+    "profit_factor": 0.9579
+  },
+  "test_result": {
+    "pnl": 4461.81,
+    "win_rate": 0.7088,
+    "profit_factor": 1.8195,
+    "trades": 261,
+    "max_drawdown_pct": -0.306
+  },
+  "notes": [
+    "This candidate passed the research replacement gate but is not applied to gemini.py.",
+    "Validation remains negative, but it improves materially versus the current meta overlay validation baseline.",
+    "Use forward demo/live-micro testing before promoting."
+  ]
+}

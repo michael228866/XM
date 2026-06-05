@@ -1,0 +1,341 @@
+from __future__ import annotations
+
+import csv
+import json
+import os
+import sys
+from pathlib import Path
+
+os.environ.setdefault("LOKY_MAX_CPU_COUNT", str(os.cpu_count() or 1))
+
+RESEARCH_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = RESEARCH_DIR.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+import numpy as np  # noqa: E402
+import pandas as pd  # noqa: E402
+import xgboost as xgb  # noqa: E402
+
+from barrier_classifier_strategy import (  # noqa: E402
+    HORIZON,
+    build_barrier_target,
+    build_profit_sample_weight,
+    evaluate,
+)
+
+
+DATA_DIRS = [PROJECT_ROOT / "數據集", PROJECT_ROOT]
+SYMBOLS = ["SILVER#", "XAUEUR#"]
+OUTPUT_CSV = RESEARCH_DIR / "axis_symbol_smoke_results.csv"
+OUTPUT_JSON = RESEARCH_DIR / "axis_symbol_smoke_results.json"
+OUTPUT_MD = RESEARCH_DIR / "axis_symbol_smoke_report.md"
+
+TRAIN_END_RATIO = 0.70
+TEST_END_RATIO = 0.92
+MAX_ROWS = 450_000
+
+PARAM_GRID = [
+    {"threshold": 0.50, "edge_threshold": 0.00, "tp_atr": 1.1, "sl_atr": 2.0, "max_hold": 180, "direction_mode": "both"},
+    {"threshold": 0.525, "edge_threshold": 0.00, "tp_atr": 1.1, "sl_atr": 2.0, "max_hold": 180, "direction_mode": "both"},
+    {"threshold": 0.525, "edge_threshold": 0.00, "tp_atr": 1.3, "sl_atr": 2.0, "max_hold": 180, "direction_mode": "both"},
+    {"threshold": 0.55, "edge_threshold": 0.05, "tp_atr": 1.3, "sl_atr": 2.0, "max_hold": 180, "direction_mode": "both"},
+    {"threshold": 0.575, "edge_threshold": 0.10, "tp_atr": 1.3, "sl_atr": 2.3, "max_hold": 240, "direction_mode": "both"},
+    {"threshold": 0.525, "edge_threshold": 0.00, "tp_atr": 1.3, "sl_atr": 2.0, "max_hold": 180, "direction_mode": "short"},
+    {"threshold": 0.55, "edge_threshold": 0.05, "tp_atr": 1.3, "sl_atr": 2.0, "max_hold": 180, "direction_mode": "short"},
+    {"threshold": 0.575, "edge_threshold": 0.10, "tp_atr": 1.3, "sl_atr": 2.3, "max_hold": 240, "direction_mode": "short"},
+    {"threshold": 0.525, "edge_threshold": 0.00, "tp_atr": 1.1, "sl_atr": 2.0, "max_hold": 180, "direction_mode": "long"},
+    {"threshold": 0.525, "edge_threshold": 0.00, "tp_atr": 1.3, "sl_atr": 2.0, "max_hold": 180, "direction_mode": "long"},
+]
+
+BASE_FEATURES = [
+    "M1_RSI",
+    "ATR_PCT",
+    "MACD_ATR",
+    "BB_WIDTH",
+    "BIAS_20",
+    "BODY_PCT",
+    "ROC_5",
+    "VOLA_RATIO",
+    "HOUR_SIN",
+    "HOUR_COS",
+    "DAY_OF_WEEK",
+]
+
+
+def find_symbol_files(symbol: str) -> list[Path]:
+    files = []
+    for data_dir in DATA_DIRS:
+        if data_dir.exists():
+            files.extend(sorted(data_dir.glob(f"{symbol}_*.csv")))
+    return files
+
+
+def read_price_csv(path: Path) -> pd.DataFrame | None:
+    try:
+        df = pd.read_csv(path, sep=None, engine="python")
+    except Exception as exc:
+        print(f"Skipped {path.name}: {exc}")
+        return None
+    df.columns = [col.replace("<", "").replace(">", "").upper() for col in df.columns]
+    if "DATE" in df.columns and "TIME" in df.columns:
+        df["TIME_DT"] = pd.to_datetime(df["DATE"] + " " + df["TIME"])
+    elif "DATE" in df.columns:
+        df["TIME_DT"] = pd.to_datetime(df["DATE"])
+    else:
+        return None
+    required = ["OPEN", "HIGH", "LOW", "CLOSE", "TIME_DT"]
+    if any(col not in df.columns for col in required):
+        return None
+    return df.sort_values("TIME_DT").reset_index(drop=True)
+
+
+def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    high_low = df["HIGH"] - df["LOW"]
+    true_range = pd.concat(
+        [
+            high_low,
+            (df["HIGH"] - df["CLOSE"].shift()).abs(),
+            (df["LOW"] - df["CLOSE"].shift()).abs(),
+        ],
+        axis=1,
+    ).max(axis=1)
+    df["ATR"] = true_range.rolling(14).mean()
+    df["HOUR_SIN"] = np.sin(2 * np.pi * df["TIME_DT"].dt.hour / 24)
+    df["HOUR_COS"] = np.cos(2 * np.pi * df["TIME_DT"].dt.hour / 24)
+    df["DAY_OF_WEEK"] = df["TIME_DT"].dt.dayofweek / 7.0
+
+    ema12 = df["CLOSE"].ewm(span=12, adjust=False).mean()
+    ema26 = df["CLOSE"].ewm(span=26, adjust=False).mean()
+    macd = ema12 - ema26
+    df["MACD_HIST"] = macd - macd.ewm(span=9, adjust=False).mean()
+    ma20 = df["CLOSE"].rolling(20).mean()
+    df["BB_WIDTH"] = (df["CLOSE"].rolling(20).std() * 4) / (ma20 + 1e-9)
+    df["BIAS_20"] = (df["CLOSE"] - ma20) / (ma20 + 1e-9)
+    df["ROC_5"] = df["CLOSE"].pct_change(5)
+    candle_range = df["HIGH"] - df["LOW"] + 1e-9
+    df["BODY_PCT"] = (df["CLOSE"] - df["OPEN"]).abs() / candle_range
+    df["ATR_PCT"] = df["ATR"] / (df["CLOSE"].abs() + 1e-9)
+    df["MACD_ATR"] = df["MACD_HIST"] / (df["ATR"] + 1e-9)
+    return df
+
+
+def load_symbol_frame(symbol: str) -> tuple[pd.DataFrame, list[str]]:
+    data = {}
+    for path in find_symbol_files(symbol):
+        parts = path.stem.rsplit("_", 3)
+        if len(parts) != 4:
+            continue
+        timeframe = parts[1]
+        df = read_price_csv(path)
+        if df is not None:
+            data[timeframe] = df
+    if "M1" not in data:
+        raise FileNotFoundError(f"{symbol} M1 file was not found.")
+
+    m1 = add_indicators(data["M1"])
+    diff = m1["CLOSE"].diff()
+    gain = diff.where(diff > 0, 0).rolling(14).mean()
+    loss = (-diff.where(diff < 0, 0)).rolling(14).mean()
+    m1["M1_RSI"] = 100 - (100 / (1 + (gain / (loss + 1e-9))))
+    m1["VOLA_MA"] = m1["ATR"].rolling(240).mean()
+    m1["VOLA_RATIO"] = m1["ATR"] / (m1["VOLA_MA"] + 1e-9)
+
+    frame = m1.sort_values("TIME_DT").reset_index(drop=True)
+    mtf_features = []
+    for timeframe, tdf in sorted(data.items()):
+        if timeframe == "M1":
+            continue
+        tdf = add_indicators(tdf)
+        trend_col = f"{timeframe}_TREND"
+        tdf[trend_col] = np.where(tdf["CLOSE"] > tdf["CLOSE"].rolling(20).mean(), 1, -1)
+        tdf[trend_col] = tdf[trend_col].shift(1)
+        frame = pd.merge_asof(frame, tdf[["TIME_DT", trend_col]], on="TIME_DT")
+        mtf_features.append(trend_col)
+
+    features = BASE_FEATURES + mtf_features
+    frame[features] = frame[features].shift(1)
+    frame["BARRIER_TARGET"] = build_barrier_target(frame)
+    frame = frame.iloc[:-HORIZON].dropna(
+        subset=features + ["BARRIER_TARGET", "ATR", "CLOSE"]
+    )
+    if len(frame) > MAX_ROWS:
+        frame = frame.tail(MAX_ROWS)
+    return frame.reset_index(drop=True), features
+
+
+def train_model(train_df: pd.DataFrame, features: list[str]) -> xgb.XGBClassifier:
+    sample_weight = build_profit_sample_weight(
+        train_df, train_df["BARRIER_TARGET"].to_numpy(dtype=np.int8)
+    )
+    model = xgb.XGBClassifier(
+        objective="multi:softprob",
+        num_class=3,
+        tree_method="hist",
+        device="cpu",
+        n_estimators=180,
+        learning_rate=0.05,
+        max_depth=4,
+        min_child_weight=80,
+        subsample=0.85,
+        colsample_bytree=0.85,
+        random_state=42,
+        verbosity=0,
+    )
+    model.fit(train_df[features], train_df["BARRIER_TARGET"], sample_weight=sample_weight)
+    return model
+
+
+def evaluate_params(params: dict, df: pd.DataFrame, probs: np.ndarray) -> dict:
+    eval_params = {
+        "threshold": params["threshold"],
+        "edge_threshold": params["edge_threshold"],
+        "tp_atr": params["tp_atr"],
+        "sl_atr": params["sl_atr"],
+        "min_tp_price": 0.0,
+        "min_sl_price": 0.0,
+        "max_hold": params["max_hold"],
+        "cooldown_ticks": 0,
+        "close_on_opposite": False,
+        "direction_mode": params["direction_mode"],
+        "initial_balance": 1000,
+        "stop_out_balance": 0,
+        "risk_per_trade": 0.02,
+        "allowed_entry_hours": None,
+        "allowed_entry_weekdays": None,
+        "excluded_rsi_ranges": [],
+        "max_daily_loss_pct": 0.05,
+        "max_daily_trades": None,
+        "extra_cost_points": 5.0,
+        "drawdown_guard_start_pct": 0.08,
+        "drawdown_guard_full_pct": 0.35,
+        "drawdown_guard_min_risk_mult": 0.50,
+        "loss_streak_threshold": 3,
+        "loss_streak_risk_mult": 0.55,
+        "loss_streak_pause_threshold": 3,
+        "loss_streak_pause_ticks": 120,
+        "rolling_guard_window": 30,
+        "rolling_guard_min_trades": 18,
+        "rolling_guard_min_profit_factor": 1.15,
+        "rolling_guard_min_win_rate": None,
+        "rolling_guard_risk_mult": 0.50,
+        "rolling_guard_pause_ticks": 0,
+    }
+    stats = evaluate(
+        eval_params,
+        df["CLOSE"].to_numpy(dtype=np.float64),
+        df["ATR"].to_numpy(dtype=np.float64),
+        probs,
+        dates=df["TIME_DT"].dt.date.to_numpy(),
+        rsi_values=df["M1_RSI"].to_numpy(dtype=np.float64),
+    )
+    return {
+        "pnl": round(float(stats["pnl"]), 2),
+        "trades": int(stats["trades"]),
+        "win_rate": round(float(stats["win_rate"]), 4),
+        "profit_factor": round(float(stats["profit_factor"]), 4),
+        "max_drawdown_pct": round(float(stats["max_drawdown_pct"]), 4),
+        "max_consecutive_losses": int(stats["max_consecutive_losses"]),
+        "stopped_out": bool(stats["stopped_out"]),
+    }
+
+
+def run_symbol(symbol: str) -> list[dict]:
+    print(f"Preparing {symbol}...")
+    frame, features = load_symbol_frame(symbol)
+    train_end = int(len(frame) * TRAIN_END_RATIO)
+    test_end = int(len(frame) * TEST_END_RATIO)
+    train_df = frame.iloc[:train_end].copy()
+    validation_df = frame.iloc[train_end:test_end].copy()
+    test_df = frame.iloc[test_end:].copy()
+    print(
+        f"{symbol} rows train={len(train_df):,} "
+        f"validation={len(validation_df):,} test={len(test_df):,}"
+    )
+    model = train_model(train_df, features)
+    validation_probs = model.predict_proba(validation_df[features]).astype("float32")
+    test_probs = model.predict_proba(test_df[features]).astype("float32")
+
+    rows = []
+    for params in PARAM_GRID:
+        validation_stats = evaluate_params(params, validation_df, validation_probs)
+        test_stats = evaluate_params(params, test_df, test_probs)
+        rows.append(
+            {
+                "symbol": symbol,
+                **params,
+                "validation_pnl": validation_stats["pnl"],
+                "validation_trades": validation_stats["trades"],
+                "validation_win_rate": validation_stats["win_rate"],
+                "validation_profit_factor": validation_stats["profit_factor"],
+                "validation_drawdown_pct": validation_stats["max_drawdown_pct"],
+                "test_pnl": test_stats["pnl"],
+                "test_trades": test_stats["trades"],
+                "test_win_rate": test_stats["win_rate"],
+                "test_profit_factor": test_stats["profit_factor"],
+                "test_drawdown_pct": test_stats["max_drawdown_pct"],
+                "test_max_loss_streak": test_stats["max_consecutive_losses"],
+                "passes_smoke": (
+                    validation_stats["pnl"] > 0
+                    and test_stats["pnl"] > 0
+                    and test_stats["profit_factor"] >= 1.2
+                    and test_stats["trades"] >= 20
+                    and not test_stats["stopped_out"]
+                ),
+            }
+        )
+    return rows
+
+
+def write_outputs(rows: list[dict]) -> None:
+    rows = sorted(
+        rows,
+        key=lambda row: (
+            row["passes_smoke"],
+            row["test_pnl"],
+            row["test_profit_factor"],
+        ),
+        reverse=True,
+    )
+    with OUTPUT_CSV.open("w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+    OUTPUT_JSON.write_text(json.dumps(rows, indent=2), encoding="utf-8")
+
+    lines = [
+        "# Axis Symbol Smoke Results",
+        "",
+        "Research-only smoke test. No live files are modified.",
+        "",
+        "| Symbol | Pass | Test PnL | Test Win | Test PF | Test Trades | Params |",
+        "|---|:---:|---:|---:|---:|---:|---|",
+    ]
+    for row in rows[:12]:
+        lines.append(
+            "| {symbol} | {passes_smoke} | {test_pnl:.2f} | {test_win_rate:.2%} | "
+            "{test_profit_factor:.2f} | {test_trades} | "
+            "conf={threshold}, edge={edge_threshold}, tp/sl={tp_atr}/{sl_atr}, "
+            "hold={max_hold}, dir={direction_mode} |".format(
+                **row
+            )
+        )
+    OUTPUT_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def main() -> int:
+    rows = []
+    for symbol in SYMBOLS:
+        rows.extend(run_symbol(symbol))
+    write_outputs(rows)
+    passed = sum(1 for row in rows if row["passes_smoke"])
+    print(f"Wrote {OUTPUT_CSV}")
+    print(f"Wrote {OUTPUT_JSON}")
+    print(f"Wrote {OUTPUT_MD}")
+    print(f"Smoke candidates passed: {passed}/{len(rows)}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

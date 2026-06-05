@@ -1,0 +1,44 @@
+{
+  "status": "research_only",
+  "latest_run": "axis_symbol_smoke.py",
+  "datasets_ready": [
+    "GOLD#",
+    "SILVER#",
+    "XAUEUR#",
+    "XPTUSD#",
+    "XPDUSD#",
+    "GAUCNH#"
+  ],
+  "first_pass_result": {
+    "passed_candidates": 1,
+    "tested_candidates": 20,
+    "best_candidate": {
+      "symbol": "XAUEUR#",
+      "direction_mode": "short",
+      "threshold": 0.575,
+      "edge_threshold": 0.1,
+      "tp_atr": 1.3,
+      "sl_atr": 2.3,
+      "max_hold": 240,
+      "validation_pnl": 25.78,
+      "validation_win_rate": 0.6448,
+      "validation_profit_factor": 1.0139,
+      "test_pnl": 137.71,
+      "test_trades": 42,
+      "test_win_rate": 0.7381,
+      "test_profit_factor": 1.4989,
+      "test_drawdown_pct": -0.0922
+    }
+  },
+  "notes": [
+    "XAUEUR# has a viable first-pass short-only candidate.",
+    "SILVER# failed under the M1-core smoke test and should be retested with M5/M15 base timeframe.",
+    "The current smoke evaluator reuses the legacy GOLD-style transaction cost model, so non-GOLD results are directional research only until a symbol-specific cost model is added.",
+    "GAUCNH# is complete but has a short history starting around 2025-09, so it should be treated as supplemental validation only."
+  ],
+  "next_steps": [
+    "Add symbol-specific spread/cost simulation.",
+    "Run M5/M15 base-timeframe tests for SILVER# and XAUEUR#.",
+    "Only after that, attempt a shared precious-metals model."
+  ]
+}

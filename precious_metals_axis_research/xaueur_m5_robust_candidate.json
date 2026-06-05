@@ -1,0 +1,43 @@
+{
+  "status": "research_only",
+  "symbol": "XAUEUR#",
+  "base_timeframe": "M5",
+  "selection_reason": "More robust validation than the highest-score XAUEUR M5 candidate while preserving strong test win rate and profit factor.",
+  "params": {
+    "threshold": 0.63,
+    "edge_threshold": 0.1,
+    "tp_atr": 1.4,
+    "sl_atr": 2.5,
+    "max_hold": 240,
+    "direction_mode": "both"
+  },
+  "validation_result": {
+    "pnl": 182.27,
+    "win_rate": 0.645,
+    "profit_factor": 1.1235,
+    "drawdown_pct": -0.1846
+  },
+  "test_result": {
+    "pnl": 616.99,
+    "trades": 161,
+    "win_rate": 0.7205,
+    "profit_factor": 1.5017,
+    "drawdown_pct": -0.2255
+  },
+  "comparison": {
+    "highest_score_candidate": {
+      "test_pnl": 830.49,
+      "test_win_rate": 0.6867,
+      "test_profit_factor": 1.5414,
+      "validation_pnl": 20.92,
+      "validation_profit_factor": 1.0144
+    },
+    "why_not_highest_score": "The highest-score candidate is more dependent on the test window; this robust candidate has materially better validation PnL and win rate."
+  },
+  "promotion_status": "not_live_ready",
+  "next_checks_required": [
+    "Symbol-specific transaction-cost simulation.",
+    "Forward test on fresh XAUEUR# data.",
+    "Walk-forward split check before any live consideration."
+  ]
+}

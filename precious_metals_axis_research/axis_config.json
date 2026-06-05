@@ -1,0 +1,44 @@
+{
+  "status": "research_only",
+  "anchor_symbol": "GOLD#",
+  "symbols": {
+    "GOLD#": {
+      "role": "anchor",
+      "candidate_timeframes": ["M1", "M5", "M15"],
+      "preferred_timeframe": "M1"
+    },
+    "SILVER#": {
+      "role": "secondary_precious_metal",
+      "candidate_timeframes": ["M5", "M15", "M30"],
+      "preferred_timeframe": "M5"
+    },
+    "XAUEUR#": {
+      "role": "gold_cross_validation",
+      "candidate_timeframes": ["M5", "M15", "M30"],
+      "preferred_timeframe": "M5"
+    },
+    "XPTUSD#": {
+      "role": "high_cost_precious_metal",
+      "candidate_timeframes": ["M15", "M30", "H1"],
+      "preferred_timeframe": "M30"
+    },
+    "XPDUSD#": {
+      "role": "high_cost_precious_metal",
+      "candidate_timeframes": ["M30", "H1"],
+      "preferred_timeframe": "H1"
+    }
+  },
+  "acceptance_gate": {
+    "gold_test_pnl_must_improve": true,
+    "gold_test_win_rate_min": 0.70,
+    "non_gold_symbols_passing_min": 1,
+    "profit_factor_min": 1.35,
+    "spread_atr_max_for_entry": 0.75
+  },
+  "feature_policy": {
+    "normalize_by_atr": true,
+    "include_symbol_id": true,
+    "include_timeframe_id": true,
+    "avoid_raw_price_scale": true
+  }
+}

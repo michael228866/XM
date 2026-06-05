@@ -1,0 +1,72 @@
+{
+  "threshold": 0.54,
+  "edge_threshold": 0.0,
+  "tp_atr": 2.6,
+  "sl_atr": 2.8,
+  "max_hold": 72,
+  "direction_mode": "long",
+  "total_pnl_r": 38.3037,
+  "total_trades": 205,
+  "positive_folds": 4,
+  "passed_folds": 4,
+  "weighted_win_rate": 0.6146,
+  "mean_profit_factor": 1.4688,
+  "worst_fold_pnl_r": 6.7182,
+  "max_drawdown_r": -9.4261,
+  "passes_gate": true,
+  "score": 6834.6075,
+  "folds": [
+    {
+      "fold": "fold_1",
+      "test_start": "2022-08-26T08:00:00",
+      "test_end": "2023-07-24T19:00:00",
+      "test_pnl_r": 14.8534,
+      "test_trades": 76,
+      "test_win_rate": 0.6316,
+      "test_profit_factor": 1.4216,
+      "test_max_drawdown_r": -6.8994,
+      "test_avg_r": 0.1954,
+      "test_max_loss_streak": 3,
+      "fold_pass": true
+    },
+    {
+      "fold": "fold_2",
+      "test_start": "2023-07-24T20:00:00",
+      "test_end": "2024-06-19T04:00:00",
+      "test_pnl_r": 6.7182,
+      "test_trades": 54,
+      "test_win_rate": 0.5926,
+      "test_profit_factor": 1.2217,
+      "test_max_drawdown_r": -9.4261,
+      "test_avg_r": 0.1244,
+      "test_max_loss_streak": 4,
+      "fold_pass": true
+    },
+    {
+      "fold": "fold_3",
+      "test_start": "2024-06-19T05:00:00",
+      "test_end": "2025-05-16T11:00:00",
+      "test_pnl_r": 7.0653,
+      "test_trades": 25,
+      "test_win_rate": 0.68,
+      "test_profit_factor": 1.796,
+      "test_max_drawdown_r": -4.3872,
+      "test_avg_r": 0.2826,
+      "test_max_loss_streak": 3,
+      "fold_pass": true
+    },
+    {
+      "fold": "fold_4",
+      "test_start": "2025-05-16T12:00:00",
+      "test_end": "2026-05-14T04:00:00",
+      "test_pnl_r": 9.6668,
+      "test_trades": 50,
+      "test_win_rate": 0.58,
+      "test_profit_factor": 1.4361,
+      "test_max_drawdown_r": -6.3282,
+      "test_avg_r": 0.1933,
+      "test_max_loss_streak": 4,
+      "fold_pass": true
+    }
+  ]
+}

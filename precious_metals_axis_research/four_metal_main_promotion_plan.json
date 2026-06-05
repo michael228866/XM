@@ -1,0 +1,104 @@
+{
+  "status": "research_main_promotion",
+  "live_files_modified": false,
+  "promotion_gate": {
+    "core_rule": "4/4 positive folds, profit-factor fold pass, 3x cost pass, and controlled drawdown.",
+    "slow_main_min_fold_trades": {
+      "XPTUSD#_H4": 2,
+      "XPDUSD#_H12": 2
+    },
+    "note": "Slow-main symbols can trade less frequently than GOLD# or SILVER#, but each fold must still be profitable under 3x cost stress."
+  },
+  "symbols": {
+    "GOLD#": {
+      "role": "main_anchor",
+      "source": "high_win_profit_research/best_candidate.json",
+      "status": "main_research_line",
+      "allocation_weight": 0.35,
+      "model": "gold_barrier_final_xgb.json",
+      "timeframe": "M1",
+      "direction_mode": "long",
+      "test_pnl": 4461.81,
+      "test_trades": 261,
+      "test_win_rate": 0.7088,
+      "test_profit_factor": 1.8195,
+      "test_drawdown_pct": -0.306
+    },
+    "SILVER#": {
+      "role": "main_core",
+      "source": "training_profile_stable_selection.json",
+      "status": "main_research_line",
+      "allocation_weight": 0.25,
+      "model": "silver_h1_regime_selected_xgb.json",
+      "timeframe": "H1",
+      "direction_mode": "long",
+      "cost_3x": {
+        "total_r": 17.3148,
+        "trades": 64,
+        "win_rate": 0.6563,
+        "profit_factor": 1.7901,
+        "max_drawdown_r": -2.7668,
+        "positive_folds": 5,
+        "passed_folds": 5,
+        "gate": true
+      },
+      "cost_gate_scope": "passes 1x-3x; fails 4x-5x"
+    },
+    "XPTUSD#": {
+      "role": "slow_main",
+      "source": "xpt_h4_fold_coverage_best.json",
+      "status": "main_research_line",
+      "allocation_weight": 0.2,
+      "timeframe": "H4",
+      "direction_mode": "long",
+      "target_exit": "original barrier target with refined H4 exit",
+      "cost_3x": {
+        "total_r": 12.973,
+        "trades": 44,
+        "win_rate": 0.7955,
+        "profit_factor": 251.6502,
+        "max_drawdown_r": -2.707,
+        "positive_folds": 4,
+        "passed_folds": 3,
+        "gate": true
+      },
+      "cost_gate_scope": "passes 1x-5x",
+      "promotion_gate": {
+        "gate": true,
+        "fold_profit_passes": "4/4",
+        "min_fold_trades_required": 2,
+        "min_fold_trades_observed": 2,
+        "cost_passes_through_3x": true
+      }
+    },
+    "XPDUSD#": {
+      "role": "slow_main",
+      "source": "xpd_alternate_target_exit_best.json",
+      "status": "main_research_line",
+      "allocation_weight": 0.2,
+      "timeframe": "H12",
+      "direction_mode": "long",
+      "target_exit": "future_close_h8 target with time_stop exit",
+      "cost_3x": {
+        "total_r": 9.2231,
+        "trades": 27,
+        "win_rate": 0.5926,
+        "profit_factor": 7.7228,
+        "max_drawdown_r": -2.0655,
+        "positive_folds": 4,
+        "passed_folds": 3,
+        "gate": true
+      },
+      "cost_gate_scope": "passes 1x-3x; fails 4x-5x",
+      "promotion_gate": {
+        "gate": true,
+        "fold_profit_passes": "4/4",
+        "min_fold_trades_required": 2,
+        "min_fold_trades_observed": 3,
+        "cost_passes_through_3x": true
+      }
+    }
+  },
+  "all_four_research_main": true,
+  "all_four_gate_note": "All four are promoted to research-main lines. This does not place live orders or change gemini.py; forward paper logging is still required before live deployment."
+}
