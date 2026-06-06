@@ -3,7 +3,7 @@ import json
 import math
 import os
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import MetaTrader5 as mt5
 import numpy as np
@@ -19,11 +19,13 @@ META_CONFIG_FILE = "gold_meta_regime_overlay.json"
 USE_META_OVERLAY = True
 DRY_RUN = False
 SIGNAL_LOG_FILE = "gemini_signal_log.csv"
+TRADE_HISTORY_LOG_FILE = "gemini_trade_history.csv"
+TRADE_HISTORY_LOOKBACK_DAYS = 14
 
 RISK_PER_TRADE = 0.028
 CONF_THRESHOLD = 0.525
 EDGE_THRESHOLD = 0.0
-TP_ATR_MULT = 1.1
+TP_ATR_MULT = 1.3
 SL_ATR_MULT = 2.0
 MIN_TP_PRICE = 1.5
 MIN_SL_PRICE = 0.6
@@ -34,6 +36,7 @@ USE_TRAILING_STOP = False
 TRAILING_MULT = 1.2
 MAX_DAILY_LOSS_PCT = 0.05
 MAX_DAILY_TRADES = None
+MAX_OPEN_POSITIONS = 2
 
 ALLOWED_ENTRY_HOURS = {0, 1, 3, 8, 9, 11, 12, 17, 19, 20, 22, 23}
 ALLOWED_ENTRY_WEEKDAYS = {0, 1, 2, 4}
@@ -124,17 +127,165 @@ SIGNAL_LOG_FIELDS = [
     "sl_distance",
     "tp_distance",
     "retcode",
+    "position_ticket",
+    "order_id",
+    "deal_id",
+    "request_id",
+    "broker_price",
+    "broker_bid",
+    "broker_ask",
+    "broker_comment",
     "message",
 ]
 
+TRADE_HISTORY_FIELDS = [
+    "recorded_time",
+    "deal_id",
+    "order_id",
+    "position_id",
+    "deal_time",
+    "symbol",
+    "magic",
+    "type",
+    "entry",
+    "reason",
+    "volume",
+    "price",
+    "profit",
+    "commission",
+    "swap",
+    "fee",
+    "comment",
+]
+
+
+def ensure_signal_log_schema():
+    if not os.path.exists(SIGNAL_LOG_FILE) or os.path.getsize(SIGNAL_LOG_FILE) == 0:
+        return
+
+    with open(SIGNAL_LOG_FILE, "r", newline="", encoding="utf-8") as file:
+        reader = csv.DictReader(file)
+        if reader.fieldnames == SIGNAL_LOG_FIELDS:
+            return
+        rows = list(reader)
+
+    tmp_file = f"{SIGNAL_LOG_FILE}.tmp"
+    with open(tmp_file, "w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=SIGNAL_LOG_FIELDS)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({field: row.get(field, "") for field in SIGNAL_LOG_FIELDS})
+    os.replace(tmp_file, SIGNAL_LOG_FILE)
+
 
 def append_signal_log(row):
-    file_exists = os.path.exists(SIGNAL_LOG_FILE)
+    ensure_signal_log_schema()
+    needs_header = (
+        not os.path.exists(SIGNAL_LOG_FILE)
+        or os.path.getsize(SIGNAL_LOG_FILE) == 0
+    )
     with open(SIGNAL_LOG_FILE, "a", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=SIGNAL_LOG_FIELDS)
-        if not file_exists:
+        if needs_header:
             writer.writeheader()
         writer.writerow({field: row.get(field, "") for field in SIGNAL_LOG_FIELDS})
+
+
+def fill_trade_result_log(row, result):
+    if result is None:
+        row["message"] = "mt5.order_send returned None"
+        return
+
+    row["retcode"] = getattr(result, "retcode", "")
+    row["order_id"] = getattr(result, "order", "")
+    row["deal_id"] = getattr(result, "deal", "")
+    row["request_id"] = getattr(result, "request_id", "")
+    row["broker_price"] = getattr(result, "price", "")
+    row["broker_bid"] = getattr(result, "bid", "")
+    row["broker_ask"] = getattr(result, "ask", "")
+    row["broker_comment"] = getattr(result, "comment", "")
+    row["message"] = getattr(result, "comment", "")
+
+
+def fill_open_position_ticket(row):
+    positions = get_strategy_positions()
+    if not positions:
+        return
+    latest_position = max(
+        positions,
+        key=lambda position: getattr(
+            position, "time_msc", getattr(position, "time", 0)
+        ),
+    )
+    row["position_ticket"] = latest_position.ticket
+
+
+def get_recorded_deal_ids():
+    if not os.path.exists(TRADE_HISTORY_LOG_FILE) or os.path.getsize(TRADE_HISTORY_LOG_FILE) == 0:
+        return set()
+
+    with open(TRADE_HISTORY_LOG_FILE, "r", newline="", encoding="utf-8") as file:
+        reader = csv.DictReader(file)
+        return {row["deal_id"] for row in reader if row.get("deal_id")}
+
+
+def append_trade_history_rows(rows):
+    if not rows:
+        return
+
+    needs_header = (
+        not os.path.exists(TRADE_HISTORY_LOG_FILE)
+        or os.path.getsize(TRADE_HISTORY_LOG_FILE) == 0
+    )
+    with open(TRADE_HISTORY_LOG_FILE, "a", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=TRADE_HISTORY_FIELDS)
+        if needs_header:
+            writer.writeheader()
+        writer.writerows(rows)
+
+
+def sync_trade_history():
+    start_time = datetime.now() - timedelta(days=TRADE_HISTORY_LOOKBACK_DAYS)
+    deals = mt5.history_deals_get(start_time, datetime.now())
+    if deals is None:
+        return
+
+    recorded_ids = get_recorded_deal_ids()
+    now_text = datetime.now().isoformat(timespec="seconds")
+    rows = []
+    for deal in deals:
+        if deal.symbol != SYMBOL or deal.magic != MAGIC_NUMBER:
+            continue
+
+        deal_id = str(getattr(deal, "ticket", ""))
+        if not deal_id or deal_id in recorded_ids:
+            continue
+
+        deal_time = datetime.fromtimestamp(deal.time).isoformat(timespec="seconds")
+        rows.append(
+            {
+                "recorded_time": now_text,
+                "deal_id": deal_id,
+                "order_id": getattr(deal, "order", ""),
+                "position_id": getattr(deal, "position_id", ""),
+                "deal_time": deal_time,
+                "symbol": getattr(deal, "symbol", ""),
+                "magic": getattr(deal, "magic", ""),
+                "type": getattr(deal, "type", ""),
+                "entry": getattr(deal, "entry", ""),
+                "reason": getattr(deal, "reason", ""),
+                "volume": getattr(deal, "volume", ""),
+                "price": getattr(deal, "price", ""),
+                "profit": getattr(deal, "profit", ""),
+                "commission": getattr(deal, "commission", ""),
+                "swap": getattr(deal, "swap", ""),
+                "fee": getattr(deal, "fee", ""),
+                "comment": getattr(deal, "comment", ""),
+            }
+        )
+        recorded_ids.add(deal_id)
+
+    append_trade_history_rows(rows)
 
 
 def add_indicators(df):
@@ -450,10 +601,14 @@ def live_trading_loop():
     )
 
     last_bar_time = None
+    last_history_sync_time = 0
     while True:
         try:
             manage_open_positions()
             now = datetime.now()
+            if time.time() - last_history_sync_time >= 60:
+                sync_trade_history()
+                last_history_sync_time = time.time()
             if now.second != 0:
                 time.sleep(0.5)
                 continue
@@ -488,8 +643,9 @@ def live_trading_loop():
             )
             rsi = float(feat["M1_RSI"].iloc[0])
             rsi_ok = not any(low <= rsi <= high for low, high in EXCLUDED_RSI_RANGES)
+            open_position_count = len(positions)
             is_valid = (
-                len(positions) == 0
+                open_position_count < MAX_OPEN_POSITIONS
                 and in_session
                 and rsi_ok
                 and buy_prob >= CONF_THRESHOLD
@@ -501,7 +657,8 @@ def live_trading_loop():
                 f"edge={edge:.3f} hour={hour} weekday={weekday} "
                 f"rsi={rsi:.1f} session={in_session} rsi_ok={rsi_ok} "
                 f"meta_q={meta_quality if meta_quality is not None else -1:.3f} "
-                f"risk_mult={meta_risk_mult:.2f} valid={is_valid}"
+                f"risk_mult={meta_risk_mult:.2f} positions="
+                f"{open_position_count}/{MAX_OPEN_POSITIONS} valid={is_valid}"
             )
             log_row = {
                 "event_time": now.isoformat(timespec="seconds"),
@@ -614,6 +771,7 @@ def live_trading_loop():
                 continue
 
             result = execute_trade(mt5.ORDER_TYPE_BUY, lot, sl_distance, tp_distance)
+            fill_trade_result_log(log_row, result)
             if result is not None and result.retcode == mt5.TRADE_RETCODE_DONE:
                 print(
                     f"BUY opened | lot={lot} risk_mult={meta_risk_mult:.2f} "
@@ -622,12 +780,11 @@ def live_trading_loop():
                     f"SL={sl_distance:.2f} TP={tp_distance:.2f}"
                 )
                 log_row["status"] = "order_opened"
-                log_row["retcode"] = result.retcode
+                fill_open_position_ticket(log_row)
             else:
                 code = None if result is None else result.retcode
                 print(f"Order failed | retcode={code}")
                 log_row["status"] = "order_failed"
-                log_row["retcode"] = "" if code is None else code
             append_signal_log(log_row)
 
             time.sleep(1)
