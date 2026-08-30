@@ -8,6 +8,12 @@ GOLD#_*.csv
 # Live/demo runtime logs.
 gemini_signal_log.csv
 gemini_trade_history.csv
+codex_signal_log*.csv
+codex_trade_log*.csv
+codex_state*.json
+precious_metals_axis_research/four_metal_forward_signal_log.csv
+precious_metals_axis_research/four_metal_forward_trade_log.csv
+precious_metals_axis_research/four_metal_forward_state.json
 *.log
 
 # Local archives and temporary outputs.
@@ -18,6 +24,11 @@ high_win_profit_research/live_backups/
 # Generated exhaustive grid outputs; keep compact reports/best JSON instead.
 precious_metals_axis_research/*_results.csv
 precious_metals_axis_research/*_results.json
+
+# Untracked training artifacts; add a promoted model explicitly when needed.
+gold_*_xgb.json
+precious_metals_axis_research/*_xgb.json
+precious_metals_axis_research/*_xgb.metadata.json
 
 # Nested Python caches.
 **/__pycache__/
