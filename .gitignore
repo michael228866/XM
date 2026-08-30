@@ -25,8 +25,8 @@ high_win_profit_research/live_backups/
 precious_metals_axis_research/*_results.csv
 precious_metals_axis_research/*_results.json
 
-# Untracked training artifacts; add a promoted model explicitly when needed.
-gold_*_xgb.json
+# Untracked GOLD research artifacts; add a promoted artifact explicitly when needed.
+gold_*.json
 precious_metals_axis_research/*_xgb.json
 precious_metals_axis_research/*_xgb.metadata.json
 
