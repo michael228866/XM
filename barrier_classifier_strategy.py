@@ -60,6 +60,215 @@ def build_barrier_target(df):
     return target
 
 
+def _build_first_touch_result(
+    df,
+    horizon,
+    tp_atr,
+    sl_atr,
+    min_tp_price,
+    min_sl_price,
+    direction,
+    return_outcome=False,
+):
+    if horizon < 1:
+        raise ValueError("horizon must be at least 1")
+    if direction not in (1, 2):
+        raise ValueError("direction must be 1 (long) or 2 (short)")
+
+    close = df["CLOSE"].to_numpy(dtype=np.float64)
+    high = df["HIGH"].to_numpy(dtype=np.float64)
+    low = df["LOW"].to_numpy(dtype=np.float64)
+    atr = df["ATR"].to_numpy(dtype=np.float64)
+    take_profit = np.maximum(atr * tp_atr, min_tp_price)
+    stop_loss = np.maximum(atr * sl_atr, min_sl_price)
+    target = np.zeros(len(df), dtype=np.int8)
+    outcome = np.full(len(df), -1, dtype=np.int8)
+    gross_pnl = np.full(len(df), np.nan, dtype=np.float64)
+    unresolved = (
+        np.isfinite(close)
+        & np.isfinite(high)
+        & np.isfinite(low)
+        & np.isfinite(take_profit)
+        & np.isfinite(stop_loss)
+    )
+
+    for offset in range(1, horizon + 1):
+        limit = len(df) - offset
+        if limit <= 0:
+            break
+        active = unresolved[:limit]
+        if not active.any():
+            break
+        if direction == 1:
+            take_hit = high[offset:] >= close[:limit] + take_profit[:limit]
+            stop_hit = low[offset:] <= close[:limit] - stop_loss[:limit]
+        else:
+            take_hit = low[offset:] <= close[:limit] - take_profit[:limit]
+            stop_hit = high[offset:] >= close[:limit] + stop_loss[:limit]
+        stop_event = active & stop_hit
+        take_event = active & take_hit & ~stop_hit
+        target[:limit][take_event] = 1
+        outcome[:limit][stop_event] = 2
+        outcome[:limit][take_event] = 1
+        gross_pnl[:limit][stop_event] = -stop_loss[:limit][stop_event]
+        gross_pnl[:limit][take_event] = take_profit[:limit][take_event]
+        unresolved[:limit][active & (take_hit | stop_hit)] = False
+
+    timeout_limit = len(df) - horizon
+    if timeout_limit > 0:
+        timeout_event = unresolved[:timeout_limit]
+        if direction == 1:
+            timeout_pnl = close[horizon:] - close[:timeout_limit]
+        else:
+            timeout_pnl = close[:timeout_limit] - close[horizon:]
+        gross_pnl[:timeout_limit][timeout_event] = timeout_pnl[timeout_event]
+        outcome[:timeout_limit][timeout_event] = 0
+
+    if return_outcome:
+        return target, gross_pnl, stop_loss, outcome
+    return target, gross_pnl, stop_loss
+
+
+def build_first_touch_outcome_target(
+    df,
+    horizon,
+    tp_atr,
+    sl_atr,
+    min_tp_price,
+    min_sl_price,
+    direction,
+):
+    """Return 0=timeout, 1=TP-first, 2=SL-first, and -1=not yet mature."""
+    _, _, _, outcome = _build_first_touch_result(
+        df,
+        horizon,
+        tp_atr,
+        sl_atr,
+        min_tp_price,
+        min_sl_price,
+        direction,
+        return_outcome=True,
+    )
+    return outcome
+
+
+def build_first_touch_outcome_and_reward(
+    df,
+    horizon,
+    tp_atr,
+    sl_atr,
+    min_tp_price,
+    min_sl_price,
+    direction,
+    extra_cost_points=0.0,
+):
+    """Build the three-way outcome and its net result in stop-risk units."""
+    _, gross_pnl, stop_loss, outcome = _build_first_touch_result(
+        df,
+        horizon,
+        tp_atr,
+        sl_atr,
+        min_tp_price,
+        min_sl_price,
+        direction,
+        return_outcome=True,
+    )
+    spread_price = SPREAD_POINTS * 0.01
+    total_cost_price = (SPREAD_POINTS + extra_cost_points) * 0.01
+    reward = (gross_pnl - total_cost_price) / (stop_loss + spread_price)
+    return outcome, reward
+
+
+def build_long_first_touch_target(
+    df,
+    horizon,
+    tp_atr,
+    sl_atr,
+    min_tp_price,
+    min_sl_price,
+):
+    """Return 1 only when the long TP is touched before the long SL."""
+    target, _, _ = _build_first_touch_result(
+        df,
+        horizon,
+        tp_atr,
+        sl_atr,
+        min_tp_price,
+        min_sl_price,
+        direction=1,
+    )
+    return target
+
+
+def build_long_reward_target(
+    df,
+    horizon,
+    tp_atr,
+    sl_atr,
+    min_tp_price,
+    min_sl_price,
+    extra_cost_points=0.0,
+):
+    """Return net long outcomes in stop-risk units, including timeouts."""
+    _, gross_pnl, stop_loss = _build_first_touch_result(
+        df,
+        horizon,
+        tp_atr,
+        sl_atr,
+        min_tp_price,
+        min_sl_price,
+        direction=1,
+    )
+    spread_price = SPREAD_POINTS * 0.01
+    total_cost_price = (SPREAD_POINTS + extra_cost_points) * 0.01
+    return (gross_pnl - total_cost_price) / (stop_loss + spread_price)
+
+
+def build_short_first_touch_target(
+    df,
+    horizon,
+    tp_atr,
+    sl_atr,
+    min_tp_price,
+    min_sl_price,
+):
+    """Return 1 only when the short TP is touched before the short SL."""
+    target, _, _ = _build_first_touch_result(
+        df,
+        horizon,
+        tp_atr,
+        sl_atr,
+        min_tp_price,
+        min_sl_price,
+        direction=2,
+    )
+    return target
+
+
+def build_short_reward_target(
+    df,
+    horizon,
+    tp_atr,
+    sl_atr,
+    min_tp_price,
+    min_sl_price,
+    extra_cost_points=0.0,
+):
+    """Return net short outcomes in stop-risk units, including timeouts."""
+    _, gross_pnl, stop_loss = _build_first_touch_result(
+        df,
+        horizon,
+        tp_atr,
+        sl_atr,
+        min_tp_price,
+        min_sl_price,
+        direction=2,
+    )
+    spread_price = SPREAD_POINTS * 0.01
+    total_cost_price = (SPREAD_POINTS + extra_cost_points) * 0.01
+    return (gross_pnl - total_cost_price) / (stop_loss + spread_price)
+
+
 def build_profit_sample_weight(df, target):
     close = df["CLOSE"].to_numpy(dtype=np.float64)
     atr = df["ATR"].to_numpy(dtype=np.float64)
@@ -151,7 +360,25 @@ def simulate_barrier(
     rolling_guard_min_win_rate=None,
     rolling_guard_risk_mult=1.0,
     rolling_guard_pause_ticks=0,
+    highs=None,
+    lows=None,
+    entry_tp_values=None,
+    entry_sl_values=None,
 ):
+    if (highs is None) != (lows is None):
+        raise ValueError("highs and lows must be provided together")
+    use_intrabar_exits = highs is not None
+    if use_intrabar_exits and (
+        len(highs) != len(prices) or len(lows) != len(prices)
+    ):
+        raise ValueError("highs and lows must have the same length as prices")
+    if (entry_tp_values is None) != (entry_sl_values is None):
+        raise ValueError("entry_tp_values and entry_sl_values must be provided together")
+    if entry_tp_values is not None and (
+        len(entry_tp_values) != len(prices) or len(entry_sl_values) != len(prices)
+    ):
+        raise ValueError("entry distance arrays must have the same length as prices")
+
     balance = initial_balance
     balance_history = [balance]
     position = 0
@@ -271,8 +498,16 @@ def simulate_barrier(
             if can_enter:
                 position = signal
                 entry_price = curr_price
-                entry_tp = max(atr[i] * tp_atr, min_tp_price)
-                entry_sl = max(atr[i] * sl_atr, min_sl_price)
+                if entry_tp_values is None:
+                    entry_tp = max(atr[i] * tp_atr, min_tp_price)
+                    entry_sl = max(atr[i] * sl_atr, min_sl_price)
+                else:
+                    entry_tp = float(entry_tp_values[i])
+                    entry_sl = float(entry_sl_values[i])
+                    if not np.isfinite(entry_tp) or not np.isfinite(entry_sl):
+                        raise ValueError("entry distances must be finite")
+                    if entry_tp <= 0.0 or entry_sl <= 0.0:
+                        raise ValueError("entry distances must be positive")
                 if risk_per_trade is None:
                     position_scale = 1.0
                 else:
@@ -334,15 +569,42 @@ def simulate_barrier(
                     cooldown -= 1
         else:
             hold_ticks += 1
-            float_pnl = curr_price - entry_price if position == 1 else entry_price - curr_price
+            float_pnl = (
+                curr_price - entry_price
+                if position == 1
+                else entry_price - curr_price
+            )
             exit_reason = None
-            if close_on_opposite and has_signal and signal != position:
+            exit_price = curr_price
+            if use_intrabar_exits:
+                if position == 1:
+                    take_hit = float(highs[i]) >= entry_price + entry_tp
+                    stop_hit = float(lows[i]) <= entry_price - entry_sl
+                    take_price = entry_price + entry_tp
+                    stop_price = entry_price - entry_sl
+                else:
+                    take_hit = float(lows[i]) <= entry_price - entry_tp
+                    stop_hit = float(highs[i]) >= entry_price + entry_sl
+                    take_price = entry_price - entry_tp
+                    stop_price = entry_price + entry_sl
+                if stop_hit:
+                    exit_reason = "stop_loss"
+                    exit_price = stop_price
+                elif take_hit:
+                    exit_reason = "take_profit"
+                    exit_price = take_price
+            if (
+                exit_reason is None
+                and close_on_opposite
+                and has_signal
+                and signal != position
+            ):
                 exit_reason = "model"
-            elif float_pnl >= entry_tp:
+            elif exit_reason is None and float_pnl >= entry_tp:
                 exit_reason = "take_profit"
-            elif float_pnl <= -entry_sl:
+            elif exit_reason is None and float_pnl <= -entry_sl:
                 exit_reason = "stop_loss"
-            elif hold_ticks >= max_hold:
+            elif exit_reason is None and hold_ticks >= max_hold:
                 exit_reason = "timeout"
 
             if exit_reason is None:
@@ -352,7 +614,7 @@ def simulate_barrier(
                     close_reward(
                         position,
                         entry_price,
-                        curr_price,
+                        exit_price,
                         extra_cost_points=extra_cost_points,
                     )
                     * position_scale
@@ -472,6 +734,10 @@ def evaluate(
     trend_score_values=None,
     entry_quality=None,
     entry_risk_mult=None,
+    highs=None,
+    lows=None,
+    entry_tp_values=None,
+    entry_sl_values=None,
 ):
     return simulate_barrier(
         prices=prices,
@@ -486,6 +752,10 @@ def evaluate(
         trend_score_values=trend_score_values,
         entry_quality=entry_quality,
         entry_risk_mult=entry_risk_mult,
+        highs=highs,
+        lows=lows,
+        entry_tp_values=entry_tp_values,
+        entry_sl_values=entry_sl_values,
         **params,
     )
 
