@@ -271,6 +271,52 @@ The strongest final evidence should come from genuinely new forward data collect
 
 ---
 
+## Training Run Preservation
+
+Every actual model-training, calibration, threshold-selection, parameter-selection, information-study model fit, or parameter-sweep execution must create an immutable training record before computation starts.
+
+Use:
+
+`training_runs/<YYYYMMDDTHHMMSSZ>_<experiment_name>/`
+
+Create and audit the directory with `training_run_history.py`. Every execution receives a unique `run_id`; never reuse a run directory or silently overwrite the only copy of an earlier model, report, metric file, or candidate table. PASS, FAIL, `research_only`, and aborted runs must all be retained. Corrections require a new run. A later run must never destroy evidence from an earlier run.
+
+Each run must preserve, when applicable:
+
+* `manifest.json`;
+* an immutable snapshot of the executed training script;
+* `report.md`;
+* `metrics.json`;
+* `environment.txt`;
+* `stdout.log`;
+* `candidates.csv` for searches;
+* `model.<ext>` and `model.sha256` for trained models;
+* `FINALIZED.json`, containing hashes of retained run files.
+
+The manifest must record at minimum:
+
+* run ID, experiment, final status, UTC start/finish, Git commit/dirty state;
+* training script path/snapshot/hash, exact command/arguments, and every random seed;
+* symbols, sources, source files/hashes where feasible, timezone, total data interval;
+* train/validation/test boundaries and row counts, purge and embargo;
+* for dynamic MT5 fetches: terminal path/info, broker info, exact fetch interval, retrieval timestamp, and returned rows;
+* whether the raw snapshot was retained; never claim full reproducibility when it was not;
+* model type/parameters, estimators, complete features/count, label/horizon, label TP/SL semantics, execution TP/SL semantics, calibration, artifact path/hash/retention;
+* the entire predefined search space, not only the selected parameters;
+* promotion request/gate and separate replacement authorization state.
+
+Every evaluated search candidate, including failures, must be retained in an auditable table with candidate ID, parameters, fold, executable trades, trades/day, TP-first WR, realized WR, PF, Mean-R, PnL, Max DD, break-even WR, break-even-adjusted edge, cost stress, and qualification verdict.
+
+Every run must capture Python, numpy, pandas, scikit-learn, xgboost, and MetaTrader5 versions. Large artifacts may remain in external storage only when the manifest records their exact path, SHA-256, and retention status.
+
+Append every finalized run to `TRAINING_RUNS.md`. The registry is append-only and includes failures and aborted executions.
+
+Training and production replacement are separate operations. Training scripts must write models into their unique run directory. They must not directly destroy the only copy of `gold_long_recent_candidate_xgb.json` or any artifact currently loaded by `gemini.py`. If a legacy script cannot avoid an operational output path, archive the existing model and associated report/config with their SHA-256 before execution. A trained model remains `research_only` unless the full promotion gate passes and replacement is separately authorized.
+
+The stronger preservation rule is prospective. Do not fabricate missing raw snapshots, environment locks, or other fields for the legacy 2026-08-25 model.
+
+---
+
 ## Research behavior
 
 Do not create a new Generation merely to show progress.

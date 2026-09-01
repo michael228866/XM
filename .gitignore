@@ -16,6 +16,11 @@ precious_metals_axis_research/four_metal_forward_trade_log.csv
 precious_metals_axis_research/four_metal_forward_state.json
 *.log
 
+# Training stdout is immutable provenance, not a disposable runtime log.
+!training_runs/
+!training_runs/**/
+!training_runs/**/stdout.log
+
 # Local archives and temporary outputs.
 _archive_*/
 *.tmp

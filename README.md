@@ -181,6 +181,25 @@ Validation 內測試的固定組合為：
 
 因此目前最準確的說法是：`gemini.py` 是正在測試帳戶運作的既有 operational baseline；歷史報告提供 development evidence，但沒有任何現行或新世代模型擁有完整 untouched-test production claim。
 
+## 永久 Training Run 保存政策
+
+從本政策建立後，每一次實際 model training、calibration、threshold／parameter selection、會訓練模型的 information study 或 sweep，都必須先建立唯一目錄：
+
+```text
+training_runs/<YYYYMMDDTHHMMSSZ>_<experiment_name>/
+```
+
+標準紀錄包含 manifest、完整 search space 與全部 candidate 結果、metrics、report、environment、stdout、model hash，以及 finalized file hashes。PASS、FAIL、`research_only` 和 aborted run 都保留；修正錯誤必須建立新 run，不能覆寫舊證據。
+
+- 完整規格與使用流程：[training_runs/README.md](training_runs/README.md)
+- Append-only registry：[TRAINING_RUNS.md](TRAINING_RUNS.md)
+- 建立／finalize／validate／register helper：[training_run_history.py](training_run_history.py)
+- 強制 repository policy：[AGENTS.md](AGENTS.md#training-run-preservation)
+
+目前 2026-08-25 model 早於這項政策，不會被補造一個看似完整的新 `run_id`。原始 MT5 snapshot 與完整 environment lock 未保存的限制仍然保留；新規則只對未來 execution 生效。
+
+訓練完成不代表 production replacement。新 model 預設寫入自己的 run directory 並維持 `research_only`；只有 promotion gate 通過且另行取得替換授權，才能修改 `gemini.py` 所載入的 operational artifact。
+
 ## 重新訓練與執行
 
 建議使用 Python 3.10。若 `python` 不在 PATH，可使用 `py -3.10` 或 repo 的 `.venv`。
@@ -191,13 +210,9 @@ Validation 內測試的固定組合為：
 py -3.10 gemini.py
 ```
 
-重新執行 current-model training pipeline：
+`gold_long_recent_walk_forward.py` 是產生目前模型的 legacy pipeline，但其原始輸出路徑會覆寫 `gold_long_recent_candidate_xgb.json`。新政策生效後不得再直接執行這個命令。任何再次訓練都必須先建立 training run，並先把 script 的 model/report 輸出改到該 run directory；完整命令見 [training_runs/README.md](training_runs/README.md)。
 
-```powershell
-py -3.10 gold_long_recent_walk_forward.py
-```
-
-注意：訓練腳本會連線 `D:\XM2\terminal64.exe`、以當下最新 tick 作為資料結束時間，並覆寫 `gold_long_recent_candidate_xgb.json` 與本機報告。若要重現研究，應先在獨立 branch／artifact path 凍結資料與輸出，不能直接覆寫正在 forward test 的模型。
+訓練腳本會連線 `D:\XM2\terminal64.exe` 並以當下最新 tick 作為資料結束時間，因此新 run 還必須記錄 MT5 terminal／broker、精確 fetch interval、retrieval timestamp、returned rows，以及 raw snapshot 是否真正保留。不能直接覆寫正在 forward test 的模型，也不能把沒有保存 snapshot 的重跑宣稱為精確重現。
 
 ## 主要檔案
 
