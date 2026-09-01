@@ -3,7 +3,7 @@ import json
 import math
 import os
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import MetaTrader5 as mt5
 import numpy as np
@@ -13,33 +13,57 @@ import xgboost as xgb
 
 SYMBOL = "GOLD#"
 MAGIC_NUMBER = 20260514
-MODEL_FILE = "gold_barrier_final_xgb.json"
+MODEL_FILE = "gold_long_recent_candidate_xgb.json"
+MODEL_OUTPUT_MODE = "long_binary"
 META_MODEL_FILE = "gold_meta_regime_xgb.json"
 META_CONFIG_FILE = "gold_meta_regime_overlay.json"
-USE_META_OVERLAY = True
+USE_META_OVERLAY = False
 DRY_RUN = False
 SIGNAL_LOG_FILE = "gemini_signal_log.csv"
 TRADE_HISTORY_LOG_FILE = "gemini_trade_history.csv"
 TRADE_HISTORY_LOOKBACK_DAYS = 14
+LOG_TIMEZONE = timezone.utc
 
-RISK_PER_TRADE = 0.028
-CONF_THRESHOLD = 0.525
+RISK_PER_TRADE = 0.014
+CONF_THRESHOLD = 0.75
 EDGE_THRESHOLD = 0.0
+LOWER_CONF_THRESHOLD = 1.01
+LOWER_CONF_MIN_EDGE = 0.30
+EXPANDED_CONF_THRESHOLD = 0.75
+MIN_ENTRY_RSI = 22.0
+MIN_EXPANDED_META_QUALITY = 0.55
+MIN_LOWER_CONF_META_QUALITY = 0.50
 TP_ATR_MULT = 1.3
-SL_ATR_MULT = 2.0
+SL_ATR_MULT = 1.6
 MIN_TP_PRICE = 1.5
 MIN_SL_PRICE = 0.6
 SPREAD_POINTS = 30
+PRICE_PER_POINT = 0.01
 MAX_SPREAD_POINTS = 45
-MAX_HOLD_MINUTES = 180
+HARD_MAX_SPREAD_POINTS = 100
+MAX_SPREAD_TO_TP_RATIO = 0.25
+MAX_HOLD_MINUTES = 90
 USE_TRAILING_STOP = False
 TRAILING_MULT = 1.2
 MAX_DAILY_LOSS_PCT = 0.05
 MAX_DAILY_TRADES = None
-MAX_OPEN_POSITIONS = 2
+LOSS_COOLDOWN_MINUTES = 15
+POST_LOSS_RISK_CAP_MINUTES = 120
+POST_LOSS_MAX_RISK_MULT = 1.0
+ROLLING_GUARD_WINDOW = 30
+ROLLING_GUARD_MIN_TRADES = 18
+ROLLING_GUARD_MIN_PROFIT_FACTOR = 1.15
+ROLLING_GUARD_RISK_MULT = 0.50
+MAX_OPEN_POSITIONS = 1
+MAX_ADDON_OPEN_POSITIONS = 1
+ADDON_MIN_BUY_PROB = 0.56
+ADDON_MIN_META_QUALITY = 0.55
+ENABLE_EXPANDED_ENTRY = False
 
-ALLOWED_ENTRY_HOURS = {0, 1, 3, 8, 9, 11, 12, 17, 19, 20, 22, 23}
-ALLOWED_ENTRY_WEEKDAYS = {0, 1, 2, 4}
+ALLOWED_ENTRY_HOURS = {0, 1, 2, 3, 4, 8, 9, 11, 12, 17, 18, 19, 20, 22, 23}
+ALLOWED_ENTRY_WEEKDAYS = {0, 1, 2, 3, 4}
+EXPANDED_ENTRY_HOURS = {2, 4}
+EXPANDED_ENTRY_WEEKDAYS = {3}
 EXCLUDED_RSI_RANGES = [(35.0, 45.0)]
 
 BASE_FEATURES = [
@@ -113,14 +137,31 @@ SIGNAL_LOG_FIELDS = [
     "edge",
     "meta_quality",
     "risk_mult",
+    "meta_risk_mult",
+    "runtime_risk_mult",
+    "loss_streak",
+    "minutes_since_loss",
+    "rolling_profit_factor",
+    "risk_guard",
     "hour",
     "weekday",
     "rsi",
     "in_session",
+    "base_session",
+    "expanded_session",
     "rsi_ok",
+    "rsi_floor_ok",
     "valid",
+    "entry_mode",
+    "position_gate",
+    "position_profit",
     "spread_points",
+    "spread_limit_points",
+    "spread_to_tp_ratio",
     "balance",
+    "daily_realized_pnl",
+    "floating_pnl",
+    "daily_total_pnl",
     "risk_budget",
     "raw_lot",
     "lot",
@@ -157,6 +198,64 @@ TRADE_HISTORY_FIELDS = [
     "fee",
     "comment",
 ]
+
+
+def utc_now():
+    return datetime.now(LOG_TIMEZONE)
+
+
+def format_log_time(value):
+    if value is None:
+        return ""
+    if isinstance(value, pd.Timestamp):
+        if value.tzinfo is None:
+            value = value.tz_localize(LOG_TIMEZONE)
+        else:
+            value = value.tz_convert(LOG_TIMEZONE)
+        value = value.to_pydatetime()
+    elif isinstance(value, (int, float, np.integer, np.floating)):
+        value = datetime.fromtimestamp(value, LOG_TIMEZONE)
+    elif not isinstance(value, datetime):
+        raise TypeError(f"Unsupported log time value: {value!r}")
+
+    if value.tzinfo is None:
+        value = value.replace(tzinfo=LOG_TIMEZONE)
+    else:
+        value = value.astimezone(LOG_TIMEZONE)
+    return value.isoformat(timespec="seconds")
+
+
+def parse_log_time(value):
+    if value is None or value == "":
+        return None
+    try:
+        parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=LOG_TIMEZONE)
+    return parsed.astimezone(LOG_TIMEZONE)
+
+
+def parse_float(value, default=0.0):
+    if value is None or value == "":
+        return default
+    try:
+        parsed = float(value)
+    except (TypeError, ValueError):
+        return default
+    if math.isnan(parsed):
+        return default
+    return parsed
+
+
+def parse_int(value, default=None):
+    if value is None or value == "":
+        return default
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return default
 
 
 def ensure_signal_log_schema():
@@ -245,13 +344,14 @@ def append_trade_history_rows(rows):
 
 
 def sync_trade_history():
-    start_time = datetime.now() - timedelta(days=TRADE_HISTORY_LOOKBACK_DAYS)
-    deals = mt5.history_deals_get(start_time, datetime.now())
+    end_time = utc_now()
+    start_time = end_time - timedelta(days=TRADE_HISTORY_LOOKBACK_DAYS)
+    deals = mt5.history_deals_get(start_time, end_time)
     if deals is None:
         return
 
     recorded_ids = get_recorded_deal_ids()
-    now_text = datetime.now().isoformat(timespec="seconds")
+    now_text = format_log_time(end_time)
     rows = []
     for deal in deals:
         if deal.symbol != SYMBOL or deal.magic != MAGIC_NUMBER:
@@ -261,7 +361,7 @@ def sync_trade_history():
         if not deal_id or deal_id in recorded_ids:
             continue
 
-        deal_time = datetime.fromtimestamp(deal.time).isoformat(timespec="seconds")
+        deal_time = format_log_time(deal.time)
         rows.append(
             {
                 "recorded_time": now_text,
@@ -286,6 +386,124 @@ def sync_trade_history():
         recorded_ids.add(deal_id)
 
     append_trade_history_rows(rows)
+
+
+def get_closed_trade_results():
+    if not os.path.exists(TRADE_HISTORY_LOG_FILE):
+        return []
+
+    by_position = {}
+    try:
+        with open(TRADE_HISTORY_LOG_FILE, "r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                if parse_int(row.get("entry")) != 1:
+                    continue
+
+                position_id = row.get("position_id")
+                exit_time = parse_log_time(row.get("deal_time"))
+                if not position_id or exit_time is None:
+                    continue
+
+                net = (
+                    parse_float(row.get("profit"))
+                    + parse_float(row.get("commission"))
+                    + parse_float(row.get("swap"))
+                    + parse_float(row.get("fee"))
+                )
+                trade = by_position.setdefault(
+                    position_id,
+                    {"exit_time": exit_time, "pnl": 0.0},
+                )
+                trade["pnl"] += net
+                if exit_time >= trade["exit_time"]:
+                    trade["exit_time"] = exit_time
+    except (OSError, csv.Error):
+        return []
+
+    return sorted(by_position.values(), key=lambda trade: trade["exit_time"])
+
+
+def get_consecutive_losses(closed_trades):
+    streak = 0
+    for trade in reversed(closed_trades):
+        if trade["pnl"] < 0:
+            streak += 1
+            continue
+        break
+    return streak
+
+
+def get_profit_factor(closed_trades):
+    gross_win = sum(trade["pnl"] for trade in closed_trades if trade["pnl"] > 0)
+    gross_loss = -sum(trade["pnl"] for trade in closed_trades if trade["pnl"] < 0)
+    if gross_loss <= 0:
+        return math.inf
+    return gross_win / gross_loss
+
+
+def format_guard_value(value, digits=2):
+    if value is None:
+        return ""
+    if math.isinf(value):
+        return "inf"
+    return round(value, digits)
+
+
+def get_runtime_risk_guard(now):
+    closed_trades = get_closed_trade_results()
+    guard = {
+        "allow_entry": True,
+        "risk_mult": 1.0,
+        "max_risk_mult": None,
+        "loss_streak": 0,
+        "minutes_since_loss": None,
+        "rolling_profit_factor": None,
+        "reason": "",
+    }
+    if not closed_trades:
+        return guard
+
+    reasons = []
+    guard["loss_streak"] = get_consecutive_losses(closed_trades)
+    last_trade = closed_trades[-1]
+    if last_trade["pnl"] < 0:
+        minutes_since_loss = max(
+            0.0,
+            (now - last_trade["exit_time"]).total_seconds() / 60.0,
+        )
+        guard["minutes_since_loss"] = minutes_since_loss
+        if minutes_since_loss < LOSS_COOLDOWN_MINUTES:
+            guard["allow_entry"] = False
+            reasons.append(
+                f"loss_cooldown={minutes_since_loss:.1f}"
+                f"<{LOSS_COOLDOWN_MINUTES}"
+            )
+        if minutes_since_loss < POST_LOSS_RISK_CAP_MINUTES:
+            guard["max_risk_mult"] = POST_LOSS_MAX_RISK_MULT
+            reasons.append(f"post_loss_cap={POST_LOSS_MAX_RISK_MULT:.2f}")
+
+    recent_trades = closed_trades[-ROLLING_GUARD_WINDOW:]
+    if len(recent_trades) >= ROLLING_GUARD_MIN_TRADES:
+        profit_factor = get_profit_factor(recent_trades)
+        guard["rolling_profit_factor"] = profit_factor
+        if profit_factor < ROLLING_GUARD_MIN_PROFIT_FACTOR:
+            guard["risk_mult"] *= ROLLING_GUARD_RISK_MULT
+            reasons.append(
+                f"rolling_pf={profit_factor:.2f}"
+                f"<{ROLLING_GUARD_MIN_PROFIT_FACTOR:.2f}"
+            )
+
+    guard["reason"] = ";".join(reasons)
+    return guard
+
+
+def get_effective_risk_mult(meta_risk_mult, runtime_guard):
+    effective = meta_risk_mult * runtime_guard["risk_mult"]
+    max_risk_mult = runtime_guard.get("max_risk_mult")
+    if max_risk_mult is not None:
+        effective = min(effective, max_risk_mult)
+    return effective
 
 
 def add_indicators(df):
@@ -365,7 +583,7 @@ def get_mt5_data(symbol, timeframe, count, start_pos=1):
     if rates is None or len(rates) == 0:
         return None
     df = pd.DataFrame(rates)
-    df["TIME_DT"] = pd.to_datetime(df["time"], unit="s")
+    df["TIME_DT"] = pd.to_datetime(df["time"], unit="s", utc=True)
     df.columns = [col.upper() for col in df.columns]
     return df.sort_values("TIME_DT").reset_index(drop=True)
 
@@ -410,6 +628,17 @@ def get_current_features(regime_features=None):
         if regime_df is None or regime_df.isna().any(axis=None):
             return None
     return feat_df, regime_df, last_row["TIME_DT"]
+
+
+def normalize_model_probs(raw_probs):
+    probs = np.asarray(raw_probs, dtype=np.float32).reshape(-1)
+    if MODEL_OUTPUT_MODE == "three_class" and len(probs) == 3:
+        return probs
+    if MODEL_OUTPUT_MODE == "long_binary" and len(probs) == 2:
+        return np.asarray([probs[0], probs[1], 0.0], dtype=np.float32)
+    raise ValueError(
+        f"Unexpected model output: mode={MODEL_OUTPUT_MODE} classes={len(probs)}"
+    )
 
 
 def load_meta_overlay():
@@ -460,6 +689,74 @@ def get_strategy_positions():
     return [pos for pos in positions if pos.magic == MAGIC_NUMBER]
 
 
+def is_meta_quality_at_least(meta_quality, threshold):
+    return meta_quality is not None and meta_quality >= threshold
+
+
+def get_entry_mode(base_session, expanded_session, buy_prob, edge, meta_quality):
+    if (
+        base_session
+        and buy_prob >= CONF_THRESHOLD
+        and edge >= EDGE_THRESHOLD
+    ):
+        return "base"
+    if (
+        expanded_session
+        and buy_prob >= EXPANDED_CONF_THRESHOLD
+        and edge >= EDGE_THRESHOLD
+        and is_meta_quality_at_least(meta_quality, MIN_EXPANDED_META_QUALITY)
+    ):
+        return "expanded_time"
+    if (
+        base_session
+        and buy_prob >= LOWER_CONF_THRESHOLD
+        and edge >= LOWER_CONF_MIN_EDGE
+        and is_meta_quality_at_least(meta_quality, MIN_LOWER_CONF_META_QUALITY)
+    ):
+        return "lower_conf_quality"
+    return ""
+
+
+def get_position_gate(positions, buy_prob, meta_quality):
+    open_count = len(positions)
+    if open_count == 0:
+        return True, "base_position"
+    if open_count >= MAX_ADDON_OPEN_POSITIONS:
+        return False, "max_positions"
+
+    position_profits = [
+        float(getattr(position, "profit", 0.0))
+        for position in positions
+    ]
+    if any(profit < 0 for profit in position_profits):
+        return False, "losing_position_block"
+
+    can_add_on = (
+        position_profits
+        and sum(position_profits) > 0
+        and all(profit >= 0 for profit in position_profits)
+        and buy_prob >= ADDON_MIN_BUY_PROB
+        and is_meta_quality_at_least(meta_quality, ADDON_MIN_META_QUALITY)
+    )
+    if can_add_on:
+        if open_count < MAX_OPEN_POSITIONS:
+            return True, "profit_second_position"
+        return True, "profit_addon"
+    if open_count < MAX_OPEN_POSITIONS:
+        return False, "second_position_quality"
+    return False, "position_limit"
+
+
+def get_position_profit(positions):
+    return sum(float(getattr(position, "profit", 0.0)) for position in positions)
+
+
+def get_unrealized_pnl(positions=None):
+    if positions is None:
+        positions = get_strategy_positions()
+    return get_position_profit(positions)
+
+
 def get_daily_realized_pnl():
     now = datetime.now()
     day_start = datetime(now.year, now.month, now.day)
@@ -467,7 +764,10 @@ def get_daily_realized_pnl():
     if deals is None:
         return 0.0
     return sum(
-        deal.profit + deal.swap + deal.commission
+        deal.profit
+        + deal.swap
+        + deal.commission
+        + getattr(deal, "fee", 0.0)
         for deal in deals
         if deal.symbol == SYMBOL and deal.magic == MAGIC_NUMBER
     )
@@ -534,6 +834,19 @@ def get_current_spread_points():
     return (tick.ask - tick.bid) / info.point
 
 
+def get_spread_limit_points(tp_distance):
+    if tp_distance <= 0:
+        return MAX_SPREAD_POINTS
+    ratio_limit = (tp_distance * MAX_SPREAD_TO_TP_RATIO) / PRICE_PER_POINT
+    return min(HARD_MAX_SPREAD_POINTS, max(MAX_SPREAD_POINTS, ratio_limit))
+
+
+def get_spread_to_tp_ratio(spread_points, tp_distance):
+    if tp_distance <= 0:
+        return float("inf")
+    return (spread_points * PRICE_PER_POINT) / tp_distance
+
+
 def close_position(position):
     tick = mt5.symbol_info_tick(SYMBOL)
     if tick is None:
@@ -596,6 +909,7 @@ def live_trading_loop():
     regime_features = None if meta_config is None else meta_config["regime_features"]
     print(
         "Barrier live strategy active. Monitoring GOLD... "
+        f"model={MODEL_FILE} output={MODEL_OUTPUT_MODE} "
         f"meta_overlay={USE_META_OVERLAY and meta_model is not None} "
         f"dry_run={DRY_RUN}"
     )
@@ -605,7 +919,7 @@ def live_trading_loop():
     while True:
         try:
             manage_open_positions()
-            now = datetime.now()
+            now = utc_now()
             if time.time() - last_history_sync_time >= 60:
                 sync_trade_history()
                 last_history_sync_time = time.time()
@@ -627,7 +941,7 @@ def live_trading_loop():
 
             hour = int(bar_time.hour)
             weekday = int(bar_time.dayofweek)
-            probs = model.predict_proba(feat)[0]
+            probs = normalize_model_probs(model.predict_proba(feat)[0])
             buy_prob = float(probs[1])
             sell_prob = float(probs[2])
             edge = abs(buy_prob - sell_prob)
@@ -638,18 +952,46 @@ def live_trading_loop():
                 probs,
             )
             positions = get_strategy_positions()
-            in_session = (
+            base_session = (
                 hour in ALLOWED_ENTRY_HOURS and weekday in ALLOWED_ENTRY_WEEKDAYS
             )
+            expanded_session = (
+                ENABLE_EXPANDED_ENTRY
+                and (
+                    (
+                        hour in EXPANDED_ENTRY_HOURS
+                        and weekday in ALLOWED_ENTRY_WEEKDAYS
+                    )
+                    or (
+                        hour in ALLOWED_ENTRY_HOURS
+                        and weekday in EXPANDED_ENTRY_WEEKDAYS
+                    )
+                )
+            )
+            in_session = base_session or expanded_session
             rsi = float(feat["M1_RSI"].iloc[0])
             rsi_ok = not any(low <= rsi <= high for low, high in EXCLUDED_RSI_RANGES)
+            rsi_floor_ok = rsi >= MIN_ENTRY_RSI
             open_position_count = len(positions)
+            entry_mode = get_entry_mode(
+                base_session,
+                expanded_session,
+                buy_prob,
+                edge,
+                meta_quality,
+            )
+            position_ok, position_gate = get_position_gate(
+                positions,
+                buy_prob,
+                meta_quality,
+            )
+            position_profit = get_position_profit(positions)
             is_valid = (
-                open_position_count < MAX_OPEN_POSITIONS
+                position_ok
                 and in_session
                 and rsi_ok
-                and buy_prob >= CONF_THRESHOLD
-                and edge >= EDGE_THRESHOLD
+                and rsi_floor_ok
+                and entry_mode != ""
                 and buy_prob >= sell_prob
             )
             print(
@@ -658,11 +1000,12 @@ def live_trading_loop():
                 f"rsi={rsi:.1f} session={in_session} rsi_ok={rsi_ok} "
                 f"meta_q={meta_quality if meta_quality is not None else -1:.3f} "
                 f"risk_mult={meta_risk_mult:.2f} positions="
-                f"{open_position_count}/{MAX_OPEN_POSITIONS} valid={is_valid}"
+                f"{open_position_count}/{MAX_OPEN_POSITIONS} "
+                f"mode={entry_mode or '-'} gate={position_gate} valid={is_valid}"
             )
             log_row = {
-                "event_time": now.isoformat(timespec="seconds"),
-                "bar_time": bar_time.isoformat(),
+                "event_time": format_log_time(now),
+                "bar_time": format_log_time(bar_time),
                 "buy_prob": round(buy_prob, 6),
                 "sell_prob": round(sell_prob, 6),
                 "edge": round(edge, 6),
@@ -670,19 +1013,84 @@ def live_trading_loop():
                     "" if meta_quality is None else round(meta_quality, 6)
                 ),
                 "risk_mult": round(meta_risk_mult, 4),
+                "meta_risk_mult": round(meta_risk_mult, 4),
+                "runtime_risk_mult": "",
+                "loss_streak": "",
+                "minutes_since_loss": "",
+                "rolling_profit_factor": "",
+                "risk_guard": "",
                 "hour": hour,
                 "weekday": weekday,
                 "rsi": round(rsi, 4),
                 "in_session": in_session,
+                "base_session": base_session,
+                "expanded_session": expanded_session,
                 "rsi_ok": rsi_ok,
+                "rsi_floor_ok": rsi_floor_ok,
                 "valid": is_valid,
+                "entry_mode": entry_mode,
+                "position_gate": position_gate,
+                "position_profit": round(position_profit, 2),
             }
 
             if not is_valid:
                 log_row["status"] = "not_valid"
+                invalid_reasons = []
+                if not position_ok:
+                    invalid_reasons.append(position_gate)
+                if not in_session:
+                    invalid_reasons.append("session")
+                if not rsi_ok:
+                    invalid_reasons.append("rsi_range")
+                if not rsi_floor_ok:
+                    invalid_reasons.append("rsi_floor")
+                if entry_mode == "":
+                    invalid_reasons.append("entry_mode")
+                if buy_prob < sell_prob:
+                    invalid_reasons.append("buy_below_sell")
+                log_row["message"] = ";".join(invalid_reasons)
                 append_signal_log(log_row)
                 time.sleep(1)
                 continue
+
+            runtime_guard = get_runtime_risk_guard(now)
+            effective_risk_mult = get_effective_risk_mult(
+                meta_risk_mult,
+                runtime_guard,
+            )
+            log_row.update(
+                {
+                    "risk_mult": round(effective_risk_mult, 4),
+                    "runtime_risk_mult": round(runtime_guard["risk_mult"], 4),
+                    "loss_streak": runtime_guard["loss_streak"],
+                    "minutes_since_loss": format_guard_value(
+                        runtime_guard["minutes_since_loss"],
+                        1,
+                    ),
+                    "rolling_profit_factor": format_guard_value(
+                        runtime_guard["rolling_profit_factor"],
+                        2,
+                    ),
+                    "risk_guard": runtime_guard["reason"],
+                }
+            )
+            if not runtime_guard["allow_entry"]:
+                print(f"Skip: runtime risk guard ({runtime_guard['reason']})")
+                log_row["status"] = "loss_cooldown"
+                log_row["message"] = runtime_guard["reason"]
+                append_signal_log(log_row)
+                time.sleep(1)
+                continue
+
+            atr = float(feat["ATR"].iloc[0])
+            sl_distance = max(atr * SL_ATR_MULT, MIN_SL_PRICE)
+            tp_distance = max(atr * TP_ATR_MULT, MIN_TP_PRICE)
+            log_row.update(
+                {
+                    "sl_distance": round(sl_distance, 4),
+                    "tp_distance": round(tp_distance, 4),
+                }
+            )
 
             spread_points = get_current_spread_points()
             if spread_points is None:
@@ -691,14 +1099,24 @@ def live_trading_loop():
                 append_signal_log(log_row)
                 time.sleep(1)
                 continue
+            spread_limit_points = get_spread_limit_points(tp_distance)
+            spread_to_tp_ratio = get_spread_to_tp_ratio(
+                spread_points,
+                tp_distance,
+            )
             log_row["spread_points"] = round(spread_points, 2)
-            if spread_points > MAX_SPREAD_POINTS:
+            log_row["spread_limit_points"] = round(spread_limit_points, 2)
+            log_row["spread_to_tp_ratio"] = round(spread_to_tp_ratio, 4)
+            if spread_points > spread_limit_points:
                 print(
                     f"Skip: spread too wide "
-                    f"({spread_points:.1f} > {MAX_SPREAD_POINTS:.1f} points)"
+                    f"({spread_points:.1f} > {spread_limit_points:.1f} points)"
                 )
                 log_row["status"] = "spread_too_wide"
-                log_row["message"] = f"{spread_points:.1f} > {MAX_SPREAD_POINTS:.1f}"
+                log_row["message"] = (
+                    f"{spread_points:.1f} > {spread_limit_points:.1f}; "
+                    f"spread/tp={spread_to_tp_ratio:.3f}"
+                )
                 append_signal_log(log_row)
                 time.sleep(1)
                 continue
@@ -711,15 +1129,28 @@ def live_trading_loop():
                 time.sleep(1)
                 continue
             log_row["balance"] = round(float(account.balance), 2)
-            daily_pnl = get_daily_realized_pnl()
-            if daily_pnl <= -account.balance * MAX_DAILY_LOSS_PCT:
+            daily_realized_pnl = get_daily_realized_pnl()
+            floating_pnl = get_unrealized_pnl(positions)
+            daily_total_pnl = daily_realized_pnl + floating_pnl
+            log_row.update(
+                {
+                    "daily_realized_pnl": round(daily_realized_pnl, 2),
+                    "floating_pnl": round(floating_pnl, 2),
+                    "daily_total_pnl": round(daily_total_pnl, 2),
+                }
+            )
+            if daily_total_pnl <= -account.balance * MAX_DAILY_LOSS_PCT:
                 print(
                     f"Skip: daily loss guard active "
-                    f"({daily_pnl:.2f} <= {-account.balance * MAX_DAILY_LOSS_PCT:.2f})"
+                    f"({daily_total_pnl:.2f} <= "
+                    f"{-account.balance * MAX_DAILY_LOSS_PCT:.2f})"
                 )
                 log_row["status"] = "daily_loss_guard"
                 log_row["message"] = (
-                    f"{daily_pnl:.2f} <= {-account.balance * MAX_DAILY_LOSS_PCT:.2f}"
+                    f"{daily_total_pnl:.2f} <= "
+                    f"{-account.balance * MAX_DAILY_LOSS_PCT:.2f}; "
+                    f"realized={daily_realized_pnl:.2f}; "
+                    f"floating={floating_pnl:.2f}"
                 )
                 append_signal_log(log_row)
                 time.sleep(1)
@@ -731,11 +1162,11 @@ def live_trading_loop():
                 time.sleep(1)
                 continue
 
-            atr = float(feat["ATR"].iloc[0])
-            sl_distance = max(atr * SL_ATR_MULT, MIN_SL_PRICE)
-            tp_distance = max(atr * TP_ATR_MULT, MIN_TP_PRICE)
-            stop_cost = (sl_distance * 100.0) + (SPREAD_POINTS * 0.01 * 100.0)
-            risk_budget = account.balance * RISK_PER_TRADE * meta_risk_mult
+            stop_cost = (
+                sl_distance * 100.0
+                + spread_points * PRICE_PER_POINT * 100.0
+            )
+            risk_budget = account.balance * RISK_PER_TRADE * effective_risk_mult
             raw_lot = risk_budget / max(stop_cost, 1e-9)
             lot = normalize_lot(raw_lot)
             log_row.update(
@@ -743,8 +1174,6 @@ def live_trading_loop():
                     "risk_budget": round(risk_budget, 4),
                     "raw_lot": round(raw_lot, 6),
                     "lot": "" if lot is None else lot,
-                    "sl_distance": round(sl_distance, 4),
-                    "tp_distance": round(tp_distance, 4),
                 }
             )
             if lot is None:
@@ -762,7 +1191,8 @@ def live_trading_loop():
                     f"DRY RUN BUY | lot={lot} raw_lot={raw_lot:.4f} "
                     f"risk_budget={risk_budget:.2f} meta_q="
                     f"{meta_quality if meta_quality is not None else -1:.3f} "
-                    f"risk_mult={meta_risk_mult:.2f} buy_prob={buy_prob:.2%} "
+                    f"risk_mult={effective_risk_mult:.2f} "
+                    f"buy_prob={buy_prob:.2%} "
                     f"SL={sl_distance:.2f} TP={tp_distance:.2f}"
                 )
                 log_row["status"] = "dry_run_buy"
@@ -774,7 +1204,7 @@ def live_trading_loop():
             fill_trade_result_log(log_row, result)
             if result is not None and result.retcode == mt5.TRADE_RETCODE_DONE:
                 print(
-                    f"BUY opened | lot={lot} risk_mult={meta_risk_mult:.2f} "
+                    f"BUY opened | lot={lot} risk_mult={effective_risk_mult:.2f} "
                     f"meta_q={meta_quality if meta_quality is not None else -1:.3f} "
                     f"buy_prob={buy_prob:.2%} "
                     f"SL={sl_distance:.2f} TP={tp_distance:.2f}"

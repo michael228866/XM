@@ -1,34 +1,313 @@
 ﻿# XM GOLD Research
 
-Primary objectives:
+## Primary objectives
 
-1. Maximize out-of-sample win rate.
-2. Maximize executable trade frequency.
+This repository has two primary research objectives:
 
-Default OOS win-rate target: >= 60%.
+1. Maximize robust out-of-sample realized win rate.
+2. Maximize robust executable trade frequency.
 
-Among candidates that satisfy the target,
-prefer the candidate with the highest robust executable trade count.
+The default realized OOS win-rate target is >= 60%.
 
-PF > 1 and positive expectancy/PnL are hard guardrails.
+Among candidates with comparable robustness and positive expectancy, prefer the candidate with the highest robust executable trade count / trades per day.
+
+Win rate alone is never sufficient evidence of improvement.
+
+---
+
+## Payoff and expectancy requirements
+
+Every candidate must report and evaluate:
+
+* executable trades;
+* trades per day;
+* TP-first win rate;
+* realized positive-trade win rate;
+* average winning R;
+* average losing R;
+* payoff ratio;
+* break-even win rate implied by the realized payoff ratio;
+* break-even-adjusted win-rate edge;
+* PF;
+* Mean-R / expectancy;
+* PnL;
+* maximum drawdown;
+* TP exits;
+* SL exits;
+* timeout exits.
+
+Define:
+
+break-even-adjusted win-rate edge =
+realized win rate - realized break-even win rate
+
+A candidate is not an improvement when any of the following is true:
+
+* PF <= 1;
+* Mean-R / expectancy <= 0;
+* PnL <= 0;
+* break-even-adjusted win-rate edge <= 0;
+
+even if its reported win rate is >= 60%.
+
+Do not improve reported win rate merely by creating an unfavorable payoff structure such as excessively small TP or excessively large SL.
+
+Any TP, SL, timeout, or exit-policy change must be evaluated separately from signal-quality improvements.
+
+---
+
+## Research objective hierarchy
 
 Do not optimize classification accuracy as the primary objective.
 
-All training, calibration, threshold selection,
-filter discovery and validation must be chronological.
+Do not optimize raw signal count.
+
+Do not optimize recent-period performance in isolation.
+
+The preferred optimization hierarchy is:
+
+1. Preserve positive robust expectancy.
+2. Increase robust realized win rate.
+3. Increase executable trades / trades per day.
+4. Prefer candidates on the Win Rate x Executable Frequency Pareto frontier.
+
+A higher-frequency candidate is useful only when trade quality remains economically viable.
+
+---
+
+## Research discovery gate
+
+Research candidates do not need every individual chronological fold to exceed 60% win rate.
+
+Use sampling uncertainty and cross-period stability when deciding whether a candidate is worth further investigation.
+
+A promising research candidate should generally satisfy:
+
+* pooled chronological OOS realized win rate >= 58%;
+* worst meaningful OOS fold >= 50%;
+* pooled PF > 1;
+* pooled Mean-R / expectancy > 0;
+* positive pooled PnL;
+* positive break-even-adjusted win-rate edge;
+* no catastrophic chronological fold;
+* meaningful improvement in unique executable trades, realized win rate, or loser removal relative to the parent.
+
+The 58% research threshold is not a production target.
+
+The strategic target remains >= 60% realized OOS win rate.
+
+Candidates failing the research gate must remain `research_only`.
+
+---
+
+## Production promotion gate
+
+Production promotion requires stronger evidence than research discovery.
+
+Do not promote a candidate merely because it:
+
+* beats the recent period;
+* has pooled win rate >= 60%;
+* has one exceptional fold;
+* passes a large parameter sweep;
+* has higher raw signal frequency.
+
+Production promotion requires:
+
+* robust chronological historical performance;
+* realized OOS win rate consistent with the strategic target;
+* PF > 1;
+* positive Mean-R / expectancy;
+* positive PnL;
+* positive break-even-adjusted win-rate edge;
+* acceptable drawdown;
+* cost robustness;
+* executable backtest/live alignment;
+* independent validation;
+* genuinely untouched forward evidence when available.
+
+Do not modify `gemini.py` or replace the production model unless the complete promotion gate passes.
+
+---
+
+## Chronological integrity
+
+All:
+
+* model training;
+* feature fitting;
+* calibration;
+* threshold selection;
+* ranking policy selection;
+* regime selection;
+* filter discovery;
+* family discovery;
+* meta-model training;
+* champion selection;
+* validation;
+
+must be chronological and past-only.
 
 Never use future information.
 
-Always compare against the parent baseline.
+Never use evaluated-period outcomes to design a rule that is then reported as OOS performance on the same interval.
 
-Count executable non-overlapping trades,
-not raw qualifying signal rows.
+Never use random train/test splits for trading-model validation.
 
-Do not modify gemini.py or promote a model
-unless the full validation gate passes.
+All entry-time features must have been available at the moment of the trading decision.
+
+---
+
+## OOF and calibration requirements
+
+Base-model predictions used by:
+
+* meta-models;
+* loser filters;
+* calibration;
+* ranking models;
+* regime models;
+* family selection;
+
+must be genuinely out-of-fold or generated by models trained strictly before the scored event.
+
+Never train a meta-model on in-sample base-model probabilities.
+
+Absolute probability calibration must not be assumed stable across market regimes.
+
+When probability calibration drifts materially across chronological folds, investigate past-only relative ranking / percentile selection as an alternative.
+
+Ranking policies must themselves be selected using only previous chronological data.
+
+---
+
+## Execution requirements
+
+Always evaluate actual executable trades.
+
+Count:
+
+* chronological;
+* non-overlapping;
+* position-occupancy-constrained;
+
+executions rather than raw qualifying signal rows.
+
+First-touch evaluation must use the repository's documented intrabar HIGH / LOW execution convention.
+
+TP-first labels and realized executable returns must be reported separately when their definitions differ.
+
+Do not treat TP-first classification accuracy as equivalent to realized profitability.
+
+All reports must state:
+
+* TP;
+* SL;
+* horizon / timeout;
+* costs;
+* spread assumptions;
+* slippage assumptions;
+* position limit;
+* same-bar TP/SL handling.
+
+Do not silently change execution assumptions between parent and candidate comparisons.
+
+---
+
+## Baseline comparison
+
+Always compare a new experiment against its direct parent baseline and the relevant incumbent.
+
+At minimum report:
+
+| Metric                            |
+| --------------------------------- |
+| Executable trades                 |
+| Trades/day                        |
+| TP-first win rate                 |
+| Realized win rate                 |
+| Average winner R                  |
+| Average loser R                   |
+| Payoff ratio                      |
+| Break-even win rate               |
+| Break-even-adjusted win-rate edge |
+| PF                                |
+| Mean-R / expectancy               |
+| PnL                               |
+| Max DD                            |
+
+Also report results separately for every chronological OOS fold.
+
+Do not hide failed folds behind pooled averages.
+
+---
+
+## Multiple-testing and contaminated data
+
+All historical data already inspected during repeated research iterations must be treated as development / research history.
+
+A previously viewed holdout is no longer an untouched holdout.
+
+A repeatedly inspected recent interval is monitoring / diagnostic data, not an untouched final test.
+
+Do not relabel previously inspected periods as independent OOS evidence.
+
+Keep track of:
+
+* generations tested;
+* model families tested;
+* feature sets tested;
+* thresholds tested;
+* ranking cutoffs tested;
+* filters tested;
+* regimes tested;
+* exit profiles tested.
+
+Repeated experimentation increases multiple-testing risk.
+
+A new generation number does not create a new independent test.
+
+The strongest final evidence should come from genuinely new forward data collected after the candidate is frozen.
+
+---
+
+## Research behavior
+
+Do not create a new Generation merely to show progress.
+
+If no candidate improves the parent under the required guardrails:
+
+* report the failure clearly;
+* preserve useful diagnostic evidence;
+* keep the candidate `research_only`;
+* do not promote a degraded model.
+
+Failed experiments are valid research results and should be retained.
+
+Prefer understanding why an approach failed over continuing large blind parameter sweeps.
+
+---
+
+## Repository-local skills
 
 Use repository-local skills when relevant:
-- win-frequency-optimizer
-- false-positive-miner
-- missed-winner-miner
-- walk-forward-validator
+
+* `win-frequency-optimizer`
+
+  * optimize realized win rate and executable frequency under economic guardrails;
+
+* `false-positive-miner`
+
+  * identify entry-time characteristics of losing executable trades and remove losers while preserving winners;
+
+* `missed-winner-miner`
+
+  * discover stable, unique signal opportunities not covered by the incumbent;
+
+* `walk-forward-validator`
+
+  * independently audit chronology, leakage, OOF integrity, calibration, holdout contamination, execution alignment, costs, and multiple-testing risk.
+
+The validator must remain independent from optimization.
+
+A validation failure must not be hidden by additional tuning on the failed evaluation interval.

@@ -37,3 +37,7 @@ precious_metals_axis_research/*_xgb.metadata.json
 .env
 .venv/
 venv/
+
+# Append-only untouched forward market/event data stays local and must never
+# enter Git history. Reproducible collector scripts/configuration remain tracked.
+untouched_forward/**/data/
