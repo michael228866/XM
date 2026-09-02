@@ -1,0 +1,7 @@
+# Finalized training-run archives are byte-for-byte provenance records.
+# Never normalize their line endings during add or checkout; retained CRLF is
+# content, not trailing-whitespace damage.
+training_runs/** -text whitespace=cr-at-eol
+
+# The archive documentation is maintained source text rather than run evidence.
+training_runs/README.md text eol=lf whitespace=-cr-at-eol

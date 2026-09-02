@@ -25,14 +25,15 @@ model.sha256            # required when model.trained=true
 FINALIZED.json          # written only after provenance validation passes
 ```
 
-Large artifacts may be kept in external artifact storage. Their exact path, SHA-256 and `retention_status` must still be present in `manifest.json`; absence of a retained raw data snapshot must be reported as less than full reproducibility.
+Large artifacts may be kept in external artifact storage. Their exact identity, SHA-256, durable storage path or locator, and `retention_status` must still be present in `manifest.json`; absence of a retained raw data snapshot must be reported as less than full reproducibility. A local temporary path is not durable retention and must not be described as preserved.
 
 ## Manifest contract
 
 Run identity:
 
 - `run_id`, `experiment_name`, `status`, `started_at_utc`, `finished_at_utc`
-- `git_commit`, `git_dirty`
+- `git_commit`, `git_dirty`, and a documented reason whenever `git_dirty=true`
+- Git branch and remote/ref used for the pre-run push where available
 - `training_script`, `training_script_snapshot`, `training_script_sha256`
 - `exact_command`, `arguments`, `random_seeds` or a reason no seed applies
 
@@ -64,9 +65,65 @@ Search identity:
 
 The manifest also records registry summary values and whether promotion/replacement was separately requested and authorized. Training completion alone must leave `operational_artifact_changed=false`.
 
-## Required workflow
+## Mandatory Git lifecycle
 
-Create the run before starting computation:
+Every formal run must begin from a Git-identifiable research state. Before creating the run:
+
+```powershell
+git status --short
+git add <intended-research-files>
+git commit -m "Prepare <experiment>"
+git push
+git status --short
+git rev-parse HEAD
+git rev-parse "@{u}"
+```
+
+The final two commit IDs must match. Prefer an empty `git status --short` result so the manifest records
+`git_dirty=false`. A dirty run is allowed only when necessary: preserve the immutable executed-script
+snapshot, set `git_dirty=true`, and record the reason plus enough durable evidence to reconstruct the
+material dirty changes.
+
+After the experiment, report, independent validation, `finalize --register`, and a provenance-validation
+PASS, commit and push all Git-trackable evidence:
+
+```powershell
+py -3.10 training_run_history.py validate $env:TRAINING_RUN_DIR
+git status --short
+git add <research-scripts> TRAINING_RUNS.md $env:TRAINING_RUN_DIR <relevant-documentation>
+git commit -m "Archive <run_id>"
+git push
+git rev-parse HEAD
+git rev-parse "@{u}"
+```
+
+The last two commit IDs must match. Preserve and push PASS, FAIL, `research_only`, and meaningful
+`aborted` runs. Provenance-validation PASS means the archive is structurally valid; it does not mean the
+experiment passed its research or promotion gate.
+
+The preferred lifecycle is:
+
+```text
+research code ready
+-> commit
+-> push
+-> verify clean Git state
+-> create training run
+-> execute experiment
+-> validate
+-> finalize/register
+-> validate preserved provenance
+-> commit research results
+-> push
+-> verify remote provenance
+```
+
+This archival commit/push never authorizes changing `gemini.py`, replacing the operational model, or
+promoting a candidate. Those remain separate operations requiring their own authorization and gate.
+
+## Required run workflow
+
+After the pre-run Git gate has passed, create the run before starting computation:
 
 ```powershell
 $runDir = py -3.10 training_run_history.py create `
@@ -94,6 +151,8 @@ py -3.10 training_run_history.py finalize $env:TRAINING_RUN_DIR `
   --register
 py -3.10 training_run_history.py validate $env:TRAINING_RUN_DIR
 ```
+
+After validation passes, complete the post-run commit/push and remote-verification steps above.
 
 Use `pass`, `fail`, `research_only` or `aborted`; aborted runs require `--aborted-reason`. A completed research failure is `fail` or `research_only`, not deleted.
 

@@ -176,8 +176,8 @@ Validation 內測試的固定組合為：
 
 - 2014–2026 已查看資料全部是 development／research history。
 - 過去叫做 `holdout` 或 `recent` 的區間已被多代研究查看，不能重新宣稱 untouched OOS。
-- Untouched-forward cutoff 是 `2026-09-01T02:00:00Z`。cutoff 後資料在 candidate 完全凍結前，不得用來做 feature、model、threshold、family、calibration 選擇，也不得查看 outcome correlation、WR、PF 或 PnL 來修改模型。
-- 若 cutoff 後結果被用來除錯或選模，該區間必須立刻改列 development data，並重新設定更晚的 forward cutoff。
+- 舊 untouched-forward cutoff `2026-09-01T02:00:00Z` 之後的結果已被查看，因此目前標記為 `contaminated_for_future_gate_selection`，只能作 development evidence。
+- 只有 candidate 完全凍結後，才能在凍結時間或更晚建立新的 untouched-forward cutoff；建立前不得把任何既有區間重新包裝成 untouched evidence。
 
 因此目前最準確的說法是：`gemini.py` 是正在測試帳戶運作的既有 operational baseline；歷史報告提供 development evidence，但沒有任何現行或新世代模型擁有完整 untouched-test production claim。
 
@@ -190,6 +190,12 @@ training_runs/<YYYYMMDDTHHMMSSZ>_<experiment_name>/
 ```
 
 標準紀錄包含 manifest、完整 search space 與全部 candidate 結果、metrics、report、environment、stdout、model hash，以及 finalized file hashes。PASS、FAIL、`research_only` 和 aborted run 都保留；修正錯誤必須建立新 run，不能覆寫舊證據。
+
+每個正式 run 都必須遵守 Git 雙閘門：執行前先檢查狀態、commit 並 push 預定使用的研究程式／設定／政策，確認執行 commit 已在遠端，且原則上保持 `git_dirty=false`；`manifest.json` 必須記錄實際 commit 與 dirty 狀態。若不得不以 dirty 狀態執行，必須保留 immutable script snapshot，並記錄原因與可重建該差異的證據。
+
+實驗、報告、獨立驗證、`finalize --register` 與 provenance `validate` PASS 後，所有可由 Git 追蹤的研究證據都必須 commit、push，再確認遠端包含該 archival commit。成功、失敗、`research_only` 與有意義的 aborted run 一律保存，不得只 push 成功結果。大型資料、log 或 model binary 可依政策放在 Git 外，但 manifest 必須留下精確 artifact identity、SHA-256、耐久保存位置與 retention status；只有本機暫存路徑不算已保存。
+
+研究結果的 commit／push 只是 archival provenance，不代表允許修改 `gemini.py`、替換 operational model 或 promotion candidate；這些仍是獨立授權與獨立 gate。
 
 - 完整規格與使用流程：[training_runs/README.md](training_runs/README.md)
 - Append-only registry：[TRAINING_RUNS.md](TRAINING_RUNS.md)

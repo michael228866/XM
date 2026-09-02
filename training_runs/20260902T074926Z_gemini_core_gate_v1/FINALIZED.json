@@ -1,0 +1,18 @@
+{
+  "run_id": "20260902T074926Z_gemini_core_gate_v1",
+  "finalized_at_utc": "2026-09-02T07:52:11.118463Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "incumbent/gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "incumbent/gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+    "manifest.json": "07cf03674ca2bfb57dfecca8150030c7ab379d1fe6756263e56a3f7836e9362a",
+    "metrics.json": "016fa84b8db626ce4c8ea50be1a5da7bc9f38ec8f8f16dc50b3676ae18fe009a",
+    "oof_model_provenance.json": "f8caf3707eb58e19555336216b24db609888dc477282546af5aaf56b4ae84ce2",
+    "oof_predictions.npz": "4ad28eeb6ed57e9802d5e65e05378a57a386d1361368d133bafec2acd93fdc4a",
+    "oof_qualifying_rows.csv.gz": "b0d6d41b8b20846c67f3ae3ce6bc82870ef8fc0f2cde07fd8e5a077f962971bb",
+    "report.md": "41169da27b986a36f03c2ef8311ea1e6fa5cfe45de1d17d0a7063d253389348a",
+    "stdout.log": "6f6e177874d0ef761ee855e60dbea85410821f9cc8aacf0c04b1f0098e5524c6",
+    "training_script.py": "b6f43fc102fbd2298da7b4a39ff5a4087c4b02bea9d92abf2ee5e6d6ca1ff399"
+  }
+}

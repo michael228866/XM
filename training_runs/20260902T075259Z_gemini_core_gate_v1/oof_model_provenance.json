@@ -1,0 +1,73 @@
+{
+  "folds": [
+    {
+      "fold": "2018_2020",
+      "train_start": "2014-02-03T01:00:00",
+      "train_end": "2017-12-29T19:55:00",
+      "train_rows": 1253111,
+      "label_horizon_rows": 240,
+      "latest_training_label_bar": "2017-12-29T23:57:00",
+      "score_start": "2018-01-02T00:00:00",
+      "score_end": "2020-12-31T18:50:00",
+      "score_rows": 1058080,
+      "chronology_assertion": true
+    },
+    {
+      "fold": "2021_2022",
+      "train_start": "2014-02-03T01:00:00",
+      "train_end": "2020-12-31T14:50:00",
+      "train_rows": 2311191,
+      "label_horizon_rows": 240,
+      "latest_training_label_bar": "2020-12-31T18:50:00",
+      "score_start": "2021-01-04T01:00:00",
+      "score_end": "2022-12-30T23:57:00",
+      "score_rows": 708197,
+      "chronology_assertion": true
+    },
+    {
+      "fold": "2023_2024",
+      "train_start": "2014-02-03T01:00:00",
+      "train_end": "2022-12-30T19:57:00",
+      "train_rows": 3019388,
+      "label_horizon_rows": 240,
+      "latest_training_label_bar": "2022-12-30T23:57:00",
+      "score_start": "2023-01-03T01:00:00",
+      "score_end": "2024-12-31T20:00:00",
+      "score_rows": 708020,
+      "chronology_assertion": true
+    }
+  ],
+  "features": [
+    "M1_RSI",
+    "ATR",
+    "MACD_HIST",
+    "BB_WIDTH",
+    "BIAS_20",
+    "BODY_PCT",
+    "ROC_5",
+    "VOLA_RATIO",
+    "HOUR_SIN",
+    "HOUR_COS",
+    "DAY_OF_WEEK",
+    "Daily_TREND",
+    "H12_TREND",
+    "H1_TREND",
+    "H2_TREND",
+    "H3_TREND",
+    "H4_TREND",
+    "H6_TREND",
+    "H8_TREND",
+    "M10_TREND",
+    "M12_TREND",
+    "M15_TREND",
+    "M20_TREND",
+    "M2_TREND",
+    "M30_TREND",
+    "M3_TREND",
+    "M4_TREND",
+    "M5_TREND",
+    "M6_TREND",
+    "Monthly_TREND",
+    "Weekly_TREND"
+  ]
+}

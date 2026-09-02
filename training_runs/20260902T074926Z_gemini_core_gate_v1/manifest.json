@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "run_id": "20260902T074926Z_gemini_core_gate_v1",
+  "experiment_name": "gemini_core_gate_v1",
+  "status": "aborted",
+  "started_at_utc": "2026-09-02T07:49:26.748999Z",
+  "finished_at_utc": "2026-09-02T07:52:11.063673Z",
+  "git_commit": "23fcd395cb098d5f89f4b26282294c3f989df7ae",
+  "git_dirty": true,
+  "training_script": "D:\\XM\\數據\\gold_gemini_core_gate_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "b6f43fc102fbd2298da7b4a39ff5a4087c4b02bea9d92abf2ee5e6d6ca1ff399",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_gemini_core_gate_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [
+    "--run-dir=TRAINING_RUN_DIR"
+  ],
+  "random_seeds": {
+    "python": "42",
+    "xgboost": "42"
+  },
+  "random_seed_note": "",
+  "data": {
+    "symbols": [],
+    "data_sources": [],
+    "source_files": [],
+    "timezone": null,
+    "data_start_utc": null,
+    "data_end_utc": null,
+    "train_start_utc": null,
+    "train_end_utc": null,
+    "train_rows": null,
+    "validation_start_utc": null,
+    "validation_end_utc": null,
+    "validation_rows": null,
+    "test_start_utc": null,
+    "test_end_utc": null,
+    "test_rows": null,
+    "purge_details": null,
+    "embargo_details": null,
+    "raw_snapshot_retained": null,
+    "reproducibility_claim": null,
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": null
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": "XGBoost binary logistic fold replicas",
+    "parameters": {
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    },
+    "boosted_rounds_or_estimators": 220,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": "BARRIER_TARGET == 1 versus all other classes",
+    "horizon": 240,
+    "label_tp_sl_semantics": "clean long barrier: future 240 M1 bars; TP=max(1.8 ATR,1.0); SL=max(1.2 ATR,0.8); positive only if TP reachable and SL never reachable in horizon",
+    "execution_tp_sl_semantics": "long first-touch HIGH/LOW from the next bar; TP=1.3 ATR, SL=1.6 ATR, stop-first if both touch, timeout at 90 M1 bars",
+    "calibration_method": "none",
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "No operational candidate model is trained; fold replicas exist only in memory to create genuine chronological OOF probabilities.",
+    "oof_models_planned": true,
+    "oof_models_trained": false,
+    "new_operational_candidate_model_trained": false
+  },
+  "search": {
+    "performed": true,
+    "predefined_search_space": {
+      "thresholds": {
+        "T0": 0.75,
+        "T1": 0.72,
+        "T2": 0.7,
+        "T3": 0.67,
+        "T4": 0.65
+      },
+      "rsi_policies": {
+        "R0": "exclude 35–45",
+        "R1": "no 35–45 exclusion",
+        "R2": "exclude 38–42",
+        "R3": "exclude 40–45"
+      },
+      "minimum_entry_rsi": 22.0,
+      "total_configurations": 20,
+      "marginal_probability_bands": [
+        {
+          "id": "B1_072_075",
+          "low_inclusive": 0.72,
+          "high_exclusive": 0.75
+        },
+        {
+          "id": "B2_070_072",
+          "low_inclusive": 0.7,
+          "high_exclusive": 0.72
+        },
+        {
+          "id": "B3_067_070",
+          "low_inclusive": 0.67,
+          "high_exclusive": 0.7
+        },
+        {
+          "id": "B4_065_067",
+          "low_inclusive": 0.65,
+          "high_exclusive": 0.67
+        }
+      ]
+    },
+    "candidate_results_file": "candidates.csv",
+    "not_applicable_reason": null,
+    "selection_rule": "Reject economic/quality failures; maximize minimum-fold executable trades/day, then pooled executable trades/day; use quality tie-breakers.",
+    "preregistered_at_utc": "2026-09-02T07:49:52.853505Z",
+    "quality_floor": {
+      "pooled_realized_wr_min": 0.6,
+      "pooled_pf_strict_min": 1.05,
+      "pooled_mean_r_strict_min": 0.0,
+      "pooled_pnl_strict_min": 0.0,
+      "break_even_edge_strict_min": 0.0,
+      "cost_stress_pf_strict_min": 1.0
+    },
+    "catastrophic_fold_definition": {
+      "minimum_trades": 10,
+      "realized_wr_min": 0.5,
+      "pf_min": 0.8,
+      "mean_r_min": -0.1,
+      "max_dd_r_min": -20.0
+    }
+  },
+  "registry": {
+    "parent_or_incumbent": null,
+    "selected_configuration": null,
+    "trades_per_day": null,
+    "realized_win_rate": null,
+    "pf": null,
+    "mean_r": null,
+    "pnl": null,
+    "max_dd": null,
+    "validator_result": null
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested_research_only",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gemini.py",
+      "path": "incumbent/gemini.py",
+      "sha256": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gold_long_recent_candidate_xgb.json",
+      "path": "incumbent/gold_long_recent_candidate_xgb.json",
+      "sha256": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": "Report serialization failed after 20 calculations: serialize_metrics did not accept a top-level list; no strategy parameter or result was changed.",
+  "evidence_status": {
+    "claim": "development_chronological_oof_only",
+    "previous_forward_cutoff": "2026-09-01T02:00:00Z",
+    "previous_forward_status": "contaminated_for_future_gate_selection",
+    "new_forward_cutoff": null,
+    "post_cutoff_data_inspected": false
+  },
+  "operational_hashes_before": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  }
+}

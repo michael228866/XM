@@ -1,0 +1,141 @@
+{
+  "generated_at_utc": "2026-09-02T08:00:25.233387Z",
+  "run_id": "20260902T075259Z_gemini_core_gate_v1",
+  "validator_role": "independent_adversarial_validation_only",
+  "overall": "FAIL",
+  "internal_chronological_validation_quality": "PASS",
+  "final_untouched_test_validity": "FAIL",
+  "checks": {
+    "chronology": {
+      "verdict": "PASS",
+      "evidence": "oof_model_provenance.json folds=3; training_script.py:340",
+      "reason": "Every fold model ends before its scored fold and its latest training label bar is also earlier.",
+      "required_validation_correction": "none"
+    },
+    "feature leakage": {
+      "verdict": "PASS",
+      "evidence": "drl_trading_v2.py:138; manifest.model.features=31",
+      "reason": "The frozen incumbent feature family is shifted one completed bar; no outcome or exit field is an input.",
+      "required_validation_correction": "none"
+    },
+    "label maturity": {
+      "verdict": "PASS",
+      "evidence": "manifest.data.purge_details; oof_model_provenance.json latest_training_label_bar",
+      "reason": "A full 240-source-row purge separates model labels from each scoring fold.",
+      "required_validation_correction": "none"
+    },
+    "OOF predictions": {
+      "verdict": "PASS",
+      "evidence": "oof_predictions.npz rows=2474297; fold replicas=3",
+      "reason": "All retained scores come from a model fitted only before that score's fold.",
+      "required_validation_correction": "none"
+    },
+    "calibration": {
+      "verdict": "PASS",
+      "evidence": "manifest.model.calibration_method=none",
+      "reason": "No calibration layer is fitted, selected, or claimed.",
+      "required_validation_correction": "none"
+    },
+    "threshold selection": {
+      "verdict": "PASS",
+      "evidence": "manifest.search.preregistered_at_utc; candidates.csv rows=80",
+      "reason": "Exactly the pre-registered 5×4 development search was evaluated and no candidate was selected.",
+      "required_validation_correction": "none"
+    },
+    "purge/embargo": {
+      "verdict": "PASS",
+      "evidence": "training_script.py:340; label_horizon_rows=240",
+      "reason": "Purged labels end before each scored fold; no duplicated scoring timestamps were found.",
+      "required_validation_correction": "none"
+    },
+    "holdout contamination": {
+      "verdict": "PASS",
+      "evidence": "manifest.evidence_status.claim=development_chronological_oof_only",
+      "reason": "2018–2024 is explicitly development evidence; no historical holdout or untouched-test claim is made.",
+      "required_validation_correction": "none"
+    },
+    "recent-period reuse": {
+      "verdict": "PASS",
+      "evidence": "manifest.data.data_end_utc=2024-12-31T20:00:00",
+      "reason": "No post-2025 entry or post-2026-09-01 outcome was used; the old cutoff remains marked contaminated.",
+      "required_validation_correction": "none"
+    },
+    "execution alignment": {
+      "verdict": "PASS",
+      "evidence": "training_script.py:451,523; trade_ledger.csv.gz",
+      "reason": "Rising-edge episodes, one-position occupancy, stop-first first touch, timeout, and fold metrics reconcile.",
+      "required_validation_correction": "none"
+    },
+    "cost assumptions": {
+      "verdict": "PASS",
+      "evidence": "training_script.py:384; nominal extra=5 points; stress extra=10 points",
+      "reason": "Observed positive spread or a 30-point fallback is applied once, and both nominal/stress rewards recompute exactly.",
+      "required_validation_correction": "none"
+    },
+    "multiple-testing risk": {
+      "verdict": "FAIL",
+      "evidence": "README.md documents Gen1–21 and repeated use of 2018–2024; no untouched final test exists.",
+      "reason": "The 20 choices were pre-registered, but the historical regimes were repeatedly inspected in prior research. This cannot support promotion.",
+      "required_validation_correction": "Only a completely frozen candidate evaluated on subsequently collected untouched forward data can clear this check."
+    }
+  },
+  "failed_checks": [
+    "multiple-testing risk"
+  ],
+  "metric_reconciliation": {
+    "result": "PASS",
+    "errors": [],
+    "candidate_configurations": 20,
+    "candidate_fold_rows": 80,
+    "control": {
+      "2018_2020": {
+        "trades": 189,
+        "trades_per_day": 0.1724452554744525,
+        "realized_wr": 0.2539682539682539,
+        "pf": 0.3724855998495003,
+        "mean_r": -0.4459526009202168,
+        "pnl": -84.28504157392098,
+        "max_dd": -88.41767778745977,
+        "cost_stress_pf": 0.3317889489080831
+      },
+      "2021_2022": {
+        "trades": 0,
+        "trades_per_day": 0.0,
+        "realized_wr": 0.0,
+        "pf": 0.0,
+        "mean_r": 0.0,
+        "pnl": 0.0,
+        "max_dd": 0.0,
+        "cost_stress_pf": 0.0
+      },
+      "2023_2024": {
+        "trades": 0,
+        "trades_per_day": 0.0,
+        "realized_wr": 0.0,
+        "pf": 0.0,
+        "mean_r": 0.0,
+        "pnl": 0.0,
+        "max_dd": 0.0,
+        "cost_stress_pf": 0.0
+      },
+      "pooled": {
+        "trades": 189,
+        "trades_per_day": 0.073914743840438,
+        "realized_wr": 0.2539682539682539,
+        "pf": 0.3724855998495003,
+        "mean_r": -0.4459526009202168,
+        "pnl": -84.28504157392098,
+        "max_dd": -88.41767778745977,
+        "cost_stress_pf": 0.3317889489080831
+      }
+    },
+    "holdout": "not present and not claimed",
+    "recent": "not present and not claimed"
+  },
+  "operational_hashes_unchanged": true,
+  "quality_target_met": false,
+  "selected_candidate_id": null,
+  "candidate_selection_unchanged_by_validator": true,
+  "submitted_performance_claim": "valid_development_failure_invalid_for_promotion",
+  "smallest_validation_only_rerun": "None can rescue this run: all candidates fail economics. A future untouched test would be relevant only after a separate development run freezes a passing candidate."
+}

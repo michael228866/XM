@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "run_id": "20260902T075259Z_gemini_core_gate_v1",
+  "experiment_name": "gemini_core_gate_v1",
+  "status": "fail",
+  "started_at_utc": "2026-09-02T07:52:59.631116Z",
+  "finished_at_utc": "2026-09-02T08:00:51.466880Z",
+  "git_commit": "23fcd395cb098d5f89f4b26282294c3f989df7ae",
+  "git_dirty": true,
+  "training_script": "D:\\XM\\數據\\gold_gemini_core_gate_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "ae31c09af94466bf5deeafae4800b2e3a580dfeb31564b1123be69887f57932c",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_gemini_core_gate_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [
+    "--run-dir=TRAINING_RUN_DIR"
+  ],
+  "random_seeds": {
+    "python": "42",
+    "xgboost": "42"
+  },
+  "random_seed_note": "",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "XM MT5 historical CSV exports retained locally"
+    ],
+    "source_files": [
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Daily_201401020000_202605080000.csv",
+        "sha256": "2a309acb6e63bad17f1d06bb14c9d81c7427b309ff7161167c8cab6638627afb",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H12_201401020000_202605081200.csv",
+        "sha256": "c9c37e623d13f6d5ca9e6e28c342cdda394bb9372759759464edd6566e8602f8",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H1_201401020000_202605082300.csv",
+        "sha256": "66102d419bcbd8f693a32db8023c40eb2d8fad426d5e2b0495e3f1aa04f0aaba",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H2_201401020000_202605082200.csv",
+        "sha256": "07c6b7fc8275aa86f13c19c47570e58a4c4743da995a42486ace1653ecf677c3",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H3_201401020000_202605082100.csv",
+        "sha256": "b9b088a50a6da5acae48f9968544224b37006c337916f71c24152df8570d989d",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H4_201401020000_202605082000.csv",
+        "sha256": "570c59153ff62136b9024a8bf141a9ef4d2ba59be1065cc8156479279a73caba",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H6_201401020000_202605081800.csv",
+        "sha256": "95bf97074819faa43b20e44c1de7cfabbb55df71cbcc5cd67ad9511569606ba1",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H8_201401020000_202605081600.csv",
+        "sha256": "1ba71eb1c9291d5b7eb4f72b0c32ad29f077cf5af5d44e4263173ea6e0f7a727",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M10_201401020000_202605082350.csv",
+        "sha256": "e133b567dfc5abba4817402932d00fdf83000c287f42dda7a8b9d9edf95c72f9",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M12_201401020000_202605082348.csv",
+        "sha256": "e2e7b9924ca98bfe1cde485b4b819f803e626c840be7bfae5016d8da4490ea5f",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M15_201401020000_202605082345.csv",
+        "sha256": "739ef72fe599f2c002c7d5432ab0079545d7f1a0eb0d7c48ae77e9daec62ee94",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M1_201401020000_202605082357.csv",
+        "sha256": "6cd87c0c4518bc8e2ae090cef0a750fc90711e31b9d838cf9a27337cb58c49eb",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M20_201401020000_202605082340.csv",
+        "sha256": "f269d20ecfb2c895598a72e0aa08e3e8deeccfeba24c1f8390bd941eb8875067",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M2_201401020000_202605082356.csv",
+        "sha256": "3bb8aae60b85c35da6fabcbe653994e03df939b6be8ef9bba18df737ddb7f3b6",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M30_201401020000_202605082330.csv",
+        "sha256": "bc6697042d790fe702f054541d1e503827446cbb857a75e0031a4e9810936e2f",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M3_201401020000_202605082357.csv",
+        "sha256": "233e920241b680e1109badc459b00b6fd3f4144d23a0e7eebe411bcf92d50111",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M4_201401020000_202605082356.csv",
+        "sha256": "b5ae9dd1c045fe78e51d3db5b2450e99f526825f043eedeb9fecb68542c3fd98",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M5_201401020000_202605082355.csv",
+        "sha256": "8db72996cfb1b816aae10ee13bdcedc44b678425eb70a9b665173ce4c709369e",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M6_201401020000_202605082354.csv",
+        "sha256": "74198cdc6b6798022d5b0e425c61929e713da79761d4725879e66d34d4aa0e4b",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Monthly_201401010000_202605010000.csv",
+        "sha256": "f5832d795dd4f2913694dc2cf2994c81b36577ca7dd2af6fd395f64c8714d36b",
+        "retention_status": "retained_local_repository_workspace"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Weekly_201401050000_202605030000.csv",
+        "sha256": "26107d34bb565adf92d08a37c92b3f7eaec575ab23d72bec2bc24eb58b60c490",
+        "retention_status": "retained_local_repository_workspace"
+      }
+    ],
+    "timezone": "XM export/server timestamps; exact UTC mapping unproven",
+    "data_start_utc": "2018-01-02T00:00:00",
+    "data_end_utc": "2024-12-31T20:00:00",
+    "train_start_utc": "2014-02-03T01:00:00",
+    "train_end_utc": "2022-12-30T19:57:00",
+    "train_rows": 6583690,
+    "validation_start_utc": "2018-01-02T00:00:00",
+    "validation_end_utc": "2024-12-31T20:00:00",
+    "validation_rows": 2474297,
+    "test_start_utc": "not_applicable_development_only",
+    "test_end_utc": "not_applicable_development_only",
+    "test_rows": 0,
+    "purge_details": "240 source rows removed before every scoring fold",
+    "embargo_details": "fold scoring starts strictly after the latest purged training label bar",
+    "raw_snapshot_retained": true,
+    "reproducibility_claim": "code_and_local_raw_exports_retained_timestamp_semantics_unproven",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "No dynamic MT5 fetch; local historical exports only"
+    },
+    "folds": [
+      {
+        "fold": "2018_2020",
+        "train_start": "2014-02-03T01:00:00",
+        "train_end": "2017-12-29T19:55:00",
+        "train_rows": 1253111,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2017-12-29T23:57:00",
+        "score_start": "2018-01-02T00:00:00",
+        "score_end": "2020-12-31T18:50:00",
+        "score_rows": 1058080,
+        "chronology_assertion": true
+      },
+      {
+        "fold": "2021_2022",
+        "train_start": "2014-02-03T01:00:00",
+        "train_end": "2020-12-31T14:50:00",
+        "train_rows": 2311191,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2020-12-31T18:50:00",
+        "score_start": "2021-01-04T01:00:00",
+        "score_end": "2022-12-30T23:57:00",
+        "score_rows": 708197,
+        "chronology_assertion": true
+      },
+      {
+        "fold": "2023_2024",
+        "train_start": "2014-02-03T01:00:00",
+        "train_end": "2022-12-30T19:57:00",
+        "train_rows": 3019388,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2022-12-30T23:57:00",
+        "score_start": "2023-01-03T01:00:00",
+        "score_end": "2024-12-31T20:00:00",
+        "score_rows": 708020,
+        "chronology_assertion": true
+      }
+    ]
+  },
+  "model": {
+    "trained": false,
+    "model_type": "XGBoost binary logistic fold replicas",
+    "parameters": {
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    },
+    "boosted_rounds_or_estimators": 220,
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "feature_count": 31,
+    "label_definition": "BARRIER_TARGET == 1 versus all other classes",
+    "horizon": 240,
+    "label_tp_sl_semantics": "clean long barrier: future 240 M1 bars; TP=max(1.8 ATR,1.0); SL=max(1.2 ATR,0.8); positive only if TP reachable and SL never reachable in horizon",
+    "execution_tp_sl_semantics": "long first-touch HIGH/LOW from the next bar; TP=1.3 ATR, SL=1.6 ATR, stop-first if both touch, timeout at 90 M1 bars",
+    "calibration_method": "none",
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": "no_new_operational_candidate_model",
+    "not_applicable_reason": "No operational candidate model is trained; fold replicas exist only in memory to create genuine chronological OOF probabilities.",
+    "oof_models_planned": true,
+    "oof_models_trained": true,
+    "new_operational_candidate_model_trained": false,
+    "oof_model_count": 3,
+    "oof_model_retention": "not_saved; reproducible from immutable script, source hashes, and seed"
+  },
+  "search": {
+    "performed": true,
+    "predefined_search_space": {
+      "thresholds": {
+        "T0": 0.75,
+        "T1": 0.72,
+        "T2": 0.7,
+        "T3": 0.67,
+        "T4": 0.65
+      },
+      "rsi_policies": {
+        "R0": "exclude 35–45",
+        "R1": "no 35–45 exclusion",
+        "R2": "exclude 38–42",
+        "R3": "exclude 40–45"
+      },
+      "minimum_entry_rsi": 22.0,
+      "total_configurations": 20,
+      "marginal_probability_bands": [
+        {
+          "id": "B1_072_075",
+          "low_inclusive": 0.72,
+          "high_exclusive": 0.75
+        },
+        {
+          "id": "B2_070_072",
+          "low_inclusive": 0.7,
+          "high_exclusive": 0.72
+        },
+        {
+          "id": "B3_067_070",
+          "low_inclusive": 0.67,
+          "high_exclusive": 0.7
+        },
+        {
+          "id": "B4_065_067",
+          "low_inclusive": 0.65,
+          "high_exclusive": 0.67
+        }
+      ]
+    },
+    "candidate_results_file": "candidates.csv",
+    "not_applicable_reason": null,
+    "selection_rule": "Reject economic/quality failures; maximize minimum-fold executable trades/day, then pooled executable trades/day; use quality tie-breakers.",
+    "preregistered_at_utc": "2026-09-02T07:53:13.558292Z",
+    "quality_floor": {
+      "pooled_realized_wr_min": 0.6,
+      "pooled_pf_strict_min": 1.05,
+      "pooled_mean_r_strict_min": 0.0,
+      "pooled_pnl_strict_min": 0.0,
+      "break_even_edge_strict_min": 0.0,
+      "cost_stress_pf_strict_min": 1.0
+    },
+    "catastrophic_fold_definition": {
+      "minimum_trades": 10,
+      "realized_wr_min": 0.5,
+      "pf_min": 0.8,
+      "mean_r_min": -0.1,
+      "max_dd_r_min": -20.0
+    }
+  },
+  "registry": {
+    "parent_or_incumbent": "gold_long_recent_candidate_xgb.json@2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+    "selected_configuration": "none_quality_pass_control_retained",
+    "trades_per_day": 0.07391474384043802,
+    "realized_win_rate": 0.25396825396825395,
+    "pf": 0.3724855998495003,
+    "mean_r": -0.4459526009202168,
+    "pnl": -84.28504157392098,
+    "max_dd": -88.41767778745977,
+    "validator_result": "FAIL"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested_research_only",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gemini.py",
+      "path": "incumbent/gemini.py",
+      "sha256": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gold_long_recent_candidate_xgb.json",
+      "path": "incumbent/gold_long_recent_candidate_xgb.json",
+      "sha256": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "oof_model_provenance",
+      "path": "oof_model_provenance.json",
+      "sha256": "f8caf3707eb58e19555336216b24db609888dc477282546af5aaf56b4ae84ce2",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "complete_oof_predictions",
+      "path": "oof_predictions.npz",
+      "sha256": "4ad28eeb6ed57e9802d5e65e05378a57a386d1361368d133bafec2acd93fdc4a",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "oof_predictions",
+      "path": "oof_qualifying_rows.csv.gz",
+      "sha256": "5d0c47e3353009747ec449328229d2781f72bdca3e566e110c2b653d12b538e3",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "executable_trade_ledger",
+      "path": "trade_ledger.csv.gz",
+      "sha256": "f580b03c5b6f06ef080880dbfe4c211aeec67fcf90283852c267e709f6a9f18f",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "validator_result_json",
+      "path": "validator.json",
+      "sha256": "2abcbafb9029a7bed9bae6df4e8e0f70b7d1253303925c2ec900ceeaea7dea8a",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "validator_result_markdown",
+      "path": "validator.md",
+      "sha256": "a03f49d6934e83e17834328d4f1491160609e25fc1396d0abc7adff713a56e3f",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "validator_script_snapshot",
+      "path": "validator_script.py",
+      "sha256": "9912ac36f9653ccb1a892e49444096959839d2051a574949be9caffa97b352f0",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": null,
+  "evidence_status": {
+    "claim": "development_chronological_oof_only",
+    "previous_forward_cutoff": "2026-09-01T02:00:00Z",
+    "previous_forward_status": "contaminated_for_future_gate_selection",
+    "new_forward_cutoff": null,
+    "post_cutoff_data_inspected": false
+  },
+  "operational_hashes_before": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "result": {
+    "configurations_evaluated": 20,
+    "quality_pass_count": 0,
+    "selected_candidate_id": null,
+    "candidate_frozen": false
+  },
+  "operational_hashes_after": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "validation": {
+    "overall": "FAIL",
+    "internal_chronological_validation_quality": "PASS",
+    "final_untouched_test_validity": "FAIL",
+    "failed_checks": [
+      "multiple-testing risk"
+    ],
+    "candidate_selection_changed": false
+  }
+}
