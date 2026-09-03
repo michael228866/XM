@@ -1,0 +1,23 @@
+{
+  "experiment": "GEMINI MACRO EVENT TIMING INFORMATION V1",
+  "run_status": "fail",
+  "data_readiness": {
+    "passed": false,
+    "failures": [
+      "2018_2020/FOMC: expected=34, verified=30, coverage=88.2%, minimum=21",
+      "2021_2022/FOMC: expected=36, verified=16, coverage=44.4%, minimum=14",
+      "2023_2024/FOMC: expected=34, verified=16, coverage=47.1%, minimum=14"
+    ],
+    "verified_events": 459,
+    "identified_events": 515,
+    "source_fetches": 534,
+    "minimum_coverage": 0.95
+  },
+  "fold_metrics": [],
+  "decision": {
+    "classification": "data_readiness_failure",
+    "shadow_candidate_frozen": false,
+    "new_forward_cutoff": null,
+    "single_next_research_hypothesis": "Complete reproducible official macro timestamp acquisition before any model comparison."
+  }
+}

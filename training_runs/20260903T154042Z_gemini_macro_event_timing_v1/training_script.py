@@ -921,9 +921,8 @@ def finalize_manifest(run_dir: Path, manifest: dict[str, Any], operational_befor
         "artifact_path": model_inventory[-1]["path"] if model_inventory else "none",
         "artifact_sha256": model_inventory[-1]["sha256"] if model_inventory else "none",
         "retention_status": "all research fold models inside run" if model_inventory else "no model created because readiness gate failed",
-        "not_applicable_reason": None if readiness["passed"] else "data-readiness gate failed before model fitting",
     })
-    manifest["search"].update({"performed": False, "predefined_search_space": {"definitions": list(MODEL_IDS)}, "candidate_results_file": "candidates.csv", "selection_metric": "none paired hypothesis test", "not_applicable_reason": "pre-registered paired hypothesis test; no parameter or candidate search"})
+    manifest["search"].update({"performed": False, "predefined_search_space": {"definitions": list(MODEL_IDS)}, "candidate_results_file": "candidates.csv", "selection_metric": "none paired hypothesis test"})
     pooled_b1 = next((row for row in metrics.get("fold_metrics", []) if row["model_id"] == MODEL_IDS[1] and row["fold"] == "pooled"), None)
     manifest["registry"].update({
         "parent_or_incumbent": f"{BASELINE_RUN.name}/C1_execution_aligned_label",

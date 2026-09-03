@@ -1,0 +1,33 @@
+{
+  "run_id": "20260903T154042Z_gemini_macro_event_timing_v1",
+  "finalized_at_utc": "2026-09-03T15:50:31.122237Z",
+  "file_sha256": {
+    "candidates.csv": "cf171072f1e9f97058bb96a7e64af87970a9ee55c0a85a95890512803c56cc1b",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "event_coverage.csv": "f14ff46a4c8d3696a895686838b91c217008858726c1b8b2e6210f6827f932b5",
+    "event_family_definition.json": "68b0ebbaaeb53a465b3efa93718033e1a795c3363d6c11455d41cbf8580919a0",
+    "event_source_provenance.csv": "0abd3ba5469dd9a759bf54a1a322d8529408c57b9b74aa7f9757f5c89479bd8f",
+    "event_state_attribution.csv": "3ddc63f5e1c8482f4076984ffb11b3ce730c511419e91f13abdb091152b1c8be",
+    "event_timestamp_dataset.csv": "35e99a104198531702262239fe3f5476b69d1e58c4691345dd63e48771db9f40",
+    "feature_alignment_audit.csv": "27a8c125f29cba5ddab8d2a06f450266abae530b7eec82554c7a4b6862d8b29c",
+    "fold_metrics.csv": "4e641d5240d8e0b98b83f7744bc5bb2a524db8a88d4041acc099c4ef015bae67",
+    "fold_model_provenance.json": "b5435bd919d520cd9c8302a59caf880f5b35678304b05ec6c78ec2d1f6bbc853",
+    "incumbent/gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "incumbent/gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+    "information_gain.csv": "b983e0dae3cf629549f490ecfe3cadc521edeab2128f0f5cbbb7f172f3c69f51",
+    "manifest.json": "372b3349a7f01d09c7d9eaf5b3279177045b55a39309c128f6bd9e764c008e56",
+    "metrics.json": "6d84fa69475884ac2f788a1aac758414826b7a47620ee309a962beb44e1ee8d5",
+    "model_comparison.csv": "4e641d5240d8e0b98b83f7744bc5bb2a524db8a88d4041acc099c4ef015bae67",
+    "probability_diagnostics.csv": "4e641d5240d8e0b98b83f7744bc5bb2a524db8a88d4041acc099c4ef015bae67",
+    "ranking_deciles.csv": "b0a05ac9015a5a4afda0e12e8a0ad6a4bd4b3712912bfa0e93844453db8380ea",
+    "ranking_diagnostics.csv": "4e641d5240d8e0b98b83f7744bc5bb2a524db8a88d4041acc099c4ef015bae67",
+    "report.md": "23cfa33b5cfd38d2c88fde9c1ad1daab256e33be5cac132709796a91b2b58377",
+    "stdout.log": "6a5ec020096fc7a4779625e655ac781374b106fe4e3cfb4efae98eee326518de",
+    "trade_identity_comparison.csv": "b55eea0a5916be152cbe193e3a8ccaddc4a15cf9e5fa2d216bb1c3d822430d26",
+    "trade_ledger.csv": "2f0ec3ece14329b3d7b8ce355d8f921015d011adc0aeb1dd1942d7f041e6abc6",
+    "training_script.py": "a0db13888b3747c10e16913f4298cdde561659edd831b34d2f0f92f9f96d4460",
+    "validator.json": "c9ff3822c13b45a18c919a6ec9fe14d8bd1a6b9f2e02e3e57f51cafba04e74f7",
+    "validator.md": "2ce85db66d571e5584d0c0e21d1ac6d41a1a689c3d224986089ff321ad3ee317",
+    "validator_stdout.log": "d2389fdc92dbb8fab95ac4d11ffd750f4ce875089f4f02855a15446a745e15a1"
+  }
+}

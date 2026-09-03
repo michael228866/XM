@@ -1,0 +1,2 @@
+model_id,fold,status,reason
+,,not_run_data_readiness_failure,"2018_2020/FOMC: expected=34, verified=30, coverage=88.2%, minimum=21; 2021_2022/FOMC: expected=36, verified=16, coverage=44.4%, minimum=14; 2023_2024/FOMC: expected=34, verified=16, coverage=47.1%, minimum=14"

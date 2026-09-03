@@ -1,0 +1,108 @@
+{
+  "overall": "FAIL",
+  "internal_methodology": "PASS",
+  "final_untouched_validity": "FAIL",
+  "data_readiness_pass": false,
+  "model_trained": false,
+  "event_provenance": {
+    "source_fetches": 534,
+    "successful_fetches": 534,
+    "verified_events": 459,
+    "coverage_rows": 13,
+    "all_coverage_rows_pass": false
+  },
+  "paired_model_audit": {
+    "not_run": true
+  },
+  "recomputed_metrics": {
+    "not_run": true
+  },
+  "internal_errors": [],
+  "multiple_testing": "FAIL: repeatedly inspected 2018-2024 development history and no untouched final interval",
+  "checks": [
+    {
+      "Check": "chronology",
+      "Verdict": "PASS",
+      "Evidence": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Failure or reason for pass": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Required validation correction": "none"
+    },
+    {
+      "Check": "feature leakage",
+      "Verdict": "PASS",
+      "Evidence": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Failure or reason for pass": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Required validation correction": "none"
+    },
+    {
+      "Check": "label maturity",
+      "Verdict": "PASS",
+      "Evidence": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Failure or reason for pass": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Required validation correction": "none"
+    },
+    {
+      "Check": "OOF predictions",
+      "Verdict": "PASS",
+      "Evidence": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Failure or reason for pass": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Required validation correction": "none"
+    },
+    {
+      "Check": "calibration",
+      "Verdict": "PASS",
+      "Evidence": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Failure or reason for pass": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Required validation correction": "none"
+    },
+    {
+      "Check": "threshold selection",
+      "Verdict": "PASS",
+      "Evidence": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Failure or reason for pass": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Required validation correction": "none"
+    },
+    {
+      "Check": "purge/embargo",
+      "Verdict": "PASS",
+      "Evidence": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Failure or reason for pass": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Required validation correction": "none"
+    },
+    {
+      "Check": "holdout contamination",
+      "Verdict": "FAIL",
+      "Evidence": "2018-2024 outcomes were repeatedly inspected; no untouched final interval is used",
+      "Failure or reason for pass": "frozen paired design and readiness stop were independently verified",
+      "Required validation correction": "evaluate a completely frozen candidate on genuinely new future data"
+    },
+    {
+      "Check": "recent-period reuse",
+      "Verdict": "PASS",
+      "Evidence": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Failure or reason for pass": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Required validation correction": "none"
+    },
+    {
+      "Check": "execution alignment",
+      "Verdict": "PASS",
+      "Evidence": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Failure or reason for pass": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Required validation correction": "none"
+    },
+    {
+      "Check": "cost assumptions",
+      "Verdict": "PASS",
+      "Evidence": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Failure or reason for pass": "data-readiness gate failed and fitting/execution were correctly not run",
+      "Required validation correction": "none"
+    },
+    {
+      "Check": "multiple-testing risk",
+      "Verdict": "FAIL",
+      "Evidence": "2018-2024 outcomes were repeatedly inspected; no untouched final interval is used",
+      "Failure or reason for pass": "frozen paired design and readiness stop were independently verified",
+      "Required validation correction": "evaluate a completely frozen candidate on genuinely new future data"
+    }
+  ]
+}

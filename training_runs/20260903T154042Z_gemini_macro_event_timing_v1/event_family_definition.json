@@ -1,0 +1,53 @@
+{
+  "experiment": "GEMINI MACRO EVENT TIMING INFORMATION V1",
+  "event_universe": {
+    "CPI": "official BLS CPI release timestamp",
+    "EMPLOYMENT": "official BLS Employment Situation release timestamp; NFP is not separate",
+    "PCE": "official BEA Personal Income and Outlays/PCE release timestamp",
+    "FOMC": "official Federal Reserve monetary-policy statement/rate-decision release timestamp"
+  },
+  "features": [
+    "EVENT_MINUTES_SINCE",
+    "EVENT_POST_0_15",
+    "EVENT_POST_15_60",
+    "EVENT_POST_60_240",
+    "EVENT_TYPE_CPI",
+    "EVENT_TYPE_EMPLOYMENT",
+    "EVENT_TYPE_PCE",
+    "EVENT_TYPE_FOMC"
+  ],
+  "feature_rules": {
+    "EVENT_MINUTES_SINCE": "min(minutes since most recent qualifying release, 1440) / 1440",
+    "EVENT_POST_0_15": "0 <= minutes < 15",
+    "EVENT_POST_15_60": "15 <= minutes < 60",
+    "EVENT_POST_60_240": "60 <= minutes < 240",
+    "event_type_flags": "matching type is one only for 0 <= minutes < 240; otherwise all zero",
+    "no_prior_event": "EVENT_MINUTES_SINCE=1 and all seven flags=0"
+  },
+  "excluded_information": [
+    "actual",
+    "forecast",
+    "consensus",
+    "surprise",
+    "revisions",
+    "NLP",
+    "future schedule changes"
+  ],
+  "readiness_gate": {
+    "minimum_verified_over_identified": 0.95,
+    "minimum_annual_identified_releases": {
+      "CPI": 11,
+      "EMPLOYMENT": 11,
+      "PCE": 11,
+      "FOMC": 7
+    },
+    "all_scored_rows_causally_constructable": true,
+    "duplicate_verified_timestamps_allowed": false
+  },
+  "timezone": "official America/New_York release timestamp converted to UTC; GOLD CSV uses audited XM EET/EEST broker wall conversion",
+  "acquisition_years": [
+    2015,
+    2024
+  ],
+  "no_search": true
+}

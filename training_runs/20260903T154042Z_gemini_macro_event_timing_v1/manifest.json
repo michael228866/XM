@@ -1,0 +1,503 @@
+{
+  "schema_version": 1,
+  "run_id": "20260903T154042Z_gemini_macro_event_timing_v1",
+  "experiment_name": "gemini_macro_event_timing_v1",
+  "status": "fail",
+  "started_at_utc": "2026-09-03T15:40:42.202585Z",
+  "finished_at_utc": "2026-09-03T15:50:31.098569Z",
+  "git_commit": "b1b3a2f5bf2e50e155850f0bbb9a2a9760a5e891",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\gold_gemini_macro_event_timing_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "a0db13888b3747c10e16913f4298cdde561659edd831b34d2f0f92f9f96d4460",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_gemini_macro_event_timing_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [
+    "--run-dir=TRAINING_RUN_DIR"
+  ],
+  "random_seeds": {
+    "xgboost": "42"
+  },
+  "random_seed_note": "fixed inherited C1 architecture; no search",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "official BLS release documents",
+      "official BEA release documents",
+      "official Federal Reserve FOMC documents",
+      "repository-local XM historical CSV exports"
+    ],
+    "source_files": [
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Daily_201401020000_202605080000.csv",
+        "sha256": "2a309acb6e63bad17f1d06bb14c9d81c7427b309ff7161167c8cab6638627afb",
+        "bytes": 178076,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H12_201401020000_202605081200.csv",
+        "sha256": "c9c37e623d13f6d5ca9e6e28c342cdda394bb9372759759464edd6566e8602f8",
+        "bytes": 411129,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H1_201401020000_202605082300.csv",
+        "sha256": "66102d419bcbd8f693a32db8023c40eb2d8fad426d5e2b0495e3f1aa04f0aaba",
+        "bytes": 4673255,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H2_201401020000_202605082200.csv",
+        "sha256": "07c6b7fc8275aa86f13c19c47570e58a4c4743da995a42486ace1653ecf677c3",
+        "bytes": 2418205,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H3_201401020000_202605082100.csv",
+        "sha256": "b9b088a50a6da5acae48f9968544224b37006c337916f71c24152df8570d989d",
+        "bytes": 1619915,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H4_201401020000_202605082000.csv",
+        "sha256": "570c59153ff62136b9024a8bf141a9ef4d2ba59be1065cc8156479279a73caba",
+        "bytes": 1217831,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H6_201401020000_202605081800.csv",
+        "sha256": "95bf97074819faa43b20e44c1de7cfabbb55df71cbcc5cd67ad9511569606ba1",
+        "bytes": 817208,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H8_201401020000_202605081600.csv",
+        "sha256": "1ba71eb1c9291d5b7eb4f72b0c32ad29f077cf5af5d44e4263173ea6e0f7a727",
+        "bytes": 614121,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M10_201401020000_202605082350.csv",
+        "sha256": "e133b567dfc5abba4817402932d00fdf83000c287f42dda7a8b9d9edf95c72f9",
+        "bytes": 26558995,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M12_201401020000_202605082348.csv",
+        "sha256": "e2e7b9924ca98bfe1cde485b4b819f803e626c840be7bfae5016d8da4490ea5f",
+        "bytes": 22206082,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M15_201401020000_202605082345.csv",
+        "sha256": "739ef72fe599f2c002c7d5432ab0079545d7f1a0eb0d7c48ae77e9daec62ee94",
+        "bytes": 17831267,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M1_201401020000_202605082357.csv",
+        "sha256": "6cd87c0c4518bc8e2ae090cef0a750fc90711e31b9d838cf9a27337cb58c49eb",
+        "bytes": 258369884,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M20_201401020000_202605082340.csv",
+        "sha256": "f269d20ecfb2c895598a72e0aa08e3e8deeccfeba24c1f8390bd941eb8875067",
+        "bytes": 13460800,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M2_201401020000_202605082356.csv",
+        "sha256": "3bb8aae60b85c35da6fabcbe653994e03df939b6be8ef9bba18df737ddb7f3b6",
+        "bytes": 130270025,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M30_201401020000_202605082330.csv",
+        "sha256": "bc6697042d790fe702f054541d1e503827446cbb857a75e0031a4e9810936e2f",
+        "bytes": 9073549,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M3_201401020000_202605082357.csv",
+        "sha256": "233e920241b680e1109badc459b00b6fd3f4144d23a0e7eebe411bcf92d50111",
+        "bytes": 87211546,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M4_201401020000_202605082356.csv",
+        "sha256": "b5ae9dd1c045fe78e51d3db5b2450e99f526825f043eedeb9fecb68542c3fd98",
+        "bytes": 65598448,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M5_201401020000_202605082355.csv",
+        "sha256": "8db72996cfb1b816aae10ee13bdcedc44b678425eb70a9b665173ce4c709369e",
+        "bytes": 52606531,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M6_201401020000_202605082354.csv",
+        "sha256": "74198cdc6b6798022d5b0e425c61929e713da79761d4725879e66d34d4aa0e4b",
+        "bytes": 43940359,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Monthly_201401010000_202605010000.csv",
+        "sha256": "f5832d795dd4f2913694dc2cf2994c81b36577ca7dd2af6fd395f64c8714d36b",
+        "bytes": 8597,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Weekly_201401050000_202605030000.csv",
+        "sha256": "26107d34bb565adf92d08a37c92b3f7eaec575ab23d72bec2bc24eb58b60c490",
+        "bytes": 36504,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      }
+    ],
+    "timezone": "official U.S. release timestamps -> UTC -> audited XM EET/EEST broker wall; evidence remains development-only",
+    "data_start_utc": "2015-01-01T00:00:00Z",
+    "data_end_utc": "2024-12-31T23:59:59Z",
+    "train_start_utc": "not_run",
+    "train_end_utc": "not_run",
+    "train_rows": 0,
+    "validation_start_utc": "2018-01-01T00:00:00 broker wall",
+    "validation_end_utc": "2025-01-01T00:00:00 broker wall",
+    "validation_rows": 0,
+    "test_start_utc": "not_applicable_no_untouched_test",
+    "test_end_utc": "not_applicable_no_untouched_test",
+    "test_rows": 0,
+    "purge_details": "fixed C1 exact-exit maturity plus legacy 240-row parity purge, both strictly before each fold start",
+    "embargo_details": "strict maturity purge; no additional embargo",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "official response hashes and extracted timestamp dataset retained; upstream pages may change",
+    "mt5_fetch": {
+      "used": false,
+      "not_applicable_reason": "fixed historical CSV experiment"
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": "not_trained_data_readiness_failure",
+    "parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    },
+    "boosted_rounds_or_estimators": 220,
+    "features": [
+      "31 frozen technical features",
+      "EVENT_MINUTES_SINCE",
+      "EVENT_POST_0_15",
+      "EVENT_POST_15_60",
+      "EVENT_POST_60_240",
+      "EVENT_TYPE_CPI",
+      "EVENT_TYPE_EMPLOYMENT",
+      "EVENT_TYPE_PCE",
+      "EVENT_TYPE_FOMC"
+    ],
+    "feature_count": 0,
+    "label_definition": "C1 execution-aligned positive net-R binary target",
+    "horizon": 90,
+    "label_tp_sl_semantics": "S5 HIGH/LOW first-touch, stop-first same-bar, next-open, observed/fallback costs",
+    "execution_tp_sl_semantics": "identical S5 semantics",
+    "calibration_method": "none",
+    "artifact_path": "none",
+    "artifact_sha256": "none",
+    "retention_status": "no model created because readiness gate failed",
+    "not_applicable_reason": "data-readiness gate failed before model fitting"
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {
+      "definitions": [
+        "B0_technical_control",
+        "B1_macro_event_timing"
+      ]
+    },
+    "candidate_results_file": "candidates.csv",
+    "not_applicable_reason": "pre-registered paired hypothesis test; no parameter or candidate search",
+    "selection_metric": "none paired hypothesis test"
+  },
+  "registry": {
+    "parent_or_incumbent": "20260903T071729Z_gemini_execution_aligned_label_v1/C1_execution_aligned_label",
+    "selected_configuration": "none",
+    "trades_per_day": 0,
+    "realized_win_rate": 0,
+    "pf": 0,
+    "mean_r": 0,
+    "pnl": 0,
+    "max_dd": 0,
+    "validator_result": "internal_methodology=PASS; final_untouched_validity=FAIL"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false,
+    "status": "not_promoted",
+    "gemini_py_changed": false,
+    "operational_model_changed": false
+  },
+  "artifacts": [
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gemini.py",
+      "path": "incumbent/gemini.py",
+      "sha256": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gold_long_recent_candidate_xgb.json",
+      "path": "incumbent/gold_long_recent_candidate_xgb.json",
+      "sha256": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "candidates.csv",
+      "sha256": "cf171072f1e9f97058bb96a7e64af87970a9ee55c0a85a95890512803c56cc1b",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "environment.txt",
+      "sha256": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "event_coverage.csv",
+      "sha256": "f14ff46a4c8d3696a895686838b91c217008858726c1b8b2e6210f6827f932b5",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "event_family_definition.json",
+      "sha256": "68b0ebbaaeb53a465b3efa93718033e1a795c3363d6c11455d41cbf8580919a0",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "event_source_provenance.csv",
+      "sha256": "0abd3ba5469dd9a759bf54a1a322d8529408c57b9b74aa7f9757f5c89479bd8f",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "event_state_attribution.csv",
+      "sha256": "3ddc63f5e1c8482f4076984ffb11b3ce730c511419e91f13abdb091152b1c8be",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "event_timestamp_dataset.csv",
+      "sha256": "35e99a104198531702262239fe3f5476b69d1e58c4691345dd63e48771db9f40",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "feature_alignment_audit.csv",
+      "sha256": "27a8c125f29cba5ddab8d2a06f450266abae530b7eec82554c7a4b6862d8b29c",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "fold_metrics.csv",
+      "sha256": "4e641d5240d8e0b98b83f7744bc5bb2a524db8a88d4041acc099c4ef015bae67",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "fold_model_provenance.json",
+      "sha256": "b5435bd919d520cd9c8302a59caf880f5b35678304b05ec6c78ec2d1f6bbc853",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "information_gain.csv",
+      "sha256": "b983e0dae3cf629549f490ecfe3cadc521edeab2128f0f5cbbb7f172f3c69f51",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "metrics.json",
+      "sha256": "6d84fa69475884ac2f788a1aac758414826b7a47620ee309a962beb44e1ee8d5",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "model_comparison.csv",
+      "sha256": "4e641d5240d8e0b98b83f7744bc5bb2a524db8a88d4041acc099c4ef015bae67",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "probability_diagnostics.csv",
+      "sha256": "4e641d5240d8e0b98b83f7744bc5bb2a524db8a88d4041acc099c4ef015bae67",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "ranking_deciles.csv",
+      "sha256": "b0a05ac9015a5a4afda0e12e8a0ad6a4bd4b3712912bfa0e93844453db8380ea",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "ranking_diagnostics.csv",
+      "sha256": "4e641d5240d8e0b98b83f7744bc5bb2a524db8a88d4041acc099c4ef015bae67",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "report.md",
+      "sha256": "23cfa33b5cfd38d2c88fde9c1ad1daab256e33be5cac132709796a91b2b58377",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "trade_identity_comparison.csv",
+      "sha256": "b55eea0a5916be152cbe193e3a8ccaddc4a15cf9e5fa2d216bb1c3d822430d26",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "trade_ledger.csv",
+      "sha256": "2f0ec3ece14329b3d7b8ce355d8f921015d011adc0aeb1dd1942d7f041e6abc6",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "research_evidence",
+      "path": "training_script.py",
+      "sha256": "a0db13888b3747c10e16913f4298cdde561659edd831b34d2f0f92f9f96d4460",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.json",
+      "sha256": "c9ff3822c13b45a18c919a6ec9fe14d8bd1a6b9f2e02e3e57f51cafba04e74f7",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.md",
+      "sha256": "2ce85db66d571e5584d0c0e21d1ac6d41a1a689c3d224986089ff321ad3ee317",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    }
+  ],
+  "aborted_reason": null,
+  "pre_run_git": {
+    "pre_run_git_commit": "b1b3a2f5bf2e50e155850f0bbb9a2a9760a5e891",
+    "pre_run_git_dirty": false,
+    "head_sha": "b1b3a2f5bf2e50e155850f0bbb9a2a9760a5e891",
+    "origin_main_sha": "b1b3a2f5bf2e50e155850f0bbb9a2a9760a5e891",
+    "head_equals_origin_main": true
+  },
+  "paired_design": {
+    "models": [
+      "B0_technical_control",
+      "B1_macro_event_timing"
+    ],
+    "only_design_change": "append exact frozen eight-feature U.S. macro release timing family to B1",
+    "event_types": [
+      "CPI",
+      "EMPLOYMENT",
+      "PCE",
+      "FOMC"
+    ],
+    "event_features": [
+      "EVENT_MINUTES_SINCE",
+      "EVENT_POST_0_15",
+      "EVENT_POST_15_60",
+      "EVENT_POST_60_240",
+      "EVENT_TYPE_CPI",
+      "EVENT_TYPE_EMPLOYMENT",
+      "EVENT_TYPE_PCE",
+      "EVENT_TYPE_FOMC"
+    ],
+    "training_window_months": 18,
+    "folds": [
+      "2018_2020",
+      "2021_2022",
+      "2023_2024"
+    ],
+    "xgboost_parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    },
+    "threshold": 0.75,
+    "parameter_search": false,
+    "threshold_search": false,
+    "event_subset_search": false
+  },
+  "operational_hashes_before": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "dependency_sha256": {
+    "baseline_run_manifest.json": "2acc8e30e72d485179a56712efec935cb8c192505fda880e3855cd1ee03b83bf",
+    "gold_gemini_execution_aligned_label_v1.py": "9e436e4fe723eb8ad354f5f27a342b60d051c5c71d533f523871b381fc7012c6",
+    "gold_gemini_execution_semantics_v1.py": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+    "gold_data_foundation1_report.json": "1012b127601a62fe31c52903e212bb583923406e0c08806a6ed03036969f454e"
+  },
+  "operational_hashes_after": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "data_readiness": {
+    "passed": false,
+    "failures": [
+      "2018_2020/FOMC: expected=34, verified=30, coverage=88.2%, minimum=21",
+      "2021_2022/FOMC: expected=36, verified=16, coverage=44.4%, minimum=14",
+      "2023_2024/FOMC: expected=34, verified=16, coverage=47.1%, minimum=14"
+    ],
+    "verified_events": 459,
+    "identified_events": 515,
+    "source_fetches": 534,
+    "minimum_coverage": 0.95
+  },
+  "research_decision": {
+    "classification": "data_readiness_failure",
+    "shadow_candidate_frozen": false,
+    "new_forward_cutoff": null,
+    "single_next_research_hypothesis": "Complete reproducible official macro timestamp acquisition before any model comparison."
+  },
+  "independent_validator": {
+    "overall": "FAIL",
+    "internal_methodology": "PASS",
+    "final_untouched_validity": "FAIL",
+    "data_readiness_pass": false,
+    "model_trained": false,
+    "event_provenance": {
+      "source_fetches": 534,
+      "successful_fetches": 534,
+      "verified_events": 459,
+      "coverage_rows": 13,
+      "all_coverage_rows_pass": false
+    },
+    "paired_model_audit": {
+      "not_run": true
+    },
+    "recomputed_metrics": {
+      "not_run": true
+    },
+    "internal_errors": [],
+    "multiple_testing": "FAIL: repeatedly inspected 2018-2024 development history and no untouched final interval"
+  }
+}
