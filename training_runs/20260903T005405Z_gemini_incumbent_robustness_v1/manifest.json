@@ -1,0 +1,728 @@
+{
+  "schema_version": 1,
+  "run_id": "20260903T005405Z_gemini_incumbent_robustness_v1",
+  "experiment_name": "gemini_incumbent_robustness_v1",
+  "status": "research_only",
+  "started_at_utc": "2026-09-03T00:54:05.646709Z",
+  "finished_at_utc": "2026-09-03T00:57:53.224566Z",
+  "git_commit": "97a7889511961d15c6bb2c22090cd276adf36200",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\gold_gemini_incumbent_robustness_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "adb83d97bc4bf7a44140da30f14b469425de3266b93544c6dd43e92f4ed0ae5f",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_gemini_incumbent_robustness_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [
+    "--run-dir=TRAINING_RUN_DIR"
+  ],
+  "random_seeds": {
+    "python": "42",
+    "xgboost": "42"
+  },
+  "random_seed_note": "",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "XM MT5 historical CSV exports for 2014-2024 diagnostic folds",
+      "preserved Gen core-gate W0 OOF predictions",
+      "preserved original recent-window report",
+      "immutable snapshots of current live signal/deal logs"
+    ],
+    "source_files": [
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Daily_201401020000_202605080000.csv",
+        "sha256": "2a309acb6e63bad17f1d06bb14c9d81c7427b309ff7161167c8cab6638627afb",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H12_201401020000_202605081200.csv",
+        "sha256": "c9c37e623d13f6d5ca9e6e28c342cdda394bb9372759759464edd6566e8602f8",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H1_201401020000_202605082300.csv",
+        "sha256": "66102d419bcbd8f693a32db8023c40eb2d8fad426d5e2b0495e3f1aa04f0aaba",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H2_201401020000_202605082200.csv",
+        "sha256": "07c6b7fc8275aa86f13c19c47570e58a4c4743da995a42486ace1653ecf677c3",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H3_201401020000_202605082100.csv",
+        "sha256": "b9b088a50a6da5acae48f9968544224b37006c337916f71c24152df8570d989d",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H4_201401020000_202605082000.csv",
+        "sha256": "570c59153ff62136b9024a8bf141a9ef4d2ba59be1065cc8156479279a73caba",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H6_201401020000_202605081800.csv",
+        "sha256": "95bf97074819faa43b20e44c1de7cfabbb55df71cbcc5cd67ad9511569606ba1",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H8_201401020000_202605081600.csv",
+        "sha256": "1ba71eb1c9291d5b7eb4f72b0c32ad29f077cf5af5d44e4263173ea6e0f7a727",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M10_201401020000_202605082350.csv",
+        "sha256": "e133b567dfc5abba4817402932d00fdf83000c287f42dda7a8b9d9edf95c72f9",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M12_201401020000_202605082348.csv",
+        "sha256": "e2e7b9924ca98bfe1cde485b4b819f803e626c840be7bfae5016d8da4490ea5f",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M15_201401020000_202605082345.csv",
+        "sha256": "739ef72fe599f2c002c7d5432ab0079545d7f1a0eb0d7c48ae77e9daec62ee94",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M1_201401020000_202605082357.csv",
+        "sha256": "6cd87c0c4518bc8e2ae090cef0a750fc90711e31b9d838cf9a27337cb58c49eb",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M20_201401020000_202605082340.csv",
+        "sha256": "f269d20ecfb2c895598a72e0aa08e3e8deeccfeba24c1f8390bd941eb8875067",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M2_201401020000_202605082356.csv",
+        "sha256": "3bb8aae60b85c35da6fabcbe653994e03df939b6be8ef9bba18df737ddb7f3b6",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M30_201401020000_202605082330.csv",
+        "sha256": "bc6697042d790fe702f054541d1e503827446cbb857a75e0031a4e9810936e2f",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M3_201401020000_202605082357.csv",
+        "sha256": "233e920241b680e1109badc459b00b6fd3f4144d23a0e7eebe411bcf92d50111",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M4_201401020000_202605082356.csv",
+        "sha256": "b5ae9dd1c045fe78e51d3db5b2450e99f526825f043eedeb9fecb68542c3fd98",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M5_201401020000_202605082355.csv",
+        "sha256": "8db72996cfb1b816aae10ee13bdcedc44b678425eb70a9b665173ce4c709369e",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M6_201401020000_202605082354.csv",
+        "sha256": "74198cdc6b6798022d5b0e425c61929e713da79761d4725879e66d34d4aa0e4b",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Monthly_201401010000_202605010000.csv",
+        "sha256": "f5832d795dd4f2913694dc2cf2994c81b36577ca7dd2af6fd395f64c8714d36b",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Weekly_201401050000_202605030000.csv",
+        "sha256": "26107d34bb565adf92d08a37c92b3f7eaec575ab23d72bec2bc24eb58b60c490",
+        "retention_status": "local_historical_export_not_durable_git_artifact"
+      },
+      {
+        "path": "training_runs/20260902T075259Z_gemini_core_gate_v1/oof_predictions.npz",
+        "sha256": "4ad28eeb6ed57e9802d5e65e05378a57a386d1361368d133bafec2acd93fdc4a",
+        "retention_status": "git_preserved_parent_run"
+      },
+      {
+        "path": "prior_evidence/gold_long_recent_walk_forward.json",
+        "sha256": "cc670628a7da45eb50b778b4a4a2201c50713002ea7d2cc87e7a99a82231e6af",
+        "retention_status": "stored_in_run_directory_git_archival_pending"
+      },
+      {
+        "path": "prior_evidence/gold_long_recent_walk_forward.md",
+        "sha256": "cb9451e9415a6511d2a914a5c701de771cedde07f772aecc4f555f979e4d0c1d",
+        "retention_status": "stored_in_run_directory_git_archival_pending"
+      },
+      {
+        "path": "input_snapshots/gemini_signal_log.csv.gz",
+        "sha256": "2dc1eca813046c5e91bfc5bfb98c4bf508d2c093a21243d93042d76cb3719f3a",
+        "retention_status": "stored_in_run_directory_git_archival_pending"
+      },
+      {
+        "path": "input_snapshots/gemini_trade_history.csv",
+        "sha256": "e755a89b90e5851ad603399a28b58aea95597c3cc9aa59833e6a2e83e59d15ba",
+        "retention_status": "stored_in_run_directory_git_archival_pending"
+      }
+    ],
+    "timezone": "XM export/server timestamps; exact UTC mapping unproven and explicitly audited",
+    "data_start_utc": "2014-02-03T01:00:00",
+    "data_end_utc": "2024-12-31T20:00:00",
+    "train_start_utc": "2014-02-03T01:00:00",
+    "train_end_utc": "2022-12-30T19:57:00",
+    "train_rows": 3019388,
+    "validation_start_utc": "2018-01-02T00:00:00",
+    "validation_end_utc": "2024-12-31T20:00:00",
+    "validation_rows": 2474297,
+    "test_start_utc": "not_applicable_development_diagnostic",
+    "test_end_utc": "not_applicable_development_diagnostic",
+    "test_rows": 0,
+    "purge_details": "Full 240 source rows removed before every fold under every W0-W3 scheme",
+    "embargo_details": "latest_training_label_bar < first_scored_bar asserted for all 12 scheme/fold records",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "code_predictions_and_compact_live_inputs_git_preserved_historical_market_csv_hashes_only",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "No dynamic MT5 retrieval; local historical exports and log snapshots only"
+    },
+    "folds": [
+      {
+        "fold": "2018_2020",
+        "train_start": "2014-02-03T01:00:00",
+        "train_end": "2017-12-29T19:55:00",
+        "train_rows": 1253111,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2017-12-29T23:57:00",
+        "score_start": "2018-01-02T00:00:00",
+        "score_end": "2020-12-31T18:50:00",
+        "score_rows": 1058080,
+        "chronology_assertion": true,
+        "scheme": "W0_expanding",
+        "source": "preserved_parent_oof"
+      },
+      {
+        "fold": "2021_2022",
+        "train_start": "2014-02-03T01:00:00",
+        "train_end": "2020-12-31T14:50:00",
+        "train_rows": 2311191,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2020-12-31T18:50:00",
+        "score_start": "2021-01-04T01:00:00",
+        "score_end": "2022-12-30T23:57:00",
+        "score_rows": 708197,
+        "chronology_assertion": true,
+        "scheme": "W0_expanding",
+        "source": "preserved_parent_oof"
+      },
+      {
+        "fold": "2023_2024",
+        "train_start": "2014-02-03T01:00:00",
+        "train_end": "2022-12-30T19:57:00",
+        "train_rows": 3019388,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2022-12-30T23:57:00",
+        "score_start": "2023-01-03T01:00:00",
+        "score_end": "2024-12-31T20:00:00",
+        "score_rows": 708020,
+        "chronology_assertion": true,
+        "scheme": "W0_expanding",
+        "source": "preserved_parent_oof"
+      },
+      {
+        "scheme": "W1_trailing_24m",
+        "fold": "2018_2020",
+        "train_start": "2016-01-04T00:00:00",
+        "train_end": "2017-12-29T19:55:00",
+        "train_rows": 705878,
+        "window_months": 24,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2017-12-29T23:57:00",
+        "score_start": "2018-01-02T00:00:00",
+        "score_end": "2020-12-31T18:50:00",
+        "score_rows": 1058080,
+        "chronology_assertion": true,
+        "model_retention": "not_saved_diagnostic_replica"
+      },
+      {
+        "scheme": "W1_trailing_24m",
+        "fold": "2021_2022",
+        "train_start": "2019-01-02T09:05:00",
+        "train_end": "2020-12-31T14:50:00",
+        "train_rows": 706173,
+        "window_months": 24,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2020-12-31T18:50:00",
+        "score_start": "2021-01-04T01:00:00",
+        "score_end": "2022-12-30T23:57:00",
+        "score_rows": 708197,
+        "chronology_assertion": true,
+        "model_retention": "not_saved_diagnostic_replica"
+      },
+      {
+        "scheme": "W1_trailing_24m",
+        "fold": "2023_2024",
+        "train_start": "2021-01-04T01:00:00",
+        "train_end": "2022-12-30T19:57:00",
+        "train_rows": 707957,
+        "window_months": 24,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2022-12-30T23:57:00",
+        "score_start": "2023-01-03T01:00:00",
+        "score_end": "2024-12-31T20:00:00",
+        "score_rows": 708020,
+        "chronology_assertion": true,
+        "model_retention": "not_saved_diagnostic_replica"
+      },
+      {
+        "scheme": "W2_trailing_18m",
+        "fold": "2018_2020",
+        "train_start": "2016-07-01T00:00:00",
+        "train_end": "2017-12-29T19:55:00",
+        "train_rows": 530218,
+        "window_months": 18,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2017-12-29T23:57:00",
+        "score_start": "2018-01-02T00:00:00",
+        "score_end": "2020-12-31T18:50:00",
+        "score_rows": 1058080,
+        "chronology_assertion": true,
+        "model_retention": "not_saved_diagnostic_replica"
+      },
+      {
+        "scheme": "W2_trailing_18m",
+        "fold": "2021_2022",
+        "train_start": "2019-07-01T01:00:00",
+        "train_end": "2020-12-31T14:50:00",
+        "train_rows": 532563,
+        "window_months": 18,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2020-12-31T18:50:00",
+        "score_start": "2021-01-04T01:00:00",
+        "score_end": "2022-12-30T23:57:00",
+        "score_rows": 708197,
+        "chronology_assertion": true,
+        "model_retention": "not_saved_diagnostic_replica"
+      },
+      {
+        "scheme": "W2_trailing_18m",
+        "fold": "2023_2024",
+        "train_start": "2021-07-01T01:00:00",
+        "train_end": "2022-12-30T19:57:00",
+        "train_rows": 533580,
+        "window_months": 18,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2022-12-30T23:57:00",
+        "score_start": "2023-01-03T01:00:00",
+        "score_end": "2024-12-31T20:00:00",
+        "score_rows": 708020,
+        "chronology_assertion": true,
+        "model_retention": "not_saved_diagnostic_replica"
+      },
+      {
+        "scheme": "W3_trailing_12m",
+        "fold": "2018_2020",
+        "train_start": "2017-01-03T00:00:00",
+        "train_end": "2017-12-29T19:55:00",
+        "train_rows": 352121,
+        "window_months": 12,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2017-12-29T23:57:00",
+        "score_start": "2018-01-02T00:00:00",
+        "score_end": "2020-12-31T18:50:00",
+        "score_rows": 1058080,
+        "chronology_assertion": true,
+        "model_retention": "not_saved_diagnostic_replica"
+      },
+      {
+        "scheme": "W3_trailing_12m",
+        "fold": "2021_2022",
+        "train_start": "2020-01-02T09:05:00",
+        "train_end": "2020-12-31T14:50:00",
+        "train_rows": 354015,
+        "window_months": 12,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2020-12-31T18:50:00",
+        "score_start": "2021-01-04T01:00:00",
+        "score_end": "2022-12-30T23:57:00",
+        "score_rows": 708197,
+        "chronology_assertion": true,
+        "model_retention": "not_saved_diagnostic_replica"
+      },
+      {
+        "scheme": "W3_trailing_12m",
+        "fold": "2023_2024",
+        "train_start": "2022-01-03T01:00:00",
+        "train_end": "2022-12-30T19:57:00",
+        "train_rows": 354199,
+        "window_months": 12,
+        "label_horizon_rows": 240,
+        "latest_training_label_bar": "2022-12-30T23:57:00",
+        "score_start": "2023-01-03T01:00:00",
+        "score_end": "2024-12-31T20:00:00",
+        "score_rows": 708020,
+        "chronology_assertion": true,
+        "model_retention": "not_saved_diagnostic_replica"
+      }
+    ]
+  },
+  "model": {
+    "trained": false,
+    "model_type": "XGBoost binary logistic diagnostic fold replicas",
+    "parameters": {
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    },
+    "boosted_rounds_or_estimators": 220,
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "feature_count": 31,
+    "label_definition": "BARRIER_TARGET == 1 versus all other classes",
+    "horizon": 240,
+    "label_tp_sl_semantics": "clean long barrier over 240 future M1 rows; TP=max(1.8 ATR,1.0); SL=max(1.2 ATR,0.8)",
+    "execution_tp_sl_semantics": "Frozen control: long HIGH/LOW first touch beginning after entry, TP=1.3 ATR, SL=1.6 ATR, stop-first same-bar, timeout=90 M1 rows",
+    "calibration_method": "none; diagnosis only",
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": "diagnostic_fold_models_not_saved",
+    "not_applicable_reason": "W1-W3 fold replicas are trained only to produce frozen diagnostic OOF predictions; they are not candidate artifacts. W0 is reused byte-for-byte from the preserved parent run.",
+    "diagnostic_fold_models_planned": 9,
+    "operational_candidate_trained": false,
+    "diagnostic_fold_models_trained": 9,
+    "w0_fold_predictions_reused": 3
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "No candidate search or strategy selection; W0-W3 are four pre-specified training-window diagnostics under one frozen strategy configuration."
+  },
+  "registry": {
+    "parent_or_incumbent": "gold_long_recent_candidate_xgb.json@2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+    "selected_configuration": "none_diagnostic_only_fixed_T0_R0_W0_W3",
+    "trades_per_day": 0.07391474384043802,
+    "realized_win_rate": 0.25396825396825395,
+    "pf": 0.3724855998495003,
+    "mean_r": -0.4459526009202168,
+    "pnl": -84.28504157392098,
+    "max_dd": -88.41767778745977,
+    "validator_result": "FAIL"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested_diagnostic_only",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gemini.py",
+      "path": "incumbent/gemini.py",
+      "sha256": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gold_long_recent_candidate_xgb.json",
+      "path": "incumbent/gold_long_recent_candidate_xgb.json",
+      "sha256": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "window_metrics.csv",
+      "sha256": "05dc60a72ed3a1b17ff2b606e5bbef1b4303a0f83c71535718e71baefa838e7e",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "trade_ledger.csv",
+      "sha256": "a85fde612f9aa4c848ed4703980fc53a20703109b441dfda9379673bc1d0cce2",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "evidence_comparison.csv",
+      "sha256": "06030bc9bde947dba1e96c8ea3cc54f2a8321f45f16f5e42fcdf327be90a4346",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "methodology_reconciliation.csv",
+      "sha256": "ba845a3f105e393b88d02880704c4602cb57042230cdd829667bc0b4aec3cf8f",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "probability_distribution.csv",
+      "sha256": "274a44d472cddddc10dd865dd766fca97784baa494bb465e3ea5661ec8da5c23",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "probability_buckets.csv",
+      "sha256": "ddfeef431b228c849feebd80002bbe6beeaa61fc959c87ba6a4f38d9cb511a78",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "calibration_summary.csv",
+      "sha256": "4487c01c3d943fe32109b9b4552e2b36a29c8f37dd83f09aeb1ab902e525feef",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "calibration_buckets.csv",
+      "sha256": "12518f64cac9d8611c2b71bc78141749ae3aef8995dfe599df203d3e906ba944",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "ranking_summary.csv",
+      "sha256": "dad0f8c5b85d2ee4392223e6058aedc18b5991e6d7884754150594a6647563fc",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "ranking_deciles.csv",
+      "sha256": "93dfdaf74d24b291438784c30c411448a5e5047152006a7799efe98ebfd38976",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "regime_context.csv",
+      "sha256": "1812ec37247966062ad18e9348f0a41c4ce8028c918e601edc2289926fe3131b",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "execution_reconciliation.csv",
+      "sha256": "d488a83e627e80142ea1aa4acd4de2aa2f287ebfafd3366f5f1adfa1ed85d26b",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "window_stability.csv",
+      "sha256": "4313361c3d87451d3a00a7519878e78adb62d0710a42b74cf458d9acebc22371",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "time_proximity.csv",
+      "sha256": "0cee595b31a7b779361c3dc4a337752f8b49911576c4ccf5bd1b17432443994b",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "diagnostic_predictions.npz",
+      "sha256": "475c4aae6b6967ceaba15741a4d77008290ffb95f01af388223cb640a59815f4",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "oof_model_provenance.json",
+      "sha256": "9e33710ca4be0ce14185b741b91a747f346f6b66b2914e94ae444edfb29bc782",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "metrics.json",
+      "sha256": "a0bd1f2969e1bae8b74e2b85a417958a981ef370fab1c79a7666234165902b8d",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "diagnostic_evidence",
+      "path": "report.md",
+      "sha256": "7a6ece2c1b51459186ad663696349ac681d3b4b27b5575a2d886523eac9afdd9",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "prior_report_snapshot",
+      "path": "prior_evidence/gold_long_recent_walk_forward.json",
+      "sha256": "cc670628a7da45eb50b778b4a4a2201c50713002ea7d2cc87e7a99a82231e6af",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "prior_report_snapshot",
+      "path": "prior_evidence/gold_long_recent_walk_forward.md",
+      "sha256": "cb9451e9415a6511d2a914a5c701de771cedde07f772aecc4f555f979e4d0c1d",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "live_monitoring_input_snapshot",
+      "path": "input_snapshots/gemini_signal_log.csv.gz",
+      "sha256": "2dc1eca813046c5e91bfc5bfb98c4bf508d2c093a21243d93042d76cb3719f3a",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "live_monitoring_input_snapshot",
+      "path": "input_snapshots/gemini_trade_history.csv",
+      "sha256": "e755a89b90e5851ad603399a28b58aea95597c3cc9aa59833e6a2e83e59d15ba",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "independent_validator_script",
+      "path": "validator_script.py",
+      "sha256": "966690b5b7fae27962112bd9f10f479f45ec4d2b0a67c80176a8973778256648",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "independent_validator_result",
+      "path": "validator.json",
+      "sha256": "ceb6acc336d8f5e2de2c68d33b68f35429c7ab2706fb4ff4cc87fb9255d0ab3e",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "independent_validator_report",
+      "path": "validator.md",
+      "sha256": "306fe899b05b6330d34e98cd832feef5a4e211cda88171c3cac85e80b4e50bc7",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    }
+  ],
+  "aborted_reason": null,
+  "pre_run_git": {
+    "pre_run_git_commit": "97a7889511961d15c6bb2c22090cd276adf36200",
+    "pre_run_git_dirty": false,
+    "remote_branch": "origin/main",
+    "head_sha": "97a7889511961d15c6bb2c22090cd276adf36200",
+    "upstream_sha": "97a7889511961d15c6bb2c22090cd276adf36200",
+    "head_equals_upstream": true
+  },
+  "evidence_status": {
+    "classification": "development_diagnostic_only",
+    "previous_forward_cutoff": "2026-09-01T02:00:00Z",
+    "previous_forward_status": "contaminated_for_future_gate_selection",
+    "new_forward_cutoff": null,
+    "candidate_selected": false,
+    "production_claim": false
+  },
+  "diagnostic_design": {
+    "strategy_configurations": 1,
+    "direction": "LONG only",
+    "threshold": 0.75,
+    "minimum_entry_rsi": 22.0,
+    "excluded_rsi_range": [
+      35.0,
+      45.0
+    ],
+    "tp_atr": 1.3,
+    "sl_atr": 1.6,
+    "max_hold_minutes": 90,
+    "max_open_positions": 1,
+    "training_windows": {
+      "W0_expanding": null,
+      "W1_trailing_24m": 24,
+      "W2_trailing_18m": 18,
+      "W3_trailing_12m": 12
+    },
+    "probability_buckets": [
+      {
+        "low_inclusive": 0.5,
+        "high_exclusive": 0.55
+      },
+      {
+        "low_inclusive": 0.55,
+        "high_exclusive": 0.6
+      },
+      {
+        "low_inclusive": 0.6,
+        "high_exclusive": 0.65
+      },
+      {
+        "low_inclusive": 0.65,
+        "high_exclusive": 0.7
+      },
+      {
+        "low_inclusive": 0.7,
+        "high_exclusive": 0.75
+      },
+      {
+        "low_inclusive": 0.75,
+        "high_exclusive": 0.8
+      },
+      {
+        "low_inclusive": 0.8,
+        "high_exclusive": 0.85
+      },
+      {
+        "low_inclusive": 0.85,
+        "high_exclusive": 0.9
+      },
+      {
+        "low_inclusive": 0.9,
+        "high_exclusive": 1.0
+      }
+    ],
+    "selection_or_promotion": "none"
+  },
+  "operational_hashes_before": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "dependency_sha256": {
+    "gold_gemini_core_gate_v1.py": "ae31c09af94466bf5deeafae4800b2e3a580dfeb31564b1123be69887f57932c",
+    "gold_long_recent_walk_forward.py": "575b56a8a6d526a0102904dc873bac3a70d7569ac09c656720bfd76def768280",
+    "barrier_classifier_strategy.py": "a743d15b90321e4d933e4657abd185922bb280b36ec48612b6f1688afb909174",
+    "drl_trading_v2.py": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767"
+  },
+  "operational_hashes_after": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "result": {
+    "classification": "methodology mismatch not yet resolved",
+    "direct_comparability": "partial",
+    "single_next_research_hypothesis": "EXECUTION-SEMANTICS RECONCILIATION: on one frozen prediction cohort, reproduce the exact live barwise eligibility order, position re-entry behavior, observed spread, and HIGH/LOW exits, then compare it with both retained simulators without selecting parameters.",
+    "no_candidate_created": true
+  },
+  "independent_validation": {
+    "overall": "FAIL",
+    "internal_methodology": "PASS",
+    "final_untouched_test_validity": "FAIL",
+    "failed_checks": [
+      "multiple-testing risk"
+    ],
+    "validator_script_sha256": "966690b5b7fae27962112bd9f10f479f45ec4d2b0a67c80176a8973778256648",
+    "diagnostic_conclusions_changed": false
+  }
+}

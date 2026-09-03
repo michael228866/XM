@@ -1,0 +1,18 @@
+area,original_recent,genuine_oof_control,materiality,can_explain_gap
+training history,2025-01-01 to each 2026 score boundary; recent rolling fit,expanding 2014 history before each 2018-2024 fold,high,yes; different fitted models and regimes
+training-window length,about 15-17 months,"about 4, 7, and 9 years",high,tested directly by frozen W0-W3 diagnostic
+model and class weighting,"binary logistic, 220 trees, lr .05, depth 4, min-child 80, balanced binary weights, seed 42","same model family, parameters, weights, and seed",low,no verified architecture-parameter difference
+selection,288 threshold/TP/SL/hold/session combinations selected on Apr-May 2026,"reported fixed T0_R0, though parent run also evaluated 20 threshold/RSI combinations",high,yes; old 70% validation is selection-conditioned and optimistic
+artifact identity,exact operational artifact scored only Jun-Aug 2026 test,three historical fold replicas; exact operational artifact not scored,critical,"yes; 25.40% is architecture replication evidence, not exact-artifact evidence"
+feature formulas/order,"build_feature_frame uses add_indicators, shifted 31 features, backward MTF as-of",prepare_barrier_data uses same add_indicators and shifted 31-feature order,low,no verified formula difference
+feature data source,dynamic MT5 copy_rates; raw snapshot not retained,local XM CSV exports with hashes,unknown,possible but not quantifiable because original raw snapshot is missing
+timezone/session semantics,MT5 epoch converted to naive timestamp,naive CSV export timestamps; exact UTC mapping unproven,potentially high,unresolved; session-hour equivalence cannot be proven
+label,"clean-window long label, horizon 240, TP 1.8 ATR/min1.0, SL 1.2 ATR/min0.8",same BARRIER_TARGET implementation,low,no verified label-formula difference
+label maturity,last 240 rows removed before validation/final fit,last 240 pre-fold rows purged and latest label bar verified,low,no verified maturity difference
+execution path,legacy simulator called without HIGH/LOW; close-only threshold exits,"precomputed M1 HIGH/LOW first-touch, stop-first same-bar",critical,yes; directly changes TP/SL ordering and realized WR/PF
+signal episode order,filters applied before rising-edge state,threshold episode formed before session/RSI/spread filters,high,yes; signals becoming eligible later in a persistent probability run are treated differently
+live entry semantics,legacy filtered rising edge,pre-filter threshold episode,high,neither is exact live behavior; live checks every new completed eligible bar when flat
+risk/cooldown state,legacy drawdown/loss-streak guards including a 120-tick pause after three losses,15-minute cooldown after every loss plus independently reconstructed daily/rolling guards,high,yes; executable identities and risk-scaled PF are not definitionally identical
+spread/cost,fixed 30-point spread plus 5-point extra; no spread gate,"observed spread when positive, 30-point fallback, 5-point extra, spread gate",medium,yes for PF/trade count; direction is measurable in retained ledgers
+metric units,risk-scaled account-currency PnL and percent DD,"unscaled net R, PF, Mean-R, and DD-R",high for PnL/DD,yes for numeric PnL/DD; WR remains comparable only after execution semantics match
+software environment,exact package lock not retained,Python/package versions retained,unknown,"cannot be excluded, but no evidence it is primary"

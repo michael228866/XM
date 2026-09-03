@@ -1,0 +1,7 @@
+method,fold,trades,trades_per_day,realized_wr,pf,pnl_account_currency,max_dd_pct,tp_count,sl_count,timeout_count,note
+legacy_close_only,2018_2020,194,0.177007299270073,0.3247422680412371,0.4745755350105098,-305.71991146852656,-0.33458374084898573,39,103,52,fixed 30-point spread plus 5-point extra cost; legacy filtered-rising signal semantics
+legacy_simulator_high_low,2018_2020,203,0.1852189781021898,0.3103448275862069,0.45038438327468017,-307.48352243456793,-0.32620730533762626,42,114,47,fixed 30-point spread plus 5-point extra cost; legacy filtered-rising signal semantics
+legacy_close_only,2021_2022,0,0.0,0.0,,0.0,0.0,0,0,0,fixed 30-point spread plus 5-point extra cost; legacy filtered-rising signal semantics
+legacy_simulator_high_low,2021_2022,0,0.0,0.0,,0.0,0.0,0,0,0,fixed 30-point spread plus 5-point extra cost; legacy filtered-rising signal semantics
+legacy_close_only,2023_2024,0,0.0,0.0,,0.0,0.0,0,0,0,fixed 30-point spread plus 5-point extra cost; legacy filtered-rising signal semantics
+legacy_simulator_high_low,2023_2024,0,0.0,0.0,,0.0,0.0,0,0,0,fixed 30-point spread plus 5-point extra cost; legacy filtered-rising signal semantics
