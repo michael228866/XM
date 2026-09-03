@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "run_id": "20260903T005036Z_gemini_incumbent_robustness_v1",
+  "experiment_name": "gemini_incumbent_robustness_v1",
+  "status": "aborted",
+  "started_at_utc": "2026-09-03T00:50:36.599239Z",
+  "finished_at_utc": "2026-09-03T00:53:13.879380Z",
+  "git_commit": "52747dfa3377acfcb8b8a927dc5a46b4cd2421a5",
+  "git_dirty": true,
+  "git_dirty_reason": "training_run_history.py create measured Git state after creating this untracked run directory; pre-run worktree was independently verified clean and HEAD equaled origin/main. Computation stopped before data loading or model fitting.",
+  "training_script": "D:\\XM\\數據\\gold_gemini_incumbent_robustness_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "adb83d97bc4bf7a44140da30f14b469425de3266b93544c6dd43e92f4ed0ae5f",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_gemini_incumbent_robustness_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [
+    "--run-dir=TRAINING_RUN_DIR"
+  ],
+  "random_seeds": {
+    "python": "42",
+    "xgboost": "42"
+  },
+  "random_seed_note": "",
+  "data": {
+    "symbols": [],
+    "data_sources": [],
+    "source_files": [],
+    "timezone": null,
+    "data_start_utc": null,
+    "data_end_utc": null,
+    "train_start_utc": null,
+    "train_end_utc": null,
+    "train_rows": null,
+    "validation_start_utc": null,
+    "validation_end_utc": null,
+    "validation_rows": null,
+    "test_start_utc": null,
+    "test_end_utc": null,
+    "test_rows": null,
+    "purge_details": null,
+    "embargo_details": null,
+    "raw_snapshot_retained": null,
+    "reproducibility_claim": null,
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": null
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": null
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": null
+  },
+  "registry": {
+    "parent_or_incumbent": null,
+    "selected_configuration": null,
+    "trades_per_day": null,
+    "realized_win_rate": null,
+    "pf": null,
+    "mean_r": null,
+    "pnl": null,
+    "max_dd": null,
+    "validator_result": null
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gemini.py",
+      "path": "incumbent/gemini.py",
+      "sha256": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gold_long_recent_candidate_xgb.json",
+      "path": "incumbent/gold_long_recent_candidate_xgb.json",
+      "sha256": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": "Pre-run Git state was misreported because create measured status after creating the untracked run directory; execution stopped before data/model computation."
+}

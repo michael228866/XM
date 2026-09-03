@@ -326,6 +326,7 @@ def create_run(
     experiment = clean_experiment(experiment)
     run_id = f"{now_utc().strftime('%Y%m%dT%H%M%SZ')}_{experiment}"
     run_dir = runs_root / run_id
+    pre_run_commit, pre_run_dirty = git_state(root)
     run_dir.mkdir(parents=True, exist_ok=False)
 
     suffix = "".join(script.suffixes) or ".txt"
@@ -342,6 +343,11 @@ def create_run(
         seed_note,
         root,
     )
+    # new_manifest runs after the run directory exists, which makes a clean
+    # worktree appear dirty. Preserve the state observed immediately before
+    # the immutable run directory was created.
+    manifest["git_commit"] = pre_run_commit
+    manifest["git_dirty"] = pre_run_dirty
     if archives:
         archive_dir = run_dir / "incumbent"
         archive_dir.mkdir()

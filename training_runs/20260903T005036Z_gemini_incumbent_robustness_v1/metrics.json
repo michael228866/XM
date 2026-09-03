@@ -1,0 +1,10 @@
+{
+  "summary": {
+    "status": "aborted_before_computation",
+    "reason": "pre-run git_dirty was incorrectly recorded after run-directory creation",
+    "data_loaded": false,
+    "diagnostic_models_trained": 0,
+    "operational_artifact_changed": false
+  },
+  "folds": []
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "20260903T005036Z_gemini_incumbent_robustness_v1",
+  "finalized_at_utc": "2026-09-03T00:53:13.894456Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "incumbent/gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "incumbent/gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+    "manifest.json": "bd43d0101a0792ff0dd3830971f33fd0b688f5473f0f441a5d3687e1df909518",
+    "metrics.json": "ef64d319a1c8f6ef4fa718067b6cff28a8f98fc4ccafc1bef65c1abe6d1bc9bd",
+    "report.md": "7cf1fc5b90a8a71b45e35fe883aaf3c86aa4efe7eae02de69327ce40a5331ee1",
+    "stdout.log": "256000fe4e6e040fde8eb9b3bd0754deaec9241c1906c8fcae282347c4b7ce22",
+    "training_script.py": "adb83d97bc4bf7a44140da30f14b469425de3266b93544c6dd43e92f4ed0ae5f"
+  }
+}
