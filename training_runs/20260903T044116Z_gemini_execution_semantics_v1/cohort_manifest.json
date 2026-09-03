@@ -1,0 +1,73 @@
+{
+  "created_at_utc": "2026-09-03T04:46:26.011265Z",
+  "operational_model": {
+    "path": "gold_long_recent_candidate_xgb.json",
+    "sha256": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "probability_freeze": "one probability vector per cohort; all S0-S5 consume identical in-memory and retained values",
+  "primary": {
+    "raw_m1_rows_with_warmup": 585724,
+    "mtf_rows": {
+      "Daily": 456,
+      "H12": 891,
+      "H1": 10166,
+      "H2": 5305,
+      "H3": 3547,
+      "H4": 2659,
+      "H6": 1777,
+      "H8": 1332,
+      "M10": 60956,
+      "M12": 50803,
+      "M15": 40639,
+      "M20": 30484,
+      "M2": 304648,
+      "M30": 20321,
+      "M3": 203163,
+      "M4": 152376,
+      "M5": 121901,
+      "M6": 101592,
+      "Monthly": 44,
+      "Weekly": 116
+    },
+    "scored_rows": 83911,
+    "expected_scored_rows": 83911,
+    "row_count_matches_old_report": true,
+    "first_api_timestamp": "2026-06-01T01:00:00",
+    "last_api_timestamp": "2026-08-25T05:49:00",
+    "feature_count": 31,
+    "probability_source": "one read-only predict_proba call with exact operational artifact",
+    "rows": 83911,
+    "path": "primary_frozen_cohort.csv.gz",
+    "sha256": "238ccc09196dfd3cfd9a70a003afd74245904f2e6eab2dc8f227373b36b82303",
+    "api_timestamp_start": "2026-06-01T01:00:00",
+    "api_timestamp_end": "2026-08-25T05:49:00",
+    "inferred_actual_utc_start": "2026-05-31T22:00:00",
+    "inferred_actual_utc_end": "2026-08-25T02:49:00",
+    "data_source": "XMGlobal-MT5 6 via D:/XM2/terminal64.exe; re-fetched historical bars",
+    "raw_snapshot_limit": "old 2026 fetch was not retained; current row-count/S0 reconciliation can test but not prove byte identity"
+  },
+  "secondary": {
+    "source_run": "20260903T005405Z_gemini_incumbent_robustness_v1",
+    "source_predictions": "training_runs/20260903T005405Z_gemini_incumbent_robustness_v1/diagnostic_predictions.npz",
+    "source_predictions_sha256": "475c4aae6b6967ceaba15741a4d77008290ffb95f01af388223cb640a59815f4",
+    "source_report_sha256": "7a6ece2c1b51459186ad663696349ac681d3b4b27b5575a2d886523eac9afdd9",
+    "rows": 1058080,
+    "first_timestamp": "2018-01-02T00:00:00",
+    "last_timestamp": "2020-12-31T18:50:00",
+    "timezone_status": "historical CSV timestamp timezone not independently recoverable; recorded hour retained",
+    "features_in_source_architecture": 31,
+    "path": "secondary_frozen_cohort.npz",
+    "sha256": "f654abfdb294fffdda55fb336de76d8f0fa5c8c762eaf144b5178ffb8f90d27b"
+  },
+  "broker_offset": {
+    "rows": 28603,
+    "first_date": "2026-06-08",
+    "last_date": "2026-08-25",
+    "median_bar_minus_event_minutes": 179.0,
+    "p01_minutes": 178.0,
+    "p99_minutes": 179.0,
+    "completed_bar_adjustment_minutes": 1,
+    "inferred_broker_offset_hours": 3,
+    "basis": "bar_time minus UTC event_time plus one completed-bar minute; contemporaneous gemini_signal_log rows"
+  }
+}

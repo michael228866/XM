@@ -1,0 +1,20 @@
+{
+  "legacy_filtered_rising_opportunities": 22,
+  "core_gate_episode_opportunities": 15,
+  "live_equivalent_entries": 17,
+  "seen_by_all_three": 12,
+  "legacy_only": 5,
+  "core_gate_only": 0,
+  "live_equivalent_only": 3,
+  "legacy_and_live_not_core": 2,
+  "core_and_live_not_legacy": 0,
+  "entries_delayed_within_raw_episode": 5,
+  "entries_enabled_after_prior_close_same_episode": 2,
+  "eligible_rows_prevented_by_occupancy": 24,
+  "rsi_floor_blocked_rows": 8,
+  "rsi_range_blocked_rows": 30,
+  "session_blocked_rows": 49,
+  "spread_blocked_rows": 0,
+  "risk_cooldown_blocked_rows": 20,
+  "matching_note": "opportunity intersections use exact decision-row identity; S5 counts are executable entries after occupancy/risk"
+}

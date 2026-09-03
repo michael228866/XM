@@ -1,0 +1,32 @@
+{
+  "run_id": "20260903T044116Z_gemini_execution_semantics_v1",
+  "finalized_at_utc": "2026-09-03T04:48:48.919883Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "cohort_manifest.json": "1084bb722e7aa133e44b9bf0e97a44b8a03d4b92bc24d849563bd0ce5787736b",
+    "cost_attribution.json": "3a8748f2439763feebc2f5bf9243dd4ebc788c1a9fc718df09cfbc81daf00f13",
+    "entry_state_attribution.json": "6c661f01e8fc3cb7ba31493b58a17868ddcfeef7d128b34f19ac1d1e6cc731cd",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "incumbent/gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "incumbent/gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+    "input_snapshots/gemini_signal_log.csv.gz": "42e2eefeccf853a4235fafdf291608b29843b9e78f96fecaa07d957b241150df",
+    "intrabar_trade_attribution.csv": "bf5fe1336639242859fa32e5a3823570bc7304660e2d44d8969e9e66c4d1685b",
+    "manifest.json": "d0f20787a909ba12fb8b1da8841de475fd271bafe0fb5aa750292e53ba743db5",
+    "metrics.json": "ab7d7022d463debf57d37d24076ab3d897b759676ca2c8792648acffd8ee033c",
+    "primary_frozen_cohort.csv.gz": "238ccc09196dfd3cfd9a70a003afd74245904f2e6eab2dc8f227373b36b82303",
+    "report.md": "20bdac390612c46d1e3d38e951a5d66ee4d73acac09f375d86eaaa119af71b3c",
+    "secondary_frozen_cohort.npz": "f654abfdb294fffdda55fb336de76d8f0fa5c8c762eaf144b5178ffb8f90d27b",
+    "simulator_comparison.csv": "776494740818bdc8476547b40ce87fae06d4157247192015ba8fcdd703f8f1c7",
+    "stdout.log": "c8cd73a4968dc7b1fa3145d356cfe78790ffe1820b7de4ca5b86385e18a85443",
+    "timestamp_reconciliation.csv": "c83c65827166c5bd605d1c44b0c9571e230894a2e1d4799e50cbc62ac0c39d60",
+    "timezone_attribution.json": "270f9fef7d36b0ee3ea5142688ff6a9b0f17ee6482c301f69196ba31ecc53777",
+    "trade_identity_comparison.csv": "d93977efde1be153f27acf08b4314ac3ee5902cdac71185eb7f1c88df5df2ad0",
+    "trade_ledger.csv": "df2338be446a98574e26f10fb545dd85e3a5e75d93d1231a6cadc3559ff28fec",
+    "training_script.py": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+    "transition_attribution.csv": "482fc14ddf2fa22c3d75fce77dda7feb2f12ee1fe752ffaa247107874060ffac",
+    "validator.json": "7d3667ad2bc4a42fa434edd4c51446a86236b66fb5a9cc74722080e482af12dc",
+    "validator.md": "f07a81fb3b05dfec74756786aa8e83485932f41ccb9fddcdd0cbba0213ab953f",
+    "validator_script.py": "8c944719fa976c54667c712901b29438e8d64aece309658563ae13be35504824",
+    "validator_stdout.log": "110d914a68de98440567ec2988a31b83926da2199b2964204731dc4dcbccf344"
+  }
+}

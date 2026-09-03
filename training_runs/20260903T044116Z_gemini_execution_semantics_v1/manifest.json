@@ -1,0 +1,440 @@
+{
+  "schema_version": 1,
+  "run_id": "20260903T044116Z_gemini_execution_semantics_v1",
+  "experiment_name": "gemini_execution_semantics_v1",
+  "status": "research_only",
+  "started_at_utc": "2026-09-03T04:41:16.484975Z",
+  "finished_at_utc": "2026-09-03T04:48:48.864860Z",
+  "git_commit": "b108615855992f8586b224e5a62b9eeac31838bc",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\gold_gemini_execution_semantics_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_gemini_execution_semantics_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [
+    "--run-dir=TRAINING_RUN_DIR"
+  ],
+  "random_seeds": {},
+  "random_seed_note": "No stochastic training or selection; existing operational and preserved OOF probabilities only.",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "XMGlobal-MT5 6 historical rates",
+      "prior preserved W0 OOF cohort"
+    ],
+    "source_files": [
+      {
+        "path": "primary_frozen_cohort.csv.gz",
+        "sha256": "238ccc09196dfd3cfd9a70a003afd74245904f2e6eab2dc8f227373b36b82303",
+        "retention_status": "stored_in_run_directory"
+      },
+      {
+        "path": "secondary_frozen_cohort.npz",
+        "sha256": "f654abfdb294fffdda55fb336de76d8f0fa5c8c762eaf144b5178ffb8f90d27b",
+        "retention_status": "stored_in_run_directory"
+      }
+    ],
+    "timezone": "MT5 API timestamp empirically maps to broker UTC+3 during primary; exact recorded API hour retained",
+    "data_start_utc": "2026-05-31T22:00:00",
+    "data_end_utc": "2026-08-25T02:49:00",
+    "train_start_utc": "not_applicable_no_training",
+    "train_end_utc": "before 2026-06-01 broker/API test boundary per retained legacy training code/report",
+    "train_rows": 0,
+    "validation_start_utc": "not_applicable_no_training_or_selection",
+    "validation_end_utc": "not_applicable_no_training_or_selection",
+    "validation_rows": 0,
+    "test_start_utc": "2026-05-31T22:00:00",
+    "test_end_utc": "2026-08-25T02:49:00",
+    "test_rows": 83911,
+    "purge_details": "not applicable to this no-fitting run; operational artifact was fit before primary",
+    "embargo_details": "not applicable to this no-fitting run",
+    "raw_snapshot_retained": true,
+    "reproducibility_claim": "simulator-exact from frozen cohort; original MT5 fetch byte identity unavailable",
+    "mt5_fetch": {
+      "used": true,
+      "terminal_path": "D:\\XM2\\terminal64.exe",
+      "terminal_info": {
+        "name": "XM Global MT5",
+        "path": "D:\\XM2",
+        "build": 6140,
+        "connected": true
+      },
+      "broker_info": {
+        "login": 309448945,
+        "server": "XMGlobal-MT5 6",
+        "currency": "USD"
+      },
+      "fetch_start_utc": "2025-01-01 00:00:00+00:00",
+      "fetch_end_utc": "2026-08-25T05:49:00",
+      "retrieved_at_utc": "2026-09-03T04:46:26.033026Z",
+      "returned_rows": 83911,
+      "not_applicable_reason": null
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": "existing XGBoost long-binary operational artifact; no fitting",
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "feature_count": 31,
+    "label_definition": "not applicable; no labels or fitting in this execution diagnostic",
+    "horizon": null,
+    "label_tp_sl_semantics": "not applicable; no model fitting",
+    "execution_tp_sl_semantics": "S0 close-only; S1-S5 HIGH/LOW stop-first; exact definitions retained in manifest",
+    "calibration_method": "none",
+    "artifact_path": "gold_long_recent_candidate_xgb.json",
+    "artifact_sha256": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+    "retention_status": "operational artifact snapshotted by training_run_history.py create",
+    "not_applicable_reason": "Operational artifact is loaded read-only and never retrained or saved."
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "Six simulator definitions are fixed semantic transitions, not strategy candidates."
+  },
+  "registry": {
+    "parent_or_incumbent": "gold_long_recent_candidate_xgb.json@2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+    "selected_configuration": "none_diagnostic_S0_through_S5",
+    "trades_per_day": 0.17605490304754295,
+    "realized_win_rate": 0.6666666666666666,
+    "pf": 1.3447233113908017,
+    "mean_r": 0.16925775798376314,
+    "pnl": 2.538866369756447,
+    "max_dd": -4.573366379496617,
+    "validator_result": "FAIL"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested_diagnostic_only",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gemini.py",
+      "path": "incumbent/gemini.py",
+      "sha256": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gold_long_recent_candidate_xgb.json",
+      "path": "incumbent/gold_long_recent_candidate_xgb.json",
+      "sha256": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "primary_frozen_cohort.csv.gz",
+      "sha256": "238ccc09196dfd3cfd9a70a003afd74245904f2e6eab2dc8f227373b36b82303",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "secondary_frozen_cohort.npz",
+      "sha256": "f654abfdb294fffdda55fb336de76d8f0fa5c8c762eaf144b5178ffb8f90d27b",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "input_snapshots/gemini_signal_log.csv.gz",
+      "sha256": "42e2eefeccf853a4235fafdf291608b29843b9e78f96fecaa07d957b241150df",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "cohort_manifest.json",
+      "sha256": "1084bb722e7aa133e44b9bf0e97a44b8a03d4b92bc24d849563bd0ce5787736b",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "simulator_comparison.csv",
+      "sha256": "776494740818bdc8476547b40ce87fae06d4157247192015ba8fcdd703f8f1c7",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "trade_ledger.csv",
+      "sha256": "df2338be446a98574e26f10fb545dd85e3a5e75d93d1231a6cadc3559ff28fec",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "trade_identity_comparison.csv",
+      "sha256": "d93977efde1be153f27acf08b4314ac3ee5902cdac71185eb7f1c88df5df2ad0",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "transition_attribution.csv",
+      "sha256": "482fc14ddf2fa22c3d75fce77dda7feb2f12ee1fe752ffaa247107874060ffac",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "intrabar_trade_attribution.csv",
+      "sha256": "bf5fe1336639242859fa32e5a3823570bc7304660e2d44d8969e9e66c4d1685b",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "timestamp_reconciliation.csv",
+      "sha256": "c83c65827166c5bd605d1c44b0c9571e230894a2e1d4799e50cbc62ac0c39d60",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "entry_state_attribution.json",
+      "sha256": "6c661f01e8fc3cb7ba31493b58a17868ddcfeef7d128b34f19ac1d1e6cc731cd",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "cost_attribution.json",
+      "sha256": "3a8748f2439763feebc2f5bf9243dd4ebc788c1a9fc718df09cfbc81daf00f13",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "timezone_attribution.json",
+      "sha256": "270f9fef7d36b0ee3ea5142688ff6a9b0f17ee6482c301f69196ba31ecc53777",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "metrics.json",
+      "sha256": "ab7d7022d463debf57d37d24076ab3d897b759676ca2c8792648acffd8ee033c",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "execution_semantics_diagnostic_evidence",
+      "path": "report.md",
+      "sha256": "20bdac390612c46d1e3d38e951a5d66ee4d73acac09f375d86eaaa119af71b3c",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "independent_validator_script",
+      "path": "validator_script.py",
+      "sha256": "8c944719fa976c54667c712901b29438e8d64aece309658563ae13be35504824",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "independent_validator_result",
+      "path": "validator.json",
+      "sha256": "7d3667ad2bc4a42fa434edd4c51446a86236b66fb5a9cc74722080e482af12dc",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "independent_validator_report",
+      "path": "validator.md",
+      "sha256": "f07a81fb3b05dfec74756786aa8e83485932f41ccb9fddcdd0cbba0213ab953f",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    }
+  ],
+  "aborted_reason": null,
+  "pre_run_git": {
+    "pre_run_git_commit": "b108615855992f8586b224e5a62b9eeac31838bc",
+    "pre_run_git_dirty": false,
+    "remote_branch": "origin/main",
+    "head_sha": "b108615855992f8586b224e5a62b9eeac31838bc",
+    "origin_main_sha": "b108615855992f8586b224e5a62b9eeac31838bc",
+    "head_equals_origin_main": true
+  },
+  "evidence_status": {
+    "classification": "development_diagnostic_only",
+    "previous_forward_cutoff": "2026-09-01T02:00:00Z",
+    "previous_forward_status": "contaminated_for_future_gate_selection",
+    "new_forward_cutoff": null,
+    "candidate_selected": false,
+    "production_claim": false
+  },
+  "diagnostic_design": {
+    "strategy_configurations": 1,
+    "candidate_selection": 0,
+    "direction": "LONG only",
+    "threshold": 0.75,
+    "minimum_entry_rsi": 22.0,
+    "excluded_rsi_range": [
+      35.0,
+      45.0
+    ],
+    "tp_atr": 1.3,
+    "sl_atr": 1.6,
+    "max_hold_minutes": 90,
+    "max_open_positions": 1,
+    "allowed_hours": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      8,
+      9,
+      11,
+      12,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23
+    ],
+    "allowed_weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "simulator_definitions": {
+      "S0": {
+        "simulator": "S0",
+        "exit_mode": "close_only",
+        "entry_policy": "legacy_filtered_rising",
+        "cost_mode": "fixed",
+        "spread_gate": false,
+        "risk_mode": "legacy",
+        "entry_price_mode": "close",
+        "entry_bar_exits": false,
+        "timeout_mode": "bar_count"
+      },
+      "S1": {
+        "simulator": "S1",
+        "exit_mode": "high_low_stop_first",
+        "entry_policy": "legacy_filtered_rising",
+        "cost_mode": "fixed",
+        "spread_gate": false,
+        "risk_mode": "legacy",
+        "entry_price_mode": "close",
+        "entry_bar_exits": false,
+        "timeout_mode": "bar_count"
+      },
+      "S2": {
+        "simulator": "S2",
+        "exit_mode": "high_low_stop_first",
+        "entry_policy": "live_barwise",
+        "cost_mode": "fixed",
+        "spread_gate": false,
+        "risk_mode": "legacy",
+        "entry_price_mode": "close",
+        "entry_bar_exits": false,
+        "timeout_mode": "bar_count"
+      },
+      "S3": {
+        "simulator": "S3",
+        "exit_mode": "high_low_stop_first",
+        "entry_policy": "live_barwise",
+        "cost_mode": "observed_fallback",
+        "spread_gate": true,
+        "risk_mode": "legacy",
+        "entry_price_mode": "close",
+        "entry_bar_exits": false,
+        "timeout_mode": "bar_count"
+      },
+      "S4": {
+        "simulator": "S4",
+        "exit_mode": "high_low_stop_first",
+        "entry_policy": "live_barwise",
+        "cost_mode": "observed_fallback",
+        "spread_gate": true,
+        "risk_mode": "live",
+        "entry_price_mode": "close",
+        "entry_bar_exits": false,
+        "timeout_mode": "bar_count"
+      },
+      "S5": {
+        "simulator": "S5",
+        "exit_mode": "high_low_stop_first",
+        "entry_policy": "live_barwise",
+        "cost_mode": "observed_fallback",
+        "spread_gate": true,
+        "risk_mode": "live",
+        "entry_price_mode": "open",
+        "entry_bar_exits": true,
+        "timeout_mode": "wall_clock"
+      }
+    },
+    "transition_allowed_changes": {
+      "S0->S1": [
+        "exit_mode"
+      ],
+      "S1->S2": [
+        "entry_policy"
+      ],
+      "S2->S3": [
+        "cost_mode",
+        "spread_gate"
+      ],
+      "S3->S4": [
+        "risk_mode"
+      ],
+      "S4->S5": [
+        "entry_price_mode",
+        "entry_bar_exits",
+        "timeout_mode"
+      ]
+    },
+    "primary_cohort": "2026-06-01T00:00:00..2026-08-25T05:49:00 broker/API labels",
+    "secondary_cohort": "2018-01-02T00:00:00..2020-12-31T18:50:00 prior W0"
+  },
+  "operational_hashes_before": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "dependency_sha256": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_walk_forward.py": "575b56a8a6d526a0102904dc873bac3a70d7569ac09c656720bfd76def768280",
+    "gold_recent_walk_forward.py": "cf14bbd97e88632ae53cadaabf5e3341f844f5096e8dd0493f8f96a4bf810334",
+    "barrier_classifier_strategy.py": "a743d15b90321e4d933e4657abd185922bb280b36ec48612b6f1688afb909174",
+    "barrier_final_train.py": "a221bda6c61fa89bde0592453de7a8ac84efb80f06b74e7686b872484e2edee5",
+    "gold_gemini_incumbent_robustness_v1.py": "adb83d97bc4bf7a44140da30f14b469425de3266b93544c6dd43e92f4ed0ae5f"
+  },
+  "operational_hashes_after": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "diagnostic_result": {
+    "s0_reproduced": true,
+    "s5_economically_positive": false,
+    "classification": "a combination of recent-sample signal quality, selection conditioning, and simulator optimism/execution mismatch; it is not execution-robust alpha",
+    "single_next_hypothesis": "EXECUTION-ALIGNED LABEL/MODEL VALIDATION: test whether a model trained on HIGH/LOW stop-first executable outcomes contains alpha, without threshold tuning."
+  }
+}

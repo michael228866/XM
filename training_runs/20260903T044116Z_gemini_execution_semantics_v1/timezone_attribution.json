@@ -1,0 +1,35 @@
+{
+  "candidate_rows_with_session_change": 45,
+  "all_rows_with_session_change": 41740,
+  "s5_api_hour_trades": 17,
+  "s5_utc_corrected_trades": 17,
+  "s5_trade_identity_difference": 8,
+  "identity_counts": {
+    "trades_retained": 13,
+    "trades_removed": 4,
+    "trades_added": 4,
+    "entry_timestamp_changed": 0,
+    "exit_timestamp_changed": 0,
+    "tp_to_sl": 0,
+    "sl_to_tp": 0,
+    "timeout_to_tp_or_sl": 0,
+    "pnl_sign_changed": 0
+  },
+  "utc_corrected_audit": {
+    "raw_qualifying_rows": 148,
+    "independent_episodes": 33,
+    "session_blocked_rows": 54,
+    "rsi_floor_blocked_rows": 11,
+    "rsi_range_blocked_rows": 16,
+    "spread_blocked_rows": 0,
+    "position_blocked_rows": 34,
+    "risk_cooldown_blocked_rows": 16,
+    "daily_loss_blocked_rows": 0,
+    "legacy_pause_blocked_rows": 0,
+    "eligible_flat_rows": 17,
+    "entries": 17,
+    "later_entries_in_episode": 6,
+    "entries_after_prior_close_same_episode": 3
+  },
+  "policy": "S0-S5 use broker/API-labeled hour because gemini.py does; UTC-corrected alternative is diagnostic only"
+}

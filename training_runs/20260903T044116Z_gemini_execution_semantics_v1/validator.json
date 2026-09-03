@@ -1,0 +1,336 @@
+{
+  "overall": "FAIL",
+  "internal_methodology": "PASS",
+  "final_untouched_test_validity": "FAIL",
+  "checks": {
+    "chronology": {
+      "verdict": "PASS",
+      "evidence": "cohort_manifest.json; primary feature_bar_time < decision_time; prior W0 OOF source",
+      "reason": "The operational artifact was fit before the primary score boundary; secondary predictions are preserved chronological OOF; completed-bar times precede decisions.",
+      "required_validation_correction": "none"
+    },
+    "feature leakage": {
+      "verdict": "PASS",
+      "evidence": "primary_frozen_cohort.csv.gz all_features_finite; 31 shifted features",
+      "reason": "One precomputed probability vector uses completed-bar shifted features; no exit/outcome field enters scoring.",
+      "required_validation_correction": "none"
+    },
+    "label maturity": {
+      "verdict": "PASS",
+      "evidence": "manifest.model.trained=false; manifest.model.label_definition",
+      "reason": "No model fitting or label use occurs in this execution-only diagnostic.",
+      "required_validation_correction": "none"
+    },
+    "OOF predictions": {
+      "verdict": "PASS",
+      "evidence": "cohort_manifest probability_freeze; exact artifact primary; prior W0 secondary",
+      "reason": "The exact pre-test artifact scores primary once; secondary reuses byte-preserved W0 OOF scores; S0-S5 share each vector.",
+      "required_validation_correction": "none"
+    },
+    "calibration": {
+      "verdict": "PASS",
+      "evidence": "manifest.model.calibration_method=none",
+      "reason": "No calibrator or probability adjustment is fitted or selected.",
+      "required_validation_correction": "none"
+    },
+    "threshold selection": {
+      "verdict": "PASS",
+      "evidence": "manifest.search; six predeclared simulator definitions",
+      "reason": "Threshold 0.75 and every strategy parameter are fixed; simulator variants are causal definitions, not selected candidates.",
+      "required_validation_correction": "none"
+    },
+    "purge/embargo": {
+      "verdict": "PASS",
+      "evidence": "manifest.model.trained=false; retained legacy training code; prior W0 provenance",
+      "reason": "No fit boundary exists in this run; the existing artifact was fitted before primary and secondary was already purged OOF.",
+      "required_validation_correction": "none"
+    },
+    "holdout contamination": {
+      "verdict": "PASS",
+      "evidence": "manifest.evidence_status",
+      "reason": "The primary and secondary intervals are explicitly development diagnostics and support no untouched or promotion claim.",
+      "required_validation_correction": "none"
+    },
+    "recent-period reuse": {
+      "verdict": "PASS",
+      "evidence": "manifest.evidence_status.previous_forward_status",
+      "reason": "The prior forward interval remains contaminated and is used only for the requested simulator reconciliation.",
+      "required_validation_correction": "none"
+    },
+    "execution alignment": {
+      "verdict": "PASS",
+      "evidence": "simulator definitions; trade ledger; transition/trade identity/timestamp tables",
+      "reason": "Every transition is isolated, trades use deterministic episode/ordinal matching, and S1-S5 HIGH/LOW stop-first plus S5 live timing reconcile.",
+      "required_validation_correction": "none"
+    },
+    "cost assumptions": {
+      "verdict": "PASS",
+      "evidence": "trade_ledger.csv gross_price/spread/extra_cost/net_r/risk_budget",
+      "reason": "Fixed and observed/fallback costs reconcile trade by trade; sizing is separated from unit-R economics.",
+      "required_validation_correction": "none"
+    },
+    "multiple-testing risk": {
+      "verdict": "FAIL",
+      "evidence": "all primary/secondary history previously inspected; no untouched final interval",
+      "reason": "S0-S5 were predeclared and none is selected, but these development periods have been repeatedly inspected and cannot support a final strategy claim.",
+      "required_validation_correction": "Freeze a future experiment before collecting genuinely new forward data; do not reuse this run for final selection."
+    }
+  },
+  "metric_reconciliation": {
+    "result": "PASS",
+    "errors": [],
+    "recomputed": [
+      {
+        "cohort": "PRIMARY_2026_RECENT",
+        "simulator": "S0",
+        "trades": 15,
+        "wins": 10,
+        "losses": 5,
+        "realized_wr": 0.6666666666666666,
+        "pf": 1.383636316639116,
+        "mean_r": 0.16925775798376314,
+        "pnl_r": 2.538866369756447,
+        "max_dd_r": -4.573366379496617,
+        "trades_per_day": 0.17605490304754295,
+        "risk_sized_pf": 1.3447233113908017,
+        "risk_sized_pnl": 34.251707657736446,
+        "tp": 9,
+        "sl": 5,
+        "timeout": 1
+      },
+      {
+        "cohort": "PRIMARY_2026_RECENT",
+        "simulator": "S1",
+        "trades": 16,
+        "wins": 10,
+        "losses": 6,
+        "realized_wr": 0.625,
+        "pf": 1.1294927959352499,
+        "mean_r": 0.048830838538514235,
+        "pnl_r": 0.7812934166162278,
+        "max_dd_r": -3.2065601621598825,
+        "trades_per_day": 0.18779189658404583,
+        "risk_sized_pf": 1.1125222492925382,
+        "risk_sized_pnl": 9.892535192788607,
+        "tp": 9,
+        "sl": 6,
+        "timeout": 1
+      },
+      {
+        "cohort": "PRIMARY_2026_RECENT",
+        "simulator": "S2",
+        "trades": 17,
+        "wins": 11,
+        "losses": 6,
+        "realized_wr": 0.6470588235294118,
+        "pf": 1.255341158487796,
+        "mean_r": 0.09062342252406973,
+        "pnl_r": 1.5405981829091853,
+        "max_dd_r": -3.01991692311631,
+        "trades_per_day": 0.1995288901205487,
+        "risk_sized_pf": 1.233392237686379,
+        "risk_sized_pnl": 20.627962208606487,
+        "tp": 10,
+        "sl": 6,
+        "timeout": 1
+      },
+      {
+        "cohort": "PRIMARY_2026_RECENT",
+        "simulator": "S3",
+        "trades": 16,
+        "wins": 10,
+        "losses": 6,
+        "realized_wr": 0.625,
+        "pf": 1.5124653569970323,
+        "mean_r": 0.16109451186230037,
+        "pnl_r": 2.577512189796806,
+        "max_dd_r": -2.01601445855802,
+        "trades_per_day": 0.18779189658404583,
+        "risk_sized_pf": 1.4824744400522365,
+        "risk_sized_pnl": 35.64273314511713,
+        "tp": 10,
+        "sl": 5,
+        "timeout": 1
+      },
+      {
+        "cohort": "PRIMARY_2026_RECENT",
+        "simulator": "S4",
+        "trades": 16,
+        "wins": 9,
+        "losses": 7,
+        "realized_wr": 0.5625,
+        "pf": 1.1314636805714495,
+        "mean_r": 0.04959860009426129,
+        "pnl_r": 0.7935776015081807,
+        "max_dd_r": -3.267304336281163,
+        "trades_per_day": 0.18779189658404583,
+        "risk_sized_pf": 1.1146832951603043,
+        "risk_sized_pnl": 10.05582164439444,
+        "tp": 9,
+        "sl": 6,
+        "timeout": 1
+      },
+      {
+        "cohort": "PRIMARY_2026_RECENT",
+        "simulator": "S5",
+        "trades": 17,
+        "wins": 9,
+        "losses": 8,
+        "realized_wr": 0.5294117647058824,
+        "pf": 0.9375062692403745,
+        "mean_r": -0.026642271111270273,
+        "pnl_r": -0.45291860889159463,
+        "max_dd_r": -3.225550511700554,
+        "trades_per_day": 0.1995288901205487,
+        "risk_sized_pf": 0.9271371204654193,
+        "risk_sized_pnl": -7.516235589113931,
+        "tp": 9,
+        "sl": 7,
+        "timeout": 1
+      },
+      {
+        "cohort": "SECONDARY_W0_2018_2020",
+        "simulator": "S0",
+        "trades": 194,
+        "wins": 63,
+        "losses": 131,
+        "realized_wr": 0.3247422680412371,
+        "pf": 0.4690326695291881,
+        "mean_r": -0.36771795929223294,
+        "pnl_r": -71.33728410269319,
+        "max_dd_r": -76.78408653213275,
+        "trades_per_day": 0.17720378816230994,
+        "risk_sized_pf": 0.4745755350105098,
+        "risk_sized_pnl": -305.7199114685256,
+        "tp": 39,
+        "sl": 103,
+        "timeout": 52
+      },
+      {
+        "cohort": "SECONDARY_W0_2018_2020",
+        "simulator": "S1",
+        "trades": 203,
+        "wins": 63,
+        "losses": 140,
+        "realized_wr": 0.3103448275862069,
+        "pf": 0.45787015447392804,
+        "mean_r": -0.35113658131944164,
+        "pnl_r": -71.28072600784665,
+        "max_dd_r": -75.48160132045848,
+        "trades_per_day": 0.18542458245849958,
+        "risk_sized_pf": 0.45038438327468006,
+        "risk_sized_pnl": -307.4835224345677,
+        "tp": 42,
+        "sl": 114,
+        "timeout": 47
+      },
+      {
+        "cohort": "SECONDARY_W0_2018_2020",
+        "simulator": "S2",
+        "trades": 200,
+        "wins": 60,
+        "losses": 140,
+        "realized_wr": 0.3,
+        "pf": 0.4577827761681262,
+        "mean_r": -0.352111377502745,
+        "pnl_r": -70.422275500549,
+        "max_dd_r": -74.62315081316083,
+        "trades_per_day": 0.18268431769310303,
+        "risk_sized_pf": 0.45608875993061504,
+        "risk_sized_pnl": -303.85128476473415,
+        "tp": 43,
+        "sl": 112,
+        "timeout": 45
+      },
+      {
+        "cohort": "SECONDARY_W0_2018_2020",
+        "simulator": "S3",
+        "trades": 200,
+        "wins": 61,
+        "losses": 139,
+        "realized_wr": 0.305,
+        "pf": 0.5070186471369039,
+        "mean_r": -0.3186300119561381,
+        "pnl_r": -63.72600239122762,
+        "max_dd_r": -68.69197193809974,
+        "trades_per_day": 0.18268431769310303,
+        "risk_sized_pf": 0.4861090607299816,
+        "risk_sized_pnl": -291.2171420610779,
+        "tp": 43,
+        "sl": 112,
+        "timeout": 45
+      },
+      {
+        "cohort": "SECONDARY_W0_2018_2020",
+        "simulator": "S4",
+        "trades": 237,
+        "wins": 71,
+        "losses": 166,
+        "realized_wr": 0.29957805907172996,
+        "pf": 0.470961107402488,
+        "mean_r": -0.34902220611872675,
+        "pnl_r": -82.71826285013825,
+        "max_dd_r": -89.24673239701035,
+        "trades_per_day": 0.2164809164663271,
+        "risk_sized_pf": 0.4849919546067039,
+        "risk_sized_pnl": -461.6028792218614,
+        "tp": 46,
+        "sl": 136,
+        "timeout": 55
+      },
+      {
+        "cohort": "SECONDARY_W0_2018_2020",
+        "simulator": "S5",
+        "trades": 240,
+        "wins": 72,
+        "losses": 168,
+        "realized_wr": 0.3,
+        "pf": 0.4799938189217555,
+        "mean_r": -0.3417277205099924,
+        "pnl_r": -82.01465292239817,
+        "max_dd_r": -88.15978913593676,
+        "trades_per_day": 0.21922118123172366,
+        "risk_sized_pf": 0.4725747369024319,
+        "risk_sized_pnl": -463.9991639009966,
+        "tp": 48,
+        "sl": 138,
+        "timeout": 54
+      }
+    ]
+  },
+  "cohort_reconciliation": {
+    "result": "PASS",
+    "errors": []
+  },
+  "transition_reconciliation": {
+    "result": "PASS",
+    "errors": []
+  },
+  "trade_matching": {
+    "result": "PASS",
+    "errors": []
+  },
+  "high_low_reconciliation": {
+    "result": "PASS",
+    "errors": []
+  },
+  "timezone_reconciliation": {
+    "result": "PASS",
+    "errors": []
+  },
+  "cost_reconciliation": {
+    "result": "PASS",
+    "errors": []
+  },
+  "cooldown_reconciliation": {
+    "result": "PASS",
+    "errors": []
+  },
+  "artifact_reconciliation": {
+    "result": "PASS",
+    "errors": []
+  },
+  "operational_artifacts_unchanged": true,
+  "submitted_claim": "valid_internal_execution_attribution_invalid_for_final_strategy_claim",
+  "smallest_validation_only_rerun": "No internal rerun is required; only final multiple-testing/untouched validity fails, which historical recomputation cannot repair."
+}
