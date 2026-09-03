@@ -1,0 +1,304 @@
+{
+  "overall": "FAIL",
+  "internal_methodology": "PASS",
+  "final_untouched_test_validity": "FAIL",
+  "checks": {
+    "chronology": {
+      "verdict": "PASS",
+      "evidence": "fold_model_provenance.json; paired_oof_predictions.npz",
+      "reason": "Every fold uses trailing 18 months and latest C0/C1 label information is strictly earlier than score start; feature bars precede decisions.",
+      "required_validation_correction": "none"
+    },
+    "feature leakage": {
+      "verdict": "PASS",
+      "evidence": "31-feature list/hashes; dependency SHA-256 inventory",
+      "reason": "Both models use the same shifted 31-feature matrices and producing dependencies match their executed hashes.",
+      "required_validation_correction": "none"
+    },
+    "label maturity": {
+      "verdict": "PASS",
+      "evidence": "C0 240-row maturity; C1 stored exit maturity; strict fold assertions",
+      "reason": "The common training cohort admits a row only after both labels mature strictly before scoring; C1 target equals net R > 0.",
+      "required_validation_correction": "none"
+    },
+    "OOF predictions": {
+      "verdict": "PASS",
+      "evidence": "six retained fold models; paired OOF score artifact",
+      "reason": "Each scored fold has separate C0/C1 models trained solely on the preceding purged 18-month cohort.",
+      "required_validation_correction": "none"
+    },
+    "calibration": {
+      "verdict": "PASS",
+      "evidence": "manifest.model.calibration_method",
+      "reason": "No calibration is fit, selected, or applied.",
+      "required_validation_correction": "none"
+    },
+    "threshold selection": {
+      "verdict": "PASS",
+      "evidence": "manifest.paired_design/search; model_comparison.csv",
+      "reason": "Threshold 0.75, one C1 label, parameters, folds, features, and window are preregistered and never searched.",
+      "required_validation_correction": "none"
+    },
+    "purge/embargo": {
+      "verdict": "PASS",
+      "evidence": "latest C0/C1 information times per fold",
+      "reason": "The shared purge uses the later of C0 and C1 maturity; no label interval reaches score start.",
+      "required_validation_correction": "none"
+    },
+    "holdout contamination": {
+      "verdict": "PASS",
+      "evidence": "manifest.evidence_status",
+      "reason": "All historical folds are explicitly development evidence and no holdout claim is made.",
+      "required_validation_correction": "none"
+    },
+    "recent-period reuse": {
+      "verdict": "PASS",
+      "evidence": "manifest.evidence_status.previous_forward_status",
+      "reason": "The inspected former forward interval remains contaminated and is not used as a fresh final test.",
+      "required_validation_correction": "none"
+    },
+    "execution alignment": {
+      "verdict": "PASS",
+      "evidence": "paired OOF OHLC cohort; exact preserved S5; independently reconstructed trade ledger",
+      "reason": "C0 and C1 traverse the same S5 barwise state machine with next-open entry, entry-bar HIGH/LOW stop-first, timeout, occupancy, sessions, and risk state.",
+      "required_validation_correction": "none"
+    },
+    "cost assumptions": {
+      "verdict": "PASS",
+      "evidence": "trade_ledger.csv gross/spread/extra-cost/net-R/stress-R",
+      "reason": "Observed/fallback spread and both nominal and stress costs reconcile per trade.",
+      "required_validation_correction": "none"
+    },
+    "multiple-testing risk": {
+      "verdict": "FAIL",
+      "evidence": "manifest.evidence_status; repository historical research record",
+      "reason": "The experiment is a single preregistered label hypothesis, but every historical fold has been inspected previously and no untouched final test exists.",
+      "required_validation_correction": "Freeze a qualified candidate first, then collect genuinely new post-freeze shadow data; do not relabel historical data."
+    }
+  },
+  "paired_provenance": "PASS",
+  "oof_identity": "PASS",
+  "trade_reconstruction": "PASS",
+  "metric_recomputation": "PASS",
+  "cost_recomputation": "PASS",
+  "operational_artifacts_unchanged": true,
+  "internal_errors": [],
+  "provenance_flags": {
+    "six_paired_fold_models": true,
+    "feature_count_31": true,
+    "identical_x_train": true,
+    "identical_x_score": true,
+    "identical_parameters": true,
+    "identical_seed": true,
+    "strict_maturity": true,
+    "model_hashes": true
+  },
+  "oof_summary": {
+    "rows": 2474297,
+    "feature_time_strictly_before_decision": true,
+    "c1_target_matches_positive_net_r": true,
+    "scores_finite": true
+  },
+  "recomputed_metrics": [
+    {
+      "model_id": "C0_legacy_label",
+      "fold": "2018_2020",
+      "trades": 570,
+      "wins": 173,
+      "losses": 397,
+      "realized_wr": 0.30350877192982456,
+      "average_winner_r": 0.9904341190969751,
+      "average_loser_r": -0.9606257408318791,
+      "payoff_ratio": 1.031030168147777,
+      "break_even_wr": 0.4923609780311448,
+      "break_even_adjusted_edge": -0.18885220610132025,
+      "pf": 0.44929022440696575,
+      "mean_r": -0.36846195878329707,
+      "pnl_r": -210.02331650647935,
+      "max_dd_r": -211.98168691776644,
+      "trades_per_day": 0.5200729927007299,
+      "cost_stress_pf": 0.3999016992525985,
+      "tp_first_wr": 0.18070175438596492
+    },
+    {
+      "model_id": "C0_legacy_label",
+      "fold": "2021_2022",
+      "trades": 195,
+      "wins": 59,
+      "losses": 136,
+      "realized_wr": 0.30256410256410254,
+      "average_winner_r": 1.0222940655394395,
+      "average_loser_r": -1.0419745402697032,
+      "payoff_ratio": 0.981112326674345,
+      "break_even_wr": 0.5047669365011124,
+      "break_even_adjusted_edge": -0.20220283393700983,
+      "pf": 0.4256296123072526,
+      "mean_r": -0.41740096210180866,
+      "pnl_r": -81.39318760985269,
+      "max_dd_r": -87.08744857642053,
+      "trades_per_day": 0.2671232876712329,
+      "cost_stress_pf": 0.3847135520104531,
+      "tp_first_wr": 0.22564102564102564
+    },
+    {
+      "model_id": "C0_legacy_label",
+      "fold": "2023_2024",
+      "trades": 65,
+      "wins": 23,
+      "losses": 42,
+      "realized_wr": 0.35384615384615387,
+      "average_winner_r": 1.3059312943782868,
+      "average_loser_r": -1.0220519444354312,
+      "payoff_ratio": 1.2777543269580756,
+      "break_even_wr": 0.4390289102580667,
+      "break_even_adjusted_edge": -0.08518275641191281,
+      "pf": 0.6997226076198985,
+      "mean_r": -0.198304029162885,
+      "pnl_r": -12.889761895587526,
+      "max_dd_r": -14.836736993030371,
+      "trades_per_day": 0.08891928864569083,
+      "cost_stress_pf": 0.6452817941792068,
+      "tp_first_wr": 0.2923076923076923
+    },
+    {
+      "model_id": "C0_legacy_label",
+      "fold": "pooled",
+      "trades": 830,
+      "wins": 255,
+      "losses": 575,
+      "realized_wr": 0.3072289156626506,
+      "average_winner_r": 1.026262244083546,
+      "average_loser_r": -0.9843532839186502,
+      "payoff_ratio": 1.0425751209952374,
+      "break_even_wr": 0.48957807706614664,
+      "break_even_adjusted_edge": -0.18234916140349605,
+      "pf": 0.46235940148484445,
+      "mean_r": -0.36663405543604766,
+      "pnl_r": -304.30626601191955,
+      "max_dd_r": -305.0822878573438,
+      "trades_per_day": 0.32459913961673836,
+      "cost_stress_pf": 0.41458123580123424,
+      "tp_first_wr": 0.2
+    },
+    {
+      "model_id": "C1_execution_aligned_label",
+      "fold": "2018_2020",
+      "trades": 498,
+      "wins": 289,
+      "losses": 209,
+      "realized_wr": 0.5803212851405622,
+      "average_winner_r": 0.6329346117086618,
+      "average_loser_r": -1.0098356118488245,
+      "payoff_ratio": 0.6267699458032324,
+      "break_even_wr": 0.6147150693186927,
+      "break_even_adjusted_edge": -0.03439378417813044,
+      "pf": 0.8666818867805465,
+      "mean_r": -0.05650108452329521,
+      "pnl_r": -28.137540092601014,
+      "max_dd_r": -49.51106078985202,
+      "trades_per_day": 0.4543795620437956,
+      "cost_stress_pf": 0.8245699200504323,
+      "tp_first_wr": 0.5682730923694779
+    },
+    {
+      "model_id": "C1_execution_aligned_label",
+      "fold": "2021_2022",
+      "trades": 24,
+      "wins": 14,
+      "losses": 10,
+      "realized_wr": 0.5833333333333334,
+      "average_winner_r": 0.6376800663386331,
+      "average_loser_r": -1.0197947009612267,
+      "payoff_ratio": 0.6253023924693624,
+      "break_even_wr": 0.6152701211992158,
+      "break_even_adjusted_edge": -0.03193678786588239,
+      "pf": 0.8754233494571074,
+      "mean_r": -0.05293442003630857,
+      "pnl_r": -1.2704260808714056,
+      "max_dd_r": -6.853080533085027,
+      "trades_per_day": 0.03287671232876712,
+      "cost_stress_pf": 0.8291714015669357,
+      "tp_first_wr": 0.5833333333333334
+    },
+    {
+      "model_id": "C1_execution_aligned_label",
+      "fold": "2023_2024",
+      "trades": 167,
+      "wins": 87,
+      "losses": 80,
+      "realized_wr": 0.5209580838323353,
+      "average_winner_r": 0.6603777001937072,
+      "average_loser_r": -1.0129088703822642,
+      "payoff_ratio": 0.6519616122469988,
+      "break_even_wr": 0.6053409429047202,
+      "break_even_adjusted_edge": -0.08438285907238485,
+      "pf": 0.7090082533186111,
+      "mean_r": -0.1411967048726265,
+      "pnl_r": -23.579849713728628,
+      "max_dd_r": -24.300883320606264,
+      "trades_per_day": 0.22845417236662108,
+      "cost_stress_pf": 0.6721445480673458,
+      "tp_first_wr": 0.5209580838323353
+    },
+    {
+      "model_id": "C1_execution_aligned_label",
+      "fold": "pooled",
+      "trades": 689,
+      "wins": 390,
+      "losses": 299,
+      "realized_wr": 0.5660377358490566,
+      "average_winner_r": 0.6392268811010171,
+      "average_loser_r": -1.0109909682829357,
+      "payoff_ratio": 0.6322775387268575,
+      "break_even_wr": 0.6126409120228287,
+      "break_even_adjusted_edge": -0.046603176173772076,
+      "pf": 0.8247098331219882,
+      "mean_r": -0.07690539315994348,
+      "pnl_r": -52.98781588720106,
+      "max_dd_r": -59.57958015890608,
+      "trades_per_day": 0.26945639421196715,
+      "cost_stress_pf": 0.7838186120438296,
+      "tp_first_wr": 0.5573294629898403
+    }
+  ],
+  "economic_gate": {
+    "c1_minus_c0": {
+      "trades": -141,
+      "trades_per_day": -0.05514274540477121,
+      "realized_wr": 0.258808820186406,
+      "pf": 0.36235043163714376,
+      "mean_r": 0.28972866227610417,
+      "pnl_r": 251.31845012471848,
+      "max_dd_r": 245.5027076984377
+    },
+    "c1_materially_improves_c0": true,
+    "c1_economic_viability": false,
+    "economic_viability_failure_reasons": [
+      "PF<=1",
+      "Mean-R<=0",
+      "PnL-R<=0",
+      "BE-edge<=0"
+    ],
+    "c1_full_quality_floor": false,
+    "full_quality_floor_failure_reasons": [
+      "PF<=1",
+      "Mean-R<=0",
+      "PnL-R<=0",
+      "BE-edge<=0",
+      "WR<60%",
+      "PF<=1.05",
+      "stress-PF<=1",
+      "catastrophic-fold=2018_2020,2023_2024"
+    ],
+    "catastrophic_folds": [
+      "2018_2020",
+      "2023_2024"
+    ],
+    "ranking_consistently_positive": true,
+    "classification": "execution_alignment_alone_does_not_recover_robust_alpha",
+    "single_next_research_hypothesis": "NEW TIMESTAMP-ALIGNED ALPHA INFORMATION: preregister one external entry-time information family and test incremental cross-regime discrimination under the frozen execution-aligned target before any further model or threshold tuning.",
+    "shadow_candidate_frozen": false
+  },
+  "smallest_validation_only_correction": "No internal rerun is required; final validity requires new data collected only after a completely frozen candidate cutoff.",
+  "submitted_claim": "valid_internal_paired_label_attribution_invalid_for_final_strategy_claim"
+}

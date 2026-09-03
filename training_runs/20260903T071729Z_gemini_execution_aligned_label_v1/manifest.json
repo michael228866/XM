@@ -1,0 +1,707 @@
+{
+  "schema_version": 1,
+  "run_id": "20260903T071729Z_gemini_execution_aligned_label_v1",
+  "experiment_name": "gemini_execution_aligned_label_v1",
+  "status": "fail",
+  "started_at_utc": "2026-09-03T07:17:30.029061Z",
+  "finished_at_utc": "2026-09-03T07:25:42.586727Z",
+  "git_commit": "b9b3dc98181b8b70b38ed29f5428a8c0cc3d3490",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\gold_gemini_execution_aligned_label_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "9e436e4fe723eb8ad354f5f27a342b60d051c5c71d533f523871b381fc7012c6",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_gemini_execution_aligned_label_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [
+    "--run-dir=TRAINING_RUN_DIR"
+  ],
+  "random_seeds": {
+    "xgboost": "42"
+  },
+  "random_seed_note": "",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "repository-local XM historical CSV exports"
+    ],
+    "source_files": [
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Daily_201401020000_202605080000.csv",
+        "sha256": "2a309acb6e63bad17f1d06bb14c9d81c7427b309ff7161167c8cab6638627afb",
+        "bytes": 178076,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H12_201401020000_202605081200.csv",
+        "sha256": "c9c37e623d13f6d5ca9e6e28c342cdda394bb9372759759464edd6566e8602f8",
+        "bytes": 411129,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H1_201401020000_202605082300.csv",
+        "sha256": "66102d419bcbd8f693a32db8023c40eb2d8fad426d5e2b0495e3f1aa04f0aaba",
+        "bytes": 4673255,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H2_201401020000_202605082200.csv",
+        "sha256": "07c6b7fc8275aa86f13c19c47570e58a4c4743da995a42486ace1653ecf677c3",
+        "bytes": 2418205,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H3_201401020000_202605082100.csv",
+        "sha256": "b9b088a50a6da5acae48f9968544224b37006c337916f71c24152df8570d989d",
+        "bytes": 1619915,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H4_201401020000_202605082000.csv",
+        "sha256": "570c59153ff62136b9024a8bf141a9ef4d2ba59be1065cc8156479279a73caba",
+        "bytes": 1217831,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H6_201401020000_202605081800.csv",
+        "sha256": "95bf97074819faa43b20e44c1de7cfabbb55df71cbcc5cd67ad9511569606ba1",
+        "bytes": 817208,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_H8_201401020000_202605081600.csv",
+        "sha256": "1ba71eb1c9291d5b7eb4f72b0c32ad29f077cf5af5d44e4263173ea6e0f7a727",
+        "bytes": 614121,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M10_201401020000_202605082350.csv",
+        "sha256": "e133b567dfc5abba4817402932d00fdf83000c287f42dda7a8b9d9edf95c72f9",
+        "bytes": 26558995,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M12_201401020000_202605082348.csv",
+        "sha256": "e2e7b9924ca98bfe1cde485b4b819f803e626c840be7bfae5016d8da4490ea5f",
+        "bytes": 22206082,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M15_201401020000_202605082345.csv",
+        "sha256": "739ef72fe599f2c002c7d5432ab0079545d7f1a0eb0d7c48ae77e9daec62ee94",
+        "bytes": 17831267,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M1_201401020000_202605082357.csv",
+        "sha256": "6cd87c0c4518bc8e2ae090cef0a750fc90711e31b9d838cf9a27337cb58c49eb",
+        "bytes": 258369884,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M20_201401020000_202605082340.csv",
+        "sha256": "f269d20ecfb2c895598a72e0aa08e3e8deeccfeba24c1f8390bd941eb8875067",
+        "bytes": 13460800,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M2_201401020000_202605082356.csv",
+        "sha256": "3bb8aae60b85c35da6fabcbe653994e03df939b6be8ef9bba18df737ddb7f3b6",
+        "bytes": 130270025,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M30_201401020000_202605082330.csv",
+        "sha256": "bc6697042d790fe702f054541d1e503827446cbb857a75e0031a4e9810936e2f",
+        "bytes": 9073549,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M3_201401020000_202605082357.csv",
+        "sha256": "233e920241b680e1109badc459b00b6fd3f4144d23a0e7eebe411bcf92d50111",
+        "bytes": 87211546,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M4_201401020000_202605082356.csv",
+        "sha256": "b5ae9dd1c045fe78e51d3db5b2450e99f526825f043eedeb9fecb68542c3fd98",
+        "bytes": 65598448,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M5_201401020000_202605082355.csv",
+        "sha256": "8db72996cfb1b816aae10ee13bdcedc44b678425eb70a9b665173ce4c709369e",
+        "bytes": 52606531,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_M6_201401020000_202605082354.csv",
+        "sha256": "74198cdc6b6798022d5b0e425c61929e713da79761d4725879e66d34d4aa0e4b",
+        "bytes": 43940359,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Monthly_201401010000_202605010000.csv",
+        "sha256": "f5832d795dd4f2913694dc2cf2994c81b36577ca7dd2af6fd395f64c8714d36b",
+        "bytes": 8597,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      },
+      {
+        "path": "D:\\XM\\數據\\GOLD#_Weekly_201401050000_202605030000.csv",
+        "sha256": "26107d34bb565adf92d08a37c92b3f7eaec575ab23d72bec2bc24eb58b60c490",
+        "bytes": 36504,
+        "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+      }
+    ],
+    "timezone": "naive broker/export timestamps retained; exact historical UTC mapping unresolved; both models use identical timestamps and S5 session semantics",
+    "data_start_utc": "2014-02-03T01:00:00",
+    "data_end_utc": "2026-05-08T19:57:00",
+    "train_start_utc": "2016-07-01T00:00:00",
+    "train_end_utc": "2022-12-30T19:57:00",
+    "train_rows": 1596361,
+    "validation_start_utc": "2018-01-01T00:00:00",
+    "validation_end_utc": "2025-01-01T00:00:00",
+    "validation_rows": 2474297,
+    "test_start_utc": "not_applicable_no_untouched_test",
+    "test_end_utc": "not_applicable_no_untouched_test",
+    "test_rows": 0,
+    "purge_details": "Per fold use the intersection of C0 240-row label maturity and exact C1 S5 exit maturity; latest information timestamp is strictly before score start.",
+    "embargo_details": "strict maturity purge; no additional embargo",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "code/model/OOF evidence retained; full raw-data reproduction not claimed",
+    "mt5_fetch": {
+      "used": false,
+      "not_applicable_reason": "This paired historical run uses fixed local CSV exports, not MT5 retrieval."
+    },
+    "folds": [
+      {
+        "fold": "2018_2020",
+        "train_start": "2016-07-01T00:00:00",
+        "train_feature_end": "2017-12-29T19:55:00",
+        "latest_training_entry_time": "2017-12-29T19:55:00",
+        "latest_c0_label_information_time": "2017-12-29T23:57:00",
+        "latest_c1_label_information_time": "2017-12-29T20:06:00",
+        "latest_training_label_information_time": "2017-12-29T23:57:00",
+        "score_start": "2018-01-02T00:00:00",
+        "score_end": "2020-12-31T18:50:00",
+        "train_rows": 530218,
+        "score_rows": 1058080,
+        "training_window_months": 18,
+        "strict_label_maturity_before_score": true,
+        "train_timestamp_sha256": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+        "score_timestamp_sha256": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+        "x_train_sha256_C0": "14999ac58c67bff25d7977d63a80f6069dde0256752a20a9dee936c022db69cb",
+        "x_train_sha256_C1": "14999ac58c67bff25d7977d63a80f6069dde0256752a20a9dee936c022db69cb",
+        "x_score_sha256_C0": "3c6eb5d77182428306f059e9a7d7607d1a4b5de2e5cc5217d9099e74c85e0316",
+        "x_score_sha256_C1": "3c6eb5d77182428306f059e9a7d7607d1a4b5de2e5cc5217d9099e74c85e0316",
+        "c0_label_sha256": "c751645bc0602bcb5ffe7c087103cfee4d387a29a8bdd4b3fdc7c9cd5ec96353",
+        "c1_label_sha256": "d9bed87a073fd93c048b5a1ab8f0f7049f1a1bb8f3ff46f48a102c0b6763bbd3",
+        "random_seed_C0": 42,
+        "random_seed_C1": 42,
+        "parameters_C0": {
+          "objective": "binary:logistic",
+          "n_estimators": 220,
+          "learning_rate": 0.05,
+          "max_depth": 4,
+          "min_child_weight": 80,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "random_state": 42,
+          "tree_method": "hist"
+        },
+        "parameters_C1": {
+          "objective": "binary:logistic",
+          "n_estimators": 220,
+          "learning_rate": 0.05,
+          "max_depth": 4,
+          "min_child_weight": 80,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "random_state": 42,
+          "tree_method": "hist"
+        }
+      },
+      {
+        "fold": "2021_2022",
+        "train_start": "2019-07-01T01:00:00",
+        "train_feature_end": "2020-12-31T14:50:00",
+        "latest_training_entry_time": "2020-12-31T14:50:00",
+        "latest_c0_label_information_time": "2020-12-31T18:50:00",
+        "latest_c1_label_information_time": "2020-12-31T15:15:00",
+        "latest_training_label_information_time": "2020-12-31T18:50:00",
+        "score_start": "2021-01-04T01:00:00",
+        "score_end": "2022-12-30T23:57:00",
+        "train_rows": 532563,
+        "score_rows": 708197,
+        "training_window_months": 18,
+        "strict_label_maturity_before_score": true,
+        "train_timestamp_sha256": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44",
+        "score_timestamp_sha256": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8",
+        "x_train_sha256_C0": "c921f11aaa44799dc798a1b54d6a745bb636b678be1212d17ba33e046acc0ac4",
+        "x_train_sha256_C1": "c921f11aaa44799dc798a1b54d6a745bb636b678be1212d17ba33e046acc0ac4",
+        "x_score_sha256_C0": "fd77cdad26894c813e9fba0deb77ed1a5fdcaaffceaad45488da9a2015f11c36",
+        "x_score_sha256_C1": "fd77cdad26894c813e9fba0deb77ed1a5fdcaaffceaad45488da9a2015f11c36",
+        "c0_label_sha256": "8dd63645587797ca65828e339ae4326525c538197135cd64b9b46350d60a02f6",
+        "c1_label_sha256": "ff55356e8bdf1cb2cd5add50690156178ff32bc17f666f2103c8f51397fb3a12",
+        "random_seed_C0": 42,
+        "random_seed_C1": 42,
+        "parameters_C0": {
+          "objective": "binary:logistic",
+          "n_estimators": 220,
+          "learning_rate": 0.05,
+          "max_depth": 4,
+          "min_child_weight": 80,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "random_state": 42,
+          "tree_method": "hist"
+        },
+        "parameters_C1": {
+          "objective": "binary:logistic",
+          "n_estimators": 220,
+          "learning_rate": 0.05,
+          "max_depth": 4,
+          "min_child_weight": 80,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "random_state": 42,
+          "tree_method": "hist"
+        }
+      },
+      {
+        "fold": "2023_2024",
+        "train_start": "2021-07-01T01:00:00",
+        "train_feature_end": "2022-12-30T19:57:00",
+        "latest_training_entry_time": "2022-12-30T19:57:00",
+        "latest_c0_label_information_time": "2022-12-30T23:57:00",
+        "latest_c1_label_information_time": "2022-12-30T19:59:00",
+        "latest_training_label_information_time": "2022-12-30T23:57:00",
+        "score_start": "2023-01-03T01:00:00",
+        "score_end": "2024-12-31T20:00:00",
+        "train_rows": 533580,
+        "score_rows": 708020,
+        "training_window_months": 18,
+        "strict_label_maturity_before_score": true,
+        "train_timestamp_sha256": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b",
+        "score_timestamp_sha256": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449",
+        "x_train_sha256_C0": "64124692d42cdb077fdfff1d5cf9df26582c025ed738608168b02cfa1cb42470",
+        "x_train_sha256_C1": "64124692d42cdb077fdfff1d5cf9df26582c025ed738608168b02cfa1cb42470",
+        "x_score_sha256_C0": "2b55883b3410e9613983b8cebfbe1e2ea7a47daa33f44a7df535c0a5b083e717",
+        "x_score_sha256_C1": "2b55883b3410e9613983b8cebfbe1e2ea7a47daa33f44a7df535c0a5b083e717",
+        "c0_label_sha256": "7a71f047051cb248084d72ca835c56c30811c868ece750578abeb775f7adb479",
+        "c1_label_sha256": "cd05d3647cd88a2fbd2b89fa3362ed5e2f9f13cbd611dee436f0e03e4a054259",
+        "random_seed_C0": 42,
+        "random_seed_C1": 42,
+        "parameters_C0": {
+          "objective": "binary:logistic",
+          "n_estimators": 220,
+          "learning_rate": 0.05,
+          "max_depth": 4,
+          "min_child_weight": 80,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "random_state": 42,
+          "tree_method": "hist"
+        },
+        "parameters_C1": {
+          "objective": "binary:logistic",
+          "n_estimators": 220,
+          "learning_rate": 0.05,
+          "max_depth": 4,
+          "min_child_weight": 80,
+          "subsample": 0.85,
+          "colsample_bytree": 0.85,
+          "random_state": 42,
+          "tree_method": "hist"
+        }
+      }
+    ],
+    "scored_oof_path": "paired_oof_predictions.npz",
+    "scored_oof_sha256": "5d31ddf142332e3b22eaf8c0034d0a1e6f14c96113db317af80c021ff58aa42c"
+  },
+  "model": {
+    "trained": true,
+    "model_type": "paired fold-specific XGBoost binary logistic research models",
+    "parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    },
+    "boosted_rounds_or_estimators": 220,
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "feature_count": 31,
+    "label_definition": "C0 legacy clean-window long label versus C1 standalone S5 net realized R > 0",
+    "horizon": {
+      "C0_rows": 240,
+      "C1_wall_clock_minutes": 90
+    },
+    "label_tp_sl_semantics": "C0 existing 240-row clean-window 1.8/1.2 ATR label; C1 next-open, entry-bar HIGH/LOW stop-first, 1.3/1.6 ATR, 90 wall-clock minutes, observed/fallback spread plus configured costs",
+    "execution_tp_sl_semantics": "exact preserved S5 implementation for both C0 and C1",
+    "calibration_method": "none",
+    "artifact_path": "models/C1_execution_aligned_label_2023_2024_xgb.json",
+    "artifact_sha256": "67ca6ce4dd095ee3b314eeddb60bf78fc9081ee35d85bb88efc21dbc98793113",
+    "retention_status": "all six fold models stored in run directory; primary manifest identity is C1 2023_2024 fold model",
+    "not_applicable_reason": null,
+    "fold_models_planned": 6,
+    "operational_artifact_retrained": false,
+    "fold_models_trained": 6,
+    "fold_model_inventory": "fold_model_provenance.json",
+    "label_definition_sha256": "bbc8bcbea134c99e458f77e4f0346123ce5f483d2bc9116ca628cceffbbcd535"
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "Exactly one paired causal comparison was preregistered; no model, label, threshold, feature, or parameter selection occurs."
+  },
+  "registry": {
+    "parent_or_incumbent": "gold_long_recent_candidate_xgb.json@2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+    "selected_configuration": "none_paired_C0_vs_C1_fixed_label_hypothesis",
+    "trades_per_day": 0.26945639421196715,
+    "realized_win_rate": 0.5660377358490566,
+    "pf": 0.8247098331219882,
+    "mean_r": -0.07690539315994348,
+    "pnl": -52.98781588720106,
+    "max_dd": -59.57958015890608,
+    "validator_result": "FAIL"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested_research_only",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gemini.py",
+      "path": "incumbent/gemini.py",
+      "sha256": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "incumbent_snapshot",
+      "original_path": "D:\\XM\\數據\\gold_long_recent_candidate_xgb.json",
+      "path": "incumbent/gold_long_recent_candidate_xgb.json",
+      "sha256": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "frozen_label_definition",
+      "path": "label_definition.json",
+      "sha256": "bbc8bcbea134c99e458f77e4f0346123ce5f483d2bc9116ca628cceffbbcd535",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "fold_model_provenance",
+      "path": "fold_model_provenance.json",
+      "sha256": "d78f6ae24d440bc3b93f138755839810e72ad3105e8c609816e114bf22fd7f79",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "fold_metrics",
+      "path": "fold_metrics.csv",
+      "sha256": "f753dfee8f772ed50b1c45bd8f0404b114e0925383f7beccc0d428d430280cb1",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "paired_model_comparison",
+      "path": "model_comparison.csv",
+      "sha256": "553c3d6d699b0b02ce28c504c1fa4c5ebbc3709d3a9ed193e76bf156ac7931bc",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "label_comparison",
+      "path": "label_comparison.csv",
+      "sha256": "af45e104e27bd67df5e890e8580fc7872bcccb7b47fe688ccd5698d156c10688",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "probability_diagnostics",
+      "path": "probability_diagnostics.csv",
+      "sha256": "bfb210c48f019d63502e594b3015c196ed8371d5fcbaab1f50f111ec73badd2a",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "ranking_diagnostics",
+      "path": "ranking_diagnostics.csv",
+      "sha256": "f82444c1aa3526effede6ba6af8d58d4bbe0e1e69be7198158d7d31a977209c8",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "ranking_deciles",
+      "path": "ranking_deciles.csv",
+      "sha256": "f2cc4b97b2734e014f4f79aa7415130c9478bb0e8979741291f95669709837de",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "executable_trade_ledger",
+      "path": "trade_ledger.csv",
+      "sha256": "3a638aadbd0bfc38243e9f45e2e765bef08207939b7a1c00f779829a2f42e345",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "marginal_trade_identity",
+      "path": "trade_identity_comparison.csv",
+      "sha256": "98c4aa7d47320bd1bfc6433c6bd893e011692f4e1db44fe52d448424288bdf88",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "paired_oof_predictions",
+      "path": "paired_oof_predictions.npz",
+      "sha256": "5d31ddf142332e3b22eaf8c0034d0a1e6f14c96113db317af80c021ff58aa42c",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "fold_model_hash_inventory",
+      "path": "models.sha256",
+      "sha256": "7e650c69319b8b2787d06f8ff1f5d4b2ab4bbb3458755978cc7d7f154d655798",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "primary_model_hash",
+      "path": "model.sha256",
+      "sha256": "740000c0cb2f0c175930ed2a6acc7cac5551e32cf2be0c01c7ec7d4cef0931e8",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "metrics",
+      "path": "metrics.json",
+      "sha256": "02057177bc83e2fe87dccb71e045bc363ea53fe032583e1bb1fe33223d96787a",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "report",
+      "path": "report.md",
+      "sha256": "2dcc01049cb138b99766c323c5dd605d6fc46d1acc1668d1eec26f21b3d2cabe",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "trained_fold_model",
+      "path": "models/C0_legacy_label_2018_2020_xgb.json",
+      "sha256": "08f97cbca9e6d37aeebb1203a76944bb5837436a65e2a3a049b642f35432b725",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "trained_fold_model",
+      "path": "models/C1_execution_aligned_label_2018_2020_xgb.json",
+      "sha256": "5eca73587d840b91117f096eaefe84c1538fb2920d7840bb1ec374dd170ea914",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "trained_fold_model",
+      "path": "models/C0_legacy_label_2021_2022_xgb.json",
+      "sha256": "f36979f14f58f457e0a1a6d42eaa19cb7addace62793318ad0d6ec66e6006b22",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "trained_fold_model",
+      "path": "models/C1_execution_aligned_label_2021_2022_xgb.json",
+      "sha256": "744026a3a6e17f2465cc3850601f8efd65b75cdc1b35fa5e1572aa82f0012dc7",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "trained_fold_model",
+      "path": "models/C0_legacy_label_2023_2024_xgb.json",
+      "sha256": "2334b1b1f018641ae9c2fe9809b04df88d2401d193624ee9f05c032a2954ed57",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "trained_fold_model",
+      "path": "models/C1_execution_aligned_label_2023_2024_xgb.json",
+      "sha256": "67ca6ce4dd095ee3b314eeddb60bf78fc9081ee35d85bb88efc21dbc98793113",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "independent_validator_result",
+      "path": "validator.json",
+      "sha256": "50e0f77edbc3ea9e72242bee492464b900e03efe5fa055352f05337e22652e6f",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "independent_validator_report",
+      "path": "validator.md",
+      "sha256": "22f1347068b19de652c2ea58b0c5ed04cf603ba15eae29657a6bf682683412e8",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    },
+    {
+      "kind": "independent_validator_script",
+      "path": "validator_script.py",
+      "sha256": "62513b9366e6e418b4e623fa4cc3d27dc949d4014936c6d5892aa3686ef3bb2f",
+      "retention_status": "stored_in_run_directory_git_archival_pending"
+    }
+  ],
+  "aborted_reason": null,
+  "pre_run_git": {
+    "pre_run_git_commit": "b9b3dc98181b8b70b38ed29f5428a8c0cc3d3490",
+    "pre_run_git_dirty": false,
+    "head_sha": "b9b3dc98181b8b70b38ed29f5428a8c0cc3d3490",
+    "remote_ref": "origin/main",
+    "origin_main_sha": "b9b3dc98181b8b70b38ed29f5428a8c0cc3d3490",
+    "head_equals_origin_main": true
+  },
+  "evidence_status": {
+    "classification": "chronological_development_hypothesis_validation",
+    "all_historical_intervals_are_development": true,
+    "previous_forward_cutoff": "2026-09-01T02:00:00Z",
+    "previous_forward_status": "contaminated_for_future_gate_selection",
+    "untouched_oos_claim": false,
+    "new_forward_cutoff": null
+  },
+  "paired_design": {
+    "model_definitions": [
+      "C0_legacy_label",
+      "C1_execution_aligned_label"
+    ],
+    "only_design_change": "binary training target semantics",
+    "training_window_months": 18,
+    "folds": [
+      {
+        "fold": "2018_2020",
+        "start": "2018-01-01T00:00:00",
+        "end_exclusive": "2021-01-01T00:00:00"
+      },
+      {
+        "fold": "2021_2022",
+        "start": "2021-01-01T00:00:00",
+        "end_exclusive": "2023-01-01T00:00:00"
+      },
+      {
+        "fold": "2023_2024",
+        "start": "2023-01-01T00:00:00",
+        "end_exclusive": "2025-01-01T00:00:00"
+      }
+    ],
+    "direction": "LONG only",
+    "threshold": 0.75,
+    "minimum_entry_rsi": 22.0,
+    "excluded_rsi": [
+      35.0,
+      45.0
+    ],
+    "tp_atr": 1.3,
+    "sl_atr": 1.6,
+    "max_hold_wall_clock_minutes": 90,
+    "max_open_positions": 1,
+    "xgboost_parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    },
+    "parameter_search": false,
+    "threshold_search": false,
+    "label_search": false,
+    "material_improvement_rule": "C1 PF minus C0 PF >= 0.05 and C1 Mean-R/PnL-R exceed C0"
+  },
+  "operational_hashes_before": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "dependency_sha256": {
+    "gold_gemini_execution_semantics_v1.py": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+    "gold_gemini_core_gate_v1.py": "ae31c09af94466bf5deeafae4800b2e3a580dfeb31564b1123be69887f57932c",
+    "barrier_classifier_strategy.py": "a743d15b90321e4d933e4657abd185922bb280b36ec48612b6f1688afb909174",
+    "barrier_research_suite.py": "e9b0f84e0aedff532b0d24c5845191d724a7dc44ade15d928fe0a24b7c1341af",
+    "barrier_final_train.py": "a221bda6c61fa89bde0592453de7a8ac84efb80f06b74e7686b872484e2edee5",
+    "drl_trading_v2.py": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+    "preserved_s5_manifest.json": "d0f20787a909ba12fb8b1da8841de475fd271bafe0fb5aa750292e53ba743db5"
+  },
+  "operational_hashes_after": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "research_decision": {
+    "c1_minus_c0": {
+      "trades": -141,
+      "trades_per_day": -0.05514274540477121,
+      "realized_wr": 0.258808820186406,
+      "pf": 0.36235043163714376,
+      "mean_r": 0.28972866227610417,
+      "pnl_r": 251.31845012471848,
+      "max_dd_r": 245.5027076984377
+    },
+    "c1_materially_improves_c0": true,
+    "c1_economic_viability": false,
+    "economic_viability_failure_reasons": [
+      "PF<=1",
+      "Mean-R<=0",
+      "PnL-R<=0",
+      "BE-edge<=0"
+    ],
+    "c1_full_quality_floor": false,
+    "full_quality_floor_failure_reasons": [
+      "PF<=1",
+      "Mean-R<=0",
+      "PnL-R<=0",
+      "BE-edge<=0",
+      "WR<60%",
+      "PF<=1.05",
+      "stress-PF<=1",
+      "catastrophic-fold=2018_2020,2023_2024"
+    ],
+    "catastrophic_folds": [
+      "2018_2020",
+      "2023_2024"
+    ],
+    "ranking_consistently_positive": true,
+    "classification": "execution_alignment_alone_does_not_recover_robust_alpha",
+    "single_next_research_hypothesis": "NEW TIMESTAMP-ALIGNED ALPHA INFORMATION: preregister one external entry-time information family and test incremental cross-regime discrimination under the frozen execution-aligned target before any further model or threshold tuning.",
+    "shadow_candidate_frozen": false
+  },
+  "shadow_candidate": {
+    "frozen": false,
+    "reason": "C1 did not pass the complete preregistered development quality floor.",
+    "new_forward_cutoff": null
+  },
+  "validator": {
+    "overall": "FAIL",
+    "internal_methodology": "PASS",
+    "final_untouched_test_validity": "FAIL",
+    "script_path": "validator_script.py",
+    "script_sha256": "62513b9366e6e418b4e623fa4cc3d27dc949d4014936c6d5892aa3686ef3bb2f"
+  }
+}
