@@ -1,0 +1,191 @@
+{
+  "internal_methodology": "FAIL",
+  "overall": "FAIL",
+  "every_required_row_constructable": "FAIL",
+  "data_foundation_ready": false,
+  "checks": [
+    {
+      "check": "official source and raw byte provenance",
+      "verdict": "PASS",
+      "evidence": 21
+    },
+    {
+      "check": "unchanged canonical definition",
+      "verdict": "PASS",
+      "evidence": [
+        "classification",
+        "denominator",
+        "event",
+        "exclusions",
+        "minimum_coverage_each_fold",
+        "review_protocol",
+        "strategy_evaluation_authorized",
+        "timezone",
+        "training_authorized"
+      ]
+    },
+    {
+      "check": "all-event identity / meeting / release-time / DST audit",
+      "verdict": "PASS",
+      "evidence": [
+        "FOMC_2016-01-27_scheduled",
+        "FOMC_2016-03-16_scheduled",
+        "FOMC_2016-04-27_scheduled",
+        "FOMC_2016-06-15_scheduled",
+        "FOMC_2016-07-27_scheduled",
+        "FOMC_2016-09-21_scheduled",
+        "FOMC_2016-11-02_scheduled",
+        "FOMC_2016-12-14_scheduled",
+        "FOMC_2017-02-01_scheduled",
+        "FOMC_2017-03-15_scheduled",
+        "FOMC_2017-05-03_scheduled",
+        "FOMC_2017-06-14_scheduled",
+        "FOMC_2017-07-26_scheduled",
+        "FOMC_2017-09-20_scheduled",
+        "FOMC_2017-11-01_scheduled",
+        "FOMC_2017-12-13_scheduled"
+      ]
+    },
+    {
+      "check": "scheduled and unscheduled universe / exclusions",
+      "verdict": "PASS",
+      "evidence": {
+        "official_statement_links": 16,
+        "canonical": 16
+      }
+    },
+    {
+      "check": "no duplicate identities or verified timestamps",
+      "verdict": "PASS",
+      "evidence": 16
+    },
+    {
+      "check": "95 percent coverage arithmetic",
+      "verdict": "PASS",
+      "evidence": [
+        {
+          "scope": "2016",
+          "expected": "8",
+          "verified": "8",
+          "coverage_pct": "100.0",
+          "ambiguous": "0",
+          "missing": "0",
+          "duplicates": "0",
+          "gate_pass": "True"
+        },
+        {
+          "scope": "2017",
+          "expected": "8",
+          "verified": "8",
+          "coverage_pct": "100.0",
+          "ambiguous": "0",
+          "missing": "0",
+          "duplicates": "0",
+          "gate_pass": "True"
+        },
+        {
+          "scope": "2016_2017",
+          "expected": "16",
+          "verified": "16",
+          "coverage_pct": "100.0",
+          "ambiguous": "0",
+          "missing": "0",
+          "duplicates": "0",
+          "gate_pass": "True"
+        }
+      ]
+    },
+    {
+      "check": "every exact required training timestamp / timezone",
+      "verdict": "PASS",
+      "evidence": {
+        "rows": 530218,
+        "hash": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6"
+      }
+    },
+    {
+      "check": "CPI readiness evidence accounting",
+      "verdict": "PASS",
+      "evidence": {
+        "sufficient": false,
+        "missing_months": [
+          "2016-06"
+        ],
+        "ambiguous_sources": []
+      }
+    },
+    {
+      "check": "EMPLOYMENT readiness evidence accounting",
+      "verdict": "PASS",
+      "evidence": {
+        "sufficient": true,
+        "missing_months": [],
+        "ambiguous_sources": []
+      }
+    },
+    {
+      "check": "PCE readiness evidence accounting",
+      "verdict": "PASS",
+      "evidence": {
+        "sufficient": false,
+        "missing_months": [
+          "2016-07",
+          "2017-02",
+          "2017-04",
+          "2017-07"
+        ],
+        "ambiguous_sources": [
+          "https://www.bea.gov/news/2015/personal-consumption-expenditures-state-1997-2014",
+          "https://www.bea.gov/news/2016/personal-consumption-expenditures-state-2015",
+          "https://www.bea.gov/news/2017/personal-consumption-expenditures-state-2016"
+        ]
+      }
+    },
+    {
+      "check": "FOMC readiness evidence accounting",
+      "verdict": "PASS",
+      "evidence": {
+        "sufficient": true,
+        "missing_months": [],
+        "ambiguous_sources": []
+      }
+    },
+    {
+      "check": "missing history remains uncertified / never zero event features",
+      "verdict": "PASS",
+      "evidence": {
+        "uncertified_rows": 530218,
+        "method": "conservative full-stream certificate, not exact missing-event impact attribution"
+      }
+    },
+    {
+      "check": "existing finalized runs unchanged",
+      "verdict": "PASS",
+      "evidence": [
+        "20260903T154042Z_gemini_macro_event_timing_v1",
+        "20260905T153912Z_gemini_fomc_canonical_foundation_v1"
+      ]
+    },
+    {
+      "check": "operational artifacts unchanged",
+      "verdict": "PASS",
+      "evidence": {
+        "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+        "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+      }
+    },
+    {
+      "check": "no models / labels / strategy performance",
+      "verdict": "PASS",
+      "evidence": "DATE/TIME columns only; no label or model pipeline"
+    },
+    {
+      "check": "Integration certificate semantics / exact affected-row attribution",
+      "verdict": "FAIL",
+      "evidence": "See source_review_notes.md. Release-month presence is not canonical completeness. CPI June gap predates required lookback. 530218 is a conservative uncertified count, not an exact affected-row count. Confirmed PCE state-level contamination independently blocks readiness."
+    }
+  ],
+  "strategy_validity": "not_applicable_data_only",
+  "b0_b1_training_authorized": false,
+  "automated_internal_methodology": "PASS"
+}

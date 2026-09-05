@@ -1,0 +1,4 @@
+scope,expected,verified,coverage_pct,ambiguous,missing,duplicates,gate_pass
+2016,8,8,100.0,0,0,0,True
+2017,8,8,100.0,0,0,0,True
+2016_2017,16,16,100.0,0,0,0,True

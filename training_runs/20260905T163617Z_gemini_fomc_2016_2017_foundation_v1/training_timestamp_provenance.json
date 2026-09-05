@@ -1,0 +1,59 @@
+{
+  "source": {
+    "path": "D:\\XM\\數據\\GOLD#_M1_201401020000_202605082357.csv",
+    "sha256": "6cd87c0c4518bc8e2ae090cef0a750fc90711e31b9d838cf9a27337cb58c49eb",
+    "bytes": 258369884,
+    "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+  },
+  "original_fold": {
+    "fold": "2018_2020",
+    "train_start": "2016-07-01T00:00:00",
+    "train_feature_end": "2017-12-29T19:55:00",
+    "latest_training_entry_time": "2017-12-29T19:55:00",
+    "latest_c0_label_information_time": "2017-12-29T23:57:00",
+    "latest_c1_label_information_time": "2017-12-29T20:06:00",
+    "latest_training_label_information_time": "2017-12-29T23:57:00",
+    "score_start": "2018-01-02T00:00:00",
+    "score_end": "2020-12-31T18:50:00",
+    "train_rows": 530218,
+    "score_rows": 1058080,
+    "training_window_months": 18,
+    "strict_label_maturity_before_score": true,
+    "train_timestamp_sha256": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+    "score_timestamp_sha256": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+    "x_train_sha256_C0": "14999ac58c67bff25d7977d63a80f6069dde0256752a20a9dee936c022db69cb",
+    "x_train_sha256_C1": "14999ac58c67bff25d7977d63a80f6069dde0256752a20a9dee936c022db69cb",
+    "x_score_sha256_C0": "3c6eb5d77182428306f059e9a7d7607d1a4b5de2e5cc5217d9099e74c85e0316",
+    "x_score_sha256_C1": "3c6eb5d77182428306f059e9a7d7607d1a4b5de2e5cc5217d9099e74c85e0316",
+    "c0_label_sha256": "c751645bc0602bcb5ffe7c087103cfee4d387a29a8bdd4b3fdc7c9cd5ec96353",
+    "c1_label_sha256": "d9bed87a073fd93c048b5a1ab8f0f7049f1a1bb8f3ff46f48a102c0b6763bbd3",
+    "random_seed_C0": 42,
+    "random_seed_C1": 42,
+    "parameters_C0": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    },
+    "parameters_C1": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    }
+  },
+  "timestamp_sha256": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+  "exact_timestamp_reproduction": true,
+  "raw_prices_loaded": false,
+  "timezone": "Inherited XM EET/EEST broker-wall convention; Europe/Helsinki IANA conversion; not a new broker-time calibration"
+}

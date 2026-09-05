@@ -1,0 +1,132 @@
+{
+  "coverage": [
+    {
+      "scope": "2016",
+      "expected": 8,
+      "verified": 8,
+      "coverage_pct": 100,
+      "ambiguous": 0,
+      "missing": 0,
+      "duplicates": 0,
+      "gate_pass": true
+    },
+    {
+      "scope": "2017",
+      "expected": 8,
+      "verified": 8,
+      "coverage_pct": 100,
+      "ambiguous": 0,
+      "missing": 0,
+      "duplicates": 0,
+      "gate_pass": true
+    },
+    {
+      "scope": "2016_2017",
+      "expected": 16,
+      "verified": 16,
+      "coverage_pct": 100,
+      "ambiguous": 0,
+      "missing": 0,
+      "duplicates": 0,
+      "gate_pass": true
+    }
+  ],
+  "integration": {
+    "earliest_training_timestamp": "2016-07-01T00:00:00",
+    "earliest_training_timestamp_utc": "2016-06-30T21:00:00+00:00",
+    "earliest_canonical_macro_history_required": "2016-06-29T21:00:00+00:00",
+    "training_rows": 530218,
+    "fully_constructable_rows": 0,
+    "incomplete_event_history_rows": 530218,
+    "families": [
+      {
+        "event_type": "CPI",
+        "earliest_available_event": "2015-01-16T13:30:00+00:00",
+        "latest_available_event": "2017-12-13T13:30:00+00:00",
+        "prior_anchor": "2016-05-17T12:30:00+00:00",
+        "required_history_start": "2016-06-29T21:00:00+00:00",
+        "required_history_end": "2017-12-29T17:55:00+00:00",
+        "missing_months": [
+          "2016-06"
+        ],
+        "unverified_sources": [],
+        "ambiguous_noncanonical_sources": [],
+        "sufficient": false,
+        "fully_constructable_rows": 0,
+        "incomplete_event_history_rows": 530218,
+        "counting_method": "Conservative whole-stream certification: if completeness is unproven, all required rows remain uncertified; not a measured per-row missing-event impact count"
+      },
+      {
+        "event_type": "EMPLOYMENT",
+        "earliest_available_event": "2015-02-06T13:30:00+00:00",
+        "latest_available_event": "2017-12-08T13:30:00+00:00",
+        "prior_anchor": "2016-06-03T12:30:00+00:00",
+        "required_history_start": "2016-06-29T21:00:00+00:00",
+        "required_history_end": "2017-12-29T17:55:00+00:00",
+        "missing_months": [],
+        "unverified_sources": [],
+        "ambiguous_noncanonical_sources": [],
+        "sufficient": true,
+        "fully_constructable_rows": 530218,
+        "incomplete_event_history_rows": 0,
+        "counting_method": "Conservative whole-stream certification: if completeness is unproven, all required rows remain uncertified; not a measured per-row missing-event impact count"
+      },
+      {
+        "event_type": "PCE",
+        "earliest_available_event": "2015-02-02T13:30:00+00:00",
+        "latest_available_event": "2017-12-22T13:30:00+00:00",
+        "prior_anchor": "2016-06-29T12:30:00+00:00",
+        "required_history_start": "2016-06-29T21:00:00+00:00",
+        "required_history_end": "2017-12-29T17:55:00+00:00",
+        "missing_months": [
+          "2016-07",
+          "2017-02",
+          "2017-04",
+          "2017-07"
+        ],
+        "unverified_sources": [],
+        "ambiguous_noncanonical_sources": [
+          "https://www.bea.gov/news/2015/personal-consumption-expenditures-state-1997-2014",
+          "https://www.bea.gov/news/2016/personal-consumption-expenditures-state-2015",
+          "https://www.bea.gov/news/2017/personal-consumption-expenditures-state-2016"
+        ],
+        "sufficient": false,
+        "fully_constructable_rows": 0,
+        "incomplete_event_history_rows": 530218,
+        "counting_method": "Conservative whole-stream certification: if completeness is unproven, all required rows remain uncertified; not a measured per-row missing-event impact count"
+      },
+      {
+        "event_type": "FOMC",
+        "earliest_available_event": "2016-01-27T19:00:00+00:00",
+        "latest_available_event": "2017-12-13T19:00:00+00:00",
+        "prior_anchor": "2016-06-15T18:00:00+00:00",
+        "required_history_start": "2016-06-29T21:00:00+00:00",
+        "required_history_end": "2017-12-29T17:55:00+00:00",
+        "missing_months": [],
+        "unverified_sources": [],
+        "ambiguous_noncanonical_sources": [],
+        "sufficient": true,
+        "fully_constructable_rows": 530218,
+        "incomplete_event_history_rows": 0,
+        "counting_method": "Conservative whole-stream certification: if completeness is unproven, all required rows remain uncertified; not a measured per-row missing-event impact count"
+      }
+    ],
+    "ready": false,
+    "monthly_screen_is_not_independent_universe_proof": true,
+    "inherited_official_timestamp_provenance": true,
+    "feature_values_generated": false
+  },
+  "unscheduled_decisions": 0,
+  "data_foundation_ready": false,
+  "model_training_performed": false,
+  "strategy_evaluation_performed": false,
+  "b0_b1_training_authorized": false,
+  "validator_internal_methodology": "FAIL",
+  "run_status": "fail",
+  "fomc_canonical_readiness": "PASS",
+  "exact_impacted_training_rows": null,
+  "uncertified_training_rows": 530218,
+  "integration_count_warning": "Whole-stream certificate failure, not exact per-row impact; see source_review_notes.md",
+  "confirmed_blocker": "National PCE event stream includes state-level PCE releases on 2016-10-04 and 2017-10-04",
+  "screening_warning": "missing_months denotes release-calendar months with no retained observation, not proven missing releases"
+}

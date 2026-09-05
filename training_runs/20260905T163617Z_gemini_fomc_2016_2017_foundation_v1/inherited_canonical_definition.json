@@ -1,0 +1,43 @@
+{
+  "event": "One official FOMC monetary-policy decision statement public release",
+  "years": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "folds": {
+    "2018_2020": [
+      2018,
+      2020
+    ],
+    "2021_2022": [
+      2021,
+      2022
+    ],
+    "2023_2024": [
+      2023,
+      2024
+    ]
+  },
+  "minimum_coverage_each_fold": 0.95,
+  "denominator": "Statements enumerated from official meeting/policy records; no fixed annual count",
+  "exclusions": [
+    "SEP_excluded",
+    "balance_sheet_companion_excluded",
+    "duplicate_representation",
+    "implementation_note_excluded",
+    "minutes_excluded",
+    "other_non_statement_monetary_release_excluded",
+    "strategy_document_excluded"
+  ],
+  "classification": "Official title/content and meeting relation, never URL suffix alone",
+  "review_protocol": "Source-backed CSV annotations, including event date/time quotes and calendar membership; all ambiguous events remain in denominator",
+  "timezone": "Explicit EST/EDT verified against America/New_York; ET uses IANA DST rules",
+  "training_authorized": false,
+  "strategy_evaluation_authorized": false,
+  "created_at_utc": "2026-09-05T15:39:33.505173+00:00"
+}
