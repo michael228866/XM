@@ -1,0 +1,51 @@
+{
+  "working_directory": "D:\\XM\\數據",
+  "commands": [
+    ".venv\\Scripts\\python.exe gold_fomc_canonical_foundation_v1.py acquire --run-dir training_runs/20260905T153912Z_gemini_fomc_canonical_foundation_v1 2>&1 | Tee-Object -FilePath training_runs/20260905T153912Z_gemini_fomc_canonical_foundation_v1/stdout.log",
+    ".venv\\Scripts\\python.exe gold_fomc_canonical_foundation_v1.py supplement --run-dir training_runs/20260905T153912Z_gemini_fomc_canonical_foundation_v1 --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20240131a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20240320a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20240501a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20240612a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20240731a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20240918a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20241107a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20241218a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20230201a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20230322a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20230503a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20230614a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20230726a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20230920a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20231101a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20231213a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20220126a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20220316a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20220504a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20220615a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20220727a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20220921a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20221102a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20221214a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20210127a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20210317a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20210428a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20210616a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20210728a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20210922a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20211103a1.pdf' --url 'https://www.federalreserve.gov/monetarypolicy/files/monetary20211215a1.pdf'",
+    ".venv\\Scripts\\python.exe gold_fomc_canonical_foundation_v1.py build --run-dir training_runs/20260905T153912Z_gemini_fomc_canonical_foundation_v1 2>&1 | Tee-Object -FilePath training_runs/20260905T153912Z_gemini_fomc_canonical_foundation_v1/stdout.log -Append",
+    ".venv\\Scripts\\python.exe gold_fomc_canonical_foundation_v1_validator.py training_runs/20260905T153912Z_gemini_fomc_canonical_foundation_v1 2>&1 | Tee-Object -FilePath training_runs/20260905T153912Z_gemini_fomc_canonical_foundation_v1/stdout.log -Append"
+  ],
+  "notes": [
+    "Acquire used the committed script with its immutable snapshot.",
+    "Supplement acquired 32 explicitly linked official PDF representations.",
+    "Reviewed CSV annotations are source-backed data, not strategy parameters. No code changed after pre-run commit.",
+    "Build ran once provisionally and again after source review notes and companion annotations were completed; both outputs retained in stdout.log.",
+    "All 58 canonical statements and times unchanged during annotation review. Independent validation followed completed annotations.",
+    "No random operations, model evaluation, market-data ingestion or forward access."
+  ],
+  "supplement_urls": [
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20240131a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20240320a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20240501a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20240612a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20240731a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20240918a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20241107a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20241218a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20230201a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20230322a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20230503a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20230614a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20230726a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20230920a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20231101a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20231213a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20220126a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20220316a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20220504a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20220615a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20220727a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20220921a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20221102a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20221214a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20210127a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20210317a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20210428a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20210616a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20210728a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20210922a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20211103a1.pdf",
+    "https://www.federalreserve.gov/monetarypolicy/files/monetary20211215a1.pdf"
+  ]
+}
