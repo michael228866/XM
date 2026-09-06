@@ -1,0 +1,252 @@
+{
+  "internal_methodology": "PASS",
+  "data_certification": "FAIL",
+  "data_foundation_ready": false,
+  "checks": [
+    {
+      "check": "economic symbol identity",
+      "verdict": "PASS",
+      "evidence": {
+        "selected": {
+          "EUR/USD": "EURUSD#",
+          "GBP/USD": "GBPUSD#",
+          "USD/JPY": "USDJPY#"
+        },
+        "errors": []
+      },
+      "category": "data"
+    },
+    {
+      "check": "historical source coverage",
+      "verdict": "PASS",
+      "evidence": {
+        "rows": {
+          "EUR/USD": 3162754,
+          "GBP/USD": 3019070,
+          "USD/JPY": 3011482
+        },
+        "errors": [],
+        "coverage_ok": true
+      },
+      "category": "data"
+    },
+    {
+      "check": "MT5 UTC request and filter semantics",
+      "verdict": "PASS",
+      "evidence": {
+        "mismatches": [],
+        "source": "MQL5 copy_rates_range UTC contract"
+      },
+      "category": "methodology"
+    },
+    {
+      "check": "timezone and returned-epoch conversion",
+      "verdict": "PASS",
+      "evidence": {
+        "errors": [],
+        "mapping": "MT5 Python returned bar-open epoch is UTC without broker-wall shift"
+      },
+      "category": "methodology"
+    },
+    {
+      "check": "exact six timestamp hashes",
+      "verdict": "PASS",
+      "evidence": {
+        "fold1_train": {
+          "rows": 530218,
+          "hash": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6"
+        },
+        "fold1_score": {
+          "rows": 1058080,
+          "hash": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94"
+        },
+        "fold2_train": {
+          "rows": 532563,
+          "hash": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44"
+        },
+        "fold2_score": {
+          "rows": 708197,
+          "hash": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8"
+        },
+        "fold3_train": {
+          "rows": 533580,
+          "hash": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b"
+        },
+        "fold3_score": {
+          "rows": 708020,
+          "hash": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449"
+        }
+      },
+      "category": "methodology"
+    },
+    {
+      "check": "bar-open versus completed-bar semantics",
+      "verdict": "PASS",
+      "evidence": {
+        "causal": true,
+        "maximum_age_minutes": 5.0
+      },
+      "category": "methodology"
+    },
+    {
+      "check": "causal as-of and no incomplete-bar use",
+      "verdict": "PASS",
+      "evidence": {
+        "causal": true,
+        "maximum_age_minutes": 5.0
+      },
+      "category": "methodology"
+    },
+    {
+      "check": "fixed return construction and USD orientation",
+      "verdict": "PASS",
+      "evidence": {
+        "features": [
+          "USD_PRESSURE_1M",
+          "USD_PRESSURE_5M",
+          "USD_PRESSURE_15M",
+          "USD_PRESSURE_60M",
+          "USD_DISPERSION_15M"
+        ],
+        "horizons": [
+          1,
+          5,
+          15,
+          60
+        ],
+        "signs": [
+          -1.0,
+          -1.0,
+          1.0
+        ]
+      },
+      "category": "methodology"
+    },
+    {
+      "check": "equal weighting and 15-minute sample dispersion",
+      "verdict": "PASS",
+      "evidence": "Independent mean and numpy std(ddof=1) reconstruction",
+      "category": "methodology"
+    },
+    {
+      "check": "staleness, NaN semantics, and no forward fill",
+      "verdict": "PASS",
+      "evidence": {
+        "unknown_rows": 148867,
+        "legitimate_nan_rows": 65277,
+        "max_staleness": 5
+      },
+      "category": "methodology"
+    },
+    {
+      "check": "source-gap resolution and uniquely known row state",
+      "verdict": "FAIL",
+      "evidence": {
+        "unresolved_source_rows": 148867
+      },
+      "category": "data"
+    },
+    {
+      "check": "frozen matrix and source hashes",
+      "verdict": "PASS",
+      "evidence": {
+        "logical": "da226ee13e8470a919cc4b08770e76c376911e8d4613e0bc5ffc98a8395fdf81",
+        "archive": "f7192c75813257c5e4d75b9ccdbec6edafbc84c998c51b21755b79aa852112f5"
+      },
+      "category": "methodology"
+    },
+    {
+      "check": "previous finalized runs unchanged",
+      "verdict": "PASS",
+      "evidence": "12 archives",
+      "category": "methodology"
+    },
+    {
+      "check": "operational artifacts unchanged",
+      "verdict": "PASS",
+      "evidence": {
+        "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+        "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+      },
+      "category": "methodology"
+    },
+    {
+      "check": "data-only and no outcome access",
+      "verdict": "PASS",
+      "evidence": {
+        "forbidden_hits": []
+      },
+      "category": "methodology"
+    },
+    {
+      "check": "no feature or model search",
+      "verdict": "PASS",
+      "evidence": {
+        "family": "USD FX PRESSURE",
+        "economic_instruments": [
+          "EUR/USD",
+          "GBP/USD",
+          "USD/JPY"
+        ],
+        "horizons_minutes": [
+          1,
+          5,
+          15,
+          60
+        ],
+        "features": [
+          "USD_PRESSURE_1M",
+          "USD_PRESSURE_5M",
+          "USD_PRESSURE_15M",
+          "USD_PRESSURE_60M",
+          "USD_DISPERSION_15M"
+        ],
+        "orientation": {
+          "EUR/USD": -1,
+          "GBP/USD": -1,
+          "USD/JPY": 1
+        },
+        "aggregation": "equal arithmetic mean; sample standard deviation ddof=1 for 15m dispersion",
+        "max_external_bar_staleness_minutes": 5,
+        "bar_semantics": "MT5 Python M1 time is UTC bar OPEN; information time is open plus one minute",
+        "asof_semantics": "latest completed close <= anchor; both t and t-h endpoints <=5 wall-clock minutes stale",
+        "normalization": "none",
+        "feature_or_horizon_search": false,
+        "model_training": false,
+        "strategy_evaluation": false
+      },
+      "category": "methodology"
+    },
+    {
+      "check": "clean pushed pre-run and immutable execution",
+      "verdict": "PASS",
+      "evidence": {
+        "pre_run_git_commit": "c2e663616cd12838da6bc27181e4cd29e06a2ecc",
+        "pre_run_git_dirty": false,
+        "head_sha": "c2e663616cd12838da6bc27181e4cd29e06a2ecc",
+        "origin_main_sha": "c2e663616cd12838da6bc27181e4cd29e06a2ecc",
+        "head_equals_origin_main": true
+      },
+      "category": "methodology"
+    }
+  ],
+  "walk_forward_validator_checks": {
+    "chronology": "PASS",
+    "feature leakage": "PASS",
+    "label maturity": "PASS",
+    "OOF predictions": "PASS",
+    "calibration": "PASS",
+    "threshold selection": "PASS",
+    "purge/embargo": "PASS",
+    "holdout contamination": "PASS",
+    "recent-period reuse": "PASS",
+    "execution alignment": "PASS",
+    "cost assumptions": "PASS",
+    "multiple-testing risk": "PASS"
+  },
+  "model_training_performed": false,
+  "strategy_evaluation_performed": false,
+  "errors": [
+    "source-gap resolution and uniquely known row state"
+  ]
+}

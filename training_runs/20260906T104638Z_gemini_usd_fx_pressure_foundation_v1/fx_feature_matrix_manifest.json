@@ -1,0 +1,94 @@
+{
+  "feature_names_order": [
+    "USD_PRESSURE_1M",
+    "USD_PRESSURE_5M",
+    "USD_PRESSURE_15M",
+    "USD_PRESSURE_60M",
+    "USD_DISPERSION_15M"
+  ],
+  "dtype": "float64",
+  "shape": [
+    3004515,
+    5
+  ],
+  "union_timestamp_sha256": "2df8e53bd1b2c35b217472b2ee639653491a74763069444d3150250932234838",
+  "usd_fx_feature_matrix_sha256": "da226ee13e8470a919cc4b08770e76c376911e8d4613e0bc5ffc98a8395fdf81",
+  "feature_archive_sha256": "f7192c75813257c5e4d75b9ccdbec6edafbc84c998c51b21755b79aa852112f5",
+  "source_dataset_sha256": "0251732cc3ce79c25a4015c49efeaa75a802dc949a440a2f7cfaf14804e56b37",
+  "source_identity": {
+    "EUR/USD": {
+      "broker_symbol": "EURUSD#",
+      "archive_sha256": "4049b2189cfaeb4d38fd9dbab634a84dbdb44840ca59ef7a5409ba719bfdf343",
+      "logical_open_utc_sha256": "a3c449eb62811ca500d1139c5eb772edef924070b34265e50470c5fdb8888595",
+      "logical_close_sha256": "2ce597defd9f3eaa1c70ade19f8f1fcce116ea910f600c6b465276c20ab3570c"
+    },
+    "GBP/USD": {
+      "broker_symbol": "GBPUSD#",
+      "archive_sha256": "c3866e33dce6e02a31ad50b43fd0e61d87e21d3c7ba32e7a7f380e81afa7c634",
+      "logical_open_utc_sha256": "8ef11dfecc4d7a7624e3e395dfef80511c1603f7e4d60414b94daa7e4045eaf2",
+      "logical_close_sha256": "c1984526e43c840c39543b0597d5c37a0f07e223e1d105fcf3fc6710873a346f"
+    },
+    "USD/JPY": {
+      "broker_symbol": "USDJPY#",
+      "archive_sha256": "5425474f7a4511737d803dcf38ce6355006a482983f54986fc088890eb117892",
+      "logical_open_utc_sha256": "8cc287b7a8ad30c112c6a98977a7b5ceddffa66a084b33a70235a4f918ff9cec",
+      "logical_close_sha256": "60a77972ac235a5be7510dfe5145a29b89f53bcd9a16c350cd8a3062da6352bb"
+    }
+  },
+  "blocks": [
+    {
+      "block": "fold1_train",
+      "rows": 530218,
+      "timestamp_sha256": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+      "utc_timestamp_sha256": "c58e0c0472b696ec08c39ba9085223da0dacc52d169c67a5965f123351f1d529",
+      "feature_matrix_sha256": "881b773b7fbd079dc45879530e955d10f21a1a4be70f8bb3b40d7f078375f2a1",
+      "unknown_source_rows": 408,
+      "legitimate_nan_rows": 12239
+    },
+    {
+      "block": "fold1_score",
+      "rows": 1058080,
+      "timestamp_sha256": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+      "utc_timestamp_sha256": "6f6d1ac33002553e50f66c92b9bf813229e02ce1e43ad1c2c0fcb86850ccca0e",
+      "feature_matrix_sha256": "15404037525b5447bd09d2b34247e8f3dde263565cbb85de78bc1edff449f206",
+      "unknown_source_rows": 146907,
+      "legitimate_nan_rows": 20978
+    },
+    {
+      "block": "fold2_train",
+      "rows": 532563,
+      "timestamp_sha256": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44",
+      "utc_timestamp_sha256": "d4384b492b494fd41574009134dddf086d72b5a52956dc1102c8af16e5f19fa5",
+      "feature_matrix_sha256": "5b58e485afda2df8451fbb34eb33dfbc37beee129e7e2be76607963309a3ee93",
+      "unknown_source_rows": 678,
+      "legitimate_nan_rows": 12415
+    },
+    {
+      "block": "fold2_score",
+      "rows": 708197,
+      "timestamp_sha256": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8",
+      "utc_timestamp_sha256": "baad84131fd1d5761f3222bc2805a95edba452ad9e0cc64bf5ff82906b34594a",
+      "feature_matrix_sha256": "e8f03b538ca06d2216f42114fe885894b75590460c8e1b58c08e4ac1cfae8255",
+      "unknown_source_rows": 766,
+      "legitimate_nan_rows": 15907
+    },
+    {
+      "block": "fold3_train",
+      "rows": 533580,
+      "timestamp_sha256": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b",
+      "utc_timestamp_sha256": "094671c7b2f1e401c53b40f4b2f5f8fa32727f46854058366cb43570f3e7988c",
+      "feature_matrix_sha256": "8a9121b039212e61e4d6f103dfb16be70f3d97d344e0eff3820dca526f5eee97",
+      "unknown_source_rows": 454,
+      "legitimate_nan_rows": 12152
+    },
+    {
+      "block": "fold3_score",
+      "rows": 708020,
+      "timestamp_sha256": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449",
+      "utc_timestamp_sha256": "2117f5f1c0226c1e4b48ade4a77004a6189d2ffa36f11fe7db896a654a69df43",
+      "feature_matrix_sha256": "eafb2defa987e88290e892ba654734783c10453f403971417c8e0a55891c3e6e",
+      "unknown_source_rows": 786,
+      "legitimate_nan_rows": 16153
+    }
+  ]
+}

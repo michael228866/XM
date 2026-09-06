@@ -1,0 +1,4 @@
+instrument,broker_symbol,first_m1_open_utc,last_m1_open_utc,total_rows,duplicate_rows_removed,non_monotonic_after_canonicalization,invalid_ohlc_rows,zero_or_invalid_prices,acquisition_chunk_errors,unexplained_gap_count,maximum_unexplained_gap_minutes,spans_required_prehistory,spans_required_end
+EUR/USD,EURUSD#,2016-06-30T19:54:00+00:00,2024-12-31T18:01:00+00:00,3162754,0,0,0,0,0,26,2882,True,True
+GBP/USD,GBPUSD#,2016-06-30T19:54:00+00:00,2024-12-31T18:01:00+00:00,3019070,0,0,0,0,0,2436,2939,True,True
+USD/JPY,USDJPY#,2016-06-30T19:54:00+00:00,2024-12-31T18:01:00+00:00,3011482,0,0,0,0,0,2571,2939,True,True
