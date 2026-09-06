@@ -1,5 +1,8 @@
 {
-  "script_snapshot": "integration_executed_revision.py",
+  "script_snapshot": "integration_executed_exact.py",
+  "executed_build_commit": "9fa631f3a88d08b8ad668c2d9188f4410d8a10b3",
+  "pre_build_HEAD_equals_origin_main": true,
+  "snapshot_encoding_correction": "integration_executed_revision.py had one acquisition-only source annotation string transcoded by PowerShell default ANSI reading. Original faulty snapshot retained; integration_executed_exact.py preserves exact UTF-8 executed code bytes, already anchored in the executed_build_commit.",
   "script_sha256": "1820e55261117a83c8781285c9f92805e1aba14553df60bcff95d7cbb5b7d498",
   "pre_execution_git_dirty": false,
   "original_pre_run_commit": "57d47fd95b9f86445cbe3a0c43cf80be0775bc34",
