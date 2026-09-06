@@ -1,0 +1,8 @@
+block,minutes_since_changed,post_window_changed,pce_flag_changed,total_distinct_rows_changed
+unique_union,28488,5190,5370,28728
+fold1_train,2759,480,480,2759
+fold1_score,9637,1680,1680,9637
+fold2_train,8274,1440,1440,8274
+fold2_score,10159,1920,2160,10399
+fold3_train,8780,1680,1920,9020
+fold3_score,5933,1110,1050,5933

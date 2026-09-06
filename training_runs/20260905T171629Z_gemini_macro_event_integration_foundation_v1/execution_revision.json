@@ -1,0 +1,16 @@
+{
+  "script_snapshot": "integration_executed_revision.py",
+  "script_sha256": "1820e55261117a83c8781285c9f92805e1aba14553df60bcff95d7cbb5b7d498",
+  "pre_execution_git_dirty": false,
+  "original_pre_run_commit": "57d47fd95b9f86445cbe3a0c43cf80be0775bc34",
+  "reason": "Output-only int(np.int64) serialization correction; all initial constructed data hashes must remain identical; no feature or event changes.",
+  "pre_fix_data_hashes": {
+    "exact_timestamps.npz": "2f04a9e01d32ae796565cd453c69c0f0de8141e50cb4e62dd72838898e18efa9",
+    "event_features.npz": "85506f203de20ecb6b34c3c91cd9a60b7befc6195197c7f5a44f36487ea9139c",
+    "canonical_macro_events.csv": "cd212f31ca0f9b8294c485e20aa863216eb859a6825540a82d40a46f81162592",
+    "pce_exact_feature_impact.csv": "28cfaf6b017cf617cd1b89574587a949ddc3ef3fc8380b8a4c18ae3505001244",
+    "excluded_pce_event_impact.csv": "db69eabb2860601790ab32d93594b94c41d7a3898aac836e5ec01d78f7a2273c",
+    "exact_block_constructability.csv": "2b50c312af8e163fe85216e322d10e43fc57cd445857492f338da2eb92c51c25",
+    "cpi_feature_impact_proof.json": "78ca7fe7929b5967bbb6bae27612855712b5c30c09fce02c0ccfcf1c17d028fe"
+  }
+}

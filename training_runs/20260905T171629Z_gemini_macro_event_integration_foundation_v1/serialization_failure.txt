@@ -1,0 +1,11 @@
+First build completed exact timestamp hashes, feature construction and affected-row comparisons.
+Summary writing failed at metrics.json before independent validation:
+  File gold_macro_event_integration_foundation_v1.py, line 333, in build
+    archive.write_json(run/'metrics.json',metrics)
+  File training_run_history.py, line 154, in write_json
+    json.dumps(value, ensure_ascii=False, indent=2)
+TypeError: Object of type int64 is not JSON serializable
+
+Correction: explicitly cast the canonical_national_in_required_history count to built-in int.
+No changes to data selection, classification, event times, feature values or audit policy.
+Original script snapshot remains immutable. Pre-correction data hashes are recorded in execution_revision.json.

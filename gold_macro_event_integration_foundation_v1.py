@@ -317,7 +317,7 @@ def build(run):
     io.write_csv(run/'exact_block_constructability.csv',blocks)
     metrics = dict(run_id=run.name,run_status='pending_independent_validator',
         pce=dict(inherited_rows=len(inherited_pce),canonical_national_releases=len(national),
-            canonical_national_in_required_history=sum(pd.Timestamp(r['release_timestamp_utc']).value>=times[0]-1440*MINUTE and pd.Timestamp(r['release_timestamp_utc']).value<=times[-1] for r in national),
+            canonical_national_in_required_history=int(sum(pd.Timestamp(r['release_timestamp_utc']).value>=times[0]-1440*MINUTE and pd.Timestamp(r['release_timestamp_utc']).value<=times[-1] for r in national)),
             state_level_excluded=sum(r['classification']=='state_or_regional_excluded' for r in excluded),
             other_noncanonical_excluded=sum(r['classification']!='state_or_regional_excluded' for r in excluded),
             missing_canonical_national_releases=sequence['missing_canonical_national_releases'],ambiguous_canonical_releases=len(ambiguous),

@@ -168,8 +168,13 @@ def validate(run):
     script=(run/m['training_script_snapshot']).read_text(encoding='utf-8')
     check('data-only implementation, no fitting or outcome access',not any(term in script for term in ['import xgboost','import sklearn','.fit(','predict_proba(','load_model(','import MetaTrader5']),
           'Manual code-path review plus forbidden operation checks; only DATE/TIME raw GOLD columns; archived macro and timestamp arrays only')
+    revision=archive.read_json(run/'execution_revision.json')
+    original_ok=archive.file_sha256(run/m['training_script_snapshot'])==m['training_script_sha256']
+    executed_ok=archive.file_sha256(ROOT/'gold_macro_event_integration_foundation_v1.py')==revision['script_sha256']==archive.file_sha256(run/revision['script_snapshot'])
     check('pre-run Git and immutable executed code',m['git_dirty'] is False and m['pre_run_git']['head_sha']==m['pre_run_git']['origin_main_sha']==m['git_commit']
-          and archive.file_sha256(ROOT/'gold_macro_event_integration_foundation_v1.py')==m['training_script_sha256'],m['pre_run_git'])
+          and original_ok and executed_ok and revision['pre_execution_git_dirty'] is False,m['pre_run_git'])
+    check('serialization correction leaves constructed data unchanged',all(archive.file_sha256(run/n)==h for n,h in revision['pre_fix_data_hashes'].items()),
+          'Initial summary serialization failed on NumPy int64; int() output-only correction. Original script and error retained; exact matrix, timestamp and impact artifact hashes must be unchanged.')
     passed=all(r['verdict']=='PASS' for r in checks)
     result=dict(internal_methodology='PASS' if passed else 'FAIL',final_untouched_validity='FAIL',
                 final_untouched_reason='Data foundation only; no untouched strategy evaluation or performance claim.',checks=checks)

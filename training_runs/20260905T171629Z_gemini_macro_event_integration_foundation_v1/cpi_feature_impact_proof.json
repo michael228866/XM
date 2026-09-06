@@ -1,0 +1,16 @@
+{
+  "official_timestamp_recovered": false,
+  "source_retention_complete": false,
+  "cpi_20160616_exact_feature_rows_affected": 0,
+  "feature_impact_neutral": true,
+  "classification": "proven_feature_impact_neutral",
+  "possible_release_utc_envelope": [
+    "2016-06-16 00:00:00+00:00",
+    "2016-06-18 00:00:00+00:00"
+  ],
+  "maximum_effect_end_utc": "2016-06-19 00:00:00+00:00",
+  "earliest_required_row_utc": "2016-06-30 21:00:00+00:00",
+  "proof": "For every possible release in the conservative envelope, every required row is >1440 minutes later; clipped age=1 and all flags=0. A later verified event supersedes it. No pre-event features. Exact intersection empty; endpoint insertion regression identical.",
+  "inherited_zero_byte_defect_remains": true,
+  "original_source_retention_complete": false
+}
