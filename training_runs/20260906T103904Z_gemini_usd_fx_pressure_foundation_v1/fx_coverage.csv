@@ -1,0 +1,4 @@
+instrument,broker_symbol,first_m1_open_utc,last_m1_open_utc,total_rows,duplicate_rows_removed,non_monotonic_after_canonicalization,invalid_ohlc_rows,zero_or_invalid_prices,acquisition_chunk_errors,unexplained_gap_count,maximum_unexplained_gap_minutes,spans_required_prehistory,spans_required_end
+EUR/USD,EURUSD#,,,0,0,0,0,0,0,0,0,False,False
+GBP/USD,GBPUSD#,,,0,0,0,0,0,0,0,0,False,False
+USD/JPY,USDJPY#,,,0,0,0,0,0,0,0,0,False,False

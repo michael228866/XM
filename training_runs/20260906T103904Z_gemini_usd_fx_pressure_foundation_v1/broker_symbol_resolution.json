@@ -1,0 +1,108 @@
+{
+  "terminal": {
+    "path": "D:\\XM2\\terminal64.exe",
+    "initialized": true,
+    "connected": true,
+    "build": 6180,
+    "maxbars": 100000000,
+    "version": [
+      500,
+      6180,
+      "4 Sep 2026"
+    ],
+    "server": "XMGlobal-MT5 6",
+    "timestamp_semantics": "MT5 rate time treated as XM EET/EEST server-wall bar-open epoch per repository audit; converted per date to UTC"
+  },
+  "resolutions": {
+    "EUR/USD": {
+      "status": "resolved",
+      "resolution_rule": "exact currency_base/profit; unique operational GOLD suffix, then unique exact base name, then unique active contract",
+      "gold_suffix_preference": "#",
+      "candidates": [
+        {
+          "symbol": "EURUSD",
+          "description": "Euro vs US Dollar",
+          "path": "Forex\\Standard\\Majors\\EURUSD",
+          "visible": true,
+          "trade_mode": 0,
+          "currency_base": "EUR",
+          "currency_profit": "USD",
+          "digits": 5,
+          "point": 1e-05
+        },
+        {
+          "symbol": "EURUSD#",
+          "description": "Euro vs US Dollar",
+          "path": "Forex\\Standard Ultra Low\\Majors\\EURUSD#",
+          "visible": true,
+          "trade_mode": 4,
+          "currency_base": "EUR",
+          "currency_profit": "USD",
+          "digits": 5,
+          "point": 1e-05
+        }
+      ],
+      "selected_symbol": "EURUSD#"
+    },
+    "GBP/USD": {
+      "status": "resolved",
+      "resolution_rule": "exact currency_base/profit; unique operational GOLD suffix, then unique exact base name, then unique active contract",
+      "gold_suffix_preference": "#",
+      "candidates": [
+        {
+          "symbol": "GBPUSD",
+          "description": "Great Britain Pound vs US Dollar",
+          "path": "Forex\\Standard\\Majors\\GBPUSD",
+          "visible": true,
+          "trade_mode": 0,
+          "currency_base": "GBP",
+          "currency_profit": "USD",
+          "digits": 5,
+          "point": 1e-05
+        },
+        {
+          "symbol": "GBPUSD#",
+          "description": "Great Britain Pound vs US Dollar",
+          "path": "Forex\\Standard Ultra Low\\Majors\\GBPUSD#",
+          "visible": false,
+          "trade_mode": 4,
+          "currency_base": "GBP",
+          "currency_profit": "USD",
+          "digits": 5,
+          "point": 1e-05
+        }
+      ],
+      "selected_symbol": "GBPUSD#"
+    },
+    "USD/JPY": {
+      "status": "resolved",
+      "resolution_rule": "exact currency_base/profit; unique operational GOLD suffix, then unique exact base name, then unique active contract",
+      "gold_suffix_preference": "#",
+      "candidates": [
+        {
+          "symbol": "USDJPY",
+          "description": "US Dollar vs Japanese Yen",
+          "path": "Forex\\Standard\\Majors\\USDJPY",
+          "visible": true,
+          "trade_mode": 0,
+          "currency_base": "USD",
+          "currency_profit": "JPY",
+          "digits": 3,
+          "point": 0.001
+        },
+        {
+          "symbol": "USDJPY#",
+          "description": "US Dollar vs Japanese Yen",
+          "path": "Forex\\Standard Ultra Low\\Majors\\USDJPY#",
+          "visible": true,
+          "trade_mode": 4,
+          "currency_base": "USD",
+          "currency_profit": "JPY",
+          "digits": 3,
+          "point": 0.001
+        }
+      ],
+      "selected_symbol": "USDJPY#"
+    }
+  }
+}

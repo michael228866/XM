@@ -1,0 +1,4071 @@
+{
+  "terminal": {
+    "path": "D:\\XM2\\terminal64.exe",
+    "initialized": true,
+    "connected": true,
+    "build": 6180,
+    "maxbars": 100000000,
+    "version": [
+      500,
+      6180,
+      "4 Sep 2026"
+    ],
+    "server": "XMGlobal-MT5 6",
+    "timestamp_semantics": "MT5 rate time treated as XM EET/EEST server-wall bar-open epoch per repository audit; converted per date to UTC"
+  },
+  "acquisition": {
+    "EUR/USD": {
+      "status": "ok",
+      "broker_symbol": "EURUSD#",
+      "requested_start_utc": "2016-06-30T19:54:00+00:00",
+      "requested_end_utc": "2024-12-31T18:02:00+00:00",
+      "chunks": [
+        {
+          "requested_start_utc": "2016-06-30T19:54:00+00:00",
+          "requested_end_utc_exclusive": "2016-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-06-30T22:49:00+00:00",
+          "query_end_broker_epoch_clock": "2016-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 256,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30185,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33050,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31441,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30308,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31612,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30897,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31254,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28796,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32865,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28966,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33104,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31493,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30411,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33121,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30051,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31847,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31609,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28128,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31247,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28783,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31548,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30393,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33089,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30049,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31843,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32913,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28948,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33073,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31472,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 27613,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31235,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28794,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30297,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31664,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32909,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28964,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33082,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31457,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30380,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33096,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30047,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29053,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31121,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28790,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31840,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31642,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30231,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31668,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32924,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30404,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31667,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31478,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30342,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30926,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28904,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28795,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33168,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31475,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30399,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31657,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31442,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31852,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31671,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30232,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31613,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32291,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30233,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28732,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33063,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29953,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31673,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31511,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30087,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32965,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31403,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30321,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31551,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30012,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31163,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28735,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32919,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28863,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33008,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31431,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30267,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33002,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29988,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31777,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31538,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28625,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31761,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30207,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30238,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31641,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32860,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28897,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33029,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31447,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30356,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33077,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30007,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-12-31T18:02:00+00:00",
+          "query_start_broker_epoch_clock": "2024-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-12-31T20:07:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29242,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        }
+      ],
+      "archive_path": "fx_source_EURUSD.npz",
+      "archive_sha256": "5fc5196114987eedc402ef8f3e66cae957f49f5c679c25591e4730b93236f28c",
+      "logical_open_utc_sha256": "d72a06a6b6a6ef8fe2ea3f621d70387f7daf937e633dfdd3c913467c12070bab",
+      "logical_close_sha256": "766c183758f77e253e3934e46f64cf0018c91076adca5cb06941a64a88d08edc"
+    },
+    "GBP/USD": {
+      "status": "ok",
+      "broker_symbol": "GBPUSD#",
+      "requested_start_utc": "2016-06-30T19:54:00+00:00",
+      "requested_end_utc": "2024-12-31T18:02:00+00:00",
+      "chunks": [
+        {
+          "requested_start_utc": "2016-06-30T19:54:00+00:00",
+          "requested_end_utc_exclusive": "2016-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-06-30T22:49:00+00:00",
+          "query_end_broker_epoch_clock": "2016-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 257,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30198,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33068,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31457,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30329,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31602,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30599,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31237,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28797,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32866,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28965,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33105,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31492,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30412,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33121,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30055,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31847,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31608,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28128,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31246,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28785,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31553,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30402,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 11201,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 501,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 532,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 549,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 1991,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33079,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31465,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 27615,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31230,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28792,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30296,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31648,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32907,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28966,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33060,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31372,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30357,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33083,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30042,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29033,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31109,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28774,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31793,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31611,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30216,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31667,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32922,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30390,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31667,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31471,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30343,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30930,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28899,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28796,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33176,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31470,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30396,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31644,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31443,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31851,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31656,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30228,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31585,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32279,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30164,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28684,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32959,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29882,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31605,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31398,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30021,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32893,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31358,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30324,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31548,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29994,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31087,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28719,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32872,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28798,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32974,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31405,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30250,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33010,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29912,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31781,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31547,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28620,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31745,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30198,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30263,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31640,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32892,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28933,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33066,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31437,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30328,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33058,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29998,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-12-31T18:02:00+00:00",
+          "query_start_broker_epoch_clock": "2024-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-12-31T20:07:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29226,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        }
+      ],
+      "archive_path": "fx_source_GBPUSD.npz",
+      "archive_sha256": "5fc5196114987eedc402ef8f3e66cae957f49f5c679c25591e4730b93236f28c",
+      "logical_open_utc_sha256": "d72a06a6b6a6ef8fe2ea3f621d70387f7daf937e633dfdd3c913467c12070bab",
+      "logical_close_sha256": "766c183758f77e253e3934e46f64cf0018c91076adca5cb06941a64a88d08edc"
+    },
+    "USD/JPY": {
+      "status": "ok",
+      "broker_symbol": "USDJPY#",
+      "requested_start_utc": "2016-06-30T19:54:00+00:00",
+      "requested_end_utc": "2024-12-31T18:02:00+00:00",
+      "chunks": [
+        {
+          "requested_start_utc": "2016-06-30T19:54:00+00:00",
+          "requested_end_utc_exclusive": "2016-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-06-30T22:49:00+00:00",
+          "query_end_broker_epoch_clock": "2016-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 257,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30211,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33062,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31441,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30316,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2016-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2016-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31616,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2016-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2016-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30807,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31246,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28796,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32865,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28966,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33105,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31493,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30409,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33122,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30055,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31848,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2017-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2017-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31611,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2017-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2017-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28126,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31247,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28782,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31555,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30399,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 2558,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 501,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 532,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 549,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 2010,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33070,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2018-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2018-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31465,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2018-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2018-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 27616,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31220,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28796,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30292,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31669,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32910,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28968,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33090,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31458,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30384,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33089,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2019-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2019-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30053,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2019-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2019-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29058,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31122,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28790,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31841,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31625,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30227,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31665,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32919,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30394,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31663,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31477,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2020-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2020-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30350,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2020-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2020-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30926,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28911,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28796,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33175,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31480,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30398,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31662,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31475,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31854,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31665,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30238,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2021-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2021-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31617,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2021-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2021-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32303,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30223,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28730,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33029,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29935,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31645,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31472,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30069,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32892,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31360,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30340,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2022-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2022-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31544,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2022-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2022-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30054,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31148,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28735,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32919,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28880,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33045,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31424,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30259,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32952,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29927,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31792,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2023-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2023-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31549,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2023-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-01-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2023-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-01-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28612,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-01-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-02-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-01-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-02-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31735,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-02-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-03-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-02-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-03-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30176,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-03-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-04-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-03-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-04-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30219,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-04-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-05-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-04-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-05-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31623,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-05-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-06-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-05-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-06-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 32899,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-06-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-07-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-06-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-07-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 28907,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-07-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-08-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-07-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-08-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33037,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-08-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-09-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-08-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-09-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 31399,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-09-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-10-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-09-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-10-01T03:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 30262,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-10-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-11-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-10-01T02:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-11-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 33031,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-11-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-12-01T00:00:00+00:00",
+          "query_start_broker_epoch_clock": "2024-11-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-12-01T02:05:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29943,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        },
+        {
+          "requested_start_utc": "2024-12-01T00:00:00+00:00",
+          "requested_end_utc_exclusive": "2024-12-31T18:02:00+00:00",
+          "query_start_broker_epoch_clock": "2024-12-01T01:55:00+00:00",
+          "query_end_broker_epoch_clock": "2024-12-31T20:07:00+00:00",
+          "status": "ok",
+          "returned_rows_before_filter": 29203,
+          "mt5_last_error": [
+            1,
+            "Success"
+          ],
+          "returned_rows_after_filter": 0
+        }
+      ],
+      "archive_path": "fx_source_USDJPY.npz",
+      "archive_sha256": "5fc5196114987eedc402ef8f3e66cae957f49f5c679c25591e4730b93236f28c",
+      "logical_open_utc_sha256": "d72a06a6b6a6ef8fe2ea3f621d70387f7daf937e633dfdd3c913467c12070bab",
+      "logical_close_sha256": "766c183758f77e253e3934e46f64cf0018c91076adca5cb06941a64a88d08edc"
+    }
+  }
+}

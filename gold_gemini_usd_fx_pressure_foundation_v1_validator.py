@@ -42,8 +42,7 @@ def inventory(directory: Path) -> dict[str, str]:
 
 
 def broker_to_utc(raw: np.ndarray) -> np.ndarray:
-    wall = pd.to_datetime(raw.astype(np.int64), unit="s")
-    return pd.DatetimeIndex(wall).tz_localize("Europe/Helsinki", ambiguous="raise", nonexistent="raise").tz_convert("UTC").asi8
+    return raw.astype(np.int64) * 1_000_000_000
 
 
 def intervals_from_gap_audit(run: Path) -> list[tuple[int, int]]:
@@ -161,9 +160,12 @@ def validate(run: Path) -> dict[str, Any]:
             selected[economic] = symbol
     check("economic symbol identity", not symbol_errors, {"selected": selected, "errors": symbol_errors}, "data")
 
-    source_errors, timezone_errors, source_rows = [], [], {}
+    source_errors, timezone_errors, filter_mismatches, source_rows = [], [], [], {}
     for economic in INSTRUMENTS:
         acquisition = provenance.get("acquisition", {}).get(economic, {})
+        for row in acquisition.get("chunks", []):
+            if int(row.get("returned_rows_before_filter", 0)) > 0 and int(row.get("returned_rows_after_filter", 0)) == 0:
+                filter_mismatches.append({"instrument": economic, "start": row.get("requested_start_utc"), "returned_before_filter": row.get("returned_rows_before_filter")})
         path = run / acquisition.get("archive_path", "missing")
         if not path.is_file():
             source_errors.append(economic + ": missing raw archive")
@@ -190,7 +192,8 @@ def validate(run: Path) -> dict[str, Any]:
     coverage = pd.read_csv(run / "fx_coverage.csv")
     coverage_ok = len(coverage) == 3 and bool(coverage["spans_required_prehistory"].all()) and bool(coverage["spans_required_end"].all()) and not bool(coverage["invalid_ohlc_rows"].any())
     check("historical source coverage", not source_errors and coverage_ok, {"rows": source_rows, "errors": source_errors, "coverage_ok": coverage_ok}, "data")
-    check("timezone and broker-wall conversion", not timezone_errors, {"errors": timezone_errors, "mapping": "Europe/Helsinki server wall -> UTC"})
+    check("MT5 UTC request and filter semantics", not filter_mismatches, {"mismatches": filter_mismatches[:20], "source": "MQL5 copy_rates_range UTC contract"})
+    check("timezone and returned-epoch conversion", not timezone_errors, {"errors": timezone_errors, "mapping": "MT5 Python returned bar-open epoch is UTC without broker-wall shift"})
 
     with np.load(run / "exact_timestamps.npz", allow_pickle=False) as exact:
         exact_ok = True

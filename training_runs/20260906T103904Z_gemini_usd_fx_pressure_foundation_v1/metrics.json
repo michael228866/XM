@@ -1,0 +1,103 @@
+{
+  "run_id": "20260906T103904Z_gemini_usd_fx_pressure_foundation_v1",
+  "run_status": "fail",
+  "preliminary_data_readiness": false,
+  "data_foundation_ready": false,
+  "symbols": {
+    "EUR/USD": "EURUSD#",
+    "GBP/USD": "GBPUSD#",
+    "USD/JPY": "USDJPY#"
+  },
+  "coverage": [
+    {
+      "instrument": "EUR/USD",
+      "broker_symbol": "EURUSD#",
+      "first_m1_open_utc": null,
+      "last_m1_open_utc": null,
+      "total_rows": 0,
+      "duplicate_rows_removed": 0,
+      "non_monotonic_after_canonicalization": 0,
+      "invalid_ohlc_rows": 0,
+      "zero_or_invalid_prices": 0,
+      "acquisition_chunk_errors": 0,
+      "unexplained_gap_count": 0,
+      "maximum_unexplained_gap_minutes": 0,
+      "spans_required_prehistory": false,
+      "spans_required_end": false
+    },
+    {
+      "instrument": "GBP/USD",
+      "broker_symbol": "GBPUSD#",
+      "first_m1_open_utc": null,
+      "last_m1_open_utc": null,
+      "total_rows": 0,
+      "duplicate_rows_removed": 0,
+      "non_monotonic_after_canonicalization": 0,
+      "invalid_ohlc_rows": 0,
+      "zero_or_invalid_prices": 0,
+      "acquisition_chunk_errors": 0,
+      "unexplained_gap_count": 0,
+      "maximum_unexplained_gap_minutes": 0,
+      "spans_required_prehistory": false,
+      "spans_required_end": false
+    },
+    {
+      "instrument": "USD/JPY",
+      "broker_symbol": "USDJPY#",
+      "first_m1_open_utc": null,
+      "last_m1_open_utc": null,
+      "total_rows": 0,
+      "duplicate_rows_removed": 0,
+      "non_monotonic_after_canonicalization": 0,
+      "invalid_ohlc_rows": 0,
+      "zero_or_invalid_prices": 0,
+      "acquisition_chunk_errors": 0,
+      "unexplained_gap_count": 0,
+      "maximum_unexplained_gap_minutes": 0,
+      "spans_required_prehistory": false,
+      "spans_required_end": false
+    }
+  ],
+  "feature_coverage": {
+    "USD_PRESSURE_1M": {
+      "finite_rows": 0,
+      "nan_rows": 3004515,
+      "finite_percentage": 0.0
+    },
+    "USD_PRESSURE_5M": {
+      "finite_rows": 0,
+      "nan_rows": 3004515,
+      "finite_percentage": 0.0
+    },
+    "USD_PRESSURE_15M": {
+      "finite_rows": 0,
+      "nan_rows": 3004515,
+      "finite_percentage": 0.0
+    },
+    "USD_PRESSURE_60M": {
+      "finite_rows": 0,
+      "nan_rows": 3004515,
+      "finite_percentage": 0.0
+    },
+    "USD_DISPERSION_15M": {
+      "finite_rows": 0,
+      "nan_rows": 3004515,
+      "finite_percentage": 0.0
+    }
+  },
+  "all_six_timestamp_hashes_matched": true,
+  "usd_fx_feature_matrix_sha256": "011954f0afd86ed5cc449af1062c2feb4425360d8b05061a668a189309ae32e5",
+  "fx_source_dataset_sha256": "fcf98b6724168b0d9c9d98a402bf56f89fb2a22bc990e0210b695b95c3654551",
+  "unknown_source_rows_union": 3004515,
+  "legitimate_nan_rows_union": 0,
+  "model_training_performed": false,
+  "strategy_evaluation_performed": false,
+  "labels_loaded": false,
+  "predictions_loaded": false,
+  "outcomes_loaded": false,
+  "gemini_py_changed": false,
+  "operational_model_changed": false,
+  "single_next_action": "Resolve documented FX source/alignment defects in a new data-only run; do not train.",
+  "validator_internal_methodology": "FAIL",
+  "validator_data_certification": "FAIL"
+}

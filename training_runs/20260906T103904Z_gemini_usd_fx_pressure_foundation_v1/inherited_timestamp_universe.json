@@ -1,0 +1,77 @@
+{
+  "blocks": [
+    {
+      "block": "fold1_train",
+      "rows": 530218,
+      "first_broker": "2016-07-01 00:00:00",
+      "last_broker": "2017-12-29 19:55:00",
+      "first_utc": "2016-06-30T21:00:00+00:00",
+      "last_utc": "2017-12-29T17:55:00+00:00",
+      "timestamp_sha256": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+      "utc_timestamp_sha256": "c58e0c0472b696ec08c39ba9085223da0dacc52d169c67a5965f123351f1d529"
+    },
+    {
+      "block": "fold1_score",
+      "rows": 1058080,
+      "first_broker": "2018-01-02 00:00:00",
+      "last_broker": "2020-12-31 18:50:00",
+      "first_utc": "2018-01-01T22:00:00+00:00",
+      "last_utc": "2020-12-31T16:50:00+00:00",
+      "timestamp_sha256": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+      "utc_timestamp_sha256": "6f6d1ac33002553e50f66c92b9bf813229e02ce1e43ad1c2c0fcb86850ccca0e"
+    },
+    {
+      "block": "fold2_train",
+      "rows": 532563,
+      "first_broker": "2019-07-01 01:00:00",
+      "last_broker": "2020-12-31 14:50:00",
+      "first_utc": "2019-06-30T22:00:00+00:00",
+      "last_utc": "2020-12-31T12:50:00+00:00",
+      "timestamp_sha256": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44",
+      "utc_timestamp_sha256": "d4384b492b494fd41574009134dddf086d72b5a52956dc1102c8af16e5f19fa5"
+    },
+    {
+      "block": "fold2_score",
+      "rows": 708197,
+      "first_broker": "2021-01-04 01:00:00",
+      "last_broker": "2022-12-30 23:57:00",
+      "first_utc": "2021-01-03T23:00:00+00:00",
+      "last_utc": "2022-12-30T21:57:00+00:00",
+      "timestamp_sha256": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8",
+      "utc_timestamp_sha256": "baad84131fd1d5761f3222bc2805a95edba452ad9e0cc64bf5ff82906b34594a"
+    },
+    {
+      "block": "fold3_train",
+      "rows": 533580,
+      "first_broker": "2021-07-01 01:00:00",
+      "last_broker": "2022-12-30 19:57:00",
+      "first_utc": "2021-06-30T22:00:00+00:00",
+      "last_utc": "2022-12-30T17:57:00+00:00",
+      "timestamp_sha256": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b",
+      "utc_timestamp_sha256": "094671c7b2f1e401c53b40f4b2f5f8fa32727f46854058366cb43570f3e7988c"
+    },
+    {
+      "block": "fold3_score",
+      "rows": 708020,
+      "first_broker": "2023-01-03 01:00:00",
+      "last_broker": "2024-12-31 20:00:00",
+      "first_utc": "2023-01-02T23:00:00+00:00",
+      "last_utc": "2024-12-31T18:00:00+00:00",
+      "timestamp_sha256": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449",
+      "utc_timestamp_sha256": "2117f5f1c0226c1e4b48ade4a77004a6189d2ffa36f11fe7db896a654a69df43"
+    }
+  ],
+  "unique_rows": 3004515,
+  "source": {
+    "path": "D:\\XM\\數據\\GOLD#_M1_201401020000_202605082357.csv",
+    "sha256": "6cd87c0c4518bc8e2ae090cef0a750fc90711e31b9d838cf9a27337cb58c49eb",
+    "bytes": 258369884,
+    "retention_status": "repository-local historical export excluded from Git; identity retained but durable remote raw-snapshot preservation is not claimed"
+  },
+  "timezone": "Inherited audited XM EET/EEST broker-wall -> Europe/Helsinki -> UTC; no new calibration",
+  "raw_columns_loaded": [
+    "DATE",
+    "TIME"
+  ],
+  "timestamp_archive_sha256": "2f04a9e01d32ae796565cd453c69c0f0de8141e50cb4e62dd72838898e18efa9"
+}

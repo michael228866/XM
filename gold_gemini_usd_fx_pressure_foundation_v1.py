@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-import calendar
 import hashlib
 import json
 import math
@@ -76,24 +75,13 @@ def inventory(directory: Path) -> dict[str, str]:
     }
 
 
-def last_sunday(year: int, month: int) -> datetime:
-    day = calendar.monthrange(year, month)[1]
-    value = datetime(year, month, day, 1, tzinfo=timezone.utc)
-    return value - timedelta(days=(value.weekday() + 1) % 7)
-
-
-def server_offset_seconds(actual_utc: datetime) -> int:
-    start, end = last_sunday(actual_utc.year, 3), last_sunday(actual_utc.year, 10)
-    return 3 * 3600 if start <= actual_utc < end else 2 * 3600
-
-
 def broker_epoch_to_utc_ns(epoch_seconds: np.ndarray) -> np.ndarray:
-    wall = pd.to_datetime(epoch_seconds.astype(np.int64), unit="s")
-    return pd.DatetimeIndex(wall).tz_localize("Europe/Helsinki", ambiguous="raise", nonexistent="raise").tz_convert("UTC").asi8
+    # MetaTrader 5 Python API stores and returns rate bar-open epochs in UTC.
+    return epoch_seconds.astype(np.int64) * 1_000_000_000
 
 
 def utc_to_broker_query(value: datetime) -> datetime:
-    return value + timedelta(seconds=server_offset_seconds(value))
+    return value.astimezone(timezone.utc)
 
 
 def add_artifact(manifest: dict[str, Any], run: Path, path: Path, kind: str) -> None:
@@ -141,7 +129,7 @@ def preregister(run: Path) -> dict[str, Any]:
         "orientation": {"EUR/USD": -1, "GBP/USD": -1, "USD/JPY": 1},
         "aggregation": "equal arithmetic mean; sample standard deviation ddof=1 for 15m dispersion",
         "max_external_bar_staleness_minutes": MAX_STALENESS_MINUTES,
-        "bar_semantics": "MT5 M1 time is server-wall bar OPEN; information time is converted UTC open plus one minute",
+        "bar_semantics": "MT5 Python M1 time is UTC bar OPEN; information time is open plus one minute",
         "asof_semantics": "latest completed close <= anchor; both t and t-h endpoints <=5 wall-clock minutes stale",
         "normalization": "none",
         "feature_or_horizon_search": False,
@@ -474,8 +462,8 @@ def main_run(run: Path) -> None:
                 "maxbars": int(terminal_info.maxbars) if terminal_info else None,
                 "version": list(mt5.version() or ()),
                 "server": account_info.server if account_info else None,
-                "login": int(account_info.login) if account_info else None,
-                "timestamp_semantics": "MT5 rate time treated as XM EET/EEST server-wall bar-open epoch per repository audit; converted per date to UTC",
+                "timestamp_semantics": "MetaTrader 5 Python copy_rates_range input and returned M1 bar-open epochs are UTC without broker-wall shift",
+                "timestamp_semantics_source": "https://www.mql5.com/en/docs/python_metatrader5/mt5copyratesrange_py",
             }
         )
         selected, resolution = resolve_symbols(mt5)
@@ -683,7 +671,7 @@ def main_run(run: Path) -> None:
                 {"path": value["archive_path"], "sha256": value["archive_sha256"], "retention_status": "raw MT5 M1 snapshot retained in run"}
                 for value in acquisition.values() if value.get("archive_path")
             ],
-            "timezone": "XM EET/EEST broker wall time converted per-date to UTC; M1 open + 1 minute is availability time",
+            "timezone": "MT5 Python rate epoch UTC; M1 open + 1 minute is availability time. GOLD exact timestamps retain their separately certified broker-wall-to-UTC mapping.",
             "data_start_utc": start.isoformat(), "data_end_utc": end.isoformat(),
             "train_start_utc": "not_applicable_data_only", "train_end_utc": "not_applicable_data_only", "train_rows": 0,
             "validation_start_utc": pd.Timestamp(union[0], tz="UTC").isoformat(),
@@ -693,7 +681,17 @@ def main_run(run: Path) -> None:
             "embargo_details": "not applicable: no fitting or evaluation",
             "raw_snapshot_retained": bool(acquisition),
             "reproducibility_claim": "Raw broker M1 OHLC snapshots, exact timestamp arrays, fixed feature matrix, hashes, and code retained in the finalized run.",
-            "mt5_fetch": terminal_record,
+            "mt5_fetch": {
+                "used": True,
+                "terminal_path": str(TERMINAL),
+                "terminal_info": {key: terminal_record.get(key) for key in ("initialized", "connected", "build", "maxbars", "version")},
+                "broker_info": {"server": terminal_record.get("server"), "symbols": symbols},
+                "fetch_start_utc": start.isoformat(),
+                "fetch_end_utc": end.isoformat(),
+                "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),
+                "returned_rows": {economic: len(all_data[economic]["open_utc_ns"]) for economic in INSTRUMENTS},
+                "not_applicable_reason": None,
+            },
         }
     )
     manifest["registry"].update({key: "not_applicable_data_only" for key in archive.REGISTRY_FIELDS})

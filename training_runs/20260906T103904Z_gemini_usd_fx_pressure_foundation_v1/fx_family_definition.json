@@ -1,0 +1,34 @@
+{
+  "family": "USD FX PRESSURE",
+  "instruments": [
+    "EUR/USD",
+    "GBP/USD",
+    "USD/JPY"
+  ],
+  "feature_names_order": [
+    "USD_PRESSURE_1M",
+    "USD_PRESSURE_5M",
+    "USD_PRESSURE_15M",
+    "USD_PRESSURE_60M",
+    "USD_DISPERSION_15M"
+  ],
+  "formula": "mean([-r_EURUSD(h), -r_GBPUSD(h), +r_USDJPY(h)]); sample std at h=15",
+  "horizons_minutes": [
+    1,
+    5,
+    15,
+    60
+  ],
+  "max_staleness_minutes": 5,
+  "completed_bar_rule": "latest M1 close with open_utc + 1 minute <= decision/anchor",
+  "normalization": "none",
+  "prohibited": [
+    "models",
+    "labels",
+    "outcomes",
+    "thresholds",
+    "alternative instruments",
+    "alternative horizons",
+    "forward fill"
+  ]
+}

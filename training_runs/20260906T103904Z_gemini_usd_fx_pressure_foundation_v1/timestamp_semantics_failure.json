@@ -1,0 +1,18 @@
+{
+  "classification": "meaningful_aborted_acquisition_methodology",
+  "reason": "The executed acquisition incorrectly shifted UTC copy_rates_range queries and treated returned UTC epochs as broker-wall epochs.",
+  "evidence": {
+    "instrument": "EURUSD#",
+    "query_start_utc": "2016-06-30T22:49:00+00:00",
+    "query_end_utc": "2016-07-01T03:05:00+00:00",
+    "returned_rows": 256,
+    "first_returned_epoch_utc": "2016-06-30T22:49:00+00:00",
+    "last_returned_epoch_utc": "2016-07-01T03:05:00+00:00",
+    "mt5_last_error": [1, "Success"]
+  },
+  "authoritative_semantics": "MetaTrader 5 Python rate request datetimes and returned bar-open epochs are UTC without shift.",
+  "authoritative_source": "https://www.mql5.com/en/docs/python_metatrader5/mt5copyratesrange_py",
+  "data_or_strategy_outcomes_accessed": false,
+  "model_training_performed": false,
+  "required_correction": "Use UTC queries and returned epochs directly in a new preserved data-only run."
+}
