@@ -1,10 +1,40 @@
 {
+  "execution_provenance": {
+    "initial_acquisition_commit": "57d47fd95b9f86445cbe3a0c43cf80be0775bc34",
+    "review_freeze_commit": "8f8bb7ec884065c7e7f189c95d136a8b9c1d6074",
+    "executed_build_commit": "9fa631f3a88d08b8ad668c2d9188f4410d8a10b3",
+    "executed_validator_commit": "59e15271e0cc63aaf04cf0559d3f78f9c1d8924c",
+    "pre_stage_git_clean": true,
+    "pre_stage_HEAD_equals_origin_main": true,
+    "executed_build_script_snapshot": "integration_executed_exact.py",
+    "executed_build_script_sha256": "1820e55261117a83c8781285c9f92805e1aba14553df60bcff95d7cbb5b7d498",
+    "executed_validator_snapshot": "validator_corrected_revision.py",
+    "executed_validator_sha256": "72ba7056dad5dcaa776b911d04b2d49aaf46475f10c85f3fd5b9d818d4724c26",
+    "revision_notes": "Original snapshots and initial FAIL retained. int64 JSON output fix; validator microsecond/nanosecond correction; neutral prehistory proof; UTF-8 supplemental snapshot correction. No event/feature/matrix changes. See execution_revision.json and validation_methodology_corrections.md.",
+    "commands": [
+      ".venv/Scripts/python.exe gold_macro_event_integration_foundation_v1.py acquire --run-dir training_runs/20260905T171629Z_gemini_macro_event_integration_foundation_v1",
+      ".venv/Scripts/python.exe gold_macro_event_integration_foundation_v1.py build --run-dir training_runs/20260905T171629Z_gemini_macro_event_integration_foundation_v1",
+      ".venv/Scripts/python.exe gold_macro_event_integration_foundation_v1_validator.py training_runs/20260905T171629Z_gemini_macro_event_integration_foundation_v1"
+    ],
+    "supplemental_official_pdf": {
+      "url": "https://www.bea.gov/sites/default/files/2019-10/pi0919.pdf",
+      "path": "sources/574fe0b484c31ce83a7b6309.html",
+      "acquisition_utc": "2026-09-06T04:30:27.146803+00:00",
+      "status": "ok",
+      "http_status": 200,
+      "bytes": 244958,
+      "sha256": "6f9731af8dee4697ce003cd48ecdc502c8a86e5d636a94a0e57dfed6e30e7ae2",
+      "final_url": "https://www.bea.gov/sites/default/files/2019-10/pi0919.pdf",
+      "error": ""
+    },
+    "retention": "All exact timestamp arrays, eight-feature matrix, new official raw sources, original and executed script revisions, audit failures and corrected audit outputs retained in this Git run. Original full raw GOLD source remains outside this run; only its exact hashed DATE/TIME cohort is preserved here. Inherited CPI/EMPLOYMENT raw-source gaps disclosed; no temporary path claimed as durable."
+  },
   "schema_version": 1,
   "run_id": "20260905T171629Z_gemini_macro_event_integration_foundation_v1",
   "experiment_name": "gemini_macro_event_integration_foundation_v1",
-  "status": "in_progress",
+  "status": "pass",
   "started_at_utc": "2026-09-05T17:16:29.326141Z",
-  "finished_at_utc": null,
+  "finished_at_utc": "2026-09-06T04:41:41.758093Z",
   "git_commit": "57d47fd95b9f86445cbe3a0c43cf80be0775bc34",
   "git_dirty": false,
   "training_script": "D:\\XM\\數據\\gold_macro_event_integration_foundation_v1.py",
@@ -846,7 +876,7 @@
     "mean_r": "not_applicable_data_only",
     "pnl": "not_applicable_data_only",
     "max_dd": "not_applicable_data_only",
-    "validator_result": "internal FAIL; untouched FAIL, data-only"
+    "validator_result": "internal PASS; untouched FAIL, data-only"
   },
   "promotion": {
     "requested": false,

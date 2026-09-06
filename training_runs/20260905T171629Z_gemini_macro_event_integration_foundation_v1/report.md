@@ -1,5 +1,7 @@
 # GEMINI MACRO EVENT INTEGRATION FOUNDATION V1
 
+Final result: DATA FOUNDATION READY = YES. See integration_summary.md for the final consolidated report. Initial pending/FAIL stages below are retained historical execution records; corrected independent audit is the last certification section.
+
 Data-only; no training, no strategy evaluation.
 
 # Source identity and integration review
@@ -266,3 +268,141 @@ No missing-release conclusions use public-release month presence. No whole-strea
 }
 
 MACRO EVENT B0/B1 DATA FOUNDATION READY = NO
+
+## Independent final certification
+
+{
+  "internal_methodology": "PASS",
+  "final_untouched_validity": "FAIL",
+  "final_untouched_reason": "Data foundation only; no untouched strategy evaluation or performance claim.",
+  "checks": [
+    {
+      "check": "national PCE identity and retained official source bytes",
+      "verdict": "PASS",
+      "evidence": "119 canonical releases verified"
+    },
+    {
+      "check": "national PCE reference sequence continuity",
+      "verdict": "PASS",
+      "evidence": {
+        "missing_reference_periods": [],
+        "errors": [],
+        "method": "Reference periods from official national release content, NOT public-release calendar month presence. February/March 2019 jointly published once."
+      }
+    },
+    {
+      "check": "2019 HTML timezone conflict explicitly source-resolved",
+      "verdict": "PASS",
+      "evidence": "Official actual-release PDF page 1 EDT independently read; preceding official EDT announcement corroborates. HTML EST defect disclosed, not silently assumed away."
+    },
+    {
+      "check": "official universe and reference-period sequence, not release-month presence",
+      "verdict": "PASS",
+      "evidence": "Official sitemap universe exhaustively identity reviewed; reference periods and release timestamps separately retained; see pce_sequence_review.json"
+    },
+    {
+      "check": "state/regional PCE exclusion",
+      "verdict": "PASS",
+      "evidence": "2015, 2016 and 2017 state releases classified by official title; not excluded by date alone"
+    },
+    {
+      "check": "six exact retained timestamp hashes and UTC conversion",
+      "verdict": "PASS",
+      "evidence": "Compared all six to immutable C1 provenance hashes; exact deduplicated union"
+    },
+    {
+      "check": "eight-feature causal as-of construction",
+      "verdict": "PASS",
+      "evidence": "Independent backward as-of join: all 3004515 rows; release <= decision; 15/60/240/1440 fixed boundaries"
+    },
+    {
+      "check": "combined dataset and feature matrix hashes",
+      "verdict": "PASS",
+      "evidence": "CSV bytes, logical matrix dtype/shape/bytes and NPZ bytes independently SHA-256 checked"
+    },
+    {
+      "check": "CPI retention-gap mathematical equivalence",
+      "verdict": "PASS",
+      "evidence": "Whole conservative release envelope expires before earliest required timestamp; no pre-event features; original source still incomplete"
+    },
+    {
+      "check": "inherited CPI/EMPLOYMENT exact official-source inventory coverage",
+      "verdict": "PASS",
+      "evidence": {
+        "records": 240,
+        "neutral_pre_history": [
+          {
+            "url": "https://www.bls.gov/news.release/archives/cpi_06162016.htm",
+            "exact_affected_rows": 0,
+            "conservative_effect_end_utc": "2016-06-19 00:00:00+00:00",
+            "source_complete": false,
+            "reason": "Archived release-calendar date is before required history by more than clip+timezone envelope; no pre-event features."
+          },
+          {
+            "url": "https://www.bls.gov/news.release/archives/empsit_01092015.htm",
+            "exact_affected_rows": 0,
+            "conservative_effect_end_utc": "2015-01-12 00:00:00+00:00",
+            "source_complete": true,
+            "reason": "Archived release-calendar date is before required history by more than clip+timezone envelope; no pre-event features."
+          }
+        ],
+        "reason": "No public-release month inference; every missing inherited timestamp explicitly bounded and proven neutral."
+      }
+    },
+    {
+      "check": "exact PCE changed-row accounting, not whole-stream withholding",
+      "verdict": "PASS",
+      "evidence": "Independently compared all eight features on exact timestamps; per-block and deduplicated union"
+    },
+    {
+      "check": "unique constructability and explicit unresolved-event accounting",
+      "verdict": "PASS",
+      "evidence": "No blanket 530218 withholding count; CPI known neutral, canonical PCE sequence complete"
+    },
+    {
+      "check": "FOMC immutable reuse including unscheduled statements",
+      "verdict": "PASS",
+      "evidence": "74 unchanged FOMC records, including 3 unscheduled"
+    },
+    {
+      "check": "all previous finalized runs byte-identical",
+      "verdict": "PASS",
+      "evidence": "9 complete archived file inventories"
+    },
+    {
+      "check": "operational code/model unchanged",
+      "verdict": "PASS",
+      "evidence": {
+        "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+        "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+      }
+    },
+    {
+      "check": "data-only implementation, no fitting or outcome access",
+      "verdict": "PASS",
+      "evidence": "Manual code-path review plus forbidden operation checks; only DATE/TIME raw GOLD columns; archived macro and timestamp arrays only"
+    },
+    {
+      "check": "pre-run Git and immutable executed code",
+      "verdict": "PASS",
+      "evidence": {
+        "pre_run_git_commit": "57d47fd95b9f86445cbe3a0c43cf80be0775bc34",
+        "pre_run_git_dirty": false,
+        "head_sha": "57d47fd95b9f86445cbe3a0c43cf80be0775bc34",
+        "origin_main_sha": "57d47fd95b9f86445cbe3a0c43cf80be0775bc34"
+      }
+    },
+    {
+      "check": "serialization correction leaves constructed data unchanged",
+      "verdict": "PASS",
+      "evidence": "Initial summary serialization failed on NumPy int64; int() output-only correction. Original script and error retained; exact matrix, timestamp and impact artifact hashes must be unchanged."
+    },
+    {
+      "check": "independent nanosecond units and feature boundary regression",
+      "verdict": "PASS",
+      "evidence": "Explicit datetime64[ns] in independent as-of join; before-release, 15/60/240/1440 edges verified. Initial pandas-us audit failure retained."
+    }
+  ]
+}
+
+MACRO EVENT B0/B1 DATA FOUNDATION READY = YES
