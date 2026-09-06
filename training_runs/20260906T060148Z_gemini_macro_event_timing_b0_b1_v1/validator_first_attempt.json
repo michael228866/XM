@@ -1,0 +1,97 @@
+{
+  "overall": "FAIL",
+  "internal_methodology": "FAIL",
+  "final_untouched_validity": "FAIL",
+  "checks": {
+    "chronology": {
+      "verdict": "PASS",
+      "evidence": "fold provenance + OOF feature times",
+      "reason": "18-month training and mature labels precede every score fold",
+      "required_validation_correction": "none"
+    },
+    "feature leakage": {
+      "verdict": "PASS",
+      "evidence": "certified matrix full reconstruction + six macro hashes",
+      "reason": "release<=decision and B1 is exactly B0 plus frozen matrix",
+      "required_validation_correction": "none"
+    },
+    "label maturity": {
+      "verdict": "PASS",
+      "evidence": "y hashes + exact maturity endpoints",
+      "reason": "same standalone S5 net-R target and strict maturity purge",
+      "required_validation_correction": "none"
+    },
+    "OOF predictions": {
+      "verdict": "FAIL",
+      "evidence": "six fold models + OOF arrays",
+      "reason": "failed: each fold has distinct preceding-history B0/B1 models",
+      "required_validation_correction": "regenerate genuine fold-held-out predictions"
+    },
+    "calibration": {
+      "verdict": "PASS",
+      "evidence": "manifest.model.calibration_method",
+      "reason": "no calibration was fitted",
+      "required_validation_correction": "none"
+    },
+    "threshold selection": {
+      "verdict": "PASS",
+      "evidence": "two candidate rows + fixed manifest",
+      "reason": "0.75 and whole eight-feature family fixed; no subset/window/parameter search",
+      "required_validation_correction": "none"
+    },
+    "purge/embargo": {
+      "verdict": "PASS",
+      "evidence": "latest label information per fold",
+      "reason": "later legacy/S5 maturity is strictly before score start",
+      "required_validation_correction": "none"
+    },
+    "holdout contamination": {
+      "verdict": "PASS",
+      "evidence": "manifest evidence classification",
+      "reason": "all folds explicitly remain development evidence",
+      "required_validation_correction": "none"
+    },
+    "recent-period reuse": {
+      "verdict": "PASS",
+      "evidence": "manifest evidence status",
+      "reason": "inspected former forward data is not a fresh test",
+      "required_validation_correction": "none"
+    },
+    "execution alignment": {
+      "verdict": "PASS",
+      "evidence": "independent S5 ledgers/metrics/exact entry sets",
+      "reason": "same S5 state machine and reconciled marginal trades",
+      "required_validation_correction": "none"
+    },
+    "cost assumptions": {
+      "verdict": "PASS",
+      "evidence": "trade ledger arithmetic + stress metrics",
+      "reason": "observed/fallback spread and fixed nominal/stress costs reconcile",
+      "required_validation_correction": "none"
+    },
+    "multiple-testing risk": {
+      "verdict": "FAIL",
+      "evidence": "historical development record",
+      "reason": "failed: single fixed paired test, but no untouched final interval exists",
+      "required_validation_correction": "only a frozen future shadow interval can establish final validity"
+    }
+  },
+  "foundation_immutable": true,
+  "all_six_timestamp_hashes_matched": true,
+  "paired_identity": true,
+  "b0_reproduction": true,
+  "same_target": true,
+  "same_folds_window_parameters": true,
+  "no_threshold_or_subset_testing": true,
+  "s5_trade_metric_reconciliation": true,
+  "trade_identity_reconciliation": true,
+  "ranking_reconciliation": false,
+  "operational_artifacts_unchanged": true,
+  "errors": [
+    "model count/hash/schema/parameters mismatch",
+    "ranking B0_technical_control/2018_2020/spearman_score_realized_net_r",
+    "ranking B1_technical_plus_macro/2018_2020/spearman_score_realized_net_r"
+  ],
+  "submitted_historical_claim": "invalid",
+  "smallest_validation_correction": "Correct only listed validation methodology failures in a new preserved run; do not tune."
+}

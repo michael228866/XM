@@ -1,0 +1,89 @@
+{
+  "pass": true,
+  "reference": {
+    "scored_rows": 2474297,
+    "prediction_count": 2474297,
+    "trades": 689,
+    "realized_wr": 0.5660377358490566,
+    "pf": 0.8247098331219882,
+    "mean_r": -0.07690539315994348,
+    "pnl_r": -52.98781588720106,
+    "max_dd_r": -59.57958015890608,
+    "cost_stress_pf": 0.7838186120438296,
+    "spearman_score_realized_net_r": 0.29006366478201323,
+    "top_decile_mean_r": -0.13362516057222326,
+    "top_decile_pf": 0.7214634681339611,
+    "top_quintile_mean_r": -0.15795575250743074,
+    "top_quintile_pf": 0.6956121020778562
+  },
+  "reproduced": {
+    "scored_rows": 2474297,
+    "prediction_count": 2474297,
+    "trades": 689,
+    "realized_wr": 0.5660377358490566,
+    "pf": 0.8247098331219882,
+    "mean_r": -0.07690539315994348,
+    "pnl_r": -52.98781588720106,
+    "max_dd_r": -59.57958015890608,
+    "cost_stress_pf": 0.7838186120438296,
+    "spearman_score_realized_net_r": 0.29006366478201323,
+    "top_decile_mean_r": -0.13362516057222326,
+    "top_decile_pf": 0.7214634681339611,
+    "top_quintile_mean_r": -0.15795575250743074,
+    "top_quintile_pf": 0.6956121020778562
+  },
+  "differences": {
+    "scored_rows": 0,
+    "prediction_count": 0,
+    "trades": 0,
+    "realized_wr": 0.0,
+    "pf": 0.0,
+    "mean_r": 0.0,
+    "pnl_r": 0.0,
+    "max_dd_r": 0.0,
+    "cost_stress_pf": 0.0,
+    "spearman_score_realized_net_r": 0.0,
+    "top_decile_mean_r": 0.0,
+    "top_decile_pf": 0.0,
+    "top_quintile_mean_r": 0.0,
+    "top_quintile_pf": 0.0
+  },
+  "reference_probability_distribution": {
+    "mean": 0.5047674962576704,
+    "median": 0.494555801153183,
+    "p75": 0.570514440536499,
+    "p90": 0.6531402349472046,
+    "p95": 0.685541009902954,
+    "p99": 0.722646541595459,
+    "max": 0.861997663974762
+  },
+  "reproduced_probability_distribution": {
+    "mean": 0.5047674962576704,
+    "median": 0.494555801153183,
+    "p75": 0.570514440536499,
+    "p90": 0.6531402349472046,
+    "p95": 0.685541009902954,
+    "p99": 0.722646541595459,
+    "max": 0.861997663974762
+  },
+  "probability_differences": {
+    "mean": 0.0,
+    "median": 0.0,
+    "p75": 0.0,
+    "p90": 0.0,
+    "p95": 0.0,
+    "p99": 0.0,
+    "max": 0.0
+  },
+  "tolerances": {
+    "scored_rows": 0,
+    "prediction_count": 0,
+    "trades": 2,
+    "realized_wr": 0.005,
+    "pf": 0.02,
+    "mean_r": 0.01,
+    "spearman_score_realized_net_r": 0.005,
+    "probability_stat": 0.005
+  },
+  "material_failures": []
+}

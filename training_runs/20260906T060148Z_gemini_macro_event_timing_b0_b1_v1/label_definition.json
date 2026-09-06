@@ -1,0 +1,52 @@
+{
+  "hypotheses": {
+    "C0": {
+      "name": "C0_legacy_label",
+      "definition": "BARRIER_TARGET == 1: from decision-row CLOSE, within the next 240 M1 rows future HIGH reaches max(1.8 ATR, 1.0) and no future LOW reaches max(1.2 ATR, 0.8); otherwise 0",
+      "source": "barrier_classifier_strategy.build_barrier_target"
+    },
+    "C1": {
+      "name": "C1_execution_aligned_label",
+      "decision": "31 shifted features from the preceding completed M1 bar",
+      "entry": "current/next executable M1 bar OPEN",
+      "monitoring": "entry bar onward",
+      "tp": "max(1.3 * shifted ATR, 1.5 price units)",
+      "sl": "max(1.6 * shifted ATR, 0.6 price units)",
+      "timeout": "first available M1 OPEN at elapsed wall-clock minutes >= 90",
+      "intrabar": "HIGH/LOW; stop-first when both reachable",
+      "spread": "observed positive SPREAD else 30-point fallback",
+      "base_extra_cost_points": 5.0,
+      "denominator": "SL distance + entry spread price",
+      "target_one": "standalone net realized R > 0",
+      "target_zero": "standalone net realized R <= 0",
+      "zero_return_convention": "zero is non-positive and maps to target 0",
+      "portfolio_state_in_label": false
+    }
+  },
+  "paired_invariants": {
+    "features": 31,
+    "train_months": 18,
+    "folds": [
+      "2018_2020",
+      "2021_2022",
+      "2023_2024"
+    ],
+    "xgboost": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    },
+    "only_y_semantics_differs": true
+  },
+  "diagnostic_counterfactuals_not_trained": [
+    "legacy-geometry first-touch label",
+    "C1 gross-positive before costs",
+    "C1 exit-type attribution"
+  ]
+}
