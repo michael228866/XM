@@ -72,8 +72,7 @@ def validate(run:Path)->int:
     first_pass=not(attempts["XM"]["certification"]=="PASS" and attempts["Dukascopy"]["attempted"]) and not(attempts["Dukascopy"]["certification"]=="PASS" and attempts["TrueFX"]["attempted"])
     check("source hierarchy followed",hierarchy and first_pass,attempts)
     provider=metrics.get("certified_provider"); count=metrics.get("source_provider_count")
-    reconstruction_provider=provider or ("Dukascopy" if attempts["Dukascopy"]["attempted"] and (run/"fx_source_DUKASCOPY_EURUSD.npz").is_file() else None)
-    check("no provider splicing and same provider for all pairs",(provider in ("XM","Dukascopy") and count==1) or (provider is None and count==0),{"provider":provider,"count":count})
+    check("no provider splicing and same provider for all pairs",provider in ("XM","Dukascopy") and count==1,{"provider":provider,"count":count},"data")
     check("no outcome-based provider selection",manifest["foundation_specification"]["selection_basis"]=="provenance, completeness, timestamps and causality only",manifest["foundation_specification"]["selection_basis"])
     with np.load(run/"exact_timestamps.npz",allow_pickle=False) as exact:
         parts=[]; details={}; exact_ok=True
@@ -82,9 +81,9 @@ def validate(run:Path)->int:
         times=np.unique(np.concatenate(parts)).astype(np.int64)
     check("six frozen timestamp hashes",exact_ok,details)
     source_hashes_ok=True; source_rows={}
-    if reconstruction_provider:
+    if provider:
         for economic in INSTRUMENTS:
-            prefix="DUKASCOPY_" if reconstruction_provider=="Dukascopy" else ""; path=run/f"fx_source_{prefix}{re.sub('[^A-Z]','',economic)}.npz"
+            prefix="DUKASCOPY_" if provider=="Dukascopy" else ""; path=run/f"fx_source_{prefix}{re.sub('[^A-Z]','',economic)}.npz"
             source_hashes_ok&=path.is_file()
             if path.is_file():
                 with np.load(path,allow_pickle=False) as source:
@@ -95,7 +94,7 @@ def validate(run:Path)->int:
     check("closure classification evidence",unexplained==0,{"unexplained_gap_count":unexplained},"data")
     with np.load(run/"usd_fx_reconciled_feature_matrix.npz",allow_pickle=False) as saved:
         saved_times=saved["utc_ns"].astype(np.int64); saved_matrix=saved["features"].astype(float); names=saved["feature_names"].astype(str).tolist(); saved_unknown=saved["unknown_source_mask"].astype(bool); saved_legit=saved["legitimate_nan_mask"].astype(bool)
-    rebuilt,unknown,legitimate=reconstruct(run,times,reconstruction_provider) if reconstruction_provider else (np.full_like(saved_matrix,np.nan),np.ones_like(saved_unknown),np.zeros_like(saved_legit))
+    rebuilt,unknown,legitimate=reconstruct(run,times,provider) if provider else (np.full_like(saved_matrix,np.nan),np.ones_like(saved_unknown),np.zeros_like(saved_legit))
     matrix_ok=np.array_equal(saved_times,times) and names==list(FEATURES) and np.array_equal(saved_matrix,rebuilt,equal_nan=True)
     check("causal completed-bar and staleness",matrix_ok and np.array_equal(saved_unknown,unknown) and np.array_equal(saved_legit,legitimate),{"max_staleness_minutes":5})
     check("return horizons and sign orientation",matrix_ok,{"horizons":HORIZONS,"signs":SIGNS})

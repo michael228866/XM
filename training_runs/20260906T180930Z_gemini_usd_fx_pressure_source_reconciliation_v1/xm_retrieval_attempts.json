@@ -1,0 +1,38 @@
+{
+  "attempted": true,
+  "certification": "FAIL",
+  "deterministic_retrieval": true,
+  "attempts": [
+    {
+      "attempt": 1,
+      "hashes": {
+        "EUR/USD": "91ce86b1c818f375b1a32ed57ae17646f4752ed8a55115219cfa52169f1d9c8b",
+        "GBP/USD": "3019f3e77b8a5d7f537bd2b11d4f602255ae1d9b9c688c217f474c5ae5907952",
+        "USD/JPY": "25f8e403223a601d953c9b4d40c09c3a4cec95683c73c1a12ef478509d0b809b"
+      },
+      "rows": {
+        "EUR/USD": 3162749,
+        "GBP/USD": 3019065,
+        "USD/JPY": 3011477
+      }
+    },
+    {
+      "attempt": 2,
+      "hashes": {
+        "EUR/USD": "91ce86b1c818f375b1a32ed57ae17646f4752ed8a55115219cfa52169f1d9c8b",
+        "GBP/USD": "3019f3e77b8a5d7f537bd2b11d4f602255ae1d9b9c688c217f474c5ae5907952",
+        "USD/JPY": "25f8e403223a601d953c9b4d40c09c3a4cec95683c73c1a12ef478509d0b809b"
+      },
+      "rows": {
+        "EUR/USD": 3162749,
+        "GBP/USD": 3019065,
+        "USD/JPY": 3011477
+      }
+    }
+  ],
+  "available_terminal_paths": [
+    "D:\\XM2\\terminal64.exe"
+  ],
+  "unresolved_source_rows": 151024,
+  "unexplained_gap_count": 5117
+}

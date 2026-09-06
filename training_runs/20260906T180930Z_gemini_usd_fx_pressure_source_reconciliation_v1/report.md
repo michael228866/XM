@@ -1,0 +1,70 @@
+# GEMINI USD FX PRESSURE SOURCE RECONCILIATION V1
+
+Data-only; no model, label, outcome, prediction, or strategy metric was accessed.
+
+Preliminary foundation ready: **NO**
+
+```json
+{
+  "run_id": "20260906T180930Z_gemini_usd_fx_pressure_source_reconciliation_v1",
+  "run_status": "pending_validator",
+  "xm_certification": "FAIL",
+  "dukascopy_attempted": true,
+  "dukascopy_certification": "FAIL",
+  "truefx_attempted": true,
+  "truefx_certification": "FAIL",
+  "certified_provider": null,
+  "source_provider_count": 0,
+  "previous_unresolved_rows": 148867,
+  "previous_148867_rows_resolved": 140391,
+  "unresolved_source_rows_final": 8476,
+  "previous_pair_affected_rows": {
+    "EUR/USD": 3487,
+    "GBP/USD": 125018,
+    "USD/JPY": 132472
+  },
+  "gbpusd_fold1_issue_resolved": false,
+  "usdjpy_fold1_issue_resolved": false,
+  "source_coverage": {
+    "EUR/USD": {
+      "first_m1_open_utc": "2016-06-30T19:59:00+00:00",
+      "last_m1_open_utc": "2024-12-31T18:01:00+00:00",
+      "rows": 3161876,
+      "unexplained_gap_count": 161
+    },
+    "GBP/USD": {
+      "first_m1_open_utc": "2016-06-30T19:59:00+00:00",
+      "last_m1_open_utc": "2024-12-31T18:01:00+00:00",
+      "rows": 3170774,
+      "unexplained_gap_count": 234
+    },
+    "USD/JPY": {
+      "first_m1_open_utc": "2016-06-30T19:59:00+00:00",
+      "last_m1_open_utc": "2024-12-31T18:01:00+00:00",
+      "rows": 3168474,
+      "unexplained_gap_count": 159
+    }
+  },
+  "legitimate_closure_rows": 506,
+  "feature_coverage": {
+    "USD_PRESSURE_1M": 99.76841520178797,
+    "USD_PRESSURE_5M": 99.76678432292732,
+    "USD_PRESSURE_15M": 99.76395524735273,
+    "USD_PRESSURE_60M": 99.7060424061787,
+    "USD_DISPERSION_15M": 99.76395524735273
+  },
+  "all_six_timestamp_hashes_matched": true,
+  "source_dataset_sha256": "b4cdddd5e5a0402af9c76c1ec7986d732bdee068f1df18aebb16c901f0307a6b",
+  "usd_fx_reconciled_feature_matrix_sha256": "18f710621c13b032c1656b72e5de85c01062967614b8b1461f10026505fcf24f",
+  "data_foundation_ready": false,
+  "model_training_performed": false,
+  "strategy_evaluation_performed": false,
+  "gemini_py_changed": false,
+  "operational_model_changed": false,
+  "single_next_action": "Acquire a certifiable full-range single provider; do not train."
+}
+```
+
+## Independent validation
+
+Internal methodology: **PASS**. Data certification: **FAIL**. Foundation ready: **NO**.

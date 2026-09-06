@@ -1,0 +1,10 @@
+{
+  "probed_at_utc": "2026-09-06T18:16:00Z",
+  "purpose": "Verify whether the final allowed hierarchy provider exposes a reproducible full-range source; no market data was accepted from these probes.",
+  "results": [
+    {"url": "https://www.truefx.com/?page=downloads", "http_status": 404},
+    {"url": "https://www.truefx.com/dev/data/2018/JANUARY-2018.zip", "http_status": 404},
+    {"url": "https://www.truefx.com/dev/data/2024/JANUARY-2024.zip", "http_status": 404}
+  ],
+  "conclusion": "No reproducible official full-range 2016-2024 M1 endpoint was available; complete single-source reconstruction could not begin and certification failed."
+}
