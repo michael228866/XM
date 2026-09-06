@@ -1,0 +1,23 @@
+{
+  "event_url": "https://www.bea.gov/news/2019/personal-income-and-outlays-september-2019",
+  "html_header_timezone": "EST",
+  "canonical_timezone": "EDT",
+  "canonical_utc": "2019-10-31T12:30:00+00:00",
+  "official_pdf": {
+    "url": "https://www.bea.gov/sites/default/files/2019-10/pi0919.pdf",
+    "path": "sources/574fe0b484c31ce83a7b6309.html",
+    "acquisition_utc": "2026-09-06T04:30:27.146803+00:00",
+    "status": "ok",
+    "http_status": 200,
+    "bytes": 244958,
+    "sha256": "6f9731af8dee4697ce003cd48ecdc502c8a86e5d636a94a0e57dfed6e30e7ae2",
+    "final_url": "https://www.bea.gov/sites/default/files/2019-10/pi0919.pdf",
+    "error": ""
+  },
+  "pdf_page": 1,
+  "pdf_header_transcription": "EMBARGOED UNTIL RELEASE AT 8:30 A.M. EDT, THURSDAY, OCTOBER 31, 2019 BEA 19-56",
+  "transcription_method": "Official PDF text extraction inspected through web tool; raw PDF retained byte-for-byte.",
+  "corroborating_url": "https://www.bea.gov/news/2019/personal-income-and-outlays-august-2019",
+  "corroborating_quote": "Next release: October 31, 2019 at 8:30 A.M. EDT",
+  "resolution": "Actual-release official PDF supersedes erroneous HTML timezone abbreviation; preceding official announcement agrees."
+}

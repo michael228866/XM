@@ -1,0 +1,741 @@
+{
+  "basis": "official_national_release_reference_period_sequence",
+  "sequence_complete": true,
+  "missing_canonical_national_releases": [],
+  "unresolved_release_intervals": [],
+  "scope": "Required 2016-06-29T21:00:00Z through 2024-12-31T18:00:00Z; retained additional inherited 2015/early2016 identity records are neutral prehistory.",
+  "reference_period_evidence": [
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-april-2015",
+      "reference_periods": "2015-04",
+      "release_timestamp_utc": "2015-06-01T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, April 2015"
+    },
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-august-2015",
+      "reference_periods": "2015-08",
+      "release_timestamp_utc": "2015-09-28T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, August 2015"
+    },
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-december-2014",
+      "reference_periods": "2014-12",
+      "release_timestamp_utc": "2015-02-02T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, December 2014"
+    },
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-february-2015",
+      "reference_periods": "2015-02",
+      "release_timestamp_utc": "2015-03-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, February 2015"
+    },
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-january-2015",
+      "reference_periods": "2015-01",
+      "release_timestamp_utc": "2015-03-02T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, January 2015"
+    },
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-july-2015",
+      "reference_periods": "2015-07",
+      "release_timestamp_utc": "2015-08-28T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, July 2015"
+    },
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-june-2015-includes-historical-revisions",
+      "reference_periods": "2015-06",
+      "release_timestamp_utc": "2015-08-03T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, June 2015; Includes historical revisions"
+    },
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-march-2015",
+      "reference_periods": "2015-03",
+      "release_timestamp_utc": "2015-04-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, March 2015"
+    },
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-may-2015",
+      "reference_periods": "2015-05",
+      "release_timestamp_utc": "2015-06-25T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, May 2015"
+    },
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-november-2015",
+      "reference_periods": "2015-11",
+      "release_timestamp_utc": "2015-12-23T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, November 2015"
+    },
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-october-2015",
+      "reference_periods": "2015-10",
+      "release_timestamp_utc": "2015-11-25T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, October 2015"
+    },
+    {
+      "url": "https://www.bea.gov/news/2015/personal-income-and-outlays-september-2015",
+      "reference_periods": "2015-09",
+      "release_timestamp_utc": "2015-10-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, September 2015"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-april-2016",
+      "reference_periods": "2016-04",
+      "release_timestamp_utc": "2016-05-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, April 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-august-2016",
+      "reference_periods": "2016-08",
+      "release_timestamp_utc": "2016-09-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, August 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-december-2015",
+      "reference_periods": "2015-12",
+      "release_timestamp_utc": "2016-02-01T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, December 2015"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-february-2016",
+      "reference_periods": "2016-02",
+      "release_timestamp_utc": "2016-03-28T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, February 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-january-2016",
+      "reference_periods": "2016-01",
+      "release_timestamp_utc": "2016-02-26T15:00:00+00:00",
+      "official_title": "Personal Income and Outlays, January 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-july-2016",
+      "reference_periods": "2016-07",
+      "release_timestamp_utc": "2016-08-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, July 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-june-2016",
+      "reference_periods": "2016-06",
+      "release_timestamp_utc": "2016-08-02T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, June 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-march-2016",
+      "reference_periods": "2016-03",
+      "release_timestamp_utc": "2016-04-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, March 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-may-2016",
+      "reference_periods": "2016-05",
+      "release_timestamp_utc": "2016-06-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, May 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-november-2016",
+      "reference_periods": "2016-11",
+      "release_timestamp_utc": "2016-12-22T15:00:00+00:00",
+      "official_title": "Personal Income and Outlays, November 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-october-2016",
+      "reference_periods": "2016-10",
+      "release_timestamp_utc": "2016-11-30T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, October 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2016/personal-income-and-outlays-september-2016",
+      "reference_periods": "2016-09",
+      "release_timestamp_utc": "2016-10-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, September 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-april-2017",
+      "reference_periods": "2017-04",
+      "release_timestamp_utc": "2017-05-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, April 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-august-2017",
+      "reference_periods": "2017-08",
+      "release_timestamp_utc": "2017-09-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, August 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-december-2016",
+      "reference_periods": "2016-12",
+      "release_timestamp_utc": "2017-01-30T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, December 2016"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-february-2017",
+      "reference_periods": "2017-02",
+      "release_timestamp_utc": "2017-03-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, February 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-january-2017",
+      "reference_periods": "2017-01",
+      "release_timestamp_utc": "2017-03-01T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, January 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-july-2017",
+      "reference_periods": "2017-07",
+      "release_timestamp_utc": "2017-08-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, July 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-june-2017-annual-update-2014-through-may-2017",
+      "reference_periods": "2017-06",
+      "release_timestamp_utc": "2017-08-01T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, June 2017; Annual Update 2014 through May 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-march-2017",
+      "reference_periods": "2017-03",
+      "release_timestamp_utc": "2017-05-01T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, March 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-may-2017",
+      "reference_periods": "2017-05",
+      "release_timestamp_utc": "2017-06-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, May 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-november-2017",
+      "reference_periods": "2017-11",
+      "release_timestamp_utc": "2017-12-22T13:30:00+00:00",
+      "official_title": "Personal Income And Outlays, November 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-october-2017",
+      "reference_periods": "2017-10",
+      "release_timestamp_utc": "2017-11-30T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, October 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2017/personal-income-and-outlays-september-2017",
+      "reference_periods": "2017-09",
+      "release_timestamp_utc": "2017-10-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, September 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-april-2018",
+      "reference_periods": "2018-04",
+      "release_timestamp_utc": "2018-05-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, April 2018"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-august-2018",
+      "reference_periods": "2018-08",
+      "release_timestamp_utc": "2018-09-28T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, August 2018"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-december-2017",
+      "reference_periods": "2017-12",
+      "release_timestamp_utc": "2018-01-29T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, December 2017"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-february-2018",
+      "reference_periods": "2018-02",
+      "release_timestamp_utc": "2018-03-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, February 2018"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-january-2018",
+      "reference_periods": "2018-01",
+      "release_timestamp_utc": "2018-03-01T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, January 2018"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-july-2018",
+      "reference_periods": "2018-07",
+      "release_timestamp_utc": "2018-08-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, July 2018"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-june-2018",
+      "reference_periods": "2018-06",
+      "release_timestamp_utc": "2018-07-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, June 2018 Comprehensive Update: 1929 Through May 2018"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-march-2018",
+      "reference_periods": "2018-03",
+      "release_timestamp_utc": "2018-04-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, March 2018"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-may-2018",
+      "reference_periods": "2018-05",
+      "release_timestamp_utc": "2018-06-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, May 2018"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-november-2018",
+      "reference_periods": "2018-11",
+      "release_timestamp_utc": "2018-12-21T15:00:00+00:00",
+      "official_title": "Personal Income and Outlays, November 2018"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-october-2018",
+      "reference_periods": "2018-10",
+      "release_timestamp_utc": "2018-11-29T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, October 2018"
+    },
+    {
+      "url": "https://www.bea.gov/news/2018/personal-income-and-outlays-september-2018",
+      "reference_periods": "2018-09",
+      "release_timestamp_utc": "2018-10-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, September 2018"
+    },
+    {
+      "url": "https://www.bea.gov/news/2019/personal-income-and-outlays-april-2019",
+      "reference_periods": "2019-04",
+      "release_timestamp_utc": "2019-05-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, April 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2019/personal-income-and-outlays-august-2019",
+      "reference_periods": "2019-08",
+      "release_timestamp_utc": "2019-09-27T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, August 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2019/personal-income-and-outlays-december-2018-personal-income-january-2019",
+      "reference_periods": "2018-12",
+      "release_timestamp_utc": "2019-03-01T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, December 2018; Personal Income, January 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2019/personal-income-and-outlays-july-2019",
+      "reference_periods": "2019-07",
+      "release_timestamp_utc": "2019-08-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, July 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2019/personal-income-and-outlays-june-2019",
+      "reference_periods": "2019-06",
+      "release_timestamp_utc": "2019-07-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays: June 2019 Annual Update: January 2014 through May 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2019/personal-income-and-outlays-march-2019",
+      "reference_periods": "2019-02;2019-03",
+      "release_timestamp_utc": "2019-04-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, March 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2019/personal-income-and-outlays-may-2019",
+      "reference_periods": "2019-05",
+      "release_timestamp_utc": "2019-06-28T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, May 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2019/personal-income-and-outlays-november-2019",
+      "reference_periods": "2019-11",
+      "release_timestamp_utc": "2019-12-20T15:00:00+00:00",
+      "official_title": "Personal Income and Outlays, November 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2019/personal-income-and-outlays-october-2019",
+      "reference_periods": "2019-10",
+      "release_timestamp_utc": "2019-11-27T15:00:00+00:00",
+      "official_title": "Personal Income and Outlays, October 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2019/personal-income-and-outlays-september-2019",
+      "reference_periods": "2019-09",
+      "release_timestamp_utc": "2019-10-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, September 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2019/personal-income-february-2019-personal-outlays-january-2019",
+      "reference_periods": "2019-01",
+      "release_timestamp_utc": "2019-03-29T12:30:00+00:00",
+      "official_title": "Personal Income, February 2019; Personal Outlays, January 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-april-2020",
+      "reference_periods": "2020-04",
+      "release_timestamp_utc": "2020-05-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays: April 2020"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-august-2020",
+      "reference_periods": "2020-08",
+      "release_timestamp_utc": "2020-10-01T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, August 2020"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-december-2019",
+      "reference_periods": "2019-12",
+      "release_timestamp_utc": "2020-01-31T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, December 2019"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-february-2020",
+      "reference_periods": "2020-02",
+      "release_timestamp_utc": "2020-03-27T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays: February 2020"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-january-2020",
+      "reference_periods": "2020-01",
+      "release_timestamp_utc": "2020-02-28T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, January 2020"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-july-2020",
+      "reference_periods": "2020-07",
+      "release_timestamp_utc": "2020-08-28T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, July 2020"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-june-2020-and-annual-update",
+      "reference_periods": "2020-06",
+      "release_timestamp_utc": "2020-07-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, June 2020 and Annual Update"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-march-2020",
+      "reference_periods": "2020-03",
+      "release_timestamp_utc": "2020-04-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays: March 2020"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-may-2020",
+      "reference_periods": "2020-05",
+      "release_timestamp_utc": "2020-06-26T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays: May 2020"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-november-2020",
+      "reference_periods": "2020-11",
+      "release_timestamp_utc": "2020-12-23T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, November 2020"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-october-2020",
+      "reference_periods": "2020-10",
+      "release_timestamp_utc": "2020-11-25T15:00:00+00:00",
+      "official_title": "Personal Income and Outlays, October 2020"
+    },
+    {
+      "url": "https://www.bea.gov/news/2020/personal-income-and-outlays-september-2020",
+      "reference_periods": "2020-09",
+      "release_timestamp_utc": "2020-10-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, September 2020"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-april-2021",
+      "reference_periods": "2021-04",
+      "release_timestamp_utc": "2021-05-28T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, April 2021"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-august-2021",
+      "reference_periods": "2021-08",
+      "release_timestamp_utc": "2021-10-01T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, August 2021"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-december-2020",
+      "reference_periods": "2020-12",
+      "release_timestamp_utc": "2021-01-29T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, December 2020"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-february-2021",
+      "reference_periods": "2021-02",
+      "release_timestamp_utc": "2021-03-26T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, February 2021"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-january-2021",
+      "reference_periods": "2021-01",
+      "release_timestamp_utc": "2021-02-26T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, January 2021"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-july-2021",
+      "reference_periods": "2021-07",
+      "release_timestamp_utc": "2021-08-27T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, July 2021"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-june-2021-and-annual-update",
+      "reference_periods": "2021-06",
+      "release_timestamp_utc": "2021-07-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, June 2021 and Annual Update"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-march-2021",
+      "reference_periods": "2021-03",
+      "release_timestamp_utc": "2021-04-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, March 2021"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-may-2021",
+      "reference_periods": "2021-05",
+      "release_timestamp_utc": "2021-06-25T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, May 2021"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-november-2021",
+      "reference_periods": "2021-11",
+      "release_timestamp_utc": "2021-12-23T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, November 2021"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-october-2021",
+      "reference_periods": "2021-10",
+      "release_timestamp_utc": "2021-11-24T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, October 2021"
+    },
+    {
+      "url": "https://www.bea.gov/news/2021/personal-income-and-outlays-september-2021",
+      "reference_periods": "2021-09",
+      "release_timestamp_utc": "2021-10-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, September 2021"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-april-2022",
+      "reference_periods": "2022-04",
+      "release_timestamp_utc": "2022-05-27T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, April 2022"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-august-2022-and-annual-update",
+      "reference_periods": "2022-08",
+      "release_timestamp_utc": "2022-09-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, August 2022 and Annual Update"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-december-2021",
+      "reference_periods": "2021-12",
+      "release_timestamp_utc": "2022-01-28T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, December 2021"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-february-2022",
+      "reference_periods": "2022-02",
+      "release_timestamp_utc": "2022-03-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, February 2022"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-january-2022",
+      "reference_periods": "2022-01",
+      "release_timestamp_utc": "2022-02-25T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, January 2022"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-july-2022",
+      "reference_periods": "2022-07",
+      "release_timestamp_utc": "2022-08-26T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, July 2022"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-june-2022",
+      "reference_periods": "2022-06",
+      "release_timestamp_utc": "2022-07-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, June 2022"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-march-2022",
+      "reference_periods": "2022-03",
+      "release_timestamp_utc": "2022-04-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, March 2022"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-may-2022",
+      "reference_periods": "2022-05",
+      "release_timestamp_utc": "2022-06-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, May 2022"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-november-2022",
+      "reference_periods": "2022-11",
+      "release_timestamp_utc": "2022-12-23T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, November 2022"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-october-2022",
+      "reference_periods": "2022-10",
+      "release_timestamp_utc": "2022-12-01T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, October 2022"
+    },
+    {
+      "url": "https://www.bea.gov/news/2022/personal-income-and-outlays-september-2022",
+      "reference_periods": "2022-09",
+      "release_timestamp_utc": "2022-10-28T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, September 2022"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-april-2023",
+      "reference_periods": "2023-04",
+      "release_timestamp_utc": "2023-05-26T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, April 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-august-2023",
+      "reference_periods": "2023-08",
+      "release_timestamp_utc": "2023-09-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, August 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-december-2022",
+      "reference_periods": "2022-12",
+      "release_timestamp_utc": "2023-01-27T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, December 2022"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-february-2023",
+      "reference_periods": "2023-02",
+      "release_timestamp_utc": "2023-03-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, February 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-january-2023",
+      "reference_periods": "2023-01",
+      "release_timestamp_utc": "2023-02-24T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, January 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-july-2023",
+      "reference_periods": "2023-07",
+      "release_timestamp_utc": "2023-08-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, July 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-june-2023",
+      "reference_periods": "2023-06",
+      "release_timestamp_utc": "2023-07-28T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, June 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-march-2023",
+      "reference_periods": "2023-03",
+      "release_timestamp_utc": "2023-04-28T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, March 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-may-2023",
+      "reference_periods": "2023-05",
+      "release_timestamp_utc": "2023-06-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, May 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-november-2023",
+      "reference_periods": "2023-11",
+      "release_timestamp_utc": "2023-12-22T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, November 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-october-2023",
+      "reference_periods": "2023-10",
+      "release_timestamp_utc": "2023-11-30T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, October 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2023/personal-income-and-outlays-september-2023",
+      "reference_periods": "2023-09",
+      "release_timestamp_utc": "2023-10-27T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, September 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-april-2024",
+      "reference_periods": "2024-04",
+      "release_timestamp_utc": "2024-05-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, April 2024"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-august-2024",
+      "reference_periods": "2024-08",
+      "release_timestamp_utc": "2024-09-27T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, August 2024"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-december-2023",
+      "reference_periods": "2023-12",
+      "release_timestamp_utc": "2024-01-26T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, December 2023"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-february-2024",
+      "reference_periods": "2024-02",
+      "release_timestamp_utc": "2024-03-29T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, February 2024"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-january-2024",
+      "reference_periods": "2024-01",
+      "release_timestamp_utc": "2024-02-29T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, January 2024"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-july-2024",
+      "reference_periods": "2024-07",
+      "release_timestamp_utc": "2024-08-30T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, July 2024"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-june-2024",
+      "reference_periods": "2024-06",
+      "release_timestamp_utc": "2024-07-26T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, June 2024"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-march-2024",
+      "reference_periods": "2024-03",
+      "release_timestamp_utc": "2024-04-26T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, March 2024"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-may-2024",
+      "reference_periods": "2024-05",
+      "release_timestamp_utc": "2024-06-28T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, May 2024"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-november-2024",
+      "reference_periods": "2024-11",
+      "release_timestamp_utc": "2024-12-20T13:30:00+00:00",
+      "official_title": "Personal Income and Outlays, November 2024"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-october-2024",
+      "reference_periods": "2024-10",
+      "release_timestamp_utc": "2024-11-27T15:00:00+00:00",
+      "official_title": "Personal Income and Outlays, October 2024"
+    },
+    {
+      "url": "https://www.bea.gov/news/2024/personal-income-and-outlays-september-2024",
+      "reference_periods": "2024-09",
+      "release_timestamp_utc": "2024-10-31T12:30:00+00:00",
+      "official_title": "Personal Income and Outlays, September 2024"
+    }
+  ],
+  "exceptions": [
+    {
+      "release": "2019-03-01",
+      "pce_reference": "2018-12",
+      "reason": "January income only; January outlays unavailable per national release body."
+    },
+    {
+      "release": "2019-03-29",
+      "pce_reference": "2019-01",
+      "reason": "Renamed national income/outlays release; body contains national January PCE."
+    },
+    {
+      "release": "2019-04-29",
+      "pce_reference": "2019-02;2019-03",
+      "reason": "Official body explicitly publishes new February AND March PCE; one event, not two."
+    }
+  ],
+  "completeness_method": "Official BEA sitemap national release sequence union inherited title variants; each official title/body reviewed. Reference-period continuity 2016-05 through 2024-11 including explicit combined shutdown release. Release-month gaps not used. May2016 anchor retained although 8.5h before required history start."
+}
