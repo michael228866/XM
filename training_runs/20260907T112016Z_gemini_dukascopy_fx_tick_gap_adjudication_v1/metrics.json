@@ -1,0 +1,17 @@
+{
+  "run_id": "20260907T112016Z_gemini_dukascopy_fx_tick_gap_adjudication_v1",
+  "run_status": "aborted",
+  "gap_intervals_frozen": 554,
+  "gap_minutes_frozen": 703331,
+  "unique_pair_hours_planned": 12823,
+  "independent_acquisitions_planned": 2,
+  "responses_committed": 400,
+  "http_200_committed": 384,
+  "http_error_committed": 16,
+  "completed_acquisitions": 0,
+  "abort_reason": "Per-request urllib HTTPS connection setup made the fixed 25646-request acquisition operationally impractical; stopped before adjudication and preserved committed responses.",
+  "model_training_performed": false,
+  "strategy_evaluation_performed": false,
+  "gemini_py_changed": false,
+  "operational_model_changed": false
+}

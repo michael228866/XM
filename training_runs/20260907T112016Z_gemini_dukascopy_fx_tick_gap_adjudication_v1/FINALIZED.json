@@ -1,0 +1,25 @@
+{
+  "run_id": "20260907T112016Z_gemini_dukascopy_fx_tick_gap_adjudication_v1",
+  "finalized_at_utc": "2026-09-07T11:35:36.067699Z",
+  "file_sha256": {
+    "affected_exact_rows.npz": "72eecd360e1d8a923f497d1a858cd6ac83b9d273d092ddd4cc0fe89b7fae0a91",
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "dukascopy_tick_responses.sqlite": "b3b440ecf9c8c44d01bcd5c444f1f538f368b2db254f6d4d69b00af1983e067a",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "exact_timestamps.npz": "2f04a9e01d32ae796565cd453c69c0f0de8141e50cb4e62dd72838898e18efa9",
+    "fx_source_DUKASCOPY_EURUSD.npz": "c07d8ae4eef3712989a398fe66d80bf5f8f12fdc7fa284ffa202c6743ff47191",
+    "fx_source_DUKASCOPY_GBPUSD.npz": "2cf18b635ebb316e264aa3bb301e4475b1f67987ce30f687e805bf877177ba67",
+    "fx_source_DUKASCOPY_USDJPY.npz": "64c87d7bcebe91ca016f30bf376d24a22560678972f3c13c046e60bfa8d2c3ba",
+    "gap_affected_exact_rows.csv.gz": "d023f073508a21e7b6802f5b14cbd3da8c6f330a8a06a9539834500da12f8527",
+    "gap_universe.csv": "55e81f299a3e67504c0317c5522f5ff0c6d3939cb87e48d948ebfd20e4f4fdf5",
+    "gap_universe_manifest.json": "91a8d21ac7d751b6539d5d07261491a401b13b4679c0b0dbc5ecf82e3a1056ee",
+    "manifest.json": "51d1f728784a2ae6ad0686cecc6843375cb2ffe49be4abf8fa9092d95c4e7ee4",
+    "metrics.json": "0bff6c9af489e647334e12e7c3e28401be6ce8d0115ad4ff85375f7d16a67f4d",
+    "report.md": "03524c1e8ed46323a099d41f42e08b680563e5f5aa6b48dc616fa017222838d5",
+    "source_reconciliation_dependency.py": "c5b8736e3b903e4f9b4dd3707e58dea3c619219435cf7948306107ecfe017a6d",
+    "stdout.log": "7c3325e276d95f83c8d6dcd3e8ecf72b96cddbd9eca10e6bd8aad0a0a3c0a7e1",
+    "tick_request_manifest.csv": "9e732470fa73a94bb5667dcbee18f895efa4a331ef245bfc7148d8c50aa8b71b",
+    "training_script.py": "731a8686d4e8ff17ac4082ae9874e712621ea4c030f1965382a5ce348818e918",
+    "validator_script.py": "7eb43b6f75f05447611f8b50c67a405ab9b2536edb654ede9530189c0c5e655f"
+  }
+}

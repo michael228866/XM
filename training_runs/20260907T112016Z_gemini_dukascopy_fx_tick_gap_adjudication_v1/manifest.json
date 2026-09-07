@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "run_id": "20260907T112016Z_gemini_dukascopy_fx_tick_gap_adjudication_v1",
+  "experiment_name": "gemini_dukascopy_fx_tick_gap_adjudication_v1",
+  "status": "aborted",
+  "started_at_utc": "2026-09-07T11:20:16.382315Z",
+  "finished_at_utc": "2026-09-07T11:35:35.938058Z",
+  "git_commit": "3f486ba734d2d941a08fba1ba1b267ec42d52e71",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\gold_gemini_dukascopy_fx_tick_gap_adjudication_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "731a8686d4e8ff17ac4082ae9874e712621ea4c030f1965382a5ce348818e918",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_gemini_dukascopy_fx_tick_gap_adjudication_v1.py <RUN_DIR>",
+  "arguments": [],
+  "random_seeds": {},
+  "random_seed_note": "No random process; frozen 554-gap universe, two deterministic Dukascopy BID tick acquisitions, fixed aggregation and tolerance.",
+  "data": {
+    "symbols": [
+      "EUR/USD",
+      "GBP/USD",
+      "USD/JPY"
+    ],
+    "data_sources": [
+      "Dukascopy native M1 BID OHLC",
+      "partial Dukascopy official historical BID tick archive acquisition"
+    ],
+    "source_files": [
+      {
+        "path": "dukascopy_tick_responses.sqlite",
+        "sha256": "b3b440ecf9c8c44d01bcd5c444f1f538f368b2db254f6d4d69b00af1983e067a",
+        "retention_status": "stored_in_aborted_run_git_lfs_archival_pending"
+      },
+      {
+        "path": "fx_source_DUKASCOPY_EURUSD.npz",
+        "sha256": "c07d8ae4eef3712989a398fe66d80bf5f8f12fdc7fa284ffa202c6743ff47191",
+        "retention_status": "stored_in_aborted_run_git_lfs_archival_pending"
+      },
+      {
+        "path": "fx_source_DUKASCOPY_GBPUSD.npz",
+        "sha256": "2cf18b635ebb316e264aa3bb301e4475b1f67987ce30f687e805bf877177ba67",
+        "retention_status": "stored_in_aborted_run_git_lfs_archival_pending"
+      },
+      {
+        "path": "fx_source_DUKASCOPY_USDJPY.npz",
+        "sha256": "64c87d7bcebe91ca016f30bf376d24a22560678972f3c13c046e60bfa8d2c3ba",
+        "retention_status": "stored_in_aborted_run_git_lfs_archival_pending"
+      }
+    ],
+    "timezone": "UTC exact tick instants and UTC M1 bar-open timestamps",
+    "data_start_utc": "2016-06-30T19:59:00+00:00",
+    "data_end_utc": "2024-12-31T18:02:00+00:00",
+    "train_start_utc": null,
+    "train_end_utc": null,
+    "train_rows": null,
+    "validation_start_utc": null,
+    "validation_end_utc": null,
+    "validation_rows": null,
+    "test_start_utc": null,
+    "test_end_utc": null,
+    "test_rows": null,
+    "purge_details": null,
+    "embargo_details": null,
+    "raw_snapshot_retained": true,
+    "reproducibility_claim": "The partial acquisition and its exact request plan are retained; no completed-adjudication claim is made.",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "Dukascopy-only adjudication; XM was not queried."
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": "not_applicable_data_only",
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [
+      "USD_PRESSURE_1M",
+      "USD_PRESSURE_5M",
+      "USD_PRESSURE_15M",
+      "USD_PRESSURE_60M",
+      "USD_DISPERSION_15M"
+    ],
+    "feature_count": 5,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "Dukascopy tick-gap data adjudication only."
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": "not_applicable_data_only",
+    "not_applicable_reason": "One frozen source, gap universe, aggregation, and tolerance."
+  },
+  "registry": {
+    "parent_or_incumbent": "20260906T180930Z_gemini_usd_fx_pressure_source_reconciliation_v1",
+    "selected_configuration": "aborted urllib Dukascopy BID tick acquisition",
+    "trades_per_day": "not_applicable_data_only",
+    "realized_win_rate": "not_applicable_data_only",
+    "pf": "not_applicable_data_only",
+    "mean_r": "not_applicable_data_only",
+    "pnl": "not_applicable_data_only",
+    "max_dd": "not_applicable_data_only",
+    "validator_result": "not_run_aborted_before_adjudication"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_applicable_data_only",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "kind": "partial_tick_acquisition",
+      "path": "dukascopy_tick_responses.sqlite",
+      "sha256": "b3b440ecf9c8c44d01bcd5c444f1f538f368b2db254f6d4d69b00af1983e067a",
+      "retention_status": "stored_in_aborted_run_git_lfs_archival_pending"
+    },
+    {
+      "kind": "frozen_gap_universe",
+      "path": "gap_universe.csv",
+      "sha256": "55e81f299a3e67504c0317c5522f5ff0c6d3939cb87e48d948ebfd20e4f4fdf5",
+      "retention_status": "stored_in_aborted_run_git_archival_pending"
+    },
+    {
+      "kind": "frozen_request_plan",
+      "path": "tick_request_manifest.csv",
+      "sha256": "9e732470fa73a94bb5667dcbee18f895efa4a331ef245bfc7148d8c50aa8b71b",
+      "retention_status": "stored_in_aborted_run_git_archival_pending"
+    }
+  ],
+  "aborted_reason": "Per-request urllib HTTPS connection setup made the fixed 25,646-request acquisition operationally impractical; 400 committed responses preserved before changing transport implementation.",
+  "pre_run_git": {
+    "pre_run_git_commit": "3f486ba734d2d941a08fba1ba1b267ec42d52e71",
+    "pre_run_git_dirty": false,
+    "head_sha": "3f486ba734d2d941a08fba1ba1b267ec42d52e71",
+    "origin_main_sha": "3f486ba734d2d941a08fba1ba1b267ec42d52e71",
+    "head_equals_origin_main": true
+  },
+  "protected_runs_before": {
+    "20260906T104638Z_gemini_usd_fx_pressure_foundation_v1": {
+      "broker_symbol_resolution.json": "346d0a83aa14fe977b9529d2f909c98bea86b3ec30039608d34d2b92de3966f1",
+      "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+      "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "exact_timestamp_blocks.csv": "4658b4c8aec1ea1912c2e0c85050f013e66c440578f78cd916e8cd293efddda7",
+      "exact_timestamps.npz": "2f04a9e01d32ae796565cd453c69c0f0de8141e50cb4e62dd72838898e18efa9",
+      "FINALIZED.json": "28e96082176880cfc1d805f606e3bb16ffef1604629da8cede7befb220fe88ed",
+      "fx_alignment_audit.csv": "290827a0cf67e74abfbf0ab2430332fcdebcc0582ef04472f0e7cd9c639eeebe",
+      "fx_coverage.csv": "64d24b2c7594a3af6824babe1706960eb1a718a3f969be0bb52a5c9774d51a79",
+      "fx_family_definition.json": "67d0b1bf19d8df83ae36b5f0ba9ed17d2d2e44ee3b66c4b5849351e02e5e384c",
+      "fx_feature_matrix.npz": "f7192c75813257c5e4d75b9ccdbec6edafbc84c998c51b21755b79aa852112f5",
+      "fx_feature_matrix_manifest.json": "31f5d328af3013460cc33fd17b8e79457e615314af2af18f47aef9c89960f6ca",
+      "fx_gap_audit.csv": "5c524fdda2cf9a511d8fc0dd39f2a18a96b2876b8fd661608905ce07ea9ad909",
+      "fx_source_EURUSD.npz": "4049b2189cfaeb4d38fd9dbab634a84dbdb44840ca59ef7a5409ba719bfdf343",
+      "fx_source_GBPUSD.npz": "c3866e33dce6e02a31ad50b43fd0e61d87e21d3c7ba32e7a7f380e81afa7c634",
+      "fx_source_provenance.json": "9116ae428806ee95d9ede42f3079ff91ad28f2b3a70f1fc054131d8677afba50",
+      "fx_source_USDJPY.npz": "5425474f7a4511737d803dcf38ce6355006a482983f54986fc088890eb117892",
+      "inherited_timestamp_universe.json": "131d16b7e857b8ae30118571897638a988bc2a72981091bf0109af6bee0f9b4b",
+      "manifest.json": "c038149a782bad33324b4ef10b8bc9ec4c731a2be5e5bf8f5fbb7cf15d9cb812",
+      "metrics.json": "0b73dfad6a43d91f59cf5628f70d97da93648af83b1efc8c584f87d7cf0a9583",
+      "report.md": "adb016d626dfa3a298da1c963241cc69b485f5a9e647f2e42880d1298f4a09a8",
+      "stdout.log": "0bcd80872430aa8081f14b07af39ee9e65890e5a68ea4ca725f26cf2355e1714",
+      "training_script.py": "fe5f973f4a1112594d2c45e90105c22dd5b43cb9899abff270778d52a44bb8b7",
+      "validator.json": "42da921616be6c657186857aead7f1706af7771a34d9ccaa3d71ba329847c999",
+      "validator.md": "ec23906b5ea02ccb04a1e688dc9b0d4b3a364f90778d688437430936be1d5932",
+      "validator_initial_failure_stdout.log": "7f902644c981e6b6c5d86f4f6984f23584dbb725ad1b923d62e46241967680ed",
+      "validator_methodology_correction.md": "5292e425b209aafd234bd3de1810e57b481d2aa455e7b7452d6f1c08ea525205",
+      "validator_script.py": "f1e54281ab3561301601bb18ef9f8cf78007d49ec3f54a94d225777cea25100f",
+      "validator_script_initial.py": "2cb74ad8580f3e874e3774e22d0552f662b8f8159cc7eaec24eff118968f46d7",
+      "validator_stdout.log": "95591c758a4bf49c804974087a1661d259f3902c4809c11215cb0498be970688"
+    },
+    "20260906T180930Z_gemini_usd_fx_pressure_source_reconciliation_v1": {
+      "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+      "dukascopy_metadata_EURUSD.json": "9fea20442c400f2e1bb55619fcf75ba882f8de583e8df0b3c58a46b2f16a7fcf",
+      "dukascopy_metadata_GBPUSD.json": "9fc247f6acb5be8157350879f72ad0520a342ee61fad4126c07c8533fb5872c0",
+      "dukascopy_metadata_USDJPY.json": "bfa26a270030081514e7a5a23b59dbaae98795f1f4680c799c269db16748ce70",
+      "dukascopy_raw_responses.sqlite": "998a684ed0bfb99886c62a0c7456904658040705a65dbba29a5f9e71128d7ecf",
+      "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "exact_timestamp_blocks.csv": "4658b4c8aec1ea1912c2e0c85050f013e66c440578f78cd916e8cd293efddda7",
+      "exact_timestamps.npz": "2f04a9e01d32ae796565cd453c69c0f0de8141e50cb4e62dd72838898e18efa9",
+      "FINALIZED.json": "8e3ae9ae084ea05075dd5d4704190b7e4574e73e352f72b40bc50dcd6ca2a0e1",
+      "foundation_dependency.py": "fe5f973f4a1112594d2c45e90105c22dd5b43cb9899abff270778d52a44bb8b7",
+      "fx_source_DUKASCOPY_EURUSD.npz": "c07d8ae4eef3712989a398fe66d80bf5f8f12fdc7fa284ffa202c6743ff47191",
+      "fx_source_DUKASCOPY_GBPUSD.npz": "2cf18b635ebb316e264aa3bb301e4475b1f67987ce30f687e805bf877177ba67",
+      "fx_source_DUKASCOPY_USDJPY.npz": "64c87d7bcebe91ca016f30bf376d24a22560678972f3c13c046e60bfa8d2c3ba",
+      "manifest.json": "fe583c588957547cbfb29ab1aa858862b175d8c520fd0d077fcf1f8e8ecd622e",
+      "metrics.json": "e5ff7a4a4454ccac0c22126d05fe8da25c96cfcb26cc6cde9ffbe6f6b50bce47",
+      "previous_gap_impact.json": "bcbbad9088340c52b916c4671d916c292419a3f1028d36ffa5b62f6c2783a326",
+      "previous_unresolved_clusters.csv": "b34248e2f74abdd55d1c974c20257e06e9011805d16c6ac2d68590cc93f1399c",
+      "reconciled_alignment_audit.csv": "5f106e4568d374d1982efd7c2bec715b0ed902136590dce3ef5c9b6992822195",
+      "report.md": "2bdcf2cb942e0ed698aca6aed5b238161ef4191ada3cc925a4abaee3a24fb5ca",
+      "source_attempts.json": "890c66b7afaa9e93cf298633a22c42d388070a5acffbba567de0f1a6cf869176",
+      "source_gap_audit.csv": "406876878b0d6019dbe9dd376db0668f5edc41f623896b14415cbb95902af3d0",
+      "stdout.log": "49bb669db80b86dbabd9abf50bf086319f612a0abed6805396acd14ed2fa9006",
+      "training_script.py": "c5b8736e3b903e4f9b4dd3707e58dea3c619219435cf7948306107ecfe017a6d",
+      "truefx_source_probe.json": "462397763845352f33d33d3ecbc9dc1cce2934fa6f3d4879d0b0f647b98d2951",
+      "usd_fx_reconciled_feature_matrix.npz": "4768cb9f34cd21afa5666c3d22f8e526bcb508c435ef9dd3759019b7b22ada89",
+      "validator.json": "903cea4be10469b5c2e2c6c0d9e55a9eeb9a3546d3b2561d17e3eb22ea96bda5",
+      "validator.md": "cc888038687041e00178213257852dca5b8eae8847e91d1f9580af7d3bc4c7b0",
+      "validator_initial_failure_stdout.log": "f1d9dd0f48d272d39923777c1886645527afedc175cb2322a6825028d1585aed",
+      "validator_methodology_correction.md": "f6116dd9ec067115957cd9dac5c17707d00076dc56715a8f98b5ad71f8c9c1f1",
+      "validator_script.py": "2b9c939cffbfe61495762ebf9abea6335f82c2c2ee601048b35d6ea5fb1660fc",
+      "validator_script_initial.py": "15d90e88c3808c33c5810000c8f5c1b323136b68ca439d711ddde91239f35cb9",
+      "validator_stdout.log": "abe1baf5494348c5d35519762509f104ef002dd8bc548db933a6a8073a0f9669",
+      "xm_gap_adjudication.csv": "2f4da9b6e4d3a928bc480ec02e9cca9e1f22ca42e4e137e3e5383b2d79cee955",
+      "xm_retrieval_attempts.json": "05e053b468bd78a645b833c52bf99ad9ae7893d4b69e42b5a048dcd2930dfe79",
+      "xm_symbol_resolution.json": "ab795d5d11e8843c94f4ef1c05c98e293de3e34e0e8cd965b496fa28df863047",
+      "xm_tick_gap_audit.csv": "3bf1ae746d3f3d93e11e32c6e1166250213b78bbd636f34ddff7dad02762b492"
+    }
+  },
+  "operational_hashes_before": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "foundation_specification": {
+    "economic_data_provider": "Dukascopy",
+    "representation_sources": "native_m1 + tick_reconstructed_m1",
+    "instruments": [
+      "EUR/USD",
+      "GBP/USD",
+      "USD/JPY"
+    ],
+    "features": [
+      "USD_PRESSURE_1M",
+      "USD_PRESSURE_5M",
+      "USD_PRESSURE_15M",
+      "USD_PRESSURE_60M",
+      "USD_DISPERSION_15M"
+    ],
+    "horizons_minutes": [
+      1,
+      5,
+      15,
+      60
+    ],
+    "orientation": [
+      -1.0,
+      -1.0,
+      1.0
+    ],
+    "max_staleness_minutes": 5,
+    "native_convention": "Dukascopy native M1 BID OHLC",
+    "tick_convention": "Dukascopy BID ticks; UTC exact instant",
+    "bar_availability": "M1 open plus 1 minute",
+    "tick_archive_url_template": "https://datafeed.dukascopy.com/datafeed/{PAIR}/{YYYY}/{zero_based_MM}/{DD}/{HH}h_ticks.bi5",
+    "tick_window": "gap_start-65m through gap_end+5m",
+    "equivalence_tolerance": {
+      "EUR/USD": 1e-05,
+      "GBP/USD": 1e-05,
+      "USD/JPY": 0.001
+    },
+    "equivalence_minimum_bars": 1000,
+    "equivalence_mismatch_allowed": 0,
+    "interpolation": false,
+    "provider_splicing": false
+  },
+  "operational_hashes_after": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  }
+}
