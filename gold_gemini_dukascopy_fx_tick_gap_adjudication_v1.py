@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import http.client
 import json
 import lzma
 import re
@@ -10,9 +11,9 @@ import shutil
 import sqlite3
 import struct
 import subprocess
+import threading
 import time
-import urllib.error
-import urllib.request
+import urllib.parse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -66,7 +67,8 @@ HORIZONS = (1, 5, 15, 60)
 ORIENTATION = (-1.0, -1.0, 1.0)
 TICK_RECORD = struct.Struct(">IIIff")
 MIN_EQUIVALENCE_BARS = 1_000
-HTTP_WORKERS = 12
+HTTP_WORKERS = 24
+HTTP_LOCAL = threading.local()
 
 
 def git(*args: str) -> str:
@@ -161,28 +163,48 @@ def aggregate_m1(times: np.ndarray, bids: np.ndarray) -> dict[str, np.ndarray]:
     }
 
 
+def reset_http_connection() -> None:
+    connection = getattr(HTTP_LOCAL, "connection", None)
+    if connection is not None:
+        connection.close()
+    HTTP_LOCAL.connection = None
+
+
 def http_get(url: str, retries: int = 4) -> tuple[int, bytes, int, str | None]:
     last_status, last_body, last_error = 0, b"", None
+    path = urllib.parse.urlsplit(url).path
     for attempt in range(1, retries + 1):
-        request = urllib.request.Request(
-            url,
-            headers={
-                "User-Agent": "XM-GOLD-Dukascopy-tick-gap-audit/1.0",
-                "Accept-Encoding": "identity",
-            },
-        )
         try:
-            with urllib.request.urlopen(request, timeout=35) as response:
-                return int(response.status), response.read(), attempt, None
-        except urllib.error.HTTPError as exc:
-            last_status = int(exc.code)
-            last_body = exc.read()
-            last_error = f"HTTPError: {exc}"
+            connection = getattr(HTTP_LOCAL, "connection", None)
+            if connection is None:
+                connection = http.client.HTTPSConnection(
+                    "datafeed.dukascopy.com", timeout=35
+                )
+                HTTP_LOCAL.connection = connection
+            connection.request(
+                "GET",
+                path,
+                headers={
+                    "User-Agent": "XM-GOLD-Dukascopy-tick-gap-audit/1.0",
+                    "Accept-Encoding": "identity",
+                    "Connection": "keep-alive",
+                },
+            )
+            response = connection.getresponse()
+            last_status, last_body = int(response.status), response.read()
+            if response.getheader("Connection", "").lower() == "close":
+                reset_http_connection()
             if last_status == 404:
-                return last_status, last_body, attempt, last_error
-        except OSError as exc:
+                return last_status, last_body, attempt, "HTTP 404"
+            if last_status == 200:
+                return last_status, last_body, attempt, None
+            last_error = f"HTTP {last_status}"
+            if last_status >= 500:
+                reset_http_connection()
+        except (OSError, http.client.HTTPException) as exc:
             last_status, last_body = 0, b""
             last_error = f"{type(exc).__name__}: {exc}"
+            reset_http_connection()
         if attempt < retries:
             time.sleep(min(8, 2 ** (attempt - 1)))
     return last_status, last_body, retries, last_error
