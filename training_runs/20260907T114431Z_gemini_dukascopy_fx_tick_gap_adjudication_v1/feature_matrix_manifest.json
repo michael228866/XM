@@ -1,0 +1,21 @@
+{
+  "created": false,
+  "economic_data_provider": "Dukascopy",
+  "representation_sources": "native_m1 + tick_reconstructed_m1",
+  "source_provider_count": 1,
+  "source_dataset_sha256": "b4cdddd5e5a0402af9c76c1ec7986d732bdee068f1df18aebb16c901f0307a6b",
+  "matrix_sha256": null,
+  "feature_names": [
+    "USD_PRESSURE_1M",
+    "USD_PRESSURE_5M",
+    "USD_PRESSURE_15M",
+    "USD_PRESSURE_60M",
+    "USD_DISPERSION_15M"
+  ],
+  "dtype": "float64",
+  "shape": [
+    3004515,
+    5
+  ],
+  "per_block_feature_hashes": {}
+}

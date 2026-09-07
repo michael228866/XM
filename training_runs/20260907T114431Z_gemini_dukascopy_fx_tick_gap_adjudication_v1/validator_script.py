@@ -314,10 +314,7 @@ def closures(all_gaps: pd.DataFrame, classes: pd.DataFrame) -> dict[str, list[tu
             )
         )
     verified = classes[classes["classification"].eq("verified_no_tick_interval")].copy()
-    verified["minute_ns"] = np.asarray(
-        [pd.Timestamp(value).value for value in verified["minute_open_utc"]],
-        dtype=np.int64,
-    )
+    verified["minute_ns"] = pd.to_datetime(verified["minute_open_utc"], utc=True).astype("int64")
     for pair in INSTRUMENTS:
         values = np.sort(verified.loc[verified["instrument"].eq(pair), "minute_ns"].to_numpy(np.int64))
         if len(values):
@@ -396,14 +393,16 @@ def repaired_sources(
     for pair in INSTRUMENTS:
         repair = set()
         if allowed:
-            repair = {
-                pd.Timestamp(value).value
-                for value in classes.loc[
-                    classes["instrument"].eq(pair)
-                    & classes["classification"].eq("native_m1_missing_but_ticks_present"),
-                    "minute_open_utc",
-                ]
-            }
+            repair = set(
+                pd.to_datetime(
+                    classes.loc[
+                        classes["instrument"].eq(pair)
+                        & classes["classification"].eq("native_m1_missing_but_ticks_present"),
+                        "minute_open_utc",
+                    ],
+                    utc=True,
+                ).astype("int64")
+            )
         take = np.asarray(
             [time in repair for time in derived[pair]["open_utc_ns"]], dtype=bool
         )

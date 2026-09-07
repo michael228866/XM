@@ -1,0 +1,9 @@
+{
+  "source_run": "20260906T180930Z_gemini_usd_fx_pressure_source_reconciliation_v1",
+  "source_gap_audit_sha256": "406876878b0d6019dbe9dd376db0668f5edc41f623896b14415cbb95902af3d0",
+  "gap_intervals": 554,
+  "gap_minutes": 703331,
+  "previous_unresolved_exact_rows": 8476,
+  "requested_unique_pair_hours": 12823,
+  "requested_acquisitions_per_hour": 2
+}

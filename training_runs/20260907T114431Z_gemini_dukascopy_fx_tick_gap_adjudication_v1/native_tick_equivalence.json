@@ -1,0 +1,44 @@
+{
+  "gate": "FAIL",
+  "pre_registered_tolerance": {
+    "EUR/USD": 1e-05,
+    "GBP/USD": 1e-05,
+    "USD/JPY": 0.001
+  },
+  "minimum_compared_bars": 1000,
+  "native_overlap_expected": 57365,
+  "compared_bars": 57365,
+  "timestamp_identity_rate": 1.0,
+  "mismatch_bars": 1,
+  "mismatch_rate": 1.743223219733287e-05,
+  "absolute_difference_p50": 0.0,
+  "absolute_difference_p95": 0.0,
+  "absolute_difference_p99": 0.0,
+  "absolute_difference_max": 4.999999999988347e-05,
+  "pairs": {
+    "EUR/USD": {
+      "native_overlap_expected": 14585,
+      "compared_bars": 14585,
+      "timestamp_identity_rate": 1.0,
+      "mismatch_bars": 0,
+      "tolerance": 1e-05,
+      "max_abs_ohlc_difference": 0.0
+    },
+    "GBP/USD": {
+      "native_overlap_expected": 25859,
+      "compared_bars": 25859,
+      "timestamp_identity_rate": 1.0,
+      "mismatch_bars": 1,
+      "tolerance": 1e-05,
+      "max_abs_ohlc_difference": 4.999999999988347e-05
+    },
+    "USD/JPY": {
+      "native_overlap_expected": 16921,
+      "compared_bars": 16921,
+      "timestamp_identity_rate": 1.0,
+      "mismatch_bars": 0,
+      "tolerance": 0.001,
+      "max_abs_ohlc_difference": 0.0
+    }
+  }
+}

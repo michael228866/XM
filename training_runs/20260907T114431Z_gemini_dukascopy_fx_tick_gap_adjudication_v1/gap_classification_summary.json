@@ -1,0 +1,18 @@
+{
+  "verified_no_tick_interval": {
+    "intervals": 530,
+    "minutes": 653215
+  },
+  "native_m1_missing_but_ticks_present": {
+    "intervals": 0,
+    "minutes": 0
+  },
+  "retrieval_error": {
+    "intervals": 229,
+    "minutes": 43290
+  },
+  "inconsistent_provider_history": {
+    "intervals": 8,
+    "minutes": 6826
+  }
+}
