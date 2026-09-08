@@ -165,7 +165,32 @@ def parent_state(
 ) -> tuple[np.ndarray, np.ndarray, dict[str, list[tuple[int, int]]]]:
     all_gaps = pd.read_csv(SOURCE_PARENT / "source_gap_audit.csv")
     classes = pd.read_csv(PARENT / "gap_minute_classification.csv.gz")
-    closures = parent_code.closure_intervals(all_gaps, classes)
+    closures = {pair: [] for pair in INSTRUMENTS}
+    for gap in all_gaps[
+        ~all_gaps["classification"].eq("unexplained_source_gap")
+    ].itertuples(index=False):
+        closures[gap.instrument].append((
+            pd.Timestamp(gap.gap_start_utc).value + MINUTE_NS,
+            pd.Timestamp(gap.gap_end_utc).value + MINUTE_NS,
+        ))
+    verified = classes[
+        classes["classification"].eq("verified_no_tick_interval")
+    ].copy()
+    verified["minute_ns"] = np.asarray(
+        [pd.Timestamp(value).value for value in verified["minute_open_utc"]],
+        dtype=np.int64,
+    )
+    for pair in INSTRUMENTS:
+        values = np.sort(
+            verified.loc[verified["instrument"].eq(pair), "minute_ns"].to_numpy(np.int64)
+        )
+        if len(values):
+            cuts = np.flatnonzero(np.diff(values) > MINUTE_NS) + 1
+            for group in np.split(values, cuts):
+                closures[pair].append((
+                    int(group[0] + MINUTE_NS), int(group[-1] + 2 * MINUTE_NS)
+                ))
+        closures[pair] = parent_code.merge_intervals(closures[pair])
     matrix, unknown, _ = matrix_code.build_matrix(times, native, closures)
     if int(unknown.any(axis=1).sum()) != 6_931:
         raise RuntimeError("previous_remaining_unresolved_rows is not 6931")

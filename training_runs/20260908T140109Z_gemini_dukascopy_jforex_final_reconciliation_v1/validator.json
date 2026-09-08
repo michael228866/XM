@@ -1,0 +1,8 @@
+{
+  "run_id": "20260908T140109Z_gemini_dukascopy_jforex_final_reconciliation_v1",
+  "validator_internal_methodology": "NOT_RUN_ABORTED_PREFLIGHT",
+  "validator_data_certification": "NOT_APPLICABLE_ABORTED",
+  "failures": [
+    "Preflight 6931-row invariant was not reconstructed by the initial implementation."
+  ]
+}

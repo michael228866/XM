@@ -1,0 +1,16 @@
+{
+  "run_id": "20260908T140109Z_gemini_dukascopy_jforex_final_reconciliation_v1",
+  "finalized_at_utc": "2026-09-08T14:07:05.362790Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "exact_timestamps.npz": "2f04a9e01d32ae796565cd453c69c0f0de8141e50cb4e62dd72838898e18efa9",
+    "manifest.json": "374e6ee798b9c6fd8e28fd4e46d56d8064baa413bb2929f3ad8a69c29d840856",
+    "metrics.json": "16b6fc592082ea152bd0a13d3d4f5af1eb1649cb8b7cfa610b6da02cf958d699",
+    "report.md": "0d22059b858a746123043a027c2003e701c9f5c9ca9e58117e24d015acaa37ec",
+    "stdout.log": "df08df16e26a0453759c4e03b140d4c12e3c64237011c71dcdba733b30fcd992",
+    "training_script.py": "999160a556cacdd256408433766b8dc1b1059f919473a12acd29be702c6add0c",
+    "validator.json": "15c263331e2d101bfa3dee79da58d6c70bd18fb16170ee526469c5c89747c616",
+    "validator.md": "3cf48685c95111cef0b7f5818a3c256615c14c69ae389efe7a5bc545844945ae"
+  }
+}
