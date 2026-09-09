@@ -43,6 +43,7 @@ precious_metals_axis_research/*_xgb.metadata.json
 .venv/
 venv/
 .research_tools/
+.private_research_provenance/
 **/target/
 
 # Append-only untouched forward market/event data stays local and must never
