@@ -1,0 +1,32 @@
+{
+  "overall": "PASS",
+  "internal_methodology": "PASS",
+  "data_certification": "PASS",
+  "checks": {
+    "chronology_data_only": "PASS",
+    "feature_leakage": "PASS",
+    "labels_outcomes_not_accessed": "PASS",
+    "A_B_csv_byte_identity": "PASS",
+    "methodology_repeat_normalized_text_identity": "PASS",
+    "methodology_break_20211206": "PASS",
+    "availability_6pm_evidence": "PASS",
+    "conservative_plus2day_asof": "PASS",
+    "nominal_real_date_identity": "PASS",
+    "required_maturity_na_zero": "PASS",
+    "six_timestamp_hashes": "PASS",
+    "independent_matrix_identity": "PASS",
+    "independent_per_block_hash_identity": "PASS",
+    "independent_unresolved_rows_zero": "PASS"
+  },
+  "independent_unresolved_source_rows": 0,
+  "independent_per_block_hash": {
+    "fold1_train": "7e7487b0f1a13ce664f199060564a0b7155ca114c84317b9d6de93d3a70b199b",
+    "fold1_score": "e3fe7ebe77d18fe4b5baf0def107f9ce620729fc6a0c562e5f96bbc10a5e879c",
+    "fold2_train": "c2fc0ec194c059580e70f298819955c4fdeb833b078a6b3e8697acd24352002c",
+    "fold2_score": "03f4abe4b75f2903d980d2612fe1620b2663ee63621f089d1c400fa3eab8454b",
+    "fold3_train": "5359e09c6302ebbca200e1d946c2e0715c57afa7a05a5e91672d4c17b63c15d0",
+    "fold3_score": "44396f9fd90cd800f8a2f22174eeb42e1e9f4904065195a70e08e3b5093b49a8"
+  },
+  "model_training_performed": false,
+  "strategy_evaluation_performed": false
+}

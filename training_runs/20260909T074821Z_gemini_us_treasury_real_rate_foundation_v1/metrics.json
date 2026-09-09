@@ -1,0 +1,253 @@
+{
+  "summary": {
+    "data_foundation_ready_pre_validator": true,
+    "unresolved_source_rows": 0,
+    "all_six_timestamp_hashes_matched": true,
+    "methodology_break_confirmed": true,
+    "availability_rule_validated": true,
+    "substantive_revision_count": 0,
+    "validator_internal_methodology": "PASS",
+    "validator_data_certification": "PASS",
+    "data_foundation_ready": true
+  },
+  "features": [
+    "UST_REAL_10Y",
+    "UST_REAL_5Y",
+    "UST_REAL_10Y_CHG_1D",
+    "UST_2S10S",
+    "UST_BREAKEVEN_10Y_PROXY"
+  ],
+  "source_audit": {
+    "nominal_range": [
+      "2016-01-04",
+      "2024-12-31"
+    ],
+    "real_range": [
+      "2016-01-04",
+      "2024-12-31"
+    ],
+    "nominal_observation_dates": 2250,
+    "real_observation_dates": 2250,
+    "nominal_duplicate_dates": 0,
+    "real_duplicate_dates": 0,
+    "nominal_only_dates": [],
+    "real_only_dates": [],
+    "unresolved_missing_dates": 0,
+    "na_counts_required": {
+      "nominal_2y": 0,
+      "nominal_10y": 0,
+      "real_5y": 0,
+      "real_10y": 0
+    },
+    "substantive_revision_count": 0,
+    "substantive_revisions": [],
+    "methodology_break_20211206_confirmed": true,
+    "availability_evidence_6pm_et_confirmed": true,
+    "availability_rule": "observation_date + 2 calendar days at 00:00:00 America/New_York",
+    "methodology_html_raw_repeat_identical": false,
+    "methodology_html_normalized_text_repeat_identical": true
+  },
+  "timestamp_audit": {
+    "fold1_train": {
+      "rows": 530218,
+      "expected_rows": 530218,
+      "broker_sha256": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+      "expected_broker_sha256": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+      "broker_hash_match": true,
+      "utc_sha256": "c58e0c0472b696ec08c39ba9085223da0dacc52d169c67a5965f123351f1d529",
+      "first_utc": "2016-06-30T21:00:00+00:00",
+      "last_utc": "2017-12-29T17:55:00+00:00"
+    },
+    "fold1_score": {
+      "rows": 1058080,
+      "expected_rows": 1058080,
+      "broker_sha256": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+      "expected_broker_sha256": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+      "broker_hash_match": true,
+      "utc_sha256": "6f6d1ac33002553e50f66c92b9bf813229e02ce1e43ad1c2c0fcb86850ccca0e",
+      "first_utc": "2018-01-01T22:00:00+00:00",
+      "last_utc": "2020-12-31T16:50:00+00:00"
+    },
+    "fold2_train": {
+      "rows": 532563,
+      "expected_rows": 532563,
+      "broker_sha256": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44",
+      "expected_broker_sha256": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44",
+      "broker_hash_match": true,
+      "utc_sha256": "d4384b492b494fd41574009134dddf086d72b5a52956dc1102c8af16e5f19fa5",
+      "first_utc": "2019-06-30T22:00:00+00:00",
+      "last_utc": "2020-12-31T12:50:00+00:00"
+    },
+    "fold2_score": {
+      "rows": 708197,
+      "expected_rows": 708197,
+      "broker_sha256": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8",
+      "expected_broker_sha256": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8",
+      "broker_hash_match": true,
+      "utc_sha256": "baad84131fd1d5761f3222bc2805a95edba452ad9e0cc64bf5ff82906b34594a",
+      "first_utc": "2021-01-03T23:00:00+00:00",
+      "last_utc": "2022-12-30T21:57:00+00:00"
+    },
+    "fold3_train": {
+      "rows": 533580,
+      "expected_rows": 533580,
+      "broker_sha256": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b",
+      "expected_broker_sha256": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b",
+      "broker_hash_match": true,
+      "utc_sha256": "094671c7b2f1e401c53b40f4b2f5f8fa32727f46854058366cb43570f3e7988c",
+      "first_utc": "2021-06-30T22:00:00+00:00",
+      "last_utc": "2022-12-30T17:57:00+00:00"
+    },
+    "fold3_score": {
+      "rows": 708020,
+      "expected_rows": 708020,
+      "broker_sha256": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449",
+      "expected_broker_sha256": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449",
+      "broker_hash_match": true,
+      "utc_sha256": "2117f5f1c0226c1e4b48ade4a77004a6189d2ffa36f11fe7db896a654a69df43",
+      "first_utc": "2023-01-02T23:00:00+00:00",
+      "last_utc": "2024-12-31T18:00:00+00:00"
+    }
+  },
+  "block_audits": {
+    "fold1_train": {
+      "rows": 530218,
+      "constructable_rows": 530218,
+      "unresolved_rows": 0,
+      "feature_finite_rows": {
+        "UST_REAL_10Y": 530218,
+        "UST_REAL_5Y": 530218,
+        "UST_REAL_10Y_CHG_1D": 530218,
+        "UST_2S10S": 530218,
+        "UST_BREAKEVEN_10Y_PROXY": 530218
+      },
+      "feature_finite_pct": {
+        "UST_REAL_10Y": 100.0,
+        "UST_REAL_5Y": 100.0,
+        "UST_REAL_10Y_CHG_1D": 100.0,
+        "UST_2S10S": 100.0,
+        "UST_BREAKEVEN_10Y_PROXY": 100.0
+      },
+      "first_effective_observation": "2016-06-28",
+      "last_effective_observation": "2017-12-27"
+    },
+    "fold1_score": {
+      "rows": 1058080,
+      "constructable_rows": 1058080,
+      "unresolved_rows": 0,
+      "feature_finite_rows": {
+        "UST_REAL_10Y": 1058080,
+        "UST_REAL_5Y": 1058080,
+        "UST_REAL_10Y_CHG_1D": 1058080,
+        "UST_2S10S": 1058080,
+        "UST_BREAKEVEN_10Y_PROXY": 1058080
+      },
+      "feature_finite_pct": {
+        "UST_REAL_10Y": 100.0,
+        "UST_REAL_5Y": 100.0,
+        "UST_REAL_10Y_CHG_1D": 100.0,
+        "UST_2S10S": 100.0,
+        "UST_BREAKEVEN_10Y_PROXY": 100.0
+      },
+      "first_effective_observation": "2017-12-29",
+      "last_effective_observation": "2020-12-29"
+    },
+    "fold2_train": {
+      "rows": 532563,
+      "constructable_rows": 532563,
+      "unresolved_rows": 0,
+      "feature_finite_rows": {
+        "UST_REAL_10Y": 532563,
+        "UST_REAL_5Y": 532563,
+        "UST_REAL_10Y_CHG_1D": 532563,
+        "UST_2S10S": 532563,
+        "UST_BREAKEVEN_10Y_PROXY": 532563
+      },
+      "feature_finite_pct": {
+        "UST_REAL_10Y": 100.0,
+        "UST_REAL_5Y": 100.0,
+        "UST_REAL_10Y_CHG_1D": 100.0,
+        "UST_2S10S": 100.0,
+        "UST_BREAKEVEN_10Y_PROXY": 100.0
+      },
+      "first_effective_observation": "2019-06-28",
+      "last_effective_observation": "2020-12-29"
+    },
+    "fold2_score": {
+      "rows": 708197,
+      "constructable_rows": 708197,
+      "unresolved_rows": 0,
+      "feature_finite_rows": {
+        "UST_REAL_10Y": 708197,
+        "UST_REAL_5Y": 708197,
+        "UST_REAL_10Y_CHG_1D": 708197,
+        "UST_2S10S": 708197,
+        "UST_BREAKEVEN_10Y_PROXY": 708197
+      },
+      "feature_finite_pct": {
+        "UST_REAL_10Y": 100.0,
+        "UST_REAL_5Y": 100.0,
+        "UST_REAL_10Y_CHG_1D": 100.0,
+        "UST_2S10S": 100.0,
+        "UST_BREAKEVEN_10Y_PROXY": 100.0
+      },
+      "first_effective_observation": "2020-12-31",
+      "last_effective_observation": "2022-12-28"
+    },
+    "fold3_train": {
+      "rows": 533580,
+      "constructable_rows": 533580,
+      "unresolved_rows": 0,
+      "feature_finite_rows": {
+        "UST_REAL_10Y": 533580,
+        "UST_REAL_5Y": 533580,
+        "UST_REAL_10Y_CHG_1D": 533580,
+        "UST_2S10S": 533580,
+        "UST_BREAKEVEN_10Y_PROXY": 533580
+      },
+      "feature_finite_pct": {
+        "UST_REAL_10Y": 100.0,
+        "UST_REAL_5Y": 100.0,
+        "UST_REAL_10Y_CHG_1D": 100.0,
+        "UST_2S10S": 100.0,
+        "UST_BREAKEVEN_10Y_PROXY": 100.0
+      },
+      "first_effective_observation": "2021-06-28",
+      "last_effective_observation": "2022-12-28"
+    },
+    "fold3_score": {
+      "rows": 708020,
+      "constructable_rows": 708020,
+      "unresolved_rows": 0,
+      "feature_finite_rows": {
+        "UST_REAL_10Y": 708020,
+        "UST_REAL_5Y": 708020,
+        "UST_REAL_10Y_CHG_1D": 708020,
+        "UST_2S10S": 708020,
+        "UST_BREAKEVEN_10Y_PROXY": 708020
+      },
+      "feature_finite_pct": {
+        "UST_REAL_10Y": 100.0,
+        "UST_REAL_5Y": 100.0,
+        "UST_REAL_10Y_CHG_1D": 100.0,
+        "UST_2S10S": 100.0,
+        "UST_BREAKEVEN_10Y_PROXY": 100.0
+      },
+      "first_effective_observation": "2022-12-30",
+      "last_effective_observation": "2024-12-27"
+    }
+  },
+  "us_treasury_source_dataset_sha256": "6ed983e4d1522208938e73d4392b0ef277541cb8cbdd0464de1400ea179660f2",
+  "per_block_feature_matrix_sha256": {
+    "fold1_train": "7e7487b0f1a13ce664f199060564a0b7155ca114c84317b9d6de93d3a70b199b",
+    "fold1_score": "e3fe7ebe77d18fe4b5baf0def107f9ce620729fc6a0c562e5f96bbc10a5e879c",
+    "fold2_train": "c2fc0ec194c059580e70f298819955c4fdeb833b078a6b3e8697acd24352002c",
+    "fold2_score": "03f4abe4b75f2903d980d2612fe1620b2663ee63621f089d1c400fa3eab8454b",
+    "fold3_train": "5359e09c6302ebbca200e1d946c2e0715c57afa7a05a5e91672d4c17b63c15d0",
+    "fold3_score": "44396f9fd90cd800f8a2f22174eeb42e1e9f4904065195a70e08e3b5093b49a8"
+  },
+  "us_treasury_real_rate_feature_matrix_sha256": "6d6870536437f3e4c3a4edd3c939852f9998bde8f0be5fe946ac8fe561fff080",
+  "feature_archive_file_sha256": "2d72a6c962d013c528c6706566426e767ff690a1096a9e7c23684e20bf28f9c6",
+  "model_training_performed": false,
+  "strategy_evaluation_performed": false
+}

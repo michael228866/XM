@@ -1,0 +1,6 @@
+python==3.13.5
+numpy==2.3.5
+pandas==2.2.3
+scikit-learn==not-installed
+xgboost==not-installed
+MetaTrader5==not-installed

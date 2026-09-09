@@ -1,0 +1,62 @@
+{
+  "fold1_train": {
+    "rows": 530218,
+    "expected_rows": 530218,
+    "broker_sha256": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+    "expected_broker_sha256": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+    "broker_hash_match": true,
+    "utc_sha256": "c58e0c0472b696ec08c39ba9085223da0dacc52d169c67a5965f123351f1d529",
+    "first_utc": "2016-06-30T21:00:00+00:00",
+    "last_utc": "2017-12-29T17:55:00+00:00"
+  },
+  "fold1_score": {
+    "rows": 1058080,
+    "expected_rows": 1058080,
+    "broker_sha256": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+    "expected_broker_sha256": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+    "broker_hash_match": true,
+    "utc_sha256": "6f6d1ac33002553e50f66c92b9bf813229e02ce1e43ad1c2c0fcb86850ccca0e",
+    "first_utc": "2018-01-01T22:00:00+00:00",
+    "last_utc": "2020-12-31T16:50:00+00:00"
+  },
+  "fold2_train": {
+    "rows": 532563,
+    "expected_rows": 532563,
+    "broker_sha256": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44",
+    "expected_broker_sha256": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44",
+    "broker_hash_match": true,
+    "utc_sha256": "d4384b492b494fd41574009134dddf086d72b5a52956dc1102c8af16e5f19fa5",
+    "first_utc": "2019-06-30T22:00:00+00:00",
+    "last_utc": "2020-12-31T12:50:00+00:00"
+  },
+  "fold2_score": {
+    "rows": 708197,
+    "expected_rows": 708197,
+    "broker_sha256": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8",
+    "expected_broker_sha256": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8",
+    "broker_hash_match": true,
+    "utc_sha256": "baad84131fd1d5761f3222bc2805a95edba452ad9e0cc64bf5ff82906b34594a",
+    "first_utc": "2021-01-03T23:00:00+00:00",
+    "last_utc": "2022-12-30T21:57:00+00:00"
+  },
+  "fold3_train": {
+    "rows": 533580,
+    "expected_rows": 533580,
+    "broker_sha256": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b",
+    "expected_broker_sha256": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b",
+    "broker_hash_match": true,
+    "utc_sha256": "094671c7b2f1e401c53b40f4b2f5f8fa32727f46854058366cb43570f3e7988c",
+    "first_utc": "2021-06-30T22:00:00+00:00",
+    "last_utc": "2022-12-30T17:57:00+00:00"
+  },
+  "fold3_score": {
+    "rows": 708020,
+    "expected_rows": 708020,
+    "broker_sha256": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449",
+    "expected_broker_sha256": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449",
+    "broker_hash_match": true,
+    "utc_sha256": "2117f5f1c0226c1e4b48ade4a77004a6189d2ffa36f11fe7db896a654a69df43",
+    "first_utc": "2023-01-02T23:00:00+00:00",
+    "last_utc": "2024-12-31T18:00:00+00:00"
+  }
+}

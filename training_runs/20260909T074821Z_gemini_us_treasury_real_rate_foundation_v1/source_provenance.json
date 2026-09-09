@@ -1,0 +1,86 @@
+[
+  {
+    "identity": "methodology.html",
+    "acquisition_a": "methodology_A.html",
+    "acquisition_b": "methodology_B.html",
+    "sha256_a": "4fcdecb1c99bdec0961669513acf4774ebe61b4f1789a2845dbdb9e08c468112",
+    "sha256_b": "5c7e47bddee84e168f76b6e1e50df4496dea1f4abbd17df11aa1d5538ccddec1",
+    "raw_bytes_identical": false,
+    "bytes_a": 77039,
+    "bytes_b": 77039,
+    "normalized_text_identical": true,
+    "substantive_revision": false
+  },
+  {
+    "identity": "nominal_2010_2019.csv",
+    "acquisition_a": "nominal_2010_2019_A.csv",
+    "acquisition_b": "nominal_2010_2019_B.csv",
+    "sha256_a": "a9278f347b48b819d68f91961e3e1a18431514ae3763ef888cc9f1bdb064b254",
+    "sha256_b": "a9278f347b48b819d68f91961e3e1a18431514ae3763ef888cc9f1bdb064b254",
+    "raw_bytes_identical": true,
+    "bytes_a": 160256,
+    "bytes_b": 160256,
+    "normalized_text_identical": null,
+    "substantive_revision": false
+  },
+  {
+    "identity": "nominal_2020_2023.csv",
+    "acquisition_a": "nominal_2020_2023_A.csv",
+    "acquisition_b": "nominal_2020_2023_B.csv",
+    "sha256_a": "25877e5541442e8c8c642a3cf9709d8c20eb2c1603556e3ebd84545f1f0acfe2",
+    "sha256_b": "25877e5541442e8c8c642a3cf9709d8c20eb2c1603556e3ebd84545f1f0acfe2",
+    "raw_bytes_identical": true,
+    "bytes_a": 72257,
+    "bytes_b": 72257,
+    "normalized_text_identical": null,
+    "substantive_revision": false
+  },
+  {
+    "identity": "nominal_2024.csv",
+    "acquisition_a": "nominal_2024_A.csv",
+    "acquisition_b": "nominal_2024_B.csv",
+    "sha256_a": "6775840b76cd7fd41121f61d6f6c60184eca6b2ba49954ec7372c463cbeef34d",
+    "sha256_b": "6775840b76cd7fd41121f61d6f6c60184eca6b2ba49954ec7372c463cbeef34d",
+    "raw_bytes_identical": true,
+    "bytes_a": 19098,
+    "bytes_b": 19098,
+    "normalized_text_identical": null,
+    "substantive_revision": false
+  },
+  {
+    "identity": "real_2010_2019.csv",
+    "acquisition_a": "real_2010_2019_A.csv",
+    "acquisition_b": "real_2010_2019_B.csv",
+    "sha256_a": "be24c7e1edc5d7c9ded8f0a9bba59b146c13f89f9d484bb044d1eebe2daf1e21",
+    "sha256_b": "be24c7e1edc5d7c9ded8f0a9bba59b146c13f89f9d484bb044d1eebe2daf1e21",
+    "raw_bytes_identical": true,
+    "bytes_a": 91007,
+    "bytes_b": 91007,
+    "normalized_text_identical": null,
+    "substantive_revision": false
+  },
+  {
+    "identity": "real_2020_2023.csv",
+    "acquisition_a": "real_2020_2023_A.csv",
+    "acquisition_b": "real_2020_2023_B.csv",
+    "sha256_a": "ed5adee626d63a6c9bafa3d565b7fb772489e3158f3be2a1c11e80cae050d43d",
+    "sha256_b": "ed5adee626d63a6c9bafa3d565b7fb772489e3158f3be2a1c11e80cae050d43d",
+    "raw_bytes_identical": true,
+    "bytes_a": 38281,
+    "bytes_b": 38281,
+    "normalized_text_identical": null,
+    "substantive_revision": false
+  },
+  {
+    "identity": "real_2024.csv",
+    "acquisition_a": "real_2024_A.csv",
+    "acquisition_b": "real_2024_B.csv",
+    "sha256_a": "d3ff00a9287ebf68fdc80e72fb2d1895a73c84b3ff2a6ca8c6d64648cb470f16",
+    "sha256_b": "d3ff00a9287ebf68fdc80e72fb2d1895a73c84b3ff2a6ca8c6d64648cb470f16",
+    "raw_bytes_identical": true,
+    "bytes_a": 9042,
+    "bytes_b": 9042,
+    "normalized_text_identical": null,
+    "substantive_revision": false
+  }
+]
