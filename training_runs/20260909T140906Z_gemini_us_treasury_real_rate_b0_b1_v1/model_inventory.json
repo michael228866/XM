@@ -1,0 +1,80 @@
+{
+  "models": [
+    {
+      "model_id": "B0_31",
+      "fold": "2018_2020",
+      "path": "models/B0_31_2018_2020_xgb.json",
+      "sha256": "5eca73587d840b91117f096eaefe84c1538fb2920d7840bb1ec374dd170ea914"
+    },
+    {
+      "model_id": "B0_31",
+      "fold": "2021_2022",
+      "path": "models/B0_31_2021_2022_xgb.json",
+      "sha256": "744026a3a6e17f2465cc3850601f8efd65b75cdc1b35fa5e1572aa82f0012dc7"
+    },
+    {
+      "model_id": "B0_31",
+      "fold": "2023_2024",
+      "path": "models/B0_31_2023_2024_xgb.json",
+      "sha256": "67ca6ce4dd095ee3b314eeddb60bf78fc9081ee35d85bb88efc21dbc98793113"
+    },
+    {
+      "model_id": "B1_31_plus_5_treasury",
+      "fold": "2018_2020",
+      "path": "models/B1_31_plus_5_treasury_2018_2020_xgb.json",
+      "sha256": "6fa671a5f7e8d745beec25fc15c4bf4bdd9a4ddb23424a2156876a0e21897efb"
+    },
+    {
+      "model_id": "B1_31_plus_5_treasury",
+      "fold": "2021_2022",
+      "path": "models/B1_31_plus_5_treasury_2021_2022_xgb.json",
+      "sha256": "d6f779467c212714269400d7ca855f9f5fda386c0ee5f2216a87c9c614717ecf"
+    },
+    {
+      "model_id": "B1_31_plus_5_treasury",
+      "fold": "2023_2024",
+      "path": "models/B1_31_plus_5_treasury_2023_2024_xgb.json",
+      "sha256": "8b3416a1400984e4b16a4545664d7cfd8bb98d295bf31699418f3d49b04f340f"
+    }
+  ],
+  "base_features": [
+    "M1_RSI",
+    "ATR",
+    "MACD_HIST",
+    "BB_WIDTH",
+    "BIAS_20",
+    "BODY_PCT",
+    "ROC_5",
+    "VOLA_RATIO",
+    "HOUR_SIN",
+    "HOUR_COS",
+    "DAY_OF_WEEK",
+    "Daily_TREND",
+    "H12_TREND",
+    "H1_TREND",
+    "H2_TREND",
+    "H3_TREND",
+    "H4_TREND",
+    "H6_TREND",
+    "H8_TREND",
+    "M10_TREND",
+    "M12_TREND",
+    "M15_TREND",
+    "M20_TREND",
+    "M2_TREND",
+    "M30_TREND",
+    "M3_TREND",
+    "M4_TREND",
+    "M5_TREND",
+    "M6_TREND",
+    "Monthly_TREND",
+    "Weekly_TREND"
+  ],
+  "treasury_features": [
+    "UST_REAL_10Y",
+    "UST_REAL_5Y",
+    "UST_REAL_10Y_CHG_1D",
+    "UST_2S10S",
+    "UST_BREAKEVEN_10Y_PROXY"
+  ]
+}

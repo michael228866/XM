@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "run_id": "20260909T140906Z_gemini_us_treasury_real_rate_b0_b1_v1",
+  "experiment_name": "gemini_us_treasury_real_rate_b0_b1_v1",
+  "status": "fail",
+  "started_at_utc": "2026-09-09T14:09:06.910529Z",
+  "finished_at_utc": "2026-09-09T15:23:37.015416Z",
+  "git_commit": "9c54f7aba1efa2ad28db9ac3cf95a2dc20724a78",
+  "git_dirty": true,
+  "training_script": "D:\\XM\\鏁告摎\\gold_us_treasury_real_rate_b0_b1_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "7889424659c00ee5c8082c6510cc2afe21b8ad21331ae50605153d1a2bb7b9ec",
+  "exact_command": "python gold_us_treasury_real_rate_b0_b1_v1.py --run-dir {run_dir}",
+  "arguments": [],
+  "random_seeds": {
+    "random_state": "42"
+  },
+  "random_seed_note": "Frozen XGBoost random_state=42; archival reproduction of already-observed B0/B1 result",
+  "data": {
+    "symbols": [
+      "GOLD#",
+      "US Treasury"
+    ],
+    "data_sources": [
+      "local XM historical exports inherited from finalized C1 identities",
+      "certified Treasury matrix from finalized Treasury foundation"
+    ],
+    "source_files": [
+      {
+        "path": "training_runs\\20260903T071729Z_gemini_execution_aligned_label_v1\\FINALIZED.json",
+        "sha256": "eb02be533679e33492351c753d731483724ec24248b8c7ac7915ee1d74b42add",
+        "retention_status": "retained_in_parent"
+      },
+      {
+        "path": "training_runs\\20260909T074821Z_gemini_us_treasury_real_rate_foundation_v1\\FINALIZED.json",
+        "sha256": "3fd810c0f6636591683b0dafc135c1dc1750d8d280c48900ef11a04c62e91c47",
+        "retention_status": "retained_in_parent"
+      },
+      {
+        "path": "training_runs\\20260909T074821Z_gemini_us_treasury_real_rate_foundation_v1\\treasury_real_rate_features.npz",
+        "sha256": "2d72a6c962d013c528c6706566426e767ff690a1096a9e7c23684e20bf28f9c6",
+        "retention_status": "retained_in_parent"
+      }
+    ],
+    "timezone": "frozen C1 broker/API semantics; Treasury causal +2-day availability",
+    "data_start_utc": "2016-06-30T21:00:00Z",
+    "data_end_utc": "2024-12-31T20:00:00Z",
+    "train_start_utc": "2016-07-01T00:00:00",
+    "train_end_utc": "2022-12-30T19:57:00",
+    "train_rows": 1596361,
+    "validation_start_utc": "2018-01-02T00:00:00",
+    "validation_end_utc": "2024-12-31T20:00:00",
+    "validation_rows": 2474297,
+    "test_start_utc": "not_applicable_archival_reproduction",
+    "test_end_utc": "not_applicable_archival_reproduction",
+    "test_rows": 0,
+    "purge_details": "same strict C1 parent maturity rules",
+    "embargo_details": "same as C1 parent",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "exact X/y identity plus finalized parent hashes; raw local CSVs not duplicated",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "Historical GOLD CSVs were repository-local frozen source exports; no MT5 API fetch was performed in this archival reproduction."
+    }
+  },
+  "model": {
+    "trained": true,
+    "model_type": "paired XGBoost binary logistic chronological fold replicas",
+    "parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    },
+    "boosted_rounds_or_estimators": 220,
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "M2_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M30_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "H12_TREND",
+      "Daily_TREND",
+      "Weekly_TREND",
+      "Monthly_TREND",
+      "UST_REAL_10Y",
+      "UST_REAL_5Y",
+      "UST_REAL_10Y_CHG_1D",
+      "UST_2S10S",
+      "UST_BREAKEVEN_10Y_PROXY"
+    ],
+    "feature_count": 36,
+    "label_definition": "C1 execution-aligned standalone S5 net realized R > 0",
+    "horizon": "90 wall-clock minutes",
+    "label_tp_sl_semantics": "same frozen C1 label",
+    "execution_tp_sl_semantics": "same frozen S5",
+    "calibration_method": "none",
+    "artifact_path": "models/B1_31_plus_5_treasury_2023_2024_xgb.json",
+    "artifact_sha256": "8b3416a1400984e4b16a4545664d7cfd8bb98d295bf31699418f3d49b04f340f",
+    "retention_status": "stored_in_run_directory",
+    "not_applicable_reason": null
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": "candidates.csv",
+    "not_applicable_reason": "one frozen B0/B1 comparison; no post-outcome search"
+  },
+  "registry": {
+    "parent_or_incumbent": "20260909T074821Z_gemini_us_treasury_real_rate_foundation_v1",
+    "selected_configuration": "B1_31_plus_5_treasury_FAIL_family_closed",
+    "trades_per_day": 1.4622604614782948,
+    "realized_win_rate": 0.4391548542391014,
+    "pf": 0.6126145620676285,
+    "mean_r": -0.21698609871050376,
+    "pnl": -811.3110230785735,
+    "max_dd": -817.6816093722642,
+    "validator_result": "independent PASS; Treasury family FAIL"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested_family_fail",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [],
+  "aborted_reason": null,
+  "operational_hashes_before": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "operational_hashes_after": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "research_decision": {
+    "classification": "treasury_direct_feature_family_failed",
+    "family_closed": true,
+    "no_posthoc_tuning": true,
+    "single_next_action": "independent validator then finalize/register FAIL",
+    "validator_pass": true
+  }
+}

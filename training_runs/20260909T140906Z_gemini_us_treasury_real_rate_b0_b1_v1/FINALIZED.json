@@ -1,0 +1,28 @@
+{
+  "run_id": "20260909T140906Z_gemini_us_treasury_real_rate_b0_b1_v1",
+  "finalized_at_utc": "2026-09-09T15:23:37.078887Z",
+  "file_sha256": {
+    "candidates.csv": "85424d61322f21905d1e1d82b23057858736d682db754b0511beb9086d292d32",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "execution_spec.md": "e6ea97b01027ef3a1fec116b482aee0b0515e0ed3f200d53fcdec92b998d1766",
+    "fold_metrics.csv": "7a05ae7349f882d74f2c2f9dc3f99669faebaa25db9fa3a666a40239295123ec",
+    "identity_audit.csv": "3a52cbb220c528722af4765eb50d159644c9f7aa40b985f69423596050edecdd",
+    "manifest.json": "53218752b45c35136941bf9fa88e3867a34df38d4be24b4936f301bce70aee95",
+    "metrics.json": "2c67634457461e287189c161234868e14ca172c893dab66ac9ad0829f4156e81",
+    "model.sha256": "0a2f6f31da903644606d98f31a563586243da2172dfdaef8beb3ab057947b451",
+    "model_inventory.json": "7c6ed53f99ccb4d867a776fe44b5b509cff4a6245f5932275108e90322c05564",
+    "models/B0_31_2018_2020_xgb.json": "5eca73587d840b91117f096eaefe84c1538fb2920d7840bb1ec374dd170ea914",
+    "models/B0_31_2021_2022_xgb.json": "744026a3a6e17f2465cc3850601f8efd65b75cdc1b35fa5e1572aa82f0012dc7",
+    "models/B0_31_2023_2024_xgb.json": "67ca6ce4dd095ee3b314eeddb60bf78fc9081ee35d85bb88efc21dbc98793113",
+    "models/B1_31_plus_5_treasury_2018_2020_xgb.json": "6fa671a5f7e8d745beec25fc15c4bf4bdd9a4ddb23424a2156876a0e21897efb",
+    "models/B1_31_plus_5_treasury_2021_2022_xgb.json": "d6f779467c212714269400d7ca855f9f5fda386c0ee5f2216a87c9c614717ecf",
+    "models/B1_31_plus_5_treasury_2023_2024_xgb.json": "8b3416a1400984e4b16a4545664d7cfd8bb98d295bf31699418f3d49b04f340f",
+    "paired_oof_predictions.npz": "1cd161bd9b46864375640448862a4c40c30b36beb9790f0d8818b8445b9cf4d2",
+    "report.md": "9fc3e83b7860fa7d86fc4495c5d0dcc828d2e0733e9042960b33f25a1d1d85d4",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "trade_ledger.csv": "cb508faf543bd62fa10a11455781ddbbff4701cdcebd7fd6e1e1ac667331fb18",
+    "training_script.py": "7889424659c00ee5c8082c6510cc2afe21b8ad21331ae50605153d1a2bb7b9ec",
+    "validator.json": "0b1d28c567732b525ac25020d2601214d9feed035295586aff0b1536b9eaa312",
+    "validator.md": "0690c7fbfb528a8d591b235736b40f581397ef524f04f42add2a8dc35997b40a"
+  }
+}
