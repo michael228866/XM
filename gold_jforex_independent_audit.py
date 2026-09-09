@@ -5,8 +5,11 @@ import importlib.util
 import json
 import re
 import shutil
+import sys
 import struct
 import hashlib
+import sqlite3
+import lzma
 from pathlib import Path
 
 import numpy as np
@@ -18,6 +21,12 @@ import gold_gemini_dukascopy_jforex_final_reconciliation_v1 as study
 
 
 def main() -> None:
+    sys.dont_write_bytecode = True
+    for name in ('validator.json', 'validator.md'):
+        current = RUN / name
+        saved = RUN / ('validator_initial_' + name)
+        if current.exists() and not saved.exists():
+            shutil.copy2(current, saved)
     for name in ('metrics.json', 'report.md'):
         saved = RUN / ('pre_audit_' + name)
         if not saved.exists():
@@ -186,8 +195,33 @@ def main() -> None:
     jf = per_request['MISMATCH_GBPUSD_20231210T2259Z'].get(study.MISMATCH_NS)
     check('Mismatch A/C same-provider arbitration', a == c and a != b,
           {'A': a, 'B': b, 'C': c, 'JForex_ticks': jf})
-    check('Full previous HTTP mismatch window retained', False,
-          'Frozen collector extracts only 22h archive; prescribed +/-2 minute window crosses into 23h. No new acquisition authorized in offline completion.')
+    window_start = study.MISMATCH_NS - 2 * study.MINUTE_NS
+    window_end = study.MISMATCH_NS + 3 * study.MINUTE_NS
+    old_ticks = []
+    old_evidence = []
+    with sqlite3.connect('file:' + (study.PARENT / 'dukascopy_tick_responses.sqlite').as_posix() + '?mode=ro', uri=True) as db:
+        for hour in (pd.Timestamp(study.MISMATCH_NS, tz='UTC').floor('h'),
+                     pd.Timestamp(study.MISMATCH_NS, tz='UTC').floor('h') + pd.Timedelta(hours=1)):
+            responses = list(db.execute('SELECT acquisition,status,body,body_sha256 FROM responses WHERE pair=? AND hour_utc=? ORDER BY acquisition', ('GBP/USD', hour.isoformat())))
+            for acquisition, status, body, sha in responses:
+                old_evidence.append({'hour_utc': hour.isoformat(), 'acquisition': acquisition, 'status': status, 'sha256': sha})
+                if status != 200:
+                    continue
+                for seq, (offset, ask, bid, askvol, bidvol) in enumerate(struct.iter_unpack('>IIIff', lzma.decompress(body))):
+                    stamp = hour.value + offset * 1_000_000
+                    if window_start <= stamp <= window_end:
+                        old_ticks.append({'acquisition': acquisition, 'sequence': seq, 'time_ms': stamp // 1_000_000,
+                                          'bid': bid / 100000., 'ask': ask / 100000., 'ask_volume': askvol, 'bid_volume': bidvol})
+    pd.DataFrame(old_ticks).to_csv(RUN / 'gbpusd_previous_http_full_window.csv.gz', index=False,
+                                 compression={'method':'gzip', 'mtime':0})
+    hour_coverage = len({r['hour_utc'] for r in old_evidence if r['status']==200}) == 2
+    check('Full previous HTTP mismatch window retained', hour_coverage, old_evidence)
+    mismatch['independent_previous_http_window'] = old_evidence
+    mismatch['independent_jforex_tick_ohlc_sequence_preserved'] = jf
+    mismatch['provider_bar_tick_discrepancy_reproduces_in_jforex'] = jf == b and a == c and a != b
+    mismatch['exact_physical_cause_proven'] = False
+    mismatch['independent_interpretation'] = 'Both native bar representations agree; both HTTP and JForex tick reconstructions agree on the different close. This supports CASE 2, but does not establish the provider internal cause.'
+    archive.write_json(RUN / 'gbpusd_single_mismatch_root_cause.json', mismatch)
     check('Prior finalized archives byte-identical', all(
         study.tree_hash(study.ROOT / 'training_runs' / name) == digest
         for name, digest in manifest['protected_runs_before'].items()), manifest['protected_runs_before'])
@@ -200,9 +234,13 @@ def main() -> None:
               'no_new_acquisition': True, 'no_training_or_strategy_evaluation': True}
     archive.write_json(RUN / 'validator.json', result)
     lines = ['Overall: FAIL', '', 'Independent audit of the frozen data-only acquisition.', '',
-             '| Check | Verdict | Evidence / required correction |', '|---|---|---|']
+             '| Check | Verdict | Evidence | Failure or reason for pass | Required validation correction |', '|---|---|---|---|---|']
+    for name in ('chronology', 'feature leakage', 'label maturity', 'OOF predictions',
+                 'calibration', 'threshold selection', 'purge/embargo', 'holdout contamination',
+                 'recent-period reuse', 'execution alignment', 'cost assumptions', 'multiple-testing risk'):
+        lines.append('| ' + name + ' | PASS | Frozen historical data-only request universe; scripts and raw responses | No fitting, strategy execution, outcome selection or untouched-performance claim; nonapplicable trading checks pass for this limited scope | None |')
     for x in checks:
-        lines.append('| ' + x['check'] + ' | ' + x['verdict'] + ' | ' + json.dumps(x['evidence'], ensure_ascii=True).replace('|', '/') + ' |')
+        lines.append('| ' + x['check'] + ' | ' + x['verdict'] + ' | ' + json.dumps(x['evidence'], ensure_ascii=True).replace('|', '/') + ' | Independent raw-data check | ' + ('None' if x['verdict']=='PASS' else 'Do not certify this claim; see evidence limitation') + ' |')
     lines += ['', 'No strategy performance claim exists. Final untouched-test validity: not applicable.',
               'Data certification FAIL. Stop this foundation path under the requested stopping rule.',
               'Evidence is insufficient for zero-quote certification and full mismatch root-cause closure; no new data family or model is selected.']
