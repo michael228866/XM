@@ -1,0 +1,10 @@
+{
+  "original_sha256": "79c9cf66a9cef8e920337464b9c94c80ae991acaec697bc09b4487c8fa80274e",
+  "original_bytes": 564774,
+  "storage_path": "D:\\XM\\數據\\.private_research_provenance\\20260908T140809Z_gemini_dukascopy_jforex_final_reconciliation_v1\\stdout.original.log",
+  "retention_status": "permanent_private_repository_storage_not_git_backed_up",
+  "remote_preservation_of_original": false,
+  "public_log_sha256": "0579637da6897ba6b148dce806cf03b4efc305c9550a77dcd827727acec5786c",
+  "redacted_lines": 22,
+  "reason": "SDK emitted authentication protocol and account identifiers despite WARN configuration."
+}

@@ -1,0 +1,39 @@
+{
+  "created": false,
+  "provider": "Dukascopy",
+  "representations": [
+    "native historical M1",
+    "JForex M1",
+    "JForex tick-derived M1"
+  ],
+  "source_dataset_sha256": "9c96c15c2a2ec3c30978125afd605f137bba19710aad928b6385f6f3f0b70a15",
+  "dukascopy_final_feature_matrix_sha256": null,
+  "feature_names": [
+    "USD_PRESSURE_1M",
+    "USD_PRESSURE_5M",
+    "USD_PRESSURE_15M",
+    "USD_PRESSURE_60M",
+    "USD_DISPERSION_15M"
+  ],
+  "dtype": "float64",
+  "shape": [
+    3004515,
+    5
+  ],
+  "finite_percentage": {
+    "USD_PRESSURE_1M": 99.77670272905942,
+    "USD_PRESSURE_5M": 99.77453931832592,
+    "USD_PRESSURE_15M": 99.77037891306917,
+    "USD_PRESSURE_60M": 99.70674135426184,
+    "USD_DISPERSION_15M": 99.77037891306917
+  },
+  "per_block_feature_matrix_sha256": {},
+  "timestamp_hashes": {
+    "fold1_train": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+    "fold1_score": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+    "fold2_train": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44",
+    "fold2_score": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8",
+    "fold3_train": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b",
+    "fold3_score": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449"
+  }
+}

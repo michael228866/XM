@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "run_id": "20260908T140809Z_gemini_dukascopy_jforex_final_reconciliation_v1",
+  "experiment_name": "gemini_dukascopy_jforex_final_reconciliation_v1",
+  "status": "fail",
+  "started_at_utc": "2026-09-08T14:08:09.469158Z",
+  "finished_at_utc": "2026-09-09T01:56:18.312349Z",
+  "git_commit": "e8a7f702f6978d1069251b70d09aa20783e39bcd",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\gold_gemini_dukascopy_jforex_final_reconciliation_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "954fde81dc7c79fd4224250edefc4b50a595b46d7d6c8581783e723824de8553",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_gemini_dukascopy_jforex_final_reconciliation_v1.py <RUN_DIR>",
+  "arguments": [],
+  "random_seeds": {},
+  "random_seed_note": "No randomness; frozen 783 error-hours, one mismatch window, exact JForex mechanisms and fixed arbitration.",
+  "data": {
+    "symbols": [
+      "EUR/USD",
+      "GBP/USD",
+      "USD/JPY"
+    ],
+    "data_sources": [
+      "Dukascopy native M1 BID",
+      "Dukascopy JForex IHistory.getTicks",
+      "Dukascopy JForex IHistory.readTicks",
+      "Dukascopy JForex IHistory.getBars"
+    ],
+    "source_files": [
+      {
+        "path": "jforex_ticks.tsv.gz",
+        "sha256": "65f2577af2d4879c40aeced1134e388c4ea5e769d3928581677c7d43809ab463",
+        "retention_status": "stored_in_finalized_run_git_lfs_archival_pending"
+      },
+      {
+        "path": "jforex_bars.tsv.gz",
+        "sha256": "75091601eb09463f075b2c578aeb843ebb5fb62e73ad015941c10f9f6ef43c00",
+        "retention_status": "stored_in_finalized_run_git_lfs_archival_pending"
+      },
+      {
+        "path": "jforex_request_audit.tsv",
+        "sha256": "0d16becd805ba14c6636ab0f689f04faceb033c273a68c75daddfa88eff9b22d",
+        "retention_status": "stored_in_finalized_run_git_lfs_archival_pending"
+      }
+    ],
+    "timezone": "UTC millisecond ticks; UTC M1 bar-open; completed bars only",
+    "data_start_utc": "2016-06-30T19:59:00Z",
+    "data_end_utc": "2024-12-31T18:02:00Z",
+    "train_start_utc": "not_applicable_data_only",
+    "train_end_utc": "not_applicable_data_only",
+    "train_rows": 0,
+    "validation_start_utc": "2016-06-30T21:00:00Z",
+    "validation_end_utc": "2024-12-31T18:00:00Z",
+    "validation_rows": 3004515,
+    "test_start_utc": "not_applicable_data_only",
+    "test_end_utc": "not_applicable_data_only",
+    "test_rows": 0,
+    "purge_details": "not applicable: no labels or fitting",
+    "embargo_details": "not applicable: no model or strategy evaluation",
+    "raw_snapshot_retained": true,
+    "reproducibility_claim": "Raw JForex tick/bar responses and request audit retained",
+    "mt5_fetch": {
+      "used": false,
+      "not_applicable_reason": "Dukascopy-only"
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": "not_applicable_data_only",
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [
+      "USD_PRESSURE_1M",
+      "USD_PRESSURE_5M",
+      "USD_PRESSURE_15M",
+      "USD_PRESSURE_60M",
+      "USD_DISPERSION_15M"
+    ],
+    "feature_count": 5,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "JForex historical data reconciliation only"
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": "not_applicable_data_only",
+    "not_applicable_reason": "Frozen defect universe and arbitration rules"
+  },
+  "registry": {
+    "parent_or_incumbent": "20260907T114431Z_gemini_dukascopy_fx_tick_gap_adjudication_v1",
+    "selected_configuration": "not applicable; frozen data reconciliation",
+    "trades_per_day": "not_applicable_data_only",
+    "realized_win_rate": "not_applicable_data_only",
+    "pf": "not_applicable_data_only",
+    "mean_r": "not_applicable_data_only",
+    "pnl": "not_applicable_data_only",
+    "max_dd": "not_applicable_data_only",
+    "validator_result": "internal FAIL; data certification FAIL"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_applicable_data_only",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [],
+  "aborted_reason": null,
+  "pre_run_git": {
+    "pre_run_git_commit": "e8a7f702f6978d1069251b70d09aa20783e39bcd",
+    "pre_run_git_dirty": false,
+    "head_sha": "e8a7f702f6978d1069251b70d09aa20783e39bcd",
+    "origin_main_sha": "e8a7f702f6978d1069251b70d09aa20783e39bcd",
+    "head_equals_origin_main": true
+  },
+  "operational_hashes_before": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "protected_runs_before": {
+    "20260907T114431Z_gemini_dukascopy_fx_tick_gap_adjudication_v1": "1718f20a7b08cd388fb8b4b9a18b9a37fbfbe5cfbbc73256682f57761efa1f37",
+    "20260906T180930Z_gemini_usd_fx_pressure_source_reconciliation_v1": "db0abeb4958382d09a9e4600768a42e67ac13f43853a454506781c6639144a7f"
+  },
+  "foundation_specification": {
+    "provider": "Dukascopy only",
+    "instruments": [
+      "EUR/USD",
+      "GBP/USD",
+      "USD/JPY"
+    ],
+    "features": [
+      "USD_PRESSURE_1M",
+      "USD_PRESSURE_5M",
+      "USD_PRESSURE_15M",
+      "USD_PRESSURE_60M",
+      "USD_DISPERSION_15M"
+    ],
+    "horizons_minutes": [
+      1,
+      5,
+      15,
+      60
+    ],
+    "usd_orientation": [
+      -1.0,
+      -1.0,
+      1.0
+    ],
+    "equal_weighting": true,
+    "dispersion_ddof": 1,
+    "staleness_minutes": 5,
+    "tolerance": {
+      "EUR/USD": 1e-05,
+      "GBP/USD": 1e-05,
+      "USD/JPY": 0.001
+    },
+    "tick_api_bounds": "inclusive from and to",
+    "aggregation_bins": "minute_open <= tick_time < minute_open + 60 seconds",
+    "bar_api": "Period.ONE_MIN, OfferSide.BID, Filter.NO_FILTER",
+    "jnlp_url": "https://platform.dukascopy.com/demo_3/jforex_3.jnlp",
+    "jnlp_sha256": "4e5adcbb29116e7f17b3babfc4aa47590d06baca50a98745d300d4824a1a70e9",
+    "sdk_zip_sha256": "a7a2fb6c070f800145adf5d88a7de9ed37e7544878b12b4312ea006365947016",
+    "api_source_jar_sha256": "259dfe7f4edf9424a70077a4b223a3dd1541cb1b920cfe48f17c62256a062df0",
+    "java_runtime": "Liberica Full JDK 8u472+9 repository-local",
+    "java_zip_server_etag_sha1": "b57a92d0d3288e73496f65594e20e8771a9dbdf8",
+    "credentials_retained": false
+  },
+  "operational_hashes_after": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "protected_runs_after": {
+    "20260907T114431Z_gemini_dukascopy_fx_tick_gap_adjudication_v1": "1718f20a7b08cd388fb8b4b9a18b9a37fbfbe5cfbbc73256682f57761efa1f37",
+    "20260906T180930Z_gemini_usd_fx_pressure_source_reconciliation_v1": "db0abeb4958382d09a9e4600768a42e67ac13f43853a454506781c6639144a7f"
+  },
+  "offline_validation": {
+    "commit": "0801cab51a0bf0bb91133c6dcecd71ab38320a41",
+    "script_sha256": "5e4cc68992bf516adc7bf1c5672280d9a6cbf7ab0a461ae261bb519ca88a8a07",
+    "raw_data_reacquired": false
+  }
+}

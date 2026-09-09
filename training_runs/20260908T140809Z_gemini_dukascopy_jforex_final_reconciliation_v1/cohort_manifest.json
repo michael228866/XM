@@ -1,0 +1,24 @@
+{
+  "parent_run": "20260907T114431Z_gemini_dukascopy_fx_tick_gap_adjudication_v1",
+  "parent_tree_sha256_before": "1718f20a7b08cd388fb8b4b9a18b9a37fbfbe5cfbbc73256682f57761efa1f37",
+  "source_parent_tree_sha256_before": "db0abeb4958382d09a9e4600768a42e67ac13f43853a454506781c6639144a7f",
+  "original_gap_intervals": 554,
+  "original_retrieval_error_hours": 783,
+  "previous_remaining_unresolved_rows": 6931,
+  "previous_remaining_unresolved_timestamp_sha256": "304ba54f177d220a72648d8fe721812b6d809f9484e657699ddd79b6fa080731",
+  "original_mismatch": {
+    "pair": "GBP/USD",
+    "minute_open_utc": "2023-12-10T22:59:00+00:00",
+    "tolerance": 1e-05
+  },
+  "six_timestamp_hashes": {
+    "fold1_train": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+    "fold1_score": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+    "fold2_train": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44",
+    "fold2_score": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8",
+    "fold3_train": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b",
+    "fold3_score": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449"
+  },
+  "request_manifest_sha256": "2469dcbbd43fb6c032651e1728840a2212f1d5bfd4cdf88a04c6cc2c1c1235ec",
+  "request_count": 784
+}

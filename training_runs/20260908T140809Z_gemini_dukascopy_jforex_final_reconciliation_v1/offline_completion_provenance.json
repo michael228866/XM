@@ -1,0 +1,13 @@
+{
+  "commit": "7df0cf14808b7b7a0700cc60e0fa878a5d588bc0",
+  "origin_main": "7df0cf14808b7b7a0700cc60e0fa878a5d588bc0",
+  "script_sha256": "687c041c979760be13082e73a48a1d1beac026ebc3d43500229acbb06cb96ffa",
+  "acquisition_commit": "e8a7f702f6978d1069251b70d09aa20783e39bcd",
+  "new_acquisition": false,
+  "reason": "Collector completed 784 requests but JVM background threads did not exit; offline continuation calls frozen reconcile function.",
+  "raw_evidence_before": {
+    "jforex_ticks.tsv.gz": "65f2577af2d4879c40aeced1134e388c4ea5e769d3928581677c7d43809ab463",
+    "jforex_bars.tsv.gz": "75091601eb09463f075b2c578aeb843ebb5fb62e73ad015941c10f9f6ef43c00",
+    "jforex_request_audit.tsv": "0d16becd805ba14c6636ab0f689f04faceb033c273a68c75daddfa88eff9b22d"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "previous_overlap_bars": 57365,
+  "newly_evaluable_overlap_bars": 3357,
+  "total_compared": 60722,
+  "previous_mismatch_bars": 1,
+  "new_raw_mismatch_bars": 0,
+  "root_caused_previous_mismatch": true,
+  "unresolved_mismatches": 0,
+  "mismatch_rate": 0.0,
+  "maximum_new_mismatch": 0.0,
+  "original_tolerance_preserved": true,
+  "gate": "PASS"
+}

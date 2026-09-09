@@ -1,0 +1,96 @@
+{
+  "pair": "GBP/USD",
+  "minute_open_utc": "2023-12-10T22:59:00+00:00",
+  "original_tolerance": 1e-05,
+  "original_tolerance_preserved": true,
+  "a_native_endpoint_ohlc": {
+    "open": 1.25433,
+    "high": 1.25439,
+    "low": 1.25426,
+    "close": 1.25433
+  },
+  "b_previous_tick_derived_ohlc": {
+    "open": 1.25433,
+    "high": 1.25439,
+    "low": 1.25426,
+    "close": 1.25428
+  },
+  "c_jforex_native_ohlc": {
+    "open": 1.25433,
+    "high": 1.25439,
+    "low": 1.25426,
+    "close": 1.25433
+  },
+  "jforex_tick_reconstructed_ohlc": {
+    "open": 1.25433,
+    "high": 1.25439,
+    "low": 1.25426,
+    "close": 1.25428
+  },
+  "jforex_tick_state": "ticks",
+  "jforex_retrieval": {
+    "getTicks_success": true,
+    "readTicks_success": true,
+    "getTicks_count": 223,
+    "readTicks_count": 223,
+    "getTicks_normalized_sha256": "a19a9af859b90ecc1ad7499828c4a38ddf3875fd10e2184ad6c57869ee548306",
+    "readTicks_normalized_sha256": "a19a9af859b90ecc1ad7499828c4a38ddf3875fd10e2184ad6c57869ee548306"
+  },
+  "root_cause_classification": "tick_reconstruction_or_tick_feed_inconsistency",
+  "differing_ohlc_fields_a_vs_b": [
+    "close"
+  ],
+  "difference_magnitude_a_vs_b": {
+    "open": 0.0,
+    "high": 0.0,
+    "low": 0.0,
+    "close": 4.999999999988347e-05
+  },
+  "exact_tick_producing_high": {
+    "time_ms": 1702249162014,
+    "bid": 1.25439
+  },
+  "exact_tick_producing_low": {
+    "time_ms": 1702249155479,
+    "bid": 1.25426
+  },
+  "first_tick": {
+    "time_ms": 1702249144739,
+    "bid": 1.25433
+  },
+  "last_tick": {
+    "time_ms": 1702249174918,
+    "bid": 1.25428
+  },
+  "ticks_exactly_at_minute_open": 0,
+  "ticks_exactly_at_next_minute_boundary": 0,
+  "exact_duplicate_jforex_ticks": 0,
+  "out_of_order_jforex_ticks_in_serialized_response": 1,
+  "bid_side_used": true,
+  "price_precision": 1e-05,
+  "rounding_before_aggregation": false,
+  "previous_http_tick_rows_in_window": 134,
+  "independent_previous_http_window": [
+    {
+      "hour_utc": "2023-12-10T22:00:00+00:00",
+      "acquisition": 1,
+      "status": 200,
+      "sha256": "b0016610a48667048bf56733df33e197cc5a6627029349af6ce393cba4b70003"
+    },
+    {
+      "hour_utc": "2023-12-10T22:00:00+00:00",
+      "acquisition": 2,
+      "status": 200,
+      "sha256": "b0016610a48667048bf56733df33e197cc5a6627029349af6ce393cba4b70003"
+    }
+  ],
+  "independent_jforex_tick_ohlc_sequence_preserved": {
+    "open": 1.25433,
+    "high": 1.25439,
+    "low": 1.25426,
+    "close": 1.25428
+  },
+  "provider_bar_tick_discrepancy_reproduces_in_jforex": true,
+  "exact_physical_cause_proven": false,
+  "independent_interpretation": "Both native bar representations agree; both HTTP and JForex tick reconstructions agree on the different close. This supports CASE 2, but does not establish the provider internal cause."
+}
