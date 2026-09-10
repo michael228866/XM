@@ -30,6 +30,7 @@ NY = ZoneInfo("America/New_York")
 YEARS = tuple(range(2015, 2025))
 CONTRACT_CODE = "088691"
 CONTRACT_NAME = "GOLD - COMMODITY EXCHANGE INC."
+SOURCE_URL = "https://www.cftc.gov/files/dea/history/fut_disagg_txt_{year}.zip"
 FEATURE_NAMES = (
     "COT_MM_NET_PCT_OI",
     "COT_MM_NET_CHG_1W",
@@ -207,7 +208,7 @@ def recompute_observations(raw_dir: Path) -> tuple[pd.DataFrame, list[dict[str, 
     frames: list[pd.DataFrame] = []
     mappings: list[dict[str, Any]] = []
     for year in YEARS:
-        frame, mapped = read_raw(raw_dir / f"fut_disagg_txt_hist_{year}.zip", year)
+        frame, mapped = read_raw(raw_dir / f"fut_disagg_txt_{year}.zip", year)
         frames.append(frame)
         mappings.append({"year": year, "mapping": mapped})
     observations = pd.concat(frames, ignore_index=True).sort_values(
@@ -298,12 +299,13 @@ def validate(run_dir: Path) -> bool:
     source_hashes = json.loads((run_dir / "source_hashes.json").read_text(encoding="utf-8"))
     checks: dict[str, bool] = {}
     expected_sources = {
-        f"raw/fut_disagg_txt_hist_{year}.zip" for year in YEARS
+        f"raw/fut_disagg_txt_{year}.zip" for year in YEARS
     }
+    expected_urls = {SOURCE_URL.format(year=year) for year in YEARS}
     actual_sources = {item["path"] for item in source_hashes}
     checks["official_cftc_only"] = (
         actual_sources == expected_sources
-        and all(item["url"].startswith("https://www.cftc.gov/") for item in source_hashes)
+        and {item["url"] for item in source_hashes} == expected_urls
     )
     checks["source_hash_provenance"] = all(
         sha256_file(run_dir / item["path"]) == item["sha256"]
@@ -528,6 +530,9 @@ def record_validator_failure(run_dir: Path, error: Exception) -> None:
 
 
 def self_test() -> None:
+    assert SOURCE_URL.format(year=2015) == (
+        "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2015.zip"
+    )
     columns = [
         "Market_and_Exchange_Names",
         "Report_Date_as_YYYY-MM-DD",

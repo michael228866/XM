@@ -45,7 +45,7 @@ YEARS = tuple(range(2015, 2025))
 TARGET_YEARS = tuple(range(2016, 2025))
 CONTRACT_CODE = "088691"
 CONTRACT_NAME = "GOLD - COMMODITY EXCHANGE INC."
-SOURCE_URL = "https://www.cftc.gov/files/dea/history/fut_disagg_txt_hist_{year}.zip"
+SOURCE_URL = "https://www.cftc.gov/files/dea/history/fut_disagg_txt_{year}.zip"
 FEATURE_NAMES = (
     "COT_MM_NET_PCT_OI",
     "COT_MM_NET_CHG_1W",
@@ -535,7 +535,7 @@ def run_foundation(run_dir: Path) -> None:
     annual_frames: list[pd.DataFrame] = []
     parse_failures: list[dict[str, Any]] = []
     for year in YEARS:
-        path = raw_dir / f"fut_disagg_txt_hist_{year}.zip"
+        path = raw_dir / f"fut_disagg_txt_{year}.zip"
         url = SOURCE_URL.format(year=year)
         record = download(url, path)
         record.update({"year": year, "path": path.relative_to(run_dir).as_posix()})
@@ -847,6 +847,9 @@ def run_foundation(run_dir: Path) -> None:
 
 
 def self_test() -> None:
+    assert SOURCE_URL.format(year=2015) == (
+        "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2015.zip"
+    )
     columns = [
         "Market_and_Exchange_Names",
         "Report_Date_as_YYYY-MM-DD",

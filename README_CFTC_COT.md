@@ -6,7 +6,7 @@ It does not read labels, predictions, trades, returns, or strategy outcomes. It 
 
 ## Frozen definition
 
-Source: official annual CFTC `fut_disagg_txt_hist_<year>.zip` files only, covering 2015 prehistory and 2016–2024 research history.
+Source: official annual CFTC `fut_disagg_txt_<year>.zip` files only, covering 2015 prehistory and 2016–2024 research history.
 
 Feature order:
 
