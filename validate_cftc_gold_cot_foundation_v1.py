@@ -103,6 +103,8 @@ def schema(columns: list[str]) -> dict[str, str]:
         indexed.setdefault(normalized(column), []).append(column)
     output: dict[str, str] = {}
     for canonical, aliases in ALIASES.items():
+        if canonical == "report_date" and "reportdateasyyyymmdd" in indexed:
+            aliases = {"reportdateasyyyymmdd"}
         matches = [column for alias in aliases for column in indexed.get(alias, [])]
         if len(matches) != 1:
             raise ValueError(f"Non-unique raw mapping for {canonical}: {matches}")
@@ -547,6 +549,29 @@ def self_test() -> None:
     ]
     expected_mapping = schema(columns)
     assert expected_mapping["managed_money_short"] == "M_Money_Positions_Short_All"
+    primary = "Report_Date_as_YYYY-MM-DD"
+    fallbacks = ["As_of_Date_In_Form_YYMMDD", "As_of_Date_In_Form_YYYYMMDD"]
+    without_date = [column for column in columns if column != primary]
+    assert schema(columns)["report_date"] == primary
+    for fallback in fallbacks:
+        assert schema(without_date + [fallback])["report_date"] == fallback
+        mapping = schema(columns + [fallback])
+        assert mapping["report_date"] == "Report_Date_as_YYYY-MM-DD"
+        assert schema([fallback] + columns)["report_date"] == primary
+    assert schema(columns + fallbacks)["report_date"] == primary
+    for invalid_columns in (
+        without_date,
+        without_date + fallbacks,
+        without_date + [fallbacks[0], fallbacks[0]],
+        columns + ["Report_Date_as_YYYY_MM_DD"],
+        columns + [primary] + fallbacks,
+    ):
+        try:
+            schema(invalid_columns)
+        except ValueError as error:
+            assert "report_date" in str(error)
+        else:
+            raise AssertionError("Missing or ambiguous report date must fail")
     header = ",".join(columns) + "\n"
     archive_bytes = io.BytesIO()
     with zipfile.ZipFile(archive_bytes, "w") as archive:

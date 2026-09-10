@@ -154,6 +154,8 @@ def map_schema(columns: list[str]) -> dict[str, str]:
         normalized.setdefault(normalize_field(column), []).append(column)
     mapping: dict[str, str] = {}
     for canonical, aliases in ALIASES.items():
+        if canonical == "report_date" and "reportdateasyyyymmdd" in normalized:
+            aliases = {"reportdateasyyyymmdd"}
         matches = [
             original
             for alias in aliases
@@ -864,6 +866,29 @@ def self_test() -> None:
     ]
     mapping = map_schema(columns)
     assert mapping["swap_short"] == "Swap__Positions_Short_All"
+    primary = "Report_Date_as_YYYY-MM-DD"
+    fallbacks = ["As_of_Date_In_Form_YYMMDD", "As_of_Date_In_Form_YYYYMMDD"]
+    without_date = [column for column in columns if column != primary]
+    assert map_schema(columns)["report_date"] == primary
+    for fallback in fallbacks:
+        assert map_schema(without_date + [fallback])["report_date"] == fallback
+        mapping = map_schema(columns + [fallback])
+        assert mapping["report_date"] == "Report_Date_as_YYYY-MM-DD"
+        assert map_schema([fallback] + columns)["report_date"] == primary
+    assert map_schema(columns + fallbacks)["report_date"] == primary
+    for invalid_columns in (
+        without_date,
+        without_date + fallbacks,
+        without_date + [fallbacks[0], fallbacks[0]],
+        columns + ["Report_Date_as_YYYY_MM_DD"],
+        columns + [primary] + fallbacks,
+    ):
+        try:
+            map_schema(invalid_columns)
+        except ValueError as error:
+            assert "report_date" in str(error)
+        else:
+            raise AssertionError("Missing or ambiguous report date must fail")
     header = ",".join(columns) + "\n"
     archive_bytes = io.BytesIO()
     with zipfile.ZipFile(archive_bytes, "w") as archive:

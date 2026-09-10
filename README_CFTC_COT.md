@@ -18,7 +18,7 @@ Feature order:
 
 Availability is frozen as `Report_Date + 4 calendar days at 00:00:00 America/New_York`, converted to UTC with the timezone database. Each GOLD timestamp receives the latest observation whose availability time is not later than that timestamp. No nearest/forward join, interpolation, same-week anticipation, or zero fill is permitted.
 
-Official raw schema names are introspected at runtime. A ZIP may contain multiple TXT/CSV members, but exactly one member must uniquely satisfy the frozen CFTC schema. Within that member, each canonical field must match exactly one deterministic normalized alias. Zero qualifying members, multiple qualifying members, or zero/multiple aliases for any field stop the run.
+Official raw schema names are introspected at runtime. A ZIP may contain multiple TXT/CSV members, but exactly one member must uniquely satisfy the frozen CFTC schema. For `report_date`, `Report_Date_as_YYYY-MM-DD` (normalized `reportdateasyyyymmdd`) takes deterministic priority: exactly one primary match is used even when As-of-Date aliases coexist; multiple primary matches fail. Only when the primary is absent must exactly one supported fallback (`asofdateinformyyyymmdd` or `asofdateinformyymmdd`) match; zero or multiple fallback matches fail. Selection uses column names only, never data values. All other canonical fields still require exactly one deterministic normalized alias. Zero or multiple qualifying members stop the run. This corrects a schema-mapping implementation bug, not a CFTC data failure, and is implemented independently in the foundation and validator.
 
 ## Formal execution sequence
 
