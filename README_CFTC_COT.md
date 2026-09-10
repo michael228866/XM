@@ -18,7 +18,7 @@ Feature order:
 
 Availability is frozen as `Report_Date + 4 calendar days at 00:00:00 America/New_York`, converted to UTC with the timezone database. Each GOLD timestamp receives the latest observation whose availability time is not later than that timestamp. No nearest/forward join, interpolation, same-week anticipation, or zero fill is permitted.
 
-Official raw schema names are introspected at runtime. Each canonical field must match exactly one deterministic normalized alias. Zero or multiple matches stop the run.
+Official raw schema names are introspected at runtime. A ZIP may contain multiple TXT/CSV members, but exactly one member must uniquely satisfy the frozen CFTC schema. Within that member, each canonical field must match exactly one deterministic normalized alias. Zero qualifying members, multiple qualifying members, or zero/multiple aliases for any field stop the run.
 
 ## Formal execution sequence
 

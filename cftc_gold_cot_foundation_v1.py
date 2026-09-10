@@ -257,23 +257,43 @@ def download(url: str, destination: Path, attempts: int = 3) -> dict[str, Any]:
     raise RuntimeError(f"Official CFTC acquisition failed for {url}: {errors}")
 
 
+def select_schema_member(
+    archive: zipfile.ZipFile,
+) -> tuple[str, dict[str, str]]:
+    candidates = [
+        name
+        for name in archive.namelist()
+        if not name.endswith("/") and Path(name).suffix.lower() in {".txt", ".csv"}
+    ]
+    qualifying: list[tuple[str, dict[str, str]]] = []
+    errors: dict[str, str] = {}
+    for member in candidates:
+        try:
+            with archive.open(member) as source:
+                header = pd.read_csv(source, dtype="string", nrows=0)
+            qualifying.append((member, map_schema(header.columns.tolist())))
+        except Exception as error:
+            errors[member] = f"{type(error).__name__}: {error}"
+    if not qualifying:
+        raise ValueError(
+            "No TXT/CSV member uniquely satisfies the frozen CFTC schema; "
+            f"candidates={candidates!r}; schema_errors={errors!r}"
+        )
+    if len(qualifying) > 1:
+        raise ValueError(
+            "Ambiguous CFTC ZIP: multiple members satisfy the frozen schema; "
+            f"qualifying_members={[member for member, _ in qualifying]!r}"
+        )
+    return qualifying[0]
+
+
 def read_annual_zip(path: Path) -> tuple[pd.DataFrame, str, dict[str, str]]:
     with zipfile.ZipFile(path) as archive:
-        members = [
-            name
-            for name in archive.namelist()
-            if not name.endswith("/") and Path(name).suffix.lower() in {".txt", ".csv"}
-        ]
-        if len(members) != 1:
-            raise ValueError(
-                f"{path.name} must contain exactly one TXT/CSV member, found {members}"
+        member, mapping = select_schema_member(archive)
+        with archive.open(member) as source:
+            frame = pd.read_csv(
+                source, dtype="string", keep_default_na=True, low_memory=False
             )
-        member = members[0]
-        raw = archive.read(member)
-    frame = pd.read_csv(
-        io.BytesIO(raw), dtype="string", keep_default_na=True, low_memory=False
-    )
-    mapping = map_schema(frame.columns.tolist())
     return frame, member, mapping
 
 
@@ -841,6 +861,38 @@ def self_test() -> None:
     ]
     mapping = map_schema(columns)
     assert mapping["swap_short"] == "Swap__Positions_Short_All"
+    header = ",".join(columns) + "\n"
+    archive_bytes = io.BytesIO()
+    with zipfile.ZipFile(archive_bytes, "w") as archive:
+        archive.writestr("notes.txt", "not,a,cftc,schema\n")
+        archive.writestr("arbitrary-name.csv", header)
+    archive_bytes.seek(0)
+    with zipfile.ZipFile(archive_bytes) as archive:
+        member, selected_mapping = select_schema_member(archive)
+    assert member == "arbitrary-name.csv" and selected_mapping == mapping
+    ambiguous_bytes = io.BytesIO()
+    with zipfile.ZipFile(ambiguous_bytes, "w") as archive:
+        archive.writestr("first.txt", header)
+        archive.writestr("second.csv", header)
+    ambiguous_bytes.seek(0)
+    with zipfile.ZipFile(ambiguous_bytes) as archive:
+        try:
+            select_schema_member(archive)
+        except ValueError as error:
+            assert "first.txt" in str(error) and "second.csv" in str(error)
+        else:
+            raise AssertionError("Multiple qualifying members must fail")
+    invalid_bytes = io.BytesIO()
+    with zipfile.ZipFile(invalid_bytes, "w") as archive:
+        archive.writestr("notes.csv", "name,value\n")
+    invalid_bytes.seek(0)
+    with zipfile.ZipFile(invalid_bytes) as archive:
+        try:
+            select_schema_member(archive)
+        except ValueError as error:
+            assert "notes.csv" in str(error) and "schema_errors" in str(error)
+        else:
+            raise AssertionError("Zero qualifying members must fail")
     winter = availability_ns(pd.Timestamp("2024-01-02"))
     summer = availability_ns(pd.Timestamp("2024-07-02"))
     assert pd.Timestamp(winter, unit="ns", tz="UTC").hour == 5

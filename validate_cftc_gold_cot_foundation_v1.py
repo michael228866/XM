@@ -126,22 +126,46 @@ def availability(report_date: pd.Timestamp) -> int:
     return int(local.astimezone(timezone.utc).timestamp() * 1_000_000_000)
 
 
+def select_data_member(
+    archive: zipfile.ZipFile,
+) -> tuple[str, dict[str, str]]:
+    candidates = [
+        item
+        for item in archive.namelist()
+        if not item.endswith("/") and Path(item).suffix.lower() in {".txt", ".csv"}
+    ]
+    qualifying: list[tuple[str, dict[str, str]]] = []
+    errors: dict[str, str] = {}
+    for member in candidates:
+        try:
+            with archive.open(member) as source:
+                header = pd.read_csv(source, dtype="string", nrows=0)
+            qualifying.append((member, schema(header.columns.tolist())))
+        except Exception as error:
+            errors[member] = f"{type(error).__name__}: {error}"
+    if not qualifying:
+        raise ValueError(
+            "No TXT/CSV member uniquely satisfies the frozen CFTC schema; "
+            f"candidates={candidates!r}; schema_errors={errors!r}"
+        )
+    if len(qualifying) > 1:
+        raise ValueError(
+            "Ambiguous CFTC ZIP: multiple members satisfy the frozen schema; "
+            f"qualifying_members={[member for member, _ in qualifying]!r}"
+        )
+    return qualifying[0]
+
+
 def read_raw(path: Path, year: int) -> tuple[pd.DataFrame, dict[str, str]]:
     with zipfile.ZipFile(path) as archive:
-        members = [
-            item
-            for item in archive.namelist()
-            if not item.endswith("/") and Path(item).suffix.lower() in {".txt", ".csv"}
-        ]
-        if len(members) != 1:
-            raise ValueError(f"{path.name}: expected one data member, got {members}")
-        frame = pd.read_csv(
-            io.BytesIO(archive.read(members[0])),
-            dtype="string",
-            keep_default_na=True,
-            low_memory=False,
-        )
-    mapping = schema(frame.columns.tolist())
+        member, mapping = select_data_member(archive)
+        with archive.open(member) as source:
+            frame = pd.read_csv(
+                source,
+                dtype="string",
+                keep_default_na=True,
+                low_memory=False,
+            )
     chosen = frame[frame[mapping["contract_code"]].map(code) == CONTRACT_CODE].copy()
     if chosen.empty:
         raise ValueError(f"No GOLD {CONTRACT_CODE} row in {year}")
@@ -516,7 +540,40 @@ def self_test() -> None:
         "M_Money_Positions_Long_All",
         "M_Money_Positions_Short_All",
     ]
-    assert schema(columns)["managed_money_short"] == "M_Money_Positions_Short_All"
+    expected_mapping = schema(columns)
+    assert expected_mapping["managed_money_short"] == "M_Money_Positions_Short_All"
+    header = ",".join(columns) + "\n"
+    archive_bytes = io.BytesIO()
+    with zipfile.ZipFile(archive_bytes, "w") as archive:
+        archive.writestr("documentation.csv", "field,description\n")
+        archive.writestr("unrelated-name.txt", header)
+    archive_bytes.seek(0)
+    with zipfile.ZipFile(archive_bytes) as archive:
+        member, selected_mapping = select_data_member(archive)
+    assert member == "unrelated-name.txt" and selected_mapping == expected_mapping
+    ambiguous_bytes = io.BytesIO()
+    with zipfile.ZipFile(ambiguous_bytes, "w") as archive:
+        archive.writestr("one.csv", header)
+        archive.writestr("two.txt", header)
+    ambiguous_bytes.seek(0)
+    with zipfile.ZipFile(ambiguous_bytes) as archive:
+        try:
+            select_data_member(archive)
+        except ValueError as error:
+            assert "one.csv" in str(error) and "two.txt" in str(error)
+        else:
+            raise AssertionError("Multiple qualifying members must fail")
+    invalid_bytes = io.BytesIO()
+    with zipfile.ZipFile(invalid_bytes, "w") as archive:
+        archive.writestr("readme.txt", "field,meaning\n")
+    invalid_bytes.seek(0)
+    with zipfile.ZipFile(invalid_bytes) as archive:
+        try:
+            select_data_member(archive)
+        except ValueError as error:
+            assert "readme.txt" in str(error) and "schema_errors" in str(error)
+        else:
+            raise AssertionError("Zero qualifying members must fail")
     assert pd.Timestamp(availability(pd.Timestamp("2024-01-02")), unit="ns", tz="UTC").hour == 5
     assert pd.Timestamp(availability(pd.Timestamp("2024-07-02")), unit="ns", tz="UTC").hour == 4
     matrices = {block: np.ones((1, 5), dtype=np.float64) for block in BLOCKS}
