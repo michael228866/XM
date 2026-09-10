@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "run_id": "20260910T035731Z_gemini_cftc_gold_cot_foundation_v1",
+  "experiment_name": "gemini_cftc_gold_cot_foundation_v1",
+  "status": "aborted",
+  "started_at_utc": "2026-09-10T03:57:31.137055Z",
+  "finished_at_utc": "2026-09-10T04:13:06.365167Z",
+  "git_commit": "ee5867895c1db085bdab8ababdb8cb2c0f293cbf",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\cftc_gold_cot_foundation_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "498983bff20294af93afdb4acce1c010ea10f530daf25ddd41bd238e8360a890",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\cftc_gold_cot_foundation_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [],
+  "random_seeds": {},
+  "random_seed_note": "No randomness; deterministic data-only acquisition, formulas, and causal as-of joins.",
+  "data": {
+    "symbols": [
+      "CFTC GOLD 088691",
+      "GOLD# timestamps only"
+    ],
+    "data_sources": [
+      "Official CFTC Disaggregated Futures Only acquisition attempt"
+    ],
+    "source_files": [
+      {
+        "path": "source_acquisition_or_build_failure.json",
+        "sha256": "71d13d29a0ca5a0f9d60906686b5fdb7e240ccc06e648a6b93d31e53c7e67566",
+        "retention_status": "stored_in_run_directory_failure_evidence"
+      }
+    ],
+    "timezone": "CFTC Report_Date +4 calendar days at 00:00 America/New_York; data-only",
+    "data_start_utc": "not_available_foundation_failed",
+    "data_end_utc": "not_available_foundation_failed",
+    "train_start_utc": "not_applicable_data_only_failed",
+    "train_end_utc": "not_applicable_data_only_failed",
+    "train_rows": 0,
+    "validation_start_utc": "not_applicable_data_only_failed",
+    "validation_end_utc": "not_applicable_data_only_failed",
+    "validation_rows": 0,
+    "test_start_utc": "not_applicable_data_only",
+    "test_end_utc": "not_applicable_data_only",
+    "test_rows": 0,
+    "purge_details": "not_applicable_data_only",
+    "embargo_details": "not_applicable_data_only",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "Failed acquisition/build evidence retained; complete data foundation not constructed",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "Official CFTC source task; no MT5 API fetch performed."
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "Data-foundation-only run; no model was trained."
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "Frozen five-feature foundation; no search."
+  },
+  "registry": {
+    "parent_or_incumbent": "20260903T071729Z_gemini_execution_aligned_label_v1",
+    "selected_configuration": "CFTC GOLD COT data foundation failed before certification",
+    "trades_per_day": "not_applicable_data_only",
+    "realized_win_rate": "not_applicable_data_only",
+    "pf": "not_applicable_data_only",
+    "mean_r": "not_applicable_data_only",
+    "pnl": "not_applicable_data_only",
+    "max_dd": "not_applicable_data_only",
+    "validator_result": "NOT_RUN; foundation failed"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_applicable_data_only",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "kind": "failure_evidence",
+      "path": "source_acquisition_or_build_failure.json",
+      "sha256": "71d13d29a0ca5a0f9d60906686b5fdb7e240ccc06e648a6b93d31e53c7e67566",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "failure_evidence",
+      "path": "metrics.json",
+      "sha256": "0dcb7e06cd126ef42e577a047509e2723d195c3d9a2941503b81b0198cc793a6",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "failure_evidence",
+      "path": "report.md",
+      "sha256": "085f9723835be1233e514ec2141d0e1175b157b8c09bb188c7ead56b6449218e",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": "Official CFTC annual URL template was incorrect; acquisition stopped on the 2015 HTTP 404 before any data foundation construction."
+}

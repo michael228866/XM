@@ -1,0 +1,18 @@
+{
+  "summary": {
+    "internal_methodology": "FAIL",
+    "data_certification": "FAIL",
+    "independent_validator": "NOT_RUN",
+    "data_foundation_ready": false,
+    "failure": {
+      "stage": "data_foundation",
+      "error_type": "RuntimeError",
+      "error": "Official CFTC acquisition failed for https://www.cftc.gov/files/dea/history/fut_disagg_txt_hist_2015.zip: ['attempt 1: HTTPError: HTTP Error 404: Not Found', 'attempt 2: HTTPError: HTTP Error 404: Not Found', 'attempt 3: HTTPError: HTTP Error 404: Not Found']",
+      "recorded_at_utc": "2026-09-10T03:59:30.794599+00:00",
+      "model_training_performed": false,
+      "strategy_evaluation_performed": false
+    }
+  },
+  "model_training_performed": false,
+  "strategy_evaluation_performed": false
+}

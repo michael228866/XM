@@ -1,0 +1,15 @@
+{
+  "run_id": "20260910T035731Z_gemini_cftc_gold_cot_foundation_v1",
+  "finalized_at_utc": "2026-09-10T04:13:06.379463Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "manifest.json": "15f961eb1b15881385262de50612aa69878c6752d55514ad010393284e209778",
+    "metrics.json": "0dcb7e06cd126ef42e577a047509e2723d195c3d9a2941503b81b0198cc793a6",
+    "operational_safety_pre.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+    "report.md": "085f9723835be1233e514ec2141d0e1175b157b8c09bb188c7ead56b6449218e",
+    "source_acquisition_or_build_failure.json": "71d13d29a0ca5a0f9d60906686b5fdb7e240ccc06e648a6b93d31e53c7e67566",
+    "stdout.log": "a300ff04b68d275b016c4092ee960d2a3e4536e3e912d0ee1d61e72b746a3f49",
+    "training_script.py": "498983bff20294af93afdb4acce1c010ea10f530daf25ddd41bd238e8360a890"
+  }
+}
