@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "run_id": "20260910T041609Z_gemini_cftc_gold_cot_foundation_v1",
+  "experiment_name": "gemini_cftc_gold_cot_foundation_v1",
+  "status": "aborted",
+  "started_at_utc": "2026-09-10T04:16:09.628472Z",
+  "finished_at_utc": "2026-09-12T14:23:40.495019Z",
+  "git_commit": "91f203230fd86dec0431e3cdcf354556d21b3a38",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\cftc_gold_cot_foundation_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "66bc2bc4936bcd3d79692f0853cbbc29b704a5b4151d576a14170e294dc934d1",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\cftc_gold_cot_foundation_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [],
+  "random_seeds": {},
+  "random_seed_note": "No randomness; deterministic data-only acquisition, frozen formulas, and causal as-of joins.",
+  "data": {
+    "symbols": [
+      "CFTC GOLD 088691",
+      "GOLD# timestamps only"
+    ],
+    "data_sources": [
+      "Official CFTC Disaggregated Futures Only acquisition attempt"
+    ],
+    "source_files": [
+      {
+        "path": "raw/fut_disagg_txt_2015.zip",
+        "sha256": "36aacb4389831a89996ba5366c91eedeaa32a55abca8265325bc52d74b06ca34",
+        "retention_status": "stored_in_run_directory_partial_acquisition"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2016.zip",
+        "sha256": "50f52674fd924d24c794b921c29342be7d35cbe0a241ac823925ccf43ca1a6d2",
+        "retention_status": "stored_in_run_directory_partial_acquisition"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2017.zip",
+        "sha256": "6fc467b989df527a4fbea4ba07185e8951f35cb72563f156488904a37c100e43",
+        "retention_status": "stored_in_run_directory_partial_acquisition"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2018.zip",
+        "sha256": "df4bf7d72e8984d6ea04087f793c9f2bf3503ea8c2149f4b01eedeef4fbe40a8",
+        "retention_status": "stored_in_run_directory_partial_acquisition"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2019.zip",
+        "sha256": "942a438bcc6f66e65aaf594a1a1fdb8c1505fe4a0feece77a1fd97270317e753",
+        "retention_status": "stored_in_run_directory_partial_acquisition"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2020.zip",
+        "sha256": "0aa03c0fd6360f56b6897b6eaff30e8dba774c826bf93cac61598312e19bd1cd",
+        "retention_status": "stored_in_run_directory_partial_acquisition"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2021.zip",
+        "sha256": "12d5d49a8963367fd3439050e3e20e6a5338757dfa083432795c5556827ff8ae",
+        "retention_status": "stored_in_run_directory_partial_acquisition"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2022.zip",
+        "sha256": "74205d75d4d7b75a9f4159ef2e6abed53eeb4771a74e5a4bf78bc0451410ab7f",
+        "retention_status": "stored_in_run_directory_partial_acquisition"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2023.zip",
+        "sha256": "9fe75dba0256819d476bb0d01f9e8e5ac6ec2c4390f609a7e3259e85796b79ce",
+        "retention_status": "stored_in_run_directory_partial_acquisition"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2024.zip",
+        "sha256": "5e40f60993120d26c116ab347beaf93702f5da60c7bdccbbee43cb3d0a91d01a",
+        "retention_status": "stored_in_run_directory_partial_acquisition"
+      },
+      {
+        "path": "source_acquisition_or_build_failure.json",
+        "sha256": "951fe09c3bce21c4e1ae3c48b43b82954ca2de7a18796280226fe476686f239d",
+        "retention_status": "stored_in_run_directory_failure_evidence"
+      }
+    ],
+    "timezone": "CFTC Report_Date +4 calendar days at 00:00 America/New_York; data-only",
+    "data_start_utc": "not_available_foundation_failed",
+    "data_end_utc": "not_available_foundation_failed",
+    "train_start_utc": "not_applicable_data_only_failed",
+    "train_end_utc": "not_applicable_data_only_failed",
+    "train_rows": 0,
+    "validation_start_utc": "not_applicable_data_only_failed",
+    "validation_end_utc": "not_applicable_data_only_failed",
+    "validation_rows": 0,
+    "test_start_utc": "not_applicable_data_only",
+    "test_end_utc": "not_applicable_data_only",
+    "test_rows": 0,
+    "purge_details": "not_applicable_data_only",
+    "embargo_details": "not_applicable_data_only",
+    "raw_snapshot_retained": true,
+    "reproducibility_claim": "Failed acquisition/build evidence retained; complete data foundation not constructed",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "Official CFTC source task; no MT5 API fetch performed."
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "Data-foundation-only run; no model was trained."
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "Frozen five-feature foundation; no search."
+  },
+  "registry": {
+    "parent_or_incumbent": "20260903T071729Z_gemini_execution_aligned_label_v1",
+    "selected_configuration": "CFTC GOLD COT data foundation failed before certification",
+    "trades_per_day": "not_applicable_data_only",
+    "realized_win_rate": "not_applicable_data_only",
+    "pf": "not_applicable_data_only",
+    "mean_r": "not_applicable_data_only",
+    "pnl": "not_applicable_data_only",
+    "max_dd": "not_applicable_data_only",
+    "validator_result": "NOT_RUN; foundation failed"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_applicable_data_only",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "kind": "failure_evidence",
+      "path": "source_acquisition_or_build_failure.json",
+      "sha256": "951fe09c3bce21c4e1ae3c48b43b82954ca2de7a18796280226fe476686f239d",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "failure_evidence",
+      "path": "metrics.json",
+      "sha256": "ce3bc7ee03cd8cd1f5642f01330d11c0d1edd3e40bc6e0d0322d8de5c358416c",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "failure_evidence",
+      "path": "report.md",
+      "sha256": "312893e89b2e85a5bc30d2406329e13483713e28107a73636727b4c4f23871e8",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": "Official CFTC annual files contain both Report_Date_as_YYYY-MM-DD and As_of_Date_In_Form_YYMMDD; the frozen schema mapper incorrectly treated the valid coexistence as ambiguity. Foundation stopped before data certification or strategy evaluation."
+}

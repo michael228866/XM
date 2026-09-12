@@ -1,0 +1,28 @@
+{
+  "run_id": "20260910T041609Z_gemini_cftc_gold_cot_foundation_v1",
+  "finalized_at_utc": "2026-09-12T14:23:40.601021Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "manifest.json": "102e7c713ee6ca782ce5d91682544dd4e32c301e56af13d2937694917d581240",
+    "metrics.json": "ce3bc7ee03cd8cd1f5642f01330d11c0d1edd3e40bc6e0d0322d8de5c358416c",
+    "operational_safety_pre.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+    "raw/fut_disagg_txt_2015.zip": "36aacb4389831a89996ba5366c91eedeaa32a55abca8265325bc52d74b06ca34",
+    "raw/fut_disagg_txt_2016.zip": "50f52674fd924d24c794b921c29342be7d35cbe0a241ac823925ccf43ca1a6d2",
+    "raw/fut_disagg_txt_2017.zip": "6fc467b989df527a4fbea4ba07185e8951f35cb72563f156488904a37c100e43",
+    "raw/fut_disagg_txt_2018.zip": "df4bf7d72e8984d6ea04087f793c9f2bf3503ea8c2149f4b01eedeef4fbe40a8",
+    "raw/fut_disagg_txt_2019.zip": "942a438bcc6f66e65aaf594a1a1fdb8c1505fe4a0feece77a1fd97270317e753",
+    "raw/fut_disagg_txt_2020.zip": "0aa03c0fd6360f56b6897b6eaff30e8dba774c826bf93cac61598312e19bd1cd",
+    "raw/fut_disagg_txt_2021.zip": "12d5d49a8963367fd3439050e3e20e6a5338757dfa083432795c5556827ff8ae",
+    "raw/fut_disagg_txt_2022.zip": "74205d75d4d7b75a9f4159ef2e6abed53eeb4771a74e5a4bf78bc0451410ab7f",
+    "raw/fut_disagg_txt_2023.zip": "9fe75dba0256819d476bb0d01f9e8e5ac6ec2c4390f609a7e3259e85796b79ce",
+    "raw/fut_disagg_txt_2024.zip": "5e40f60993120d26c116ab347beaf93702f5da60c7bdccbbee43cb3d0a91d01a",
+    "report.md": "312893e89b2e85a5bc30d2406329e13483713e28107a73636727b4c4f23871e8",
+    "source_acquisition_or_build_failure.json": "951fe09c3bce21c4e1ae3c48b43b82954ca2de7a18796280226fe476686f239d",
+    "source_hashes.json": "fb24919c908331db23c8dfd3d8ce28c732e4e26087e1e6664a03366c44211fbb",
+    "source_parse_failures.json": "ac9986290c50a75474685f6ede15620d47461aa7bc749328b96c34132a7339f7",
+    "source_schema.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "stdout.log": "5e0867d6764db4e1a38648f62b315173a9051c3e645313c13351e3b40bd81cad",
+    "training_script.py": "66bc2bc4936bcd3d79692f0853cbbc29b704a5b4151d576a14170e294dc934d1"
+  }
+}
