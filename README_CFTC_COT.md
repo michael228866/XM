@@ -20,6 +20,8 @@ Availability is frozen as `Report_Date + 4 calendar days at 00:00:00 America/New
 
 Official raw schema names are introspected at runtime. A ZIP may contain multiple TXT/CSV members, but exactly one member must uniquely satisfy the frozen CFTC schema. For `report_date`, `Report_Date_as_YYYY-MM-DD` (normalized `reportdateasyyyymmdd`) takes deterministic priority: exactly one primary match is used even when As-of-Date aliases coexist; multiple primary matches fail. Only when the primary is absent must exactly one supported fallback (`asofdateinformyyyymmdd` or `asofdateinformyymmdd`) match; zero or multiple fallback matches fail. Selection uses column names only, never data values. All other canonical fields still require exactly one deterministic normalized alias. Zero or multiple qualifying members stop the run. This corrects a schema-mapping implementation bug, not a CFTC data failure, and is implemented independently in the foundation and validator.
 
+The frozen `exact_timestamps.npz` source must come from the validated finalized run `20260905T171629Z_gemini_macro_event_integration_foundation_v1`. The foundation verifies that run's finalized archive alongside the Treasury and parent runs. Before loading timestamps, the independent validator checks `FINALIZED.json`, requires the recorded `exact_timestamps.npz` hash, and verifies the recorded archive file hashes. The six frozen timestamp row counts and hashes remain unchanged.
+
 ## Formal execution sequence
 
 Run these commands from `D:\XM\數據` in PowerShell. Do not include unrelated working-tree files in the commits.

@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import io
 import json
+import tempfile
 import zipfile
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -66,6 +67,17 @@ def sha256_file(path: Path) -> str:
         for block in iter(lambda: file.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def verify_timestamp_archive(run: Path) -> None:
+    finalized = json.loads((run / "FINALIZED.json").read_text(encoding="utf-8"))
+    recorded = finalized["file_sha256"]
+    if not isinstance(recorded, dict) or "exact_timestamps.npz" not in recorded:
+        raise ValueError("Finalized timestamp archive lacks exact_timestamps.npz hash")
+    for relative, expected in recorded.items():
+        path = run / relative
+        if not path.is_file() or sha256_file(path) != expected:
+            raise ValueError(f"Finalized timestamp archive integrity failed: {relative}")
 
 
 def array_hash(values: np.ndarray) -> str:
@@ -263,6 +275,7 @@ def independent_matrices(
     unresolved = 0
     future_leaks = 0
     timestamps_pass = True
+    verify_timestamp_archive(TIMESTAMP_ARCHIVE.parent)
     with np.load(TIMESTAMP_ARCHIVE, allow_pickle=False) as timestamps:
         for block, (expected_rows, expected_hash) in BLOCKS.items():
             broker = timestamps[f"{block}_broker_ns"].astype(np.int64)
@@ -532,6 +545,38 @@ def record_validator_failure(run_dir: Path, error: Exception) -> None:
 
 
 def self_test() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        run = Path(directory)
+        timestamp_file = run / "exact_timestamps.npz"
+        np.savez(timestamp_file, sample=np.array([1], dtype=np.int64))
+        finalized_file = run / "FINALIZED.json"
+        try:
+            verify_timestamp_archive(run)
+        except FileNotFoundError:
+            pass
+        else:
+            raise AssertionError("Missing FINALIZED.json must fail")
+        for invalid_record in ({"file_sha256": {}}, {"file_sha256": []}):
+            write_json(finalized_file, invalid_record)
+            try:
+                verify_timestamp_archive(run)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Missing recorded timestamp hash must fail")
+        record = {"file_sha256": {"exact_timestamps.npz": sha256_file(timestamp_file)}}
+        write_json(finalized_file, record)
+        verify_timestamp_archive(run)
+        timestamp_file.write_bytes(b"changed")
+        for missing in (False, True):
+            if missing:
+                timestamp_file.unlink()
+            try:
+                verify_timestamp_archive(run)
+            except (ValueError, RuntimeError):
+                pass
+            else:
+                raise AssertionError("Changed or missing timestamp archive must fail")
     assert SOURCE_URL.format(year=2015) == (
         "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2015.zip"
     )

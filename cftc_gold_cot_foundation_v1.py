@@ -7,6 +7,7 @@ import io
 import json
 import math
 import subprocess
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -526,6 +527,7 @@ def run_foundation(run_dir: Path) -> None:
         raise ValueError("Formal run must be in_progress")
     verify_finalized_archive(TREASURY_RUN)
     verify_finalized_archive(PARENT_RUN)
+    verify_finalized_archive(TIMESTAMP_RUN)
     git_gate = verify_git_gate(run_dir, str(manifest.get("git_commit")))
     production_before = {path.name: sha256_file(path) for path in OPERATIONAL_FILES}
     write_json(run_dir / "operational_safety_pre.json", production_before)
@@ -849,6 +851,30 @@ def run_foundation(run_dir: Path) -> None:
 
 
 def self_test() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        run = Path(directory)
+        timestamp_file = run / "exact_timestamps.npz"
+        np.savez(timestamp_file, sample=np.array([1], dtype=np.int64))
+        finalized_file = run / "FINALIZED.json"
+        try:
+            verify_finalized_archive(run)
+        except FileNotFoundError:
+            pass
+        else:
+            raise AssertionError("Missing FINALIZED.json must fail")
+        record = {"file_sha256": {"exact_timestamps.npz": sha256_file(timestamp_file)}}
+        write_json(finalized_file, record)
+        verify_finalized_archive(run)
+        timestamp_file.write_bytes(b"changed")
+        for missing in (False, True):
+            if missing:
+                timestamp_file.unlink()
+            try:
+                verify_finalized_archive(run)
+            except (ValueError, RuntimeError):
+                pass
+            else:
+                raise AssertionError("Changed or missing timestamp archive must fail")
     assert SOURCE_URL.format(year=2015) == (
         "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2015.zip"
     )
