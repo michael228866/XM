@@ -1,0 +1,102 @@
+[
+  {
+    "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2015.zip",
+    "http_status": 200,
+    "bytes": 1697554,
+    "sha256": "36aacb4389831a89996ba5366c91eedeaa32a55abca8265325bc52d74b06ca34",
+    "acquired_at_utc": "2026-09-12T17:11:09.064865+00:00",
+    "attempts": 1,
+    "year": 2015,
+    "path": "raw/fut_disagg_txt_2015.zip"
+  },
+  {
+    "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2016.zip",
+    "http_status": 200,
+    "bytes": 1834436,
+    "sha256": "50f52674fd924d24c794b921c29342be7d35cbe0a241ac823925ccf43ca1a6d2",
+    "acquired_at_utc": "2026-09-12T17:11:09.492812+00:00",
+    "attempts": 1,
+    "year": 2016,
+    "path": "raw/fut_disagg_txt_2016.zip"
+  },
+  {
+    "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2017.zip",
+    "http_status": 200,
+    "bytes": 1805242,
+    "sha256": "6fc467b989df527a4fbea4ba07185e8951f35cb72563f156488904a37c100e43",
+    "acquired_at_utc": "2026-09-12T17:11:09.942315+00:00",
+    "attempts": 1,
+    "year": 2017,
+    "path": "raw/fut_disagg_txt_2017.zip"
+  },
+  {
+    "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2018.zip",
+    "http_status": 200,
+    "bytes": 1961740,
+    "sha256": "df4bf7d72e8984d6ea04087f793c9f2bf3503ea8c2149f4b01eedeef4fbe40a8",
+    "acquired_at_utc": "2026-09-12T17:11:10.367397+00:00",
+    "attempts": 1,
+    "year": 2018,
+    "path": "raw/fut_disagg_txt_2018.zip"
+  },
+  {
+    "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2019.zip",
+    "http_status": 200,
+    "bytes": 1981332,
+    "sha256": "942a438bcc6f66e65aaf594a1a1fdb8c1505fe4a0feece77a1fd97270317e753",
+    "acquired_at_utc": "2026-09-12T17:11:10.832411+00:00",
+    "attempts": 1,
+    "year": 2019,
+    "path": "raw/fut_disagg_txt_2019.zip"
+  },
+  {
+    "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2020.zip",
+    "http_status": 200,
+    "bytes": 1930322,
+    "sha256": "0aa03c0fd6360f56b6897b6eaff30e8dba774c826bf93cac61598312e19bd1cd",
+    "acquired_at_utc": "2026-09-12T17:11:11.352607+00:00",
+    "attempts": 1,
+    "year": 2020,
+    "path": "raw/fut_disagg_txt_2020.zip"
+  },
+  {
+    "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2021.zip",
+    "http_status": 200,
+    "bytes": 1943806,
+    "sha256": "12d5d49a8963367fd3439050e3e20e6a5338757dfa083432795c5556827ff8ae",
+    "acquired_at_utc": "2026-09-12T17:11:11.793178+00:00",
+    "attempts": 1,
+    "year": 2021,
+    "path": "raw/fut_disagg_txt_2021.zip"
+  },
+  {
+    "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2022.zip",
+    "http_status": 200,
+    "bytes": 2049193,
+    "sha256": "74205d75d4d7b75a9f4159ef2e6abed53eeb4771a74e5a4bf78bc0451410ab7f",
+    "acquired_at_utc": "2026-09-12T17:11:12.271206+00:00",
+    "attempts": 1,
+    "year": 2022,
+    "path": "raw/fut_disagg_txt_2022.zip"
+  },
+  {
+    "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2023.zip",
+    "http_status": 200,
+    "bytes": 2202972,
+    "sha256": "9fe75dba0256819d476bb0d01f9e8e5ac6ec2c4390f609a7e3259e85796b79ce",
+    "acquired_at_utc": "2026-09-12T17:11:12.750185+00:00",
+    "attempts": 1,
+    "year": 2023,
+    "path": "raw/fut_disagg_txt_2023.zip"
+  },
+  {
+    "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2024.zip",
+    "http_status": 200,
+    "bytes": 2381296,
+    "sha256": "5e40f60993120d26c116ab347beaf93702f5da60c7bdccbbee43cb3d0a91d01a",
+    "acquired_at_utc": "2026-09-12T17:11:13.250818+00:00",
+    "attempts": 1,
+    "year": 2024,
+    "path": "raw/fut_disagg_txt_2024.zip"
+  }
+]

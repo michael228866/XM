@@ -1,0 +1,40 @@
+{
+  "overall": "PASS",
+  "internal_methodology": "PASS",
+  "data_certification": "PASS",
+  "checks": {
+    "official_cftc_only": "PASS",
+    "source_hash_provenance": "PASS",
+    "schema_audit": "PASS",
+    "gold_contract_identity": "PASS",
+    "observation_integrity": "PASS",
+    "submitted_schema_mapping_identity": "PASS",
+    "six_gold_timestamp_hashes": "PASS",
+    "causal_availability": "PASS",
+    "future_leak_rows_zero": "PASS",
+    "unresolved_source_rows_zero": "PASS",
+    "feature_order_exact": "PASS",
+    "independent_observation_identity": "PASS",
+    "element_by_element_matrix_identity": "PASS",
+    "independent_per_block_hash_identity": "PASS",
+    "independent_logical_hash_identity": "PASS",
+    "all_5_features_finite": "PASS",
+    "all_6_blocks_constructable": "PASS",
+    "operational_files_unchanged": "PASS",
+    "no_model_or_strategy_evaluation": "PASS"
+  },
+  "recompute_error": null,
+  "independent_unresolved_source_rows": 0,
+  "independent_future_leak_rows": 0,
+  "independent_per_block_hash": {
+    "fold1_train": "450a4349d053b6a23fd1b70b88fae34a9e77c8095d3ce7113d0e992ad22d4610",
+    "fold1_score": "e4fca6334c4863dbbeecb59a7eda5dbad95b7a52ca834cf1ae38d32f5d5eed3a",
+    "fold2_train": "f4cacf7bd62f08ed9bc49e84ecd2161455ea665418b58772b3bc525d56778fd0",
+    "fold2_score": "bff96818968a471670969b9b34b4d4f56bc4dc713d105837c0518f9ca062d0b3",
+    "fold3_train": "0e4923e7ddf5c5d89b117a95a35bdb45842b0544c6a011f036f5361ec88c6ebf",
+    "fold3_score": "b347390c870d518ac625941bced4fe5f7cd58af0a0ca17a224aaed220f4567a0"
+  },
+  "independent_logical_feature_matrix_sha256": "be6245e7b79695b338ec0ec1c493f045123254a0fccd2952670ae553fa633a09",
+  "model_training_performed": false,
+  "strategy_evaluation_performed": false
+}

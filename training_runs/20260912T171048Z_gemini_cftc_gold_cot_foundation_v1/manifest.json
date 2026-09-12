@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "run_id": "20260912T171048Z_gemini_cftc_gold_cot_foundation_v1",
+  "experiment_name": "gemini_cftc_gold_cot_foundation_v1",
+  "status": "pass",
+  "started_at_utc": "2026-09-12T17:10:48.108817Z",
+  "finished_at_utc": "2026-09-12T17:13:25.346536Z",
+  "git_commit": "a9abf82fb68403a553ca61c389df591960e1b72b",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\cftc_gold_cot_foundation_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "7753c5401e6b4949c384302c6b75490d1caf12c9bf9e06aaf18615da9e7536c2",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\cftc_gold_cot_foundation_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [],
+  "random_seeds": {},
+  "random_seed_note": "No randomness; deterministic data-only acquisition, frozen formulas, causal as-of joins, and finalized timestamp-source provenance verification.",
+  "data": {
+    "symbols": [
+      "CFTC GOLD 088691",
+      "GOLD# timestamps only"
+    ],
+    "data_sources": [
+      "Official CFTC annual Disaggregated Commitments of Traders Futures Only ZIP files"
+    ],
+    "source_files": [
+      {
+        "path": "raw/fut_disagg_txt_2015.zip",
+        "sha256": "36aacb4389831a89996ba5366c91eedeaa32a55abca8265325bc52d74b06ca34",
+        "retention_status": "stored_in_run_directory",
+        "source_url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2015.zip",
+        "acquired_at_utc": "2026-09-12T17:11:09.064865+00:00"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2016.zip",
+        "sha256": "50f52674fd924d24c794b921c29342be7d35cbe0a241ac823925ccf43ca1a6d2",
+        "retention_status": "stored_in_run_directory",
+        "source_url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2016.zip",
+        "acquired_at_utc": "2026-09-12T17:11:09.492812+00:00"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2017.zip",
+        "sha256": "6fc467b989df527a4fbea4ba07185e8951f35cb72563f156488904a37c100e43",
+        "retention_status": "stored_in_run_directory",
+        "source_url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2017.zip",
+        "acquired_at_utc": "2026-09-12T17:11:09.942315+00:00"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2018.zip",
+        "sha256": "df4bf7d72e8984d6ea04087f793c9f2bf3503ea8c2149f4b01eedeef4fbe40a8",
+        "retention_status": "stored_in_run_directory",
+        "source_url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2018.zip",
+        "acquired_at_utc": "2026-09-12T17:11:10.367397+00:00"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2019.zip",
+        "sha256": "942a438bcc6f66e65aaf594a1a1fdb8c1505fe4a0feece77a1fd97270317e753",
+        "retention_status": "stored_in_run_directory",
+        "source_url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2019.zip",
+        "acquired_at_utc": "2026-09-12T17:11:10.832411+00:00"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2020.zip",
+        "sha256": "0aa03c0fd6360f56b6897b6eaff30e8dba774c826bf93cac61598312e19bd1cd",
+        "retention_status": "stored_in_run_directory",
+        "source_url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2020.zip",
+        "acquired_at_utc": "2026-09-12T17:11:11.352607+00:00"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2021.zip",
+        "sha256": "12d5d49a8963367fd3439050e3e20e6a5338757dfa083432795c5556827ff8ae",
+        "retention_status": "stored_in_run_directory",
+        "source_url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2021.zip",
+        "acquired_at_utc": "2026-09-12T17:11:11.793178+00:00"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2022.zip",
+        "sha256": "74205d75d4d7b75a9f4159ef2e6abed53eeb4771a74e5a4bf78bc0451410ab7f",
+        "retention_status": "stored_in_run_directory",
+        "source_url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2022.zip",
+        "acquired_at_utc": "2026-09-12T17:11:12.271206+00:00"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2023.zip",
+        "sha256": "9fe75dba0256819d476bb0d01f9e8e5ac6ec2c4390f609a7e3259e85796b79ce",
+        "retention_status": "stored_in_run_directory",
+        "source_url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2023.zip",
+        "acquired_at_utc": "2026-09-12T17:11:12.750185+00:00"
+      },
+      {
+        "path": "raw/fut_disagg_txt_2024.zip",
+        "sha256": "5e40f60993120d26c116ab347beaf93702f5da60c7bdccbbee43cb3d0a91d01a",
+        "retention_status": "stored_in_run_directory",
+        "source_url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2024.zip",
+        "acquired_at_utc": "2026-09-12T17:11:13.250818+00:00"
+      },
+      {
+        "path": "training_runs/20260905T171629Z_gemini_macro_event_integration_foundation_v1/exact_timestamps.npz",
+        "sha256": "2f04a9e01d32ae796565cd453c69c0f0de8141e50cb4e62dd72838898e18efa9",
+        "retention_status": "retained_in_prior_finalized_run; not duplicated"
+      }
+    ],
+    "timezone": "CFTC Report_Date +4 calendar days 00:00 America/New_York converted to UTC; GOLD exact UTC inherited",
+    "data_start_utc": "2015-01-10T05:00:00+00:00",
+    "data_end_utc": "2025-01-04T05:00:00+00:00",
+    "train_start_utc": "2016-06-30T21:00:00+00:00",
+    "train_end_utc": "2022-12-30T17:57:00+00:00",
+    "train_rows": 1596361,
+    "validation_start_utc": "2018-01-01T22:00:00+00:00",
+    "validation_end_utc": "2024-12-31T18:00:00+00:00",
+    "validation_rows": 2474297,
+    "test_start_utc": "not_applicable_data_only",
+    "test_end_utc": "not_applicable_data_only",
+    "test_rows": "not_applicable_data_only",
+    "purge_details": "not_applicable_data_only",
+    "embargo_details": "not_applicable_data_only",
+    "raw_snapshot_retained": true,
+    "reproducibility_claim": "Full for retained official CFTC ZIP files, frozen formulas, and referenced finalized timestamp archive",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "CFTC data acquired from official CFTC sources; frozen GOLD timestamps inherited from finalized repository evidence; no MT5 API fetch performed."
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "Data-foundation-only run; no model was trained."
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "Frozen five-feature CFTC GOLD COT data foundation; no feature or parameter search."
+  },
+  "registry": {
+    "parent_or_incumbent": "20260903T071729Z_gemini_execution_aligned_label_v1",
+    "selected_configuration": "frozen five-feature CFTC GOLD Disaggregated Futures Only data foundation",
+    "trades_per_day": "not_applicable_data_only",
+    "realized_win_rate": "not_applicable_data_only",
+    "pf": "not_applicable_data_only",
+    "mean_r": "not_applicable_data_only",
+    "pnl": "not_applicable_data_only",
+    "max_dd": "not_applicable_data_only",
+    "validator_result": "internal PASS; data certification PASS"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_applicable_data_only",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "kind": "source_provenance",
+      "path": "source_hashes.json",
+      "sha256": "28791ecfd15134936cf0b416105a626b0e486bd89dbc252ff610de070a38ee8b",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "source_schema",
+      "path": "source_schema.json",
+      "sha256": "eee4692a344f69d1eead245eb18ea5fbf5a556e7b001ac3776573836705d1c61",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "canonical_observations",
+      "path": "cot_observations.csv",
+      "sha256": "2713dc12ff22c8661ea3ce1c92f34c74019b137592e45edc75d78e9ec794b9ab",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "weekly_features",
+      "path": "cftc_gold_cot_features.csv",
+      "sha256": "8a0ad28646e5520f7b1156c5f62bff09f8e866088309f2e3e55af6e6e22bc4db",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "feature_matrix",
+      "path": "cftc_gold_cot_features.npz",
+      "sha256": "24ebca3f1a1dec99cb2b6979f922425237623ff9f1809b64e53b9c00e69467a1",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "identity_audit",
+      "path": "identity_audit.csv",
+      "sha256": "40f11b1cae9a8038fd264452c4a8fe91bb6f1d1287cc7cae8e9c12918f410905",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "coverage_audit",
+      "path": "coverage_audit.csv",
+      "sha256": "6a1452cb2e5a2caf5ec657651de224684c2ffe70487a0fb1e4866701183218ad",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "operational_safety",
+      "path": "operational_safety_pre.json",
+      "sha256": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "metrics.json",
+      "sha256": "8b2250db2a3ca1f204a919f8569b263aa8544b9930ec74bff74b00aa7223ce3b",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "report.md",
+      "sha256": "58c1f15c265c289107a90b45708cb63ff39450b19bf045316bf8046248700437",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.json",
+      "sha256": "4b35d82cc7fa5d32785269303f73f71ee9e4c2f836aa7cf4dd89864fa7634120",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.md",
+      "sha256": "93653f70abbce1263ab2dbe16281171fa6a342ef781a9ed8249169be1971ebd7",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": null
+}

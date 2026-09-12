@@ -1,0 +1,183 @@
+{
+  "summary": {
+    "internal_methodology": "PASS",
+    "data_certification": "PASS",
+    "independent_validator": "PASS",
+    "data_foundation_ready": true,
+    "unresolved_source_rows": 0,
+    "future_leak_rows": 0
+  },
+  "feature_names": [
+    "COT_MM_NET_PCT_OI",
+    "COT_MM_NET_CHG_1W",
+    "COT_PROD_NET_PCT_OI",
+    "COT_SWAP_NET_PCT_OI",
+    "COT_MM_VS_PROD_SPREAD"
+  ],
+  "feature_dtype": "float64",
+  "source_audit": {
+    "target_start": "2016-01-01",
+    "target_end": "2024-12-31",
+    "target_observations": 470,
+    "prehistory_observations": 52,
+    "duplicate_report_dates": 0,
+    "annual_overlap_duplicates": 0,
+    "missing_required_numeric": {
+      "open_interest": 0,
+      "producer_long": 0,
+      "producer_short": 0,
+      "swap_long": 0,
+      "swap_short": 0,
+      "managed_money_long": 0,
+      "managed_money_short": 0
+    },
+    "nonpositive_open_interest": 0,
+    "observation_ordering": true,
+    "unexpected_contract_code": 0,
+    "unexpected_contract_name": 0,
+    "long_observation_gaps": [],
+    "first_2016_change_has_predecessor": true,
+    "all_derived_features_finite_2016_2024": true
+  },
+  "timestamp_audit": {
+    "fold1_train": {
+      "rows": 530218,
+      "broker_timestamp_sha256": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+      "expected_broker_timestamp_sha256": "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6",
+      "identity_pass": true,
+      "first_utc": "2016-06-30T21:00:00+00:00",
+      "last_utc": "2017-12-29T17:55:00+00:00"
+    },
+    "fold1_score": {
+      "rows": 1058080,
+      "broker_timestamp_sha256": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+      "expected_broker_timestamp_sha256": "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94",
+      "identity_pass": true,
+      "first_utc": "2018-01-01T22:00:00+00:00",
+      "last_utc": "2020-12-31T16:50:00+00:00"
+    },
+    "fold2_train": {
+      "rows": 532563,
+      "broker_timestamp_sha256": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44",
+      "expected_broker_timestamp_sha256": "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44",
+      "identity_pass": true,
+      "first_utc": "2019-06-30T22:00:00+00:00",
+      "last_utc": "2020-12-31T12:50:00+00:00"
+    },
+    "fold2_score": {
+      "rows": 708197,
+      "broker_timestamp_sha256": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8",
+      "expected_broker_timestamp_sha256": "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8",
+      "identity_pass": true,
+      "first_utc": "2021-01-03T23:00:00+00:00",
+      "last_utc": "2022-12-30T21:57:00+00:00"
+    },
+    "fold3_train": {
+      "rows": 533580,
+      "broker_timestamp_sha256": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b",
+      "expected_broker_timestamp_sha256": "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b",
+      "identity_pass": true,
+      "first_utc": "2021-06-30T22:00:00+00:00",
+      "last_utc": "2022-12-30T17:57:00+00:00"
+    },
+    "fold3_score": {
+      "rows": 708020,
+      "broker_timestamp_sha256": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449",
+      "expected_broker_timestamp_sha256": "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449",
+      "identity_pass": true,
+      "first_utc": "2023-01-02T23:00:00+00:00",
+      "last_utc": "2024-12-31T18:00:00+00:00"
+    }
+  },
+  "coverage": [
+    {
+      "block": "fold1_train",
+      "total_gold_timestamps": 530218,
+      "constructable_rows": 530218,
+      "unresolved_rows": 0,
+      "future_leak_rows": 0,
+      "first_effective_report_date": "2016-06-21",
+      "last_effective_report_date": "2017-12-19",
+      "finite_pct_all_five": 100.0,
+      "matrix_sha256": "450a4349d053b6a23fd1b70b88fae34a9e77c8095d3ce7113d0e992ad22d4610"
+    },
+    {
+      "block": "fold1_score",
+      "total_gold_timestamps": 1058080,
+      "constructable_rows": 1058080,
+      "unresolved_rows": 0,
+      "future_leak_rows": 0,
+      "first_effective_report_date": "2017-12-26",
+      "last_effective_report_date": "2020-12-21",
+      "finite_pct_all_five": 100.0,
+      "matrix_sha256": "e4fca6334c4863dbbeecb59a7eda5dbad95b7a52ca834cf1ae38d32f5d5eed3a"
+    },
+    {
+      "block": "fold2_train",
+      "total_gold_timestamps": 532563,
+      "constructable_rows": 532563,
+      "unresolved_rows": 0,
+      "future_leak_rows": 0,
+      "first_effective_report_date": "2019-06-25",
+      "last_effective_report_date": "2020-12-21",
+      "finite_pct_all_five": 100.0,
+      "matrix_sha256": "f4cacf7bd62f08ed9bc49e84ecd2161455ea665418b58772b3bc525d56778fd0"
+    },
+    {
+      "block": "fold2_score",
+      "total_gold_timestamps": 708197,
+      "constructable_rows": 708197,
+      "unresolved_rows": 0,
+      "future_leak_rows": 0,
+      "first_effective_report_date": "2020-12-29",
+      "last_effective_report_date": "2022-12-20",
+      "finite_pct_all_five": 100.0,
+      "matrix_sha256": "bff96818968a471670969b9b34b4d4f56bc4dc713d105837c0518f9ca062d0b3"
+    },
+    {
+      "block": "fold3_train",
+      "total_gold_timestamps": 533580,
+      "constructable_rows": 533580,
+      "unresolved_rows": 0,
+      "future_leak_rows": 0,
+      "first_effective_report_date": "2021-06-22",
+      "last_effective_report_date": "2022-12-20",
+      "finite_pct_all_five": 100.0,
+      "matrix_sha256": "0e4923e7ddf5c5d89b117a95a35bdb45842b0544c6a011f036f5361ec88c6ebf"
+    },
+    {
+      "block": "fold3_score",
+      "total_gold_timestamps": 708020,
+      "constructable_rows": 708020,
+      "unresolved_rows": 0,
+      "future_leak_rows": 0,
+      "first_effective_report_date": "2022-12-27",
+      "last_effective_report_date": "2024-12-24",
+      "finite_pct_all_five": 100.0,
+      "matrix_sha256": "b347390c870d518ac625941bced4fe5f7cd58af0a0ca17a224aaed220f4567a0"
+    }
+  ],
+  "source_dataset_sha256": "2713dc12ff22c8661ea3ce1c92f34c74019b137592e45edc75d78e9ec794b9ab",
+  "logical_feature_matrix_sha256": "be6245e7b79695b338ec0ec1c493f045123254a0fccd2952670ae553fa633a09",
+  "physical_npz_sha256": "24ebca3f1a1dec99cb2b6979f922425237623ff9f1809b64e53b9c00e69467a1",
+  "git_gate": {
+    "head": "a9abf82fb68403a553ca61c389df591960e1b72b",
+    "upstream": "a9abf82fb68403a553ca61c389df591960e1b72b",
+    "unexpected_dirty_paths": []
+  },
+  "operational_safety": {
+    "before": {
+      "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+      "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+    },
+    "after": {
+      "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+      "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+    },
+    "gemini_py_changed": false,
+    "operational_model_changed": false,
+    "operational_artifact_changed": false
+  },
+  "model_training_performed": false,
+  "strategy_evaluation_performed": false
+}
