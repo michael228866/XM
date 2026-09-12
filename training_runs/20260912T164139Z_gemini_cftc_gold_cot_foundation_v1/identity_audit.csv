@@ -1,0 +1,12 @@
+check,value,detail
+official_cftc_only,PASS,https://www.cftc.gov/files/dea/history/fut_disagg_txt_{year}.zip
+gold_contract_identity,PASS,088691 GOLD - COMMODITY EXCHANGE INC.
+source_hash_provenance,PASS,10 retained annual ZIP files
+schema_audit,PASS,unique aliases
+observation_integrity,PASS,470 target observations
+six_gold_timestamp_hashes,PASS,all expected row counts and hashes matched
+causal_availability,PASS,Report_Date +4 calendar days 00:00 America/New_York
+future_leak_rows,0,backward as-of
+unresolved_source_rows,0,all six blocks
+all_5_features_finite,PASS,float64
+all_6_blocks_constructable,PASS,exact timestamp rows
