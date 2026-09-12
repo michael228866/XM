@@ -1,0 +1,18 @@
+{
+  "summary": {
+    "internal_methodology": "FAIL",
+    "data_certification": "FAIL",
+    "independent_validator": "NOT_RUN",
+    "data_foundation_ready": false,
+    "failure": {
+      "stage": "data_foundation",
+      "error_type": "FileExistsError",
+      "error": "[WinError 183] 當檔案已存在時，無法建立該檔案。: 'D:\\\\XM\\\\數據\\\\training_runs\\\\20260912T142711Z_gemini_cftc_gold_cot_foundation_v1\\\\raw'",
+      "recorded_at_utc": "2026-09-12T14:29:20.505891+00:00",
+      "model_training_performed": false,
+      "strategy_evaluation_performed": false
+    }
+  },
+  "model_training_performed": false,
+  "strategy_evaluation_performed": false
+}
