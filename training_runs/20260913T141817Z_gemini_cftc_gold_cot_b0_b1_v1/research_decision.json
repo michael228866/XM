@@ -1,0 +1,12 @@
+{
+  "result": "CFTC GOLD COT direct-feature family FAIL / family closed",
+  "classification": "completed_negative_research_result",
+  "family_closed": true,
+  "methodology_provenance": "PASS",
+  "independent_validator": "PASS",
+  "b0_exact_reproduction": "PASS",
+  "preferred_quality": false,
+  "search_performed": false,
+  "production_promotion_requested": false,
+  "reason": "B1 increased frequency but degraded execution quality; all three B1 chronological folds are catastrophic under the frozen gate."
+}

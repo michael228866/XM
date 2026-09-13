@@ -1,0 +1,409 @@
+{
+  "schema_version": 1,
+  "run_id": "20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1",
+  "experiment_name": "gemini_cftc_gold_cot_b0_b1_v1",
+  "status": "fail",
+  "started_at_utc": "2026-09-13T14:18:17.192075Z",
+  "finished_at_utc": "2026-09-13T16:11:55.304663Z",
+  "git_commit": "a8be86dd85821e04893c5a10127888946c4ab7e0",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\cftc_gold_cot_b0_b1_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "b7e38ba7a82d661d9236368d5ad6f6510a53698a35d72a5435fa68dac1efc82e",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\cftc_gold_cot_b0_b1_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [],
+  "random_seeds": {
+    "B0_31_technical": 42,
+    "B1_31_plus_5_cftc_cot": 42
+  },
+  "random_seed_note": "Frozen comparison; XGBoost random_state=42 for B0 and B1; no search or tuning.",
+  "data": {
+    "symbols": [
+      "GOLD#",
+      "CFTC GOLD 088691"
+    ],
+    "data_sources": [
+      "20260903T071729Z_gemini_execution_aligned_label_v1",
+      "20260909T140906Z_gemini_us_treasury_real_rate_b0_b1_v1",
+      "20260912T171048Z_gemini_cftc_gold_cot_foundation_v1",
+      "20260905T171629Z_gemini_macro_event_integration_foundation_v1"
+    ],
+    "source_files": [
+      {
+        "path": "training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/FINALIZED.json",
+        "sha256": "eb02be533679e33492351c753d731483724ec24248b8c7ac7915ee1d74b42add",
+        "retention_status": "retained_in_prior_finalized_run"
+      },
+      {
+        "path": "training_runs/20260909T140906Z_gemini_us_treasury_real_rate_b0_b1_v1/FINALIZED.json",
+        "sha256": "2ad4d82996ddef30e1b2c3285754bb3e81ff8f838600a8a3faa2bcedd3376ec7",
+        "retention_status": "retained_in_prior_finalized_run"
+      },
+      {
+        "path": "training_runs/20260905T171629Z_gemini_macro_event_integration_foundation_v1/FINALIZED.json",
+        "sha256": "7bd7bf7845fd2c21dce66a1026b9a090fece296792286ccf4a918fac7b7cf4ab",
+        "retention_status": "retained_in_prior_finalized_run"
+      },
+      {
+        "path": "training_runs/20260912T171048Z_gemini_cftc_gold_cot_foundation_v1/FINALIZED.json",
+        "sha256": "0f840fd9330bac98bbfd2d1812718ec7aa8016ee47e7b1f39ed8a497a83e8935",
+        "retention_status": "retained_in_prior_finalized_run"
+      }
+    ],
+    "timezone": "frozen C1 broker/API semantics; CFTC certified causal availability",
+    "data_start_utc": "2016-06-30T21:00:00Z",
+    "data_end_utc": "2024-12-31T20:00:00Z",
+    "train_start_utc": "2016-07-01T00:00:00",
+    "train_end_utc": "2022-12-30T19:57:00",
+    "train_rows": 1596361,
+    "validation_start_utc": "2018-01-02T00:00:00",
+    "validation_end_utc": "2024-12-31T20:00:00",
+    "validation_rows": 2474297,
+    "test_start_utc": "not_applicable_historical_development_comparison",
+    "test_end_utc": "not_applicable_historical_development_comparison",
+    "test_rows": 0,
+    "purge_details": "same strict C1 parent maturity rules",
+    "embargo_details": "same as C1 parent",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "Frozen reconstructed X/y/timestamps and finalized CFTC source; local GOLD CSVs not duplicated",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "Historical GOLD CSVs were repository-local frozen source exports; no MT5 API fetch was performed in this archival reproduction."
+    }
+  },
+  "model": {
+    "trained": true,
+    "model_type": "XGBoost",
+    "parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist"
+    },
+    "boosted_rounds_or_estimators": 220,
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "feature_count": 31,
+    "label_definition": "Frozen C1 standalone S5 net realized R > 0",
+    "horizon": "90 wall-clock minutes",
+    "label_tp_sl_semantics": "frozen C1",
+    "execution_tp_sl_semantics": "frozen S5",
+    "calibration_method": "none",
+    "artifact_path": "models/B1_31_plus_5_cftc_cot_2023_2024_xgb.json",
+    "artifact_sha256": "43c68439bb468e9a49c78bb46d7a0ce40fe007c4dafdb8ba5d9a4d8d1baf7390",
+    "retention_status": "all six fold models retained; artifact_path references last B1 fold",
+    "not_applicable_reason": null,
+    "candidate_features": {
+      "B0_31_technical": [
+        "M1_RSI",
+        "ATR",
+        "MACD_HIST",
+        "BB_WIDTH",
+        "BIAS_20",
+        "BODY_PCT",
+        "ROC_5",
+        "VOLA_RATIO",
+        "HOUR_SIN",
+        "HOUR_COS",
+        "DAY_OF_WEEK",
+        "Daily_TREND",
+        "H12_TREND",
+        "H1_TREND",
+        "H2_TREND",
+        "H3_TREND",
+        "H4_TREND",
+        "H6_TREND",
+        "H8_TREND",
+        "M10_TREND",
+        "M12_TREND",
+        "M15_TREND",
+        "M20_TREND",
+        "M2_TREND",
+        "M30_TREND",
+        "M3_TREND",
+        "M4_TREND",
+        "M5_TREND",
+        "M6_TREND",
+        "Monthly_TREND",
+        "Weekly_TREND"
+      ],
+      "B1_31_plus_5_cftc_cot": [
+        "M1_RSI",
+        "ATR",
+        "MACD_HIST",
+        "BB_WIDTH",
+        "BIAS_20",
+        "BODY_PCT",
+        "ROC_5",
+        "VOLA_RATIO",
+        "HOUR_SIN",
+        "HOUR_COS",
+        "DAY_OF_WEEK",
+        "Daily_TREND",
+        "H12_TREND",
+        "H1_TREND",
+        "H2_TREND",
+        "H3_TREND",
+        "H4_TREND",
+        "H6_TREND",
+        "H8_TREND",
+        "M10_TREND",
+        "M12_TREND",
+        "M15_TREND",
+        "M20_TREND",
+        "M2_TREND",
+        "M30_TREND",
+        "M3_TREND",
+        "M4_TREND",
+        "M5_TREND",
+        "M6_TREND",
+        "Monthly_TREND",
+        "Weekly_TREND",
+        "COT_MM_NET_PCT_OI",
+        "COT_MM_NET_CHG_1W",
+        "COT_PROD_NET_PCT_OI",
+        "COT_SWAP_NET_PCT_OI",
+        "COT_MM_VS_PROD_SPREAD"
+      ]
+    }
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": "candidates.csv",
+    "not_applicable_reason": "Frozen pair only"
+  },
+  "registry": {
+    "parent_or_incumbent": "20260903T071729Z_gemini_execution_aligned_label_v1",
+    "selected_configuration": "CFTC GOLD COT direct-feature family FAIL / family closed",
+    "trades_per_day": 0.409464215877982,
+    "realized_win_rate": 0.545367717287488,
+    "pf": 0.7982622514102539,
+    "mean_r": -0.09295550662782931,
+    "pnl": -97.32441543933729,
+    "max_dd": -97.32441543933733,
+    "validator_result": "methodology/provenance PASS; independent PASS; B0 exact reproduction PASS; family FAIL / family closed"
+  },
+  "promotion": {
+    "requested": false,
+    "replacement_authorized": false,
+    "operational_artifact_changed": false,
+    "gate_result": "research_only"
+  },
+  "artifacts": [
+    {
+      "kind": "comparison_evidence",
+      "path": "candidates.csv",
+      "sha256": "10b49dfa2b6e927fa389309ca115b1441f4dcc63f750341d3aa3ce53b2169ce2",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "environment.txt",
+      "sha256": "51dbc9e2721f7eb428c82cf93b9e5f0c173b4c5195902a9b8f256cbc52012a4d",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "execution_spec.json",
+      "sha256": "70c3e86155aea34cd21586d4b9e103644518b3dd8a5140f58b20626b57675ef9",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "fold_metrics.csv",
+      "sha256": "6f9ae533a5a2e34b979d63b6a9294495d167e1956bfc663a7717b6b87d4265fb",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "identity_audit.json",
+      "sha256": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "metrics.json",
+      "sha256": "430701ff848c85b5c8d77863daa907b4d80826b417eed38e1a9dcf0953600b6d",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "model.sha256",
+      "sha256": "24a1b04ac8cc13a037278a8f2f01b144a5011eda46d2f2ca2980ac20a918a111",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "model_inventory.json",
+      "sha256": "2b6c4c4edd13786404a04ee7b8983401ba0ccd646f4003c25d6fdc93d0672845",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "models/B0_31_technical_2018_2020_xgb.json",
+      "sha256": "5eca73587d840b91117f096eaefe84c1538fb2920d7840bb1ec374dd170ea914",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "models/B0_31_technical_2021_2022_xgb.json",
+      "sha256": "744026a3a6e17f2465cc3850601f8efd65b75cdc1b35fa5e1572aa82f0012dc7",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "models/B0_31_technical_2023_2024_xgb.json",
+      "sha256": "67ca6ce4dd095ee3b314eeddb60bf78fc9081ee35d85bb88efc21dbc98793113",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "models/B1_31_plus_5_cftc_cot_2018_2020_xgb.json",
+      "sha256": "bc0f766e4d3152a70004280c10877ce86d62f78f7262bcb31796e24ca4cc7bf2",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "models/B1_31_plus_5_cftc_cot_2021_2022_xgb.json",
+      "sha256": "1f643e99bf417d5c5db023ea805dce191af1a4957abf84ffd727a16a002e1241",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "models/B1_31_plus_5_cftc_cot_2023_2024_xgb.json",
+      "sha256": "43c68439bb468e9a49c78bb46d7a0ce40fe007c4dafdb8ba5d9a4d8d1baf7390",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "operational_safety_post.json",
+      "sha256": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "operational_safety_pre.json",
+      "sha256": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "paired_oof_predictions.npz",
+      "sha256": "7f3ad1856f22245965ef2e17331521c7105b153ecfd6180636b5e2e5946e48c3",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "report.md",
+      "sha256": "b9390779bece0d8732fbb5a96e21e9562b7063ce451da51414b2703011f737f6",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "source_provenance.json",
+      "sha256": "4535b13d1e2640d85237b8ced2f960d464d22adbf29fec5030bcbfa7f3a2d8dc",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "trade_ledger.csv",
+      "sha256": "c4e7a3e15808ee47382785361bc6d2454b33cbb6610554d4bbaf8b7b1c42f9be",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "training_script.py",
+      "sha256": "b7e38ba7a82d661d9236368d5ad6f6510a53698a35d72a5435fa68dac1efc82e",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "comparison_evidence",
+      "path": "validator_script.py",
+      "sha256": "21b2dcec3890550ed1cf00fc89828f5bee0aadb98c460fb14e8501bd5c9b4533",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.json",
+      "sha256": "7bdba62505494390a7f37811390445ab3f1dc70f8652d78158bb4f4cc343edad",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.md",
+      "sha256": "3291c891de24ab3e2ea78831a8e4bab4d6975c8db02969f60e56ffff7cf4f91a",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "research_decision",
+      "path": "research_decision.json",
+      "sha256": "7408eb6a2f12f0b20f34b293e1577c9c33d6c65a3d40a1a9653a1741dec12790",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": null,
+  "operational_hashes_before": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "operational_hashes_after": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "research_decision": {
+    "result": "CFTC GOLD COT direct-feature family FAIL / family closed",
+    "classification": "completed_negative_research_result",
+    "family_closed": true,
+    "methodology_provenance": "PASS",
+    "independent_validator": "PASS",
+    "b0_exact_reproduction": "PASS",
+    "preferred_quality": false,
+    "search_performed": false,
+    "production_promotion_requested": false,
+    "reason": "B1 increased frequency but degraded execution quality; all three B1 chronological folds are catastrophic under the frozen gate."
+  }
+}
