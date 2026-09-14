@@ -1,0 +1,37 @@
+{
+  "research_family_result": "FAIL",
+  "family_status": "CLOSED",
+  "independent_validator_result": "PASS",
+  "methodology_provenance_result": "PASS",
+  "reason": "All 12 non-baseline candidates increased trades/day but had realized WR below baseline; no candidate improved both primary objectives.",
+  "candidate_selected": null,
+  "production_change": false,
+  "second_validator_invocation": "Per user account, accidentally repeated invocation rejected with ValueError: Do not retry validation. This is not a research or validator failure; the first preserved PASS remains valid.",
+  "protected_file_sha256": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2",
+    "gold_score_ranking_v1.py": "f8f7122bf22f36a999d999c60eafe432b8120640f6a489e1fe0d8cb6861f23f9",
+    "validate_gold_score_ranking_v1.py": "fa724bed763796741fa4c7b1af4bbfe872d9cb88507f1d98f07439613576abd2",
+    "execution_spec_gold_score_ranking_v1.json": "511c70146c076263d85a652a82f6a1bf3c4d4a7f8e25cfb683cfb2e35be95c0f"
+  },
+  "pre_finalization_artifact_sha256": {
+    "candidates.csv": "c749e5824fc1ea9b3e555c0ff3236c5b8a253f1cd4320e4e7fa1524bbe3681fb",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "execution_spec.json": "511c70146c076263d85a652a82f6a1bf3c4d4a7f8e25cfb683cfb2e35be95c0f",
+    "fold_metrics.csv": "cabae7b94d1bea5cfd31e6a443f4fae3512255abce214ca3c610588a21d5cb5b",
+    "identity_audit.json": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+    "manifest.json": "f401fd3bafa803e99a10d920f8171ae41e6669baccdcaaaacae198421faf8c3b",
+    "metrics.json": "13ba2ca8577df1af049839c2c6b26d4fbc8ebe423af1403d582618e0665a5b48",
+    "operational_safety_post.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+    "operational_safety_pre.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+    "ranking_evidence.npz": "3b86271eb4b3c45649ac5a40034d3ecbfd60c3730b810f8b3d91a201529712b9",
+    "report.md": "19896552a5de293bb008740b180fff4355c271cf808f71479f72bd13a16c00ee",
+    "source_provenance.json": "c23e44d5761905f1cdfd0ac5a4d1362c53ba1338b2abb7e870ff6b85408ac602",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "trade_ledger.csv": "249fd3370c4717a1b2a4a8cd62b2767314d16ba28e5a0563b2af22df2ddf9471",
+    "training_script.py": "f8f7122bf22f36a999d999c60eafe432b8120640f6a489e1fe0d8cb6861f23f9",
+    "validator.json": "e9e6d3936b4309ec5a0f67652c5f93d12c756a5bde2f5515d9f31452d3b81eb3",
+    "validator.md": "f37a3ae4b3b9078e3decdac46a45c320dfb6430eae74667a8edabb6be22273a1",
+    "validator_script.py": "fa724bed763796741fa4c7b1af4bbfe872d9cb88507f1d98f07439613576abd2"
+  }
+}

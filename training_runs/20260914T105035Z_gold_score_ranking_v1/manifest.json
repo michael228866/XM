@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "run_id": "20260914T105035Z_gold_score_ranking_v1",
+  "experiment_name": "gold_score_ranking_v1",
+  "status": "fail",
+  "started_at_utc": "2026-09-14T10:50:35.513465Z",
+  "finished_at_utc": "2026-09-14T16:21:34.614643Z",
+  "git_commit": "71fc6d81d4f85de28de5c5eb9bd4336713a8c6ba",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\gold_score_ranking_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "f8f7122bf22f36a999d999c60eafe432b8120640f6a489e1fe0d8cb6861f23f9",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_score_ranking_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [],
+  "random_seeds": {},
+  "random_seed_note": "No randomness or retraining; inherited B0 model seed 42",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "Archived B0 scores and frozen GOLD reconstruction"
+    ],
+    "source_files": [
+      {
+        "path": "training_runs/20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1/FINALIZED.json",
+        "sha256": "592b68e98c1a0e9dd6f5e5af1d6aeadbca86df5072f2cbe85a064adf06c5ebfe",
+        "retention_status": "retained_in_prior_finalized_run"
+      }
+    ],
+    "timezone": "frozen C1 broker/API semantics; CFTC certified causal availability",
+    "data_start_utc": "2016-06-30T21:00:00Z",
+    "data_end_utc": "2024-12-31T20:00:00Z",
+    "train_start_utc": "2016-07-01T00:00:00",
+    "train_end_utc": "2022-12-30T19:57:00",
+    "train_rows": 1596361,
+    "validation_start_utc": "2018-01-02T00:00:00",
+    "validation_end_utc": "2024-12-31T20:00:00",
+    "validation_rows": 2474297,
+    "test_start_utc": "not_applicable_historical_development_comparison",
+    "test_end_utc": "not_applicable_historical_development_comparison",
+    "test_rows": 0,
+    "purge_details": "same strict C1 parent maturity rules",
+    "embargo_details": "same as C1 parent",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "Frozen reconstructed X/y/timestamps and finalized CFTC source; local GOLD CSVs not duplicated",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "Historical GOLD CSVs were repository-local frozen source exports; no MT5 API fetch was performed in this archival reproduction."
+    }
+  },
+  "model": {
+    "trained": false,
+    "not_applicable_reason": "Reuse exact archived B0 scores/models; no fitting",
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "feature_count": 31
+  },
+  "search": {
+    "performed": false,
+    "not_applicable_reason": "Exactly 13 predefined gates; no adaptive search",
+    "candidate_results_file": "candidates.csv",
+    "predefined_candidates": [
+      {
+        "candidate_id": "A0_BASELINE_075",
+        "reference": null,
+        "absolute_floor": 0.75,
+        "percentile_threshold": null
+      },
+      {
+        "candidate_id": "A1_ROLLING_1D_P95",
+        "reference": "1D",
+        "absolute_floor": null,
+        "percentile_threshold": 0.95
+      },
+      {
+        "candidate_id": "A1_ROLLING_1D_P97",
+        "reference": "1D",
+        "absolute_floor": null,
+        "percentile_threshold": 0.97
+      },
+      {
+        "candidate_id": "A1_ROLLING_3D_P95",
+        "reference": "3D",
+        "absolute_floor": null,
+        "percentile_threshold": 0.95
+      },
+      {
+        "candidate_id": "A1_ROLLING_3D_P97",
+        "reference": "3D",
+        "absolute_floor": null,
+        "percentile_threshold": 0.97
+      },
+      {
+        "candidate_id": "A1_ROLLING_5D_P95",
+        "reference": "5D",
+        "absolute_floor": null,
+        "percentile_threshold": 0.95
+      },
+      {
+        "candidate_id": "A1_ROLLING_5D_P97",
+        "reference": "5D",
+        "absolute_floor": null,
+        "percentile_threshold": 0.97
+      },
+      {
+        "candidate_id": "A2_SESSION_P95",
+        "reference": "SESSION",
+        "absolute_floor": null,
+        "percentile_threshold": 0.95
+      },
+      {
+        "candidate_id": "A2_SESSION_P97",
+        "reference": "SESSION",
+        "absolute_floor": null,
+        "percentile_threshold": 0.97
+      },
+      {
+        "candidate_id": "A3_3D_F065_P95",
+        "reference": "3D",
+        "absolute_floor": 0.65,
+        "percentile_threshold": 0.95
+      },
+      {
+        "candidate_id": "A3_3D_F065_P97",
+        "reference": "3D",
+        "absolute_floor": 0.65,
+        "percentile_threshold": 0.97
+      },
+      {
+        "candidate_id": "A3_3D_F070_P95",
+        "reference": "3D",
+        "absolute_floor": 0.7,
+        "percentile_threshold": 0.95
+      },
+      {
+        "candidate_id": "A3_3D_F070_P97",
+        "reference": "3D",
+        "absolute_floor": 0.7,
+        "percentile_threshold": 0.97
+      }
+    ]
+  },
+  "registry": {
+    "parent_or_incumbent": "20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1",
+    "selected_configuration": "FAIL / family CLOSED; none selected; no candidate improved both realized WR and trades/day",
+    "validator_result": "independent PASS; methodology/provenance PASS",
+    "trades_per_day": "see candidates.csv",
+    "realized_win_rate": "see candidates.csv",
+    "pf": "see candidates.csv",
+    "mean_r": "see candidates.csv",
+    "pnl": "see candidates.csv",
+    "max_dd": "see candidates.csv"
+  },
+  "promotion": {
+    "requested": false,
+    "replacement_authorized": false,
+    "operational_artifact_changed": false,
+    "gate_result": "research_only"
+  },
+  "artifacts": [
+    {
+      "path": "candidates.csv",
+      "sha256": "c749e5824fc1ea9b3e555c0ff3236c5b8a253f1cd4320e4e7fa1524bbe3681fb",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "environment.txt",
+      "sha256": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "execution_spec.json",
+      "sha256": "511c70146c076263d85a652a82f6a1bf3c4d4a7f8e25cfb683cfb2e35be95c0f",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "fold_metrics.csv",
+      "sha256": "cabae7b94d1bea5cfd31e6a443f4fae3512255abce214ca3c610588a21d5cb5b",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "identity_audit.json",
+      "sha256": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "13ba2ca8577df1af049839c2c6b26d4fbc8ebe423af1403d582618e0665a5b48",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "operational_safety_post.json",
+      "sha256": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "operational_safety_pre.json",
+      "sha256": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "ranking_evidence.npz",
+      "sha256": "3b86271eb4b3c45649ac5a40034d3ecbfd60c3730b810f8b3d91a201529712b9",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "report.md",
+      "sha256": "19896552a5de293bb008740b180fff4355c271cf808f71479f72bd13a16c00ee",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "source_provenance.json",
+      "sha256": "c23e44d5761905f1cdfd0ac5a4d1362c53ba1338b2abb7e870ff6b85408ac602",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "trade_ledger.csv",
+      "sha256": "249fd3370c4717a1b2a4a8cd62b2767314d16ba28e5a0563b2af22df2ddf9471",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "training_script.py",
+      "sha256": "f8f7122bf22f36a999d999c60eafe432b8120640f6a489e1fe0d8cb6861f23f9",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "validator_script.py",
+      "sha256": "fa724bed763796741fa4c7b1af4bbfe872d9cb88507f1d98f07439613576abd2",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.json",
+      "sha256": "e9e6d3936b4309ec5a0f67652c5f93d12c756a5bde2f5515d9f31452d3b81eb3",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.md",
+      "sha256": "f37a3ae4b3b9078e3decdac46a45c320dfb6430eae74667a8edabb6be22273a1",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "family_closure.json",
+      "sha256": "b4d7ad5b7ca8c5cbb7d247357fd06c434b139c997ac9e42bcdce312b25c30687",
+      "kind": "research_conclusion",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": null,
+  "research_conclusion": {
+    "research_family_result": "FAIL",
+    "family_status": "CLOSED",
+    "reason": "All 12 non-baseline candidates increased trades/day but had realized WR below baseline; no candidate improved both primary objectives.",
+    "candidate_selected": null,
+    "production_change": false
+  }
+}
