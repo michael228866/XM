@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "run_id": "20260914T043152Z_gold_score_ranking_v1",
+  "experiment_name": "gold_score_ranking_v1",
+  "status": "aborted",
+  "started_at_utc": "2026-09-14T04:31:52.520530Z",
+  "finished_at_utc": "2026-09-14T04:40:58.076150Z",
+  "git_commit": "81bb21d2cdd27dd3c003e24ea4f40ebb5f3a6cdc",
+  "git_dirty": true,
+  "training_script": "D:\\XM\\鏁告摎\\gold_score_ranking_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "f8f7122bf22f36a999d999c60eafe432b8120640f6a489e1fe0d8cb6861f23f9",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_score_ranking_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [],
+  "random_seeds": {},
+  "random_seed_note": "No training and no randomness; deterministic causal ranking over frozen archived B0 OOF scores with 13 predeclared entry-gating candidates.",
+  "data": {
+    "symbols": [],
+    "data_sources": [],
+    "source_files": [],
+    "timezone": null,
+    "data_start_utc": null,
+    "data_end_utc": null,
+    "train_start_utc": null,
+    "train_end_utc": null,
+    "train_rows": null,
+    "validation_start_utc": null,
+    "validation_end_utc": null,
+    "validation_rows": null,
+    "test_start_utc": null,
+    "test_end_utc": null,
+    "test_rows": null,
+    "purge_details": null,
+    "embargo_details": null,
+    "raw_snapshot_retained": null,
+    "reproducibility_claim": null,
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": null
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": null
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": null
+  },
+  "registry": {
+    "parent_or_incumbent": null,
+    "selected_configuration": "none; aborted; no performance conclusions",
+    "trades_per_day": null,
+    "realized_win_rate": null,
+    "pf": null,
+    "mean_r": null,
+    "pnl": null,
+    "max_dd": null,
+    "validator_result": "NOT RUN; aborted / invalid provenance attempt"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "path": "abort_archive_note.json",
+      "sha256": "e1c27f528e702ff85cdcee8e3d81f030e69ac863eb94d7550009ad2ba1d71b1d",
+      "kind": "aborted_attempt_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "candidates.csv",
+      "sha256": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+      "kind": "aborted_attempt_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "environment.txt",
+      "sha256": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "kind": "aborted_attempt_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "016fa84b8db626ce4c8ea50be1a5da7bc9f38ec8f8f16dc50b3676ae18fe009a",
+      "kind": "aborted_attempt_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "report.md",
+      "sha256": "b1601f33f1128d585e63a6513b418315a73be56d5817961253d8a5cc205759dc",
+      "kind": "aborted_attempt_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "aborted_attempt_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "training_script.py",
+      "sha256": "f8f7122bf22f36a999d999c60eafe432b8120640f6a489e1fe0d8cb6861f23f9",
+      "kind": "aborted_attempt_evidence",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": "Aborted / invalid provenance attempt. git_dirty=true at creation because the previous untracked run existed. Per user incident account, runner stopped at Dirty paths before formal research execution. This is not valid research evidence; no research validator ran and no candidate performance is inferred.",
+  "git_dirty_reason": "Previous untracked 20260914T042917Z_gold_score_ranking_v1 directory existed at creation."
+}

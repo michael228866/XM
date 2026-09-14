@@ -1,0 +1,22 @@
+{
+  "classification": "aborted / invalid provenance attempt",
+  "reason": "Aborted / invalid provenance attempt. git_dirty=true at creation because the previous untracked run existed. Per user incident account, runner stopped at Dirty paths before formal research execution. This is not valid research evidence; no research validator ran and no candidate performance is inferred.",
+  "original_artifact_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "manifest.json": "c8a6db3d6ecd14984b0dc842190e989ddeea8f34e24053353ddbbb941e5b4e57",
+    "metrics.json": "016fa84b8db626ce4c8ea50be1a5da7bc9f38ec8f8f16dc50b3676ae18fe009a",
+    "report.md": "b1601f33f1128d585e63a6513b418315a73be56d5817961253d8a5cc205759dc",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "training_script.py": "f8f7122bf22f36a999d999c60eafe432b8120640f6a489e1fe0d8cb6861f23f9"
+  },
+  "protected_file_sha256": {
+    "gold_score_ranking_v1.py": "f8f7122bf22f36a999d999c60eafe432b8120640f6a489e1fe0d8cb6861f23f9",
+    "validate_gold_score_ranking_v1.py": "fa724bed763796741fa4c7b1af4bbfe872d9cb88507f1d98f07439613576abd2",
+    "execution_spec_gold_score_ranking_v1.json": "511c70146c076263d85a652a82f6a1bf3c4d4a7f8e25cfb683cfb2e35be95c0f",
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "research_validator_executed": false,
+  "candidate_performance_inferred": false
+}

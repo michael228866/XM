@@ -1,0 +1,27 @@
+{
+  "classification": "meaningful aborted",
+  "reason": "Meaningful aborted attempt. Clean provenance at creation (git_dirty=false). Frozen input reconstruction and causal ranking evidence generation completed; ranking_evidence.npz is retained. No completed metrics, no research validator, no failure.json and no operational_safety_post.json. External interruption/termination after ranking evidence generation, not a research PASS/FAIL. Residual runner processes were found during archival and explicitly terminated before freezing evidence. Candidate performance must not be inferred.",
+  "original_artifact_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "execution_spec.json": "511c70146c076263d85a652a82f6a1bf3c4d4a7f8e25cfb683cfb2e35be95c0f",
+    "identity_audit.json": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+    "manifest.json": "3381b4eb7ffc995c5b8bec4822251a008ee3c805ad5afbb0e79bfed8a5c19d90",
+    "metrics.json": "016fa84b8db626ce4c8ea50be1a5da7bc9f38ec8f8f16dc50b3676ae18fe009a",
+    "operational_safety_pre.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+    "ranking_evidence.npz": "3b86271eb4b3c45649ac5a40034d3ecbfd60c3730b810f8b3d91a201529712b9",
+    "report.md": "138b009d26e2b599ce2e7a9dfb078a88b21838e4ab1314357c89fe0d28b4f461",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "training_script.py": "f8f7122bf22f36a999d999c60eafe432b8120640f6a489e1fe0d8cb6861f23f9",
+    "validator_script.py": "fa724bed763796741fa4c7b1af4bbfe872d9cb88507f1d98f07439613576abd2"
+  },
+  "protected_file_sha256": {
+    "gold_score_ranking_v1.py": "f8f7122bf22f36a999d999c60eafe432b8120640f6a489e1fe0d8cb6861f23f9",
+    "validate_gold_score_ranking_v1.py": "fa724bed763796741fa4c7b1af4bbfe872d9cb88507f1d98f07439613576abd2",
+    "execution_spec_gold_score_ranking_v1.json": "511c70146c076263d85a652a82f6a1bf3c4d4a7f8e25cfb683cfb2e35be95c0f",
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "research_validator_executed": false,
+  "candidate_performance_inferred": false
+}

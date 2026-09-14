@@ -1,0 +1,19 @@
+{
+  "run_id": "20260914T042917Z_gold_score_ranking_v1",
+  "finalized_at_utc": "2026-09-14T04:40:57.912363Z",
+  "file_sha256": {
+    "abort_archive_note.json": "11c9d878f2c1a471426ddee6b7f27c99dea7ba0744f67867a2ad67b8defef02e",
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "execution_spec.json": "511c70146c076263d85a652a82f6a1bf3c4d4a7f8e25cfb683cfb2e35be95c0f",
+    "identity_audit.json": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+    "manifest.json": "b58c4e6f99fdd5b0a9557438add8aab2dfad40727b32901856478544ee09d7de",
+    "metrics.json": "016fa84b8db626ce4c8ea50be1a5da7bc9f38ec8f8f16dc50b3676ae18fe009a",
+    "operational_safety_pre.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+    "ranking_evidence.npz": "3b86271eb4b3c45649ac5a40034d3ecbfd60c3730b810f8b3d91a201529712b9",
+    "report.md": "138b009d26e2b599ce2e7a9dfb078a88b21838e4ab1314357c89fe0d28b4f461",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "training_script.py": "f8f7122bf22f36a999d999c60eafe432b8120640f6a489e1fe0d8cb6861f23f9",
+    "validator_script.py": "fa724bed763796741fa4c7b1af4bbfe872d9cb88507f1d98f07439613576abd2"
+  }
+}
