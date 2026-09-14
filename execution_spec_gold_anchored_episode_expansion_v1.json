@@ -1,0 +1,120 @@
+{
+  "experiment": "gold_anchored_episode_expansion_v1",
+  "candidates": [
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "window_minutes": 0,
+      "absolute_floor": 0.75,
+      "max_score_decay": null
+    },
+    {
+      "candidate_id": "E1_5M_F070",
+      "window_minutes": 5,
+      "absolute_floor": 0.7,
+      "max_score_decay": null
+    },
+    {
+      "candidate_id": "E2_5M_F072",
+      "window_minutes": 5,
+      "absolute_floor": 0.72,
+      "max_score_decay": null
+    },
+    {
+      "candidate_id": "E3_10M_F070",
+      "window_minutes": 10,
+      "absolute_floor": 0.7,
+      "max_score_decay": null
+    },
+    {
+      "candidate_id": "E4_10M_F072",
+      "window_minutes": 10,
+      "absolute_floor": 0.72,
+      "max_score_decay": null
+    },
+    {
+      "candidate_id": "C1_5M_F070_DECAY002",
+      "window_minutes": 5,
+      "absolute_floor": 0.7,
+      "max_score_decay": 0.02
+    },
+    {
+      "candidate_id": "C2_5M_F072_DECAY002",
+      "window_minutes": 5,
+      "absolute_floor": 0.72,
+      "max_score_decay": 0.02
+    },
+    {
+      "candidate_id": "C3_10M_F070_DECAY002",
+      "window_minutes": 10,
+      "absolute_floor": 0.7,
+      "max_score_decay": 0.02
+    },
+    {
+      "candidate_id": "C4_10M_F072_DECAY002",
+      "window_minutes": 10,
+      "absolute_floor": 0.72,
+      "max_score_decay": 0.02
+    }
+  ],
+  "candidate_count": 9,
+  "candidate_set_frozen": true,
+  "score_source": "20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1",
+  "score_source_finalized_sha256": "592b68e98c1a0e9dd6f5e5af1d6aeadbca86df5072f2cbe85a064adf06c5ebfe",
+  "score_arrays": "paired_oof_predictions.npz:B0_31_technical_fold{number}",
+  "score_indices": "paired_oof_predictions.npz:fold{number}_indices",
+  "same_archived_scores_all_candidates": true,
+  "model_training": false,
+  "entry_gating_only": true,
+  "anchor_threshold": 0.75,
+  "anchor_comparison": "score >= 0.75",
+  "secondary_window": "0 < current_timestamp - anchor_timestamp <= window_minutes",
+  "timestamp_basis": "archived UTC nanoseconds; elapsed calendar minutes",
+  "fold_reset": true,
+  "row_order": "archived index order; chronological timestamps",
+  "anchor_update": "last anchor in timestamp batch becomes active after batch completes",
+  "same_timestamp_authorization": false,
+  "anchor_score": "exact score of opening anchor; no rounding",
+  "secondary_score_range": "absolute_floor <= score < 0.75",
+  "decay_gate": "score >= anchor_score - max_score_decay when specified",
+  "secondary_quota": 1,
+  "quota_consumption": "only successful S5 open_trade",
+  "blocked_entry_consumes_quota": false,
+  "episode_end": "secondary executes OR window expires OR later anchor replaces episode",
+  "secondary_opens_or_extends_episode": false,
+  "anchor_entry_eligibility": "unchanged baseline score >= 0.75; independent of secondary quota",
+  "execution": "same frozen S5 simulate code; private entry-gate/open notification bindings only",
+  "execution_state": "continuous across combined chronological score folds per candidate",
+  "frozen_execution": [
+    "spread/cost",
+    "position occupancy",
+    "risk",
+    "TP/SL",
+    "timeout"
+  ],
+  "adaptive_search": false,
+  "candidate_selection": "none",
+  "cli_candidate_overrides": false,
+  "guardrails": {
+    "pf_min": 0.8,
+    "mean_r_min": -0.10690539315994348,
+    "stress_pf_min": 0.75,
+    "fold_trades_min": 10,
+    "fold_wr_min": 0.45,
+    "fold_pf_min": 0.7
+  },
+  "interesting": {
+    "wr_strict_min": 0.5660377358490566,
+    "trades_per_day_strict_min": 0.26945639421196715
+  },
+  "strong": {
+    "wr_min": 0.58,
+    "trades_per_day_min": 0.4
+  },
+  "target": {
+    "wr_min": 0.6,
+    "trades_per_day_min": 0.5
+  },
+  "strong_target_require_guardrails": true,
+  "production_promotion_requested": false,
+  "secondary_diagnostics": "actual executed secondary trades; net_r > 0 wins; others losses; full fold/calendar-day denominators; zero trades WR null"
+}
