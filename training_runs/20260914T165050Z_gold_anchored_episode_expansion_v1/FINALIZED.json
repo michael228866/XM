@@ -1,0 +1,24 @@
+{
+  "run_id": "20260914T165050Z_gold_anchored_episode_expansion_v1",
+  "finalized_at_utc": "2026-09-15T13:01:37.401226Z",
+  "file_sha256": {
+    "candidates.csv": "c589010b61b88de8723a4df8fac548b13f6901df164d2934bc80367df3168d25",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "episode_evidence.npz": "41b30fed7da2e549e033107ea4ad6025958ee41f530bc099734a29772eab1ac5",
+    "execution_spec.json": "ba899e31e3835de39f89c8eec32c4ff3bfd675c243f891adb2ec686151f56c07",
+    "fold_metrics.csv": "d59339419aa981e68302c65184397ec0277f2a26c07c0c46598473a28677d3b9",
+    "identity_audit.json": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+    "manifest.json": "e4046822559d4834982227fc2de6d249e32e8c20651d06f5ac8c6baad92bb025",
+    "metrics.json": "88c7673486aca39e69678cc6809b62649763c63ad4e47433d1372d00e7745306",
+    "operational_safety_post.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+    "operational_safety_pre.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+    "report.md": "9b4889ad45fa3c03860fcef44e85b3e45679c727065f01623b06b904f288c31d",
+    "source_provenance.json": "c23e44d5761905f1cdfd0ac5a4d1362c53ba1338b2abb7e870ff6b85408ac602",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "trade_ledger.csv": "a731422a31236c1dc305126fae2f46c88c771bb019cb98857433936347c098e5",
+    "training_script.py": "975ad4ba31447521cb5784827f6dd6d5decf802d2ed64b6abfe2d6e25b4f44be",
+    "validator.json": "b10ae5a076666fa046fe2996f49d528cb461e65381e39733e1c5f47a45a4c6e9",
+    "validator.md": "79b288bcd8445566e0b739082abe6e85b0caa0e58af8747c6c74d7cca65739e6",
+    "validator_script.py": "9c49568cda83ebc9d7d53f7b83c06e354b4b9d9150ae79a8b3c718421960d9ec"
+  }
+}

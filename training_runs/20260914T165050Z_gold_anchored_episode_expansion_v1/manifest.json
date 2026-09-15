@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "run_id": "20260914T165050Z_gold_anchored_episode_expansion_v1",
+  "experiment_name": "gold_anchored_episode_expansion_v1",
+  "status": "fail",
+  "started_at_utc": "2026-09-14T16:50:50.436370Z",
+  "finished_at_utc": "2026-09-15T13:01:37.373462Z",
+  "git_commit": "f6e420c494a89d69082d4822f5eb56ad59275f93",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\gold_anchored_episode_expansion_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "975ad4ba31447521cb5784827f6dd6d5decf802d2ed64b6abfe2d6e25b4f44be",
+  "exact_command": ".\\.venv\\Scripts\\python.exe .\\gold_anchored_episode_expansion_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [],
+  "random_seeds": {},
+  "random_seed_note": "No randomness or retraining; inherited B0 model seed 42",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "Archived B0 scores and frozen GOLD reconstruction"
+    ],
+    "source_files": [
+      {
+        "path": "training_runs/20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1/FINALIZED.json",
+        "sha256": "592b68e98c1a0e9dd6f5e5af1d6aeadbca86df5072f2cbe85a064adf06c5ebfe",
+        "retention_status": "retained_in_prior_finalized_run"
+      }
+    ],
+    "timezone": "frozen C1 broker/API semantics; CFTC certified causal availability",
+    "data_start_utc": "2016-06-30T21:00:00Z",
+    "data_end_utc": "2024-12-31T20:00:00Z",
+    "train_start_utc": "2016-07-01T00:00:00",
+    "train_end_utc": "2022-12-30T19:57:00",
+    "train_rows": 1596361,
+    "validation_start_utc": "2018-01-02T00:00:00",
+    "validation_end_utc": "2024-12-31T20:00:00",
+    "validation_rows": 2474297,
+    "test_start_utc": "not_applicable_historical_development_comparison",
+    "test_end_utc": "not_applicable_historical_development_comparison",
+    "test_rows": 0,
+    "purge_details": "same strict C1 parent maturity rules",
+    "embargo_details": "same as C1 parent",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "Frozen reconstructed X/y/timestamps and finalized CFTC source; local GOLD CSVs not duplicated",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "Historical GOLD CSVs were repository-local frozen source exports; no MT5 API fetch was performed in this archival reproduction."
+    }
+  },
+  "model": {
+    "trained": false,
+    "not_applicable_reason": "Reuse exact archived B0 scores/models; no fitting",
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "feature_count": 31
+  },
+  "search": {
+    "performed": false,
+    "not_applicable_reason": "Exactly 9 predefined gates; no adaptive search",
+    "candidate_results_file": "candidates.csv",
+    "predefined_candidates": [
+      {
+        "candidate_id": "A0_BASELINE_075",
+        "window_minutes": 0,
+        "absolute_floor": 0.75,
+        "max_score_decay": null
+      },
+      {
+        "candidate_id": "E1_5M_F070",
+        "window_minutes": 5,
+        "absolute_floor": 0.7,
+        "max_score_decay": null
+      },
+      {
+        "candidate_id": "E2_5M_F072",
+        "window_minutes": 5,
+        "absolute_floor": 0.72,
+        "max_score_decay": null
+      },
+      {
+        "candidate_id": "E3_10M_F070",
+        "window_minutes": 10,
+        "absolute_floor": 0.7,
+        "max_score_decay": null
+      },
+      {
+        "candidate_id": "E4_10M_F072",
+        "window_minutes": 10,
+        "absolute_floor": 0.72,
+        "max_score_decay": null
+      },
+      {
+        "candidate_id": "C1_5M_F070_DECAY002",
+        "window_minutes": 5,
+        "absolute_floor": 0.7,
+        "max_score_decay": 0.02
+      },
+      {
+        "candidate_id": "C2_5M_F072_DECAY002",
+        "window_minutes": 5,
+        "absolute_floor": 0.72,
+        "max_score_decay": 0.02
+      },
+      {
+        "candidate_id": "C3_10M_F070_DECAY002",
+        "window_minutes": 10,
+        "absolute_floor": 0.7,
+        "max_score_decay": 0.02
+      },
+      {
+        "candidate_id": "C4_10M_F072_DECAY002",
+        "window_minutes": 10,
+        "absolute_floor": 0.72,
+        "max_score_decay": 0.02
+      }
+    ]
+  },
+  "registry": {
+    "parent_or_incumbent": "20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1",
+    "selected_configuration": "research FAIL / family CLOSED; no candidate improved both realized WR and trades/day; no candidate selected; no production change",
+    "validator_result": "methodology/provenance PASS; independent validator PASS",
+    "trades_per_day": "see candidates.csv",
+    "realized_win_rate": "see candidates.csv",
+    "pf": "see candidates.csv",
+    "mean_r": "see candidates.csv",
+    "pnl": "see candidates.csv",
+    "max_dd": "see candidates.csv"
+  },
+  "promotion": {
+    "requested": false,
+    "replacement_authorized": false,
+    "operational_artifact_changed": false,
+    "gate_result": "research_only"
+  },
+  "artifacts": [
+    {
+      "path": "candidates.csv",
+      "sha256": "c589010b61b88de8723a4df8fac548b13f6901df164d2934bc80367df3168d25",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "environment.txt",
+      "sha256": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "episode_evidence.npz",
+      "sha256": "41b30fed7da2e549e033107ea4ad6025958ee41f530bc099734a29772eab1ac5",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "execution_spec.json",
+      "sha256": "ba899e31e3835de39f89c8eec32c4ff3bfd675c243f891adb2ec686151f56c07",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "fold_metrics.csv",
+      "sha256": "d59339419aa981e68302c65184397ec0277f2a26c07c0c46598473a28677d3b9",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "identity_audit.json",
+      "sha256": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "88c7673486aca39e69678cc6809b62649763c63ad4e47433d1372d00e7745306",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "operational_safety_post.json",
+      "sha256": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "operational_safety_pre.json",
+      "sha256": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "report.md",
+      "sha256": "9b4889ad45fa3c03860fcef44e85b3e45679c727065f01623b06b904f288c31d",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "source_provenance.json",
+      "sha256": "c23e44d5761905f1cdfd0ac5a4d1362c53ba1338b2abb7e870ff6b85408ac602",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "trade_ledger.csv",
+      "sha256": "a731422a31236c1dc305126fae2f46c88c771bb019cb98857433936347c098e5",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "training_script.py",
+      "sha256": "975ad4ba31447521cb5784827f6dd6d5decf802d2ed64b6abfe2d6e25b4f44be",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "validator_script.py",
+      "sha256": "9c49568cda83ebc9d7d53f7b83c06e354b4b9d9150ae79a8b3c718421960d9ec",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.json",
+      "sha256": "b10ae5a076666fa046fe2996f49d528cb461e65381e39733e1c5f47a45a4c6e9",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.md",
+      "sha256": "79b288bcd8445566e0b739082abe6e85b0caa0e58af8747c6c74d7cca65739e6",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": null,
+  "closure": {
+    "methodology_provenance": "PASS",
+    "independent_validator": "PASS",
+    "research_result": "FAIL",
+    "family_status": "CLOSED",
+    "conclusion": "All 8 non-baseline candidates increased trades/day but had pooled realized WR below baseline. No candidate improved both realized WR and trades/day.",
+    "selected_candidate": null,
+    "production_promotion": false,
+    "production_change": false,
+    "baseline": {
+      "trades": 689,
+      "realized_wr": 0.5660377358490566,
+      "trades_per_day": 0.26945639421196715
+    },
+    "formal_runner_rerun": false,
+    "independent_validator_rerun": false,
+    "original_artifact_sha256": {
+      "candidates.csv": "c589010b61b88de8723a4df8fac548b13f6901df164d2934bc80367df3168d25",
+      "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "episode_evidence.npz": "41b30fed7da2e549e033107ea4ad6025958ee41f530bc099734a29772eab1ac5",
+      "execution_spec.json": "ba899e31e3835de39f89c8eec32c4ff3bfd675c243f891adb2ec686151f56c07",
+      "fold_metrics.csv": "d59339419aa981e68302c65184397ec0277f2a26c07c0c46598473a28677d3b9",
+      "identity_audit.json": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+      "manifest.json": "8e7369cd50a3e2fa4647c5965e96adef6611cd0f5e9f78cbf955dd6444263d7b",
+      "metrics.json": "88c7673486aca39e69678cc6809b62649763c63ad4e47433d1372d00e7745306",
+      "operational_safety_post.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "operational_safety_pre.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "report.md": "9b4889ad45fa3c03860fcef44e85b3e45679c727065f01623b06b904f288c31d",
+      "source_provenance.json": "c23e44d5761905f1cdfd0ac5a4d1362c53ba1338b2abb7e870ff6b85408ac602",
+      "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trade_ledger.csv": "a731422a31236c1dc305126fae2f46c88c771bb019cb98857433936347c098e5",
+      "training_script.py": "975ad4ba31447521cb5784827f6dd6d5decf802d2ed64b6abfe2d6e25b4f44be",
+      "validator.json": "b10ae5a076666fa046fe2996f49d528cb461e65381e39733e1c5f47a45a4c6e9",
+      "validator.md": "79b288bcd8445566e0b739082abe6e85b0caa0e58af8747c6c74d7cca65739e6",
+      "validator_script.py": "9c49568cda83ebc9d7d53f7b83c06e354b4b9d9150ae79a8b3c718421960d9ec"
+    }
+  }
+}
