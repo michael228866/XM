@@ -1,0 +1,500 @@
+[
+  {
+    "fold": "2018_2020",
+    "path": "models/secondary_2018_2020.json",
+    "sha256": "5ac89e6c565f495a3b669bb47ca3d6e935c96c8a4641416db11f4d54339ce444",
+    "parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist",
+      "device": "cpu",
+      "n_jobs": 1,
+      "verbosity": 0,
+      "booster": "gbtree",
+      "max_bin": 256,
+      "reg_alpha": 0.0,
+      "reg_lambda": 1.0,
+      "gamma": 0.0,
+      "max_delta_step": 0.0,
+      "scale_pos_weight": 1.0,
+      "base_score": null,
+      "colsample_bylevel": 1.0,
+      "colsample_bynode": 1.0,
+      "grow_policy": "depthwise",
+      "max_leaves": 0,
+      "sampling_method": "uniform",
+      "validate_parameters": true
+    },
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "seed": 42,
+    "rounds": 220,
+    "training_config": {
+      "learner": {
+        "generic_param": {
+          "device": "cpu",
+          "fail_on_invalid_gpu_id": "0",
+          "n_jobs": "1",
+          "nthread": "1",
+          "random_state": "42",
+          "seed": "42",
+          "seed_per_iteration": "0",
+          "validate_parameters": "1"
+        },
+        "gradient_booster": {
+          "gbtree_model_param": {
+            "num_parallel_tree": "1",
+            "num_trees": "220"
+          },
+          "gbtree_train_param": {
+            "process_type": "default",
+            "tree_method": "hist",
+            "updater": "grow_quantile_histmaker",
+            "updater_seq": "grow_quantile_histmaker"
+          },
+          "name": "gbtree",
+          "specified_updater": false,
+          "tree_train_param": {
+            "alpha": "0",
+            "colsample_bylevel": "1",
+            "colsample_bynode": "1",
+            "colsample_bytree": "0.850000024",
+            "eta": "0.0500000007",
+            "gamma": "0",
+            "grow_policy": "depthwise",
+            "interaction_constraints": "",
+            "lambda": "1",
+            "learning_rate": "0.0500000007",
+            "max_bin": "256",
+            "max_cat_threshold": "64",
+            "max_cat_to_onehot": "4",
+            "max_delta_step": "0",
+            "max_depth": "4",
+            "max_leaves": "0",
+            "min_child_weight": "80",
+            "min_split_loss": "0",
+            "monotone_constraints": "()",
+            "refresh_leaf": "1",
+            "reg_alpha": "0",
+            "reg_lambda": "1",
+            "sampling_method": "uniform",
+            "sparse_threshold": "0.20000000000000001",
+            "subsample": "0.850000024"
+          },
+          "updater": [
+            {
+              "hist_train_param": {
+                "debug_synchronize": "0",
+                "max_cached_hist_node": "18446744073709551615"
+              },
+              "name": "grow_quantile_histmaker"
+            }
+          ]
+        },
+        "learner_model_param": {
+          "base_score": "[5E-1]",
+          "boost_from_average": "1",
+          "num_class": "0",
+          "num_feature": "31",
+          "num_target": "1"
+        },
+        "learner_train_param": {
+          "booster": "gbtree",
+          "disable_default_eval_metric": "0",
+          "multi_strategy": "one_output_per_tree",
+          "objective": "binary:logistic"
+        },
+        "metrics": [
+          {
+            "name": "logloss"
+          }
+        ],
+        "objective": {
+          "name": "binary:logistic",
+          "reg_loss_param": {
+            "scale_pos_weight": "1"
+          }
+        }
+      },
+      "version": [
+        3,
+        2,
+        0
+      ]
+    },
+    "train_indices_sha256": "d7bd42161ab368571f454c679e6e852c9e174caa323aca90766d0f6cf2ce4de0",
+    "train_rows": 529045,
+    "x_sha256": "9c33a5e7399b40c68e69b5af6175be079c458f80827492c010baaf037e74fe55",
+    "target_sha256": "860127780e276e9c13b8756b7ad759f2f2651dfc3896a58c0190c47a7b1a3bb1",
+    "weights_sha256": "a2cefc3372e13221c09b44ee0ebe154d201a53cd78959d14ddbc66265fc3899f"
+  },
+  {
+    "fold": "2021_2022",
+    "path": "models/secondary_2021_2022.json",
+    "sha256": "5b0802f2560f6e4d74d44c6f342ccca93517f6d320bf3e5f9b8defce6f9ea44f",
+    "parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist",
+      "device": "cpu",
+      "n_jobs": 1,
+      "verbosity": 0,
+      "booster": "gbtree",
+      "max_bin": 256,
+      "reg_alpha": 0.0,
+      "reg_lambda": 1.0,
+      "gamma": 0.0,
+      "max_delta_step": 0.0,
+      "scale_pos_weight": 1.0,
+      "base_score": null,
+      "colsample_bylevel": 1.0,
+      "colsample_bynode": 1.0,
+      "grow_policy": "depthwise",
+      "max_leaves": 0,
+      "sampling_method": "uniform",
+      "validate_parameters": true
+    },
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "seed": 42,
+    "rounds": 220,
+    "training_config": {
+      "learner": {
+        "generic_param": {
+          "device": "cpu",
+          "fail_on_invalid_gpu_id": "0",
+          "n_jobs": "1",
+          "nthread": "1",
+          "random_state": "42",
+          "seed": "42",
+          "seed_per_iteration": "0",
+          "validate_parameters": "1"
+        },
+        "gradient_booster": {
+          "gbtree_model_param": {
+            "num_parallel_tree": "1",
+            "num_trees": "220"
+          },
+          "gbtree_train_param": {
+            "process_type": "default",
+            "tree_method": "hist",
+            "updater": "grow_quantile_histmaker",
+            "updater_seq": "grow_quantile_histmaker"
+          },
+          "name": "gbtree",
+          "specified_updater": false,
+          "tree_train_param": {
+            "alpha": "0",
+            "colsample_bylevel": "1",
+            "colsample_bynode": "1",
+            "colsample_bytree": "0.850000024",
+            "eta": "0.0500000007",
+            "gamma": "0",
+            "grow_policy": "depthwise",
+            "interaction_constraints": "",
+            "lambda": "1",
+            "learning_rate": "0.0500000007",
+            "max_bin": "256",
+            "max_cat_threshold": "64",
+            "max_cat_to_onehot": "4",
+            "max_delta_step": "0",
+            "max_depth": "4",
+            "max_leaves": "0",
+            "min_child_weight": "80",
+            "min_split_loss": "0",
+            "monotone_constraints": "()",
+            "refresh_leaf": "1",
+            "reg_alpha": "0",
+            "reg_lambda": "1",
+            "sampling_method": "uniform",
+            "sparse_threshold": "0.20000000000000001",
+            "subsample": "0.850000024"
+          },
+          "updater": [
+            {
+              "hist_train_param": {
+                "debug_synchronize": "0",
+                "max_cached_hist_node": "18446744073709551615"
+              },
+              "name": "grow_quantile_histmaker"
+            }
+          ]
+        },
+        "learner_model_param": {
+          "base_score": "[5E-1]",
+          "boost_from_average": "1",
+          "num_class": "0",
+          "num_feature": "31",
+          "num_target": "1"
+        },
+        "learner_train_param": {
+          "booster": "gbtree",
+          "disable_default_eval_metric": "0",
+          "multi_strategy": "one_output_per_tree",
+          "objective": "binary:logistic"
+        },
+        "metrics": [
+          {
+            "name": "logloss"
+          }
+        ],
+        "objective": {
+          "name": "binary:logistic",
+          "reg_loss_param": {
+            "scale_pos_weight": "1"
+          }
+        }
+      },
+      "version": [
+        3,
+        2,
+        0
+      ]
+    },
+    "train_indices_sha256": "2eaabedb547720eb3dc78003e0d98ab93708dca4c3a74a5a3066282a384db192",
+    "train_rows": 532395,
+    "x_sha256": "4151e68264b2f616e991835f142a045ecfc6e51f84983d6dedfdcfe746587dcd",
+    "target_sha256": "832e07d39e1f142dda8a69ba9ea49ac2a03ca7086c6adfea9f8861153640bac7",
+    "weights_sha256": "4cc5da07bcb5418ae2ba52fe8bce13a864699093b12112fe3829a9e1591d1632"
+  },
+  {
+    "fold": "2023_2024",
+    "path": "models/secondary_2023_2024.json",
+    "sha256": "e60e6808aabecc94d24d563a1e1c9b5151e3dbdb3f6362367a9d7c334a145141",
+    "parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist",
+      "device": "cpu",
+      "n_jobs": 1,
+      "verbosity": 0,
+      "booster": "gbtree",
+      "max_bin": 256,
+      "reg_alpha": 0.0,
+      "reg_lambda": 1.0,
+      "gamma": 0.0,
+      "max_delta_step": 0.0,
+      "scale_pos_weight": 1.0,
+      "base_score": null,
+      "colsample_bylevel": 1.0,
+      "colsample_bynode": 1.0,
+      "grow_policy": "depthwise",
+      "max_leaves": 0,
+      "sampling_method": "uniform",
+      "validate_parameters": true
+    },
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "seed": 42,
+    "rounds": 220,
+    "training_config": {
+      "learner": {
+        "generic_param": {
+          "device": "cpu",
+          "fail_on_invalid_gpu_id": "0",
+          "n_jobs": "1",
+          "nthread": "1",
+          "random_state": "42",
+          "seed": "42",
+          "seed_per_iteration": "0",
+          "validate_parameters": "1"
+        },
+        "gradient_booster": {
+          "gbtree_model_param": {
+            "num_parallel_tree": "1",
+            "num_trees": "220"
+          },
+          "gbtree_train_param": {
+            "process_type": "default",
+            "tree_method": "hist",
+            "updater": "grow_quantile_histmaker",
+            "updater_seq": "grow_quantile_histmaker"
+          },
+          "name": "gbtree",
+          "specified_updater": false,
+          "tree_train_param": {
+            "alpha": "0",
+            "colsample_bylevel": "1",
+            "colsample_bynode": "1",
+            "colsample_bytree": "0.850000024",
+            "eta": "0.0500000007",
+            "gamma": "0",
+            "grow_policy": "depthwise",
+            "interaction_constraints": "",
+            "lambda": "1",
+            "learning_rate": "0.0500000007",
+            "max_bin": "256",
+            "max_cat_threshold": "64",
+            "max_cat_to_onehot": "4",
+            "max_delta_step": "0",
+            "max_depth": "4",
+            "max_leaves": "0",
+            "min_child_weight": "80",
+            "min_split_loss": "0",
+            "monotone_constraints": "()",
+            "refresh_leaf": "1",
+            "reg_alpha": "0",
+            "reg_lambda": "1",
+            "sampling_method": "uniform",
+            "sparse_threshold": "0.20000000000000001",
+            "subsample": "0.850000024"
+          },
+          "updater": [
+            {
+              "hist_train_param": {
+                "debug_synchronize": "0",
+                "max_cached_hist_node": "18446744073709551615"
+              },
+              "name": "grow_quantile_histmaker"
+            }
+          ]
+        },
+        "learner_model_param": {
+          "base_score": "[5E-1]",
+          "boost_from_average": "1",
+          "num_class": "0",
+          "num_feature": "31",
+          "num_target": "1"
+        },
+        "learner_train_param": {
+          "booster": "gbtree",
+          "disable_default_eval_metric": "0",
+          "multi_strategy": "one_output_per_tree",
+          "objective": "binary:logistic"
+        },
+        "metrics": [
+          {
+            "name": "logloss"
+          }
+        ],
+        "objective": {
+          "name": "binary:logistic",
+          "reg_loss_param": {
+            "scale_pos_weight": "1"
+          }
+        }
+      },
+      "version": [
+        3,
+        2,
+        0
+      ]
+    },
+    "train_indices_sha256": "9cf3aa9b7dac85bac24ae5eea6ec7ea0296fdbf19725c073f89a4ee990287b5d",
+    "train_rows": 533293,
+    "x_sha256": "7a366a23ae25de3d8e3eb5ceb562784d52ce75630759f50c0e414a6816469198",
+    "target_sha256": "10ce694461a40f99d18fb8eb671d195602b3002d53dae301151c560d9a0f6e70",
+    "weights_sha256": "171c3ee70df36a495f678577079cba8010ba665f44c997fafc18a267c2212db3"
+  }
+]

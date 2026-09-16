@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "run_id": "20260915T151723Z_gold_independent_secondary_classifier_v1",
+  "experiment_name": "gold_independent_secondary_classifier_v1",
+  "status": "research_only",
+  "started_at_utc": "2026-09-15T15:17:23.681704Z",
+  "finished_at_utc": "2026-09-16T14:31:54.205245Z",
+  "git_commit": "53eaa028f6ed18fd436204418245f075ebb90c87",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\gold_independent_secondary_classifier_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "6f39e29f57f68b1f3941b4c097236f3b10032c9490d8ec70a33ade19c86e129e",
+  "exact_command": ".\\.venv\\Scripts\\python.exe -B .\\gold_independent_secondary_classifier_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [],
+  "random_seeds": {
+    "secondary": 42
+  },
+  "random_seed_note": "Independent CPU single-thread fold fits; subset-only balanced weights",
+  "data": {
+    "symbols": [
+      "GOLD#",
+      "CFTC GOLD 088691"
+    ],
+    "data_sources": [
+      "Frozen GOLD reconstruction and exact archived C1 target; B0 residual training subset"
+    ],
+    "source_files": [
+      {
+        "path": "training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/FINALIZED.json",
+        "sha256": "eb02be533679e33492351c753d731483724ec24248b8c7ac7915ee1d74b42add",
+        "retention_status": "retained_in_prior_finalized_run"
+      },
+      {
+        "path": "training_runs/20260909T140906Z_gemini_us_treasury_real_rate_b0_b1_v1/FINALIZED.json",
+        "sha256": "2ad4d82996ddef30e1b2c3285754bb3e81ff8f838600a8a3faa2bcedd3376ec7",
+        "retention_status": "retained_in_prior_finalized_run"
+      },
+      {
+        "path": "training_runs/20260905T171629Z_gemini_macro_event_integration_foundation_v1/FINALIZED.json",
+        "sha256": "7bd7bf7845fd2c21dce66a1026b9a090fece296792286ccf4a918fac7b7cf4ab",
+        "retention_status": "retained_in_prior_finalized_run"
+      },
+      {
+        "path": "training_runs/20260912T171048Z_gemini_cftc_gold_cot_foundation_v1/FINALIZED.json",
+        "sha256": "0f840fd9330bac98bbfd2d1812718ec7aa8016ee47e7b1f39ed8a497a83e8935",
+        "retention_status": "retained_in_prior_finalized_run"
+      }
+    ],
+    "timezone": "frozen C1 broker/API semantics; CFTC certified causal availability",
+    "data_start_utc": "2016-06-30T21:00:00Z",
+    "data_end_utc": "2024-12-31T20:00:00Z",
+    "train_start_utc": "2016-07-01T00:00:00",
+    "train_end_utc": "2022-12-30T19:57:00",
+    "train_rows": 1594733,
+    "validation_start_utc": "2018-01-02T00:00:00",
+    "validation_end_utc": "2024-12-31T20:00:00",
+    "validation_rows": 2474297,
+    "test_start_utc": "not_applicable_historical_development_comparison",
+    "test_end_utc": "not_applicable_historical_development_comparison",
+    "test_rows": 0,
+    "purge_details": "same strict C1 parent maturity rules",
+    "embargo_details": "same as C1 parent",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "Frozen reconstructed X/y/timestamps and finalized CFTC source; local GOLD CSVs not duplicated",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "Historical GOLD CSVs were repository-local frozen source exports; no MT5 API fetch was performed in this archival reproduction."
+    },
+    "full_frozen_train_rows": 1596361,
+    "secondary_training_rows_by_fold": {
+      "2018_2020": 529045,
+      "2021_2022": 532395,
+      "2023_2024": 533293
+    }
+  },
+  "model": {
+    "trained": true,
+    "model_type": "three fold-isolated XGBoost residual specialists; last fold is archival identity only",
+    "parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist",
+      "device": "cpu",
+      "n_jobs": 1,
+      "verbosity": 0,
+      "booster": "gbtree",
+      "max_bin": 256,
+      "reg_alpha": 0.0,
+      "reg_lambda": 1.0,
+      "gamma": 0.0,
+      "max_delta_step": 0.0,
+      "scale_pos_weight": 1.0,
+      "base_score": null,
+      "colsample_bylevel": 1.0,
+      "colsample_bynode": 1.0,
+      "grow_policy": "depthwise",
+      "max_leaves": 0,
+      "sampling_method": "uniform",
+      "validate_parameters": true
+    },
+    "boosted_rounds_or_estimators": 220,
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "feature_count": 31,
+    "label_definition": "Exact archived C1 standalone S5 net realized R > 0; zero/nonpositive maps to 0",
+    "horizon": {
+      "C0_rows": 240,
+      "C1_wall_clock_minutes": 90
+    },
+    "label_tp_sl_semantics": "C0 existing 240-row clean-window 1.8/1.2 ATR label; C1 next-open, entry-bar HIGH/LOW stop-first, 1.3/1.6 ATR, 90 wall-clock minutes, observed/fallback spread plus configured costs",
+    "execution_tp_sl_semantics": "exact preserved S5 implementation for both C0 and C1",
+    "calibration_method": "none",
+    "artifact_path": "models/secondary_2023_2024.json",
+    "artifact_sha256": "e60e6808aabecc94d24d563a1e1c9b5151e3dbdb3f6362367a9d7c334a145141",
+    "retention_status": "stored_in_run_directory",
+    "fold_model_inventory": "model_inventory.json",
+    "fold_models_trained": 3
+  },
+  "search": {
+    "performed": false,
+    "not_applicable_reason": "Five frozen gates; no tuning",
+    "candidate_results_file": "candidates.csv",
+    "predefined_candidates": [
+      {
+        "candidate_id": "A0_BASELINE_075",
+        "secondary_threshold": null
+      },
+      {
+        "candidate_id": "S1_SECONDARY_P060",
+        "secondary_threshold": 0.6
+      },
+      {
+        "candidate_id": "S2_SECONDARY_P065",
+        "secondary_threshold": 0.65
+      },
+      {
+        "candidate_id": "S3_SECONDARY_P070",
+        "secondary_threshold": 0.7
+      },
+      {
+        "candidate_id": "S4_SECONDARY_P075",
+        "secondary_threshold": 0.75
+      }
+    ]
+  },
+  "registry": {
+    "parent_or_incumbent": "20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1",
+    "selected_configuration": "research INTERESTING; S4_SECONDARY_P075 only interesting candidate; strong=false; target=false; no candidate selected for production; no production promotion; no production change",
+    "validator_result": "methodology/provenance PASS; independent validator PASS; accidental later invocation blocked by one-shot guard; original PASS unchanged",
+    "trades_per_day": "see candidates.csv",
+    "realized_win_rate": "see candidates.csv",
+    "pf": "see candidates.csv",
+    "mean_r": "see candidates.csv",
+    "pnl": "see candidates.csv",
+    "max_dd": "see candidates.csv"
+  },
+  "promotion": {
+    "requested": false,
+    "replacement_authorized": false,
+    "operational_artifact_changed": false,
+    "gate_result": "research_only"
+  },
+  "artifacts": [
+    {
+      "path": "baseline_reproduction.json",
+      "sha256": "ab3657103f75c4499abb24486ea5f9973ea8cf4c228e9e9c519dcf41d1e45753",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "candidates.csv",
+      "sha256": "c5ed7b74bed4499f8b64d6ab295f242a940fafb5d617114a2eda93063b86a16c",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "environment.txt",
+      "sha256": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "execution_spec.json",
+      "sha256": "3b62782d72ef5add4d13ae304338bbb7070be05864c8dc35212a3d5a2d175064",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "fold_metrics.csv",
+      "sha256": "f2ee160059f83b737bd97e799ec6c5485670ad29b3165f7f19224ef24129015d",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "identity_audit.json",
+      "sha256": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "12f62cd7030a337ced45f5917bb90d00da89b5427e2a6d8d3760e41698b719d9",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "model.sha256",
+      "sha256": "870dff2e23f552e084a15d1f1f3c6c596317de4c345890a613273a536249c72b",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "model_inventory.json",
+      "sha256": "113c4c425491b4f4e5d03e2a7caa5314f1e435d94367ed434f4f3398f93ae10a",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "models/secondary_2018_2020.json",
+      "sha256": "5ac89e6c565f495a3b669bb47ca3d6e935c96c8a4641416db11f4d54339ce444",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "models/secondary_2021_2022.json",
+      "sha256": "5b0802f2560f6e4d74d44c6f342ccca93517f6d320bf3e5f9b8defce6f9ea44f",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "models/secondary_2023_2024.json",
+      "sha256": "e60e6808aabecc94d24d563a1e1c9b5151e3dbdb3f6362367a9d7c334a145141",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "operational_safety_post.json",
+      "sha256": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "operational_safety_pre.json",
+      "sha256": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "report.md",
+      "sha256": "3a3b87970cb2300d1daa268ee04badf9dcb4a61d494e22cdb4091510dbca0ada",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "secondary_evidence.npz",
+      "sha256": "91e869a9f836b9b572af0a4b442ab56e85918f4fadf5ce56c3b3519d14b8e6bf",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "source_provenance.json",
+      "sha256": "cf5934a4fa9fef51c062ca7138810e12d430540e953ecb97d3052264e2b7b216",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "trade_ledger.csv",
+      "sha256": "84b9ed2f8c146cc8158facd58afa21bc93836a773a952b95c59dc05abfc37dbe",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "training_script.py",
+      "sha256": "6f39e29f57f68b1f3941b4c097236f3b10032c9490d8ec70a33ade19c86e129e",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "validator_script.py",
+      "sha256": "8dd5c555855c3d1c0cde6256958bd7fd6ae02cc11d924bdc7aa605debedd45a9",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator_attempt.json",
+      "sha256": "fbd4c8f283ebff89976fa90346aaa01e15c8516bae35be173875a90dd3261d37",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.json",
+      "sha256": "7e5977886e50e6af0e6762d932377898de02480c6f247cbd7d96ae13c925b926",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "kind": "independent_validator",
+      "path": "validator.md",
+      "sha256": "3f694898a83b1353b4fdf481d085036ddb5e13fc4d57a22bb0f8110062a87189",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": null,
+  "archival_conclusion": {
+    "methodology_provenance": "PASS",
+    "independent_validator": "PASS",
+    "research_result": "INTERESTING",
+    "only_interesting_candidate": "S4_SECONDARY_P075",
+    "strong": false,
+    "target": false,
+    "selected_candidate_for_production": null,
+    "production_promotion": false,
+    "production_change": false,
+    "later_validator_invocation": "User-reported accidental later validator invocation was blocked by the one-shot Do not retry validation guard; it does not alter the original independent validator PASS.",
+    "runner_rerun": false,
+    "independent_validator_rerun": false,
+    "baseline": {
+      "candidate_id": "A0_BASELINE_075",
+      "fold": "pooled",
+      "trades": 689,
+      "wins": 390,
+      "losses": 299,
+      "realized_wr": 0.5660377358490566,
+      "average_winner_r": 0.6392268811010171,
+      "average_loser_r": -1.0109909682829357,
+      "payoff_ratio": 0.6322775387268575,
+      "break_even_wr": 0.6126409120228287,
+      "break_even_adjusted_edge": -0.046603176173772076,
+      "pf": 0.8247098331219882,
+      "mean_r": -0.07690539315994348,
+      "pnl_r": -52.98781588720106,
+      "max_dd_r": -59.57958015890608,
+      "gross_profit_r": 249.29848362939669,
+      "gross_loss_r": 302.28629951659775,
+      "trades_per_day": 0.26945639421196715,
+      "tp_first_wr": 0.5573294629898403,
+      "tp_count": 384,
+      "sl_count": 295,
+      "profitable_timeout_count": 6,
+      "losing_timeout_count": 4,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 9.194484760522496,
+      "cost_stress_pf": 0.7838186120438296,
+      "cost_stress_mean_r": -0.09672026838151442,
+      "cost_stress_pnl_r": -66.64026491486344,
+      "risk_sized_pf": 0.8429659096770507,
+      "primary_trade_count": 689,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0,
+      "primary_signal_count": 6136,
+      "secondary_signal_count": 0,
+      "overlap_count": 0,
+      "guardrail_failures": [],
+      "guardrails_pass": true
+    },
+    "s4_pooled": {
+      "candidate_id": "S4_SECONDARY_P075",
+      "fold": "pooled",
+      "trades": 743,
+      "wins": 421,
+      "losses": 322,
+      "realized_wr": 0.566621803499327,
+      "average_winner_r": 0.6400391892777163,
+      "average_loser_r": -1.0117425649469605,
+      "payoff_ratio": 0.632610716848974,
+      "break_even_wr": 0.6125158861691496,
+      "break_even_adjusted_edge": -0.045894082669822645,
+      "pf": 0.8271090428367022,
+      "mean_r": -0.07580700838089183,
+      "pnl_r": -56.32460722700263,
+      "max_dd_r": -62.009878061758215,
+      "gross_profit_r": 269.4564986859186,
+      "gross_loss_r": 325.78110591292125,
+      "trades_per_day": 0.2905748924520923,
+      "tp_first_wr": 0.5572005383580081,
+      "tp_count": 414,
+      "sl_count": 318,
+      "profitable_timeout_count": 7,
+      "losing_timeout_count": 4,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 9.209959623149395,
+      "cost_stress_pf": 0.7857575699558063,
+      "cost_stress_mean_r": -0.0958037052260248,
+      "cost_stress_pnl_r": -71.18215298293643,
+      "risk_sized_pf": 0.8549623581604606,
+      "primary_trade_count": 665,
+      "secondary_trade_count": 78,
+      "secondary_wins": 41,
+      "secondary_losses": 37,
+      "secondary_realized_wr": 0.5256410256410257,
+      "secondary_trades_per_day": 0.030504497457958545,
+      "primary_signal_count": 6136,
+      "secondary_signal_count": 250,
+      "overlap_count": 0,
+      "guardrail_failures": [],
+      "guardrails_pass": true
+    },
+    "s4_assessment": {
+      "guardrail_failures": [],
+      "guardrails_pass": true,
+      "interesting": true,
+      "strong": false,
+      "target": false,
+      "frequency_uplift_pct": 7.837445573294621,
+      "delta_wr": 0.0005840676502704145,
+      "delta_trades_per_day": 0.021118498240125128
+    },
+    "original_artifact_sha256": {
+      "baseline_reproduction.json": "ab3657103f75c4499abb24486ea5f9973ea8cf4c228e9e9c519dcf41d1e45753",
+      "candidates.csv": "c5ed7b74bed4499f8b64d6ab295f242a940fafb5d617114a2eda93063b86a16c",
+      "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "execution_spec.json": "3b62782d72ef5add4d13ae304338bbb7070be05864c8dc35212a3d5a2d175064",
+      "fold_metrics.csv": "f2ee160059f83b737bd97e799ec6c5485670ad29b3165f7f19224ef24129015d",
+      "identity_audit.json": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+      "manifest.json": "4f4056b51230f79385ca8e759bcebc9ccfd912beac83ec10a770a36eff7c2052",
+      "metrics.json": "12f62cd7030a337ced45f5917bb90d00da89b5427e2a6d8d3760e41698b719d9",
+      "model.sha256": "870dff2e23f552e084a15d1f1f3c6c596317de4c345890a613273a536249c72b",
+      "model_inventory.json": "113c4c425491b4f4e5d03e2a7caa5314f1e435d94367ed434f4f3398f93ae10a",
+      "operational_safety_post.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "operational_safety_pre.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "report.md": "3a3b87970cb2300d1daa268ee04badf9dcb4a61d494e22cdb4091510dbca0ada",
+      "secondary_evidence.npz": "91e869a9f836b9b572af0a4b442ab56e85918f4fadf5ce56c3b3519d14b8e6bf",
+      "source_provenance.json": "cf5934a4fa9fef51c062ca7138810e12d430540e953ecb97d3052264e2b7b216",
+      "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trade_ledger.csv": "84b9ed2f8c146cc8158facd58afa21bc93836a773a952b95c59dc05abfc37dbe",
+      "training_script.py": "6f39e29f57f68b1f3941b4c097236f3b10032c9490d8ec70a33ade19c86e129e",
+      "validator.json": "7e5977886e50e6af0e6762d932377898de02480c6f247cbd7d96ae13c925b926",
+      "validator.md": "3f694898a83b1353b4fdf481d085036ddb5e13fc4d57a22bb0f8110062a87189",
+      "validator_attempt.json": "fbd4c8f283ebff89976fa90346aaa01e15c8516bae35be173875a90dd3261d37",
+      "validator_script.py": "8dd5c555855c3d1c0cde6256958bd7fd6ae02cc11d924bdc7aa605debedd45a9",
+      "models/secondary_2018_2020.json": "5ac89e6c565f495a3b669bb47ca3d6e935c96c8a4641416db11f4d54339ce444",
+      "models/secondary_2021_2022.json": "5b0802f2560f6e4d74d44c6f342ccca93517f6d320bf3e5f9b8defce6f9ea44f",
+      "models/secondary_2023_2024.json": "e60e6808aabecc94d24d563a1e1c9b5151e3dbdb3f6362367a9d7c334a145141"
+    }
+  }
+}

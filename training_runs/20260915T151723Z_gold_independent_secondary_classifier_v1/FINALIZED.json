@@ -1,0 +1,31 @@
+{
+  "run_id": "20260915T151723Z_gold_independent_secondary_classifier_v1",
+  "finalized_at_utc": "2026-09-16T14:31:54.267542Z",
+  "file_sha256": {
+    "baseline_reproduction.json": "ab3657103f75c4499abb24486ea5f9973ea8cf4c228e9e9c519dcf41d1e45753",
+    "candidates.csv": "c5ed7b74bed4499f8b64d6ab295f242a940fafb5d617114a2eda93063b86a16c",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "execution_spec.json": "3b62782d72ef5add4d13ae304338bbb7070be05864c8dc35212a3d5a2d175064",
+    "fold_metrics.csv": "f2ee160059f83b737bd97e799ec6c5485670ad29b3165f7f19224ef24129015d",
+    "identity_audit.json": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+    "manifest.json": "787b27bc428e1cb0ef05a1b88b734c9aa7d8391ffec7b3aa4fb551db07309195",
+    "metrics.json": "12f62cd7030a337ced45f5917bb90d00da89b5427e2a6d8d3760e41698b719d9",
+    "model.sha256": "870dff2e23f552e084a15d1f1f3c6c596317de4c345890a613273a536249c72b",
+    "model_inventory.json": "113c4c425491b4f4e5d03e2a7caa5314f1e435d94367ed434f4f3398f93ae10a",
+    "models/secondary_2018_2020.json": "5ac89e6c565f495a3b669bb47ca3d6e935c96c8a4641416db11f4d54339ce444",
+    "models/secondary_2021_2022.json": "5b0802f2560f6e4d74d44c6f342ccca93517f6d320bf3e5f9b8defce6f9ea44f",
+    "models/secondary_2023_2024.json": "e60e6808aabecc94d24d563a1e1c9b5151e3dbdb3f6362367a9d7c334a145141",
+    "operational_safety_post.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+    "operational_safety_pre.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+    "report.md": "3a3b87970cb2300d1daa268ee04badf9dcb4a61d494e22cdb4091510dbca0ada",
+    "secondary_evidence.npz": "91e869a9f836b9b572af0a4b442ab56e85918f4fadf5ce56c3b3519d14b8e6bf",
+    "source_provenance.json": "cf5934a4fa9fef51c062ca7138810e12d430540e953ecb97d3052264e2b7b216",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "trade_ledger.csv": "84b9ed2f8c146cc8158facd58afa21bc93836a773a952b95c59dc05abfc37dbe",
+    "training_script.py": "6f39e29f57f68b1f3941b4c097236f3b10032c9490d8ec70a33ade19c86e129e",
+    "validator.json": "7e5977886e50e6af0e6762d932377898de02480c6f247cbd7d96ae13c925b926",
+    "validator.md": "3f694898a83b1353b4fdf481d085036ddb5e13fc4d57a22bb0f8110062a87189",
+    "validator_attempt.json": "fbd4c8f283ebff89976fa90346aaa01e15c8516bae35be173875a90dd3261d37",
+    "validator_script.py": "8dd5c555855c3d1c0cde6256958bd7fd6ae02cc11d924bdc7aa605debedd45a9"
+  }
+}

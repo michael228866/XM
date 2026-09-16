@@ -1,0 +1,49 @@
+{
+  "spec_sha256": "d6bda09ee19ed3b87e41e3e121f9e2438a600c808bc9e36c141ecc9dadd8bfa4",
+  "reference_run": "20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1",
+  "reference_finalized_sha256": "592b68e98c1a0e9dd6f5e5af1d6aeadbca86df5072f2cbe85a064adf06c5ebfe",
+  "b0_models": [
+    {
+      "candidate_id": "B0_31_technical",
+      "fold": "2018_2020",
+      "path": "models/B0_31_technical_2018_2020_xgb.json",
+      "sha256": "5eca73587d840b91117f096eaefe84c1538fb2920d7840bb1ec374dd170ea914"
+    },
+    {
+      "candidate_id": "B0_31_technical",
+      "fold": "2021_2022",
+      "path": "models/B0_31_technical_2021_2022_xgb.json",
+      "sha256": "744026a3a6e17f2465cc3850601f8efd65b75cdc1b35fa5e1572aa82f0012dc7"
+    },
+    {
+      "candidate_id": "B0_31_technical",
+      "fold": "2023_2024",
+      "path": "models/B0_31_technical_2023_2024_xgb.json",
+      "sha256": "67ca6ce4dd095ee3b314eeddb60bf78fc9081ee35d85bb88efc21dbc98793113"
+    }
+  ],
+  "source_hashes": {
+    "training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/training_script.py": "9e436e4fe723eb8ad354f5f27a342b60d051c5c71d533f523871b381fc7012c6",
+    "barrier_research_suite.py": "e9b0f84e0aedff532b0d24c5845191d724a7dc44ade15d928fe0a24b7c1341af",
+    "drl_trading_v2.py": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+    "drl_train_candidate.py": "8452fe54921dad32d9af0f77b203b78d67bed765eb4e832f39f2c8ed171fd762",
+    "barrier_final_train.py": "a221bda6c61fa89bde0592453de7a8ac84efb80f06b74e7686b872484e2edee5",
+    "barrier_classifier_strategy.py": "a743d15b90321e4d933e4657abd185922bb280b36ec48612b6f1688afb909174",
+    "strategy_grid_search.py": "ad0c49c9a605718b90df49d0afb565b66af7bd3f3e9e68153dbd386be6663403",
+    "gold_gemini_execution_semantics_v1.py": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+    "gold_recent_walk_forward.py": "cf14bbd97e88632ae53cadaabf5e3341f844f5096e8dd0493f8f96a4bf810334",
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_gemini_incumbent_robustness_v1.py": "adb83d97bc4bf7a44140da30f14b469425de3266b93544c6dd43e92f4ed0ae5f",
+    "gold_generation11_execution_aligned.py": "adabda7a5ed4fdd4a7c12a5f95e83835df191da102639295510cf93ebf0344fe",
+    "gold_short_rule_research.py": "fdf9262784a60a3a284b06a4fdc00b90ffe0a01d926fc552c562d7936015f7bb",
+    "gold_regime_experts_walk_forward.py": "905c5a2397e8cabc2b1d538c91ed60d97f73cb4b55578af95b996d065fc51694",
+    "gold_long_model_optimization.py": "3c91e18776f38822dd0b5ebc8e031718019aeb318888e2dcee09c83e0d89ef75",
+    "gold_long_recent_walk_forward.py": "575b56a8a6d526a0102904dc873bac3a70d7569ac09c656720bfd76def768280",
+    "gold_regime_experts_iterative.py": "914a1404a99a7a52def92d0fe3bca35ba9da6a1864d156368aec2b9a5b124a21",
+    "gold_rolling_champion.py": "1bfe529c44ca59019cc864a998ec128931c121d577c43bc3befa7e743ba560da",
+    "gold_generation8_residual_walk_forward.py": "470b0085b820d6ef53f80cd149fdc3bc5afcf2a3996207c68af5363df3a42f83",
+    "gold_expected_r_walk_forward.py": "7cd87b364644ab88441055662e18bc1dbe19ef4fb5ee9ebfdef121aa2fe37e2e",
+    "gold_expected_r_champion.py": "ae91fed8968b0d29b963d51ccf9b5f04eff63e4847f4bfbd50989b4b10c74ff9",
+    "gold_gemini_core_gate_v1.py": "ae31c09af94466bf5deeafae4800b2e3a580dfeb31564b1123be69887f57932c"
+  }
+}
