@@ -1,0 +1,3449 @@
+{
+  "metrics": [
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020",
+      "days": 1096.0,
+      "trades": 498,
+      "wins": 289,
+      "losses": 209,
+      "realized_wr": 0.5803212851405622,
+      "average_winner_r": 0.6329346117086618,
+      "average_loser_r": -1.0098356118488245,
+      "payoff_ratio": 0.6267699458032324,
+      "break_even_wr": 0.6147150693186927,
+      "break_even_adjusted_edge": -0.03439378417813044,
+      "pf": 0.8666818867805465,
+      "mean_r": -0.05650108452329521,
+      "pnl_r": -28.137540092601014,
+      "max_dd_r": -49.51106078985202,
+      "gross_profit_r": 182.91810278380328,
+      "gross_loss_r": 211.0556428764043,
+      "trades_per_day": 0.4543795620437956,
+      "tp_first_wr": 0.5682730923694779,
+      "tp_count": 283,
+      "sl_count": 206,
+      "profitable_timeout_count": 6,
+      "losing_timeout_count": 3,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 9.738955823293173,
+      "cost_stress_pf": 0.8245699200504323,
+      "cost_stress_mean_r": -0.07578608548818563,
+      "cost_stress_pnl_r": -37.741470573116445,
+      "risk_sized_pf": 0.8804660929419086,
+      "primary_trade_count": 498,
+      "primary_wins": 289,
+      "primary_losses": 209,
+      "primary_realized_wr": 0.5803212851405622,
+      "primary_trades_per_day": 0.4543795620437956,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022",
+      "days": 730.0,
+      "trades": 24,
+      "wins": 14,
+      "losses": 10,
+      "realized_wr": 0.5833333333333334,
+      "average_winner_r": 0.6376800663386331,
+      "average_loser_r": -1.0197947009612267,
+      "payoff_ratio": 0.6253023924693624,
+      "break_even_wr": 0.6152701211992158,
+      "break_even_adjusted_edge": -0.03193678786588239,
+      "pf": 0.8754233494571074,
+      "mean_r": -0.05293442003630857,
+      "pnl_r": -1.2704260808714056,
+      "max_dd_r": -6.853080533085027,
+      "gross_profit_r": 8.927520928740863,
+      "gross_loss_r": 10.197947009612268,
+      "trades_per_day": 0.03287671232876712,
+      "tp_first_wr": 0.5833333333333334,
+      "tp_count": 14,
+      "sl_count": 10,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 0,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 8.0,
+      "cost_stress_pf": 0.8291714015669357,
+      "cost_stress_mean_r": -0.07399650019845132,
+      "cost_stress_pnl_r": -1.7759160047628315,
+      "risk_sized_pf": 0.8687096418235059,
+      "primary_trade_count": 24,
+      "primary_wins": 14,
+      "primary_losses": 10,
+      "primary_realized_wr": 0.5833333333333334,
+      "primary_trades_per_day": 0.03287671232876712,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024",
+      "days": 731.0,
+      "trades": 167,
+      "wins": 87,
+      "losses": 80,
+      "realized_wr": 0.5209580838323353,
+      "average_winner_r": 0.6603777001937072,
+      "average_loser_r": -1.0129088703822642,
+      "payoff_ratio": 0.6519616122469988,
+      "break_even_wr": 0.6053409429047202,
+      "break_even_adjusted_edge": -0.08438285907238485,
+      "pf": 0.7090082533186111,
+      "mean_r": -0.1411967048726265,
+      "pnl_r": -23.579849713728628,
+      "max_dd_r": -24.300883320606264,
+      "gross_profit_r": 57.452859916852525,
+      "gross_loss_r": 81.03270963058114,
+      "trades_per_day": 0.22845417236662108,
+      "tp_first_wr": 0.5209580838323353,
+      "tp_count": 87,
+      "sl_count": 79,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 1,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 7.74251497005988,
+      "cost_stress_pf": 0.6721445480673458,
+      "cost_stress_mean_r": -0.16241244513164174,
+      "cost_stress_pnl_r": -27.12287833698417,
+      "risk_sized_pf": 0.6945932105189068,
+      "primary_trade_count": 167,
+      "primary_wins": 87,
+      "primary_losses": 80,
+      "primary_realized_wr": 0.5209580838323353,
+      "primary_trades_per_day": 0.22845417236662108,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020_H1",
+      "days": 548.0,
+      "trades": 41,
+      "wins": 24,
+      "losses": 17,
+      "realized_wr": 0.5853658536585366,
+      "average_winner_r": 0.5446728155456196,
+      "average_loser_r": -0.9637564332344837,
+      "payoff_ratio": 0.5651560879522552,
+      "break_even_wr": 0.6389139126106793,
+      "break_even_adjusted_edge": -0.05354805895214276,
+      "pf": 0.7978674182855368,
+      "mean_r": -0.0807734583388134,
+      "pnl_r": -3.3117117918913492,
+      "max_dd_r": -7.7022791080041095,
+      "gross_profit_r": 13.07214757309487,
+      "gross_loss_r": 16.383859364986222,
+      "trades_per_day": 0.07481751824817519,
+      "tp_first_wr": 0.4634146341463415,
+      "tp_count": 19,
+      "sl_count": 15,
+      "profitable_timeout_count": 5,
+      "losing_timeout_count": 2,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 26.29268292682927,
+      "cost_stress_pf": 0.7457796360235494,
+      "cost_stress_mean_r": -0.10422314141873364,
+      "cost_stress_pnl_r": -4.273148798168079,
+      "risk_sized_pf": 0.7125001894031621,
+      "primary_trade_count": 41,
+      "primary_wins": 24,
+      "primary_losses": 17,
+      "primary_realized_wr": 0.5853658536585366,
+      "primary_trades_per_day": 0.07481751824817519,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020_H2",
+      "days": 548.0,
+      "trades": 457,
+      "wins": 265,
+      "losses": 192,
+      "realized_wr": 0.5798687089715536,
+      "average_winner_r": 0.6409281328705979,
+      "average_loser_r": -1.0139155391219692,
+      "payoff_ratio": 0.6321316797507897,
+      "break_even_wr": 0.6126956620024006,
+      "break_even_adjusted_edge": -0.03282695303084693,
+      "pf": 0.8724734121560378,
+      "mean_r": -0.054323475493894255,
+      "pnl_r": -24.825828300709674,
+      "max_dd_r": -49.51106078985202,
+      "gross_profit_r": 169.84595521070844,
+      "gross_loss_r": 194.67178351141808,
+      "trades_per_day": 0.833941605839416,
+      "tp_first_wr": 0.5776805251641138,
+      "tp_count": 264,
+      "sl_count": 191,
+      "profitable_timeout_count": 1,
+      "losing_timeout_count": 1,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 8.25382932166302,
+      "cost_stress_pf": 0.831247611358299,
+      "cost_stress_mean_r": -0.07323483977012771,
+      "cost_stress_pnl_r": -33.468321774948365,
+      "risk_sized_pf": 0.8989361879655493,
+      "primary_trade_count": 457,
+      "primary_wins": 265,
+      "primary_losses": 192,
+      "primary_realized_wr": 0.5798687089715536,
+      "primary_trades_per_day": 0.833941605839416,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022_H1",
+      "days": 365.0,
+      "trades": 10,
+      "wins": 4,
+      "losses": 6,
+      "realized_wr": 0.4,
+      "average_winner_r": 0.5969470709072473,
+      "average_loser_r": -1.0213973142942316,
+      "payoff_ratio": 0.584441590508516,
+      "break_even_wr": 0.6311371816988576,
+      "break_even_adjusted_edge": -0.23113718169885755,
+      "pf": 0.3896277270056773,
+      "mean_r": -0.37405956021364006,
+      "pnl_r": -3.7405956021364006,
+      "max_dd_r": -5.539075621418558,
+      "gross_profit_r": 2.387788283628989,
+      "gross_loss_r": 6.128383885765389,
+      "trades_per_day": 0.0273972602739726,
+      "tp_first_wr": 0.4,
+      "tp_count": 4,
+      "sl_count": 6,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 0,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 10.7,
+      "cost_stress_pf": 0.3694681602514152,
+      "cost_stress_mean_r": -0.3945091293863005,
+      "cost_stress_pnl_r": -3.945091293863005,
+      "risk_sized_pf": 0.3886381654686592,
+      "primary_trade_count": 10,
+      "primary_wins": 4,
+      "primary_losses": 6,
+      "primary_realized_wr": 0.4,
+      "primary_trades_per_day": 0.0273972602739726,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022_H2",
+      "days": 365.0,
+      "trades": 14,
+      "wins": 10,
+      "losses": 4,
+      "realized_wr": 0.7142857142857143,
+      "average_winner_r": 0.6539732645111872,
+      "average_loser_r": -1.0173907809617193,
+      "payoff_ratio": 0.6427945650274118,
+      "break_even_wr": 0.6087188387936466,
+      "break_even_adjusted_edge": 0.10556687549206767,
+      "pf": 1.6069864125685296,
+      "mean_r": 0.17644068009035685,
+      "pnl_r": 2.470169521264996,
+      "max_dd_r": -2.0291886640842565,
+      "gross_profit_r": 6.539732645111872,
+      "gross_loss_r": 4.069563123846877,
+      "trades_per_day": 0.038356164383561646,
+      "tp_first_wr": 0.7142857142857143,
+      "tp_count": 10,
+      "sl_count": 4,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 0,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 6.071428571428571,
+      "cost_stress_pf": 1.5240659886392098,
+      "cost_stress_mean_r": 0.15494109207858384,
+      "cost_stress_pnl_r": 2.1691752891001737,
+      "risk_sized_pf": 1.6025397568615531,
+      "primary_trade_count": 14,
+      "primary_wins": 10,
+      "primary_losses": 4,
+      "primary_realized_wr": 0.7142857142857143,
+      "primary_trades_per_day": 0.038356164383561646,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024_H1",
+      "days": 365.5,
+      "trades": 21,
+      "wins": 9,
+      "losses": 12,
+      "realized_wr": 0.42857142857142855,
+      "average_winner_r": 0.6886547948113474,
+      "average_loser_r": -0.9685546071094063,
+      "payoff_ratio": 0.7110128739840459,
+      "break_even_wr": 0.5844491384050945,
+      "break_even_adjusted_edge": -0.15587770983366595,
+      "pf": 0.5332596554880344,
+      "mean_r": -0.2583220062862262,
+      "pnl_r": -5.42476213201075,
+      "max_dd_r": -6.145795738888401,
+      "gross_profit_r": 6.197893153302126,
+      "gross_loss_r": 11.622655285312876,
+      "trades_per_day": 0.057455540355677154,
+      "tp_first_wr": 0.42857142857142855,
+      "tp_count": 9,
+      "sl_count": 11,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 1,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 10.523809523809524,
+      "cost_stress_pf": 0.5033940437824426,
+      "cost_stress_mean_r": -0.28160044223518466,
+      "cost_stress_pnl_r": -5.913609286938877,
+      "risk_sized_pf": 0.5297648079256833,
+      "primary_trade_count": 21,
+      "primary_wins": 9,
+      "primary_losses": 12,
+      "primary_realized_wr": 0.42857142857142855,
+      "primary_trades_per_day": 0.057455540355677154,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024_H2",
+      "days": 365.5,
+      "trades": 146,
+      "wins": 78,
+      "losses": 68,
+      "realized_wr": 0.5342465753424658,
+      "average_winner_r": 0.6571149585070564,
+      "average_loser_r": -1.0207360933127687,
+      "payoff_ratio": 0.6437657713997448,
+      "break_even_wr": 0.6083591819462529,
+      "break_even_adjusted_edge": -0.07411260660378716,
+      "pf": 0.7384372083702954,
+      "mean_r": -0.12434991494327315,
+      "pnl_r": -18.15508758171788,
+      "max_dd_r": -20.153416799403438,
+      "gross_profit_r": 51.2549667635504,
+      "gross_loss_r": 69.41005434526828,
+      "trades_per_day": 0.399452804377565,
+      "tp_first_wr": 0.5342465753424658,
+      "tp_count": 78,
+      "sl_count": 68,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 0,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 7.342465753424658,
+      "cost_stress_pf": 0.7005191118426024,
+      "cost_stress_mean_r": -0.1452689660962006,
+      "cost_stress_pnl_r": -21.209269050045286,
+      "risk_sized_pf": 0.7236826339795381,
+      "primary_trade_count": 146,
+      "primary_wins": 78,
+      "primary_losses": 68,
+      "primary_realized_wr": 0.5342465753424658,
+      "primary_trades_per_day": 0.399452804377565,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "ALL_EARLY",
+      "days": 1278.5,
+      "trades": 72,
+      "wins": 37,
+      "losses": 35,
+      "realized_wr": 0.5138888888888888,
+      "average_winner_r": 0.5853467300007024,
+      "average_loser_r": -0.975282815316128,
+      "payoff_ratio": 0.6001815276638174,
+      "break_even_wr": 0.624929098800402,
+      "break_even_adjusted_edge": -0.1110402099115132,
+      "pf": 0.6344776149588927,
+      "mean_r": -0.17329263230609027,
+      "pnl_r": -12.4770695260385,
+      "max_dd_r": -12.477069526038497,
+      "gross_profit_r": 21.65782901002599,
+      "gross_loss_r": 34.13489853606448,
+      "trades_per_day": 0.05631599530700039,
+      "tp_first_wr": 0.4444444444444444,
+      "tp_count": 32,
+      "sl_count": 32,
+      "profitable_timeout_count": 5,
+      "losing_timeout_count": 3,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 19.52777777777778,
+      "cost_stress_pf": 0.5959287452811599,
+      "cost_stress_mean_r": -0.19627568581902724,
+      "cost_stress_pnl_r": -14.131849378969962,
+      "risk_sized_pf": 0.6252982840473613,
+      "primary_trade_count": 72,
+      "primary_wins": 37,
+      "primary_losses": 35,
+      "primary_realized_wr": 0.5138888888888888,
+      "primary_trades_per_day": 0.05631599530700039,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "ALL_LATE",
+      "days": 1278.5,
+      "trades": 617,
+      "wins": 353,
+      "losses": 264,
+      "realized_wr": 0.5721231766612642,
+      "average_winner_r": 0.6448743756922682,
+      "average_loser_r": -1.0157250037141412,
+      "payoff_ratio": 0.6348907168123207,
+      "break_even_wr": 0.611661678494194,
+      "break_even_adjusted_edge": -0.03953850183292973,
+      "pf": 0.8489258448285956,
+      "mean_r": -0.06565761160642229,
+      "pnl_r": -40.51074636116255,
+      "max_dd_r": -50.414222424758954,
+      "gross_profit_r": 227.64065461937068,
+      "gross_loss_r": 268.15140098053325,
+      "trades_per_day": 0.48259679311693393,
+      "tp_first_wr": 0.5705024311183144,
+      "tp_count": 352,
+      "sl_count": 263,
+      "profitable_timeout_count": 1,
+      "losing_timeout_count": 1,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 7.988654781199352,
+      "cost_stress_pf": 0.8078636282485585,
+      "cost_stress_mean_r": -0.08510278044715312,
+      "cost_stress_pnl_r": -52.50841553589348,
+      "risk_sized_pf": 0.873418423373235,
+      "primary_trade_count": 617,
+      "primary_wins": 353,
+      "primary_losses": 264,
+      "primary_realized_wr": 0.5721231766612642,
+      "primary_trades_per_day": 0.48259679311693393,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "pooled",
+      "days": 2557.0,
+      "trades": 689,
+      "wins": 390,
+      "losses": 299,
+      "realized_wr": 0.5660377358490566,
+      "average_winner_r": 0.6392268811010171,
+      "average_loser_r": -1.0109909682829357,
+      "payoff_ratio": 0.6322775387268575,
+      "break_even_wr": 0.6126409120228287,
+      "break_even_adjusted_edge": -0.046603176173772076,
+      "pf": 0.8247098331219882,
+      "mean_r": -0.07690539315994348,
+      "pnl_r": -52.98781588720106,
+      "max_dd_r": -59.57958015890608,
+      "gross_profit_r": 249.29848362939669,
+      "gross_loss_r": 302.28629951659775,
+      "trades_per_day": 0.26945639421196715,
+      "tp_first_wr": 0.5573294629898403,
+      "tp_count": 384,
+      "sl_count": 295,
+      "profitable_timeout_count": 6,
+      "losing_timeout_count": 4,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 9.194484760522496,
+      "cost_stress_pf": 0.7838186120438296,
+      "cost_stress_mean_r": -0.09672026838151442,
+      "cost_stress_pnl_r": -66.64026491486344,
+      "risk_sized_pf": 0.8429659096770507,
+      "primary_trade_count": 689,
+      "primary_wins": 390,
+      "primary_losses": 299,
+      "primary_realized_wr": 0.5660377358490566,
+      "primary_trades_per_day": 0.26945639421196715,
+      "secondary_trade_count": 0,
+      "secondary_wins": 0,
+      "secondary_losses": 0,
+      "secondary_realized_wr": null,
+      "secondary_trades_per_day": 0.0
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020",
+      "days": 1096.0,
+      "trades": 512,
+      "wins": 297,
+      "losses": 215,
+      "realized_wr": 0.580078125,
+      "average_winner_r": 0.6320122523103929,
+      "average_loser_r": -1.0102793106924426,
+      "payoff_ratio": 0.6255817036154224,
+      "break_even_wr": 0.6151644040874236,
+      "break_even_adjusted_edge": -0.035086279087423566,
+      "pf": 0.8641756556920022,
+      "mean_r": -0.05762190012243837,
+      "pnl_r": -29.502412862688445,
+      "max_dd_r": -53.0369456470513,
+      "gross_profit_r": 187.7076389361867,
+      "gross_loss_r": 217.21005179887516,
+      "trades_per_day": 0.46715328467153283,
+      "tp_first_wr": 0.56640625,
+      "tp_count": 290,
+      "sl_count": 212,
+      "profitable_timeout_count": 7,
+      "losing_timeout_count": 3,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 9.93359375,
+      "cost_stress_pf": 0.8217250575325311,
+      "cost_stress_mean_r": -0.07710587774174145,
+      "cost_stress_pnl_r": -39.47820940377162,
+      "risk_sized_pf": 0.8951179534091896,
+      "primary_trade_count": 490,
+      "primary_wins": 288,
+      "primary_losses": 202,
+      "primary_realized_wr": 0.5877551020408164,
+      "primary_trades_per_day": 0.4470802919708029,
+      "secondary_trade_count": 22,
+      "secondary_wins": 9,
+      "secondary_losses": 13,
+      "secondary_realized_wr": 0.4090909090909091,
+      "secondary_trades_per_day": 0.020072992700729927
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022",
+      "days": 730.0,
+      "trades": 25,
+      "wins": 15,
+      "losses": 10,
+      "realized_wr": 0.6,
+      "average_winner_r": 0.6438845299349621,
+      "average_loser_r": -1.0197947009612267,
+      "payoff_ratio": 0.6313864244715692,
+      "break_even_wr": 0.6129755556375401,
+      "break_even_adjusted_edge": -0.01297555563754016,
+      "pf": 0.947079636707354,
+      "mean_r": -0.021587162423513398,
+      "pnl_r": -0.539679060587835,
+      "max_dd_r": -6.092218639900166,
+      "gross_profit_r": 9.658267949024433,
+      "gross_loss_r": 10.197947009612268,
+      "trades_per_day": 0.03424657534246575,
+      "tp_first_wr": 0.6,
+      "tp_count": 15,
+      "sl_count": 10,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 0,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 7.88,
+      "cost_stress_pf": 0.8987816651949884,
+      "cost_stress_mean_r": -0.04209020325741214,
+      "cost_stress_pnl_r": -1.0522550814353036,
+      "risk_sized_pf": 0.9407466463807268,
+      "primary_trade_count": 23,
+      "primary_wins": 13,
+      "primary_losses": 10,
+      "primary_realized_wr": 0.5652173913043478,
+      "primary_trades_per_day": 0.031506849315068496,
+      "secondary_trade_count": 2,
+      "secondary_wins": 2,
+      "secondary_losses": 0,
+      "secondary_realized_wr": 1.0,
+      "secondary_trades_per_day": 0.0027397260273972603
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024",
+      "days": 731.0,
+      "trades": 206,
+      "wins": 109,
+      "losses": 97,
+      "realized_wr": 0.529126213592233,
+      "average_winner_r": 0.6613815761532794,
+      "average_loser_r": -1.014155743344678,
+      "payoff_ratio": 0.6521499094133688,
+      "break_even_wr": 0.6052719515961306,
+      "break_even_adjusted_edge": -0.07614573800389757,
+      "pf": 0.7328282487222391,
+      "mean_r": -0.1275850257462444,
+      "pnl_r": -26.282515303726342,
+      "max_dd_r": -27.003548910603993,
+      "gross_profit_r": 72.09059180070746,
+      "gross_loss_r": 98.37310710443377,
+      "trades_per_day": 0.2818057455540356,
+      "tp_first_wr": 0.529126213592233,
+      "tp_count": 109,
+      "sl_count": 96,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 1,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 7.572815533980583,
+      "cost_stress_pf": 0.6947315260407616,
+      "cost_stress_mean_r": -0.14879460435791023,
+      "cost_stress_pnl_r": -30.651688497729506,
+      "risk_sized_pf": 0.7145592293958788,
+      "primary_trade_count": 152,
+      "primary_wins": 79,
+      "primary_losses": 73,
+      "primary_realized_wr": 0.5197368421052632,
+      "primary_trades_per_day": 0.2079343365253078,
+      "secondary_trade_count": 54,
+      "secondary_wins": 30,
+      "secondary_losses": 24,
+      "secondary_realized_wr": 0.5555555555555556,
+      "secondary_trades_per_day": 0.07387140902872777
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020_H1",
+      "days": 548.0,
+      "trades": 45,
+      "wins": 26,
+      "losses": 19,
+      "realized_wr": 0.5777777777777777,
+      "average_winner_r": 0.5470006150194072,
+      "average_loser_r": -0.970537958912913,
+      "payoff_ratio": 0.5636055859495651,
+      "break_even_wr": 0.639547472192425,
+      "break_even_adjusted_edge": -0.0617696944146473,
+      "pf": 0.7712497491941417,
+      "mean_r": -0.09373789397423915,
+      "pnl_r": -4.218205228840762,
+      "max_dd_r": -9.31338080121966,
+      "gross_profit_r": 14.222015990504588,
+      "gross_loss_r": 18.440221219345347,
+      "trades_per_day": 0.08211678832116788,
+      "tp_first_wr": 0.4444444444444444,
+      "tp_count": 20,
+      "sl_count": 17,
+      "profitable_timeout_count": 6,
+      "losing_timeout_count": 2,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 26.733333333333334,
+      "cost_stress_pf": 0.719477930057609,
+      "cost_stress_mean_r": -0.11795367841857322,
+      "cost_stress_pnl_r": -5.307915528835795,
+      "risk_sized_pf": 0.6992045610404812,
+      "primary_trade_count": 41,
+      "primary_wins": 24,
+      "primary_losses": 17,
+      "primary_realized_wr": 0.5853658536585366,
+      "primary_trades_per_day": 0.07481751824817519,
+      "secondary_trade_count": 4,
+      "secondary_wins": 2,
+      "secondary_losses": 2,
+      "secondary_realized_wr": 0.5,
+      "secondary_trades_per_day": 0.0072992700729927005
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020_H2",
+      "days": 548.0,
+      "trades": 467,
+      "wins": 271,
+      "losses": 196,
+      "realized_wr": 0.5802997858672377,
+      "average_winner_r": 0.6401683503530705,
+      "average_loser_r": -1.0141317886710706,
+      "payoff_ratio": 0.6312476913793957,
+      "break_even_wr": 0.6130276875085673,
+      "break_even_adjusted_edge": -0.03272790164132955,
+      "pf": 0.8727965528766136,
+      "mean_r": -0.054141772235219876,
+      "pnl_r": -25.284207633847682,
+      "max_dd_r": -53.03694564705132,
+      "gross_profit_r": 173.4856229456821,
+      "gross_loss_r": 198.7698305795298,
+      "trades_per_day": 0.8521897810218978,
+      "tp_first_wr": 0.5781584582441114,
+      "tp_count": 270,
+      "sl_count": 195,
+      "profitable_timeout_count": 1,
+      "losing_timeout_count": 1,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 8.314775160599572,
+      "cost_stress_pf": 0.8312778734801626,
+      "cost_stress_mean_r": -0.07316979416474485,
+      "cost_stress_pnl_r": -34.170293874935844,
+      "risk_sized_pf": 0.9175811953154276,
+      "primary_trade_count": 449,
+      "primary_wins": 264,
+      "primary_losses": 185,
+      "primary_realized_wr": 0.5879732739420935,
+      "primary_trades_per_day": 0.8193430656934306,
+      "secondary_trade_count": 18,
+      "secondary_wins": 7,
+      "secondary_losses": 11,
+      "secondary_realized_wr": 0.3888888888888889,
+      "secondary_trades_per_day": 0.032846715328467155
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022_H1",
+      "days": 365.0,
+      "trades": 10,
+      "wins": 4,
+      "losses": 6,
+      "realized_wr": 0.4,
+      "average_winner_r": 0.5894183526819248,
+      "average_loser_r": -1.0213973142942316,
+      "payoff_ratio": 0.5770705918579813,
+      "break_even_wr": 0.6340870251228755,
+      "break_even_adjusted_edge": -0.2340870251228755,
+      "pf": 0.3847137279053209,
+      "mean_r": -0.3770710475037691,
+      "pnl_r": -3.7707104750376907,
+      "max_dd_r": -5.539075621418558,
+      "gross_profit_r": 2.357673410727699,
+      "gross_loss_r": 6.128383885765389,
+      "trades_per_day": 0.0273972602739726,
+      "tp_first_wr": 0.4,
+      "tp_count": 4,
+      "sl_count": 6,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 0,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 10.8,
+      "cost_stress_pf": 0.3646192088312198,
+      "cost_stress_mean_r": -0.39754300568346024,
+      "cost_stress_pnl_r": -3.9754300568346026,
+      "risk_sized_pf": 0.38370706765671997,
+      "primary_trade_count": 9,
+      "primary_wins": 3,
+      "primary_losses": 6,
+      "primary_realized_wr": 0.3333333333333333,
+      "primary_trades_per_day": 0.024657534246575342,
+      "secondary_trade_count": 1,
+      "secondary_wins": 1,
+      "secondary_losses": 0,
+      "secondary_realized_wr": 1.0,
+      "secondary_trades_per_day": 0.0027397260273972603
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022_H2",
+      "days": 365.0,
+      "trades": 15,
+      "wins": 11,
+      "losses": 4,
+      "realized_wr": 0.7333333333333333,
+      "average_winner_r": 0.6636904125724302,
+      "average_loser_r": -1.0173907809617193,
+      "payoff_ratio": 0.6523456129070256,
+      "break_even_wr": 0.6052002633036725,
+      "break_even_adjusted_edge": 0.1281330700296608,
+      "pf": 1.7939504354943205,
+      "mean_r": 0.21540209429665705,
+      "pnl_r": 3.2310314144498555,
+      "max_dd_r": -1.2683267708993964,
+      "gross_profit_r": 7.300594538296733,
+      "gross_loss_r": 4.069563123846877,
+      "trades_per_day": 0.0410958904109589,
+      "tp_first_wr": 0.7333333333333333,
+      "tp_count": 11,
+      "sl_count": 4,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 0,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 5.933333333333334,
+      "cost_stress_pf": 1.7062299626709816,
+      "cost_stress_mean_r": 0.19487833169328664,
+      "cost_stress_pnl_r": 2.9231749753992995,
+      "risk_sized_pf": 1.7888275309090018,
+      "primary_trade_count": 14,
+      "primary_wins": 10,
+      "primary_losses": 4,
+      "primary_realized_wr": 0.7142857142857143,
+      "primary_trades_per_day": 0.038356164383561646,
+      "secondary_trade_count": 1,
+      "secondary_wins": 1,
+      "secondary_losses": 0,
+      "secondary_realized_wr": 1.0,
+      "secondary_trades_per_day": 0.0027397260273972603
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024_H1",
+      "days": 365.5,
+      "trades": 27,
+      "wins": 14,
+      "losses": 13,
+      "realized_wr": 0.5185185185185185,
+      "average_winner_r": 0.6844647928603887,
+      "average_loser_r": -0.9719064290271336,
+      "payoff_ratio": 0.7042496812635858,
+      "break_even_wr": 0.5867684829247365,
+      "break_even_adjusted_edge": -0.068249964406218,
+      "pf": 0.758422733668477,
+      "mean_r": -0.11304727693730728,
+      "pnl_r": -3.0522764773072963,
+      "max_dd_r": -4.0536652106642475,
+      "gross_profit_r": 9.582507100045442,
+      "gross_loss_r": 12.634783577352737,
+      "trades_per_day": 0.07387140902872777,
+      "tp_first_wr": 0.5185185185185185,
+      "tp_count": 14,
+      "sl_count": 12,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 1,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 9.333333333333334,
+      "cost_stress_pf": 0.715822458231495,
+      "cost_stress_mean_r": -0.13611375971098602,
+      "cost_stress_pnl_r": -3.675071512196623,
+      "risk_sized_pf": 0.6476769815101074,
+      "primary_trade_count": 20,
+      "primary_wins": 9,
+      "primary_losses": 11,
+      "primary_realized_wr": 0.45,
+      "primary_trades_per_day": 0.05471956224350205,
+      "secondary_trade_count": 7,
+      "secondary_wins": 5,
+      "secondary_losses": 2,
+      "secondary_realized_wr": 0.7142857142857143,
+      "secondary_trades_per_day": 0.019151846785225718
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024_H2",
+      "days": 365.5,
+      "trades": 179,
+      "wins": 95,
+      "losses": 84,
+      "realized_wr": 0.5307262569832403,
+      "average_winner_r": 0.6579798389543369,
+      "average_loser_r": -1.0206943277033458,
+      "payoff_ratio": 0.6446394587445693,
+      "break_even_wr": 0.6080360012542488,
+      "break_even_adjusted_edge": -0.07730974427100856,
+      "pf": 0.7290565307230248,
+      "mean_r": -0.1297778705386539,
+      "pnl_r": -23.230238826419047,
+      "max_dd_r": -26.200005106794908,
+      "gross_profit_r": 62.508084700662,
+      "gross_loss_r": 85.73832352708105,
+      "trades_per_day": 0.4897400820793434,
+      "tp_first_wr": 0.5307262569832403,
+      "tp_count": 95,
+      "sl_count": 84,
+      "profitable_timeout_count": 0,
+      "losing_timeout_count": 0,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 7.307262569832402,
+      "cost_stress_pf": 0.691613500357072,
+      "cost_stress_mean_r": -0.15070735746107755,
+      "cost_stress_pnl_r": -26.976616985532882,
+      "risk_sized_pf": 0.7271153058754262,
+      "primary_trade_count": 132,
+      "primary_wins": 70,
+      "primary_losses": 62,
+      "primary_realized_wr": 0.5303030303030303,
+      "primary_trades_per_day": 0.36114911080711354,
+      "secondary_trade_count": 47,
+      "secondary_wins": 25,
+      "secondary_losses": 22,
+      "secondary_realized_wr": 0.5319148936170213,
+      "secondary_trades_per_day": 0.12859097127222982
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "ALL_EARLY",
+      "days": 1278.5,
+      "trades": 82,
+      "wins": 44,
+      "losses": 38,
+      "realized_wr": 0.5365853658536586,
+      "average_winner_r": 0.5945953750290391,
+      "average_loser_r": -0.9790365442753545,
+      "payoff_ratio": 0.6073270487253731,
+      "break_even_wr": 0.6221509186901385,
+      "break_even_adjusted_edge": -0.08556555283647993,
+      "pf": 0.7032207932609584,
+      "mean_r": -0.13464868513641157,
+      "pnl_r": -11.041192181185748,
+      "max_dd_r": -11.321547307665051,
+      "gross_profit_r": 26.162196501277723,
+      "gross_loss_r": 37.20338868246347,
+      "trades_per_day": 0.06413766132186155,
+      "tp_first_wr": 0.4634146341463415,
+      "tp_count": 38,
+      "sl_count": 35,
+      "profitable_timeout_count": 6,
+      "losing_timeout_count": 3,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 19.0609756097561,
+      "cost_stress_pf": 0.6599789955852661,
+      "cost_stress_mean_r": -0.15802947680325635,
+      "cost_stress_pnl_r": -12.95841709786702,
+      "risk_sized_pf": 0.6471113661148619,
+      "primary_trade_count": 70,
+      "primary_wins": 36,
+      "primary_losses": 34,
+      "primary_realized_wr": 0.5142857142857142,
+      "primary_trades_per_day": 0.05475166210402816,
+      "secondary_trade_count": 12,
+      "secondary_wins": 8,
+      "secondary_losses": 4,
+      "secondary_realized_wr": 0.6666666666666666,
+      "secondary_trades_per_day": 0.009385999217833398
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "ALL_LATE",
+      "days": 1278.5,
+      "trades": 661,
+      "wins": 377,
+      "losses": 284,
+      "realized_wr": 0.5703479576399395,
+      "average_winner_r": 0.6453429766170844,
+      "average_loser_r": -1.0161187226424568,
+      "payoff_ratio": 0.6351058810714997,
+      "break_even_wr": 0.6115811896809343,
+      "break_even_adjusted_edge": -0.04123323204099483,
+      "pf": 0.8430806942392797,
+      "mean_r": -0.06850743577279407,
+      "pnl_r": -45.28341504581688,
+      "max_dd_r": -55.186891109413274,
+      "gross_profit_r": 243.29430218464083,
+      "gross_loss_r": 288.5777172304577,
+      "trades_per_day": 0.5170121235823231,
+      "tp_first_wr": 0.5688350983358548,
+      "tp_count": 376,
+      "sl_count": 283,
+      "profitable_timeout_count": 1,
+      "losing_timeout_count": 1,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 7.987897125567322,
+      "cost_stress_pf": 0.802054244836743,
+      "cost_stress_mean_r": -0.08808432055229867,
+      "cost_stress_pnl_r": -58.22373588506942,
+      "risk_sized_pf": 0.8855124617494498,
+      "primary_trade_count": 595,
+      "primary_wins": 344,
+      "primary_losses": 251,
+      "primary_realized_wr": 0.5781512605042017,
+      "primary_trades_per_day": 0.46538912788423936,
+      "secondary_trade_count": 66,
+      "secondary_wins": 33,
+      "secondary_losses": 33,
+      "secondary_realized_wr": 0.5,
+      "secondary_trades_per_day": 0.05162299569808369
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "pooled",
+      "days": 2557.0,
+      "trades": 743,
+      "wins": 421,
+      "losses": 322,
+      "realized_wr": 0.566621803499327,
+      "average_winner_r": 0.6400391892777163,
+      "average_loser_r": -1.0117425649469605,
+      "payoff_ratio": 0.632610716848974,
+      "break_even_wr": 0.6125158861691496,
+      "break_even_adjusted_edge": -0.045894082669822645,
+      "pf": 0.8271090428367022,
+      "mean_r": -0.07580700838089183,
+      "pnl_r": -56.32460722700263,
+      "max_dd_r": -62.009878061758215,
+      "gross_profit_r": 269.4564986859186,
+      "gross_loss_r": 325.78110591292125,
+      "trades_per_day": 0.2905748924520923,
+      "tp_first_wr": 0.5572005383580081,
+      "tp_count": 414,
+      "sl_count": 318,
+      "profitable_timeout_count": 7,
+      "losing_timeout_count": 4,
+      "cohort_end_count": 0,
+      "average_hold_minutes": 9.209959623149395,
+      "cost_stress_pf": 0.7857575699558063,
+      "cost_stress_mean_r": -0.0958037052260248,
+      "cost_stress_pnl_r": -71.18215298293643,
+      "risk_sized_pf": 0.8549623581604606,
+      "primary_trade_count": 665,
+      "primary_wins": 380,
+      "primary_losses": 285,
+      "primary_realized_wr": 0.5714285714285714,
+      "primary_trades_per_day": 0.26007039499413376,
+      "secondary_trade_count": 78,
+      "secondary_wins": 41,
+      "secondary_losses": 37,
+      "secondary_realized_wr": 0.5256410256410257,
+      "secondary_trades_per_day": 0.030504497457958545
+    }
+  ],
+  "deltas": [
+    {
+      "scope": "2018_2020",
+      "delta_wr": -0.00024316014056224855,
+      "delta_trades_per_day": 0.012773722627737238,
+      "delta_pf": -0.0025062310885443084,
+      "delta_mean_r": -0.001120815599143156,
+      "delta_cost_stress_pf": -0.00284486251790117
+    },
+    {
+      "scope": "2021_2022",
+      "delta_wr": 0.016666666666666607,
+      "delta_trades_per_day": 0.0013698630136986314,
+      "delta_pf": 0.07165628725024653,
+      "delta_mean_r": 0.03134725761279517,
+      "delta_cost_stress_pf": 0.06961026362805267
+    },
+    {
+      "scope": "2023_2024",
+      "delta_wr": 0.008168129759897669,
+      "delta_trades_per_day": 0.053351573187414514,
+      "delta_pf": 0.023819995403628003,
+      "delta_mean_r": 0.013611679126382115,
+      "delta_cost_stress_pf": 0.0225869779734158
+    },
+    {
+      "scope": "2018_2020_H1",
+      "delta_wr": -0.007588075880758827,
+      "delta_trades_per_day": 0.007299270072992692,
+      "delta_pf": -0.02661766909139507,
+      "delta_mean_r": -0.01296443563542575,
+      "delta_cost_stress_pf": -0.026301705965940392
+    },
+    {
+      "scope": "2018_2020_H2",
+      "delta_wr": 0.00043107689568411267,
+      "delta_trades_per_day": 0.018248175182481785,
+      "delta_pf": 0.00032314072057582077,
+      "delta_mean_r": 0.00018170325867437886,
+      "delta_cost_stress_pf": 3.0262121863522395e-05
+    },
+    {
+      "scope": "2021_2022_H1",
+      "delta_wr": 0.0,
+      "delta_trades_per_day": 0.0,
+      "delta_pf": -0.004913999100356448,
+      "delta_mean_r": -0.0030114872901290113,
+      "delta_cost_stress_pf": -0.004848951420195424
+    },
+    {
+      "scope": "2021_2022_H2",
+      "delta_wr": 0.01904761904761898,
+      "delta_trades_per_day": 0.002739726027397256,
+      "delta_pf": 0.18696402292579095,
+      "delta_mean_r": 0.0389614142063002,
+      "delta_cost_stress_pf": 0.18216397403177176
+    },
+    {
+      "scope": "2023_2024_H1",
+      "delta_wr": 0.08994708994708994,
+      "delta_trades_per_day": 0.016415868673050615,
+      "delta_pf": 0.22516307818044257,
+      "delta_mean_r": 0.14527472934891894,
+      "delta_cost_stress_pf": 0.21242841444905247
+    },
+    {
+      "scope": "2023_2024_H2",
+      "delta_wr": -0.003520318359225505,
+      "delta_trades_per_day": 0.09028727770177841,
+      "delta_pf": -0.009380677647270574,
+      "delta_mean_r": -0.005427955595380743,
+      "delta_cost_stress_pf": -0.008905611485530374
+    },
+    {
+      "scope": "ALL_EARLY",
+      "delta_wr": 0.02269647696476973,
+      "delta_trades_per_day": 0.007821666014861159,
+      "delta_pf": 0.06874317830206578,
+      "delta_mean_r": 0.0386439471696787,
+      "delta_cost_stress_pf": 0.06405025030410616
+    },
+    {
+      "scope": "ALL_LATE",
+      "delta_wr": -0.0017752190213247143,
+      "delta_trades_per_day": 0.03441533046538914,
+      "delta_pf": -0.005845150589315895,
+      "delta_mean_r": -0.0028498241663717783,
+      "delta_cost_stress_pf": -0.005809383411815472
+    },
+    {
+      "scope": "pooled",
+      "delta_wr": 0.0005840676502704145,
+      "delta_trades_per_day": 0.021118498240125128,
+      "delta_pf": 0.002399209714713968,
+      "delta_mean_r": 0.0010983847790516504,
+      "delta_cost_stress_pf": 0.0019389579119766243
+    }
+  ],
+  "stress_metrics": [
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 498,
+      "wins": 289,
+      "losses": 209,
+      "realized_wr": 0.5803212851405622,
+      "pf": 0.8666818867805465,
+      "mean_r": -0.05650108452329521,
+      "pnl_r": -28.137540092601014,
+      "max_dd_r": -49.51106078985202
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 498,
+      "wins": 289,
+      "losses": 209,
+      "realized_wr": 0.5803212851405622,
+      "pf": 0.8446248318957911,
+      "mean_r": -0.06650108452329521,
+      "pnl_r": -33.11754009260102,
+      "max_dd_r": -51.671060789852035
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 498,
+      "wins": 289,
+      "losses": 209,
+      "realized_wr": 0.5803212851405622,
+      "pf": 0.8229961377053244,
+      "mean_r": -0.07650108452329524,
+      "pnl_r": -38.09754009260103,
+      "max_dd_r": -53.83106078985203
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 24,
+      "wins": 14,
+      "losses": 10,
+      "realized_wr": 0.5833333333333334,
+      "pf": 0.8754233494571074,
+      "mean_r": -0.05293442003630857,
+      "pnl_r": -1.2704260808714056,
+      "max_dd_r": -6.853080533085027
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 24,
+      "wins": 14,
+      "losses": 10,
+      "realized_wr": 0.5833333333333334,
+      "pf": 0.853327456486079,
+      "mean_r": -0.0629344200363085,
+      "pnl_r": -1.510426080871404,
+      "max_dd_r": -6.953080533085028
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 24,
+      "wins": 14,
+      "losses": 10,
+      "realized_wr": 0.5833333333333334,
+      "pf": 0.8316565684309369,
+      "mean_r": -0.0729344200363086,
+      "pnl_r": -1.7504260808714063,
+      "max_dd_r": -7.053080533085026
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 167,
+      "wins": 87,
+      "losses": 80,
+      "realized_wr": 0.5209580838323353,
+      "pf": 0.7090082533186111,
+      "mean_r": -0.1411967048726265,
+      "pnl_r": -23.579849713728628,
+      "max_dd_r": -24.300883320606264
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 167,
+      "wins": 87,
+      "losses": 80,
+      "realized_wr": 0.5209580838323353,
+      "pf": 0.6914455133196191,
+      "mean_r": -0.15119670487262651,
+      "pnl_r": -25.24984971372863,
+      "max_dd_r": -25.960883320606293
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 167,
+      "wins": 87,
+      "losses": 80,
+      "realized_wr": 0.5209580838323353,
+      "pf": 0.674222837008772,
+      "mean_r": -0.16119670487262652,
+      "pnl_r": -26.91984971372863,
+      "max_dd_r": -27.620883320606282
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020_H1",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 41,
+      "wins": 24,
+      "losses": 17,
+      "realized_wr": 0.5853658536585366,
+      "pf": 0.7978674182855368,
+      "mean_r": -0.0807734583388134,
+      "pnl_r": -3.3117117918913492,
+      "max_dd_r": -7.7022791080041095
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020_H1",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 41,
+      "wins": 24,
+      "losses": 17,
+      "realized_wr": 0.5853658536585366,
+      "pf": 0.7751755823319787,
+      "mean_r": -0.0907734583388134,
+      "pnl_r": -3.7217117918913494,
+      "max_dd_r": -7.972279108004109
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020_H1",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 41,
+      "wins": 24,
+      "losses": 17,
+      "realized_wr": 0.5853658536585366,
+      "pf": 0.7529450767481531,
+      "mean_r": -0.10077345833881343,
+      "pnl_r": -4.131711791891351,
+      "max_dd_r": -8.24227910800411
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020_H2",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 457,
+      "wins": 265,
+      "losses": 192,
+      "realized_wr": 0.5798687089715536,
+      "pf": 0.8724734121560378,
+      "mean_r": -0.054323475493894255,
+      "pnl_r": -24.825828300709674,
+      "max_dd_r": -49.51106078985202
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020_H2",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 457,
+      "wins": 265,
+      "losses": 192,
+      "realized_wr": 0.5798687089715536,
+      "pf": 0.8504727523416441,
+      "mean_r": -0.06432347549389424,
+      "pnl_r": -29.395828300709667,
+      "max_dd_r": -51.671060789852035
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2018_2020_H2",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 457,
+      "wins": 265,
+      "losses": 192,
+      "realized_wr": 0.5798687089715536,
+      "pf": 0.8288976719673874,
+      "mean_r": -0.07432347549389426,
+      "pnl_r": -33.965828300709674,
+      "max_dd_r": -53.831060789852025
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022_H1",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 10,
+      "wins": 4,
+      "losses": 6,
+      "realized_wr": 0.4,
+      "pf": 0.3896277270056773,
+      "mean_r": -0.37405956021364006,
+      "pnl_r": -3.7405956021364006,
+      "max_dd_r": -5.539075621418558
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022_H1",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 10,
+      "wins": 4,
+      "losses": 6,
+      "realized_wr": 0.4,
+      "pf": 0.3793863352642692,
+      "mean_r": -0.3840595602136402,
+      "pnl_r": -3.8405956021364016,
+      "max_dd_r": -5.609075621418559
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022_H1",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 10,
+      "wins": 4,
+      "losses": 6,
+      "realized_wr": 0.4,
+      "pf": 0.3693416291029147,
+      "mean_r": -0.39405956021364014,
+      "pnl_r": -3.9405956021364013,
+      "max_dd_r": -5.6790756214185585
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022_H2",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 14,
+      "wins": 10,
+      "losses": 4,
+      "realized_wr": 0.7142857142857143,
+      "pf": 1.6069864125685296,
+      "mean_r": 0.17644068009035685,
+      "pnl_r": 2.470169521264996,
+      "max_dd_r": -2.0291886640842565
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022_H2",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 14,
+      "wins": 10,
+      "losses": 4,
+      "realized_wr": 0.7142857142857143,
+      "pf": 1.5670114927164744,
+      "mean_r": 0.1664406800903568,
+      "pnl_r": 2.3301695212649953,
+      "max_dd_r": -2.0491886640842565
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2021_2022_H2",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 14,
+      "wins": 10,
+      "losses": 4,
+      "realized_wr": 0.7142857142857143,
+      "pf": 1.5278072548597805,
+      "mean_r": 0.15644068009035683,
+      "pnl_r": 2.1901695212649956,
+      "max_dd_r": -2.0691886640842565
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024_H1",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 21,
+      "wins": 9,
+      "losses": 12,
+      "realized_wr": 0.42857142857142855,
+      "pf": 0.5332596554880344,
+      "mean_r": -0.2583220062862262,
+      "pnl_r": -5.42476213201075,
+      "max_dd_r": -6.145795738888401
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024_H1",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 21,
+      "wins": 9,
+      "losses": 12,
+      "realized_wr": 0.42857142857142855,
+      "pf": 0.520145827744903,
+      "mean_r": -0.2683220062862262,
+      "pnl_r": -5.63476213201075,
+      "max_dd_r": -6.345795738888401
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024_H1",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 21,
+      "wins": 9,
+      "losses": 12,
+      "realized_wr": 0.42857142857142855,
+      "pf": 0.5072973131700846,
+      "mean_r": -0.2783220062862262,
+      "pnl_r": -5.84476213201075,
+      "max_dd_r": -6.545795738888401
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024_H2",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 146,
+      "wins": 78,
+      "losses": 68,
+      "realized_wr": 0.5342465753424658,
+      "pf": 0.7384372083702954,
+      "mean_r": -0.12434991494327315,
+      "pnl_r": -18.15508758171788,
+      "max_dd_r": -20.153416799403438
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024_H2",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 146,
+      "wins": 78,
+      "losses": 68,
+      "realized_wr": 0.5342465753424658,
+      "pf": 0.7201444946084269,
+      "mean_r": -0.13434991494327314,
+      "pnl_r": -19.61508758171788,
+      "max_dd_r": -21.583416799403437
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "2023_2024_H2",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 146,
+      "wins": 78,
+      "losses": 68,
+      "realized_wr": 0.5342465753424658,
+      "pf": 0.7022033149939642,
+      "mean_r": -0.14434991494327318,
+      "pnl_r": -21.075087581717884,
+      "max_dd_r": -23.013416799403437
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "ALL_EARLY",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 72,
+      "wins": 37,
+      "losses": 35,
+      "realized_wr": 0.5138888888888888,
+      "pf": 0.6344776149588927,
+      "mean_r": -0.17329263230609027,
+      "pnl_r": -12.4770695260385,
+      "max_dd_r": -12.477069526038497
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "ALL_EARLY",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 72,
+      "wins": 37,
+      "losses": 35,
+      "realized_wr": 0.5138888888888888,
+      "pf": 0.6173087326257625,
+      "mean_r": -0.18329263230609028,
+      "pnl_r": -13.197069526038499,
+      "max_dd_r": -13.197069526038497
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "ALL_EARLY",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 72,
+      "wins": 37,
+      "losses": 35,
+      "realized_wr": 0.5138888888888888,
+      "pf": 0.6004848553920664,
+      "mean_r": -0.19329263230609028,
+      "pnl_r": -13.9170695260385,
+      "max_dd_r": -13.917069526038507
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "ALL_LATE",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 617,
+      "wins": 353,
+      "losses": 264,
+      "realized_wr": 0.5721231766612642,
+      "pf": 0.8489258448285956,
+      "mean_r": -0.06565761160642229,
+      "pnl_r": -40.51074636116255,
+      "max_dd_r": -50.414222424758954
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "ALL_LATE",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 617,
+      "wins": 353,
+      "losses": 264,
+      "realized_wr": 0.5721231766612642,
+      "pf": 0.8276136310380168,
+      "mean_r": -0.07565761160642229,
+      "pnl_r": -46.680746361162555,
+      "max_dd_r": -56.274222424758975
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "ALL_LATE",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 617,
+      "wins": 353,
+      "losses": 264,
+      "realized_wr": 0.5721231766612642,
+      "pf": 0.806712959185967,
+      "mean_r": -0.0856576116064223,
+      "pnl_r": -52.85074636116256,
+      "max_dd_r": -62.13422242475893
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "pooled",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 689,
+      "wins": 390,
+      "losses": 299,
+      "realized_wr": 0.5660377358490566,
+      "pf": 0.8247098331219882,
+      "mean_r": -0.07690539315994348,
+      "pnl_r": -52.98781588720106,
+      "max_dd_r": -59.57958015890608
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "pooled",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 689,
+      "wins": 390,
+      "losses": 299,
+      "realized_wr": 0.5660377358490566,
+      "pf": 0.8038569781472815,
+      "mean_r": -0.08690539315994349,
+      "pnl_r": -59.87781588720106,
+      "max_dd_r": -65.74958015890616
+    },
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "scope": "pooled",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 689,
+      "wins": 390,
+      "losses": 299,
+      "realized_wr": 0.5660377358490566,
+      "pf": 0.7834086437865514,
+      "mean_r": -0.0969053931599435,
+      "pnl_r": -66.76781588720107,
+      "max_dd_r": -71.91958015890614
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 512,
+      "wins": 297,
+      "losses": 215,
+      "realized_wr": 0.580078125,
+      "pf": 0.8641756556920022,
+      "mean_r": -0.05762190012243837,
+      "pnl_r": -29.502412862688445,
+      "max_dd_r": -53.0369456470513
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 512,
+      "wins": 297,
+      "losses": 215,
+      "realized_wr": 0.580078125,
+      "pf": 0.8421662806023007,
+      "mean_r": -0.06762190012243838,
+      "pnl_r": -34.62241286268845,
+      "max_dd_r": -55.24694564705135
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 512,
+      "wins": 297,
+      "losses": 215,
+      "realized_wr": 0.580078125,
+      "pf": 0.8205841561593176,
+      "mean_r": -0.0776219001224384,
+      "pnl_r": -39.74241286268846,
+      "max_dd_r": -57.45694564705133
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 25,
+      "wins": 15,
+      "losses": 10,
+      "realized_wr": 0.6,
+      "pf": 0.947079636707354,
+      "mean_r": -0.021587162423513398,
+      "pnl_r": -0.539679060587835,
+      "max_dd_r": -6.092218639900166
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 25,
+      "wins": 15,
+      "losses": 10,
+      "realized_wr": 0.6,
+      "pf": 0.9233168455954631,
+      "mean_r": -0.03158716242351339,
+      "pnl_r": -0.7896790605878348,
+      "max_dd_r": -6.202218639900168
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 25,
+      "wins": 15,
+      "losses": 10,
+      "realized_wr": 0.6,
+      "pf": 0.9000111214620811,
+      "mean_r": -0.041587162423513416,
+      "pnl_r": -1.0396790605878354,
+      "max_dd_r": -6.312218639900166
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 206,
+      "wins": 109,
+      "losses": 97,
+      "realized_wr": 0.529126213592233,
+      "pf": 0.7328282487222391,
+      "mean_r": -0.1275850257462444,
+      "pnl_r": -26.282515303726342,
+      "max_dd_r": -27.003548910603993
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 206,
+      "wins": 109,
+      "losses": 97,
+      "realized_wr": 0.529126213592233,
+      "pf": 0.7147007363688406,
+      "mean_r": -0.1375850257462444,
+      "pnl_r": -28.342515303726348,
+      "max_dd_r": -29.053548910603997
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 206,
+      "wins": 109,
+      "losses": 97,
+      "realized_wr": 0.529126213592233,
+      "pf": 0.6969238000765446,
+      "mean_r": -0.14758502574624444,
+      "pnl_r": -30.402515303726354,
+      "max_dd_r": -31.103548910603998
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020_H1",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 45,
+      "wins": 26,
+      "losses": 19,
+      "realized_wr": 0.5777777777777777,
+      "pf": 0.7712497491941417,
+      "mean_r": -0.09373789397423915,
+      "pnl_r": -4.218205228840762,
+      "max_dd_r": -9.31338080121966
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020_H1",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 45,
+      "wins": 26,
+      "losses": 19,
+      "realized_wr": 0.5777777777777777,
+      "pf": 0.7494283522520191,
+      "mean_r": -0.10373789397423913,
+      "pnl_r": -4.668205228840761,
+      "max_dd_r": -9.58338080121966
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020_H1",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 45,
+      "wins": 26,
+      "losses": 19,
+      "realized_wr": 0.5777777777777777,
+      "pf": 0.7280475521945647,
+      "mean_r": -0.11373789397423918,
+      "pnl_r": -5.118205228840763,
+      "max_dd_r": -9.853380801219659
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020_H2",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 467,
+      "wins": 271,
+      "losses": 196,
+      "realized_wr": 0.5802997858672377,
+      "pf": 0.8727965528766136,
+      "mean_r": -0.054141772235219876,
+      "pnl_r": -25.284207633847682,
+      "max_dd_r": -53.03694564705132
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020_H2",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 467,
+      "wins": 271,
+      "losses": 196,
+      "realized_wr": 0.5802997858672377,
+      "pf": 0.8507735121014826,
+      "mean_r": -0.06414177223521987,
+      "pnl_r": -29.95420763384768,
+      "max_dd_r": -55.24694564705135
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2018_2020_H2",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 467,
+      "wins": 271,
+      "losses": 196,
+      "realized_wr": 0.5802997858672377,
+      "pf": 0.8291763946180708,
+      "mean_r": -0.07414177223521991,
+      "pnl_r": -34.624207633847696,
+      "max_dd_r": -57.45694564705133
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022_H1",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 10,
+      "wins": 4,
+      "losses": 6,
+      "realized_wr": 0.4,
+      "pf": 0.3847137279053209,
+      "mean_r": -0.3770710475037691,
+      "pnl_r": -3.7707104750376907,
+      "max_dd_r": -5.539075621418558
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022_H1",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 10,
+      "wins": 4,
+      "losses": 6,
+      "realized_wr": 0.4,
+      "pf": 0.37451998025831024,
+      "mean_r": -0.3870710475037692,
+      "pnl_r": -3.8707104750376917,
+      "max_dd_r": -5.609075621418559
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022_H1",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 10,
+      "wins": 4,
+      "losses": 6,
+      "realized_wr": 0.4,
+      "pf": 0.3645220031881408,
+      "mean_r": -0.39707104750376915,
+      "pnl_r": -3.9707104750376914,
+      "max_dd_r": -5.6790756214185585
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022_H2",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 15,
+      "wins": 11,
+      "losses": 4,
+      "realized_wr": 0.7333333333333333,
+      "pf": 1.7939504354943205,
+      "mean_r": 0.21540209429665705,
+      "pnl_r": 3.2310314144498555,
+      "max_dd_r": -1.2683267708993964
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022_H2",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 15,
+      "wins": 11,
+      "losses": 4,
+      "realized_wr": 0.7333333333333333,
+      "pf": 1.7497223723298758,
+      "mean_r": 0.205402094296657,
+      "pnl_r": 3.081031414449855,
+      "max_dd_r": -1.2983267708993964
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2021_2022_H2",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 15,
+      "wins": 11,
+      "losses": 4,
+      "realized_wr": 0.7333333333333333,
+      "pf": 1.7063469880975386,
+      "mean_r": 0.19540209429665706,
+      "pnl_r": 2.9310314144498557,
+      "max_dd_r": -1.3283267708993964
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024_H1",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 27,
+      "wins": 14,
+      "losses": 13,
+      "realized_wr": 0.5185185185185185,
+      "pf": 0.758422733668477,
+      "mean_r": -0.11304727693730728,
+      "pnl_r": -3.0522764773072963,
+      "max_dd_r": -4.0536652106642475
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024_H1",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 27,
+      "wins": 14,
+      "losses": 13,
+      "realized_wr": 0.5185185185185185,
+      "pf": 0.7397310767413501,
+      "mean_r": -0.12304727693730731,
+      "pnl_r": -3.3222764773072972,
+      "max_dd_r": -4.233665210664247
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024_H1",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 27,
+      "wins": 14,
+      "losses": 13,
+      "realized_wr": 0.5185185185185185,
+      "pf": 0.7214163032858918,
+      "mean_r": -0.13304727693730728,
+      "pnl_r": -3.592276477307297,
+      "max_dd_r": -4.413665210664247
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024_H2",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 179,
+      "wins": 95,
+      "losses": 84,
+      "realized_wr": 0.5307262569832403,
+      "pf": 0.7290565307230248,
+      "mean_r": -0.1297778705386539,
+      "pnl_r": -23.230238826419047,
+      "max_dd_r": -26.200005106794908
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024_H2",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 179,
+      "wins": 95,
+      "losses": 84,
+      "realized_wr": 0.5307262569832403,
+      "pf": 0.7110103567829781,
+      "mean_r": -0.1397778705386539,
+      "pnl_r": -25.020238826419046,
+      "max_dd_r": -27.920005106794925
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "2023_2024_H2",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 179,
+      "wins": 95,
+      "losses": 84,
+      "realized_wr": 0.5307262569832403,
+      "pf": 0.6933109931110312,
+      "mean_r": -0.14977787053865393,
+      "pnl_r": -26.810238826419052,
+      "max_dd_r": -29.64000510679492
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "ALL_EARLY",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 82,
+      "wins": 44,
+      "losses": 38,
+      "realized_wr": 0.5365853658536586,
+      "pf": 0.7032207932609584,
+      "mean_r": -0.13464868513641157,
+      "pnl_r": -11.041192181185748,
+      "max_dd_r": -11.321547307665051
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "ALL_EARLY",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 82,
+      "wins": 44,
+      "losses": 38,
+      "realized_wr": 0.5365853658536586,
+      "pf": 0.6844033335737971,
+      "mean_r": -0.14464868513641155,
+      "pnl_r": -11.861192181185746,
+      "max_dd_r": -12.061547307665052
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "ALL_EARLY",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 82,
+      "wins": 44,
+      "losses": 38,
+      "realized_wr": 0.5365853658536586,
+      "pf": 0.6659625860258466,
+      "mean_r": -0.15464868513641158,
+      "pnl_r": -12.68119218118575,
+      "max_dd_r": -12.801547307665054
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "ALL_LATE",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 661,
+      "wins": 377,
+      "losses": 284,
+      "realized_wr": 0.5703479576399395,
+      "pf": 0.8430806942392797,
+      "mean_r": -0.06850743577279407,
+      "pnl_r": -45.28341504581688,
+      "max_dd_r": -55.186891109413274
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "ALL_LATE",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 661,
+      "wins": 377,
+      "losses": 284,
+      "realized_wr": 0.5703479576399395,
+      "pf": 0.8219277278711963,
+      "mean_r": -0.07850743577279408,
+      "pnl_r": -51.89341504581689,
+      "max_dd_r": -61.48689110941333
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "ALL_LATE",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 661,
+      "wins": 377,
+      "losses": 284,
+      "realized_wr": 0.5703479576399395,
+      "pf": 0.8011830731358593,
+      "mean_r": -0.0885074357727941,
+      "pnl_r": -58.5034150458169,
+      "max_dd_r": -67.78689110941328
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "pooled",
+      "scenario": "R0_STANDARD",
+      "extra_cost_r": 0.0,
+      "trades": 743,
+      "wins": 421,
+      "losses": 322,
+      "realized_wr": 0.566621803499327,
+      "pf": 0.8271090428367022,
+      "mean_r": -0.07580700838089183,
+      "pnl_r": -56.32460722700263,
+      "max_dd_r": -62.009878061758215
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "pooled",
+      "scenario": "R1_EXTRA_COST",
+      "extra_cost_r": 0.01,
+      "trades": 743,
+      "wins": 421,
+      "losses": 322,
+      "realized_wr": 0.566621803499327,
+      "pf": 0.8062176506972685,
+      "mean_r": -0.08580700838089184,
+      "pnl_r": -63.75460722700264,
+      "max_dd_r": -68.67987806175827
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "scope": "pooled",
+      "scenario": "R2_EXTRA_COST",
+      "extra_cost_r": 0.02,
+      "trades": 743,
+      "wins": 421,
+      "losses": 322,
+      "realized_wr": 0.566621803499327,
+      "pf": 0.7857312315200682,
+      "mean_r": -0.09580700838089184,
+      "pnl_r": -71.18460722700264,
+      "max_dd_r": -75.34987806175829
+    }
+  ],
+  "displacement": {
+    "2018_2020": {
+      "baseline_trade_count": 498,
+      "s4_trade_count": 512,
+      "baseline_primary_entries_retained": 490,
+      "baseline_primary_entries_displaced": 8,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 7,
+      "displaced_primary_realized_wr": 0.125,
+      "identities": [
+        [
+          1,
+          1787681
+        ],
+        [
+          1,
+          2014197
+        ],
+        [
+          1,
+          2032036
+        ],
+        [
+          1,
+          2032057
+        ],
+        [
+          1,
+          2033463
+        ],
+        [
+          1,
+          2096363
+        ],
+        [
+          1,
+          2173543
+        ],
+        [
+          1,
+          2173575
+        ]
+      ],
+      "new_secondary_entries_executed": 22,
+      "new_primary_entries_executed": 0,
+      "secondary_wins": 9,
+      "secondary_losses": 13,
+      "secondary_realized_wr": 0.4090909090909091,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 7,
+        "displaced_primary_wins": 1,
+        "displaced_primary_losses": 6,
+        "displaced_primary_realized_wr": 0.14285714285714285,
+        "identities": [
+          [
+            1,
+            1787681
+          ],
+          [
+            1,
+            2014197
+          ],
+          [
+            1,
+            2032036
+          ],
+          [
+            1,
+            2032057
+          ],
+          [
+            1,
+            2033463
+          ],
+          [
+            1,
+            2096363
+          ],
+          [
+            1,
+            2173575
+          ]
+        ]
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 1,
+        "displaced_primary_wins": 0,
+        "displaced_primary_losses": 1,
+        "displaced_primary_realized_wr": 0.0,
+        "identities": [
+          [
+            1,
+            2173543
+          ]
+        ]
+      }
+    },
+    "2021_2022": {
+      "baseline_trade_count": 24,
+      "s4_trade_count": 25,
+      "baseline_primary_entries_retained": 23,
+      "baseline_primary_entries_displaced": 1,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": 1.0,
+      "identities": [
+        [
+          2,
+          2318376
+        ]
+      ],
+      "new_secondary_entries_executed": 2,
+      "new_primary_entries_executed": 0,
+      "secondary_wins": 2,
+      "secondary_losses": 0,
+      "secondary_realized_wr": 1.0,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 1,
+        "displaced_primary_wins": 1,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": 1.0,
+        "identities": [
+          [
+            2,
+            2318376
+          ]
+        ]
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 0,
+        "displaced_primary_wins": 0,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": null,
+        "identities": []
+      }
+    },
+    "2023_2024": {
+      "baseline_trade_count": 167,
+      "s4_trade_count": 206,
+      "baseline_primary_entries_retained": 151,
+      "baseline_primary_entries_displaced": 16,
+      "displaced_primary_wins": 8,
+      "displaced_primary_losses": 8,
+      "displaced_primary_realized_wr": 0.5,
+      "identities": [
+        [
+          3,
+          3090772
+        ],
+        [
+          3,
+          3101348
+        ],
+        [
+          3,
+          3468547
+        ],
+        [
+          3,
+          3472900
+        ],
+        [
+          3,
+          3486460
+        ],
+        [
+          3,
+          3513196
+        ],
+        [
+          3,
+          3523166
+        ],
+        [
+          3,
+          3529568
+        ],
+        [
+          3,
+          3541324
+        ],
+        [
+          3,
+          3600414
+        ],
+        [
+          3,
+          3603207
+        ],
+        [
+          3,
+          3610080
+        ],
+        [
+          3,
+          3616846
+        ],
+        [
+          3,
+          3622316
+        ],
+        [
+          3,
+          3662302
+        ],
+        [
+          3,
+          3711653
+        ]
+      ],
+      "new_secondary_entries_executed": 54,
+      "new_primary_entries_executed": 1,
+      "secondary_wins": 30,
+      "secondary_losses": 24,
+      "secondary_realized_wr": 0.5555555555555556,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 15,
+        "displaced_primary_wins": 7,
+        "displaced_primary_losses": 8,
+        "displaced_primary_realized_wr": 0.4666666666666667,
+        "identities": [
+          [
+            3,
+            3090772
+          ],
+          [
+            3,
+            3101348
+          ],
+          [
+            3,
+            3468547
+          ],
+          [
+            3,
+            3472900
+          ],
+          [
+            3,
+            3513196
+          ],
+          [
+            3,
+            3523166
+          ],
+          [
+            3,
+            3529568
+          ],
+          [
+            3,
+            3541324
+          ],
+          [
+            3,
+            3600414
+          ],
+          [
+            3,
+            3603207
+          ],
+          [
+            3,
+            3610080
+          ],
+          [
+            3,
+            3616846
+          ],
+          [
+            3,
+            3622316
+          ],
+          [
+            3,
+            3662302
+          ],
+          [
+            3,
+            3711653
+          ]
+        ]
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 1,
+        "displaced_primary_wins": 1,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": 1.0,
+        "identities": [
+          [
+            3,
+            3486460
+          ]
+        ]
+      }
+    },
+    "2018_2020_H1": {
+      "baseline_trade_count": 41,
+      "s4_trade_count": 45,
+      "baseline_primary_entries_retained": 41,
+      "baseline_primary_entries_displaced": 0,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": null,
+      "identities": [],
+      "new_secondary_entries_executed": 4,
+      "new_primary_entries_executed": 0,
+      "secondary_wins": 2,
+      "secondary_losses": 2,
+      "secondary_realized_wr": 0.5,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 0,
+        "displaced_primary_wins": 0,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": null,
+        "identities": []
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 0,
+        "displaced_primary_wins": 0,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": null,
+        "identities": []
+      }
+    },
+    "2018_2020_H2": {
+      "baseline_trade_count": 457,
+      "s4_trade_count": 467,
+      "baseline_primary_entries_retained": 449,
+      "baseline_primary_entries_displaced": 8,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 7,
+      "displaced_primary_realized_wr": 0.125,
+      "identities": [
+        [
+          1,
+          1787681
+        ],
+        [
+          1,
+          2014197
+        ],
+        [
+          1,
+          2032036
+        ],
+        [
+          1,
+          2032057
+        ],
+        [
+          1,
+          2033463
+        ],
+        [
+          1,
+          2096363
+        ],
+        [
+          1,
+          2173543
+        ],
+        [
+          1,
+          2173575
+        ]
+      ],
+      "new_secondary_entries_executed": 18,
+      "new_primary_entries_executed": 0,
+      "secondary_wins": 7,
+      "secondary_losses": 11,
+      "secondary_realized_wr": 0.3888888888888889,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 7,
+        "displaced_primary_wins": 1,
+        "displaced_primary_losses": 6,
+        "displaced_primary_realized_wr": 0.14285714285714285,
+        "identities": [
+          [
+            1,
+            1787681
+          ],
+          [
+            1,
+            2014197
+          ],
+          [
+            1,
+            2032036
+          ],
+          [
+            1,
+            2032057
+          ],
+          [
+            1,
+            2033463
+          ],
+          [
+            1,
+            2096363
+          ],
+          [
+            1,
+            2173575
+          ]
+        ]
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 1,
+        "displaced_primary_wins": 0,
+        "displaced_primary_losses": 1,
+        "displaced_primary_realized_wr": 0.0,
+        "identities": [
+          [
+            1,
+            2173543
+          ]
+        ]
+      }
+    },
+    "2021_2022_H1": {
+      "baseline_trade_count": 10,
+      "s4_trade_count": 10,
+      "baseline_primary_entries_retained": 9,
+      "baseline_primary_entries_displaced": 1,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": 1.0,
+      "identities": [
+        [
+          2,
+          2318376
+        ]
+      ],
+      "new_secondary_entries_executed": 1,
+      "new_primary_entries_executed": 0,
+      "secondary_wins": 1,
+      "secondary_losses": 0,
+      "secondary_realized_wr": 1.0,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 1,
+        "displaced_primary_wins": 1,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": 1.0,
+        "identities": [
+          [
+            2,
+            2318376
+          ]
+        ]
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 0,
+        "displaced_primary_wins": 0,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": null,
+        "identities": []
+      }
+    },
+    "2021_2022_H2": {
+      "baseline_trade_count": 14,
+      "s4_trade_count": 15,
+      "baseline_primary_entries_retained": 14,
+      "baseline_primary_entries_displaced": 0,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": null,
+      "identities": [],
+      "new_secondary_entries_executed": 1,
+      "new_primary_entries_executed": 0,
+      "secondary_wins": 1,
+      "secondary_losses": 0,
+      "secondary_realized_wr": 1.0,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 0,
+        "displaced_primary_wins": 0,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": null,
+        "identities": []
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 0,
+        "displaced_primary_wins": 0,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": null,
+        "identities": []
+      }
+    },
+    "2023_2024_H1": {
+      "baseline_trade_count": 21,
+      "s4_trade_count": 27,
+      "baseline_primary_entries_retained": 19,
+      "baseline_primary_entries_displaced": 2,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 2,
+      "displaced_primary_realized_wr": 0.0,
+      "identities": [
+        [
+          3,
+          3090772
+        ],
+        [
+          3,
+          3101348
+        ]
+      ],
+      "new_secondary_entries_executed": 7,
+      "new_primary_entries_executed": 1,
+      "secondary_wins": 5,
+      "secondary_losses": 2,
+      "secondary_realized_wr": 0.7142857142857143,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 2,
+        "displaced_primary_wins": 0,
+        "displaced_primary_losses": 2,
+        "displaced_primary_realized_wr": 0.0,
+        "identities": [
+          [
+            3,
+            3090772
+          ],
+          [
+            3,
+            3101348
+          ]
+        ]
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 0,
+        "displaced_primary_wins": 0,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": null,
+        "identities": []
+      }
+    },
+    "2023_2024_H2": {
+      "baseline_trade_count": 146,
+      "s4_trade_count": 179,
+      "baseline_primary_entries_retained": 132,
+      "baseline_primary_entries_displaced": 14,
+      "displaced_primary_wins": 8,
+      "displaced_primary_losses": 6,
+      "displaced_primary_realized_wr": 0.5714285714285714,
+      "identities": [
+        [
+          3,
+          3468547
+        ],
+        [
+          3,
+          3472900
+        ],
+        [
+          3,
+          3486460
+        ],
+        [
+          3,
+          3513196
+        ],
+        [
+          3,
+          3523166
+        ],
+        [
+          3,
+          3529568
+        ],
+        [
+          3,
+          3541324
+        ],
+        [
+          3,
+          3600414
+        ],
+        [
+          3,
+          3603207
+        ],
+        [
+          3,
+          3610080
+        ],
+        [
+          3,
+          3616846
+        ],
+        [
+          3,
+          3622316
+        ],
+        [
+          3,
+          3662302
+        ],
+        [
+          3,
+          3711653
+        ]
+      ],
+      "new_secondary_entries_executed": 47,
+      "new_primary_entries_executed": 0,
+      "secondary_wins": 25,
+      "secondary_losses": 22,
+      "secondary_realized_wr": 0.5319148936170213,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 13,
+        "displaced_primary_wins": 7,
+        "displaced_primary_losses": 6,
+        "displaced_primary_realized_wr": 0.5384615384615384,
+        "identities": [
+          [
+            3,
+            3468547
+          ],
+          [
+            3,
+            3472900
+          ],
+          [
+            3,
+            3513196
+          ],
+          [
+            3,
+            3523166
+          ],
+          [
+            3,
+            3529568
+          ],
+          [
+            3,
+            3541324
+          ],
+          [
+            3,
+            3600414
+          ],
+          [
+            3,
+            3603207
+          ],
+          [
+            3,
+            3610080
+          ],
+          [
+            3,
+            3616846
+          ],
+          [
+            3,
+            3622316
+          ],
+          [
+            3,
+            3662302
+          ],
+          [
+            3,
+            3711653
+          ]
+        ]
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 1,
+        "displaced_primary_wins": 1,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": 1.0,
+        "identities": [
+          [
+            3,
+            3486460
+          ]
+        ]
+      }
+    },
+    "ALL_EARLY": {
+      "baseline_trade_count": 72,
+      "s4_trade_count": 82,
+      "baseline_primary_entries_retained": 69,
+      "baseline_primary_entries_displaced": 3,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 2,
+      "displaced_primary_realized_wr": 0.3333333333333333,
+      "identities": [
+        [
+          2,
+          2318376
+        ],
+        [
+          3,
+          3090772
+        ],
+        [
+          3,
+          3101348
+        ]
+      ],
+      "new_secondary_entries_executed": 12,
+      "new_primary_entries_executed": 1,
+      "secondary_wins": 8,
+      "secondary_losses": 4,
+      "secondary_realized_wr": 0.6666666666666666,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 3,
+        "displaced_primary_wins": 1,
+        "displaced_primary_losses": 2,
+        "displaced_primary_realized_wr": 0.3333333333333333,
+        "identities": [
+          [
+            2,
+            2318376
+          ],
+          [
+            3,
+            3090772
+          ],
+          [
+            3,
+            3101348
+          ]
+        ]
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 0,
+        "displaced_primary_wins": 0,
+        "displaced_primary_losses": 0,
+        "displaced_primary_realized_wr": null,
+        "identities": []
+      }
+    },
+    "ALL_LATE": {
+      "baseline_trade_count": 617,
+      "s4_trade_count": 661,
+      "baseline_primary_entries_retained": 595,
+      "baseline_primary_entries_displaced": 22,
+      "displaced_primary_wins": 9,
+      "displaced_primary_losses": 13,
+      "displaced_primary_realized_wr": 0.4090909090909091,
+      "identities": [
+        [
+          1,
+          1787681
+        ],
+        [
+          1,
+          2014197
+        ],
+        [
+          1,
+          2032036
+        ],
+        [
+          1,
+          2032057
+        ],
+        [
+          1,
+          2033463
+        ],
+        [
+          1,
+          2096363
+        ],
+        [
+          1,
+          2173543
+        ],
+        [
+          1,
+          2173575
+        ],
+        [
+          3,
+          3468547
+        ],
+        [
+          3,
+          3472900
+        ],
+        [
+          3,
+          3486460
+        ],
+        [
+          3,
+          3513196
+        ],
+        [
+          3,
+          3523166
+        ],
+        [
+          3,
+          3529568
+        ],
+        [
+          3,
+          3541324
+        ],
+        [
+          3,
+          3600414
+        ],
+        [
+          3,
+          3603207
+        ],
+        [
+          3,
+          3610080
+        ],
+        [
+          3,
+          3616846
+        ],
+        [
+          3,
+          3622316
+        ],
+        [
+          3,
+          3662302
+        ],
+        [
+          3,
+          3711653
+        ]
+      ],
+      "new_secondary_entries_executed": 66,
+      "new_primary_entries_executed": 0,
+      "secondary_wins": 33,
+      "secondary_losses": 33,
+      "secondary_realized_wr": 0.5,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 20,
+        "displaced_primary_wins": 8,
+        "displaced_primary_losses": 12,
+        "displaced_primary_realized_wr": 0.4,
+        "identities": [
+          [
+            1,
+            1787681
+          ],
+          [
+            1,
+            2014197
+          ],
+          [
+            1,
+            2032036
+          ],
+          [
+            1,
+            2032057
+          ],
+          [
+            1,
+            2033463
+          ],
+          [
+            1,
+            2096363
+          ],
+          [
+            1,
+            2173575
+          ],
+          [
+            3,
+            3468547
+          ],
+          [
+            3,
+            3472900
+          ],
+          [
+            3,
+            3513196
+          ],
+          [
+            3,
+            3523166
+          ],
+          [
+            3,
+            3529568
+          ],
+          [
+            3,
+            3541324
+          ],
+          [
+            3,
+            3600414
+          ],
+          [
+            3,
+            3603207
+          ],
+          [
+            3,
+            3610080
+          ],
+          [
+            3,
+            3616846
+          ],
+          [
+            3,
+            3622316
+          ],
+          [
+            3,
+            3662302
+          ],
+          [
+            3,
+            3711653
+          ]
+        ]
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 2,
+        "displaced_primary_wins": 1,
+        "displaced_primary_losses": 1,
+        "displaced_primary_realized_wr": 0.5,
+        "identities": [
+          [
+            1,
+            2173543
+          ],
+          [
+            3,
+            3486460
+          ]
+        ]
+      }
+    },
+    "pooled": {
+      "baseline_trade_count": 689,
+      "s4_trade_count": 743,
+      "baseline_primary_entries_retained": 664,
+      "baseline_primary_entries_displaced": 25,
+      "displaced_primary_wins": 10,
+      "displaced_primary_losses": 15,
+      "displaced_primary_realized_wr": 0.4,
+      "identities": [
+        [
+          1,
+          1787681
+        ],
+        [
+          1,
+          2014197
+        ],
+        [
+          1,
+          2032036
+        ],
+        [
+          1,
+          2032057
+        ],
+        [
+          1,
+          2033463
+        ],
+        [
+          1,
+          2096363
+        ],
+        [
+          1,
+          2173543
+        ],
+        [
+          1,
+          2173575
+        ],
+        [
+          2,
+          2318376
+        ],
+        [
+          3,
+          3090772
+        ],
+        [
+          3,
+          3101348
+        ],
+        [
+          3,
+          3468547
+        ],
+        [
+          3,
+          3472900
+        ],
+        [
+          3,
+          3486460
+        ],
+        [
+          3,
+          3513196
+        ],
+        [
+          3,
+          3523166
+        ],
+        [
+          3,
+          3529568
+        ],
+        [
+          3,
+          3541324
+        ],
+        [
+          3,
+          3600414
+        ],
+        [
+          3,
+          3603207
+        ],
+        [
+          3,
+          3610080
+        ],
+        [
+          3,
+          3616846
+        ],
+        [
+          3,
+          3622316
+        ],
+        [
+          3,
+          3662302
+        ],
+        [
+          3,
+          3711653
+        ]
+      ],
+      "new_secondary_entries_executed": 78,
+      "new_primary_entries_executed": 1,
+      "secondary_wins": 41,
+      "secondary_losses": 37,
+      "secondary_realized_wr": 0.5256410256410257,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 23,
+        "displaced_primary_wins": 9,
+        "displaced_primary_losses": 14,
+        "displaced_primary_realized_wr": 0.391304347826087,
+        "identities": [
+          [
+            1,
+            1787681
+          ],
+          [
+            1,
+            2014197
+          ],
+          [
+            1,
+            2032036
+          ],
+          [
+            1,
+            2032057
+          ],
+          [
+            1,
+            2033463
+          ],
+          [
+            1,
+            2096363
+          ],
+          [
+            1,
+            2173575
+          ],
+          [
+            2,
+            2318376
+          ],
+          [
+            3,
+            3090772
+          ],
+          [
+            3,
+            3101348
+          ],
+          [
+            3,
+            3468547
+          ],
+          [
+            3,
+            3472900
+          ],
+          [
+            3,
+            3513196
+          ],
+          [
+            3,
+            3523166
+          ],
+          [
+            3,
+            3529568
+          ],
+          [
+            3,
+            3541324
+          ],
+          [
+            3,
+            3600414
+          ],
+          [
+            3,
+            3603207
+          ],
+          [
+            3,
+            3610080
+          ],
+          [
+            3,
+            3616846
+          ],
+          [
+            3,
+            3622316
+          ],
+          [
+            3,
+            3662302
+          ],
+          [
+            3,
+            3711653
+          ]
+        ]
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 2,
+        "displaced_primary_wins": 1,
+        "displaced_primary_losses": 1,
+        "displaced_primary_realized_wr": 0.5,
+        "identities": [
+          [
+            1,
+            2173543
+          ],
+          [
+            3,
+            3486460
+          ]
+        ]
+      }
+    }
+  },
+  "slice_boundaries": {
+    "2018_2020": [
+      [
+        "2018-01-01T00:00:00",
+        "2021-01-01T00:00:00"
+      ]
+    ],
+    "2021_2022": [
+      [
+        "2021-01-01T00:00:00",
+        "2023-01-01T00:00:00"
+      ]
+    ],
+    "2023_2024": [
+      [
+        "2023-01-01T00:00:00",
+        "2025-01-01T00:00:00"
+      ]
+    ],
+    "2018_2020_H1": [
+      [
+        "2018-01-01T00:00:00",
+        "2019-07-03T00:00:00"
+      ]
+    ],
+    "2018_2020_H2": [
+      [
+        "2019-07-03T00:00:00",
+        "2021-01-01T00:00:00"
+      ]
+    ],
+    "2021_2022_H1": [
+      [
+        "2021-01-01T00:00:00",
+        "2022-01-01T00:00:00"
+      ]
+    ],
+    "2021_2022_H2": [
+      [
+        "2022-01-01T00:00:00",
+        "2023-01-01T00:00:00"
+      ]
+    ],
+    "2023_2024_H1": [
+      [
+        "2023-01-01T00:00:00",
+        "2024-01-01T12:00:00"
+      ]
+    ],
+    "2023_2024_H2": [
+      [
+        "2024-01-01T12:00:00",
+        "2025-01-01T00:00:00"
+      ]
+    ],
+    "ALL_EARLY": [
+      [
+        "2018-01-01T00:00:00",
+        "2019-07-03T00:00:00"
+      ],
+      [
+        "2021-01-01T00:00:00",
+        "2022-01-01T00:00:00"
+      ],
+      [
+        "2023-01-01T00:00:00",
+        "2024-01-01T12:00:00"
+      ]
+    ],
+    "ALL_LATE": [
+      [
+        "2019-07-03T00:00:00",
+        "2021-01-01T00:00:00"
+      ],
+      [
+        "2022-01-01T00:00:00",
+        "2023-01-01T00:00:00"
+      ],
+      [
+        "2024-01-01T12:00:00",
+        "2025-01-01T00:00:00"
+      ]
+    ],
+    "pooled": [
+      [
+        "2018-01-01T00:00:00",
+        "2021-01-01T00:00:00"
+      ],
+      [
+        "2021-01-01T00:00:00",
+        "2023-01-01T00:00:00"
+      ],
+      [
+        "2023-01-01T00:00:00",
+        "2025-01-01T00:00:00"
+      ]
+    ]
+  },
+  "confirmation": {
+    "confirmation_primary_pass": true,
+    "confirmation_supportive": true,
+    "confirmation_strong": false,
+    "checks": {
+      "pooled_wr_improves": true,
+      "pooled_frequency_improves": true,
+      "original_guardrails": true,
+      "four_of_six_halves": true,
+      "early_not_both_worse": true,
+      "late_not_both_worse": true,
+      "R1_EXTRA_COST": true,
+      "R2_EXTRA_COST": true
+    },
+    "guardrail_failures": [],
+    "nonnegative_half_count": 4
+  },
+  "selected_candidate": null,
+  "production_promotion_requested": false,
+  "classification": "historical_development_robustness_only; same previously inspected intervals, not independent untouched evidence",
+  "deterministic_discovery_equivalence": {
+    "fold1": {
+      "train_indices": true,
+      "score_indices": true,
+      "subset_indices": true,
+      "subset_target": true,
+      "sample_weight": true,
+      "b0_train": true,
+      "b0_score": true,
+      "secondary_score": true,
+      "training_config": true
+    },
+    "fold2": {
+      "train_indices": true,
+      "score_indices": true,
+      "subset_indices": true,
+      "subset_target": true,
+      "sample_weight": true,
+      "b0_train": true,
+      "b0_score": true,
+      "secondary_score": true,
+      "training_config": true
+    },
+    "fold3": {
+      "train_indices": true,
+      "score_indices": true,
+      "subset_indices": true,
+      "subset_target": true,
+      "sample_weight": true,
+      "b0_train": true,
+      "b0_score": true,
+      "secondary_score": true,
+      "training_config": true
+    }
+  }
+}

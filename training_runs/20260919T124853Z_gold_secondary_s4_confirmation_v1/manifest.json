@@ -1,0 +1,653 @@
+{
+  "schema_version": 1,
+  "run_id": "20260919T124853Z_gold_secondary_s4_confirmation_v1",
+  "experiment_name": "gold_secondary_s4_confirmation_v1",
+  "status": "research_only",
+  "started_at_utc": "2026-09-19T12:48:53.414579Z",
+  "finished_at_utc": "2026-09-19T14:08:25.602566Z",
+  "git_commit": "d38faea0b7b88adf3f46b5dbd786a1f8f27acda9",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\gold_secondary_s4_confirmation_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "d1b1ea629c4d31a61762042f1c541606d74bbaf4bbb1eb0fea49e1ed06402af1",
+  "exact_command": ".\\.venv\\Scripts\\python.exe -B .\\gold_secondary_s4_confirmation_v1.py --run-dir TRAINING_RUN_DIR",
+  "arguments": [],
+  "random_seeds": {
+    "secondary": 42
+  },
+  "random_seed_note": "Fresh isolated CPU single-thread confirmation fits",
+  "data": {
+    "symbols": [
+      "GOLD#",
+      "CFTC GOLD 088691"
+    ],
+    "data_sources": [
+      "Frozen GOLD reconstruction and exact archived C1 target; B0 residual training subset"
+    ],
+    "source_files": [
+      {
+        "path": "training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/FINALIZED.json",
+        "sha256": "eb02be533679e33492351c753d731483724ec24248b8c7ac7915ee1d74b42add",
+        "retention_status": "retained_in_prior_finalized_run"
+      },
+      {
+        "path": "training_runs/20260909T140906Z_gemini_us_treasury_real_rate_b0_b1_v1/FINALIZED.json",
+        "sha256": "2ad4d82996ddef30e1b2c3285754bb3e81ff8f838600a8a3faa2bcedd3376ec7",
+        "retention_status": "retained_in_prior_finalized_run"
+      },
+      {
+        "path": "training_runs/20260905T171629Z_gemini_macro_event_integration_foundation_v1/FINALIZED.json",
+        "sha256": "7bd7bf7845fd2c21dce66a1026b9a090fece296792286ccf4a918fac7b7cf4ab",
+        "retention_status": "retained_in_prior_finalized_run"
+      },
+      {
+        "path": "training_runs/20260912T171048Z_gemini_cftc_gold_cot_foundation_v1/FINALIZED.json",
+        "sha256": "0f840fd9330bac98bbfd2d1812718ec7aa8016ee47e7b1f39ed8a497a83e8935",
+        "retention_status": "retained_in_prior_finalized_run"
+      }
+    ],
+    "timezone": "frozen C1 broker/API semantics; CFTC certified causal availability",
+    "data_start_utc": "2016-06-30T21:00:00Z",
+    "data_end_utc": "2024-12-31T20:00:00Z",
+    "train_start_utc": "2016-07-01T00:00:00",
+    "train_end_utc": "2022-12-30T19:57:00",
+    "train_rows": 1594733,
+    "validation_start_utc": "2018-01-02T00:00:00",
+    "validation_end_utc": "2024-12-31T20:00:00",
+    "validation_rows": 2474297,
+    "test_start_utc": "not_applicable_historical_development_comparison",
+    "test_end_utc": "not_applicable_historical_development_comparison",
+    "test_rows": 0,
+    "purge_details": "same strict C1 parent maturity rules",
+    "embargo_details": "same as C1 parent",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "Frozen reconstructed X/y/timestamps and finalized CFTC source; local GOLD CSVs not duplicated",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "Historical GOLD CSVs were repository-local frozen source exports; no MT5 API fetch was performed in this archival reproduction."
+    },
+    "full_frozen_train_rows": 1596361,
+    "secondary_training_rows_by_fold": {
+      "2018_2020": 529045,
+      "2021_2022": 532395,
+      "2023_2024": 533293
+    }
+  },
+  "model": {
+    "trained": true,
+    "model_type": "three fold-isolated XGBoost residual specialists; last fold is archival identity only",
+    "parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist",
+      "device": "cpu",
+      "n_jobs": 1,
+      "verbosity": 0,
+      "booster": "gbtree",
+      "max_bin": 256,
+      "reg_alpha": 0.0,
+      "reg_lambda": 1.0,
+      "gamma": 0.0,
+      "max_delta_step": 0.0,
+      "scale_pos_weight": 1.0,
+      "base_score": null,
+      "colsample_bylevel": 1.0,
+      "colsample_bynode": 1.0,
+      "grow_policy": "depthwise",
+      "max_leaves": 0,
+      "sampling_method": "uniform",
+      "validate_parameters": true
+    },
+    "boosted_rounds_or_estimators": 220,
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H12_TREND",
+      "H1_TREND",
+      "H2_TREND",
+      "H3_TREND",
+      "H4_TREND",
+      "H6_TREND",
+      "H8_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND",
+      "Monthly_TREND",
+      "Weekly_TREND"
+    ],
+    "feature_count": 31,
+    "label_definition": "Exact archived C1 standalone S5 net realized R > 0; zero/nonpositive maps to 0",
+    "horizon": {
+      "C0_rows": 240,
+      "C1_wall_clock_minutes": 90
+    },
+    "label_tp_sl_semantics": "C0 existing 240-row clean-window 1.8/1.2 ATR label; C1 next-open, entry-bar HIGH/LOW stop-first, 1.3/1.6 ATR, 90 wall-clock minutes, observed/fallback spread plus configured costs",
+    "execution_tp_sl_semantics": "exact preserved S5 implementation for both C0 and C1",
+    "calibration_method": "none",
+    "artifact_path": "models/secondary_2023_2024.json",
+    "artifact_sha256": "e60e6808aabecc94d24d563a1e1c9b5151e3dbdb3f6362367a9d7c334a145141",
+    "retention_status": "stored_in_run_directory",
+    "fold_model_inventory": "model_inventory.json",
+    "fold_models_trained": 3
+  },
+  "search": {
+    "performed": false,
+    "not_applicable_reason": "Only baseline and fixed predeclared S4; no tuning",
+    "candidate_results_file": "candidates.csv",
+    "predefined_candidates": [
+      {
+        "candidate_id": "A0_BASELINE_075",
+        "secondary_threshold": null
+      },
+      {
+        "candidate_id": "S4_CONFIRMATION",
+        "secondary_threshold": 0.75
+      }
+    ]
+  },
+  "registry": {
+    "parent_or_incumbent": "20260915T151723Z_gold_independent_secondary_classifier_v1",
+    "selected_configuration": "confirmation SUPPORTIVE; S4_CONFIRMATION fixed threshold=0.75; confirmation_primary_pass=true; confirmation_supportive=true; confirmation_strong=false; historical development robustness only; not untouched promotion evidence; no candidate selected for production; no production promotion; no production change",
+    "validator_result": "methodology/provenance PASS; independent validator PASS",
+    "trades_per_day": "see candidates.csv",
+    "realized_win_rate": "see candidates.csv",
+    "pf": "see candidates.csv",
+    "mean_r": "see candidates.csv",
+    "pnl": "see candidates.csv",
+    "max_dd": "see candidates.csv"
+  },
+  "promotion": {
+    "requested": false,
+    "replacement_authorized": false,
+    "operational_artifact_changed": false,
+    "gate_result": "research_only"
+  },
+  "artifacts": [
+    {
+      "path": "baseline_reproduction.json",
+      "sha256": "f0f57f605011b9b2d59598137db1b8a56b2e9c41597ba84613ecde066f1dbf3c",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "candidates.csv",
+      "sha256": "76d1dfaf709328b0e2832427eacb1afa1f06c2c99161566c5dd4730627153765",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "displacement_metrics.json",
+      "sha256": "e36c4779ff01c2b8b26b6977f802f3d28239b33f847cad3b7d43af52119cfc89",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "environment.txt",
+      "sha256": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "execution_spec.json",
+      "sha256": "4b760c746c48a48cedd431af51721d6683674770f8cf0d76ffded086171770d4",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "fold_metrics.csv",
+      "sha256": "a7edd4eddd7d168e90304ac47761b3c433a1ac266919080c4d97cf92af8e8d8b",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "identity_audit.json",
+      "sha256": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "8c5db099635b5b80ac1416212b1bbc2485ef4578d83f7cb2f5d02f1fe90d798f",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "model.sha256",
+      "sha256": "870dff2e23f552e084a15d1f1f3c6c596317de4c345890a613273a536249c72b",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "model_inventory.json",
+      "sha256": "a0a9c57916d1c8f350ccb6c497dbfc5b97e8dadfab4a0ecb3fbbd82bfcecbe8d",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "models/secondary_2018_2020.json",
+      "sha256": "5ac89e6c565f495a3b669bb47ca3d6e935c96c8a4641416db11f4d54339ce444",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "models/secondary_2021_2022.json",
+      "sha256": "5b0802f2560f6e4d74d44c6f342ccca93517f6d320bf3e5f9b8defce6f9ea44f",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "models/secondary_2023_2024.json",
+      "sha256": "e60e6808aabecc94d24d563a1e1c9b5151e3dbdb3f6362367a9d7c334a145141",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "operational_safety_post.json",
+      "sha256": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "operational_safety_pre.json",
+      "sha256": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "report.md",
+      "sha256": "804d1e468c229f614e9313f2d14e1430fe01c9a09c15b8b67016daf8ac114e21",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "robustness_slices.csv",
+      "sha256": "1cd7e9c8d5ead01ebfd8d1fe1504efb751af0fff69ca216dcd38e65a2c370b8e",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "secondary_evidence.npz",
+      "sha256": "ba4aa800cff95a812dc6f64dbd7d26d9c652cf4dd000b5c99d8c2d784135b077",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "source_provenance.json",
+      "sha256": "d1f2706b0dd5c44c317456b0703b322b938235fc319bccbc478c1ee61da849fb",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "stress_metrics.csv",
+      "sha256": "a2b03c3d382b8a3d035754c6f4e6d63e2e95e04d914a21d7dadf8b88aada5097",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "trade_ledger.csv",
+      "sha256": "7aa5190a16ff2ab355fb8151b92f95923ba387b1cae3a849f548e902e3e56414",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "training_script.py",
+      "sha256": "d1b1ea629c4d31a61762042f1c541606d74bbaf4bbb1eb0fea49e1ed06402af1",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "validator_script.py",
+      "sha256": "64a97c2963ed75e36f7ade70b0e49f76ac707bac31e194ffa5ab36347c6d4e07",
+      "kind": "research_evidence",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "validator_attempt.json",
+      "sha256": "8bbf518acf24a0442cd22456b5e7befea69e1dda952af2bcd8b0f09bbc66e30f",
+      "kind": "independent_validator",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "validator.json",
+      "sha256": "c0dd12a871fba975bb454743d7de1507fe4efb5b6b76629ebe25cb882f44858f",
+      "kind": "independent_validator",
+      "retention_status": "stored_in_run_directory"
+    },
+    {
+      "path": "validator.md",
+      "sha256": "5b203d9546f850ed45f7ef312a3417a82e8216b575770f29f6cab6e0efe1d19e",
+      "kind": "independent_validator",
+      "retention_status": "stored_in_run_directory"
+    }
+  ],
+  "aborted_reason": null,
+  "archival_conclusion": {
+    "methodology_provenance": "PASS",
+    "independent_validator": "PASS",
+    "confirmation_result": "SUPPORTIVE",
+    "confirmation_primary_pass": true,
+    "confirmation_supportive": true,
+    "confirmation_strong": false,
+    "confirmed_configuration": "S4_CONFIRMATION",
+    "fixed_threshold": 0.75,
+    "primary_entry": "B0 probability >= 0.75",
+    "secondary_entry": "B0 probability < 0.75 AND secondary specialist probability >= 0.75",
+    "threshold_tuning": false,
+    "evidence_scope": "historical development robustness only",
+    "untouched_promotion_evidence": false,
+    "selected_candidate_for_production": null,
+    "production_promotion": false,
+    "production_change": false,
+    "confirmation_evidence": {
+      "confirmation_primary_pass": true,
+      "confirmation_supportive": true,
+      "confirmation_strong": false,
+      "checks": {
+        "pooled_wr_improves": true,
+        "pooled_frequency_improves": true,
+        "original_guardrails": true,
+        "four_of_six_halves": true,
+        "early_not_both_worse": true,
+        "late_not_both_worse": true,
+        "R1_EXTRA_COST": true,
+        "R2_EXTRA_COST": true
+      },
+      "guardrail_failures": [],
+      "nonnegative_half_count": 4
+    },
+    "pooled_execution_decomposition": {
+      "baseline_trade_count": 689,
+      "s4_trade_count": 743,
+      "baseline_primary_entries_retained": 664,
+      "baseline_primary_entries_displaced": 25,
+      "displaced_primary_wins": 10,
+      "displaced_primary_losses": 15,
+      "displaced_primary_realized_wr": 0.4,
+      "identities": [
+        [
+          1,
+          1787681
+        ],
+        [
+          1,
+          2014197
+        ],
+        [
+          1,
+          2032036
+        ],
+        [
+          1,
+          2032057
+        ],
+        [
+          1,
+          2033463
+        ],
+        [
+          1,
+          2096363
+        ],
+        [
+          1,
+          2173543
+        ],
+        [
+          1,
+          2173575
+        ],
+        [
+          2,
+          2318376
+        ],
+        [
+          3,
+          3090772
+        ],
+        [
+          3,
+          3101348
+        ],
+        [
+          3,
+          3468547
+        ],
+        [
+          3,
+          3472900
+        ],
+        [
+          3,
+          3486460
+        ],
+        [
+          3,
+          3513196
+        ],
+        [
+          3,
+          3523166
+        ],
+        [
+          3,
+          3529568
+        ],
+        [
+          3,
+          3541324
+        ],
+        [
+          3,
+          3600414
+        ],
+        [
+          3,
+          3603207
+        ],
+        [
+          3,
+          3610080
+        ],
+        [
+          3,
+          3616846
+        ],
+        [
+          3,
+          3622316
+        ],
+        [
+          3,
+          3662302
+        ],
+        [
+          3,
+          3711653
+        ]
+      ],
+      "new_secondary_entries_executed": 78,
+      "new_primary_entries_executed": 1,
+      "secondary_wins": 41,
+      "secondary_losses": 37,
+      "secondary_realized_wr": 0.5256410256410257,
+      "occupancy_displacement": {
+        "baseline_primary_entries_displaced": 23,
+        "displaced_primary_wins": 9,
+        "displaced_primary_losses": 14,
+        "displaced_primary_realized_wr": 0.391304347826087,
+        "identities": [
+          [
+            1,
+            1787681
+          ],
+          [
+            1,
+            2014197
+          ],
+          [
+            1,
+            2032036
+          ],
+          [
+            1,
+            2032057
+          ],
+          [
+            1,
+            2033463
+          ],
+          [
+            1,
+            2096363
+          ],
+          [
+            1,
+            2173575
+          ],
+          [
+            2,
+            2318376
+          ],
+          [
+            3,
+            3090772
+          ],
+          [
+            3,
+            3101348
+          ],
+          [
+            3,
+            3468547
+          ],
+          [
+            3,
+            3472900
+          ],
+          [
+            3,
+            3513196
+          ],
+          [
+            3,
+            3523166
+          ],
+          [
+            3,
+            3529568
+          ],
+          [
+            3,
+            3541324
+          ],
+          [
+            3,
+            3600414
+          ],
+          [
+            3,
+            3603207
+          ],
+          [
+            3,
+            3610080
+          ],
+          [
+            3,
+            3616846
+          ],
+          [
+            3,
+            3622316
+          ],
+          [
+            3,
+            3662302
+          ],
+          [
+            3,
+            3711653
+          ]
+        ]
+      },
+      "nonoccupancy_displacement": {
+        "baseline_primary_entries_displaced": 2,
+        "displaced_primary_wins": 1,
+        "displaced_primary_losses": 1,
+        "displaced_primary_realized_wr": 0.5,
+        "identities": [
+          [
+            1,
+            2173543
+          ],
+          [
+            3,
+            3486460
+          ]
+        ]
+      }
+    },
+    "runner_rerun": false,
+    "independent_validator_rerun": false,
+    "original_artifact_sha256": {
+      "baseline_reproduction.json": "f0f57f605011b9b2d59598137db1b8a56b2e9c41597ba84613ecde066f1dbf3c",
+      "candidates.csv": "76d1dfaf709328b0e2832427eacb1afa1f06c2c99161566c5dd4730627153765",
+      "displacement_metrics.json": "e36c4779ff01c2b8b26b6977f802f3d28239b33f847cad3b7d43af52119cfc89",
+      "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "execution_spec.json": "4b760c746c48a48cedd431af51721d6683674770f8cf0d76ffded086171770d4",
+      "fold_metrics.csv": "a7edd4eddd7d168e90304ac47761b3c433a1ac266919080c4d97cf92af8e8d8b",
+      "identity_audit.json": "89f37c919a3ebf3152fb329e29e02d7b99e9354215b1711e83b274133c20dfc8",
+      "manifest.json": "f3a0026f812fe94ccca77c5804bafa27064ffc083d56941facea8fd301f97ba4",
+      "metrics.json": "8c5db099635b5b80ac1416212b1bbc2485ef4578d83f7cb2f5d02f1fe90d798f",
+      "model.sha256": "870dff2e23f552e084a15d1f1f3c6c596317de4c345890a613273a536249c72b",
+      "model_inventory.json": "a0a9c57916d1c8f350ccb6c497dbfc5b97e8dadfab4a0ecb3fbbd82bfcecbe8d",
+      "operational_safety_post.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "operational_safety_pre.json": "3c43f0799fd0b91a6061532bf85888af1322e48da05a2982233a1ae2e20f386d",
+      "report.md": "804d1e468c229f614e9313f2d14e1430fe01c9a09c15b8b67016daf8ac114e21",
+      "robustness_slices.csv": "1cd7e9c8d5ead01ebfd8d1fe1504efb751af0fff69ca216dcd38e65a2c370b8e",
+      "secondary_evidence.npz": "ba4aa800cff95a812dc6f64dbd7d26d9c652cf4dd000b5c99d8c2d784135b077",
+      "source_provenance.json": "d1f2706b0dd5c44c317456b0703b322b938235fc319bccbc478c1ee61da849fb",
+      "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stress_metrics.csv": "a2b03c3d382b8a3d035754c6f4e6d63e2e95e04d914a21d7dadf8b88aada5097",
+      "trade_ledger.csv": "7aa5190a16ff2ab355fb8151b92f95923ba387b1cae3a849f548e902e3e56414",
+      "training_script.py": "d1b1ea629c4d31a61762042f1c541606d74bbaf4bbb1eb0fea49e1ed06402af1",
+      "validator.json": "c0dd12a871fba975bb454743d7de1507fe4efb5b6b76629ebe25cb882f44858f",
+      "validator.md": "5b203d9546f850ed45f7ef312a3417a82e8216b575770f29f6cab6e0efe1d19e",
+      "validator_attempt.json": "8bbf518acf24a0442cd22456b5e7befea69e1dda952af2bcd8b0f09bbc66e30f",
+      "validator_script.py": "64a97c2963ed75e36f7ade70b0e49f76ac707bac31e194ffa5ab36347c6d4e07",
+      "models/secondary_2018_2020.json": "5ac89e6c565f495a3b669bb47ca3d6e935c96c8a4641416db11f4d54339ce444",
+      "models/secondary_2021_2022.json": "5b0802f2560f6e4d74d44c6f342ccca93517f6d320bf3e5f9b8defce6f9ea44f",
+      "models/secondary_2023_2024.json": "e60e6808aabecc94d24d563a1e1c9b5151e3dbdb3f6362367a9d7c334a145141"
+    }
+  }
+}

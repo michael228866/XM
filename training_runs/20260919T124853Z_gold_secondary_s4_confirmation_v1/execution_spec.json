@@ -1,0 +1,251 @@
+{
+  "experiment": "gold_secondary_s4_confirmation_v1",
+  "discovery_run": "20260915T151723Z_gold_independent_secondary_classifier_v1",
+  "discovery_finalized_sha256": "522b9a8f477e23a79a9200905667b386747bb4fc9e7e40c66a2bdadd4ba19f4f",
+  "discovery_execution_spec_sha256": "3b62782d72ef5add4d13ae304338bbb7070be05864c8dc35212a3d5a2d175064",
+  "discovery_source_commit": "53eaa028f6ed18fd436204418245f075ebb90c87",
+  "candidates": [
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "secondary_threshold": null
+    },
+    {
+      "candidate_id": "S4_CONFIRMATION",
+      "secondary_threshold": 0.75
+    }
+  ],
+  "primary_threshold": 0.75,
+  "secondary_threshold": 0.75,
+  "gate": "B0 >= 0.75 OR (B0 < 0.75 AND secondary >= 0.75); no overlap",
+  "parameters": {
+    "objective": "binary:logistic",
+    "n_estimators": 220,
+    "learning_rate": 0.05,
+    "max_depth": 4,
+    "min_child_weight": 80,
+    "subsample": 0.85,
+    "colsample_bytree": 0.85,
+    "random_state": 42,
+    "tree_method": "hist",
+    "device": "cpu",
+    "n_jobs": 1,
+    "verbosity": 0,
+    "booster": "gbtree",
+    "max_bin": 256,
+    "reg_alpha": 0.0,
+    "reg_lambda": 1.0,
+    "gamma": 0.0,
+    "max_delta_step": 0.0,
+    "scale_pos_weight": 1.0,
+    "base_score": null,
+    "colsample_bylevel": 1.0,
+    "colsample_bynode": 1.0,
+    "grow_policy": "depthwise",
+    "max_leaves": 0,
+    "sampling_method": "uniform",
+    "validate_parameters": true
+  },
+  "xgboost_version": "3.2.0",
+  "features": [
+    "M1_RSI",
+    "ATR",
+    "MACD_HIST",
+    "BB_WIDTH",
+    "BIAS_20",
+    "BODY_PCT",
+    "ROC_5",
+    "VOLA_RATIO",
+    "HOUR_SIN",
+    "HOUR_COS",
+    "DAY_OF_WEEK",
+    "Daily_TREND",
+    "H12_TREND",
+    "H1_TREND",
+    "H2_TREND",
+    "H3_TREND",
+    "H4_TREND",
+    "H6_TREND",
+    "H8_TREND",
+    "M10_TREND",
+    "M12_TREND",
+    "M15_TREND",
+    "M20_TREND",
+    "M2_TREND",
+    "M30_TREND",
+    "M3_TREND",
+    "M4_TREND",
+    "M5_TREND",
+    "M6_TREND",
+    "Monthly_TREND",
+    "Weekly_TREND"
+  ],
+  "sample_weight": "subset N / (2 * subset class count); both classes required",
+  "fit_input": "31 named float32 columns in frozen order; int8 C1 target; float64 weights; no eval_set, calibration, early stopping, warm start or search",
+  "seed": 42,
+  "model_count": 3,
+  "folds": [
+    [
+      "2018_2020",
+      "2018-01-01",
+      "2021-01-01"
+    ],
+    [
+      "2021_2022",
+      "2021-01-01",
+      "2023-01-01"
+    ],
+    [
+      "2023_2024",
+      "2023-01-01",
+      "2025-01-01"
+    ]
+  ],
+  "train_window_months": 18,
+  "feature_matrix_sha256": {
+    "fold1_train": "14999ac58c67bff25d7977d63a80f6069dde0256752a20a9dee936c022db69cb",
+    "fold1_score": "3c6eb5d77182428306f059e9a7d7607d1a4b5de2e5cc5217d9099e74c85e0316",
+    "fold2_train": "c921f11aaa44799dc798a1b54d6a745bb636b678be1212d17ba33e046acc0ac4",
+    "fold2_score": "fd77cdad26894c813e9fba0deb77ed1a5fdcaaffceaad45488da9a2015f11c36",
+    "fold3_train": "64124692d42cdb077fdfff1d5cf9df26582c025ed738608168b02cfa1cb42470",
+    "fold3_score": "2b55883b3410e9613983b8cebfbe1e2ea7a47daa33f44a7df535c0a5b083e717"
+  },
+  "c1_target_sha256": {
+    "fold1_train": "d9bed87a073fd93c048b5a1ab8f0f7049f1a1bb8f3ff46f48a102c0b6763bbd3",
+    "fold2_train": "ff55356e8bdf1cb2cd5add50690156178ff32bc17f666f2103c8f51397fb3a12",
+    "fold3_train": "cd05d3647cd88a2fbd2b89fa3362ed5e2f9f13cbd611dee436f0e03e4a054259"
+  },
+  "blocks": {
+    "fold1_train": [
+      530218,
+      "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6"
+    ],
+    "fold1_score": [
+      1058080,
+      "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94"
+    ],
+    "fold2_train": [
+      532563,
+      "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44"
+    ],
+    "fold2_score": [
+      708197,
+      "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8"
+    ],
+    "fold3_train": [
+      533580,
+      "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b"
+    ],
+    "fold3_score": [
+      708020,
+      "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449"
+    ]
+  },
+  "b0_models": [
+    {
+      "candidate_id": "B0_31_technical",
+      "fold": "2018_2020",
+      "path": "models/B0_31_technical_2018_2020_xgb.json",
+      "sha256": "5eca73587d840b91117f096eaefe84c1538fb2920d7840bb1ec374dd170ea914"
+    },
+    {
+      "candidate_id": "B0_31_technical",
+      "fold": "2021_2022",
+      "path": "models/B0_31_technical_2021_2022_xgb.json",
+      "sha256": "744026a3a6e17f2465cc3850601f8efd65b75cdc1b35fa5e1572aa82f0012dc7"
+    },
+    {
+      "candidate_id": "B0_31_technical",
+      "fold": "2023_2024",
+      "path": "models/B0_31_technical_2023_2024_xgb.json",
+      "sha256": "67ca6ce4dd095ee3b314eeddb60bf78fc9081ee35d85bb88efc21dbc98793113"
+    }
+  ],
+  "baseline": {
+    "trades": 689,
+    "realized_wr": 0.5660377358490566,
+    "pf": 0.8247098331219882,
+    "mean_r": -0.07690539315994348,
+    "pnl_r": -52.98781588720106,
+    "cost_stress_pf": 0.7838186120438296,
+    "wins": 390,
+    "losses": 299,
+    "max_dd_r": -59.57958015890608,
+    "trades_per_day": 0.26945639421196715
+  },
+  "baseline_abs_tolerance": 1e-12,
+  "discovery_reference": {
+    "trades": 743,
+    "wins": 421,
+    "losses": 322,
+    "realized_wr": 0.566621803499327,
+    "trades_per_day": 0.2905748924520923,
+    "pf": 0.8271090428367022,
+    "mean_r": -0.07580700838089183,
+    "cost_stress_pf": 0.7857575699558063,
+    "delta_wr": 0.0005840676502704145,
+    "delta_trades_per_day": 0.021118498240125128,
+    "frequency_uplift_pct": 7.837445573294621
+  },
+  "slices": {
+    "midpoint": "start + (end_exclusive - start) / 2; nanosecond calendar arithmetic only",
+    "bounds": "start inclusive, end exclusive; midpoint belongs to H2",
+    "trade_assignment": "entry time; full completed-trade return; no reset, refit or slice-specific execution",
+    "denominator": "exact elapsed seconds / 86400; disjoint interval durations summed; no integer-day truncation",
+    "ALL_EARLY": "union of the three H1 intervals",
+    "ALL_LATE": "union of the three H2 intervals",
+    "drawdown": "cumulative returns of selected trades in original chronological ledger order, starting at zero"
+  },
+  "trade_identity": [
+    "score_fold",
+    "source_entry_index"
+  ],
+  "displacement": {
+    "retained": "baseline primary identity also executes as primary in S4",
+    "displaced": "baseline primary identity absent from S4",
+    "occupancy": "S4 position open before entry phase: entry_index < row <= exit_index, except timeout exit_index excluded because timeout closes before eligibility",
+    "occupancy_attribution": "observed occupying position, not exclusive causal attribution; risk state can differ too",
+    "accounting": "s4_count - baseline_count = new_secondary + new_primary - displaced",
+    "report": "all missing identities plus occupancy subset and remaining nonoccupancy subset; each with wins/losses/WR"
+  },
+  "stress_scenarios": {
+    "R0_STANDARD": 0.0,
+    "R1_EXTRA_COST": 0.01,
+    "R2_EXTRA_COST": 0.02
+  },
+  "stress_semantics": "post-trade net_r minus fixed R cost; wins iff stressed net_r > 0; recompute all economics; never rerun entries or risk state for stress",
+  "guardrails": {
+    "pooled": {
+      "pf": 0.8,
+      "mean_r": -0.10690539315994348,
+      "cost_stress_pf": 0.75
+    },
+    "fold": {
+      "trades": 10,
+      "realized_wr": 0.45,
+      "pf": 0.7
+    }
+  },
+  "confirmation_gates": {
+    "pooled_delta_wr_strict_min": 0.0,
+    "pooled_delta_trades_per_day_strict_min": 0.0,
+    "all_frozen_guardrails": true,
+    "half_fold_nonnegative_both_min_count": 4,
+    "ALL_EARLY_not_both_negative": true,
+    "ALL_LATE_not_both_negative": true,
+    "R1_s4_pf_min_relative_to_a0": -0.03,
+    "R2_s4_pf_min_relative_to_a0": -0.05
+  },
+  "confirmation_supportive": "confirmation_primary_pass",
+  "confirmation_strong": {
+    "requires_primary_pass": true,
+    "pooled_realized_wr_min": 0.58,
+    "pooled_trades_per_day_min": 0.4
+  },
+  "refit": "fresh CPU single-thread model for each frozen train subset; confirmation arrays always generated by fresh models",
+  "determinism": "exact subset/target/config identities and numerical prediction array equality expected; compare discovery arrays only after fresh predictions; never require fresh model file hash equality with discovery",
+  "execution": "exact frozen S5 continuous across combined score folds per candidate; only entry gate and its derived episode IDs change",
+  "selected_candidate": null,
+  "production_promotion": false,
+  "classification": "historical_development_robustness_only; same previously inspected intervals, not independent untouched evidence",
+  "validator": "independent of new runner; one-shot marker before checks; fresh deterministic verification fits; no retry"
+}

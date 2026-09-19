@@ -1,0 +1,1176 @@
+{
+  "2018_2020": {
+    "baseline_trade_count": 498,
+    "s4_trade_count": 512,
+    "baseline_primary_entries_retained": 490,
+    "baseline_primary_entries_displaced": 8,
+    "displaced_primary_wins": 1,
+    "displaced_primary_losses": 7,
+    "displaced_primary_realized_wr": 0.125,
+    "identities": [
+      [
+        1,
+        1787681
+      ],
+      [
+        1,
+        2014197
+      ],
+      [
+        1,
+        2032036
+      ],
+      [
+        1,
+        2032057
+      ],
+      [
+        1,
+        2033463
+      ],
+      [
+        1,
+        2096363
+      ],
+      [
+        1,
+        2173543
+      ],
+      [
+        1,
+        2173575
+      ]
+    ],
+    "new_secondary_entries_executed": 22,
+    "new_primary_entries_executed": 0,
+    "secondary_wins": 9,
+    "secondary_losses": 13,
+    "secondary_realized_wr": 0.4090909090909091,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 7,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 6,
+      "displaced_primary_realized_wr": 0.14285714285714285,
+      "identities": [
+        [
+          1,
+          1787681
+        ],
+        [
+          1,
+          2014197
+        ],
+        [
+          1,
+          2032036
+        ],
+        [
+          1,
+          2032057
+        ],
+        [
+          1,
+          2033463
+        ],
+        [
+          1,
+          2096363
+        ],
+        [
+          1,
+          2173575
+        ]
+      ]
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 1,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 1,
+      "displaced_primary_realized_wr": 0.0,
+      "identities": [
+        [
+          1,
+          2173543
+        ]
+      ]
+    }
+  },
+  "2021_2022": {
+    "baseline_trade_count": 24,
+    "s4_trade_count": 25,
+    "baseline_primary_entries_retained": 23,
+    "baseline_primary_entries_displaced": 1,
+    "displaced_primary_wins": 1,
+    "displaced_primary_losses": 0,
+    "displaced_primary_realized_wr": 1.0,
+    "identities": [
+      [
+        2,
+        2318376
+      ]
+    ],
+    "new_secondary_entries_executed": 2,
+    "new_primary_entries_executed": 0,
+    "secondary_wins": 2,
+    "secondary_losses": 0,
+    "secondary_realized_wr": 1.0,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 1,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": 1.0,
+      "identities": [
+        [
+          2,
+          2318376
+        ]
+      ]
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 0,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": null,
+      "identities": []
+    }
+  },
+  "2023_2024": {
+    "baseline_trade_count": 167,
+    "s4_trade_count": 206,
+    "baseline_primary_entries_retained": 151,
+    "baseline_primary_entries_displaced": 16,
+    "displaced_primary_wins": 8,
+    "displaced_primary_losses": 8,
+    "displaced_primary_realized_wr": 0.5,
+    "identities": [
+      [
+        3,
+        3090772
+      ],
+      [
+        3,
+        3101348
+      ],
+      [
+        3,
+        3468547
+      ],
+      [
+        3,
+        3472900
+      ],
+      [
+        3,
+        3486460
+      ],
+      [
+        3,
+        3513196
+      ],
+      [
+        3,
+        3523166
+      ],
+      [
+        3,
+        3529568
+      ],
+      [
+        3,
+        3541324
+      ],
+      [
+        3,
+        3600414
+      ],
+      [
+        3,
+        3603207
+      ],
+      [
+        3,
+        3610080
+      ],
+      [
+        3,
+        3616846
+      ],
+      [
+        3,
+        3622316
+      ],
+      [
+        3,
+        3662302
+      ],
+      [
+        3,
+        3711653
+      ]
+    ],
+    "new_secondary_entries_executed": 54,
+    "new_primary_entries_executed": 1,
+    "secondary_wins": 30,
+    "secondary_losses": 24,
+    "secondary_realized_wr": 0.5555555555555556,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 15,
+      "displaced_primary_wins": 7,
+      "displaced_primary_losses": 8,
+      "displaced_primary_realized_wr": 0.4666666666666667,
+      "identities": [
+        [
+          3,
+          3090772
+        ],
+        [
+          3,
+          3101348
+        ],
+        [
+          3,
+          3468547
+        ],
+        [
+          3,
+          3472900
+        ],
+        [
+          3,
+          3513196
+        ],
+        [
+          3,
+          3523166
+        ],
+        [
+          3,
+          3529568
+        ],
+        [
+          3,
+          3541324
+        ],
+        [
+          3,
+          3600414
+        ],
+        [
+          3,
+          3603207
+        ],
+        [
+          3,
+          3610080
+        ],
+        [
+          3,
+          3616846
+        ],
+        [
+          3,
+          3622316
+        ],
+        [
+          3,
+          3662302
+        ],
+        [
+          3,
+          3711653
+        ]
+      ]
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 1,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": 1.0,
+      "identities": [
+        [
+          3,
+          3486460
+        ]
+      ]
+    }
+  },
+  "2018_2020_H1": {
+    "baseline_trade_count": 41,
+    "s4_trade_count": 45,
+    "baseline_primary_entries_retained": 41,
+    "baseline_primary_entries_displaced": 0,
+    "displaced_primary_wins": 0,
+    "displaced_primary_losses": 0,
+    "displaced_primary_realized_wr": null,
+    "identities": [],
+    "new_secondary_entries_executed": 4,
+    "new_primary_entries_executed": 0,
+    "secondary_wins": 2,
+    "secondary_losses": 2,
+    "secondary_realized_wr": 0.5,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 0,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": null,
+      "identities": []
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 0,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": null,
+      "identities": []
+    }
+  },
+  "2018_2020_H2": {
+    "baseline_trade_count": 457,
+    "s4_trade_count": 467,
+    "baseline_primary_entries_retained": 449,
+    "baseline_primary_entries_displaced": 8,
+    "displaced_primary_wins": 1,
+    "displaced_primary_losses": 7,
+    "displaced_primary_realized_wr": 0.125,
+    "identities": [
+      [
+        1,
+        1787681
+      ],
+      [
+        1,
+        2014197
+      ],
+      [
+        1,
+        2032036
+      ],
+      [
+        1,
+        2032057
+      ],
+      [
+        1,
+        2033463
+      ],
+      [
+        1,
+        2096363
+      ],
+      [
+        1,
+        2173543
+      ],
+      [
+        1,
+        2173575
+      ]
+    ],
+    "new_secondary_entries_executed": 18,
+    "new_primary_entries_executed": 0,
+    "secondary_wins": 7,
+    "secondary_losses": 11,
+    "secondary_realized_wr": 0.3888888888888889,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 7,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 6,
+      "displaced_primary_realized_wr": 0.14285714285714285,
+      "identities": [
+        [
+          1,
+          1787681
+        ],
+        [
+          1,
+          2014197
+        ],
+        [
+          1,
+          2032036
+        ],
+        [
+          1,
+          2032057
+        ],
+        [
+          1,
+          2033463
+        ],
+        [
+          1,
+          2096363
+        ],
+        [
+          1,
+          2173575
+        ]
+      ]
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 1,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 1,
+      "displaced_primary_realized_wr": 0.0,
+      "identities": [
+        [
+          1,
+          2173543
+        ]
+      ]
+    }
+  },
+  "2021_2022_H1": {
+    "baseline_trade_count": 10,
+    "s4_trade_count": 10,
+    "baseline_primary_entries_retained": 9,
+    "baseline_primary_entries_displaced": 1,
+    "displaced_primary_wins": 1,
+    "displaced_primary_losses": 0,
+    "displaced_primary_realized_wr": 1.0,
+    "identities": [
+      [
+        2,
+        2318376
+      ]
+    ],
+    "new_secondary_entries_executed": 1,
+    "new_primary_entries_executed": 0,
+    "secondary_wins": 1,
+    "secondary_losses": 0,
+    "secondary_realized_wr": 1.0,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 1,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": 1.0,
+      "identities": [
+        [
+          2,
+          2318376
+        ]
+      ]
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 0,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": null,
+      "identities": []
+    }
+  },
+  "2021_2022_H2": {
+    "baseline_trade_count": 14,
+    "s4_trade_count": 15,
+    "baseline_primary_entries_retained": 14,
+    "baseline_primary_entries_displaced": 0,
+    "displaced_primary_wins": 0,
+    "displaced_primary_losses": 0,
+    "displaced_primary_realized_wr": null,
+    "identities": [],
+    "new_secondary_entries_executed": 1,
+    "new_primary_entries_executed": 0,
+    "secondary_wins": 1,
+    "secondary_losses": 0,
+    "secondary_realized_wr": 1.0,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 0,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": null,
+      "identities": []
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 0,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": null,
+      "identities": []
+    }
+  },
+  "2023_2024_H1": {
+    "baseline_trade_count": 21,
+    "s4_trade_count": 27,
+    "baseline_primary_entries_retained": 19,
+    "baseline_primary_entries_displaced": 2,
+    "displaced_primary_wins": 0,
+    "displaced_primary_losses": 2,
+    "displaced_primary_realized_wr": 0.0,
+    "identities": [
+      [
+        3,
+        3090772
+      ],
+      [
+        3,
+        3101348
+      ]
+    ],
+    "new_secondary_entries_executed": 7,
+    "new_primary_entries_executed": 1,
+    "secondary_wins": 5,
+    "secondary_losses": 2,
+    "secondary_realized_wr": 0.7142857142857143,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 2,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 2,
+      "displaced_primary_realized_wr": 0.0,
+      "identities": [
+        [
+          3,
+          3090772
+        ],
+        [
+          3,
+          3101348
+        ]
+      ]
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 0,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": null,
+      "identities": []
+    }
+  },
+  "2023_2024_H2": {
+    "baseline_trade_count": 146,
+    "s4_trade_count": 179,
+    "baseline_primary_entries_retained": 132,
+    "baseline_primary_entries_displaced": 14,
+    "displaced_primary_wins": 8,
+    "displaced_primary_losses": 6,
+    "displaced_primary_realized_wr": 0.5714285714285714,
+    "identities": [
+      [
+        3,
+        3468547
+      ],
+      [
+        3,
+        3472900
+      ],
+      [
+        3,
+        3486460
+      ],
+      [
+        3,
+        3513196
+      ],
+      [
+        3,
+        3523166
+      ],
+      [
+        3,
+        3529568
+      ],
+      [
+        3,
+        3541324
+      ],
+      [
+        3,
+        3600414
+      ],
+      [
+        3,
+        3603207
+      ],
+      [
+        3,
+        3610080
+      ],
+      [
+        3,
+        3616846
+      ],
+      [
+        3,
+        3622316
+      ],
+      [
+        3,
+        3662302
+      ],
+      [
+        3,
+        3711653
+      ]
+    ],
+    "new_secondary_entries_executed": 47,
+    "new_primary_entries_executed": 0,
+    "secondary_wins": 25,
+    "secondary_losses": 22,
+    "secondary_realized_wr": 0.5319148936170213,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 13,
+      "displaced_primary_wins": 7,
+      "displaced_primary_losses": 6,
+      "displaced_primary_realized_wr": 0.5384615384615384,
+      "identities": [
+        [
+          3,
+          3468547
+        ],
+        [
+          3,
+          3472900
+        ],
+        [
+          3,
+          3513196
+        ],
+        [
+          3,
+          3523166
+        ],
+        [
+          3,
+          3529568
+        ],
+        [
+          3,
+          3541324
+        ],
+        [
+          3,
+          3600414
+        ],
+        [
+          3,
+          3603207
+        ],
+        [
+          3,
+          3610080
+        ],
+        [
+          3,
+          3616846
+        ],
+        [
+          3,
+          3622316
+        ],
+        [
+          3,
+          3662302
+        ],
+        [
+          3,
+          3711653
+        ]
+      ]
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 1,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": 1.0,
+      "identities": [
+        [
+          3,
+          3486460
+        ]
+      ]
+    }
+  },
+  "ALL_EARLY": {
+    "baseline_trade_count": 72,
+    "s4_trade_count": 82,
+    "baseline_primary_entries_retained": 69,
+    "baseline_primary_entries_displaced": 3,
+    "displaced_primary_wins": 1,
+    "displaced_primary_losses": 2,
+    "displaced_primary_realized_wr": 0.3333333333333333,
+    "identities": [
+      [
+        2,
+        2318376
+      ],
+      [
+        3,
+        3090772
+      ],
+      [
+        3,
+        3101348
+      ]
+    ],
+    "new_secondary_entries_executed": 12,
+    "new_primary_entries_executed": 1,
+    "secondary_wins": 8,
+    "secondary_losses": 4,
+    "secondary_realized_wr": 0.6666666666666666,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 3,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 2,
+      "displaced_primary_realized_wr": 0.3333333333333333,
+      "identities": [
+        [
+          2,
+          2318376
+        ],
+        [
+          3,
+          3090772
+        ],
+        [
+          3,
+          3101348
+        ]
+      ]
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 0,
+      "displaced_primary_wins": 0,
+      "displaced_primary_losses": 0,
+      "displaced_primary_realized_wr": null,
+      "identities": []
+    }
+  },
+  "ALL_LATE": {
+    "baseline_trade_count": 617,
+    "s4_trade_count": 661,
+    "baseline_primary_entries_retained": 595,
+    "baseline_primary_entries_displaced": 22,
+    "displaced_primary_wins": 9,
+    "displaced_primary_losses": 13,
+    "displaced_primary_realized_wr": 0.4090909090909091,
+    "identities": [
+      [
+        1,
+        1787681
+      ],
+      [
+        1,
+        2014197
+      ],
+      [
+        1,
+        2032036
+      ],
+      [
+        1,
+        2032057
+      ],
+      [
+        1,
+        2033463
+      ],
+      [
+        1,
+        2096363
+      ],
+      [
+        1,
+        2173543
+      ],
+      [
+        1,
+        2173575
+      ],
+      [
+        3,
+        3468547
+      ],
+      [
+        3,
+        3472900
+      ],
+      [
+        3,
+        3486460
+      ],
+      [
+        3,
+        3513196
+      ],
+      [
+        3,
+        3523166
+      ],
+      [
+        3,
+        3529568
+      ],
+      [
+        3,
+        3541324
+      ],
+      [
+        3,
+        3600414
+      ],
+      [
+        3,
+        3603207
+      ],
+      [
+        3,
+        3610080
+      ],
+      [
+        3,
+        3616846
+      ],
+      [
+        3,
+        3622316
+      ],
+      [
+        3,
+        3662302
+      ],
+      [
+        3,
+        3711653
+      ]
+    ],
+    "new_secondary_entries_executed": 66,
+    "new_primary_entries_executed": 0,
+    "secondary_wins": 33,
+    "secondary_losses": 33,
+    "secondary_realized_wr": 0.5,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 20,
+      "displaced_primary_wins": 8,
+      "displaced_primary_losses": 12,
+      "displaced_primary_realized_wr": 0.4,
+      "identities": [
+        [
+          1,
+          1787681
+        ],
+        [
+          1,
+          2014197
+        ],
+        [
+          1,
+          2032036
+        ],
+        [
+          1,
+          2032057
+        ],
+        [
+          1,
+          2033463
+        ],
+        [
+          1,
+          2096363
+        ],
+        [
+          1,
+          2173575
+        ],
+        [
+          3,
+          3468547
+        ],
+        [
+          3,
+          3472900
+        ],
+        [
+          3,
+          3513196
+        ],
+        [
+          3,
+          3523166
+        ],
+        [
+          3,
+          3529568
+        ],
+        [
+          3,
+          3541324
+        ],
+        [
+          3,
+          3600414
+        ],
+        [
+          3,
+          3603207
+        ],
+        [
+          3,
+          3610080
+        ],
+        [
+          3,
+          3616846
+        ],
+        [
+          3,
+          3622316
+        ],
+        [
+          3,
+          3662302
+        ],
+        [
+          3,
+          3711653
+        ]
+      ]
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 2,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 1,
+      "displaced_primary_realized_wr": 0.5,
+      "identities": [
+        [
+          1,
+          2173543
+        ],
+        [
+          3,
+          3486460
+        ]
+      ]
+    }
+  },
+  "pooled": {
+    "baseline_trade_count": 689,
+    "s4_trade_count": 743,
+    "baseline_primary_entries_retained": 664,
+    "baseline_primary_entries_displaced": 25,
+    "displaced_primary_wins": 10,
+    "displaced_primary_losses": 15,
+    "displaced_primary_realized_wr": 0.4,
+    "identities": [
+      [
+        1,
+        1787681
+      ],
+      [
+        1,
+        2014197
+      ],
+      [
+        1,
+        2032036
+      ],
+      [
+        1,
+        2032057
+      ],
+      [
+        1,
+        2033463
+      ],
+      [
+        1,
+        2096363
+      ],
+      [
+        1,
+        2173543
+      ],
+      [
+        1,
+        2173575
+      ],
+      [
+        2,
+        2318376
+      ],
+      [
+        3,
+        3090772
+      ],
+      [
+        3,
+        3101348
+      ],
+      [
+        3,
+        3468547
+      ],
+      [
+        3,
+        3472900
+      ],
+      [
+        3,
+        3486460
+      ],
+      [
+        3,
+        3513196
+      ],
+      [
+        3,
+        3523166
+      ],
+      [
+        3,
+        3529568
+      ],
+      [
+        3,
+        3541324
+      ],
+      [
+        3,
+        3600414
+      ],
+      [
+        3,
+        3603207
+      ],
+      [
+        3,
+        3610080
+      ],
+      [
+        3,
+        3616846
+      ],
+      [
+        3,
+        3622316
+      ],
+      [
+        3,
+        3662302
+      ],
+      [
+        3,
+        3711653
+      ]
+    ],
+    "new_secondary_entries_executed": 78,
+    "new_primary_entries_executed": 1,
+    "secondary_wins": 41,
+    "secondary_losses": 37,
+    "secondary_realized_wr": 0.5256410256410257,
+    "occupancy_displacement": {
+      "baseline_primary_entries_displaced": 23,
+      "displaced_primary_wins": 9,
+      "displaced_primary_losses": 14,
+      "displaced_primary_realized_wr": 0.391304347826087,
+      "identities": [
+        [
+          1,
+          1787681
+        ],
+        [
+          1,
+          2014197
+        ],
+        [
+          1,
+          2032036
+        ],
+        [
+          1,
+          2032057
+        ],
+        [
+          1,
+          2033463
+        ],
+        [
+          1,
+          2096363
+        ],
+        [
+          1,
+          2173575
+        ],
+        [
+          2,
+          2318376
+        ],
+        [
+          3,
+          3090772
+        ],
+        [
+          3,
+          3101348
+        ],
+        [
+          3,
+          3468547
+        ],
+        [
+          3,
+          3472900
+        ],
+        [
+          3,
+          3513196
+        ],
+        [
+          3,
+          3523166
+        ],
+        [
+          3,
+          3529568
+        ],
+        [
+          3,
+          3541324
+        ],
+        [
+          3,
+          3600414
+        ],
+        [
+          3,
+          3603207
+        ],
+        [
+          3,
+          3610080
+        ],
+        [
+          3,
+          3616846
+        ],
+        [
+          3,
+          3622316
+        ],
+        [
+          3,
+          3662302
+        ],
+        [
+          3,
+          3711653
+        ]
+      ]
+    },
+    "nonoccupancy_displacement": {
+      "baseline_primary_entries_displaced": 2,
+      "displaced_primary_wins": 1,
+      "displaced_primary_losses": 1,
+      "displaced_primary_realized_wr": 0.5,
+      "identities": [
+        [
+          1,
+          2173543
+        ],
+        [
+          3,
+          3486460
+        ]
+      ]
+    }
+  }
+}
