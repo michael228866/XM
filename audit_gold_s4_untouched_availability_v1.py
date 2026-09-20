@@ -9,6 +9,7 @@ import hashlib
 import io
 import json
 import math
+import ntpath
 import os
 import re
 import subprocess
@@ -146,8 +147,41 @@ def time_text(value):
     return value.isoformat() if value is not None else None
 
 
+READ_ONLY_GIT_COMMANDS = {"rev-parse", "status", "rev-list", "cat-file"}
+
+
+def is_allowed_git_subprocess(executable, argv):
+    """Recognize direct Git argv, including CPython's Windows command line.
+
+    Only simple whole-token quoting is supported; escaped/embedded quotes and
+    shell metacharacters fail closed. No shell-language parser is involved.
+    """
+    if isinstance(argv, str):
+        token = r'(?:[^\s"]+|"[^"\r\n]*")'
+        if not re.fullmatch(token + r'(?:[ \t]+' + token + r')*', argv):
+            return False
+        tokens = re.findall(token, argv)
+        # A backslash immediately before a closing quote has Windows escape
+        # semantics; none of the audit's Git arguments need that ambiguity.
+        if any(value.startswith('"') and value.endswith('\\"') for value in tokens):
+            return False
+        argv = [value[1:-1] if value.startswith('"') else value for value in tokens]
+    if not isinstance(argv, (list, tuple)) or len(argv) < 2:
+        return False
+    values = [*argv, *([] if executable is None else [executable])]
+    if any(not isinstance(value, str) or not value or
+           any(ord(char) < 32 or char in '&|;<>"' for char in value)
+           for value in values):
+        return False
+    if ntpath.basename(argv[0]).lower() not in {"git", "git.exe"}:
+        return False
+    if executable is not None and ntpath.basename(executable).lower() not in {"git", "git.exe"}:
+        return False
+    return argv[1] in READ_ONLY_GIT_COMMANDS
+
+
 def git_read(repo, *args):
-    require(args and args[0] in {"rev-parse", "status", "rev-list", "cat-file"}, "Read-only Git command required")
+    require(args and args[0] in READ_ONLY_GIT_COMMANDS, "Read-only Git command required")
     return subprocess.check_output(["git", *args], cwd=repo, env={**os.environ, "GIT_OPTIONAL_LOCKS": "0"})
 
 
@@ -179,9 +213,10 @@ def install_guards(output):
         elif event.startswith("socket."):
             raise RuntimeError("Audit network access prohibited")
         elif event == "subprocess.Popen":
-            argv = args[1]
-            require(isinstance(argv, (list, tuple)) and len(argv) >= 2 and argv[0] == "git"
-                    and argv[1] in {"rev-parse", "status", "rev-list", "cat-file"}, "Only read-only Git subprocesses permitted")
+            # CPython audit layout: (executable, args, cwd, env). On Windows
+            # args is already serialized by subprocess.list2cmdline().
+            require(len(args) == 4 and is_allowed_git_subprocess(args[0], args[1]),
+                    "Only read-only Git subprocesses permitted")
 
     sys.addaudithook(guard)
 
@@ -693,6 +728,43 @@ def audit(repo, extra_roots):
 
 
 def self_test():
+    allowed = [["git", "rev-parse", "HEAD"], ["git", "status", "--short"],
+               ["git", "rev-list", "--objects", "--all"], ["git", "cat-file", "-p", "abc123"]]
+    for command in allowed:
+        for binary in ("git", "git.exe", r"C:\Program Files\Git\cmd\git.exe", "/usr/bin/git"):
+            argv = [binary, *command[1:]]
+            for executable in (None, binary, r"C:\Program Files\Git\cmd\git.exe"):
+                for representation in (argv, tuple(argv), subprocess.list2cmdline(argv)):
+                    require(is_allowed_git_subprocess(executable, representation), "Read-only Git representation")
+                    # Exercise the installed hook with the real Windows event
+                    # shape, including executable=None and serialized argv.
+                    # sys.audit emits an event only; it launches no process.
+                    sys.audit("subprocess.Popen", executable, representation, "synthetic", {})
+    rejected = [["git", name] for name in (
+        "add", "commit", "checkout", "restore", "reset", "clean", "fetch",
+        "pull", "push", "gc", "config")]
+    rejected += [["git", "add", "."], ["git", "commit", "-m", "x"], ["git", "clean", "-fd"],
+                 ["python", "x.py"], ["powershell", "..."], ["cmd", "/c", "git status"],
+                 ["git.cmd", "status"], ["git", "-c", "alias.x=status", "x"],
+                 [], ["git"], ["git", "STATUS"], ["git", "status", "bad\nargument"]]
+    rejected += [["git", "status", symbol, "echo"] for symbol in ("&", "&&", "|", ";")]
+    for argv in rejected:
+        for representation in (argv, tuple(argv), subprocess.list2cmdline(argv)):
+            require(not is_allowed_git_subprocess(None, representation), "Forbidden subprocess")
+            try:
+                sys.audit("subprocess.Popen", None, representation, "synthetic", {})
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("Hook accepted forbidden subprocess")
+    for executable, argv in [("python", ["git", "status"]), ("cmd.exe", "git status"),
+                             ("git.exe", ["python", "status"]), (None, "echo arbitrary command"),
+                             (None, '"git status"'), (None, 'git "status'),
+                             (None, 'git sta"tus"'), (None, 'git status "trailing\\"'),
+                             (None, "git status&&echo bad"), (None, "git status;echo bad"),
+                             (None, "git status | echo bad"), (None, "git status & echo bad"),
+                             (None, b"git status"), (None, ["git", "status", None])]:
+        require(not is_allowed_git_subprocess(executable, argv), "Ambiguous/non-Git subprocess")
     header = "DATE,TIME,OPEN,HIGH,LOW,CLOSE,SPREAD\n"
     fixture = header + "2024.12.31,23:59:00,2,3,1,2,30\n2025.01.01,00:00:00,2,3,1,2,30\n2025.01.01,00:02:00,2,3,1,2,0\n2025.01.01,00:02:00,2,3,1,2,30\n2025.01.01,00:01:00,2,3,1,2,30\n"
     row, times, good = inventory_csv(io.StringIO(fixture))
