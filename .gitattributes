@@ -10,3 +10,5 @@ training_runs/*_gemini_usd_fx_pressure_source_reconciliation_v1/*.sqlite filter=
 training_runs/*_gemini_dukascopy_fx_tick_gap_adjudication_v1/*.npz filter=lfs diff=lfs merge=lfs -text
 training_runs/*_gemini_dukascopy_fx_tick_gap_adjudication_v1/*.sqlite filter=lfs diff=lfs merge=lfs -text
 training_runs/*_gemini_dukascopy_fx_tick_gap_adjudication_v1/*.csv.gz filter=lfs diff=lfs merge=lfs -text
+# Preserve the finalized validator's original trailing blank line.
+training_runs/20260922T145335Z_gold_future_capture_certification_v1/validator.md whitespace=cr-at-eol,-blank-at-eof

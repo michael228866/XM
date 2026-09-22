@@ -1,0 +1,44 @@
+{
+  "certification_readiness": {
+    "status": "NOT_READY_MULTIPLE_BLOCKERS",
+    "blockers": [
+      {
+        "status": "NOT_READY_SOURCE_BINDING",
+        "reason": "Template is not a completed attestation"
+      },
+      {
+        "status": "NOT_READY_TIMEZONE",
+        "reason": "Timezone/source linkage not certified"
+      },
+      {
+        "status": "NOT_READY_HIGHER_TIMEFRAMES",
+        "reason": "Policy unresolved or protocol change requires separate approval"
+      },
+      {
+        "status": "NOT_READY_PREFIX_POLICY",
+        "reason": "Policy unresolved or protocol change requires separate approval"
+      },
+      {
+        "status": "NOT_READY_COLLECTOR",
+        "reason": "Collector source and validated activation review required"
+      },
+      {
+        "status": "NOT_READY_COLLECTOR",
+        "reason": "Collector not statically conformant with a bound review"
+      },
+      {
+        "status": "NOT_READY_CAPTURE_INTEGRITY",
+        "reason": "Capture layout/attestation/chain not verified"
+      },
+      {
+        "status": "NOT_READY_PROTOCOL_FREEZE",
+        "reason": "Immutable protocol freeze not bound"
+      }
+    ],
+    "warnings": [
+      "Document and static conformity is not operational certification; external chain anchoring is recommended"
+    ]
+  },
+  "research_verdict": "FAIL",
+  "strategy_metrics_computed": false
+}

@@ -1,0 +1,27 @@
+{
+  "retrieved_at_utc": "2026-09-22T14:48:49.082674+00:00",
+  "evidence": [
+    {
+      "authority": "FEED_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_v1/metaquotes_rates.md",
+      "sha256": "1dad0951dfd3b093545f39880e12f0c4c9f91858c0cfb3d31e9748c8769a5b69",
+      "reviewed_by": "Codex (document review only)",
+      "reviewed_at_utc": "2026-09-22T14:48:49.082674+00:00"
+    },
+    {
+      "authority": "FEED_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_v1/metaquotes_environment.md",
+      "sha256": "d6d7119409df4ab4e43ea44cbc631100709c319786072284b1865f7e04341c1f",
+      "reviewed_by": "Codex (document review only)",
+      "reviewed_at_utc": "2026-09-22T14:48:49.082674+00:00"
+    },
+    {
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_v1/xm_hours.md",
+      "sha256": "f29cc2e71365d8276013e6d6904cadfad421fc0d07e1368557ba0202d99ad4c5",
+      "reviewed_by": "Codex (document review only)",
+      "reviewed_at_utc": "2026-09-22T14:48:49.082674+00:00"
+    }
+  ],
+  "limitations": "Notes preserve reviewed claims and limitations, not downloaded original pages or independent broker attestation."
+}
