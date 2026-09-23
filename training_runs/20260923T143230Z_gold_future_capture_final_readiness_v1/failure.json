@@ -1,0 +1,6 @@
+{
+  "reason": "Runner report assembly raised ValueError: training_run_history.read_json requires a JSON object, but evidence_index.json is a list. All four child commands completed; no complete formal result or independent validation. Preserve this attempt; correction requires a new run.",
+  "source_commit": "587f94215b1883640a113932c096efa2d17ad6e2",
+  "no_outputs_overwritten": true,
+  "no_production_change": true
+}

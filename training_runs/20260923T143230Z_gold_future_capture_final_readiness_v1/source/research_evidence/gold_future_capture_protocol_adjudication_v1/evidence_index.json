@@ -1,0 +1,76 @@
+{
+  "evidence": [
+    {
+      "source_url": "https://www.mql5.com/en/docs/python_metatrader5/mt5copyratesfrom_py",
+      "retrieved_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "authority": "FEED_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/metaquotes_api.md",
+      "sha256": "c522ba377da2ae90045dbd4eaf8fa86780e5af853aae56899c76ea3a81eb3a47",
+      "reviewed_by": "Codex document review",
+      "reviewed_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "supported_claims": [
+        "Official API documentation describes returned time and bar open time as UTC."
+      ],
+      "limitations": [
+        "Prior retained XMGlobal-MT5 6 timing sample supports a local-encoded +3h hypothesis instead. Documentation does not adjudicate this source-specific disagreement or historical API behavior."
+      ]
+    },
+    {
+      "source_url": "https://www.xmtrading.com/platforms",
+      "retrieved_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/xmtrading_clock.md",
+      "sha256": "aa62bd5c1bb97334d33c922552a2faf5614d0db04b6ab471e7cf3a4f02143785",
+      "reviewed_by": "Codex document review",
+      "reviewed_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "supported_claims": [
+        "Official XMTrading platform documentation describes GMT+2 winter and GMT+3 summer display clocks."
+      ],
+      "limitations": [
+        "It is not an exact-server attestation for XM Global Limited / XMGlobal-MT5 6 GOLD#. Exact annual transitions, rollover, weekends and current holiday calendar are not established."
+      ]
+    },
+    {
+      "source_url": "https://www.xm.com/trading-hours",
+      "retrieved_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/xm_hours_lookup.md",
+      "sha256": "addee8167c5e1e8748d95706afec3e9ff44d5cc37c05128bb5e94038f42e06ea",
+      "reviewed_by": "Codex document review",
+      "reviewed_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "supported_claims": [
+        "Official trading-hours lookup redirects to https://www.xm.com/execution-policy."
+      ],
+      "limitations": [
+        "The retained review did not establish the complete exact-server/symbol calendar or DST recurrence. No timezone rule is certified from this page."
+      ]
+    }
+  ],
+  "prior_artifacts": {
+    "diagnostic_timestamp.json": {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/diagnostic_timestamp.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_diagnostic_timestamp.json",
+      "sha256": "68927fc9a2a74fd87483d196017171d8816767dfd9dbd7543d4d1283e5861498"
+    },
+    "native_timeframe_audit.json": {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/native_timeframe_audit.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_native_timeframe_audit.json",
+      "sha256": "bb8597db434bc4aba547e629ceccdfe0ad7c3323526d571e377e57b0d134a02b"
+    },
+    "prefix_certification.json": {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/prefix_certification.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_prefix_certification.json",
+      "sha256": "6d61a8d788cf1d3ae80c29cf5e456bff20e616729082cdd9acb96289ea033350"
+    },
+    "validator.json": {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/validator.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_validator.json",
+      "sha256": "57b479d8b827c5cecf63874c98f8087e2b4e5983b00bbee64fac213e132ef3fd"
+    },
+    "FINALIZED.json": {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/FINALIZED.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_FINALIZED.json",
+      "sha256": "0b69fc3c9750cd1a25e42b3cc59d325e7715d6e604e6773f9df210c230f7f787"
+    }
+  }
+}

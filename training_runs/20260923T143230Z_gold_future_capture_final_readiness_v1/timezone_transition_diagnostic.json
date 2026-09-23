@@ -1,0 +1,292 @@
+{
+  "classification": "INSUFFICIENT_DATA",
+  "samples": [
+    {
+      "label": "winter",
+      "query_start_utc": "2026-01-15T12:00:00+00:00",
+      "query_end_utc": "2026-01-15T12:05:00+00:00",
+      "raw_epochs": [
+        1768478400,
+        1768478460,
+        1768478520,
+        1768478580,
+        1768478640,
+        1768478700
+      ],
+      "interpreted_as_utc": [
+        "2026-01-15T12:00:00+00:00",
+        "2026-01-15T12:01:00+00:00",
+        "2026-01-15T12:02:00+00:00",
+        "2026-01-15T12:03:00+00:00",
+        "2026-01-15T12:04:00+00:00",
+        "2026-01-15T12:05:00+00:00"
+      ],
+      "hypothesis_converted": [
+        "2026-01-15T10:00:00+00:00",
+        "2026-01-15T10:01:00+00:00",
+        "2026-01-15T10:02:00+00:00",
+        "2026-01-15T10:03:00+00:00",
+        "2026-01-15T10:04:00+00:00",
+        "2026-01-15T10:05:00+00:00"
+      ],
+      "spacing_seconds": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "monotonic": true,
+      "offset_inference": null,
+      "reason": "Historical epochs alone have no independent UTC anchor; conversion is a hypothesis"
+    },
+    {
+      "label": "summer",
+      "query_start_utc": "2026-07-15T12:00:00+00:00",
+      "query_end_utc": "2026-07-15T12:05:00+00:00",
+      "raw_epochs": [
+        1784116800,
+        1784116860,
+        1784116920,
+        1784116980,
+        1784117040,
+        1784117100
+      ],
+      "interpreted_as_utc": [
+        "2026-07-15T12:00:00+00:00",
+        "2026-07-15T12:01:00+00:00",
+        "2026-07-15T12:02:00+00:00",
+        "2026-07-15T12:03:00+00:00",
+        "2026-07-15T12:04:00+00:00",
+        "2026-07-15T12:05:00+00:00"
+      ],
+      "hypothesis_converted": [
+        "2026-07-15T09:00:00+00:00",
+        "2026-07-15T09:01:00+00:00",
+        "2026-07-15T09:02:00+00:00",
+        "2026-07-15T09:03:00+00:00",
+        "2026-07-15T09:04:00+00:00",
+        "2026-07-15T09:05:00+00:00"
+      ],
+      "spacing_seconds": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "monotonic": true,
+      "offset_inference": null,
+      "reason": "Historical epochs alone have no independent UTC anchor; conversion is a hypothesis"
+    },
+    {
+      "label": "US_transition_before",
+      "query_start_utc": "2026-03-06T12:00:00+00:00",
+      "query_end_utc": "2026-03-06T12:05:00+00:00",
+      "raw_epochs": [
+        1772798400,
+        1772798460,
+        1772798520,
+        1772798580,
+        1772798640,
+        1772798700
+      ],
+      "interpreted_as_utc": [
+        "2026-03-06T12:00:00+00:00",
+        "2026-03-06T12:01:00+00:00",
+        "2026-03-06T12:02:00+00:00",
+        "2026-03-06T12:03:00+00:00",
+        "2026-03-06T12:04:00+00:00",
+        "2026-03-06T12:05:00+00:00"
+      ],
+      "hypothesis_converted": [
+        "2026-03-06T10:00:00+00:00",
+        "2026-03-06T10:01:00+00:00",
+        "2026-03-06T10:02:00+00:00",
+        "2026-03-06T10:03:00+00:00",
+        "2026-03-06T10:04:00+00:00",
+        "2026-03-06T10:05:00+00:00"
+      ],
+      "spacing_seconds": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "monotonic": true,
+      "offset_inference": null,
+      "reason": "Historical epochs alone have no independent UTC anchor; conversion is a hypothesis"
+    },
+    {
+      "label": "US_transition_after",
+      "query_start_utc": "2026-03-09T12:00:00+00:00",
+      "query_end_utc": "2026-03-09T12:05:00+00:00",
+      "raw_epochs": [
+        1773057600,
+        1773057660,
+        1773057720,
+        1773057780,
+        1773057840,
+        1773057900
+      ],
+      "interpreted_as_utc": [
+        "2026-03-09T12:00:00+00:00",
+        "2026-03-09T12:01:00+00:00",
+        "2026-03-09T12:02:00+00:00",
+        "2026-03-09T12:03:00+00:00",
+        "2026-03-09T12:04:00+00:00",
+        "2026-03-09T12:05:00+00:00"
+      ],
+      "hypothesis_converted": [
+        "2026-03-09T10:00:00+00:00",
+        "2026-03-09T10:01:00+00:00",
+        "2026-03-09T10:02:00+00:00",
+        "2026-03-09T10:03:00+00:00",
+        "2026-03-09T10:04:00+00:00",
+        "2026-03-09T10:05:00+00:00"
+      ],
+      "spacing_seconds": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "monotonic": true,
+      "offset_inference": null,
+      "reason": "Historical epochs alone have no independent UTC anchor; conversion is a hypothesis"
+    },
+    {
+      "label": "EU_transition_before",
+      "query_start_utc": "2026-03-27T12:00:00+00:00",
+      "query_end_utc": "2026-03-27T12:05:00+00:00",
+      "raw_epochs": [
+        1774612800,
+        1774612860,
+        1774612920,
+        1774612980,
+        1774613040,
+        1774613100
+      ],
+      "interpreted_as_utc": [
+        "2026-03-27T12:00:00+00:00",
+        "2026-03-27T12:01:00+00:00",
+        "2026-03-27T12:02:00+00:00",
+        "2026-03-27T12:03:00+00:00",
+        "2026-03-27T12:04:00+00:00",
+        "2026-03-27T12:05:00+00:00"
+      ],
+      "hypothesis_converted": [
+        "2026-03-27T10:00:00+00:00",
+        "2026-03-27T10:01:00+00:00",
+        "2026-03-27T10:02:00+00:00",
+        "2026-03-27T10:03:00+00:00",
+        "2026-03-27T10:04:00+00:00",
+        "2026-03-27T10:05:00+00:00"
+      ],
+      "spacing_seconds": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "monotonic": true,
+      "offset_inference": null,
+      "reason": "Historical epochs alone have no independent UTC anchor; conversion is a hypothesis"
+    },
+    {
+      "label": "EU_transition_after",
+      "query_start_utc": "2026-03-30T12:00:00+00:00",
+      "query_end_utc": "2026-03-30T12:05:00+00:00",
+      "raw_epochs": [
+        1774872000,
+        1774872060,
+        1774872120,
+        1774872180,
+        1774872240,
+        1774872300
+      ],
+      "interpreted_as_utc": [
+        "2026-03-30T12:00:00+00:00",
+        "2026-03-30T12:01:00+00:00",
+        "2026-03-30T12:02:00+00:00",
+        "2026-03-30T12:03:00+00:00",
+        "2026-03-30T12:04:00+00:00",
+        "2026-03-30T12:05:00+00:00"
+      ],
+      "hypothesis_converted": [
+        "2026-03-30T09:00:00+00:00",
+        "2026-03-30T09:01:00+00:00",
+        "2026-03-30T09:02:00+00:00",
+        "2026-03-30T09:03:00+00:00",
+        "2026-03-30T09:04:00+00:00",
+        "2026-03-30T09:05:00+00:00"
+      ],
+      "spacing_seconds": [
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "monotonic": true,
+      "offset_inference": null,
+      "reason": "Historical epochs alone have no independent UTC anchor; conversion is a hypothesis"
+    },
+    {
+      "label": "current",
+      "query_start_utc": "2026-09-23T14:27:31.676628+00:00",
+      "query_end_utc": "2026-09-23T14:32:31.676628+00:00",
+      "raw_epochs": [
+        1790173680,
+        1790173740,
+        1790173800,
+        1790173860,
+        1790173920
+      ],
+      "interpreted_as_utc": [
+        "2026-09-23T14:28:00+00:00",
+        "2026-09-23T14:29:00+00:00",
+        "2026-09-23T14:30:00+00:00",
+        "2026-09-23T14:31:00+00:00",
+        "2026-09-23T14:32:00+00:00"
+      ],
+      "hypothesis_converted": [
+        "2026-09-23T11:28:00+00:00",
+        "2026-09-23T11:29:00+00:00",
+        "2026-09-23T11:30:00+00:00",
+        "2026-09-23T11:31:00+00:00",
+        "2026-09-23T11:32:00+00:00"
+      ],
+      "spacing_seconds": [
+        60,
+        60,
+        60,
+        60
+      ],
+      "monotonic": true,
+      "offset_inference": null,
+      "reason": "Historical epochs alone have no independent UTC anchor; conversion is a hypothesis"
+    }
+  ],
+  "current": {
+    "raw_epoch": 1790184751,
+    "observed_utc": "2026-09-23T14:32:31.676628+00:00",
+    "hypothesis_converted": "2026-09-23T14:32:31+00:00",
+    "raw_minus_system_seconds": 10799.323371887207,
+    "hypothesis_minus_system_seconds": -0.6766281127929688,
+    "classification": "SUPPORTS_BROKER_SERVER_RULE"
+  },
+  "symbol": "GOLD#",
+  "generated_at_utc": "2026-09-23T14:32:31.611496+00:00",
+  "source_identity_currently_verified": false,
+  "limitations": [
+    "No account_info call is permitted; exact current server/environment is not reverified",
+    "Prior archived demo identity is historical evidence only",
+    "No independent historical UTC anchor or authoritative recurrence; no annual certification"
+  ],
+  "price_fields_inspected": false,
+  "strategy_outcome_inspected": false
+}

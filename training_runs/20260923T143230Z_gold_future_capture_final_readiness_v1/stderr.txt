@@ -1,0 +1,1 @@
+Runner report assembly raised ValueError: training_run_history.read_json requires a JSON object, but evidence_index.json is a list. All four child commands completed; no complete formal result or independent validation. Preserve this attempt; correction requires a new run.

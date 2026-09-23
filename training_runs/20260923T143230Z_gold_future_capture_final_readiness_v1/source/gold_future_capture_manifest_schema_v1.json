@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GOLD future capture manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "sequence",
+    "snapshot_sequence",
+    "previous_manifest_sha256",
+    "manifest_created_at_utc",
+    "snapshot_id",
+    "snapshot_path",
+    "raw_sha256",
+    "schema_sha256",
+    "source_attestation_sha256",
+    "timezone_attestation_sha256",
+    "activation_sha256",
+    "source_id",
+    "symbol",
+    "timeframe",
+    "capture_started_at_utc",
+    "capture_finished_at_utc",
+    "first_source_timestamp",
+    "last_source_timestamp",
+    "row_count",
+    "duplicate_timestamps",
+    "non_monotonic_timestamps",
+    "invalid_timestamp_rows",
+    "invalid_price_rows",
+    "spread_missing_rows",
+    "spread_nonpositive_rows",
+    "collector_commit",
+    "collector_version",
+    "revision_of_snapshot_id",
+    "partial_snapshot",
+    "sealed",
+    "notes"
+  ],
+  "properties": {
+    "manifest_version": {
+      "const": "gold_future_capture_manifest_v1"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "snapshot_sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "previous_manifest_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "manifest_created_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "snapshot_path": {
+      "type": "string",
+      "pattern": "^snapshots/[A-Za-z0-9][A-Za-z0-9._-]*\\.csv(?:\\.gz)?$"
+    },
+    "raw_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "schema_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_attestation_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "timezone_attestation_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "activation_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "symbol": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timeframe": {
+      "enum": [
+        "M1",
+        "Daily",
+        "H12",
+        "H8",
+        "H6",
+        "H4",
+        "H3",
+        "H2",
+        "H1",
+        "M30",
+        "M20",
+        "M15",
+        "M12",
+        "M10",
+        "M6",
+        "M5",
+        "M4",
+        "M3",
+        "M2",
+        "Weekly",
+        "Monthly"
+      ]
+    },
+    "capture_started_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "capture_finished_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "first_source_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_source_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "row_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "duplicate_timestamps": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "non_monotonic_timestamps": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "invalid_timestamp_rows": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "invalid_price_rows": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "spread_missing_rows": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "spread_nonpositive_rows": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "collector_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "collector_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision_of_snapshot_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "partial_snapshot": {
+      "const": false
+    },
+    "sealed": {
+      "const": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "sequence": {
+            "const": 0
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "previous_manifest_sha256": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "previous_manifest_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  ]
+}

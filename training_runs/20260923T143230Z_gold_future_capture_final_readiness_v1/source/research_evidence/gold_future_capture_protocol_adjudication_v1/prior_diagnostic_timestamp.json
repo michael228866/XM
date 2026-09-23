@@ -1,0 +1,72 @@
+{
+  "generated_at_utc": "2026-09-23T06:25:11.016313+00:00",
+  "symbol": "GOLD#",
+  "diagnostic_classification": "LEGACY_CONVERSION_SUPPORTED",
+  "tick_sample": {
+    "raw_time": 1790155511,
+    "raw_time_msc": 1790155511237,
+    "interpreted_as_utc": "2026-09-23T09:25:11+00:00",
+    "delta_from_system_utc_seconds": 10799.595318078995,
+    "legacy_eet_eest_converted": "2026-09-23T06:25:11+00:00",
+    "legacy_delta_from_system_utc_seconds": -0.404681921005249
+  },
+  "m1_sample": [
+    {
+      "raw_epoch": 1790155260,
+      "interpreted_as_utc": "2026-09-23T09:21:00+00:00",
+      "legacy_eet_eest_converted": "2026-09-23T06:21:00+00:00",
+      "legacy_minus_direct_seconds": -10800.0
+    },
+    {
+      "raw_epoch": 1790155320,
+      "interpreted_as_utc": "2026-09-23T09:22:00+00:00",
+      "legacy_eet_eest_converted": "2026-09-23T06:22:00+00:00",
+      "legacy_minus_direct_seconds": -10800.0
+    },
+    {
+      "raw_epoch": 1790155380,
+      "interpreted_as_utc": "2026-09-23T09:23:00+00:00",
+      "legacy_eet_eest_converted": "2026-09-23T06:23:00+00:00",
+      "legacy_minus_direct_seconds": -10800.0
+    },
+    {
+      "raw_epoch": 1790155440,
+      "interpreted_as_utc": "2026-09-23T09:24:00+00:00",
+      "legacy_eet_eest_converted": "2026-09-23T06:24:00+00:00",
+      "legacy_minus_direct_seconds": -10800.0
+    },
+    {
+      "raw_epoch": 1790155500,
+      "interpreted_as_utc": "2026-09-23T09:25:00+00:00",
+      "legacy_eet_eest_converted": "2026-09-23T06:25:00+00:00",
+      "legacy_minus_direct_seconds": -10800.0
+    }
+  ],
+  "bar_spacing_seconds": [
+    60,
+    60,
+    60,
+    60
+  ],
+  "timestamp_monotonic": true,
+  "limitations": "One small current sample cannot certify historical API paths, DST, daily rollover or calendar; clock difference alone is not authority.",
+  "strategy_outcome_inspected": false,
+  "terminal_build": 6182,
+  "broker_company": "XM Global Limited",
+  "broker_server": "XMGlobal-MT5 6",
+  "digits": 2,
+  "point": 0.01,
+  "source_account_environment": "demo",
+  "system_current_utc": "2026-09-23T06:25:11.404682+00:00",
+  "direct_utc_range_query": {
+    "start_utc": "2026-09-23T06:20:11.404682+00:00",
+    "end_utc": "2026-09-23T06:25:11.404682+00:00",
+    "returned_epochs": [
+      1790144460,
+      1790144520,
+      1790144580,
+      1790144640,
+      1790144700
+    ]
+  }
+}

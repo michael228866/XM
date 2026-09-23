@@ -1,0 +1,141 @@
+{
+  "synthetic_only": true,
+  "pandas_version": "3.0.5",
+  "tests": [
+    {
+      "feature_name": "EMA12_STATE",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 32,
+      "max_abs_difference": 0.006244291632583554,
+      "max_rel_difference": 6.12172469813015e-05,
+      "exact_match": false,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    },
+    {
+      "feature_name": "EMA26_STATE",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 32,
+      "max_abs_difference": 0.13400761565510777,
+      "max_rel_difference": 0.0013094290136889681,
+      "exact_match": false,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    },
+    {
+      "feature_name": "MACD_SIGNAL_STATE",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 32,
+      "max_abs_difference": 0.1760678080925083,
+      "max_rel_difference": 15.81170164733818,
+      "exact_match": false,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    },
+    {
+      "feature_name": "MACD_HIST",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 32,
+      "max_abs_difference": 0.04830448406998411,
+      "max_rel_difference": 1.8877085519753183,
+      "exact_match": false,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    },
+    {
+      "feature_name": "EMA12_STATE",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 254,
+      "max_abs_difference": 0.0,
+      "max_rel_difference": 0.0,
+      "exact_match": true,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    },
+    {
+      "feature_name": "EMA26_STATE",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 254,
+      "max_abs_difference": 3.691795313898183e-09,
+      "max_rel_difference": 3.607365053834533e-11,
+      "exact_match": false,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    },
+    {
+      "feature_name": "MACD_SIGNAL_STATE",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 254,
+      "max_abs_difference": 5.429099392273429e-09,
+      "max_rel_difference": 4.875581784903536e-07,
+      "exact_match": false,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    },
+    {
+      "feature_name": "MACD_HIST",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 254,
+      "max_abs_difference": 1.7373040783752458e-09,
+      "max_rel_difference": 5.975862871888732e-08,
+      "exact_match": false,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    },
+    {
+      "feature_name": "EMA12_STATE",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 4096,
+      "max_abs_difference": 0.0,
+      "max_rel_difference": 0.0,
+      "exact_match": true,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    },
+    {
+      "feature_name": "EMA26_STATE",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 4096,
+      "max_abs_difference": 0.0,
+      "max_rel_difference": 0.0,
+      "exact_match": true,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    },
+    {
+      "feature_name": "MACD_SIGNAL_STATE",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 4096,
+      "max_abs_difference": 0.0,
+      "max_rel_difference": 0.0,
+      "exact_match": true,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    },
+    {
+      "feature_name": "MACD_HIST",
+      "timeframe": "M1",
+      "full_prefix_start": "synthetic_index_0",
+      "test_target_start": "synthetic_index_4096",
+      "candidate_warmup": 4096,
+      "max_abs_difference": 0.0,
+      "max_rel_difference": 0.0,
+      "exact_match": true,
+      "reason": "Synthetic implementation comparison only; rounded convergence is not certified historical identity"
+    }
+  ],
+  "historical_equivalence_tested": false,
+  "historical_equivalence_proven": false,
+  "reason": "No complete certified native history / original initialization state supplied"
+}
