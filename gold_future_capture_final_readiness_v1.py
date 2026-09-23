@@ -45,6 +45,9 @@ def readiness(report, diagnostic):
 
 def self_test():
     checks = []
+    from run_gold_future_capture_final_readiness_v1 import evidence_index
+    assert len(evidence_index()) == 6
+    checks.append('evidence_index_list_loading')
     def passed(name, call):
         call()
         checks.append(name)

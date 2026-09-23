@@ -1,6 +1,6 @@
 {
   "experiment_name": "gold_future_capture_final_readiness_v1",
-  "base_commit": "ccc08b6b07378b0509dd827f71d3c48ea6adf4fc",
+  "base_commit": "e68057d87962608d3521eb4757c9f493f5bfcc09",
   "source_files": [
     "README_GOLD_FUTURE_CAPTURE_FINAL_READINESS_V1.md",
     "README_GOLD_FUTURE_CAPTURE_PROTOCOL_ADJUDICATION_V1.md",
@@ -135,5 +135,6 @@
   "archive_status_mapping": {
     "PARTIAL": "research_only",
     "FAIL": "fail"
-  }
+  },
+  "supersedes_aborted_run": "training_runs/20260923T143230Z_gold_future_capture_final_readiness_v1"
 }

@@ -13,6 +13,13 @@ ROOT = Path(__file__).resolve().parent
 SPEC = 'execution_spec_gold_future_capture_final_readiness_v1.json'
 
 
+def evidence_index():
+    items=json.loads((ROOT/'research_evidence/gold_future_capture_final_readiness_v1/evidence_index.json').read_text(encoding='utf-8'))
+    if not isinstance(items,list) or not items or not all(isinstance(item,dict) for item in items):
+        raise ValueError('Evidence index must be a nonempty list of records')
+    return items
+
+
 def command(run, label, args):
     argv = [sys.executable, '-B', *args]
     with (run/(label+'_stdout.txt')).open('xb') as out, (run/(label+'_stderr.txt')).open('xb') as err:
@@ -77,7 +84,7 @@ def main():
     timezone={'status':'UNRESOLVED','timezone_policy':'UNRESOLVED','certified_coverage_start_utc':None,
         'certified_coverage_end_utc':None,'broker_offset_intervals':[],'recurrence_rule':None,
         'diagnostic_classification':diagnostic['classification'],
-        'evidence':history.read_json(ROOT/'research_evidence/gold_future_capture_final_readiness_v1/evidence_index.json'),
+        'evidence':evidence_index(),
         'answers':{'server_clock':'Exact server rule unconfirmed; related entity advertises GMT+2/+3',
             'dst_recurrence':'UNRESOLVED','api_encoding':'Generic UTC documentation conflicts with prior local-epoch observation',
             'daily_rollover':'UNRESOLVED','weekend_schedule':'UNRESOLVED','holiday_calendar':'No current exact-source schedule retained',
