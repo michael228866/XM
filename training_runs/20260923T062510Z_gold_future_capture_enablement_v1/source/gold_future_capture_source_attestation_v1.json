@@ -1,0 +1,62 @@
+{
+  "attestation_version": "gold_future_capture_source_attestation_v1",
+  "template": true,
+  "source_id": "XMGlobal-MT5-6_GOLD#",
+  "broker_name": "XM Global Limited",
+  "broker_server_name": "XMGlobal-MT5 6",
+  "terminal_or_feed_type": "MetaTrader5",
+  "symbol": "GOLD#",
+  "symbol_exact_case": "GOLD#",
+  "terminal_path_or_feed_reference": "D:\\XM2\\terminal64.exe",
+  "source_data_type": "BAR_M1",
+  "collector_transport": "MetaTrader5 Python API",
+  "source_timestamp_field": "raw_broker_epoch_seconds",
+  "source_timestamp_semantics": "BAR_OPEN",
+  "source_timezone": null,
+  "timezone_authority": null,
+  "dst_policy": null,
+  "session_rollover": null,
+  "weekend_policy": null,
+  "holiday_policy_source": null,
+  "spread_field": "spread_points",
+  "spread_units": "POINTS",
+  "price_digits": 2,
+  "point_size": 0.01,
+  "attested_by": null,
+  "attested_at_utc": null,
+  "source_account_environment": "unknown",
+  "volume_fields_if_present": [
+    "TICK_VOLUME",
+    "REAL_VOLUME"
+  ],
+  "evidence": [
+    {
+      "authority": "FEED_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_v1/metaquotes_rates.md",
+      "sha256": "1dad0951dfd3b093545f39880e12f0c4c9f91858c0cfb3d31e9748c8769a5b69",
+      "reviewed_by": "Codex (document review only)",
+      "reviewed_at_utc": "2026-09-22T14:48:49.082674+00:00"
+    },
+    {
+      "authority": "FEED_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_v1/metaquotes_environment.md",
+      "sha256": "d6d7119409df4ab4e43ea44cbc631100709c319786072284b1865f7e04341c1f",
+      "reviewed_by": "Codex (document review only)",
+      "reviewed_at_utc": "2026-09-22T14:48:49.082674+00:00"
+    },
+    {
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_v1/xm_hours.md",
+      "sha256": "f29cc2e71365d8276013e6d6904cadfad421fc0d07e1368557ba0202d99ad4c5",
+      "reviewed_by": "Codex (document review only)",
+      "reviewed_at_utc": "2026-09-22T14:48:49.082674+00:00"
+    }
+  ],
+  "outcome_inspection_prohibited": true,
+  "strategy_execution_prohibited": true,
+  "historical_2025_plus_is_untouched": false,
+  "holdout_start": null,
+  "earliest_possible_holdout_start": null,
+  "production_promotion": false,
+  "notes": "PARTIAL preparation. Identity and instrument metadata supplied as user-verified; not independently queried. Environment unknown. Exact server timezone, DST, calendar and epoch encoding not certified. Template remains true; no certification claimed."
+}

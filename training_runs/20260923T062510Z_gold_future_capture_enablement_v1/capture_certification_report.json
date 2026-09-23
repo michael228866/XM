@@ -1,0 +1,167 @@
+{
+  "certification_version": "gold_future_capture_certification_v1",
+  "generated_at_utc": "2026-09-23T06:25:11.677065+00:00",
+  "repo_commit": "ba6255e9385e0b39b9ea1cd3b4a718edaa513513",
+  "repo_dirty": true,
+  "historical_context": {
+    "historical_2025_plus_is_untouched": false,
+    "previous_foundation_status": "NOT_READY_MULTIPLE_BLOCKERS",
+    "historical_canonical_end": "2026-05-08T23:57:00"
+  },
+  "source_binding": {
+    "status": "NOT_CERTIFIED",
+    "source_id": null,
+    "broker": null,
+    "server": null,
+    "symbol": null,
+    "source_data_type": null,
+    "blockers": [
+      "Source attestation not certified"
+    ]
+  },
+  "timezone_certification": {
+    "status": "UNRESOLVED",
+    "timezone": null,
+    "dst_policy": null,
+    "timestamp_semantics": null,
+    "session_rollover": null,
+    "holiday_calendar_source": null,
+    "blockers": [
+      "Timezone evidence incomplete"
+    ]
+  },
+  "higher_timeframe_policy": {
+    "status": "UNRESOLVED",
+    "policy": "UNRESOLVED",
+    "blockers": [
+      "Completed activation policy required"
+    ],
+    "native_required_timeframes": [
+      "M1",
+      "Daily",
+      "H12",
+      "H8",
+      "H6",
+      "H4",
+      "H3",
+      "H2",
+      "H1",
+      "M30",
+      "M20",
+      "M15",
+      "M12",
+      "M10",
+      "M6",
+      "M5",
+      "M4",
+      "M3",
+      "M2",
+      "Weekly",
+      "Monthly"
+    ],
+    "protocol_change_required": false
+  },
+  "prefix_policy": {
+    "status": "UNRESOLVED",
+    "policy": "UNRESOLVED",
+    "blockers": [
+      "Completed activation policy required"
+    ]
+  },
+  "collector_certification": {
+    "static_status": "NOT_STATICALLY_CONFORMANT",
+    "operational_status": "NOT_ACTIVATED",
+    "certification_status": "NOT_CERTIFIED_SOURCE_BINDING",
+    "collector_path": null,
+    "collector_sha256": null,
+    "collector_commit": null,
+    "collector_git_commit": null,
+    "writes_append_only": null,
+    "overwrites_existing_snapshot": null,
+    "uses_atomic_write": null,
+    "fsync_or_equivalent": null,
+    "manifest_written_after_snapshot": null,
+    "previous_hash_verified_before_append": null,
+    "restart_recovery_defined": null,
+    "partial_snapshot_quarantine": null,
+    "duplicate_bar_policy": null,
+    "revision_policy": null,
+    "timezone_conversion_location": null,
+    "network_or_broker_dependency": null,
+    "native_timeframes_supported": [],
+    "spread_preserved": null,
+    "credentials_handling": "NO_SECRET_VALUES_REPORTED",
+    "blockers": [
+      "Collector unavailable or not certified"
+    ]
+  },
+  "capture_integrity": {
+    "activation_status": "NOT_ACTIVATED",
+    "capture_root": null,
+    "manifest_schema_valid": true,
+    "chain_valid": null,
+    "snapshot_hashes_valid": null,
+    "attestation_hashes_valid": false,
+    "restart_recovery_certified": false,
+    "append_only_certified": false,
+    "blockers": [
+      "Capture evidence missing or rejected"
+    ]
+  },
+  "holdout_boundary": {
+    "historical_start_allowed": false,
+    "historical_2025_plus_allowed": false,
+    "holdout_start": null,
+    "earliest_possible_holdout_start": null,
+    "boundary_rule": "The untouched holdout begins at the first verified fresh GOLD M1 bar whose source timestamp is strictly after both the immutable protocol freeze and the effective certified capture activation, provided source, timezone, pipeline, and manifest-chain certifications remain valid. Pre-boundary rows may be used only as causal warmup/context and never as holdout evidence.",
+    "prerequisites": [
+      "Immutable protocol freeze",
+      "Effective certified activation",
+      "Source/timezone/pipeline/prefix certification",
+      "Valid sealed manifest chain",
+      "No outcome inspection before one-shot unlock"
+    ]
+  },
+  "readiness": {
+    "status": "NOT_READY_MULTIPLE_BLOCKERS",
+    "blockers": [
+      {
+        "status": "NOT_READY_SOURCE_BINDING",
+        "reason": "Template is not a completed attestation"
+      },
+      {
+        "status": "NOT_READY_TIMEZONE",
+        "reason": "Timezone/source linkage not certified"
+      },
+      {
+        "status": "NOT_READY_HIGHER_TIMEFRAMES",
+        "reason": "Policy unresolved or protocol change requires separate approval"
+      },
+      {
+        "status": "NOT_READY_PREFIX_POLICY",
+        "reason": "Policy unresolved or protocol change requires separate approval"
+      },
+      {
+        "status": "NOT_READY_COLLECTOR",
+        "reason": "Collector source and validated activation review required"
+      },
+      {
+        "status": "NOT_READY_COLLECTOR",
+        "reason": "Collector not statically conformant with a bound review"
+      },
+      {
+        "status": "NOT_READY_CAPTURE_INTEGRITY",
+        "reason": "Capture layout/attestation/chain not verified"
+      },
+      {
+        "status": "NOT_READY_PROTOCOL_FREEZE",
+        "reason": "Immutable protocol freeze not bound"
+      }
+    ],
+    "warnings": [
+      "Document and static conformity is not operational certification; external chain anchoring is recommended"
+    ]
+  },
+  "production_promotion": false,
+  "production_change": false
+}

@@ -1,0 +1,28 @@
+{
+  "static_status": "NOT_STATICALLY_CONFORMANT",
+  "operational_status": "NOT_ACTIVATED",
+  "certification_status": "NOT_CERTIFIED_MULTIPLE_BLOCKERS",
+  "collector_sha256": "8768262ca10a430310fe02406472bcacf943071ddb2a0d600b62a713ccf0ea00",
+  "collector_commit": "ba6255e9385e0b39b9ea1cd3b4a718edaa513513",
+  "writes_append_only": false,
+  "overwrites_existing_snapshot": true,
+  "uses_atomic_write": true,
+  "fsync_or_equivalent": true,
+  "manifest_written_after_snapshot": false,
+  "previous_hash_verified_before_append": false,
+  "restart_recovery_defined": false,
+  "partial_snapshot_quarantine": false,
+  "duplicate_bar_policy": "UNRESOLVED",
+  "revision_policy": "UNRESOLVED",
+  "timezone_conversion_location": null,
+  "network_or_broker_dependency": [
+    "MetaTrader5"
+  ],
+  "native_timeframes_supported": [],
+  "spread_preserved": false,
+  "credentials_handling": "NO_SECRET_VALUES_REPORTED",
+  "blockers": [
+    "Mutable storage operation at line 292",
+    "Missing or invalid hash-bound independent collector review"
+  ]
+}

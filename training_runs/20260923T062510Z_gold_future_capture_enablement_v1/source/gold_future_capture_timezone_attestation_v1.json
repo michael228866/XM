@@ -1,0 +1,53 @@
+{
+  "attestation_version": "gold_future_capture_timezone_attestation_v1",
+  "template": true,
+  "status": "UNRESOLVED",
+  "source_id": "XMGlobal-MT5-6_GOLD#",
+  "source_attestation_sha256": "00f1ba03e17318c66e1e3879a74ce3add899ff70bf0d298ebbb8c3fe6823a382",
+  "timezone": null,
+  "timezone_authority": null,
+  "dst_policy": null,
+  "timestamp_semantics": "BAR_OPEN",
+  "source_timestamp_encoding": "EPOCH_SECONDS",
+  "mt5_epoch_semantics": null,
+  "historical_bars_clock": null,
+  "session_rollover": null,
+  "weekend_policy": null,
+  "holiday_calendar_source": null,
+  "utc_offset_minutes": null,
+  "iana_tzdb_identity": null,
+  "broker_transition_rule": null,
+  "attested_by": null,
+  "attested_at_utc": null,
+  "broker_offset_intervals": [],
+  "evidence": [
+    {
+      "authority": "FEED_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_v1/metaquotes_rates.md",
+      "sha256": "1dad0951dfd3b093545f39880e12f0c4c9f91858c0cfb3d31e9748c8769a5b69",
+      "reviewed_by": "Codex (document review only)",
+      "reviewed_at_utc": "2026-09-22T14:48:49.082674+00:00"
+    },
+    {
+      "authority": "FEED_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_v1/metaquotes_environment.md",
+      "sha256": "d6d7119409df4ab4e43ea44cbc631100709c319786072284b1865f7e04341c1f",
+      "reviewed_by": "Codex (document review only)",
+      "reviewed_at_utc": "2026-09-22T14:48:49.082674+00:00"
+    },
+    {
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_v1/xm_hours.md",
+      "sha256": "f29cc2e71365d8276013e6d6904cadfad421fc0d07e1368557ba0202d99ad4c5",
+      "reviewed_by": "Codex (document review only)",
+      "reviewed_at_utc": "2026-09-22T14:48:49.082674+00:00"
+    }
+  ],
+  "outcome_inspection_prohibited": true,
+  "strategy_execution_prohibited": true,
+  "historical_2025_plus_is_untouched": false,
+  "holdout_start": null,
+  "earliest_possible_holdout_start": null,
+  "production_promotion": false,
+  "notes": "UNRESOLVED: generic API UTC documentation does not resolve existing XM EET/EEST conversion or certify exact server DST, rollover, weekend and holiday rules. No gap inference used."
+}
