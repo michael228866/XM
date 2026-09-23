@@ -1,0 +1,23 @@
+{
+  "generated_at_utc": "2026-09-23T06:25:11.568547+00:00",
+  "source_id": "XMGlobal-MT5-6_GOLD#",
+  "symbol": "GOLD#",
+  "required_history_start": null,
+  "available_history_start": null,
+  "continuous_history": false,
+  "same_timestamp_semantics": false,
+  "same_timeframe_semantics": false,
+  "same_feature_initialization": false,
+  "recursive_state_equivalent": false,
+  "prefix_policy": "UNRESOLVED",
+  "status": "PARTIAL",
+  "pipeline_sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+  "recursive_ema_macd_detected": true,
+  "strategy_outcome_inspected": false,
+  "blockers": [
+    "Original native-file first-row identity and exact recursive state are not supplied as a certified source-bound prefix",
+    "Small current API samples do not prove full historical continuity or identical native bars",
+    "254 finite warmup rows cannot reproduce exact recursive EMA/MACD state",
+    "Historical context is development-only; reinitialization requires a separately frozen protocol change"
+  ]
+}
