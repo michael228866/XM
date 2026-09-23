@@ -1,0 +1,111 @@
+{
+  "status": "UNRESOLVED",
+  "timezone_policy": "UNRESOLVED",
+  "certified_coverage_start_utc": null,
+  "certified_coverage_end_utc": null,
+  "broker_offset_intervals": [],
+  "recurrence_rule": null,
+  "diagnostic_classification": "INSUFFICIENT_DATA",
+  "evidence": [
+    {
+      "source_url": "https://www.xm.com/precious-metals",
+      "retrieved_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_final_readiness_v1/xm_metals.md",
+      "sha256": "5b113f8ea9c8d8f8e3d056dc2236781175d0bf8c1db52061fedc733b4dc49e8b",
+      "reviewed_by": "Codex source review",
+      "reviewed_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "supported_claims": [
+        "The public XM Global metals page directs users to logged-in account trading hours."
+      ],
+      "limitations": [
+        "No public exact GOLD# session/weekend schedule or XMGlobal-MT5 6 recurrence was established."
+      ]
+    },
+    {
+      "source_url": "https://www.xm.com/help-center",
+      "retrieved_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_final_readiness_v1/xm_help.md",
+      "sha256": "9e4d456591e4a9c3e0fdeaf8bc456920bac61ef05b1ad4555ef5839c346b4bb3",
+      "reviewed_by": "Codex source review",
+      "reviewed_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "supported_claims": [
+        "Public retrieval exposes no readable clock/calendar answer."
+      ],
+      "limitations": [
+        "Client-side/login content was not reviewed; no authenticated access or support message sent."
+      ]
+    },
+    {
+      "source_url": "https://www.xmtrading.com/platforms",
+      "retrieved_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_final_readiness_v1/xmtrading_clock.md",
+      "sha256": "776b70d9d49ad332aebeeae9c7b3e994f976f4d45e3d187847c0cc6ad04ac3fd",
+      "reviewed_by": "Codex source review",
+      "reviewed_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "supported_claims": [
+        "XMTrading describes server display clocks as GMT+2 winter and GMT+3 summer."
+      ],
+      "limitations": [
+        "Different entity/site; no exact XMGlobal-MT5 6 binding, transition recurrence, epoch encoding or holiday schedule."
+      ]
+    },
+    {
+      "source_url": "https://www.mql5.com/en/docs/python_metatrader5/mt5copyratesrange_py",
+      "retrieved_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "authority": "FEED_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_final_readiness_v1/metaquotes_rates.md",
+      "sha256": "7d7ba0b98ba9d09de2040b768917ef6336257d577a9ec7d5e9251d386ee3eda0",
+      "reviewed_by": "Codex source review",
+      "reviewed_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "supported_claims": [
+        "API specifies bar-open timestamps and UTC results for its timeframe parameter; history is limited by available chart bars."
+      ],
+      "limitations": [
+        "The archived local +3h sample is not reconciled by the generic API promise; source-specific historical behavior remains unresolved."
+      ]
+    },
+    {
+      "source_url": "https://www.xm.com/assets/newsletters/XM2015/happyholidays/Holiday_Trading_Hours.pdf",
+      "retrieved_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_final_readiness_v1/xm_holiday_example.md",
+      "sha256": "fe8f7265dabca69c0e265858b6fc6ea1fd3b622ae9157ade24b7791ba3c1f499",
+      "reviewed_by": "Codex source review",
+      "reviewed_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "supported_claims": [
+        "Official XM holiday notices exist; this retained reference is a historical 2015 example."
+      ],
+      "limitations": [
+        "Cannot establish 2026/2027 GOLD# calendar; no annual extrapolation or current schedule claim."
+      ]
+    },
+    {
+      "source_url": "https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.ewm.html",
+      "retrieved_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "authority": "FEED_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_final_readiness_v1/pandas_ewm.md",
+      "sha256": "763349952b6916662563809adddc02e2ec7a43d9dd3d8bbc49ca32007186bc18",
+      "reviewed_by": "Codex source review",
+      "reviewed_at_utc": "2026-09-23T14:23:53.433370+00:00",
+      "supported_claims": [
+        "EWM supports recursive adjust=False; defaults min_periods=0 and ignore_na=False."
+      ],
+      "limitations": [
+        "Reviewed current docs 3.0.6; local 3.0.5 behavior checked with synthetic fixtures. No claim of original historical package equivalence."
+      ]
+    }
+  ],
+  "answers": {
+    "server_clock": "Exact server rule unconfirmed; related entity advertises GMT+2/+3",
+    "dst_recurrence": "UNRESOLVED",
+    "api_encoding": "Generic UTC documentation conflicts with prior local-epoch observation",
+    "daily_rollover": "UNRESOLVED",
+    "weekend_schedule": "UNRESOLVED",
+    "holiday_calendar": "No current exact-source schedule retained",
+    "bar_timestamp": "BAR_OPEN documented for API timeframes; exact source encoding remains unresolved"
+  },
+  "decision": "Do not fabricate intervals or complete attestations from supporting diagnostics"
+}

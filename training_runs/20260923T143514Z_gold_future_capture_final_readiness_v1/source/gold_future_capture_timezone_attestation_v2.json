@@ -1,0 +1,88 @@
+{
+  "attestation_version": "gold_future_capture_timezone_attestation_v2",
+  "template": true,
+  "source_id": "XMGlobal-MT5-6_GOLD",
+  "source_attestation_sha256": "81d2cc3cdc5a724be03402e238b77884f91d07af0533539a1b1a70c634e910e8",
+  "timezone": null,
+  "timezone_authority": null,
+  "dst_policy": null,
+  "mt5_epoch_semantics": null,
+  "historical_bars_clock": null,
+  "session_rollover": null,
+  "weekend_policy": null,
+  "utc_offset_minutes": null,
+  "iana_tzdb_identity": null,
+  "broker_transition_rule": null,
+  "attested_by": null,
+  "attested_at_utc": null,
+  "broker_offset_intervals": [],
+  "evidence": [
+    {
+      "source_url": "https://www.mql5.com/en/docs/python_metatrader5/mt5copyratesfrom_py",
+      "retrieved_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "authority": "FEED_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/metaquotes_api.md",
+      "sha256": "c522ba377da2ae90045dbd4eaf8fa86780e5af853aae56899c76ea3a81eb3a47",
+      "reviewed_by": "Codex document review",
+      "reviewed_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "supported_claims": [
+        "Official API documentation describes returned time and bar open time as UTC."
+      ],
+      "limitations": [
+        "Prior retained XMGlobal-MT5 6 timing sample supports a local-encoded +3h hypothesis instead. Documentation does not adjudicate this source-specific disagreement or historical API behavior."
+      ]
+    },
+    {
+      "source_url": "https://www.xmtrading.com/platforms",
+      "retrieved_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/xmtrading_clock.md",
+      "sha256": "aa62bd5c1bb97334d33c922552a2faf5614d0db04b6ab471e7cf3a4f02143785",
+      "reviewed_by": "Codex document review",
+      "reviewed_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "supported_claims": [
+        "Official XMTrading platform documentation describes GMT+2 winter and GMT+3 summer display clocks."
+      ],
+      "limitations": [
+        "It is not an exact-server attestation for XM Global Limited / XMGlobal-MT5 6 GOLD#. Exact annual transitions, rollover, weekends and current holiday calendar are not established."
+      ]
+    },
+    {
+      "source_url": "https://www.xm.com/trading-hours",
+      "retrieved_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/xm_hours_lookup.md",
+      "sha256": "addee8167c5e1e8748d95706afec3e9ff44d5cc37c05128bb5e94038f42e06ea",
+      "reviewed_by": "Codex document review",
+      "reviewed_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "supported_claims": [
+        "Official trading-hours lookup redirects to https://www.xm.com/execution-policy."
+      ],
+      "limitations": [
+        "The retained review did not establish the complete exact-server/symbol calendar or DST recurrence. No timezone rule is certified from this page."
+      ]
+    }
+  ],
+  "outcome_inspection_prohibited": true,
+  "strategy_execution_prohibited": true,
+  "historical_2025_plus_is_untouched": false,
+  "holdout_start": null,
+  "earliest_possible_holdout_start": null,
+  "production_promotion": false,
+  "notes": "UNRESOLVED: prior +3h sample is supporting evidence only. No annual intervals or recurrence fabricated; display-clock documentation cannot certify this server epoch rule or calendar.",
+  "timezone_status": "UNRESOLVED",
+  "timestamp_encoding": "EPOCH_SECONDS",
+  "bar_timestamp_semantics": "BAR_OPEN",
+  "holiday_calendar_authority": null,
+  "server_display_clock_rule": null,
+  "certified_coverage_start_utc": null,
+  "certified_coverage_end_utc": null,
+  "recurrence_rule": null,
+  "diagnostic_support": [
+    {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/diagnostic_timestamp.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_diagnostic_timestamp.json",
+      "sha256": "68927fc9a2a74fd87483d196017171d8816767dfd9dbd7543d4d1283e5861498"
+    }
+  ]
+}

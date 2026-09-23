@@ -1,0 +1,52 @@
+{
+  "experiment_name": "gold_future_capture_enablement_v1",
+  "version": 1,
+  "symbol": "GOLD#",
+  "source_id": "XMGlobal-MT5-6_GOLD#",
+  "terminal_path": "D:\\XM2\\terminal64.exe",
+  "broker_company": "XM Global Limited",
+  "broker_server": "XMGlobal-MT5 6",
+  "diagnostic_limits": {
+    "recent_m1_rows": 5,
+    "range_minutes": 5,
+    "native_rows_per_timeframe": 3
+  },
+  "MetaTrader5_version": "5.0.6147",
+  "activation_permitted": false,
+  "activation_block_reason": "Original static checker rejects mutable tip replacement; source identity also violates frozen source_id pattern. No rule changed.",
+  "production_promotion": false,
+  "strategy_outcome_inspection": false,
+  "model_training": false,
+  "formal_verdict_rule": {
+    "PASS": "All frozen prerequisites and static certification pass",
+    "PARTIAL": "Implementation certified, external provenance pending",
+    "FAIL": "Source methodology or major certification check fails"
+  },
+  "protected_sha256": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "source_files": [
+    "gold_future_capture_collector_v1.py",
+    "test_gold_future_capture_collector_v1.py",
+    "gold_mt5_timestamp_semantics_diagnostic_v1.py",
+    "gold_mt5_native_timeframe_audit_v1.py",
+    "gold_recursive_prefix_certification_v1.py",
+    "gold_future_capture_certification_v1.py",
+    "run_gold_future_capture_enablement_v1.py",
+    "validate_gold_future_capture_enablement_v1.py",
+    "training_run_history.py",
+    "drl_trading_v2.py",
+    "execution_spec_gold_future_capture_enablement_v1.json",
+    "execution_spec_gold_future_capture_certification_v1.json",
+    "gold_future_capture_manifest_schema_v1.json",
+    "gold_future_capture_source_attestation_v1.json",
+    "gold_future_capture_timezone_attestation_v1.json",
+    "gold_future_capture_activation_v1.json",
+    "gold_future_capture_source_attestation_template_v1.json",
+    "gold_future_capture_timezone_attestation_template_v1.json",
+    "gold_future_capture_activation_template_v1.json",
+    "README_GOLD_FUTURE_CAPTURE_ENABLEMENT_V1.md",
+    "gold_m1_resampling_protocol_change_proposal_v1.md"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "version": "gold_future_capture_protocol_v2",
+  "source_id": "XMGlobal-MT5-6_GOLD",
+  "symbol": "GOLD#",
+  "identity_migration": {
+    "v1_source_id": "XMGlobal-MT5-6_GOLD#",
+    "v2_source_id": "XMGlobal-MT5-6_GOLD",
+    "symbol": "GOLD#",
+    "meaning": "IDENTIFIER_REPRESENTATION_ONLY"
+  },
+  "manifest_schema_sha256": "8f288343a8dbf4fb61025634f3485565255d324cf7bf535ff5ebb9986f19fbbd",
+  "chain_tip_policy": "NON_AUTHORITATIVE_REBUILDABLE_INDEX",
+  "tip_fields": [
+    "manifest_sequence",
+    "manifest_sha256",
+    "updated_at_utc"
+  ],
+  "mutable_replace_destinations": [
+    "chain_tip.json"
+  ],
+  "immutable_classes": [
+    "snapshots",
+    "manifests",
+    "source_attestation",
+    "timezone_attestation",
+    "activation_attestation",
+    "protocol_freeze"
+  ],
+  "temporary_classes": [
+    "pending",
+    "quarantine",
+    "receipts",
+    "writer.lock"
+  ],
+  "higher_timeframe_policy": "NATIVE_20TF_REQUIRED",
+  "timezone_policy": "UNRESOLVED",
+  "prefix_policy": "UNRESOLVED",
+  "holdout_duration_calendar_days": 365,
+  "holdout_protocol_frozen": false,
+  "activation_permitted": false,
+  "production_promotion": false,
+  "strategy_outcome_inspection": false,
+  "approved_collector_ast_sha256": "3986bc17a41b1f0ecf3cdd725670efa9822013fe2217c7d68f3ed5d3716e0d83",
+  "approved_tip_publisher_ast_sha256": "f254d441488bdbba21e276a1523166c919e4100c93ff48100eec20a737079c41",
+  "prior_artifacts": {
+    "diagnostic_timestamp.json": {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/diagnostic_timestamp.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_diagnostic_timestamp.json",
+      "sha256": "68927fc9a2a74fd87483d196017171d8816767dfd9dbd7543d4d1283e5861498"
+    },
+    "native_timeframe_audit.json": {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/native_timeframe_audit.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_native_timeframe_audit.json",
+      "sha256": "bb8597db434bc4aba547e629ceccdfe0ad7c3323526d571e377e57b0d134a02b"
+    },
+    "prefix_certification.json": {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/prefix_certification.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_prefix_certification.json",
+      "sha256": "6d61a8d788cf1d3ae80c29cf5e456bff20e616729082cdd9acb96289ea033350"
+    },
+    "validator.json": {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/validator.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_validator.json",
+      "sha256": "57b479d8b827c5cecf63874c98f8087e2b4e5983b00bbee64fac213e132ef3fd"
+    },
+    "FINALIZED.json": {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/FINALIZED.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_FINALIZED.json",
+      "sha256": "0b69fc3c9750cd1a25e42b3cc59d325e7715d6e604e6773f9df210c230f7f787"
+    }
+  },
+  "protected_sha256": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "v1_preserved_sha256": {
+    "execution_spec_gold_future_capture_certification_v1.json": "a5170cfdf70290f9dbbf92284fdc12c6b3c8a1d9d9f65488063ce2705781a952",
+    "execution_spec_gold_future_capture_enablement_v1.json": "986496f4a6b0c88dc1241e524bcca24d00fb4ee8a4a0b14a8bbbf13a9fc3958b",
+    "gold_future_capture_activation_template_v1.json": "24c20ecd29842c04268308f8bde81785266022a0744254e4f361441586229819",
+    "gold_future_capture_activation_v1.json": "ac2a5756e283e575843fa8bfc432b2244cec30b3132aa2703eafac144df6ca9e",
+    "gold_future_capture_certification_v1.py": "60e9384a0e101265d0fc3f7322ac0be214d4fed9f15bf9cd5d7f0095e0afc29d",
+    "gold_future_capture_collector_v1.py": "8768262ca10a430310fe02406472bcacf943071ddb2a0d600b62a713ccf0ea00",
+    "gold_future_capture_manifest_schema_v1.json": "23278c74ec012352cdeed9ae9b7259d35e9a3f4456b48f74597c0ede9d69dc03",
+    "gold_future_capture_source_attestation_template_v1.json": "7b67d3d7d7dfe91e583ed002a2f5d9f51aec6eca55fce9b358a7a21412bf4fd9",
+    "gold_future_capture_source_attestation_v1.json": "43da6ba69d4326d28e03210631f91178fbc856274249d19edeb5c7a98f3872cb",
+    "gold_future_capture_timezone_attestation_template_v1.json": "e94cc3a3ff1fc9fdf13a1f284fb534d801f7b3c2f2b7fb0a7744f842931739e7",
+    "gold_future_capture_timezone_attestation_v1.json": "8d81bda03e5b0b8e545ccc365d3a1564a3af3d2ef97e35bf471de77ad3977d9a"
+  },
+  "MetaTrader5_version": "5.0.6147"
+}

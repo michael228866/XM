@@ -1,0 +1,257 @@
+{
+  "prefix_policy": "UNRESOLVED",
+  "status": "PARTIAL",
+  "approved": false,
+  "historically_equivalent": false,
+  "outcome_tuning": false,
+  "pipeline_sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+  "feature_hash": "3032b23267e4614e9339b4a71b3c98f66972ad7e724c8eeb4118568dbaa91c8e",
+  "feature_inventory": [
+    {
+      "feature_name": "M1_RSI",
+      "timeframe": "M1",
+      "recursive": false,
+      "definition": "diff; gains/losses where(...,0); rolling14 mean; epsilon1e-6",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "ATR",
+      "timeframe": "M1",
+      "recursive": false,
+      "definition": "true range max skipna; rolling14 mean",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "MACD_HIST",
+      "timeframe": "M1",
+      "recursive": true,
+      "definition": "EMA12 - EMA26 - EMA9(EMA12-EMA26); recursive",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "BB_WIDTH",
+      "timeframe": "M1",
+      "recursive": false,
+      "definition": "rolling20 sample std ddof1 *4 / (rolling20 mean+1e-6)",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "BIAS_20",
+      "timeframe": "M1",
+      "recursive": false,
+      "definition": "(close-rolling20 mean)/(rolling20 mean+1e-6)",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "BODY_PCT",
+      "timeframe": "M1",
+      "recursive": false,
+      "definition": "abs(close-open)/(high-low+1e-6)",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "ROC_5",
+      "timeframe": "M1",
+      "recursive": false,
+      "definition": "pct_change(5); installed pandas3 default no fill",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "VOLA_RATIO",
+      "timeframe": "M1",
+      "recursive": false,
+      "definition": "ATR/(ATR.rolling240.mean()+1e-6)",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "HOUR_SIN",
+      "timeframe": "M1",
+      "recursive": false,
+      "definition": "sin(2*pi*bar hour/24)",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "HOUR_COS",
+      "timeframe": "M1",
+      "recursive": false,
+      "definition": "cos(2*pi*bar hour/24)",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "DAY_OF_WEEK",
+      "timeframe": "M1",
+      "recursive": false,
+      "definition": "bar dayofweek/7",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "Daily_TREND",
+      "timeframe": "Daily",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "H12_TREND",
+      "timeframe": "H12",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "H1_TREND",
+      "timeframe": "H1",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "H2_TREND",
+      "timeframe": "H2",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "H3_TREND",
+      "timeframe": "H3",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "H4_TREND",
+      "timeframe": "H4",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "H6_TREND",
+      "timeframe": "H6",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "H8_TREND",
+      "timeframe": "H8",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "M10_TREND",
+      "timeframe": "M10",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "M12_TREND",
+      "timeframe": "M12",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "M15_TREND",
+      "timeframe": "M15",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "M20_TREND",
+      "timeframe": "M20",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "M2_TREND",
+      "timeframe": "M2",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "M30_TREND",
+      "timeframe": "M30",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "M3_TREND",
+      "timeframe": "M3",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "M4_TREND",
+      "timeframe": "M4",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "M5_TREND",
+      "timeframe": "M5",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "M6_TREND",
+      "timeframe": "M6",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "Monthly_TREND",
+      "timeframe": "Monthly",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    },
+    {
+      "feature_name": "Weekly_TREND",
+      "timeframe": "Weekly",
+      "recursive": false,
+      "definition": "native close > rolling20 mean =>1 else -1; native shift1; backward merge_asof; final M1 shift1",
+      "earliest_certified_source_utc": null
+    }
+  ],
+  "ema_semantics": {
+    "spans": [
+      12,
+      26,
+      9
+    ],
+    "adjust": false,
+    "min_periods": 0,
+    "ignore_na": false,
+    "initialization": "first non-NaN close for price EMAs; first MACD=0 for signal with valid first close",
+    "nan": "ignore_na=False weights absolute positions; leading NaNs remain NaN; no input imputation",
+    "native_recursive_state_used": false
+  },
+  "preprocessing": "sorted filename order; normalize headings; naive DATE/TIME; sort_values TIME_DT; last file per timeframe wins; no deduplication; all31 shift1 then dropna; wrapper tail label trimming does not recompute state",
+  "training_start_reference": "2016-07-01T00:00:00 broker-naive; first B0 training window, not recursive source origin",
+  "data_start_reference": "2016-06-30T21:00:00Z; archived training metadata, not certified source origin",
+  "historical_recursive_source_start": null,
+  "source_chain": [
+    "S4 confirmation -> discovery frozen_inputs -> B0 reconstruct -> C1 prepare_barrier_data",
+    "barrier_final_train.prepare_barrier_data -> drl_trading_v2.load_and_prepare_data -> add_indicators"
+  ],
+  "blockers": [
+    "Original complete certified prefix and initialization origin unavailable",
+    "Current raw collector does not compute or certify recursive state",
+    "Proposal is not approved; native Monthly warmup can require 21 completed months",
+    "Source timezone/calendar and exact source range remain unresolved"
+  ],
+  "strategy_outcome_inspected": false,
+  "models_loaded": false
+}
