@@ -1,0 +1,53 @@
+{
+  "policy": "PREDECLARED_CAUSAL_REINITIALIZATION",
+  "approved": false,
+  "historically_equivalent": false,
+  "outcome_tuning": false,
+  "warmup_basis": "Preserve prior adjudication fixed engineering proposal; never selected using outcomes",
+  "warmup_bars_per_timeframe": {
+    "M1": 4096,
+    "Daily": 21,
+    "H12": 21,
+    "H1": 21,
+    "H2": 21,
+    "H3": 21,
+    "H4": 21,
+    "H6": 21,
+    "H8": 21,
+    "M10": 21,
+    "M12": 21,
+    "M15": 21,
+    "M20": 21,
+    "M2": 21,
+    "M30": 21,
+    "M3": 21,
+    "M4": 21,
+    "M5": 21,
+    "M6": 21,
+    "Monthly": 21,
+    "Weekly": 21
+  },
+  "initialization_semantics": {
+    "ema12": "y0=first_close; yt=(2/13)*close_t+(11/13)*y_previous",
+    "ema26": "y0=first_close; yt=(2/27)*close_t+(25/27)*y_previous",
+    "macd_signal": "z0=0; zt=(2/10)*(ema12-ema26)+(8/10)*z_previous",
+    "adjust": false,
+    "feature_lags": "Preserve frozen native-bar lag and final M1 feature lag"
+  },
+  "first_eligible_bar_rule": "Strictly after freeze and activation; all closed native contexts and 4096 M1 rows available; exact feature lags and nonmissing inputs; do not evaluate before separately approved source range and freeze",
+  "feature_hash": "3032b23267e4614e9339b4a71b3c98f66972ad7e724c8eeb4118568dbaa91c8e",
+  "pipeline_hash": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+  "source_hashes": {
+    "drl_trading_v2.py": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+    "barrier_final_train.py": "a221bda6c61fa89bde0592453de7a8ac84efb80f06b74e7686b872484e2edee5"
+  },
+  "exact_source_range": null,
+  "first_eligible_prediction_utc": null,
+  "limitations": [
+    "No certified source range or immutable approval",
+    "21 native Monthly bars can require 21 months of future-only context",
+    "Missing/invalid inputs block eligibility; no imputation",
+    "No exact historical equivalence; 365 evaluation days must follow eligible warmup"
+  ],
+  "capture_start_is_evaluation_start": false
+}
