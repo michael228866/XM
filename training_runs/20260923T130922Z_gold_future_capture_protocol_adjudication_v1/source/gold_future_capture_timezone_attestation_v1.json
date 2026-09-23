@@ -1,0 +1,60 @@
+{
+  "attestation_version": "gold_future_capture_timezone_attestation_v1",
+  "template": true,
+  "status": "UNRESOLVED",
+  "source_id": "XMGlobal-MT5-6_GOLD#",
+  "source_attestation_sha256": "316c1b4acf8c70e5edd1c44df6f9bcac9194fa2116d7f7469f07e7677ea839b6",
+  "timezone": null,
+  "timezone_authority": null,
+  "dst_policy": null,
+  "timestamp_semantics": "BAR_OPEN",
+  "source_timestamp_encoding": "EPOCH_SECONDS",
+  "mt5_epoch_semantics": null,
+  "historical_bars_clock": null,
+  "session_rollover": null,
+  "weekend_policy": null,
+  "holiday_calendar_source": null,
+  "utc_offset_minutes": null,
+  "iana_tzdb_identity": null,
+  "broker_transition_rule": null,
+  "attested_by": null,
+  "attested_at_utc": null,
+  "broker_offset_intervals": [],
+  "evidence": [
+    {
+      "authority": "FEED_DOCUMENT",
+      "local_path": "D:\\XM\\數據\\training_runs\\20260923T062510Z_gold_future_capture_enablement_v1\\source\\research_evidence\\gold_future_capture_enablement_v1\\metaquotes_epoch.md",
+      "sha256": "aba1e5b16d68ab912b0002ea6b895ef62cbd2342eeca917eb1118653fc06035e",
+      "reviewed_by": "Codex (document review; not broker attestation)",
+      "reviewed_at_utc": "2026-09-23T06:16:31.128635+00:00"
+    },
+    {
+      "authority": "FEED_DOCUMENT",
+      "local_path": "D:\\XM\\數據\\training_runs\\20260923T062510Z_gold_future_capture_enablement_v1\\source\\research_evidence\\gold_future_capture_enablement_v1\\metaquotes_tick.md",
+      "sha256": "57a9f8cf3d79b6537d419281f380e17675568413fa1a17a25c67cb83f8d39553",
+      "reviewed_by": "Codex (document review; not broker attestation)",
+      "reviewed_at_utc": "2026-09-23T06:16:31.128635+00:00"
+    },
+    {
+      "authority": "FEED_DOCUMENT",
+      "local_path": "D:\\XM\\數據\\training_runs\\20260923T062510Z_gold_future_capture_enablement_v1\\source\\research_evidence\\gold_future_capture_enablement_v1\\metaquotes_environment.md",
+      "sha256": "47bb591cbc8044a109082b2163c59059f923d74363e917c3d0d9316906cf2d3a",
+      "reviewed_by": "Codex (document review; not broker attestation)",
+      "reviewed_at_utc": "2026-09-23T06:16:31.128635+00:00"
+    },
+    {
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "D:\\XM\\數據\\training_runs\\20260923T062510Z_gold_future_capture_enablement_v1\\source\\research_evidence\\gold_future_capture_enablement_v1\\xm_display_clock.md",
+      "sha256": "87d25fcc047f8df4fd9532dd1b179df52bff42cd3ae9c7324697ff2053931a82",
+      "reviewed_by": "Codex (document review; not broker attestation)",
+      "reviewed_at_utc": "2026-09-23T06:16:31.128635+00:00"
+    }
+  ],
+  "outcome_inspection_prohibited": true,
+  "strategy_execution_prohibited": true,
+  "historical_2025_plus_is_untouched": false,
+  "holdout_start": null,
+  "earliest_possible_holdout_start": null,
+  "production_promotion": false,
+  "notes": "Diagnostic classification: LEGACY_CONVERSION_SUPPORTED; current evidence does not certify exact server DST/session/holiday rules. Status remains UNRESOLVED."
+}

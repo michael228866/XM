@@ -1,0 +1,14 @@
+{
+  "status": "UNRESOLVED",
+  "timezone_policy": "UNRESOLVED",
+  "broker_offset_intervals": [],
+  "recurrence_rule": null,
+  "diagnostic_support": [
+    {
+      "original_path": "training_runs/20260923T062510Z_gold_future_capture_enablement_v1/diagnostic_timestamp.json",
+      "copy_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/prior_diagnostic_timestamp.json",
+      "sha256": "68927fc9a2a74fd87483d196017171d8816767dfd9dbd7543d4d1283e5861498"
+    }
+  ],
+  "decision": "No exact-server annual DST/session/holiday authority established. Prior +3h diagnostic is support only; no annual transitions inferred."
+}

@@ -1,0 +1,71 @@
+{
+  "generated_at_utc": "2026-09-23T13:09:23.387137+00:00",
+  "formal_run_status": "PARTIAL",
+  "source_id_policy": "V2_CANONICALIZED",
+  "source_id": "XMGlobal-MT5-6_GOLD",
+  "symbol": "GOLD#",
+  "source_attestation_status": "UNRESOLVED",
+  "timezone_attestation_status": "UNRESOLVED",
+  "timezone_policy": "UNRESOLVED",
+  "higher_timeframe_policy": "NATIVE_20TF_REQUIRED",
+  "prefix_policy": "UNRESOLVED",
+  "prefix_certification_status": "PARTIAL",
+  "chain_tip_policy": "NON_AUTHORITATIVE_REBUILDABLE_INDEX",
+  "collector_static_review": {
+    "static_status": "STATICALLY_CONFORMANT",
+    "collector_sha256": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+    "collector_ast_sha256": "3986bc17a41b1f0ecf3cdd725670efa9822013fe2217c7d68f3ed5d3716e0d83",
+    "chain_tip_policy": "NON_AUTHORITATIVE_REBUILDABLE_INDEX",
+    "replace_allowlist": [
+      "chain_tip.json"
+    ],
+    "blockers": [],
+    "operational_status": "NOT_ACTIVATED",
+    "limitations": "Certification applies only to the exact reviewed AST plus synthetic fault tests; no operational proof or arbitrary-code safety claim."
+  },
+  "capture_integrity": null,
+  "readiness": {
+    "status": "NOT_READY_MULTIPLE_BLOCKERS",
+    "blockers": [
+      {
+        "status": "NOT_READY_SOURCE_BINDING",
+        "reason": "Source preparation incomplete"
+      },
+      {
+        "status": "NOT_READY_TIMEZONE",
+        "reason": "Timezone preparation incomplete"
+      },
+      {
+        "status": "NOT_READY_PREFIX_POLICY",
+        "reason": "Prefix unresolved"
+      },
+      {
+        "status": "NOT_READY_CAPTURE_INTEGRITY",
+        "reason": "Activation preparation incomplete"
+      },
+      {
+        "status": "NOT_READY_CAPTURE_INTEGRITY",
+        "reason": "No activated capture layout; not prepared while external gates unresolved"
+      },
+      {
+        "status": "NOT_READY_PROTOCOL_FREEZE",
+        "reason": "Holdout protocol not frozen"
+      }
+    ]
+  },
+  "bindings": {
+    "source_attestation_sha256": "81d2cc3cdc5a724be03402e238b77884f91d07af0533539a1b1a70c634e910e8",
+    "timezone_attestation_sha256": "cd857de251e9eee5f5124ce34c1f5ec566796e0decc5dfc09b628fa00e476482",
+    "activation_sha256": "81694d81854b872ce9995fcd37e47df1c0f5cfed4999f4b378e6ee2d20d9cff7",
+    "prefix_protocol_sha256": "d02713ae794fccfe43ab967c92d16c88f0a3fc19ca3da0f8ce6494d4508d98fb"
+  },
+  "protocol_frozen": false,
+  "capture_activated": false,
+  "holdout_started": false,
+  "holdout_start": null,
+  "strategy_outcome_inspected": false,
+  "model_loaded_for_holdout": false,
+  "model_trained_for_holdout": false,
+  "production_changed": false,
+  "production_promoted": false
+}

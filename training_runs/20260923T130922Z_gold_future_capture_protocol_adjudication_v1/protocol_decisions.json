@@ -1,0 +1,29 @@
+{
+  "source_id_policy": "V2_CANONICALIZED",
+  "identity_migration": {
+    "v1_source_id": "XMGlobal-MT5-6_GOLD#",
+    "v2_source_id": "XMGlobal-MT5-6_GOLD",
+    "symbol": "GOLD#",
+    "meaning": "IDENTIFIER_REPRESENTATION_ONLY"
+  },
+  "chain_tip_policy": "NON_AUTHORITATIVE_REBUILDABLE_INDEX",
+  "replace_allowlist": [
+    "chain_tip.json"
+  ],
+  "authoritative_immutable_classes": [
+    "snapshots",
+    "manifests",
+    "source_attestation",
+    "timezone_attestation",
+    "activation_attestation",
+    "protocol_freeze"
+  ],
+  "missing_tip": "VALID_CHAIN_WITH_WARNING",
+  "stale_tip": "VALID_CHAIN_WITH_WARNING",
+  "conflicting_tip": "CHAIN_CAN_REMAIN_VALID_READINESS_BLOCKED_UNTIL_REBUILD",
+  "higher_timeframe_policy": "NATIVE_20TF_REQUIRED",
+  "timezone_policy": "UNRESOLVED",
+  "prefix_policy": "UNRESOLVED",
+  "v1_changed": false,
+  "production_changed": false
+}
