@@ -1,0 +1,233 @@
+[
+  {
+    "timeframe": "M1",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:57:00"
+  },
+  {
+    "timeframe": "M2",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:56:00"
+  },
+  {
+    "timeframe": "M3",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:57:00"
+  },
+  {
+    "timeframe": "M4",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:56:00"
+  },
+  {
+    "timeframe": "M5",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:55:00"
+  },
+  {
+    "timeframe": "M6",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:54:00"
+  },
+  {
+    "timeframe": "M10",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:50:00"
+  },
+  {
+    "timeframe": "M12",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:48:00"
+  },
+  {
+    "timeframe": "M15",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:45:00"
+  },
+  {
+    "timeframe": "M20",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:40:00"
+  },
+  {
+    "timeframe": "M30",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:30:00"
+  },
+  {
+    "timeframe": "H1",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T23:00:00"
+  },
+  {
+    "timeframe": "H2",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T22:00:00"
+  },
+  {
+    "timeframe": "H3",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T21:00:00"
+  },
+  {
+    "timeframe": "H4",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T20:00:00"
+  },
+  {
+    "timeframe": "H6",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T18:00:00"
+  },
+  {
+    "timeframe": "H8",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T16:00:00"
+  },
+  {
+    "timeframe": "H12",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T12:00:00"
+  },
+  {
+    "timeframe": "Daily",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-02T00:00:00",
+    "last_timestamp": "2026-05-08T00:00:00"
+  },
+  {
+    "timeframe": "Weekly",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-05T00:00:00",
+    "last_timestamp": "2026-05-03T00:00:00"
+  },
+  {
+    "timeframe": "Monthly",
+    "timestamp_semantics": {
+      "raw": "NAIVE_TEXT_CLOCK",
+      "normalized": "UNRESOLVED",
+      "bar_open": "UNCONFIRMED_FOR_FILE"
+    },
+    "timezone_compatibility": "CONDITIONAL",
+    "first_timestamp": "2014-01-01T00:00:00",
+    "last_timestamp": "2026-05-01T00:00:00"
+  }
+]

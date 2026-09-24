@@ -1,0 +1,92 @@
+{
+  "attestation_version": "gold_future_capture_source_attestation_v2",
+  "template": true,
+  "source_id": "XMGlobal-MT5-6_GOLD",
+  "broker_name": "XM Global Limited",
+  "broker_server_name": "XMGlobal-MT5 6",
+  "terminal_or_feed_type": "MetaTrader5",
+  "symbol": "GOLD#",
+  "symbol_exact_case": "GOLD#",
+  "terminal_path_or_feed_reference": "D:\\XM2\\terminal64.exe",
+  "source_data_type": "BAR_M1",
+  "collector_transport": "MetaTrader5 Python API",
+  "source_timestamp_field": "raw_broker_epoch_seconds",
+  "source_timestamp_semantics": "BAR_OPEN",
+  "source_timezone": null,
+  "timezone_authority": null,
+  "dst_policy": null,
+  "session_rollover": null,
+  "weekend_policy": null,
+  "holiday_policy_source": null,
+  "spread_field": "spread_points",
+  "spread_units": "POINTS",
+  "price_digits": 2,
+  "point_size": 0.01,
+  "attested_by": null,
+  "attested_at_utc": null,
+  "source_account_environment": "demo",
+  "volume_fields_if_present": [
+    "TICK_VOLUME",
+    "REAL_VOLUME"
+  ],
+  "evidence": [
+    {
+      "source_url": "https://www.mql5.com/en/docs/python_metatrader5/mt5copyratesfrom_py",
+      "retrieved_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "authority": "FEED_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/metaquotes_api.md",
+      "sha256": "c522ba377da2ae90045dbd4eaf8fa86780e5af853aae56899c76ea3a81eb3a47",
+      "reviewed_by": "Codex document review",
+      "reviewed_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "supported_claims": [
+        "Official API documentation describes returned time and bar open time as UTC."
+      ],
+      "limitations": [
+        "Prior retained XMGlobal-MT5 6 timing sample supports a local-encoded +3h hypothesis instead. Documentation does not adjudicate this source-specific disagreement or historical API behavior."
+      ]
+    },
+    {
+      "source_url": "https://www.xmtrading.com/platforms",
+      "retrieved_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/xmtrading_clock.md",
+      "sha256": "aa62bd5c1bb97334d33c922552a2faf5614d0db04b6ab471e7cf3a4f02143785",
+      "reviewed_by": "Codex document review",
+      "reviewed_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "supported_claims": [
+        "Official XMTrading platform documentation describes GMT+2 winter and GMT+3 summer display clocks."
+      ],
+      "limitations": [
+        "It is not an exact-server attestation for XM Global Limited / XMGlobal-MT5 6 GOLD#. Exact annual transitions, rollover, weekends and current holiday calendar are not established."
+      ]
+    },
+    {
+      "source_url": "https://www.xm.com/trading-hours",
+      "retrieved_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "authority": "BROKER_DOCUMENT",
+      "local_path": "research_evidence/gold_future_capture_protocol_adjudication_v1/xm_hours_lookup.md",
+      "sha256": "addee8167c5e1e8748d95706afec3e9ff44d5cc37c05128bb5e94038f42e06ea",
+      "reviewed_by": "Codex document review",
+      "reviewed_at_utc": "2026-09-23T09:33:18.141868+00:00",
+      "supported_claims": [
+        "Official trading-hours lookup redirects to https://www.xm.com/execution-policy."
+      ],
+      "limitations": [
+        "The retained review did not establish the complete exact-server/symbol calendar or DST recurrence. No timezone rule is certified from this page."
+      ]
+    }
+  ],
+  "outcome_inspection_prohibited": true,
+  "strategy_execution_prohibited": true,
+  "historical_2025_plus_is_untouched": false,
+  "holdout_start": null,
+  "earliest_possible_holdout_start": null,
+  "production_promotion": false,
+  "notes": "Partial v2 preparation. Exact source/symbol and demo classification retained from prior finalized diagnostic; no new terminal query. Timezone/calendar uncertified. Identifier migration changes representation only.",
+  "identity_migration": {
+    "v1_source_id": "XMGlobal-MT5-6_GOLD#",
+    "v2_source_id": "XMGlobal-MT5-6_GOLD",
+    "symbol": "GOLD#",
+    "meaning": "IDENTIFIER_REPRESENTATION_ONLY"
+  }
+}

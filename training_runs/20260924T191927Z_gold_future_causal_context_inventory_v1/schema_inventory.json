@@ -1,0 +1,938 @@
+[
+  {
+    "timeframe": "M1",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "M2",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "M3",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "M4",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "M5",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "M6",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "M10",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "M12",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "M15",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "M20",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "M30",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "H1",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "H2",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "H3",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "H4",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "H6",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "H8",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "H12",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<TIME>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "TIME",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>",
+        "<TIME>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "5b79bdbb9a4a55b6bbb857cfd3965425c6a9de14759bc41c23bfcb23e215e3ba"
+  },
+  {
+    "timeframe": "Daily",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "ec21ff6493c478d716a914b1e41e54c2822295a54b39252bafb05338cf8a6bf9"
+  },
+  {
+    "timeframe": "Weekly",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "ec21ff6493c478d716a914b1e41e54c2822295a54b39252bafb05338cf8a6bf9"
+  },
+  {
+    "timeframe": "Monthly",
+    "schema": {
+      "columns": [
+        "<DATE>",
+        "<OPEN>",
+        "<HIGH>",
+        "<LOW>",
+        "<CLOSE>",
+        "<TICKVOL>",
+        "<VOL>",
+        "<SPREAD>"
+      ],
+      "normalized_columns": [
+        "DATE",
+        "OPEN",
+        "HIGH",
+        "LOW",
+        "CLOSE",
+        "TICKVOL",
+        "VOL",
+        "SPREAD"
+      ],
+      "encoding": "utf-8-sig",
+      "delimiter": "\t",
+      "timestamp_fields": [
+        "<DATE>"
+      ],
+      "timestamp_dtype": "naive text; YYYY.MM.DD[ HH:MM:SS]",
+      "ohlc_fields": {
+        "open": "<OPEN>",
+        "high": "<HIGH>",
+        "low": "<LOW>",
+        "close": "<CLOSE>"
+      },
+      "spread_field": "<SPREAD>",
+      "tick_volume_field": "<TICKVOL>",
+      "real_volume_field": "<VOL>",
+      "source_metadata_fields": []
+    },
+    "schema_sha256": "ec21ff6493c478d716a914b1e41e54c2822295a54b39252bafb05338cf8a6bf9"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "status": "PARTIAL_TIMEZONE_PENDING",
+  "formal_run_status": "PARTIAL",
+  "source_identity_compatible": false,
+  "native_origin_certified": false,
+  "structural_requirements_satisfied": true,
+  "structural_errors": [],
+  "timezone_compatibility": "CONDITIONAL",
+  "approved": false,
+  "ready_for_approval_after_timezone_attestation": false,
+  "blockers": [
+    "File-level broker/server/native export provenance unconfirmed",
+    "Timezone and closed-bar interpretation remain conditional",
+    "Historical files stop before proposed end; causal continuation bridge not established"
+  ]
+}
