@@ -1,0 +1,12 @@
+{
+  "static_status": "STATICALLY_CONFORMANT",
+  "collector_sha256": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+  "collector_ast_sha256": "3986bc17a41b1f0ecf3cdd725670efa9822013fe2217c7d68f3ed5d3716e0d83",
+  "chain_tip_policy": "NON_AUTHORITATIVE_REBUILDABLE_INDEX",
+  "replace_allowlist": [
+    "chain_tip.json"
+  ],
+  "blockers": [],
+  "operational_status": "NOT_ACTIVATED",
+  "limitations": "Certification applies only to the exact reviewed AST plus synthetic fault tests; no operational proof or arbitrary-code safety claim."
+}

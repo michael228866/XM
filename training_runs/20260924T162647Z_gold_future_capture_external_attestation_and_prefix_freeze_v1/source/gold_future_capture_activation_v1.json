@@ -1,0 +1,96 @@
+{
+  "activation_version": "gold_future_capture_activation_v1",
+  "template": true,
+  "status": "NOT_ACTIVATED",
+  "source_attestation_sha256": "316c1b4acf8c70e5edd1c44df6f9bcac9194fa2116d7f7469f07e7677ea839b6",
+  "timezone_attestation_sha256": "b8bb7f4a967e271a8b4d6e2c694746daf82e422cde9f187378cffd60d13a5621",
+  "capture_root": null,
+  "collector_commit": "ba6255e9385e0b39b9ea1cd3b4a718edaa513513",
+  "collector_version": "gold_future_capture_collector_v1",
+  "protocol_freeze_commit": null,
+  "protocol_freeze_effective_at_utc": null,
+  "activation_requested_at_utc": null,
+  "activation_effective_at_utc": null,
+  "higher_timeframe_policy": "NATIVE_20TF_REQUIRED",
+  "native_timeframes": [],
+  "resampling_proposal": null,
+  "protocol_change_required": false,
+  "prefix_policy": "UNRESOLVED",
+  "prefix_evidence": [],
+  "prefix_context_start": null,
+  "prefix_context_end": null,
+  "first_eligible_bar_rule": "The untouched holdout begins at the first verified fresh GOLD M1 bar whose source timestamp is strictly after both the immutable protocol freeze and the effective certified capture activation, provided source, timezone, pipeline, and manifest-chain certifications remain valid. Pre-boundary rows may be used only as causal warmup/context and never as holdout evidence.",
+  "historical_rows_context_only": true,
+  "outcome_inspection_prohibited": true,
+  "strategy_execution_prohibited": true,
+  "historical_2025_plus_is_untouched": false,
+  "holdout_start": null,
+  "earliest_possible_holdout_start": null,
+  "production_promotion": false,
+  "collector_review": {
+    "collector_sha256": "8768262ca10a430310fe02406472bcacf943071ddb2a0d600b62a713ccf0ea00",
+    "collector_git_commit": "ba6255e9385e0b39b9ea1cd3b4a718edaa513513",
+    "reviewed_by": "Codex source review; independent archive validator is separate code",
+    "reviewed_at_utc": "2026-09-23T06:25:11.586133+00:00",
+    "guarantees": {
+      "writes_append_only": false,
+      "no_snapshot_overwrite": true,
+      "atomic_publication": true,
+      "fsync": true,
+      "manifest_after_snapshot": true,
+      "previous_hash_verified": true,
+      "restart_recovery": true,
+      "partial_quarantine": true,
+      "duplicate_identity": true,
+      "revision_snapshots": true,
+      "timezone_binding": true,
+      "native_timeframes": true,
+      "spread_preserved": true,
+      "sensitive_data_excluded": true,
+      "dependencies_bound": false
+    },
+    "recovery_cases": {
+      "snapshot_crash": "See committed README storage and recovery review plus archived fault-injection self-test",
+      "orphan_after_fsync": "See committed README storage and recovery review plus archived fault-injection self-test",
+      "manifest_crash": "See committed README storage and recovery review plus archived fault-injection self-test",
+      "restart_full_chain": "See committed README storage and recovery review plus archived fault-injection self-test",
+      "duplicate_bars": "See committed README storage and recovery review plus archived fault-injection self-test",
+      "broker_revision": "See committed README storage and recovery review plus archived fault-injection self-test",
+      "clock_reversal": "See committed README storage and recovery review plus archived fault-injection self-test",
+      "source_change": "See committed README storage and recovery review plus archived fault-injection self-test",
+      "collector_change": "See committed README storage and recovery review plus archived fault-injection self-test"
+    },
+    "timezone_conversion_location": "normalize_epoch: accepts certified direct UTC only",
+    "evidence": [
+      {
+        "authority": "FEED_DOCUMENT",
+        "local_path": "D:\\XM\\數據\\training_runs\\20260923T062510Z_gold_future_capture_enablement_v1\\source\\research_evidence\\gold_future_capture_enablement_v1\\metaquotes_epoch.md",
+        "sha256": "aba1e5b16d68ab912b0002ea6b895ef62cbd2342eeca917eb1118653fc06035e",
+        "reviewed_by": "Codex (document review; not broker attestation)",
+        "reviewed_at_utc": "2026-09-23T06:16:31.128635+00:00"
+      },
+      {
+        "authority": "FEED_DOCUMENT",
+        "local_path": "D:\\XM\\數據\\training_runs\\20260923T062510Z_gold_future_capture_enablement_v1\\source\\research_evidence\\gold_future_capture_enablement_v1\\metaquotes_tick.md",
+        "sha256": "57a9f8cf3d79b6537d419281f380e17675568413fa1a17a25c67cb83f8d39553",
+        "reviewed_by": "Codex (document review; not broker attestation)",
+        "reviewed_at_utc": "2026-09-23T06:16:31.128635+00:00"
+      },
+      {
+        "authority": "FEED_DOCUMENT",
+        "local_path": "D:\\XM\\數據\\training_runs\\20260923T062510Z_gold_future_capture_enablement_v1\\source\\research_evidence\\gold_future_capture_enablement_v1\\metaquotes_environment.md",
+        "sha256": "47bb591cbc8044a109082b2163c59059f923d74363e917c3d0d9316906cf2d3a",
+        "reviewed_by": "Codex (document review; not broker attestation)",
+        "reviewed_at_utc": "2026-09-23T06:16:31.128635+00:00"
+      },
+      {
+        "authority": "BROKER_DOCUMENT",
+        "local_path": "D:\\XM\\數據\\training_runs\\20260923T062510Z_gold_future_capture_enablement_v1\\source\\research_evidence\\gold_future_capture_enablement_v1\\xm_display_clock.md",
+        "sha256": "87d25fcc047f8df4fd9532dd1b179df52bff42cd3ae9c7324697ff2053931a82",
+        "reviewed_by": "Codex (document review; not broker attestation)",
+        "reviewed_at_utc": "2026-09-23T06:16:31.128635+00:00"
+      }
+    ]
+  },
+  "notes": "Candidate native policy only; incomplete attestation. Static tip-publication conflict blocks activation. No protocol frozen, no holdout started."
+}

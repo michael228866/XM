@@ -1,0 +1,25 @@
+{
+  "version": "gold_recursive_prefix_protocol_v2",
+  "policy": "UNRESOLVED",
+  "proposed_policy": "PREDECLARED_CAUSAL_REINITIALIZATION",
+  "approved": false,
+  "approval_commit": null,
+  "source_id": "XMGlobal-MT5-6_GOLD",
+  "symbol": "GOLD#",
+  "pipeline_sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+  "historically_equivalent": false,
+  "outcome_tuning": false,
+  "initialization": {
+    "ema12": "y0=first_close; yt=(2/13)*close_t+(11/13)*y_previous",
+    "ema26": "y0=first_close; yt=(2/27)*close_t+(25/27)*y_previous",
+    "macd_signal": "z0=0; zt=(2/10)*(ema12-ema26)+(8/10)*z_previous",
+    "adjust": false,
+    "feature_lags": "Preserve frozen native-bar lag and final M1 feature lag"
+  },
+  "warmup_m1_rows": 4096,
+  "warmup_native_rows_per_timeframe": 21,
+  "source_range": null,
+  "exact_history": null,
+  "evidence": [],
+  "notes": "Fixed conservative proposal, never optimized on outcomes. Exact source interval and immutable approval are not established. Remains UNRESOLVED, not historical equivalence."
+}

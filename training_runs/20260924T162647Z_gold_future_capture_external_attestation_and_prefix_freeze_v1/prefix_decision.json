@@ -1,0 +1,16 @@
+{
+  "policy": "UNRESOLVED",
+  "status": "PARTIAL",
+  "approved": false,
+  "proposed_policy": "PREDECLARED_CAUSAL_REINITIALIZATION",
+  "context_role": "CAUSAL_CONTEXT_ONLY",
+  "historically_equivalent": false,
+  "outcome_tuning": false,
+  "historical_context_allowed_in_principle": true,
+  "requires_post_activation_monthly_accumulation": false,
+  "context_protocol_sha256": "e27fd4e9216c4089d3c51b483c1b204e87d6e052ac2a93bf363a7d610f52c62e",
+  "blockers": [
+    "Exact-source timezone/epoch/calendar semantics unresolved",
+    "No sealed compatible historical context row inventory"
+  ]
+}
