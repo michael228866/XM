@@ -1,0 +1,122 @@
+[
+  {
+    "source_url": "https://www.xm.com/help-center/trading-conditions/faq-why-are-rollover-rates-tripled",
+    "retrieved_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "authority": "BROKER_DOCUMENT",
+    "publisher": "XM",
+    "title": "Trading Conditions FAQ",
+    "local_path": "research_evidence/gold_future_capture_external_attestation_and_prefix_freeze_v1/xm_trading_faq.md",
+    "sha256": "dc5eb0902956ad227fec8fd72f9b8eb32ff23e5c6b1080e5f97f0903b845ad82",
+    "reviewed_by": "Codex document review",
+    "reviewed_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "supported_claims": [
+      "Indexed official FAQ describes generic Forex hours in GMT+2 with DST possibly applying."
+    ],
+    "unsupported_claims": [
+      "Not exact GOLD# sessions, XMGlobal-MT5 6 recurrence, epoch encoding, or annual coverage."
+    ],
+    "limitations": [
+      "Search-index text reviewed; direct page retrieval failed. No authenticated content accessed."
+    ]
+  },
+  {
+    "source_url": "https://www.xm.com/precious-metals",
+    "retrieved_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "authority": "BROKER_DOCUMENT",
+    "publisher": "XM Global Limited",
+    "title": "Precious Metals",
+    "local_path": "research_evidence/gold_future_capture_external_attestation_and_prefix_freeze_v1/xm_metals.md",
+    "sha256": "e7fc5cc65693c18e30e6a31b18bdfc9766db2b3a06705f63e6837131a4abcd56",
+    "reviewed_by": "Codex document review",
+    "reviewed_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "supported_claims": [
+      "Public metals page directs trading-hours lookup to account login."
+    ],
+    "unsupported_claims": [
+      "Exact GOLD# session, daily rollover and weekend schedule are not established."
+    ],
+    "limitations": [
+      "No client login or account data accessed."
+    ]
+  },
+  {
+    "source_url": "https://www.xm.com/assets/pdf/docs/XM_Order-Execution-Policy.pdf",
+    "retrieved_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "authority": "BROKER_DOCUMENT",
+    "publisher": "Trading Point of Financial Instruments Ltd",
+    "title": "Order Execution Policy",
+    "local_path": "research_evidence/gold_future_capture_external_attestation_and_prefix_freeze_v1/xm_old_execution.md",
+    "sha256": "51427867c13c5462b5e5a4f1df6aeec320d35dcacde3acc33934e1309fc397fe",
+    "reviewed_by": "Codex document review",
+    "reviewed_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "supported_claims": [
+      "Historical Cypriot-entity policy describes Cyprus operating time and holiday notices through terminal internal mail."
+    ],
+    "unsupported_claims": [
+      "Not a current exact-source attestation for XM Global Limited / XMGlobal-MT5 6."
+    ],
+    "limitations": [
+      "Entity and period mismatch; operating hours are not GOLD# symbol session hours."
+    ]
+  },
+  {
+    "source_url": "https://www.mql5.com/en/docs/python_metatrader5/mt5copyratesrange_py",
+    "retrieved_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "authority": "FEED_DOCUMENT",
+    "publisher": "MetaQuotes",
+    "title": "copy_rates_range",
+    "local_path": "research_evidence/gold_future_capture_external_attestation_and_prefix_freeze_v1/metaquotes_rates.md",
+    "sha256": "9c30327471e61865506952da85210522cf9414223f2eea9501e0dbbd47d36e8e",
+    "reviewed_by": "Codex document review",
+    "reviewed_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "supported_claims": [
+      "The generic API specifies UTC bar-open timestamps for its timeframe parameter and bounded history availability."
+    ],
+    "unsupported_claims": [
+      "Does not explain retained local +3h observations or certify exact broker historical conversion."
+    ],
+    "limitations": [
+      "BAR_OPEN is documented generically; no exact-source annual proof."
+    ]
+  },
+  {
+    "source_url": "https://www.xm.com/assets/pdf/holiday_schedule/XM_holiday_trading_hours_en.pdf",
+    "retrieved_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "authority": "BROKER_DOCUMENT",
+    "publisher": "XM",
+    "title": "Holiday trading hours historical PDF",
+    "local_path": "research_evidence/gold_future_capture_external_attestation_and_prefix_freeze_v1/xm_holiday.md",
+    "sha256": "a3e069f0c0d09c99f56d16d20ec1a978d6a82abf7c17ed506907cb4231c337f5",
+    "reviewed_by": "Codex document review",
+    "reviewed_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "supported_claims": [
+      "XM has an official holiday publication channel; this historical schedule labels times GMT+2."
+    ],
+    "unsupported_claims": [
+      "No current exact-server holiday schedule, annual DST recurrence or 365-day coverage."
+    ],
+    "limitations": [
+      "Historical publication is not authority to extrapolate current hours."
+    ]
+  },
+  {
+    "source_url": "https://www.xm.com/support",
+    "retrieved_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "authority": "BROKER_DOCUMENT",
+    "publisher": "XM Global Limited",
+    "title": "Contact Us",
+    "local_path": "research_evidence/gold_future_capture_external_attestation_and_prefix_freeze_v1/xm_support.md",
+    "sha256": "a9895af8af9922c799df434562ad87dd2b14434300b0995dca77d25e4ba4b240",
+    "reviewed_by": "Codex document review",
+    "reviewed_at_utc": "2026-09-24T16:16:32.827649+00:00",
+    "supported_claims": [
+      "XM offers support and a help center for further inquiries."
+    ],
+    "unsupported_claims": [
+      "No support answer or signed attestation was obtained."
+    ],
+    "limitations": [
+      "Request artifact prepared only; no message sent."
+    ]
+  }
+]
