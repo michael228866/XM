@@ -1,0 +1,35 @@
+{
+  "version": "gold_future_capture_protocol_v3",
+  "source_id": "XMGlobal-MT5-6_GOLD",
+  "symbol": "GOLD#",
+  "time_policy": "EMPIRICALLY_CERTIFIED_SOURCE_TIME_RULE",
+  "official_broker_attestation_required": false,
+  "holiday_calendar_role": "EXPLANATORY_METADATA",
+  "higher_timeframe_policy": "NATIVE_20TF_REQUIRED",
+  "chain_tip_policy": "NON_AUTHORITATIVE_REBUILDABLE_INDEX",
+  "mutable_replace_destinations": [
+    "chain_tip.json"
+  ],
+  "holdout_duration_calendar_days": 365,
+  "outcome_inspection_prohibited": true,
+  "strategy_execution_prohibited": true,
+  "production_promotion": false,
+  "activation_permitted": false,
+  "holdout_protocol_frozen": false,
+  "prefix_policy": "PREDECLARED_CAUSAL_REINITIALIZATION",
+  "prefix_approved": false,
+  "manifest_schema_sha256": "5f876cd726612f32e818018366c7e72ba5f91d3c7c4cc52e6bc2c275261a32be",
+  "approved_collector_ast_sha256": "2f941462a7d39fa68995ae5c0d31399c983668d2f91d5bf53fd8a1ccb1e7d6fd",
+  "dependency_sha256": {
+    "gold_future_capture_collector_v2.py": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+    "gold_future_empirical_time_v1.py": "3e44434c93d33d49606dc2a68e55a5b38ecac61f3a531427e8abb6a1a5713fd8",
+    "gold_mt5_timestamp_semantics_diagnostic_v1.py": "dd616b6b0031543e9370ec87042841d9c3baddee2b77b91bc3430dbac5643a8f"
+  },
+  "v2_preserved_sha256": {
+    "gold_future_capture_protocol_v2.json": "4a00c3f6b3897a5603689bb95e08351a44ade89f278c994778e7d03f8e25e7dd",
+    "gold_future_capture_collector_v2.py": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+    "gold_future_capture_certification_v2.py": "41c8f4226018c9f4019ad820d07e4324e38f0fc2f040ac925d5195f2685d0b7f",
+    "gold_future_capture_manifest_schema_v2.json": "e94470a5fe9cfe40bc578a98b1ea1f62d1e2e58fe282ef328dbba6fad2744931"
+  },
+  "runtime_long_native_span_policy": "Reject when bracketing operational anchors do not cover the complete native bar; no partial native closure claims"
+}

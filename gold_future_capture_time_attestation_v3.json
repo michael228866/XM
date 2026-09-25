@@ -1,0 +1,29 @@
+{
+  "attestation_version": "gold_future_capture_time_attestation_v3",
+  "template": true,
+  "status": "UNRESOLVED",
+  "source_id": "XMGlobal-MT5-6_GOLD",
+  "symbol": "GOLD#",
+  "broker": "XM Global Limited",
+  "server": "XMGlobal-MT5 6",
+  "environment": "demo",
+  "policy": "EMPIRICALLY_CERTIFIED_SOURCE_TIME_RULE",
+  "bar_timestamp_semantics": "BAR_OPEN",
+  "normalization_algorithm": "candidate=floor((raw_epoch-observed_utc_epoch)/3600+0.5)*3600; require candidate in allowed set and abs(raw-observed-candidate)<=5; normalized=raw-candidate",
+  "allowed_offsets_seconds": [
+    7200,
+    10800
+  ],
+  "empirical_coverage_start": null,
+  "empirical_coverage_end": null,
+  "empirical_segments": [],
+  "runtime_validation_rule": "Reject any mixed-offset segment. Different subsequent offset needs separately certified regime id, monotonic UTC and excluded ambiguous transition interval; never infer future transition dates",
+  "max_runtime_clock_skew_seconds": 5,
+  "fail_closed_action": "PAUSE_AND_QUARANTINE",
+  "official_attestation_required": false,
+  "official_evidence": [],
+  "empirical_evidence": [],
+  "attested_by": null,
+  "attested_at_utc": null,
+  "broker_internal_semantics_claimed": false
+}

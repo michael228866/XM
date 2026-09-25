@@ -1,0 +1,22 @@
+{
+  "activation_version": "gold_future_capture_activation_v3",
+  "template": true,
+  "status": "NOT_ACTIVATED",
+  "collector_version": "gold_future_capture_collector_v3",
+  "higher_timeframe_policy": "NATIVE_20TF_REQUIRED",
+  "prefix_policy": "UNRESOLVED",
+  "capture_root": null,
+  "collector_commit": null,
+  "source_attestation_sha256": null,
+  "time_attestation_sha256": null,
+  "protocol_freeze_commit": null,
+  "protocol_freeze_sha256": null,
+  "protocol_freeze_effective_at_utc": null,
+  "activation_effective_at_utc": null,
+  "clock_certificate_sha256": null,
+  "certified_offset_seconds": null,
+  "regime_certification_id": null,
+  "holdout_start": null,
+  "production_promotion": false,
+  "strategy_execution_prohibited": true
+}
