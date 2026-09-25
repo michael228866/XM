@@ -1,0 +1,24 @@
+{
+  "status": "PARTIAL",
+  "policy": "EMPIRICALLY_SUPPORTED_BUT_INSUFFICIENT",
+  "observed_offsets_seconds": [
+    10800
+  ],
+  "allowed_offsets_seconds": [
+    7200,
+    10800
+  ],
+  "empirical_coverage_start": null,
+  "empirical_coverage_end": null,
+  "certified_segments": [],
+  "unobserved_intervals_excluded": true,
+  "official_attestation_required": false,
+  "broker_internal_semantics_claimed": false,
+  "runtime_fail_closed": true,
+  "clock_quality": "OPERATIONAL_CHECK_ONLY",
+  "blockers": [
+    "Historical seasonal/transition samples lack independent offset anchors",
+    "No certified temporal segment coverage; do not interpolate or invent recurrence",
+    "System UTC is an operational anchor only"
+  ]
+}

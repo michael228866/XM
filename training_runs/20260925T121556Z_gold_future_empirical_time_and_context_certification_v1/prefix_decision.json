@@ -1,0 +1,14 @@
+{
+  "status": "PARTIAL",
+  "policy": "UNRESOLVED",
+  "proposed_policy": "PREDECLARED_CAUSAL_REINITIALIZATION",
+  "approved": false,
+  "historically_equivalent": false,
+  "outcome_tuning": false,
+  "context_role": "CAUSAL_CONTEXT_ONLY",
+  "holdout_evidence": false,
+  "blockers": [
+    "Empirical offset coverage does not cover historical context",
+    "Original CSV-to-native-feed provenance and continuation bridge unconfirmed"
+  ]
+}

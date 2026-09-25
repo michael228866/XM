@@ -1,0 +1,377 @@
+{
+  "attestation_version": "gold_future_capture_time_attestation_v3",
+  "template": true,
+  "status": "EMPIRICALLY_SUPPORTED_BUT_INSUFFICIENT",
+  "source_id": "XMGlobal-MT5-6_GOLD",
+  "symbol": "GOLD#",
+  "broker": "XM Global Limited",
+  "server": "XMGlobal-MT5 6",
+  "environment": "demo",
+  "policy": "EMPIRICALLY_CERTIFIED_SOURCE_TIME_RULE",
+  "bar_timestamp_semantics": "BAR_OPEN",
+  "normalization_algorithm": "candidate=floor((raw_epoch-observed_utc_epoch)/3600+0.5)*3600; require candidate in allowed set and abs(raw-observed-candidate)<=5; normalized=raw-candidate",
+  "allowed_offsets_seconds": [
+    7200,
+    10800
+  ],
+  "empirical_coverage_start": null,
+  "empirical_coverage_end": null,
+  "empirical_segments": [
+    {
+      "segment_id": "winter",
+      "regime": "winter",
+      "sample_start": "2026-01-15T12:00:00+00:00",
+      "sample_end": "2026-01-15T12:05:00+00:00",
+      "raw_epochs": [
+        1768478400,
+        1768478460,
+        1768478520,
+        1768478580,
+        1768478640,
+        1768478700
+      ],
+      "anchors": [],
+      "identity": {
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "broker": "XM Global Limited",
+        "server": "XMGlobal-MT5 6",
+        "environment": "demo"
+      },
+      "anchor_scope": "No independent historical UTC anchor; no inferred absolute offset",
+      "classification": "EMPIRICAL_INTERNAL_CONSISTENCY",
+      "sample_count": 6,
+      "raw_epoch_min": 1768478400,
+      "raw_epoch_max": 1768478700,
+      "observed_offset_seconds": null,
+      "direct_utc_offset_summary": [],
+      "normalized_utc_error_summary": [],
+      "monotonic": true,
+      "bar_spacing_valid": true,
+      "source_symbol": "GOLD#",
+      "source_server": "XMGlobal-MT5 6"
+    },
+    {
+      "segment_id": "summer",
+      "regime": "summer",
+      "sample_start": "2026-07-15T12:00:00+00:00",
+      "sample_end": "2026-07-15T12:05:00+00:00",
+      "raw_epochs": [
+        1784116800,
+        1784116860,
+        1784116920,
+        1784116980,
+        1784117040,
+        1784117100
+      ],
+      "anchors": [],
+      "identity": {
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "broker": "XM Global Limited",
+        "server": "XMGlobal-MT5 6",
+        "environment": "demo"
+      },
+      "anchor_scope": "No independent historical UTC anchor; no inferred absolute offset",
+      "classification": "EMPIRICAL_INTERNAL_CONSISTENCY",
+      "sample_count": 6,
+      "raw_epoch_min": 1784116800,
+      "raw_epoch_max": 1784117100,
+      "observed_offset_seconds": null,
+      "direct_utc_offset_summary": [],
+      "normalized_utc_error_summary": [],
+      "monotonic": true,
+      "bar_spacing_valid": true,
+      "source_symbol": "GOLD#",
+      "source_server": "XMGlobal-MT5 6"
+    },
+    {
+      "segment_id": "march_before",
+      "regime": "march_before",
+      "sample_start": "2026-03-27T12:00:00+00:00",
+      "sample_end": "2026-03-27T12:05:00+00:00",
+      "raw_epochs": [
+        1774612800,
+        1774612860,
+        1774612920,
+        1774612980,
+        1774613040,
+        1774613100
+      ],
+      "anchors": [],
+      "identity": {
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "broker": "XM Global Limited",
+        "server": "XMGlobal-MT5 6",
+        "environment": "demo"
+      },
+      "anchor_scope": "No independent historical UTC anchor; no inferred absolute offset",
+      "classification": "EMPIRICAL_INTERNAL_CONSISTENCY",
+      "sample_count": 6,
+      "raw_epoch_min": 1774612800,
+      "raw_epoch_max": 1774613100,
+      "observed_offset_seconds": null,
+      "direct_utc_offset_summary": [],
+      "normalized_utc_error_summary": [],
+      "monotonic": true,
+      "bar_spacing_valid": true,
+      "source_symbol": "GOLD#",
+      "source_server": "XMGlobal-MT5 6"
+    },
+    {
+      "segment_id": "march_after",
+      "regime": "march_after",
+      "sample_start": "2026-03-30T12:00:00+00:00",
+      "sample_end": "2026-03-30T12:05:00+00:00",
+      "raw_epochs": [
+        1774872000,
+        1774872060,
+        1774872120,
+        1774872180,
+        1774872240,
+        1774872300
+      ],
+      "anchors": [],
+      "identity": {
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "broker": "XM Global Limited",
+        "server": "XMGlobal-MT5 6",
+        "environment": "demo"
+      },
+      "anchor_scope": "No independent historical UTC anchor; no inferred absolute offset",
+      "classification": "EMPIRICAL_INTERNAL_CONSISTENCY",
+      "sample_count": 6,
+      "raw_epoch_min": 1774872000,
+      "raw_epoch_max": 1774872300,
+      "observed_offset_seconds": null,
+      "direct_utc_offset_summary": [],
+      "normalized_utc_error_summary": [],
+      "monotonic": true,
+      "bar_spacing_valid": true,
+      "source_symbol": "GOLD#",
+      "source_server": "XMGlobal-MT5 6"
+    },
+    {
+      "segment_id": "october_before",
+      "regime": "october_before",
+      "sample_start": "2025-10-24T12:00:00+00:00",
+      "sample_end": "2025-10-24T12:05:00+00:00",
+      "raw_epochs": [
+        1761307200,
+        1761307260,
+        1761307320,
+        1761307380,
+        1761307440,
+        1761307500
+      ],
+      "anchors": [],
+      "identity": {
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "broker": "XM Global Limited",
+        "server": "XMGlobal-MT5 6",
+        "environment": "demo"
+      },
+      "anchor_scope": "No independent historical UTC anchor; no inferred absolute offset",
+      "classification": "EMPIRICAL_INTERNAL_CONSISTENCY",
+      "sample_count": 6,
+      "raw_epoch_min": 1761307200,
+      "raw_epoch_max": 1761307500,
+      "observed_offset_seconds": null,
+      "direct_utc_offset_summary": [],
+      "normalized_utc_error_summary": [],
+      "monotonic": true,
+      "bar_spacing_valid": true,
+      "source_symbol": "GOLD#",
+      "source_server": "XMGlobal-MT5 6"
+    },
+    {
+      "segment_id": "october_after",
+      "regime": "october_after",
+      "sample_start": "2025-10-27T12:00:00+00:00",
+      "sample_end": "2025-10-27T12:05:00+00:00",
+      "raw_epochs": [
+        1761566400,
+        1761566460,
+        1761566520,
+        1761566580,
+        1761566640,
+        1761566700
+      ],
+      "anchors": [],
+      "identity": {
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "broker": "XM Global Limited",
+        "server": "XMGlobal-MT5 6",
+        "environment": "demo"
+      },
+      "anchor_scope": "No independent historical UTC anchor; no inferred absolute offset",
+      "classification": "EMPIRICAL_INTERNAL_CONSISTENCY",
+      "sample_count": 6,
+      "raw_epoch_min": 1761566400,
+      "raw_epoch_max": 1761566700,
+      "observed_offset_seconds": null,
+      "direct_utc_offset_summary": [],
+      "normalized_utc_error_summary": [],
+      "monotonic": true,
+      "bar_spacing_valid": true,
+      "source_symbol": "GOLD#",
+      "source_server": "XMGlobal-MT5 6"
+    },
+    {
+      "segment_id": "current_0",
+      "regime": "current",
+      "sample_start": "2026-09-25T12:15:57.633394+00:00",
+      "sample_end": "2026-09-25T12:15:59.633918+00:00",
+      "raw_epochs": [
+        1790349120,
+        1790349180,
+        1790349240
+      ],
+      "anchors": [
+        {
+          "raw_epoch": 1790349357,
+          "observed_utc_epoch": 1790338557.633394
+        },
+        {
+          "raw_epoch": 1790349359,
+          "observed_utc_epoch": 1790338559.633918
+        }
+      ],
+      "identity": {
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "broker": "XM Global Limited",
+        "server": "XMGlobal-MT5 6",
+        "environment": "demo"
+      },
+      "anchor_scope": "Operational OS UTC; not sole external certification evidence",
+      "classification": "OPERATIONAL_UTC_ANCHORED",
+      "sample_count": 3,
+      "raw_epoch_min": 1790349120,
+      "raw_epoch_max": 1790349240,
+      "observed_offset_seconds": 10800,
+      "direct_utc_offset_summary": [
+        10799.366605997086,
+        10799.366081953049
+      ],
+      "normalized_utc_error_summary": [
+        -0.6333940029144287,
+        -0.633918046951294
+      ],
+      "monotonic": true,
+      "bar_spacing_valid": true,
+      "source_symbol": "GOLD#",
+      "source_server": "XMGlobal-MT5 6"
+    },
+    {
+      "segment_id": "current_1",
+      "regime": "current",
+      "sample_start": "2026-09-25T12:15:59.633918+00:00",
+      "sample_end": "2026-09-25T12:16:01.634416+00:00",
+      "raw_epochs": [
+        1790349180,
+        1790349240,
+        1790349300
+      ],
+      "anchors": [
+        {
+          "raw_epoch": 1790349359,
+          "observed_utc_epoch": 1790338559.633918
+        },
+        {
+          "raw_epoch": 1790349361,
+          "observed_utc_epoch": 1790338561.634416
+        }
+      ],
+      "identity": {
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "broker": "XM Global Limited",
+        "server": "XMGlobal-MT5 6",
+        "environment": "demo"
+      },
+      "anchor_scope": "Operational OS UTC; not sole external certification evidence",
+      "classification": "OPERATIONAL_UTC_ANCHORED",
+      "sample_count": 3,
+      "raw_epoch_min": 1790349180,
+      "raw_epoch_max": 1790349300,
+      "observed_offset_seconds": 10800,
+      "direct_utc_offset_summary": [
+        10799.366081953049,
+        10799.365583896637
+      ],
+      "normalized_utc_error_summary": [
+        -0.633918046951294,
+        -0.6344161033630371
+      ],
+      "monotonic": true,
+      "bar_spacing_valid": true,
+      "source_symbol": "GOLD#",
+      "source_server": "XMGlobal-MT5 6"
+    },
+    {
+      "segment_id": "current_2",
+      "regime": "current",
+      "sample_start": "2026-09-25T12:16:01.634416+00:00",
+      "sample_end": "2026-09-25T12:16:03.635146+00:00",
+      "raw_epochs": [
+        1790349180,
+        1790349240,
+        1790349300
+      ],
+      "anchors": [
+        {
+          "raw_epoch": 1790349361,
+          "observed_utc_epoch": 1790338561.634416
+        },
+        {
+          "raw_epoch": 1790349363,
+          "observed_utc_epoch": 1790338563.635146
+        }
+      ],
+      "identity": {
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "broker": "XM Global Limited",
+        "server": "XMGlobal-MT5 6",
+        "environment": "demo"
+      },
+      "anchor_scope": "Operational OS UTC; not sole external certification evidence",
+      "classification": "OPERATIONAL_UTC_ANCHORED",
+      "sample_count": 3,
+      "raw_epoch_min": 1790349180,
+      "raw_epoch_max": 1790349300,
+      "observed_offset_seconds": 10800,
+      "direct_utc_offset_summary": [
+        10799.365583896637,
+        10799.364854097366
+      ],
+      "normalized_utc_error_summary": [
+        -0.6344161033630371,
+        -0.635145902633667
+      ],
+      "monotonic": true,
+      "bar_spacing_valid": true,
+      "source_symbol": "GOLD#",
+      "source_server": "XMGlobal-MT5 6"
+    }
+  ],
+  "runtime_validation_rule": "Reject any mixed-offset segment. Different subsequent offset needs separately certified regime id, monotonic UTC and excluded ambiguous transition interval; never infer future transition dates",
+  "max_runtime_clock_skew_seconds": 5,
+  "fail_closed_action": "PAUSE_AND_QUARANTINE",
+  "official_attestation_required": false,
+  "official_evidence": [],
+  "empirical_evidence": [
+    {
+      "path": "empirical_time_segments.json",
+      "sha256": "f37a5a5d55cf18ac573c6b51550099f01f7aa519e7fe2a0b3370bfd1eed0efe2"
+    }
+  ],
+  "attested_by": "Empirical review; scope limited to retained observations",
+  "attested_at_utc": "2026-09-25T12:16:03.656233+00:00",
+  "broker_internal_semantics_claimed": false
+}

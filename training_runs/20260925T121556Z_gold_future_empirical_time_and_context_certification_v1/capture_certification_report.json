@@ -1,0 +1,34 @@
+{
+  "formal_run_status": "PARTIAL",
+  "readiness": {
+    "status": "NOT_READY_MULTIPLE_BLOCKERS",
+    "blockers": [
+      "EMPIRICAL_TIME_COVERAGE_INSUFFICIENT",
+      "CONTEXT_TIME_OR_NATIVE_PROVENANCE_UNRESOLVED",
+      "PREFIX_UNAPPROVED"
+    ]
+  },
+  "official_broker_attestation_required": false,
+  "holiday_calendar_role": "EXPLANATORY_METADATA",
+  "higher_timeframe_policy": "NATIVE_20TF_REQUIRED",
+  "collector_static_review": {
+    "static_status": "STATICALLY_CONFORMANT",
+    "collector_sha256": "814dd43fe226a988cd006a8ebb7c757194364139ec560f3633094457090f166d",
+    "collector_ast_sha256": "2f941462a7d39fa68995ae5c0d31399c983668d2f91d5bf53fd8a1ccb1e7d6fd",
+    "runtime_validator_sha256": "3e44434c93d33d49606dc2a68e55a5b38ecac61f3a531427e8abb6a1a5713fd8",
+    "chain_tip_policy": "NON_AUTHORITATIVE_REBUILDABLE_INDEX",
+    "blockers": [],
+    "operational_status": "NOT_ACTIVATED",
+    "limitations": "Pinned implementation plus synthetic checks; runtime requires independently checked clock and anchors covering every admitted bar; long native spans fail closed until covered"
+  },
+  "empirical_time_status": "PARTIAL",
+  "context_inventory_status": "PARTIAL",
+  "prefix_certification_status": "PARTIAL",
+  "source_attestation_sha256": "a37c2307b5a0944aa18155588e0b5c9846ff1977ab06029369bb9f712a432d9b",
+  "time_attestation_sha256": "fb6359d9914569ab95f4f3215fdddbc96212cf9f44f11daeefa244fd50a7db71",
+  "prefix_protocol_sha256": "04a8f9bd8f9f90f7db07727f26ac4c39fb926b08097212d3849ca472fffde625",
+  "inventory_root_sha256": "a18bb395b81b0bc35703c689b7348bdc21903c328bb5b96a150fedde1eaed24d",
+  "freeze_sha256": null,
+  "protocol_frozen": false,
+  "capture_activated": false
+}

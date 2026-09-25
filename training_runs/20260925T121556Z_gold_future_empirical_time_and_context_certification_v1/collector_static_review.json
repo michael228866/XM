@@ -1,0 +1,10 @@
+{
+  "static_status": "STATICALLY_CONFORMANT",
+  "collector_sha256": "814dd43fe226a988cd006a8ebb7c757194364139ec560f3633094457090f166d",
+  "collector_ast_sha256": "2f941462a7d39fa68995ae5c0d31399c983668d2f91d5bf53fd8a1ccb1e7d6fd",
+  "runtime_validator_sha256": "3e44434c93d33d49606dc2a68e55a5b38ecac61f3a531427e8abb6a1a5713fd8",
+  "chain_tip_policy": "NON_AUTHORITATIVE_REBUILDABLE_INDEX",
+  "blockers": [],
+  "operational_status": "NOT_ACTIVATED",
+  "limitations": "Pinned implementation plus synthetic checks; runtime requires independently checked clock and anchors covering every admitted bar; long native spans fail closed until covered"
+}

@@ -1,0 +1,48 @@
+{
+  "version": "gold_future_empirical_time_protocol_v1",
+  "policy": "EMPIRICALLY_CERTIFIED_SOURCE_TIME_RULE",
+  "source_id": "XMGlobal-MT5-6_GOLD",
+  "symbol": "GOLD#",
+  "broker": "XM Global Limited",
+  "server": "XMGlobal-MT5 6",
+  "environment": "demo",
+  "timestamp_semantics": "BAR_OPEN",
+  "semantics_scope": "Required observed behavior; historical source files still need compatibility evidence",
+  "normalization_method": "candidate=floor((raw_epoch-observed_utc_epoch)/3600+0.5)*3600; require candidate in allowed set and abs(raw-observed-candidate)<=5; normalized=raw-candidate",
+  "allowed_offsets_seconds": [
+    7200,
+    10800
+  ],
+  "allowed_set_basis": "Frozen candidate hypotheses, not a claim both have been observed",
+  "transition_detection_rule": "Reject any mixed-offset segment. Different subsequent offset needs separately certified regime id, monotonic UTC and excluded ambiguous transition interval; never infer future transition dates",
+  "runtime_validation_required": true,
+  "runtime_fail_closed": true,
+  "official_broker_attestation_required": false,
+  "official_evidence_role": "SUPPLEMENTARY_ONLY",
+  "historical_claim_scope": "OBSERVED_SOURCE_BEHAVIOR_ONLY",
+  "broker_internal_semantics_claimed": false,
+  "system_clock_source": "OS UTC plus independent clock-quality certificate required for admission",
+  "system_clock_check": "Windows Time query is operational only; does not independently prove skew",
+  "max_allowed_clock_skew_seconds": 5,
+  "required_empirical_regimes": [
+    "winter",
+    "summer",
+    "march_before",
+    "march_after",
+    "october_before",
+    "october_after",
+    "current"
+  ],
+  "coverage_mode": "BOUNDED_DISJOINT_OBSERVED_SEGMENTS_ONLY",
+  "unobserved_intervals_excluded": true,
+  "fail_closed_action": "PAUSE_AND_QUARANTINE",
+  "holiday_session_policy": "Actual closed native source bars only; no synthesis or forward-fill",
+  "holiday_evidence_role": "EXPLANATORY_METADATA",
+  "gap_classifications": [
+    "SOURCE_MARKET_CLOSURE",
+    "POSSIBLE_SESSION_BOUNDARY",
+    "POSSIBLE_HOLIDAY",
+    "UNEXPLAINED_GAP",
+    "TIME_RULE_CONFLICT"
+  ]
+}

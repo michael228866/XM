@@ -1,0 +1,18 @@
+{
+  "attestation_version": "gold_future_capture_source_attestation_v3",
+  "template": false,
+  "source_id": "XMGlobal-MT5-6_GOLD",
+  "symbol": "GOLD#",
+  "broker": "XM Global Limited",
+  "server": "XMGlobal-MT5 6",
+  "environment": "demo",
+  "digits": 2,
+  "point": 0.01,
+  "terminal_path": "D:\\XM2\\terminal64.exe",
+  "official_attestation_required": false,
+  "evidence_scope": "Actual live identity required; no file-origin assertion",
+  "outcome_inspection_prohibited": true,
+  "production_promotion": false,
+  "identity_verified": true,
+  "historical_file_origin_certified": false
+}
