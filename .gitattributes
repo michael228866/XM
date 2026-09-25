@@ -12,3 +12,27 @@ training_runs/*_gemini_dukascopy_fx_tick_gap_adjudication_v1/*.sqlite filter=lfs
 training_runs/*_gemini_dukascopy_fx_tick_gap_adjudication_v1/*.csv.gz filter=lfs diff=lfs merge=lfs -text
 # Preserve the finalized validator's original trailing blank line.
 training_runs/20260922T145335Z_gold_future_capture_certification_v1/validator.md whitespace=cr-at-eol,-blank-at-eof
+
+# V4 native-context source and frozen evidence use exact bytes.
+README_GOLD_FUTURE_NATIVE_CONTEXT_V4.md -text
+execution_spec_gold_future_native_context_and_current_regime_activation_v1.json -text
+gold_future_activation_workflow_v4.py -text
+gold_future_capture_activation_v4.json -text
+gold_future_capture_certification_v4.py -text
+gold_future_capture_collector_v4.py -text
+gold_future_capture_manifest_schema_v4.json -text
+gold_future_capture_protocol_v4.json -text
+gold_future_capture_time_attestation_v4.json -text
+gold_future_current_regime_diagnostic_v1.py -text
+gold_future_native_context_fetch_v1.py -text
+gold_future_source_identity_v4.py -text
+run_gold_future_native_context_and_current_regime_activation_v1.py -text
+test_gold_future_native_context_and_current_regime_activation_v1.py -text
+validate_gold_future_holdout_boundary_v4.py -text
+validate_gold_future_native_context_and_current_regime_activation_v1.py -text
+validate_gold_future_native_context_v1.py -text
+future_holdout/gold_s4_v4/** -text
+gold_future_locked_holdout_protocol_v4.json -text
+gold_future_capture_activation_record_v4.json -text
+gold_future_holdout_boundary_v4.json -text
+GOLD_FUTURE_LOCKED_HOLDOUT_PROTOCOL_V4.md -text
