@@ -1,0 +1,26 @@
+{
+  "policy": "EMPIRICALLY_CERTIFIED_CURRENT_SOURCE_TIME_REGIME",
+  "template": true,
+  "status": "UNRESOLVED",
+  "current_certified_offset_seconds": 10800,
+  "candidate_offsets_seconds": [
+    7200,
+    10800
+  ],
+  "certified_offsets_seconds": [
+    10800
+  ],
+  "uncertified_candidate_offsets_seconds": [
+    7200
+  ],
+  "coverage_mode": "CURRENT_REGIME_OPEN_ENDED_WHILE_RUNTIME_VALIDATION_PASSES",
+  "effective_from_utc": null,
+  "effective_until": null,
+  "runtime_validation_required": true,
+  "runtime_fail_closed": true,
+  "max_runtime_clock_skew_seconds": 5,
+  "clock_threshold_reason": "Fixed conservative engineering margin over prior approximately 0.6 second operational UTC skew; no strategy tuning",
+  "on_uncertified_allowed_offset": "PAUSE_AND_REQUIRE_REGIME_CERTIFICATION",
+  "on_unexpected_offset": "PAUSE_AND_QUARANTINE",
+  "official_attestation_required": false
+}

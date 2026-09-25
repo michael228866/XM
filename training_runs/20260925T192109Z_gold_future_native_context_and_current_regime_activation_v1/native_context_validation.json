@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "timeframe_count": 21,
+  "native_timeframe_count": 21,
+  "m1_context_bars": 4096,
+  "htf_required_bars_each": 21,
+  "inventory_root_sha256": "4f584f603241835aa392821d70b01806946420be2d878b9fcae10c8cffaa3589",
+  "manifests_root_sha256": "28a736e0d85bf6d9eb2e2f86aa0bc6b583877f30a0d89a353642a7348d372e57",
+  "sensitive_account_values_present": false
+}

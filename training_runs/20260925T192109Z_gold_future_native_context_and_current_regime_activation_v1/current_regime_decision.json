@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "classification": "CURRENT_REGIME_10800_CERTIFIED",
+  "sample_count": 3,
+  "current_certified_offset_seconds": 10800,
+  "certified_offsets_seconds": [
+    10800
+  ],
+  "uncertified_candidate_offsets_seconds": [
+    7200
+  ],
+  "policy": "EMPIRICALLY_CERTIFIED_CURRENT_SOURCE_TIME_REGIME",
+  "runtime_fail_closed": true,
+  "max_runtime_clock_skew_seconds": 5,
+  "monotonic": true,
+  "spacing": true
+}

@@ -1,0 +1,13 @@
+{
+  "formal_run_status": "PASS",
+  "native_context_status": "PASS",
+  "current_regime_status": "PASS",
+  "prefix_approved": true,
+  "capture_certification_status": "READY_FOR_CAPTURE_ACTIVATION",
+  "strategy_outcome_inspected": false,
+  "model_loaded_for_holdout": false,
+  "model_trained_for_holdout": false,
+  "production_changed": false,
+  "production_promoted": false,
+  "validator_status": "PASS"
+}

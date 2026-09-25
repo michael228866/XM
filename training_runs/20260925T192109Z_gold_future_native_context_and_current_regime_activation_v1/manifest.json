@@ -1,0 +1,1096 @@
+{
+  "schema_version": 1,
+  "run_id": "20260925T192109Z_gold_future_native_context_and_current_regime_activation_v1",
+  "experiment_name": "gold_future_native_context_and_current_regime_activation_v1",
+  "status": "pass",
+  "started_at_utc": "2026-09-25T19:21:09.355781Z",
+  "finished_at_utc": "2026-09-25T19:22:04.917595Z",
+  "git_commit": "7e7b87a49e3db5280b25858abe99f924a145c227",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\run_gold_future_native_context_and_current_regime_activation_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "a5373d79b329b92057dd4e319eafc48da196d6c2bf1ed8fc925764e0ce591e37",
+  "exact_command": "D:\\XM\\數據\\.venv\\Scripts\\python.exe -B D:\\XM\\數據\\run_gold_future_native_context_and_current_regime_activation_v1.py --execute",
+  "arguments": [
+    "--execute"
+  ],
+  "random_seeds": {},
+  "random_seed_note": "Deterministic native-context certification; no model or strategy",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "Direct native MetaTrader5 API; sanitized account identity"
+    ],
+    "source_files": [
+      {
+        "source_path": ".gitattributes",
+        "path": "source/.gitattributes",
+        "sha256": "982de2f91e2eaa8015566bd51c6b96aaf725e1110c2e446545c8b5ea0135d08b",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "README_GOLD_FUTURE_NATIVE_CONTEXT_V4.md",
+        "path": "source/README_GOLD_FUTURE_NATIVE_CONTEXT_V4.md",
+        "sha256": "33fe30cca203b9faaddba13657d7be3174ac0a7bb7c34219d144476773890863",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "drl_trading_v2.py",
+        "path": "source/drl_trading_v2.py",
+        "sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "execution_spec_gold_future_holdout_data_foundation_v1.json",
+        "path": "source/execution_spec_gold_future_holdout_data_foundation_v1.json",
+        "sha256": "f865e3f61afae71a83773e987803921f75daf952bac34b7e8a832ce594e42a2b",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "execution_spec_gold_future_native_context_and_current_regime_activation_v1.json",
+        "path": "source/execution_spec_gold_future_native_context_and_current_regime_activation_v1.json",
+        "sha256": "5b3902cdfc2e4107e2000cde0d4401f3a1614d1bd7290d7988e03311e6519dcd",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_activation_workflow_v4.py",
+        "path": "source/gold_future_activation_workflow_v4.py",
+        "sha256": "5439b41173d039f338e70b69f43e021fdc193118b5adea4ef573c05377d0c30e",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_capture_activation_v4.json",
+        "path": "source/gold_future_capture_activation_v4.json",
+        "sha256": "66c7b9be21823ca62deddb478600582338f8a98c3e3076b232babc03e6e18e4f",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_capture_certification_v4.py",
+        "path": "source/gold_future_capture_certification_v4.py",
+        "sha256": "6a443071c40420e6233d7bf7d432e7d5c6b1c636248c660acd544dd1c2391f03",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_capture_collector_v2.py",
+        "path": "source/gold_future_capture_collector_v2.py",
+        "sha256": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_capture_collector_v4.py",
+        "path": "source/gold_future_capture_collector_v4.py",
+        "sha256": "4b1e4edca3d7a5192c82c127b023ec560981d4710ab6ebc4ceb23aecb037a126",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_capture_manifest_schema_v4.json",
+        "path": "source/gold_future_capture_manifest_schema_v4.json",
+        "sha256": "56cd6ec4a90193a9428ccd86562dd141ffdf56990f53c2aa91a951b680daf55c",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_capture_protocol_v4.json",
+        "path": "source/gold_future_capture_protocol_v4.json",
+        "sha256": "6f47fb58f5ff66f9d1678a31cc17b135ade21eb941921e4d9a9afaee12792152",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_capture_time_attestation_v4.json",
+        "path": "source/gold_future_capture_time_attestation_v4.json",
+        "sha256": "069c2110bded4971bab2e76a76eaf8e855c69881845ad6e3a88efd2881f64a93",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_current_regime_diagnostic_v1.py",
+        "path": "source/gold_future_current_regime_diagnostic_v1.py",
+        "sha256": "f270136c41217409710e3c95f72dbb39d09353611beb89a89114ee74ef889e92",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_native_context_fetch_v1.py",
+        "path": "source/gold_future_native_context_fetch_v1.py",
+        "sha256": "7ddaec71e45606be9e5eb48f61fc6d5fea6297a1efef713aca059a8e2ba60107",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_source_identity_v4.py",
+        "path": "source/gold_future_source_identity_v4.py",
+        "sha256": "7806116cdb29edbe8ba3d64139f9cbe0358196b2a04babe6b330dc5b99b53290",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_recursive_prefix_causal_context_protocol_v1.json",
+        "path": "source/gold_recursive_prefix_causal_context_protocol_v1.json",
+        "sha256": "6489d94f51910c2961527d1dafa2d7dc65bf6305cf4fa1ea5645163e9a9dcb47",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "run_gold_future_native_context_and_current_regime_activation_v1.py",
+        "path": "source/run_gold_future_native_context_and_current_regime_activation_v1.py",
+        "sha256": "a5373d79b329b92057dd4e319eafc48da196d6c2bf1ed8fc925764e0ce591e37",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "test_gold_future_native_context_and_current_regime_activation_v1.py",
+        "path": "source/test_gold_future_native_context_and_current_regime_activation_v1.py",
+        "sha256": "14f4750d271682c20136a71d13f71aa2452a7cf7b70593a5e0e9a43d695d384b",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "training_run_history.py",
+        "path": "source/training_run_history.py",
+        "sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "validate_gold_future_holdout_boundary_v4.py",
+        "path": "source/validate_gold_future_holdout_boundary_v4.py",
+        "sha256": "04db7c0cd9291a060cd7c4018f8dc1c2d025359f584aec4e3d9baf1e26fa7a94",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "validate_gold_future_native_context_and_current_regime_activation_v1.py",
+        "path": "source/validate_gold_future_native_context_and_current_regime_activation_v1.py",
+        "sha256": "9f721ecae57afb83bfdbee708552dc772c411b2bf9b6f17a05a335888302f701",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "validate_gold_future_native_context_v1.py",
+        "path": "source/validate_gold_future_native_context_v1.py",
+        "sha256": "f4f52873eca669fe6580454ad57e160a12428f2fb40e47872486ea149beef575",
+        "retention_status": "stored_in_run_directory_and_git"
+      }
+    ],
+    "timezone": "Raw source epochs; current regime only +10800 if certified",
+    "data_start_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "data_end_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "train_start_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "train_end_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "train_rows": 0,
+    "validation_start_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "validation_end_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "validation_rows": 0,
+    "test_start_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "test_end_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "test_rows": 0,
+    "purge_details": "No strategy dataset",
+    "embargo_details": "No strategy outcomes inspected",
+    "raw_snapshot_retained": true,
+    "reproducibility_claim": "Exact retained context bytes and bounded timestamp observations",
+    "mt5_fetch": {
+      "used": true,
+      "terminal_path": "D:\\XM2\\terminal64.exe",
+      "terminal_info": "Only sanitized identity and terminal build retained",
+      "broker_info": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6182,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "fetch_start_utc": "2026-09-25T19:21:10.227364+00:00",
+      "fetch_end_utc": "2026-09-25T19:21:15.129373+00:00",
+      "retrieved_at_utc": "2026-09-25T19:21:15.129373+00:00",
+      "returned_rows": 4516,
+      "not_applicable_reason": null
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "No model loaded or trained"
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "No strategy search"
+  },
+  "registry": {
+    "parent_or_incumbent": "Empirical v3 PARTIAL",
+    "selected_configuration": "Native context PASS 21/21; M1=4096; HTF=21 each; current 10800 PASS; 7200 uncertified; runtime fail-closed; prefix approved; READY_FOR_CAPTURE_ACTIVATION; causal context only; no model/strategy evaluation; no production change or promotion",
+    "trades_per_day": "N/A: native context/current-regime infrastructure",
+    "realized_win_rate": "N/A: native context/current-regime infrastructure",
+    "pf": "N/A: native context/current-regime infrastructure",
+    "mean_r": "N/A: native context/current-regime infrastructure",
+    "pnl": "N/A: native context/current-regime infrastructure",
+    "max_dd": "N/A: native context/current-regime infrastructure",
+    "validator_result": "PASS; failed_check_names=[]"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "path": "candidates.csv",
+      "sha256": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "capture_certification_report.json",
+      "sha256": "c05e725603b679959a15ae70dc86a390e7558554f1ca9984716515cab7c88f04",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "collector_static_review.json",
+      "sha256": "5cf369eb4b67ceecb14e77a7ff121a9fd7faeb38e04cf2c7c71fa809c777510a",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/gold_future_native_context_inventory_v1.json",
+      "sha256": "b522936fc51c384969da93ca6dc11ee8b8eda618d7072e8493759591150b5c73",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/gold_future_native_context_manifest_v1.json",
+      "sha256": "de3b3e06e27c382b935d7382675c2a6186c368983fa94f7da0c8ad27592e5ebd",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/Daily.json",
+      "sha256": "6cdb09349db1dfaeb14ee749268fb6bacf1b37ac7c003fc47a6d0e7eb7e43829",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/H1.json",
+      "sha256": "b3b94eee22b568352f5c07d491b15f5bb6d63f53df217a55aa9009eb94adecde",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/H12.json",
+      "sha256": "91d4c90cf34d7d0bdd26280ea43f49d4fc8acfb2ddabcc90a3ff886aa1bdd883",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/H2.json",
+      "sha256": "5c6bd7cae54283c67c8fc64f1599dcfcd0f249e22b476aaecc530ae55c910dde",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/H3.json",
+      "sha256": "f9ec3847190fce7874317154ce4f6f9d67cdc7d293067846cb3dfc1dbfe010ff",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/H4.json",
+      "sha256": "02d4cbfbb72e450776a079763b1c290096e4d57270d17fd88fcb581f4ee7bf18",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/H6.json",
+      "sha256": "054557c9c054d5789921b3ca975da9f6577e86dda28d08f286bfa0df7a51fe39",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/H8.json",
+      "sha256": "224481e6995061123d13d1512976190b26c167498a5e2120354621ce06b7cb9e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/M1.json",
+      "sha256": "65a6d8c5b17ca92f4af64f606fbaba09cde06204bd1b39ae8cf99d4ae7f297cf",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/M10.json",
+      "sha256": "4b13912541fd86c0d1112083a6125f9283b12601e5ba9cd1a7e904bdb5e8720c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/M12.json",
+      "sha256": "30113865e9d1e36001301189051d23697e395a8c8d8ce4436613ca5f0c57298c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/M15.json",
+      "sha256": "29887db74184efb110bd3e54adfdc9d3f644245ddb1216dd24bd7e60eae511aa",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/M2.json",
+      "sha256": "82d7be63c34b97b2c7b8a59e5d6a436556ffe6d5e2282fe506ddde3e9c852712",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/M20.json",
+      "sha256": "03462ae0a25876fa929a945b84320af3dc2ba177860bf54e502a9dd984889eb5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/M3.json",
+      "sha256": "2f92604fc0469d04dc08939412918c7036adbb85e056c63159d6961eb731fa9d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/M30.json",
+      "sha256": "40b8f5801c75e5001781774e53772ae9a7ee534d68e17718921058e4049f624e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/M4.json",
+      "sha256": "aef9ea12d1e047233beb27007cdf8e316fbb006de2c0e3c1bbf3686079672fe9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/M5.json",
+      "sha256": "4b85ceb1b0ab2124fc04f353d1dbcaecf94229b6185f4cff0143181ef6619d56",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/M6.json",
+      "sha256": "7de134cec0150a7a720761ecc614eeefa660d39c96dd6ab330c19331c6f22c67",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/Monthly.json",
+      "sha256": "0f49967e587bd6fdc38e977730eceb9cf2a5584ec99e08fd2fbeb7dc7fa1d353",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/manifests/Weekly.json",
+      "sha256": "881b9da10ea97309ed9fcd63082ca069f7186d9cde6074a5c171754726f4673c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/090db0faeb014bdfaff409209892b30d.tmp",
+      "sha256": "f2b5dfdd5148c718432e94acf5744bb0a1c32830a930907e20737ad57f279f85",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/0c9f7488137e466ca0f2d5ce5f8260b1.tmp",
+      "sha256": "d669f8cba04b3450fd0ef703db98465d5c827cf80397b1f72521e156cf1ad850",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/0cf8f06b65b844ec95c3c31f11e0d58c.tmp",
+      "sha256": "30113865e9d1e36001301189051d23697e395a8c8d8ce4436613ca5f0c57298c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/100be97e99554e599d6427de00933c91.tmp",
+      "sha256": "08ebf434cc69d2e4082a9fc08298cbcb4436075eb933c0ba67b8f3e1b8d35105",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/13bf3bd914614e86a20bb7ab11c51d2a.tmp",
+      "sha256": "4b13912541fd86c0d1112083a6125f9283b12601e5ba9cd1a7e904bdb5e8720c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/1a8bcdd8c2d244a7b084ed09eb8006d6.tmp",
+      "sha256": "b522936fc51c384969da93ca6dc11ee8b8eda618d7072e8493759591150b5c73",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/1f5955f05d3943699daf124dd9e652ad.tmp",
+      "sha256": "451abf6f13013c3bfc4eb56e84a7e44ef172e04e37e33d090de09cf9199015e2",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/20122420f3d64259a3a8dffd45311beb.tmp",
+      "sha256": "6cc04bc6fb36cdb030e97d60d5b6a7a26e57374e24eafe36c6f6fa3ecc303854",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/2085b2a94c0d4a3f8678e1ac042fc729.tmp",
+      "sha256": "91d34812407db0398e6a78be71b21f6e3b28ffc1bb108496f76215c5ce1ffa87",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/21a394fb566c4bf298e2f9395126bcc2.tmp",
+      "sha256": "aef9ea12d1e047233beb27007cdf8e316fbb006de2c0e3c1bbf3686079672fe9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/22009c55e5e64e278cf5b3a33d6f8cc4.tmp",
+      "sha256": "5789879537a47f0b8fc54612622c69743eb84d2a1b0d98973c093b25e32dbb3e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/351b46398f6d46bea12c08df5e126a01.tmp",
+      "sha256": "29887db74184efb110bd3e54adfdc9d3f644245ddb1216dd24bd7e60eae511aa",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/389749f02faa4d949764afd2780b12e4.tmp",
+      "sha256": "91d4c90cf34d7d0bdd26280ea43f49d4fc8acfb2ddabcc90a3ff886aa1bdd883",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/38f7ad8d64084afbb5f466a8cced81b8.tmp",
+      "sha256": "0f49967e587bd6fdc38e977730eceb9cf2a5584ec99e08fd2fbeb7dc7fa1d353",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/3e3d142cdc2540c3b3c6108bcd929900.tmp",
+      "sha256": "2f92604fc0469d04dc08939412918c7036adbb85e056c63159d6961eb731fa9d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/423f170d557b40bf878ab6d33ad0fbe8.tmp",
+      "sha256": "8db1fbc6a24a5958d97d9b412d4de547cc98ee4069c8df6bee338f7096ca5dd9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/44ae3029e95047ab85101daba455c0f7.tmp",
+      "sha256": "054557c9c054d5789921b3ca975da9f6577e86dda28d08f286bfa0df7a51fe39",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/4b061bf98067423980f57c4347d915e0.tmp",
+      "sha256": "02d4cbfbb72e450776a079763b1c290096e4d57270d17fd88fcb581f4ee7bf18",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/4e6eb7d35c8a43d7ba25f9a48a49be9f.tmp",
+      "sha256": "0e2a6bf00524ed48518dd61f44f1826842520834d001143e945293c4f252b5d2",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/4f45a89c809c48c0b70fd1501cf7a85d.tmp",
+      "sha256": "b3b94eee22b568352f5c07d491b15f5bb6d63f53df217a55aa9009eb94adecde",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/5679eb8466c6498883df8cdc44f9fe47.tmp",
+      "sha256": "f9ec3847190fce7874317154ce4f6f9d67cdc7d293067846cb3dfc1dbfe010ff",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/5aeb9c16c4c141ad88f2dd0839f3e858.tmp",
+      "sha256": "4bd6f508d67a12e231f3c642bba2315faf9dd0b14c83029bd5d3788fb44efa17",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/630384218640448d93d73e6d676f64e3.tmp",
+      "sha256": "7de134cec0150a7a720761ecc614eeefa660d39c96dd6ab330c19331c6f22c67",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/63c4fba2febd4ab4954536a5657ce7b0.tmp",
+      "sha256": "40b8f5801c75e5001781774e53772ae9a7ee534d68e17718921058e4049f624e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/65076fdebb444316b1da132eb570ac16.tmp",
+      "sha256": "4b85ceb1b0ab2124fc04f353d1dbcaecf94229b6185f4cff0143181ef6619d56",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/6ebb07a01c3440e8ba54920400d60a3f.tmp",
+      "sha256": "1e67b92b0e45afb18cfefed078de92bc604dbdda02acdd22d802f9d8e45060bf",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/7fa310fdee9c469484a1cd72c241572c.tmp",
+      "sha256": "881b9da10ea97309ed9fcd63082ca069f7186d9cde6074a5c171754726f4673c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/87a77d38495f4039bb0cd04201385a30.tmp",
+      "sha256": "f866b3bc9705aa0cf27429e71d2995da04abcc8d43718de59be9dd6d2d6cbb7a",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/8993ad5967f64fc994119fe37cb5d6ff.tmp",
+      "sha256": "b1bf38881394461a005cae44e50a84892d61241e95efb3880d4a3c9e232d9d5b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/98e3146ddae44dc9abf94dbb2d87b88b.tmp",
+      "sha256": "82d7be63c34b97b2c7b8a59e5d6a436556ffe6d5e2282fe506ddde3e9c852712",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/99f3b55f1c244ff9b19588cabc9a84d4.tmp",
+      "sha256": "5c6bd7cae54283c67c8fc64f1599dcfcd0f249e22b476aaecc530ae55c910dde",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/9c5669a18f8a492aa3c2f36a3affd830.tmp",
+      "sha256": "224481e6995061123d13d1512976190b26c167498a5e2120354621ce06b7cb9e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/9e0f20f890574d59a8f2f2a22f3e5a02.tmp",
+      "sha256": "29809568012fd8774b3bf822e3e549ceeb91d9de8e50a79c055ca566a46a9959",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/9fbf72013e6c415185f6113874a63089.tmp",
+      "sha256": "65a6d8c5b17ca92f4af64f606fbaba09cde06204bd1b39ae8cf99d4ae7f297cf",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/a8d4bcc30b9f475fb40f057451524f4c.tmp",
+      "sha256": "698df94f3e9623661a9795c2a5832134ae13caf4b9947b7d0c2a60502a051c16",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/a9a8dc7ca90f4503849a9f70dfa11f86.tmp",
+      "sha256": "5fe398b5cbc7e8f8ccdc88834531255aff1853cd1b972704b5dcf7395107129b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/b49eb281680b4e5ba11fe09a2c104d2a.tmp",
+      "sha256": "1648f90e965690ee706633b2afcd925e1cbd913831a2f6026ea82118039ce38b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/c198030e9a884106a1dda349adb0e54a.tmp",
+      "sha256": "31e51883ebb21271303593694b496b9fdf8c2fb253979ea4a0063545be43e7a6",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/c597bf921a774694ad38734d3e36cc27.tmp",
+      "sha256": "03462ae0a25876fa929a945b84320af3dc2ba177860bf54e502a9dd984889eb5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/d29fa039a9c84878b544fae9fc28a94f.tmp",
+      "sha256": "b5e16fb2889cb0f89f3a036e1b5da5efd3bba81345699fbeac13e9cb264797fb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/efd00c02fbfe4c5ab740f6c4b6cc8d7c.tmp",
+      "sha256": "6cdb09349db1dfaeb14ee749268fb6bacf1b37ac7c003fc47a6d0e7eb7e43829",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/f97f3bd2aad349ea83a490dc755e2d85.tmp",
+      "sha256": "de3b3e06e27c382b935d7382675c2a6186c368983fa94f7da0c8ad27592e5ebd",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/fc4d79a377864797a971488a098e6cf6.tmp",
+      "sha256": "bab1cacf2c1afc428c26c12565e8be2f759d6262150868b1b55ead8d566e2fa0",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/pending/fd17ce1f817748e3b11a78a3ecd23272.tmp",
+      "sha256": "0b5614680289c3cfe5c25dd4aa3bb15fe357da74ed03edab1ef24d08ad3600ce",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/Daily.json",
+      "sha256": "d669f8cba04b3450fd0ef703db98465d5c827cf80397b1f72521e156cf1ad850",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/H1.json",
+      "sha256": "4bd6f508d67a12e231f3c642bba2315faf9dd0b14c83029bd5d3788fb44efa17",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/H12.json",
+      "sha256": "31e51883ebb21271303593694b496b9fdf8c2fb253979ea4a0063545be43e7a6",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/H2.json",
+      "sha256": "451abf6f13013c3bfc4eb56e84a7e44ef172e04e37e33d090de09cf9199015e2",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/H3.json",
+      "sha256": "f2b5dfdd5148c718432e94acf5744bb0a1c32830a930907e20737ad57f279f85",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/H4.json",
+      "sha256": "0b5614680289c3cfe5c25dd4aa3bb15fe357da74ed03edab1ef24d08ad3600ce",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/H6.json",
+      "sha256": "5789879537a47f0b8fc54612622c69743eb84d2a1b0d98973c093b25e32dbb3e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/H8.json",
+      "sha256": "1648f90e965690ee706633b2afcd925e1cbd913831a2f6026ea82118039ce38b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/M1.json",
+      "sha256": "08ebf434cc69d2e4082a9fc08298cbcb4436075eb933c0ba67b8f3e1b8d35105",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/M10.json",
+      "sha256": "0e2a6bf00524ed48518dd61f44f1826842520834d001143e945293c4f252b5d2",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/M12.json",
+      "sha256": "1e67b92b0e45afb18cfefed078de92bc604dbdda02acdd22d802f9d8e45060bf",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/M15.json",
+      "sha256": "5fe398b5cbc7e8f8ccdc88834531255aff1853cd1b972704b5dcf7395107129b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/M2.json",
+      "sha256": "b1bf38881394461a005cae44e50a84892d61241e95efb3880d4a3c9e232d9d5b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/M20.json",
+      "sha256": "29809568012fd8774b3bf822e3e549ceeb91d9de8e50a79c055ca566a46a9959",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/M3.json",
+      "sha256": "6cc04bc6fb36cdb030e97d60d5b6a7a26e57374e24eafe36c6f6fa3ecc303854",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/M30.json",
+      "sha256": "b5e16fb2889cb0f89f3a036e1b5da5efd3bba81345699fbeac13e9cb264797fb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/M4.json",
+      "sha256": "698df94f3e9623661a9795c2a5832134ae13caf4b9947b7d0c2a60502a051c16",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/M5.json",
+      "sha256": "91d34812407db0398e6a78be71b21f6e3b28ffc1bb108496f76215c5ce1ffa87",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/M6.json",
+      "sha256": "8db1fbc6a24a5958d97d9b412d4de547cc98ee4069c8df6bee338f7096ca5dd9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/Monthly.json",
+      "sha256": "bab1cacf2c1afc428c26c12565e8be2f759d6262150868b1b55ead8d566e2fa0",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "context_seed/raw/Weekly.json",
+      "sha256": "f866b3bc9705aa0cf27429e71d2995da04abcc8d43718de59be9dd6d2d6cbb7a",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "current_regime_decision.json",
+      "sha256": "aa1586465bef9795c43acece2ad2fb9233b9ee9d690a2273740e14857f74e34d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "current_regime_diagnostic.json",
+      "sha256": "e191a9896480917063dfe05f8a0d787c5a49170b682e6832e68aedff86dc88ca",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "environment.txt",
+      "sha256": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "execution_spec.json",
+      "sha256": "5b3902cdfc2e4107e2000cde0d4401f3a1614d1bd7290d7988e03311e6519dcd",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "findings.md",
+      "sha256": "3ec48c8112fd839f1b08cffb164bafe46f60b12315ba97ccd49405174e7e8e0e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "993788a16960ea26b3301925b6a54b030d2b54813b9f5797966b334dc24a0ed1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "native_context_file_manifest.json",
+      "sha256": "801360c152ff3d91dcfcb20f8a391ec1d398387796d65f4ca9be04b7557ab1a8",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "native_context_inventory.json",
+      "sha256": "6df706a59e22cf997c58bbac987e4f05f37bbab7420ccfb6ffbdd1521a9eae2e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "native_context_validation.json",
+      "sha256": "3d05382578de0d7708748887face8ffbaabdee2c01b50be298fbf793dbb67c2e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "prefix_decision.json",
+      "sha256": "e20551a388a2c3b80f591bde40eb0bcb3ee85baca66dd0341b5bb087f45e50f5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "prefix_protocol.json",
+      "sha256": "e20551a388a2c3b80f591bde40eb0bcb3ee85baca66dd0341b5bb087f45e50f5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "report.md",
+      "sha256": "3ec48c8112fd839f1b08cffb164bafe46f60b12315ba97ccd49405174e7e8e0e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "runtime_time_validation_spec.json",
+      "sha256": "f52c0c782b632818c0815e2bed36ca92398c1f69c2f653aa06c0dc7a668549a1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "self_test_stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "self_test_stdout.txt",
+      "sha256": "7eb58789442fcd2cb9e00a5a54bf3f1434cbfdf0d0fd273aeb3b3fcc4e9316c8",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/.gitattributes",
+      "sha256": "982de2f91e2eaa8015566bd51c6b96aaf725e1110c2e446545c8b5ea0135d08b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/drl_trading_v2.py",
+      "sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/execution_spec_gold_future_holdout_data_foundation_v1.json",
+      "sha256": "f865e3f61afae71a83773e987803921f75daf952bac34b7e8a832ce594e42a2b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/execution_spec_gold_future_native_context_and_current_regime_activation_v1.json",
+      "sha256": "5b3902cdfc2e4107e2000cde0d4401f3a1614d1bd7290d7988e03311e6519dcd",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_activation_workflow_v4.py",
+      "sha256": "5439b41173d039f338e70b69f43e021fdc193118b5adea4ef573c05377d0c30e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_capture_activation_v4.json",
+      "sha256": "66c7b9be21823ca62deddb478600582338f8a98c3e3076b232babc03e6e18e4f",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_capture_certification_v4.py",
+      "sha256": "6a443071c40420e6233d7bf7d432e7d5c6b1c636248c660acd544dd1c2391f03",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_capture_collector_v2.py",
+      "sha256": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_capture_collector_v4.py",
+      "sha256": "4b1e4edca3d7a5192c82c127b023ec560981d4710ab6ebc4ceb23aecb037a126",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_capture_manifest_schema_v4.json",
+      "sha256": "56cd6ec4a90193a9428ccd86562dd141ffdf56990f53c2aa91a951b680daf55c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_capture_protocol_v4.json",
+      "sha256": "6f47fb58f5ff66f9d1678a31cc17b135ade21eb941921e4d9a9afaee12792152",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_capture_time_attestation_v4.json",
+      "sha256": "069c2110bded4971bab2e76a76eaf8e855c69881845ad6e3a88efd2881f64a93",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_current_regime_diagnostic_v1.py",
+      "sha256": "f270136c41217409710e3c95f72dbb39d09353611beb89a89114ee74ef889e92",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_native_context_fetch_v1.py",
+      "sha256": "7ddaec71e45606be9e5eb48f61fc6d5fea6297a1efef713aca059a8e2ba60107",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_source_identity_v4.py",
+      "sha256": "7806116cdb29edbe8ba3d64139f9cbe0358196b2a04babe6b330dc5b99b53290",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_recursive_prefix_causal_context_protocol_v1.json",
+      "sha256": "6489d94f51910c2961527d1dafa2d7dc65bf6305cf4fa1ea5645163e9a9dcb47",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/README_GOLD_FUTURE_NATIVE_CONTEXT_V4.md",
+      "sha256": "33fe30cca203b9faaddba13657d7be3174ac0a7bb7c34219d144476773890863",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/run_gold_future_native_context_and_current_regime_activation_v1.py",
+      "sha256": "a5373d79b329b92057dd4e319eafc48da196d6c2bf1ed8fc925764e0ce591e37",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/test_gold_future_native_context_and_current_regime_activation_v1.py",
+      "sha256": "14f4750d271682c20136a71d13f71aa2452a7cf7b70593a5e0e9a43d695d384b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/training_run_history.py",
+      "sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/validate_gold_future_holdout_boundary_v4.py",
+      "sha256": "04db7c0cd9291a060cd7c4018f8dc1c2d025359f584aec4e3d9baf1e26fa7a94",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/validate_gold_future_native_context_and_current_regime_activation_v1.py",
+      "sha256": "9f721ecae57afb83bfdbee708552dc772c411b2bf9b6f17a05a335888302f701",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/validate_gold_future_native_context_v1.py",
+      "sha256": "f4f52873eca669fe6580454ad57e160a12428f2fb40e47872486ea149beef575",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "stdout.log",
+      "sha256": "292e23bee01baf9a3adf1dc85a93a18ab9b0d588b0e1ba18289b87ef5e46cf06",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "stdout.txt",
+      "sha256": "292e23bee01baf9a3adf1dc85a93a18ab9b0d588b0e1ba18289b87ef5e46cf06",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "training_script.py",
+      "sha256": "a5373d79b329b92057dd4e319eafc48da196d6c2bf1ed8fc925764e0ce591e37",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator.json",
+      "sha256": "93aeb3bce5eedd079d6a3d4afc164a797ba40418860853b36ffce8e7e002f2dd",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator.md",
+      "sha256": "b921ef08e0b8b9afa5b6ae409a1e1b676c5e313d5de0032435f81afefb375329",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_attempt.json",
+      "sha256": "8ff035cb2ad9f33da478b552bfb4acb47279d8e75d2aad7bc71a8aaafeb2ecd5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_script.py",
+      "sha256": "9f721ecae57afb83bfdbee708552dc772c411b2bf9b6f17a05a335888302f701",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_stdout.txt",
+      "sha256": "6336fa8a74df79298a50079f0352aafa3f091b0f672918e4dffc53eaadf5d35a",
+      "retention_status": "stored_in_run_directory_and_git"
+    }
+  ],
+  "aborted_reason": null,
+  "source_commit": "7e7b87a49e3db5280b25858abe99f924a145c227",
+  "pre_run_remote_commit": "7e7b87a49e3db5280b25858abe99f924a145c227",
+  "pre_run_clean": true,
+  "pre_run_git_status": "",
+  "git_branch": "main",
+  "git_upstream": "origin/main",
+  "input_snapshots": [
+    {
+      "source_path": ".gitattributes",
+      "path": "source/.gitattributes",
+      "sha256": "982de2f91e2eaa8015566bd51c6b96aaf725e1110c2e446545c8b5ea0135d08b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "README_GOLD_FUTURE_NATIVE_CONTEXT_V4.md",
+      "path": "source/README_GOLD_FUTURE_NATIVE_CONTEXT_V4.md",
+      "sha256": "33fe30cca203b9faaddba13657d7be3174ac0a7bb7c34219d144476773890863",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "drl_trading_v2.py",
+      "path": "source/drl_trading_v2.py",
+      "sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "execution_spec_gold_future_holdout_data_foundation_v1.json",
+      "path": "source/execution_spec_gold_future_holdout_data_foundation_v1.json",
+      "sha256": "f865e3f61afae71a83773e987803921f75daf952bac34b7e8a832ce594e42a2b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "execution_spec_gold_future_native_context_and_current_regime_activation_v1.json",
+      "path": "source/execution_spec_gold_future_native_context_and_current_regime_activation_v1.json",
+      "sha256": "5b3902cdfc2e4107e2000cde0d4401f3a1614d1bd7290d7988e03311e6519dcd",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_activation_workflow_v4.py",
+      "path": "source/gold_future_activation_workflow_v4.py",
+      "sha256": "5439b41173d039f338e70b69f43e021fdc193118b5adea4ef573c05377d0c30e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_capture_activation_v4.json",
+      "path": "source/gold_future_capture_activation_v4.json",
+      "sha256": "66c7b9be21823ca62deddb478600582338f8a98c3e3076b232babc03e6e18e4f",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_capture_certification_v4.py",
+      "path": "source/gold_future_capture_certification_v4.py",
+      "sha256": "6a443071c40420e6233d7bf7d432e7d5c6b1c636248c660acd544dd1c2391f03",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_capture_collector_v2.py",
+      "path": "source/gold_future_capture_collector_v2.py",
+      "sha256": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_capture_collector_v4.py",
+      "path": "source/gold_future_capture_collector_v4.py",
+      "sha256": "4b1e4edca3d7a5192c82c127b023ec560981d4710ab6ebc4ceb23aecb037a126",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_capture_manifest_schema_v4.json",
+      "path": "source/gold_future_capture_manifest_schema_v4.json",
+      "sha256": "56cd6ec4a90193a9428ccd86562dd141ffdf56990f53c2aa91a951b680daf55c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_capture_protocol_v4.json",
+      "path": "source/gold_future_capture_protocol_v4.json",
+      "sha256": "6f47fb58f5ff66f9d1678a31cc17b135ade21eb941921e4d9a9afaee12792152",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_capture_time_attestation_v4.json",
+      "path": "source/gold_future_capture_time_attestation_v4.json",
+      "sha256": "069c2110bded4971bab2e76a76eaf8e855c69881845ad6e3a88efd2881f64a93",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_current_regime_diagnostic_v1.py",
+      "path": "source/gold_future_current_regime_diagnostic_v1.py",
+      "sha256": "f270136c41217409710e3c95f72dbb39d09353611beb89a89114ee74ef889e92",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_native_context_fetch_v1.py",
+      "path": "source/gold_future_native_context_fetch_v1.py",
+      "sha256": "7ddaec71e45606be9e5eb48f61fc6d5fea6297a1efef713aca059a8e2ba60107",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_source_identity_v4.py",
+      "path": "source/gold_future_source_identity_v4.py",
+      "sha256": "7806116cdb29edbe8ba3d64139f9cbe0358196b2a04babe6b330dc5b99b53290",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_recursive_prefix_causal_context_protocol_v1.json",
+      "path": "source/gold_recursive_prefix_causal_context_protocol_v1.json",
+      "sha256": "6489d94f51910c2961527d1dafa2d7dc65bf6305cf4fa1ea5645163e9a9dcb47",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "run_gold_future_native_context_and_current_regime_activation_v1.py",
+      "path": "source/run_gold_future_native_context_and_current_regime_activation_v1.py",
+      "sha256": "a5373d79b329b92057dd4e319eafc48da196d6c2bf1ed8fc925764e0ce591e37",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "test_gold_future_native_context_and_current_regime_activation_v1.py",
+      "path": "source/test_gold_future_native_context_and_current_regime_activation_v1.py",
+      "sha256": "14f4750d271682c20136a71d13f71aa2452a7cf7b70593a5e0e9a43d695d384b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "training_run_history.py",
+      "path": "source/training_run_history.py",
+      "sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "validate_gold_future_holdout_boundary_v4.py",
+      "path": "source/validate_gold_future_holdout_boundary_v4.py",
+      "sha256": "04db7c0cd9291a060cd7c4018f8dc1c2d025359f584aec4e3d9baf1e26fa7a94",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "validate_gold_future_native_context_and_current_regime_activation_v1.py",
+      "path": "source/validate_gold_future_native_context_and_current_regime_activation_v1.py",
+      "sha256": "9f721ecae57afb83bfdbee708552dc772c411b2bf9b6f17a05a335888302f701",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "validate_gold_future_native_context_v1.py",
+      "path": "source/validate_gold_future_native_context_v1.py",
+      "sha256": "f4f52873eca669fe6580454ad57e160a12428f2fb40e47872486ea149beef575",
+      "retention_status": "stored_in_run_directory_and_git"
+    }
+  ],
+  "formal_run_status": "PASS",
+  "git_status_after_execution": "?? training_runs/20260925T192109Z_gold_future_native_context_and_current_regime_activation_v1/\u0000",
+  "methodology_status": "PASS",
+  "independent_validator_status": "PASS"
+}

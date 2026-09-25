@@ -1,0 +1,33 @@
+{
+  "version": "gold_future_capture_manifest_v4",
+  "required": [
+    "manifest_version",
+    "sequence",
+    "previous_manifest_sha256",
+    "snapshot_path",
+    "snapshot_sha256",
+    "activation_sha256",
+    "runtime_validation",
+    "source_id",
+    "symbol",
+    "sealed_at_utc"
+  ],
+  "runtime_validation_required": true,
+  "snapshot_fields": [
+    "RAW_SOURCE_EPOCH",
+    "SOURCE_TIMESTAMP",
+    "SOURCE_ID",
+    "SYMBOL",
+    "TIMEFRAME",
+    "OPEN",
+    "HIGH",
+    "LOW",
+    "CLOSE",
+    "SPREAD",
+    "TICK_VOLUME",
+    "REAL_VOLUME"
+  ],
+  "snapshot_format": "canonical JSON with runtime samples and raw M1 rows",
+  "overwrite_permitted": false,
+  "sequence_start": 0
+}

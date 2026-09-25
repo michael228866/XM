@@ -1,0 +1,123 @@
+{
+  "samples": [
+    {
+      "source_identity": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6182,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "raw_epoch": 1790374870,
+      "observed_utc_epoch": 1790364070.644618,
+      "m1_raw_epochs": [
+        1790374740,
+        1790374800,
+        1790374860
+      ],
+      "normalized_timestamp": "2026-09-25T19:21:10+00:00",
+      "observed_offset_seconds": 10800,
+      "normalized_clock_error_seconds": -0.644618034362793
+    },
+    {
+      "source_identity": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6182,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "raw_epoch": 1790374872,
+      "observed_utc_epoch": 1790364072.646019,
+      "m1_raw_epochs": [
+        1790374740,
+        1790374800,
+        1790374860
+      ],
+      "normalized_timestamp": "2026-09-25T19:21:12+00:00",
+      "observed_offset_seconds": 10800,
+      "normalized_clock_error_seconds": -0.6460189819335938
+    },
+    {
+      "source_identity": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6182,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "raw_epoch": 1790374874,
+      "observed_utc_epoch": 1790364074.647562,
+      "m1_raw_epochs": [
+        1790374740,
+        1790374800,
+        1790374860
+      ],
+      "normalized_timestamp": "2026-09-25T19:21:14+00:00",
+      "observed_offset_seconds": 10800,
+      "normalized_clock_error_seconds": -0.6475620269775391
+    }
+  ],
+  "decision": {
+    "status": "PASS",
+    "classification": "CURRENT_REGIME_10800_CERTIFIED",
+    "sample_count": 3,
+    "current_certified_offset_seconds": 10800,
+    "certified_offsets_seconds": [
+      10800
+    ],
+    "uncertified_candidate_offsets_seconds": [
+      7200
+    ],
+    "policy": "EMPIRICALLY_CERTIFIED_CURRENT_SOURCE_TIME_REGIME",
+    "runtime_fail_closed": true,
+    "max_runtime_clock_skew_seconds": 5,
+    "monotonic": true,
+    "spacing": true
+  },
+  "error": null,
+  "source_identity": {
+    "broker_company": "XM Global Limited",
+    "broker_server": "XMGlobal-MT5 6",
+    "source_account_environment": "demo",
+    "source_id": "XMGlobal-MT5-6_GOLD",
+    "symbol": "GOLD#",
+    "digits": 2,
+    "point": 0.01,
+    "terminal_build": 6182,
+    "terminal_path": "D:\\XM2\\terminal64.exe",
+    "mt5_package_version": "5.0.6147",
+    "transport": "MetaTrader5 Python API",
+    "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+    "identity_check_passed": true
+  },
+  "strategy_outcome_inspected": false,
+  "effective_from_utc": "2026-09-25T19:21:14.648566+00:00",
+  "coverage_mode": "CURRENT_REGIME_OPEN_ENDED_WHILE_RUNTIME_VALIDATION_PASSES",
+  "effective_until": null,
+  "clock_basis": "OPERATIONAL_SYSTEM_UTC; 5s fixed margin over prior approximately 0.6s observations; no independent clock authority claim"
+}

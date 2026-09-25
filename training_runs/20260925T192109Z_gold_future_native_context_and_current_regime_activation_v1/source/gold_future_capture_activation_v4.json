@@ -1,0 +1,7 @@
+{
+  "template": true,
+  "status": "NOT_ACTIVATED",
+  "collector_version": "gold_future_capture_collector_v4",
+  "actual_activation_record": "future_holdout/gold_s4_v4/attestations/activation.json",
+  "activation_effective_at_utc": null
+}

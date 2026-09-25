@@ -1,0 +1,55 @@
+{
+  "policy": "EMPIRICALLY_CERTIFIED_CURRENT_SOURCE_TIME_REGIME",
+  "current_certified_offset_seconds": 10800,
+  "candidate_offsets_seconds": [
+    7200,
+    10800
+  ],
+  "certified_offsets_seconds": [
+    10800
+  ],
+  "uncertified_candidate_offsets_seconds": [
+    7200
+  ],
+  "coverage_mode": "CURRENT_REGIME_OPEN_ENDED_WHILE_RUNTIME_VALIDATION_PASSES",
+  "runtime_validation_required": true,
+  "runtime_fail_closed": true,
+  "max_runtime_clock_skew_seconds": 5,
+  "clock_threshold_reason": "Fixed conservative engineering margin over prior approximately 0.6 second operational UTC skew; no strategy tuning",
+  "on_uncertified_allowed_offset": "PAUSE_AND_REQUIRE_REGIME_CERTIFICATION",
+  "on_unexpected_offset": "PAUSE_AND_QUARANTINE",
+  "official_attestation_required": false,
+  "version": "gold_future_capture_protocol_v4",
+  "source_id": "XMGlobal-MT5-6_GOLD",
+  "symbol": "GOLD#",
+  "broker": "XM Global Limited",
+  "server": "XMGlobal-MT5 6",
+  "environment": "demo",
+  "higher_timeframe_policy": "NATIVE_20TF_REQUIRED",
+  "prefix_policy": "PREDECLARED_CAUSAL_REINITIALIZATION",
+  "prefix_approved": false,
+  "holdout_duration_calendar_days": 365,
+  "outcome_inspection_prohibited": true,
+  "strategy_execution_prohibited": true,
+  "production_promotion": false,
+  "runtime_code_sha256": {
+    "gold_future_source_identity_v4.py": "7806116cdb29edbe8ba3d64139f9cbe0358196b2a04babe6b330dc5b99b53290",
+    "gold_future_current_regime_diagnostic_v1.py": "f270136c41217409710e3c95f72dbb39d09353611beb89a89114ee74ef889e92",
+    "gold_future_native_context_fetch_v1.py": "7ddaec71e45606be9e5eb48f61fc6d5fea6297a1efef713aca059a8e2ba60107",
+    "gold_future_capture_collector_v4.py": "4b1e4edca3d7a5192c82c127b023ec560981d4710ab6ebc4ceb23aecb037a126",
+    "gold_future_capture_collector_v2.py": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+    "gold_future_capture_certification_v4.py": "6a443071c40420e6233d7bf7d432e7d5c6b1c636248c660acd544dd1c2391f03",
+    "validate_gold_future_native_context_v1.py": "f4f52873eca669fe6580454ad57e160a12428f2fb40e47872486ea149beef575"
+  },
+  "manifest_schema_sha256": "56cd6ec4a90193a9428ccd86562dd141ffdf56990f53c2aa91a951b680daf55c",
+  "native_context_request_counts": {
+    "M1": 4200,
+    "each_HTF": 25
+  },
+  "native_context_retained_counts": {
+    "M1": 4096,
+    "each_HTF": 21
+  },
+  "source_identity_privacy": "Only company/server/normalized trade_mode; no full account object or unrelated account values",
+  "active_capture_scope": "Bounded native M1 capture through first legal boundary; no background service installed by this task"
+}
