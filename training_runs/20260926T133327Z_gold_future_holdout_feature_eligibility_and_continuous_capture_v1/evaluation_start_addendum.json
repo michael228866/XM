@@ -1,0 +1,13 @@
+{
+  "original_boundary_sha256": "7df069b2a0eb439196e10c77c4ad1c4b00f57a16b94407e9a3435d495f90f238",
+  "holdout_start": "2026-09-25T19:24:00+00:00",
+  "holdout_evaluation_start": null,
+  "feature_eligibility_sha256": "92f935f8517b044db598fdeabecfc4c0566dd27bcbea936f56bc8f081abb37fd",
+  "validator_sha256": "03ca20dc771d410474be923c8c1249e54f59096df71d59668d0ba83cae00982d",
+  "verified_at_utc": "2026-09-26T13:35:22.767342+00:00",
+  "formal_run": "training_runs/20260926T133327Z_gold_future_holdout_feature_eligibility_and_continuous_capture_v1",
+  "independent_validator_status": "PASS",
+  "eligibility_status": "PARTIAL",
+  "model_loaded": false,
+  "strategy_evaluated": false
+}

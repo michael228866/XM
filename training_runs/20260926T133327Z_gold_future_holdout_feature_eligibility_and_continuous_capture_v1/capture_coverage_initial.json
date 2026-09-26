@@ -1,0 +1,22 @@
+{
+  "coverage_start": "2026-09-25T19:24:00+00:00",
+  "latest_certified_bar": "2026-09-25T19:24:00+00:00",
+  "sealed_bar_count": 1,
+  "capture_gap_intervals": [],
+  "paused_intervals": [
+    {
+      "start": "2026-09-26T13:33:35.162628+00:00",
+      "end": null,
+      "marker": "PAUSED_TIME_RULE.json"
+    }
+  ],
+  "runtime_certified_intervals": [
+    {
+      "start_epoch": 1790364240.0,
+      "end_exclusive_epoch": 1790364300.0
+    }
+  ],
+  "last_sequence": 0,
+  "status": "PARTIAL",
+  "duration_rule": "365 certified calendar days; raw timestamp coverage only, not a duration-completion assertion"
+}

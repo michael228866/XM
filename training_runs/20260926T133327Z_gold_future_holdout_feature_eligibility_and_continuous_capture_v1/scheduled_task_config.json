@@ -1,0 +1,18 @@
+{
+  "status": "INSTALLED",
+  "configuration": {
+    "WorkingDirectory": "D:\\XM\\數據",
+    "AtLogon": true,
+    "RunLevel": "Limited",
+    "RestartCount": 3,
+    "LogonType": "Interactive",
+    "TaskName": "GOLD-Future-Holdout-Capture-v4",
+    "UserMatchesCurrent": true,
+    "Execute": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "Arguments": "-NoProfile -NonInteractive -WindowStyle Hidden -File \"D:\\XM\\數據\\start_gold_future_capture_v4.ps1\"",
+    "RestartInterval": "PT1M",
+    "ExecutionTimeLimit": "PT0S",
+    "MultipleInstances": "IgnoreNew"
+  },
+  "install_exit_code": 1
+}

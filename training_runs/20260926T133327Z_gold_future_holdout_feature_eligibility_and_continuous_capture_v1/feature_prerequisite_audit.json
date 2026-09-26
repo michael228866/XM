@@ -1,0 +1,94 @@
+{
+  "protocol_version": "v4",
+  "protocol_commit": "53807f405119ef560f2f4db16acb454a592f4c80",
+  "activation_commit": "5c80704c0e19901899ef0c1fc65fb46723670959",
+  "boundary_commit": "647932256c96776095399a8e95b40dc3dd88a35a",
+  "holdout_start": "2026-09-25T19:24:00+00:00",
+  "feature_pipeline_sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+  "feature_list_sha256": "497acf4fffd0519fa8518b7f9619b5ceb14c40f1ed2bf8cbeed1cd2461b13784",
+  "prefix_protocol_sha256": "99021d6955b4630912c42782f87572a95f26cb0bbee65928020c283c66eb318e",
+  "context_inventory_root_sha256": "4f584f603241835aa392821d70b01806946420be2d878b9fcae10c8cffaa3589",
+  "expected_feature_count": 31,
+  "candidate_checks": [
+    {
+      "candidate_timestamp": "2026-09-25T19:24:00+00:00",
+      "raw_input_available": true,
+      "context_available": true,
+      "m1_state_ready": false,
+      "htf_state_ready": false,
+      "recursive_state_ready": false,
+      "feature_count_expected": 31,
+      "feature_count_available": 0,
+      "nan_count": 0,
+      "inf_count": 0,
+      "missing_features": [
+        "M1_RSI",
+        "ATR",
+        "MACD_HIST",
+        "BB_WIDTH",
+        "BIAS_20",
+        "BODY_PCT",
+        "ROC_5",
+        "VOLA_RATIO",
+        "HOUR_SIN",
+        "HOUR_COS",
+        "DAY_OF_WEEK",
+        "Daily_TREND",
+        "H12_TREND",
+        "H1_TREND",
+        "H2_TREND",
+        "H3_TREND",
+        "H4_TREND",
+        "H6_TREND",
+        "H8_TREND",
+        "M10_TREND",
+        "M12_TREND",
+        "M15_TREND",
+        "M20_TREND",
+        "M2_TREND",
+        "M30_TREND",
+        "M3_TREND",
+        "M4_TREND",
+        "M5_TREND",
+        "M6_TREND",
+        "Monthly_TREND",
+        "Weekly_TREND"
+      ],
+      "lookahead_detected": false,
+      "eligibility": "NOT_ELIGIBLE_INSUFFICIENT_CONTEXT",
+      "feature_vector_sha256": null,
+      "feature_values_computed": false,
+      "max_input_raw_epoch": 1790375040,
+      "missing_closed_native_timeframes": [
+        "M2",
+        "M3",
+        "M4",
+        "M6",
+        "M12"
+      ],
+      "input_row_selection": "Frozen seed plus sealed rows <= candidate; no refresh or interpolation"
+    }
+  ],
+  "chain_view": [
+    {
+      "sequence": 0,
+      "manifest_sha256": "c3952a2427c05fc141b41ca3481cb2783cc7847318cfbfa23a6d7b861f2b8cf2",
+      "snapshot_path": "snapshots/000000000000.json",
+      "snapshot_sha256": "a429250921b551622d40f6fbe62491b8ee631a7a589ca795c4b20fb1397f6301"
+    }
+  ],
+  "seed_to_boundary_gaps": [
+    {
+      "start_raw_epoch": 1790374860,
+      "end_raw_epoch_exclusive": 1790375040,
+      "known_source_successor_raw_epoch": 1790374860,
+      "classification": "UNSEALED_SEED_TO_BOUNDARY_INPUTS; no backfill authorized"
+    }
+  ],
+  "earliest_feature_complete_timestamp": null,
+  "holdout_evaluation_start": null,
+  "status": "PARTIAL",
+  "model_loaded": false,
+  "strategy_evaluated": false,
+  "strategy_outcome_inspected": false
+}

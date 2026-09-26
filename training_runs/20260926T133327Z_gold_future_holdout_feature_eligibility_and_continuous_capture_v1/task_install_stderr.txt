@@ -1,0 +1,7 @@
+TASK_ALREADY_EXISTS; inspect existing configuration; no overwrite
+At D:\XM\數據\install_gold_future_capture_task_v1.ps1:4 char:5
++     throw 'TASK_ALREADY_EXISTS; inspect existing configuration; no ov ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (TASK_ALREADY_EX...n; no overwrite:String) [], RuntimeException
+    + FullyQualifiedErrorId : TASK_ALREADY_EXISTS; inspect existing configuration; no overwrite
+ 

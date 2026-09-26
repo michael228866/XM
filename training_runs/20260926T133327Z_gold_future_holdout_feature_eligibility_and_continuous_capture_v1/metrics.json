@@ -1,0 +1,17 @@
+{
+  "formal_run_status": "PARTIAL",
+  "candidate_bars_checked": 1,
+  "feature_complete_candidate_count": 0,
+  "expected_feature_count": 31,
+  "missing_feature_count": 31,
+  "nan_count": 0,
+  "inf_count": 0,
+  "context_hash_match": true,
+  "pipeline_hash_match": true,
+  "scheduled_task_installed": true,
+  "supervisor_started": true,
+  "heartbeat_pass": true,
+  "chain_continuity_pass": true,
+  "continuous_capture_status": "PAUSED",
+  "validator_status": "PASS"
+}
