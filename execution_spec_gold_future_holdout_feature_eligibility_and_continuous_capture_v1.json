@@ -1,6 +1,6 @@
 {
   "experiment_name": "gold_future_holdout_feature_eligibility_and_continuous_capture_v1",
-  "base_commit": "647932256c96776095399a8e95b40dc3dd88a35a",
+  "base_commit": "e4ce91b6d068b0d845489d48634b113eaf2c6026",
   "source_files": [
     ".gitattributes",
     ".gitignore",
@@ -191,7 +191,8 @@
     "training_runs/20260924T162647Z_gold_future_capture_external_attestation_and_prefix_freeze_v1/FINALIZED.json": "ce2e3d30544e95e786cf42f613ba2033ae5ba58098c3186dee06d6aa2b41d0c4",
     "training_runs/20260924T191927Z_gold_future_causal_context_inventory_v1/FINALIZED.json": "91d5fb054f1b4d3376d948116428f2c51c4d01f5a8325e018a8538728c6ccf36",
     "training_runs/20260925T121556Z_gold_future_empirical_time_and_context_certification_v1/FINALIZED.json": "674ec179b35cd1362e9b9755d185e35406fe3ac7a2689787bd856a774b16fd11",
-    "training_runs/20260925T192109Z_gold_future_native_context_and_current_regime_activation_v1/FINALIZED.json": "722f4357a0d68b00a27a6fb274688869ec22ef1b523f5e2098bce95b875a4458"
+    "training_runs/20260925T192109Z_gold_future_native_context_and_current_regime_activation_v1/FINALIZED.json": "722f4357a0d68b00a27a6fb274688869ec22ef1b523f5e2098bce95b875a4458",
+    "training_runs/20260926T132949Z_gold_future_holdout_feature_eligibility_and_continuous_capture_v1/FINALIZED.json": "689c301498f36c0e89dc466c2cf2496e8703b572e30e4cbb415deef1f69dfa3f"
   },
   "protected_sha256": {
     "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
@@ -225,5 +226,7 @@
   },
   "model_loading": false,
   "strategy_execution": false,
-  "outcome_inspection": false
+  "outcome_inspection": false,
+  "supersedes_aborted_run": "training_runs/20260926T132949Z_gold_future_holdout_feature_eligibility_and_continuous_capture_v1",
+  "continuation_reason": "Correct Windows account alias to SID equivalence; no retry of prior formal run or validator"
 }

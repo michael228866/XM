@@ -32,6 +32,11 @@ def powershell(script, *args):
 
 def task_projection():
     command = "$t=Get-ScheduledTask -TaskName 'GOLD-Future-Holdout-Capture-v4' -ErrorAction Stop; @{TaskName=$t.TaskName;Execute=$t.Actions[0].Execute;Arguments=$t.Actions[0].Arguments;WorkingDirectory=$t.Actions[0].WorkingDirectory;RunLevel=[string]$t.Principal.RunLevel;LogonType=[string]$t.Principal.LogonType;MultipleInstances=[string]$t.Settings.MultipleInstances;RestartCount=$t.Settings.RestartCount;RestartInterval=$t.Settings.RestartInterval;ExecutionTimeLimit=$t.Settings.ExecutionTimeLimit;AtLogon=($t.Triggers[0].CimClass.CimClassName -eq 'MSFT_TaskLogonTrigger');UserMatchesCurrent=($t.Principal.UserId -eq [System.Security.Principal.WindowsIdentity]::GetCurrent().Name)} | ConvertTo-Json -Compress"
+    # Task Scheduler may return a local account alias rather than DOMAIN\name.
+    # Compare resolved SIDs, never weaken the current-user requirement.
+    resolve = "$principalSid = if ($t.Principal.UserId -match '^S-1-') {$t.Principal.UserId} else {([System.Security.Principal.NTAccount]::new($t.Principal.UserId)).Translate([System.Security.Principal.SecurityIdentifier]).Value}; "
+    command = command.replace("-ErrorAction Stop; ", "-ErrorAction Stop; "+resolve, 1)
+    command = command.replace("($t.Principal.UserId -eq [System.Security.Principal.WindowsIdentity]::GetCurrent().Name)", "($principalSid -eq [System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value)")
     command = '[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false); ' + command
     result = subprocess.run(['powershell.exe', '-NoProfile', '-NonInteractive', '-Command', command], capture_output=True, timeout=30, check=False)
     return json.loads(result.stdout.decode('utf-8-sig')) if result.returncode == 0 else None
