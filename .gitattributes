@@ -62,3 +62,10 @@ run_gold_future_capture_pause_adjudication_v1.py -text
 validate_gold_future_capture_pause_adjudication_v1.py -text
 execution_spec_gold_future_capture_pause_adjudication_v1.json -text
 gold_future_capture_pause_diagnostic_v1.json -text
+
+# Fresh-market resume certification source bytes
+gold_future_fresh_market_diagnostic_v1.py -text
+test_gold_future_fresh_market_resume_certification_v1.py -text
+run_gold_future_fresh_market_resume_certification_v1.py -text
+validate_gold_future_fresh_market_resume_certification_v1.py -text
+execution_spec_gold_future_fresh_market_resume_certification_v1.json -text
