@@ -36,3 +36,21 @@ gold_future_locked_holdout_protocol_v4.json -text
 gold_future_capture_activation_record_v4.json -text
 gold_future_holdout_boundary_v4.json -text
 GOLD_FUTURE_LOCKED_HOLDOUT_PROTOCOL_V4.md -text
+
+# Feature eligibility and continuous-capture source: exact bytes.
+gold_future_holdout_feature_eligibility_v1.py -text
+gold_future_capture_supervisor_v1.py -text
+validate_gold_future_holdout_feature_eligibility_v1.py -text
+run_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py -text
+validate_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py -text
+test_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py -text
+execution_spec_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.json -text
+README_GOLD_FUTURE_CONTINUOUS_CAPTURE_V1.md -text
+start_gold_future_capture_v4.ps1 -text
+stop_gold_future_capture_v4.ps1 -text
+status_gold_future_capture_v4.ps1 -text
+install_gold_future_capture_task_v1.ps1 -text
+uninstall_gold_future_capture_task_v1.ps1 -text
+gold_future_holdout_feature_eligibility_v1.json -text
+gold_future_holdout_evaluation_start_v1.json -text
+gold_future_continuous_capture_deployment_v1.json -text

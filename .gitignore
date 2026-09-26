@@ -49,3 +49,11 @@ venv/
 # Append-only untouched forward market/event data stays local and must never
 # enter Git history. Reproducible collector scripts/configuration remain tracked.
 untouched_forward/**/data/
+
+# Continuous raw capture is local immutable evidence; original tracked boundary remains.
+/future_holdout/gold_s4_v4/snapshots/*
+/future_holdout/gold_s4_v4/manifests/*
+/future_holdout/gold_s4_v4/pending/*
+/future_holdout/gold_s4_v4/quarantine/*
+/future_holdout/gold_s4_v4/health/*
+/future_holdout/gold_s4_v4/PAUSED*.json
