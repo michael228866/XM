@@ -54,3 +54,11 @@ uninstall_gold_future_capture_task_v1.ps1 -text
 gold_future_holdout_feature_eligibility_v1.json -text
 gold_future_holdout_evaluation_start_v1.json -text
 gold_future_continuous_capture_deployment_v1.json -text
+
+# Versioned read-only pause adjudication source bytes
+gold_future_capture_pause_adjudication_v1.py -text
+test_gold_future_capture_pause_adjudication_v1.py -text
+run_gold_future_capture_pause_adjudication_v1.py -text
+validate_gold_future_capture_pause_adjudication_v1.py -text
+execution_spec_gold_future_capture_pause_adjudication_v1.json -text
+gold_future_capture_pause_diagnostic_v1.json -text
