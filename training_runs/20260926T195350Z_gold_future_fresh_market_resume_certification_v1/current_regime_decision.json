@@ -1,0 +1,13 @@
+{
+  "status": "PARTIAL",
+  "classification": "NO_FRESH_MARKET_DATA",
+  "observed_offset_seconds": null,
+  "current_certified_offset_seconds": 10800,
+  "certified_offsets_seconds": [
+    10800
+  ],
+  "uncertified_candidate_offsets_seconds": [
+    7200
+  ],
+  "max_runtime_clock_skew_seconds": 5
+}

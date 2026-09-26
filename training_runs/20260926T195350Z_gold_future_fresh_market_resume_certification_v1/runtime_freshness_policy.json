@@ -1,0 +1,7 @@
+{
+  "status": "PARTIAL",
+  "amendment_applied": false,
+  "diagnostic_freshness_first": true,
+  "runtime_fail_closed": true,
+  "reason": "Separate amendment must follow independently verified fresh evidence; original collector and supervisor preserved"
+}

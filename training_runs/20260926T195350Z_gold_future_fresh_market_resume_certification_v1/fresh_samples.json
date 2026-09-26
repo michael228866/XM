@@ -1,0 +1,130 @@
+{
+  "samples": [
+    {
+      "source_identity": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6230,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "sample_time_system_utc": "2026-09-26T19:53:50.881205+00:00",
+      "system_utc_epoch": 1790452430.881205,
+      "raw_tick_epoch": 1790380678,
+      "m1_raw_epochs": [
+        1790380500,
+        1790380560,
+        1790380620
+      ]
+    },
+    {
+      "source_identity": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6230,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "sample_time_system_utc": "2026-09-26T19:53:52.883765+00:00",
+      "system_utc_epoch": 1790452432.883765,
+      "raw_tick_epoch": 1790380678,
+      "m1_raw_epochs": [
+        1790380500,
+        1790380560,
+        1790380620
+      ]
+    },
+    {
+      "source_identity": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6230,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "sample_time_system_utc": "2026-09-26T19:53:54.885752+00:00",
+      "system_utc_epoch": 1790452434.885752,
+      "raw_tick_epoch": 1790380678,
+      "m1_raw_epochs": [
+        1790380500,
+        1790380560,
+        1790380620
+      ]
+    },
+    {
+      "source_identity": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6230,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "sample_time_system_utc": "2026-09-26T19:53:56.888562+00:00",
+      "system_utc_epoch": 1790452436.888562,
+      "raw_tick_epoch": 1790380678,
+      "m1_raw_epochs": [
+        1790380500,
+        1790380560,
+        1790380620
+      ]
+    },
+    {
+      "source_identity": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6230,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "sample_time_system_utc": "2026-09-26T19:53:58.891237+00:00",
+      "system_utc_epoch": 1790452438.891237,
+      "raw_tick_epoch": 1790380678,
+      "m1_raw_epochs": [
+        1790380500,
+        1790380560,
+        1790380620
+      ]
+    }
+  ],
+  "error": null
+}

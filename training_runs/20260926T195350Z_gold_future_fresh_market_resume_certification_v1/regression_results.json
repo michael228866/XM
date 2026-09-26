@@ -1,0 +1,31 @@
+{
+  "overall": "PASS",
+  "test_count": 24,
+  "checks": {
+    "fresh_10800": true,
+    "fresh_acceptable_skew": true,
+    "stale_tick_idle": true,
+    "stale_no_offset_inference": true,
+    "stale_no_clock_inference": true,
+    "stale_no_pause": true,
+    "independent_validator_rejects_stale_offset": true,
+    "stale_no_snapshot": true,
+    "idle_input_chain_unchanged": true,
+    "stale_closed_M1_idle": true,
+    "fresh_offset_7200": true,
+    "fresh_offset_14400": true,
+    "fresh_offset_0": true,
+    "fresh_excessive_skew": true,
+    "identity_mismatch": true,
+    "timestamp_reversal": true,
+    "cross_cycle_reversal": true,
+    "duplicate_not_certified": true,
+    "no_synthetic_bars": true,
+    "no_backfill_admission": true,
+    "freshness_threshold_exact": true,
+    "boundary_context_chain_frozen_unchanged": true,
+    "production_unchanged": true,
+    "strategy_model_not_loaded": true
+  },
+  "scope": "Diagnostic-only tests and frozen-file integrity; no operational amendment or healthy-idle proof"
+}

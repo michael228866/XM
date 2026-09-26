@@ -1,0 +1,20 @@
+{
+  "formal_run_status": "PARTIAL",
+  "fresh_market_certification_status": "PARTIAL",
+  "fresh_sample_count": 0,
+  "new_closed_m1_count": 0,
+  "snapshots_before": 1,
+  "snapshots_after": 1,
+  "latest_sequence": 0,
+  "new_sealed_snapshot_count": 0,
+  "eligible_candidates_checked": 0,
+  "resume_decision": "WAIT_FOR_FRESH_MARKET_DATA",
+  "validator_status": "PASS",
+  "lookahead_detected": false,
+  "strategy_outcome_inspected": false,
+  "model_loaded_for_holdout": false,
+  "model_trained_for_holdout": false,
+  "strategy_executed": false,
+  "production_changed": false,
+  "production_promoted": false
+}

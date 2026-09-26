@@ -1,0 +1,8 @@
+{
+  "root_cause": "NOT_PROVEN",
+  "stale_reproduction": true,
+  "prior_run": "training_runs/20260926T172402Z_gold_future_capture_pause_adjudication_and_resume_v1",
+  "prior_finalized_sha256": "0672184c0eca1193b5b0f64e0bb7076a20f4fd3674eaa41cc93ca30274177124",
+  "fresh_restores_10800": false,
+  "historical_limit": "Original failed samples absent. New task authorizes stale reproduction plus independent fresh recertification as amendment basis."
+}

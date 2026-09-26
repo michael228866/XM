@@ -1,0 +1,6 @@
+{
+  "decision": "WAIT_FOR_FRESH_MARKET_DATA",
+  "resume_authorized": false,
+  "next_step": "Fresh recertification not established; preserve pause",
+  "fresh_certification_ready_for_amendment": false
+}
