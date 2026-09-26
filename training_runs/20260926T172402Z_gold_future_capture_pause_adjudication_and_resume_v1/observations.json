@@ -1,0 +1,87 @@
+{
+  "samples": [
+    {
+      "source_identity": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6230,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "raw_epoch": 1790380678,
+      "observed_utc_epoch": 1790443443.250046,
+      "m1_raw_epochs": [
+        1790380500,
+        1790380560,
+        1790380620
+      ],
+      "normalized_timestamp": "2026-09-25T20:57:58+00:00",
+      "observed_offset_seconds": -61200,
+      "normalized_clock_error_seconds": -73565.25004601479
+    },
+    {
+      "source_identity": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6230,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "raw_epoch": 1790380678,
+      "observed_utc_epoch": 1790443445.252259,
+      "m1_raw_epochs": [
+        1790380500,
+        1790380560,
+        1790380620
+      ],
+      "normalized_timestamp": "2026-09-25T20:57:58+00:00",
+      "observed_offset_seconds": -61200,
+      "normalized_clock_error_seconds": -73567.25225901604
+    },
+    {
+      "source_identity": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6230,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "raw_epoch": 1790380678,
+      "observed_utc_epoch": 1790443447.254233,
+      "m1_raw_epochs": [
+        1790380500,
+        1790380560,
+        1790380620
+      ],
+      "normalized_timestamp": "2026-09-25T20:57:58+00:00",
+      "observed_offset_seconds": -61200,
+      "normalized_clock_error_seconds": -73569.25423288345
+    }
+  ],
+  "error": null,
+  "scope": "timestamp and sanitized identity only; no holdout admission"
+}

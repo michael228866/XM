@@ -1,0 +1,13 @@
+{
+  "status": "PARTIAL",
+  "rerun": false,
+  "prior_result_path": "gold_future_holdout_feature_eligibility_v1.json",
+  "prior_result_sha256": "92f935f8517b044db598fdeabecfc4c0566dd27bcbea936f56bc8f081abb37fd",
+  "earliest_feature_complete_timestamp": null,
+  "reason": "No newly sealed evidence; frozen eligibility not rerun",
+  "missing_prerequisites": [
+    "M1 19:21/19:22/19:23 UTC",
+    "native closed M2/M3/M4/M6/M12"
+  ],
+  "limitation": "Existing checker requires seed-to-candidate continuity; M1-only collector supplies no future HTF. Natural eventual eligibility not proven."
+}

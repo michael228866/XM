@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "source_path": "future_holdout/gold_s4_v4/PAUSED_TIME_RULE.json",
+      "path": "original_evidence/PAUSED_TIME_RULE.json",
+      "sha256": "806ba94e0d82831ec210feed75a182a5017d4a948e062e536612efb688d2aac5"
+    },
+    {
+      "source_path": "future_holdout/gold_s4_v4/health/heartbeat.json",
+      "path": "original_evidence/health/heartbeat.json",
+      "sha256": "e8672e64a3578838b248f9c9a5ff30e6d0ad98587daf4d2de651db68527a4bc4"
+    },
+    {
+      "source_path": "future_holdout/gold_s4_v4/health/events.jsonl",
+      "path": "original_evidence/health/events.jsonl",
+      "sha256": "79349b4414d05e1d9c771419cc1b577e7a02e26ebfca4afc9a1f0dfd548a8ced"
+    },
+    {
+      "source_path": "future_holdout/gold_s4_v4/quarantine/1cf8828377e54195ab7878e5a5a2478f.json",
+      "path": "original_evidence/quarantine/1cf8828377e54195ab7878e5a5a2478f.json",
+      "sha256": "806ba94e0d82831ec210feed75a182a5017d4a948e062e536612efb688d2aac5"
+    },
+    {
+      "source_path": "future_holdout/gold_s4_v4/pending/084fd5e4279448f49e7a719f07e4bba5.tmp",
+      "path": "original_evidence/pending/084fd5e4279448f49e7a719f07e4bba5.tmp",
+      "sha256": "a429250921b551622d40f6fbe62491b8ee631a7a589ca795c4b20fb1397f6301"
+    },
+    {
+      "source_path": "future_holdout/gold_s4_v4/pending/aaa603a3a7264c43897368b4d5b8c67d.tmp",
+      "path": "original_evidence/pending/aaa603a3a7264c43897368b4d5b8c67d.tmp",
+      "sha256": "806ba94e0d82831ec210feed75a182a5017d4a948e062e536612efb688d2aac5"
+    },
+    {
+      "source_path": "future_holdout/gold_s4_v4/pending/be4c808bed224412a1ac4535523ed25f.tmp",
+      "path": "original_evidence/pending/be4c808bed224412a1ac4535523ed25f.tmp",
+      "sha256": "806ba94e0d82831ec210feed75a182a5017d4a948e062e536612efb688d2aac5"
+    },
+    {
+      "source_path": "future_holdout/gold_s4_v4/pending/c04e86e4890e45fd9a3f2bb6924649ee.tmp",
+      "path": "original_evidence/pending/c04e86e4890e45fd9a3f2bb6924649ee.tmp",
+      "sha256": "c3952a2427c05fc141b41ca3481cb2783cc7847318cfbfa23a6d7b861f2b8cf2"
+    }
+  ]
+}

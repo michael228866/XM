@@ -1,0 +1,43 @@
+{
+  "pause_created_at_utc": "2026-09-26T13:33:35.162628+00:00",
+  "pause_reason": "PAUSE_AND_QUARANTINE",
+  "collector_status": "PAUSED",
+  "runtime_time_status": "FAIL",
+  "last_accepted_sequence": 0,
+  "last_accepted_source_timestamp": "2026-09-25T19:24:00+00:00",
+  "current_system_utc": "2026-09-26T17:24:07.254233+00:00",
+  "latest_tick_raw_epoch": 1790380678,
+  "latest_tick_normalized_utc": "2026-09-25T20:57:58+00:00",
+  "latest_closed_m1_raw_epoch": 1790380560,
+  "latest_closed_m1_normalized_utc": "2026-09-25T20:56:00+00:00",
+  "tick_age_seconds": 73569.25423288345,
+  "latest_closed_bar_age_seconds": 73687.25423288345,
+  "bar_age_basis": "age since native bar OPEN; newest returned bar excluded, successor and tick closure required",
+  "inferred_offset_seconds": -61200,
+  "offset_inference_valid": false,
+  "normalized_clock_error_seconds": -73569.25423288345,
+  "market_data_fresh": false,
+  "new_closed_bar_available": true,
+  "failed_rule_names": [
+    "OFFSET_NOT_CERTIFIED"
+  ],
+  "exact_original_predicate": "offset = floor((raw_epoch - observed_utc_epoch)/3600 + 0.5)*3600; offset != 7200 and offset != 10800",
+  "original_actual_offset_seconds": null,
+  "original_actual_tick_epoch": null,
+  "original_actual_observed_utc_epoch": null,
+  "original_samples_retained": false,
+  "original_sole_cause_proven": false,
+  "historical_attribution_limit": "Original receipt payload is null; current observations cannot prove original pause sole cause",
+  "certified_offsets_seconds": [
+    10800
+  ],
+  "uncertified_candidate_offsets_seconds": [
+    7200
+  ],
+  "max_runtime_clock_skew_seconds": 5,
+  "freshness_rule": "source tick or latest M1 epoch advances across three observations spaced two seconds; reversals conflict before idle",
+  "current_frozen_check_failure": "PAUSE_AND_QUARANTINE",
+  "current_adjudicated_rule": "NO_FRESH_TICK",
+  "quarantine_artifact": "future_holdout/gold_s4_v4/quarantine/1cf8828377e54195ab7878e5a5a2478f.json",
+  "quarantine_sha256": "806ba94e0d82831ec210feed75a182a5017d4a948e062e536612efb688d2aac5"
+}

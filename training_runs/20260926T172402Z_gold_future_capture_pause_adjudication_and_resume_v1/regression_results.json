@@ -1,0 +1,30 @@
+{
+  "overall": "PASS",
+  "checks": {
+    "fresh_10800": true,
+    "stale_10800_idle": true,
+    "age_alone_not_conflict": true,
+    "fresh_offset_7200": true,
+    "fresh_offset_0": true,
+    "fresh_offset_14400": true,
+    "fresh_skew": true,
+    "tick_reversal": true,
+    "cross_cycle_reversal": true,
+    "stale_identity_conflict": true,
+    "no_new_closed_m1": true,
+    "chain_conflict": true,
+    "insufficient_samples": true,
+    "nonfinite_clock": true,
+    "invalid_spacing": true,
+    "idle_no_evidence_no_synthetic_no_duplicate": true,
+    "idle_inputs_unchanged": true,
+    "missing_historical_samples_no_resume": true,
+    "frozen_stale_offset_failure_reproduced": true,
+    "frozen_boundary_context_runtime_unchanged": true,
+    "production_unchanged": true
+  },
+  "test_count": 21,
+  "scope": "Synthetic diagnostic classifier plus byte integrity; no runtime amendment",
+  "runtime_integration_tests": "BLOCKED_PENDING_ORIGINAL_PAUSE_CAUSAL_PROOF",
+  "healthy_idle_supervisor_proven": false
+}

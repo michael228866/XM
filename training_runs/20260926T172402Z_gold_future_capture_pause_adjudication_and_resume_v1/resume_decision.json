@@ -1,0 +1,7 @@
+{
+  "decision": "WAIT_FOR_FRESH_MARKET_DATA",
+  "resume_authorized": false,
+  "original_sole_cause_proven": false,
+  "original_pause_preserved": true,
+  "reason": "Original samples were not retained. No causal proof sufficient for conditional correction or resume."
+}

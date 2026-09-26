@@ -1,0 +1,7 @@
+{
+  "classification": "NO_FRESH_MARKET_DATA",
+  "failed_rule": "NO_FRESH_TICK",
+  "market_data_fresh": false,
+  "evidence_admitted": false,
+  "resume_authorized": false
+}

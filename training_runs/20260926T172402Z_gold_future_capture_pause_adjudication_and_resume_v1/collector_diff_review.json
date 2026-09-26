@@ -1,0 +1,14 @@
+{
+  "collector_v4_changed": false,
+  "runtime_changed": false,
+  "classification_scope": "read-only diagnostic, not admission or operational amendment",
+  "original_check_order": [
+    "identity",
+    "nearest_hour_offset",
+    "skew",
+    "reversal_or_stale",
+    "M1_spacing",
+    "M1_current"
+  ],
+  "stale_clock_assumption_demonstrated_synthetically": true
+}

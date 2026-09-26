@@ -1,0 +1,10 @@
+{
+  "status": "PARTIAL",
+  "runtime_fail_closed": true,
+  "amendment_applied": false,
+  "collector_changed": false,
+  "supervisor_changed": false,
+  "diagnostic_distinguishes_idle_from_conflict": true,
+  "runtime_healthy_idle_supported": false,
+  "reason": "Diagnostic stale-data failure reproduced; original pause sole-cause proof unavailable. Runtime change conditional authorization unmet."
+}

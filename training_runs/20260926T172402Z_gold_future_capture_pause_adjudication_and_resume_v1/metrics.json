@@ -1,0 +1,20 @@
+{
+  "formal_run_status": "PARTIAL",
+  "pause_adjudication_status": "PARTIAL",
+  "runtime_policy_status": "PARTIAL",
+  "resume_decision": "WAIT_FOR_FRESH_MARKET_DATA",
+  "continuous_capture_status": "PAUSED",
+  "runtime_classification": "NO_FRESH_MARKET_DATA",
+  "chain_status": "PASS",
+  "feature_eligibility_status": "PARTIAL",
+  "validator_status": "PASS",
+  "original_sole_cause_proven": false,
+  "lookahead_detected": false,
+  "strategy_outcome_inspected": false,
+  "model_loaded_for_holdout": false,
+  "model_trained_for_holdout": false,
+  "strategy_executed": false,
+  "production_changed": false,
+  "production_promoted": false,
+  "evidence_admitted": false
+}

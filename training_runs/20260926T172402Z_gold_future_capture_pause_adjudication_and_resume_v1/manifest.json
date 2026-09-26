@@ -1,0 +1,645 @@
+{
+  "schema_version": 1,
+  "run_id": "20260926T172402Z_gold_future_capture_pause_adjudication_and_resume_v1",
+  "experiment_name": "gold_future_capture_pause_adjudication_and_resume_v1",
+  "status": "research_only",
+  "started_at_utc": "2026-09-26T17:24:02.556241Z",
+  "finished_at_utc": "2026-09-26T17:25:03.439715Z",
+  "git_commit": "a78d0c826c347640e992de30045aa77dca374c3c",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\run_gold_future_capture_pause_adjudication_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "e43e89d16ba1453042af7e0c89ef22147da7541ff93805c10664260588dd889c",
+  "exact_command": "D:\\XM\\數據\\.venv\\Scripts\\python.exe -B D:\\XM\\數據\\run_gold_future_capture_pause_adjudication_v1.py --execute",
+  "arguments": [
+    "--execute"
+  ],
+  "random_seeds": {},
+  "random_seed_note": "Deterministic timestamp-only adjudication; no strategy or model",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "Preserved pause receipts and read-only current MT5 timestamps"
+    ],
+    "source_files": [
+      {
+        "source_path": "drl_trading_v2.py",
+        "path": "source/drl_trading_v2.py",
+        "sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "execution_spec_gold_future_capture_pause_adjudication_v1.json",
+        "path": "source/execution_spec_gold_future_capture_pause_adjudication_v1.json",
+        "sha256": "1489b47dfb57e69dd44db21fc6af67505a5f2dc02403034917f71c353e264b83",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_capture_collector_v2.py",
+        "path": "source/gold_future_capture_collector_v2.py",
+        "sha256": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_capture_collector_v4.py",
+        "path": "source/gold_future_capture_collector_v4.py",
+        "sha256": "4b1e4edca3d7a5192c82c127b023ec560981d4710ab6ebc4ceb23aecb037a126",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_capture_pause_adjudication_v1.py",
+        "path": "source/gold_future_capture_pause_adjudication_v1.py",
+        "sha256": "e7f1d79b2a4946dee39b2994f62139bca42ec5c807809035257b29e2e7e2bde1",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_capture_supervisor_v1.py",
+        "path": "source/gold_future_capture_supervisor_v1.py",
+        "sha256": "d88d8950562fa73be8860b2c508efb1b794b7ca991e209ebd20352441e7339f2",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_current_regime_diagnostic_v1.py",
+        "path": "source/gold_future_current_regime_diagnostic_v1.py",
+        "sha256": "f270136c41217409710e3c95f72dbb39d09353611beb89a89114ee74ef889e92",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_holdout_feature_eligibility_v1.py",
+        "path": "source/gold_future_holdout_feature_eligibility_v1.py",
+        "sha256": "bd1a0f66bcb48d35184a7243145c9b8b266329cfcf1f491c51c9811b4628257e",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_future_source_identity_v4.py",
+        "path": "source/gold_future_source_identity_v4.py",
+        "sha256": "7806116cdb29edbe8ba3d64139f9cbe0358196b2a04babe6b330dc5b99b53290",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "run_gold_future_capture_pause_adjudication_v1.py",
+        "path": "source/run_gold_future_capture_pause_adjudication_v1.py",
+        "sha256": "e43e89d16ba1453042af7e0c89ef22147da7541ff93805c10664260588dd889c",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "run_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+        "path": "source/run_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+        "sha256": "c2686537ad0dc14ab01ae756f0c02f76256f572e110143573e451bbd735a2b32",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "test_gold_future_capture_pause_adjudication_v1.py",
+        "path": "source/test_gold_future_capture_pause_adjudication_v1.py",
+        "sha256": "d5c1a02674bb77b63ca0dec6d2bba2ad8ea445a408ec48cfe8384dac75770957",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "test_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+        "path": "source/test_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+        "sha256": "a3c5323f69c4a0af8757289987bf28a3e314d66a4dfc5097509dfa6e07b3001a",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "training_run_history.py",
+        "path": "source/training_run_history.py",
+        "sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "validate_gold_future_capture_pause_adjudication_v1.py",
+        "path": "source/validate_gold_future_capture_pause_adjudication_v1.py",
+        "sha256": "dae67d976014e53788d1be260b025f08e921e2adde180b4f9f618883fc6ec6a5",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "validate_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+        "path": "source/validate_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+        "sha256": "df9685372c63f4c35da8e9df45770784df77ae8d26760abb53af8682512abfdf",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "validate_gold_future_holdout_feature_eligibility_v1.py",
+        "path": "source/validate_gold_future_holdout_feature_eligibility_v1.py",
+        "sha256": "068f74b89b402b066630831de41f48ce2d1dd372a3a052b2c3be3e010a7cd4a5",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "validate_gold_future_native_context_v1.py",
+        "path": "source/validate_gold_future_native_context_v1.py",
+        "sha256": "f4f52873eca669fe6580454ad57e160a12428f2fb40e47872486ea149beef575",
+        "retention_status": "stored_in_run_directory_and_git"
+      }
+    ],
+    "timezone": "Operational UTC and raw source labels; stale offset not certified",
+    "data_start_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "data_end_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "train_start_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "train_end_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "train_rows": 0,
+    "validation_start_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "validation_end_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "validation_rows": 0,
+    "test_start_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "test_end_utc": "NOT_APPLICABLE_NO_STRATEGY_DATASET",
+    "test_rows": 0,
+    "purge_details": "No strategy dataset",
+    "embargo_details": "No strategy dataset",
+    "raw_snapshot_retained": true,
+    "reproducibility_claim": "Current timestamp projections and original receipts retained; original failed samples were not retained",
+    "mt5_fetch": {
+      "used": true,
+      "terminal_path": "D:\\XM2\\terminal64.exe",
+      "terminal_info": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6230,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "broker_info": {
+        "broker_company": "XM Global Limited",
+        "broker_server": "XMGlobal-MT5 6",
+        "source_account_environment": "demo",
+        "source_id": "XMGlobal-MT5-6_GOLD",
+        "symbol": "GOLD#",
+        "digits": 2,
+        "point": 0.01,
+        "terminal_build": 6230,
+        "terminal_path": "D:\\XM2\\terminal64.exe",
+        "mt5_package_version": "5.0.6147",
+        "transport": "MetaTrader5 Python API",
+        "identity_check_method": "MetaTrader5.account_info sanitized field extraction",
+        "identity_check_passed": true
+      },
+      "fetch_start_utc": "2026-09-26T17:24:02.796416+00:00",
+      "fetch_end_utc": "2026-09-26T17:24:08.888954+00:00",
+      "retrieved_at_utc": "2026-09-26T17:24:07.254233+00:00",
+      "returned_rows": 9,
+      "not_applicable_reason": null
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "No model loaded or trained"
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "No strategy search"
+  },
+  "registry": {
+    "parent_or_incumbent": "Frozen GOLD v4",
+    "selected_configuration": "PARTIAL; original failed samples absent; current NO_FRESH_MARKET_DATA; runtime unchanged; pause retained; no candidate selected; no promotion; no production change",
+    "trades_per_day": "N/A: timestamp-only pause adjudication",
+    "realized_win_rate": "N/A: timestamp-only pause adjudication",
+    "pf": "N/A: timestamp-only pause adjudication",
+    "mean_r": "N/A: timestamp-only pause adjudication",
+    "pnl": "N/A: timestamp-only pause adjudication",
+    "max_dd": "N/A: timestamp-only pause adjudication",
+    "validator_result": "PASS; methodology/provenance checked separately; adjudication PARTIAL; WAIT_FOR_FRESH_MARKET_DATA; no resume"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "path": "candidates.csv",
+      "sha256": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "capture_coverage_after.json",
+      "sha256": "26b79fc60c3b6f2105fc0b20d16b7939a6d9520b89eef5c4bc45bbf7850d9ed7",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "capture_health_after.json",
+      "sha256": "e64e0b57f6d6daf3b59db80ed42fbd77bb67f134a9680749d82afcd96ce63640",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "chain_before.json",
+      "sha256": "75ff71559e47be5fb49c9075d1c29c66be7b7054dec5ae40b30e164326ce0cb5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "collector_diff_review.json",
+      "sha256": "17c51554202d86846cdd94c4b6982f7a27b543d5c3fe0e92c549155797503d26",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "environment.txt",
+      "sha256": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "evaluation_start_decision.json",
+      "sha256": "5b1112041e8aa4e3dbee48278e573b20c499bc327a467cf0210a0a2a12d8ce7d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "execution_spec.json",
+      "sha256": "1489b47dfb57e69dd44db21fc6af67505a5f2dc02403034917f71c353e264b83",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "feature_eligibility_after.json",
+      "sha256": "e8c6076db447464d67c381e8d58c00caab3aa9d2f3344f3204de20626533a7bc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "findings.md",
+      "sha256": "5b6c85e2496571c4e6d8b24d5a5c639ec20e90d51c09ca927932fc83211bedf1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "freshness_adjudication.json",
+      "sha256": "218e5d4bfcd4e2acf069622008fa4bc67775cd3ed78039902570dfc7dfd3d7fd",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "gold_future_capture_pause_diagnostic_v1.json",
+      "sha256": "8ca827140d99320e5704475481cbc36cc54974ba291739b9e697eca8b305849a",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "ba908ffcead6f3f1c5468d8a7c6419ab2e16b8ee40b29f446fe35272c182caf2",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "observations.json",
+      "sha256": "249870dc068de68942acec987525f32e04635f9057ba4d1849425e2671d29dda",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "original_evidence/health/events.jsonl",
+      "sha256": "79349b4414d05e1d9c771419cc1b577e7a02e26ebfca4afc9a1f0dfd548a8ced",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "original_evidence/health/heartbeat.json",
+      "sha256": "e8672e64a3578838b248f9c9a5ff30e6d0ad98587daf4d2de651db68527a4bc4",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "original_evidence/PAUSED_TIME_RULE.json",
+      "sha256": "806ba94e0d82831ec210feed75a182a5017d4a948e062e536612efb688d2aac5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "original_evidence/pending/084fd5e4279448f49e7a719f07e4bba5.tmp",
+      "sha256": "a429250921b551622d40f6fbe62491b8ee631a7a589ca795c4b20fb1397f6301",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "original_evidence/pending/aaa603a3a7264c43897368b4d5b8c67d.tmp",
+      "sha256": "806ba94e0d82831ec210feed75a182a5017d4a948e062e536612efb688d2aac5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "original_evidence/pending/be4c808bed224412a1ac4535523ed25f.tmp",
+      "sha256": "806ba94e0d82831ec210feed75a182a5017d4a948e062e536612efb688d2aac5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "original_evidence/pending/c04e86e4890e45fd9a3f2bb6924649ee.tmp",
+      "sha256": "c3952a2427c05fc141b41ca3481cb2783cc7847318cfbfa23a6d7b861f2b8cf2",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "original_evidence/quarantine/1cf8828377e54195ab7878e5a5a2478f.json",
+      "sha256": "806ba94e0d82831ec210feed75a182a5017d4a948e062e536612efb688d2aac5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "pause_diagnostic.json",
+      "sha256": "8ca827140d99320e5704475481cbc36cc54974ba291739b9e697eca8b305849a",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "pause_original.json",
+      "sha256": "806ba94e0d82831ec210feed75a182a5017d4a948e062e536612efb688d2aac5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "protection_checks.json",
+      "sha256": "05cfcba61f4dd2bc0ffded7dfef157c006e1032666278c0bab5afe4200cd3f59",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "quarantine_evidence.json",
+      "sha256": "f940fdfe00de46b02de2a821a48adb6f5e925fa706138032f2c9e517755e8c87",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "regression_results.json",
+      "sha256": "eb5b2449e477d9e0886b64f675d2bdeb5ffe8692b1fbc3b7c955b9ded43afe82",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "report.md",
+      "sha256": "5b6c85e2496571c4e6d8b24d5a5c639ec20e90d51c09ca927932fc83211bedf1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "resume_decision.json",
+      "sha256": "d95918aee33bf90d0b7940a52cfcd410d4ef5df6f38734fb09bfaec3fe1f6825",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "runtime_policy_decision.json",
+      "sha256": "cbad5ecf43f318385d8deb88e39158fbb0b0e5ea1a4047fd1c1b5bb01d7a9e25",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "scheduled_task_config.json",
+      "sha256": "29fcb88db7ba8152d3fbf8ac9a032b8292eea29988a0ff6e5d2f68e4ff892260",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/drl_trading_v2.py",
+      "sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/execution_spec_gold_future_capture_pause_adjudication_v1.json",
+      "sha256": "1489b47dfb57e69dd44db21fc6af67505a5f2dc02403034917f71c353e264b83",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_capture_collector_v2.py",
+      "sha256": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_capture_collector_v4.py",
+      "sha256": "4b1e4edca3d7a5192c82c127b023ec560981d4710ab6ebc4ceb23aecb037a126",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_capture_pause_adjudication_v1.py",
+      "sha256": "e7f1d79b2a4946dee39b2994f62139bca42ec5c807809035257b29e2e7e2bde1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_capture_supervisor_v1.py",
+      "sha256": "d88d8950562fa73be8860b2c508efb1b794b7ca991e209ebd20352441e7339f2",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_current_regime_diagnostic_v1.py",
+      "sha256": "f270136c41217409710e3c95f72dbb39d09353611beb89a89114ee74ef889e92",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_holdout_feature_eligibility_v1.py",
+      "sha256": "bd1a0f66bcb48d35184a7243145c9b8b266329cfcf1f491c51c9811b4628257e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_future_source_identity_v4.py",
+      "sha256": "7806116cdb29edbe8ba3d64139f9cbe0358196b2a04babe6b330dc5b99b53290",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/run_gold_future_capture_pause_adjudication_v1.py",
+      "sha256": "e43e89d16ba1453042af7e0c89ef22147da7541ff93805c10664260588dd889c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/run_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+      "sha256": "c2686537ad0dc14ab01ae756f0c02f76256f572e110143573e451bbd735a2b32",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/test_gold_future_capture_pause_adjudication_v1.py",
+      "sha256": "d5c1a02674bb77b63ca0dec6d2bba2ad8ea445a408ec48cfe8384dac75770957",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/test_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+      "sha256": "a3c5323f69c4a0af8757289987bf28a3e314d66a4dfc5097509dfa6e07b3001a",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/training_run_history.py",
+      "sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/validate_gold_future_capture_pause_adjudication_v1.py",
+      "sha256": "dae67d976014e53788d1be260b025f08e921e2adde180b4f9f618883fc6ec6a5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/validate_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+      "sha256": "df9685372c63f4c35da8e9df45770784df77ae8d26760abb53af8682512abfdf",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/validate_gold_future_holdout_feature_eligibility_v1.py",
+      "sha256": "068f74b89b402b066630831de41f48ce2d1dd372a3a052b2c3be3e010a7cd4a5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/validate_gold_future_native_context_v1.py",
+      "sha256": "f4f52873eca669fe6580454ad57e160a12428f2fb40e47872486ea149beef575",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "stdout.log",
+      "sha256": "53289ddba9dac4f410a201dce9ee94085d2b2f3346f6b4c53dd9b59a2cffd419",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "stdout.txt",
+      "sha256": "53289ddba9dac4f410a201dce9ee94085d2b2f3346f6b4c53dd9b59a2cffd419",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "training_script.py",
+      "sha256": "e43e89d16ba1453042af7e0c89ef22147da7541ff93805c10664260588dd889c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator.json",
+      "sha256": "617092aa0e50ce3d7bb616b05d15c1258e0a2ae53d412df12f865419e68ac217",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator.md",
+      "sha256": "bb10748d9698c3e9972ae2b9f473846c734840500987f20a1cf9fb5609a0a537",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_attempt.json",
+      "sha256": "7956e76ef32ebc835d972f05a7d5ae63b8a076917fa428184f033d1d4b1ab327",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_script.py",
+      "sha256": "dae67d976014e53788d1be260b025f08e921e2adde180b4f9f618883fc6ec6a5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_stdout.txt",
+      "sha256": "44751baa6c5fd65866f1ca58356a9c3315c3d936054dd6c2ffb14c365e88cf1a",
+      "retention_status": "stored_in_run_directory_and_git"
+    }
+  ],
+  "aborted_reason": null,
+  "source_commit": "a78d0c826c347640e992de30045aa77dca374c3c",
+  "pre_run_remote_commit": "a78d0c826c347640e992de30045aa77dca374c3c",
+  "pre_run_clean": true,
+  "input_snapshots": [
+    {
+      "source_path": "drl_trading_v2.py",
+      "path": "source/drl_trading_v2.py",
+      "sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "execution_spec_gold_future_capture_pause_adjudication_v1.json",
+      "path": "source/execution_spec_gold_future_capture_pause_adjudication_v1.json",
+      "sha256": "1489b47dfb57e69dd44db21fc6af67505a5f2dc02403034917f71c353e264b83",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_capture_collector_v2.py",
+      "path": "source/gold_future_capture_collector_v2.py",
+      "sha256": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_capture_collector_v4.py",
+      "path": "source/gold_future_capture_collector_v4.py",
+      "sha256": "4b1e4edca3d7a5192c82c127b023ec560981d4710ab6ebc4ceb23aecb037a126",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_capture_pause_adjudication_v1.py",
+      "path": "source/gold_future_capture_pause_adjudication_v1.py",
+      "sha256": "e7f1d79b2a4946dee39b2994f62139bca42ec5c807809035257b29e2e7e2bde1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_capture_supervisor_v1.py",
+      "path": "source/gold_future_capture_supervisor_v1.py",
+      "sha256": "d88d8950562fa73be8860b2c508efb1b794b7ca991e209ebd20352441e7339f2",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_current_regime_diagnostic_v1.py",
+      "path": "source/gold_future_current_regime_diagnostic_v1.py",
+      "sha256": "f270136c41217409710e3c95f72dbb39d09353611beb89a89114ee74ef889e92",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_holdout_feature_eligibility_v1.py",
+      "path": "source/gold_future_holdout_feature_eligibility_v1.py",
+      "sha256": "bd1a0f66bcb48d35184a7243145c9b8b266329cfcf1f491c51c9811b4628257e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_future_source_identity_v4.py",
+      "path": "source/gold_future_source_identity_v4.py",
+      "sha256": "7806116cdb29edbe8ba3d64139f9cbe0358196b2a04babe6b330dc5b99b53290",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "run_gold_future_capture_pause_adjudication_v1.py",
+      "path": "source/run_gold_future_capture_pause_adjudication_v1.py",
+      "sha256": "e43e89d16ba1453042af7e0c89ef22147da7541ff93805c10664260588dd889c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "run_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+      "path": "source/run_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+      "sha256": "c2686537ad0dc14ab01ae756f0c02f76256f572e110143573e451bbd735a2b32",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "test_gold_future_capture_pause_adjudication_v1.py",
+      "path": "source/test_gold_future_capture_pause_adjudication_v1.py",
+      "sha256": "d5c1a02674bb77b63ca0dec6d2bba2ad8ea445a408ec48cfe8384dac75770957",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "test_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+      "path": "source/test_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+      "sha256": "a3c5323f69c4a0af8757289987bf28a3e314d66a4dfc5097509dfa6e07b3001a",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "training_run_history.py",
+      "path": "source/training_run_history.py",
+      "sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "validate_gold_future_capture_pause_adjudication_v1.py",
+      "path": "source/validate_gold_future_capture_pause_adjudication_v1.py",
+      "sha256": "dae67d976014e53788d1be260b025f08e921e2adde180b4f9f618883fc6ec6a5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "validate_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+      "path": "source/validate_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py",
+      "sha256": "df9685372c63f4c35da8e9df45770784df77ae8d26760abb53af8682512abfdf",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "validate_gold_future_holdout_feature_eligibility_v1.py",
+      "path": "source/validate_gold_future_holdout_feature_eligibility_v1.py",
+      "sha256": "068f74b89b402b066630831de41f48ce2d1dd372a3a052b2c3be3e010a7cd4a5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "validate_gold_future_native_context_v1.py",
+      "path": "source/validate_gold_future_native_context_v1.py",
+      "sha256": "f4f52873eca669fe6580454ad57e160a12428f2fb40e47872486ea149beef575",
+      "retention_status": "stored_in_run_directory_and_git"
+    }
+  ],
+  "formal_run_status": "PARTIAL",
+  "pause_adjudication_status": "PARTIAL"
+}
