@@ -1,0 +1,59 @@
+__pycache__/
+*.py[cod]
+
+# Large historical market data. Keep these outside normal Git history.
+GOLD#_*.csv
+數據集/
+
+# Live/demo runtime logs.
+gemini_signal_log.csv
+gemini_trade_history.csv
+codex_signal_log*.csv
+codex_trade_log*.csv
+codex_state*.json
+precious_metals_axis_research/four_metal_forward_signal_log.csv
+precious_metals_axis_research/four_metal_forward_trade_log.csv
+precious_metals_axis_research/four_metal_forward_state.json
+*.log
+
+# Training stdout is immutable provenance, not a disposable runtime log.
+!training_runs/
+!training_runs/**/
+!training_runs/**/stdout.log
+
+# Local archives and temporary outputs.
+_archive_*/
+*.tmp
+high_win_profit_research/live_backups/
+
+# Generated exhaustive grid outputs; keep compact reports/best JSON instead.
+precious_metals_axis_research/*_results.csv
+precious_metals_axis_research/*_results.json
+
+# Untracked GOLD research artifacts; add a promoted artifact explicitly when needed.
+gold_*.json
+precious_metals_axis_research/*_xgb.json
+precious_metals_axis_research/*_xgb.metadata.json
+
+# Nested Python caches.
+**/__pycache__/
+
+# Local environment files.
+.env
+.venv/
+venv/
+.research_tools/
+.private_research_provenance/
+**/target/
+
+# Append-only untouched forward market/event data stays local and must never
+# enter Git history. Reproducible collector scripts/configuration remain tracked.
+untouched_forward/**/data/
+
+# Continuous raw capture is local immutable evidence; original tracked boundary remains.
+/future_holdout/gold_s4_v4/snapshots/*
+/future_holdout/gold_s4_v4/manifests/*
+/future_holdout/gold_s4_v4/pending/*
+/future_holdout/gold_s4_v4/quarantine/*
+/future_holdout/gold_s4_v4/health/*
+/future_holdout/gold_s4_v4/PAUSED*.json

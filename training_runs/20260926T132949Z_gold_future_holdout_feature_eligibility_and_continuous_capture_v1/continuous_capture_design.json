@@ -1,0 +1,19 @@
+{
+  "cadence": "next UTC minute + 3 seconds",
+  "backoff_seconds": [
+    5,
+    15,
+    30,
+    60,
+    120,
+    300
+  ],
+  "policy_pause_auto_resume": false,
+  "collector_unchanged": true,
+  "task_name": "GOLD-Future-Holdout-Capture-v4",
+  "task_privilege": "Limited current-user interactive token; no passwords",
+  "task_multiple_instances": "IgnoreNew",
+  "task_logon_trigger": true,
+  "process_lock": "Windows local named mutex plus fsynced PID file; stale reclamation only after process absence",
+  "frozen_clock_behavior": "All frozen persistent policy pauses remain binding, including stale ticks or connection errors that frozen collector treats as policy pauses"
+}
