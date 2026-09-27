@@ -1,0 +1,1127 @@
+{
+  "schema_version": 1,
+  "run_id": "20260927T173244Z_gold_manual_s4_secondary_retrain_workflow_v1",
+  "experiment_name": "gold_manual_s4_secondary_retrain_workflow_v1",
+  "status": "pass",
+  "started_at_utc": "2026-09-27T17:32:44.464981Z",
+  "finished_at_utc": "2026-09-27T17:34:17.203042Z",
+  "git_commit": "d30c3d0ee82dab5b963f0193abb3c78bec1cf4b7",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\run_gold_manual_s4_secondary_retrain_workflow_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "c7807f7cc651046d383ad7ac572c2c00ba1384a99b8fc230082d20670affc215",
+  "exact_command": "D:\\XM\\數據\\.venv\\Scripts\\python.exe -B run_gold_manual_s4_secondary_retrain_workflow_v1.py --execute",
+  "arguments": [
+    "--execute"
+  ],
+  "random_seeds": {},
+  "random_seed_note": "Infrastructure only; synthetic fake model; no actual model fits",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "Exact legacy dataset metadata/schema/hash adjudication; synthetic fixtures; bounded native H1 smoke"
+    ],
+    "source_files": [
+      {
+        "source_path": "gold_manual_s4_secondary_retrain_v1.py",
+        "path": "source/gold_manual_s4_secondary_retrain_v1.py",
+        "sha256": "3ae87be50000084fbf6dd07da255954999ce48c5bad90cd666581a1e64970c2c",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_s4_secondary_retrain_config_v1.json",
+        "path": "source/gold_manual_s4_secondary_retrain_config_v1.json",
+        "sha256": "f9eab1700bd56b7b87d6baa10ed7294bfd6282b65d0276c8688ac59e0ff90a9d",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_s4_training_data_policy_v1.json",
+        "path": "source/gold_manual_s4_training_data_policy_v1.json",
+        "sha256": "852cbdbfd85ab5cc4fa18af0b65de8116a4368c8313f04bdeaceaef389787e32",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_s4_training_data_v1.py",
+        "path": "source/gold_manual_s4_training_data_v1.py",
+        "sha256": "c02e8d5f4ece873b6fe47cbeeb222ec0a5b027713c68e28f48e4a99366144895",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_s4_training_output_adapter_v1.py",
+        "path": "source/gold_manual_s4_training_output_adapter_v1.py",
+        "sha256": "51c2f132cbee46511b248855c6805929c4e404800af52f6d17e1597198e744df",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "validate_gold_manual_s4_training_run_v1.py",
+        "path": "source/validate_gold_manual_s4_training_run_v1.py",
+        "sha256": "8c69a9cee59624b917df28d84946824727dc640c0c106bc783a00268443c2716",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_s4_provenance_v1.json",
+        "path": "source/gold_manual_s4_provenance_v1.json",
+        "sha256": "e68a9804b914c98639487351a1baf251ed2fd7f25e1a49a83b27523abb550a7d",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_s4_dataset_decision_v1.json",
+        "path": "source/gold_manual_s4_dataset_decision_v1.json",
+        "sha256": "041ca9081cb8afd8b36981db357b40c01fd522e40a0e426be8fa29ea18c44ed9",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "README_GOLD_MANUAL_S4_SECONDARY_RETRAIN_V1.md",
+        "path": "source/README_GOLD_MANUAL_S4_SECONDARY_RETRAIN_V1.md",
+        "sha256": "ef924492cbd121dffa0f31ebaa95bc9d852ed2c1aa8a122607f62005a0e56b2c",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "test_gold_manual_s4_secondary_retrain_v1.py",
+        "path": "source/test_gold_manual_s4_secondary_retrain_v1.py",
+        "sha256": "513d30cef512e87322bc6f90d14aeebd36ab814e4689e3a9234eca61849fbd69",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "run_gold_manual_s4_secondary_retrain_workflow_v1.py",
+        "path": "source/run_gold_manual_s4_secondary_retrain_workflow_v1.py",
+        "sha256": "c7807f7cc651046d383ad7ac572c2c00ba1384a99b8fc230082d20670affc215",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "validate_gold_manual_s4_secondary_retrain_workflow_v1.py",
+        "path": "source/validate_gold_manual_s4_secondary_retrain_workflow_v1.py",
+        "sha256": "68614e1b04130f9bbdf19dba72ff8b48fa82af2eb0e3779af965ac31fb72f569",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "approve_gold_manual_s4_training_v1.py",
+        "path": "source/approve_gold_manual_s4_training_v1.py",
+        "sha256": "2a4cd4b00dee025a0c139f5bf50129fbbb2583bf0e6bb3eb49523b2d20b8d77d",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "execution_spec_gold_manual_s4_secondary_retrain_workflow_v1.json",
+        "path": "source/execution_spec_gold_manual_s4_secondary_retrain_workflow_v1.json",
+        "sha256": "b7389e3efe22316c26580b911b0bc1ea1b1b69ad6b3b1d40892207fb25736f09",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_training_workflow_v1.py",
+        "path": "source/gold_manual_training_workflow_v1.py",
+        "sha256": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "manual_training_launcher_v1.py",
+        "path": "source/manual_training_launcher_v1.py",
+        "sha256": "62f6dc8f212d4f27bd4a70c835a9ff949812172227807046e4c0725a8e17a884",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "training_holdout_guard_v1.py",
+        "path": "source/training_holdout_guard_v1.py",
+        "sha256": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_runtime_status_v1.py",
+        "path": "source/gold_runtime_status_v1.py",
+        "sha256": "12a0688ed27cb43df98aae9caffb0ab4b497ce2689ffaf3bf9e0cd84ea2ef5eb",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "RUN_TRAINING.bat",
+        "path": "source/RUN_TRAINING.bat",
+        "sha256": "433a188e90bb32bbb2b4a7633ffe6b7e6c3922cd2b31815cb9aa60177e0b9eee",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "CHECK_STATUS.bat",
+        "path": "source/CHECK_STATUS.bat",
+        "sha256": "114513bb3ed7e101e8c8a93bca0f21ae6b2987635d618165cdb5cb93c16fd844",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "manual_training_policy_v1.json",
+        "path": "source/manual_training_policy_v1.json",
+        "sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "training_launcher_config_v1.json",
+        "path": "source/training_launcher_config_v1.json",
+        "sha256": "a2db14d921752876f8aa23255f9c21e094105e526c07293e2827d1f9ad3d2dea",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_training_spec_v1.json",
+        "path": "source/gold_manual_training_spec_v1.json",
+        "sha256": "e303f8d7f901e83a69cfe82fcf3025c11cfdd5c58a2fd67673fd18ec1761f7f8",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_training_config_v1.json",
+        "path": "source/gold_manual_training_config_v1.json",
+        "sha256": "f124faaf544e64c7a1892f149c429450ce81d2dba2fef94af2046244190bce91",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_historical_training_data_manifest_v1.json",
+        "path": "source/gold_historical_training_data_manifest_v1.json",
+        "sha256": "3a72067a4fc8f2b0edf1028d35932622cadc9f76e0e56d8d3ad44f3dd8145b9b",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/training_script.py",
+        "path": "source/training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/training_script.py",
+        "sha256": "9e436e4fe723eb8ad354f5f27a342b60d051c5c71d533f523871b381fc7012c6",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "barrier_research_suite.py",
+        "path": "source/barrier_research_suite.py",
+        "sha256": "e9b0f84e0aedff532b0d24c5845191d724a7dc44ade15d928fe0a24b7c1341af",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "drl_trading_v2.py",
+        "path": "source/drl_trading_v2.py",
+        "sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "drl_train_candidate.py",
+        "path": "source/drl_train_candidate.py",
+        "sha256": "8452fe54921dad32d9af0f77b203b78d67bed765eb4e832f39f2c8ed171fd762",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "barrier_final_train.py",
+        "path": "source/barrier_final_train.py",
+        "sha256": "a221bda6c61fa89bde0592453de7a8ac84efb80f06b74e7686b872484e2edee5",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "barrier_classifier_strategy.py",
+        "path": "source/barrier_classifier_strategy.py",
+        "sha256": "a743d15b90321e4d933e4657abd185922bb280b36ec48612b6f1688afb909174",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "strategy_grid_search.py",
+        "path": "source/strategy_grid_search.py",
+        "sha256": "ad0c49c9a605718b90df49d0afb565b66af7bd3f3e9e68153dbd386be6663403",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_gemini_execution_semantics_v1.py",
+        "path": "source/gold_gemini_execution_semantics_v1.py",
+        "sha256": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_recent_walk_forward.py",
+        "path": "source/gold_recent_walk_forward.py",
+        "sha256": "cf14bbd97e88632ae53cadaabf5e3341f844f5096e8dd0493f8f96a4bf810334",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gemini.py",
+        "path": "source/gemini.py",
+        "sha256": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_gemini_incumbent_robustness_v1.py",
+        "path": "source/gold_gemini_incumbent_robustness_v1.py",
+        "sha256": "adb83d97bc4bf7a44140da30f14b469425de3266b93544c6dd43e92f4ed0ae5f",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_generation11_execution_aligned.py",
+        "path": "source/gold_generation11_execution_aligned.py",
+        "sha256": "adabda7a5ed4fdd4a7c12a5f95e83835df191da102639295510cf93ebf0344fe",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_short_rule_research.py",
+        "path": "source/gold_short_rule_research.py",
+        "sha256": "fdf9262784a60a3a284b06a4fdc00b90ffe0a01d926fc552c562d7936015f7bb",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_regime_experts_walk_forward.py",
+        "path": "source/gold_regime_experts_walk_forward.py",
+        "sha256": "905c5a2397e8cabc2b1d538c91ed60d97f73cb4b55578af95b996d065fc51694",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_long_model_optimization.py",
+        "path": "source/gold_long_model_optimization.py",
+        "sha256": "3c91e18776f38822dd0b5ebc8e031718019aeb318888e2dcee09c83e0d89ef75",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_long_recent_walk_forward.py",
+        "path": "source/gold_long_recent_walk_forward.py",
+        "sha256": "575b56a8a6d526a0102904dc873bac3a70d7569ac09c656720bfd76def768280",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_regime_experts_iterative.py",
+        "path": "source/gold_regime_experts_iterative.py",
+        "sha256": "914a1404a99a7a52def92d0fe3bca35ba9da6a1864d156368aec2b9a5b124a21",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_rolling_champion.py",
+        "path": "source/gold_rolling_champion.py",
+        "sha256": "1bfe529c44ca59019cc864a998ec128931c121d577c43bc3befa7e743ba560da",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_generation8_residual_walk_forward.py",
+        "path": "source/gold_generation8_residual_walk_forward.py",
+        "sha256": "470b0085b820d6ef53f80cd149fdc3bc5afcf2a3996207c68af5363df3a42f83",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_expected_r_walk_forward.py",
+        "path": "source/gold_expected_r_walk_forward.py",
+        "sha256": "7cd87b364644ab88441055662e18bc1dbe19ef4fb5ee9ebfdef121aa2fe37e2e",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_expected_r_champion.py",
+        "path": "source/gold_expected_r_champion.py",
+        "sha256": "ae91fed8968b0d29b963d51ccf9b5f04eff63e4847f4bfbd50989b4b10c74ff9",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_gemini_core_gate_v1.py",
+        "path": "source/gold_gemini_core_gate_v1.py",
+        "sha256": "ae31c09af94466bf5deeafae4800b2e3a580dfeb31564b1123be69887f57932c",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_independent_secondary_classifier_v1.py",
+        "path": "source/gold_independent_secondary_classifier_v1.py",
+        "sha256": "6f39e29f57f68b1f3941b4c097236f3b10032c9490d8ec70a33ade19c86e129e",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "execution_spec_gold_independent_secondary_classifier_v1.json",
+        "path": "source/execution_spec_gold_independent_secondary_classifier_v1.json",
+        "sha256": "3b62782d72ef5add4d13ae304338bbb7070be05864c8dc35212a3d5a2d175064",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "training_runs/20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1/training_script.py",
+        "path": "source/training_runs/20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1/training_script.py",
+        "sha256": "b7e38ba7a82d661d9236368d5ad6f6510a53698a35d72a5435fa68dac1efc82e",
+        "retention_status": "stored_in_run_directory_and_git"
+      }
+    ],
+    "timezone": "UTC request coordinate / legacy broker export clock preserved separately",
+    "data_start_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "data_end_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "train_start_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "train_end_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "train_rows": 0,
+    "validation_start_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "validation_end_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "validation_rows": 0,
+    "test_start_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "test_end_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "test_rows": 0,
+    "purge_details": "No training during certification",
+    "embargo_details": "No training during certification",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "Exact source/config/fixture metadata retained; bounded raw smoke retained if available; original large CSV remains local",
+    "mt5_fetch": {
+      "used": true,
+      "terminal_path": "D:\\XM2\\terminal64.exe",
+      "terminal_info": {
+        "path": "D:\\XM2\\terminal64.exe",
+        "API": "copy_rates_range"
+      },
+      "broker_info": {
+        "required_identity": {
+          "company": "XM Global Limited",
+          "server": "XMGlobal-MT5 6",
+          "trade_mode": 0
+        },
+        "identity_verified_before_returned_rows": false
+      },
+      "fetch_start_utc": "2026-09-27T17:32:48.361468+00:00",
+      "fetch_end_utc": "2026-09-27T17:32:48.365484+00:00",
+      "retrieved_at_utc": "2026-09-27T17:32:48.365484+00:00",
+      "returned_rows": 0,
+      "not_applicable_reason": null
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "Infrastructure certification; fake synthetic classifier only"
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "No strategy research execution or tuning"
+  },
+  "registry": {
+    "parent_or_incumbent": "training_runs/20260915T151723Z_gold_independent_secondary_classifier_v1",
+    "selected_configuration": "PASS; S4 secondary exact reproduction; USER only; fixed 0.75/seed42/3 folds; 21 legacy sources PASS; MT5 repair adapter PASS, live 2018 smoke unavailable; no production change; approval deployment pending",
+    "trades_per_day": "N/A: infrastructure only",
+    "realized_win_rate": "N/A: infrastructure only",
+    "pf": "N/A: infrastructure only",
+    "mean_r": "N/A: infrastructure only",
+    "pnl": "N/A: infrastructure only",
+    "max_dd": "N/A: infrastructure only",
+    "validator_result": "PASS (198 infrastructure checks; no real model training)"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "path": "approved_training_config.json",
+      "sha256": "f9eab1700bd56b7b87d6baa10ed7294bfd6282b65d0276c8688ac59e0ff90a9d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "approved_training_spec.json",
+      "sha256": "852cbdbfd85ab5cc4fa18af0b65de8116a4368c8313f04bdeaceaef389787e32",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "auto_training_audit.json",
+      "sha256": "4f22b7a5dca98c01fa42230d69ff5f7beb46760cc3494aa089f608c001d5654c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "candidates.csv",
+      "sha256": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "conditioning_binding.json",
+      "sha256": "8f50583bbcf719d22227d2652e5b51a9107c82e6d19e199ea9a71a163573b3d5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "data_manager_review.json",
+      "sha256": "1777d14807c141419452bae22859afae88248f0d16d974d8e8dd7740bb5527e1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "dependency_import_smoke.json",
+      "sha256": "ed44d49484eef50506d8861420144f628f7b220b4d2bfd8dfc3b6209810ff0f6",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "environment.txt",
+      "sha256": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "execution_spec.json",
+      "sha256": "b7389e3efe22316c26580b911b0bc1ea1b1b69ad6b3b1d40892207fb25736f09",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "feature_binding.json",
+      "sha256": "f5efb973c2e980a454b9c305de95aab64bdfed2a6915463708fe89eeab3cdc40",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "findings.md",
+      "sha256": "76cda5ca1d995d1b4bff63edd70a659fda87c637b8a5a60b1f4b2e5fd864e5d1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "holdout_guard_review.json",
+      "sha256": "38d41078a7e0a02ff1aef3f3c40267e7fe4c02ea4f76acca71fecf59f325dcd9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "label_binding.json",
+      "sha256": "9abc1b3cdc4709031320984ed2f6c98c6fdbee9bc7b15296571718caf3ad9dcd",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "launcher_smoke_test.json",
+      "sha256": "bd97de92c1353bda0d4052524872e942ab717200d9ba68a8d4ccfe9c0ce19849",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "d2f621d1e9f35cfdf4c36a7231b31c962e83f8ed27f7e01be535a1104ac42116",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "mt5_fetch_smoke_test.json",
+      "sha256": "daa0b2e05c475ad05dc18f5bd0c9f534549a4fd4ed7fccdd2e535300626bd5b3",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "output_adapter_review.json",
+      "sha256": "ed214d846dd9b98626316794ed4fc2cdc598fc1625bec6dd16cdfa9008b17cdc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "protection_checks.json",
+      "sha256": "1b14e8e0d89436c8fa0091c67719d745714306cb8cf3ac0caf723109ea7555b9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "report.md",
+      "sha256": "76cda5ca1d995d1b4bff63edd70a659fda87c637b8a5a60b1f4b2e5fd864e5d1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "s4_provenance_trace.json",
+      "sha256": "e68a9804b914c98639487351a1baf251ed2fd7f25e1a49a83b27523abb550a7d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "self_test_stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "self_test_stdout.txt",
+      "sha256": "62a976efcaf3b305c76d9ccf58694c8feeda9cb18a7f39877d710a64c657a9a4",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/approve_gold_manual_s4_training_v1.py",
+      "sha256": "2a4cd4b00dee025a0c139f5bf50129fbbb2583bf0e6bb3eb49523b2d20b8d77d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/barrier_classifier_strategy.py",
+      "sha256": "a743d15b90321e4d933e4657abd185922bb280b36ec48612b6f1688afb909174",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/barrier_final_train.py",
+      "sha256": "a221bda6c61fa89bde0592453de7a8ac84efb80f06b74e7686b872484e2edee5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/barrier_research_suite.py",
+      "sha256": "e9b0f84e0aedff532b0d24c5845191d724a7dc44ade15d928fe0a24b7c1341af",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/CHECK_STATUS.bat",
+      "sha256": "114513bb3ed7e101e8c8a93bca0f21ae6b2987635d618165cdb5cb93c16fd844",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/drl_trading_v2.py",
+      "sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/drl_train_candidate.py",
+      "sha256": "8452fe54921dad32d9af0f77b203b78d67bed765eb4e832f39f2c8ed171fd762",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/execution_spec_gold_independent_secondary_classifier_v1.json",
+      "sha256": "3b62782d72ef5add4d13ae304338bbb7070be05864c8dc35212a3d5a2d175064",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/execution_spec_gold_manual_s4_secondary_retrain_workflow_v1.json",
+      "sha256": "b7389e3efe22316c26580b911b0bc1ea1b1b69ad6b3b1d40892207fb25736f09",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gemini.py",
+      "sha256": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_expected_r_champion.py",
+      "sha256": "ae91fed8968b0d29b963d51ccf9b5f04eff63e4847f4bfbd50989b4b10c74ff9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_expected_r_walk_forward.py",
+      "sha256": "7cd87b364644ab88441055662e18bc1dbe19ef4fb5ee9ebfdef121aa2fe37e2e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_gemini_core_gate_v1.py",
+      "sha256": "ae31c09af94466bf5deeafae4800b2e3a580dfeb31564b1123be69887f57932c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_gemini_execution_semantics_v1.py",
+      "sha256": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_gemini_incumbent_robustness_v1.py",
+      "sha256": "adb83d97bc4bf7a44140da30f14b469425de3266b93544c6dd43e92f4ed0ae5f",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_generation11_execution_aligned.py",
+      "sha256": "adabda7a5ed4fdd4a7c12a5f95e83835df191da102639295510cf93ebf0344fe",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_generation8_residual_walk_forward.py",
+      "sha256": "470b0085b820d6ef53f80cd149fdc3bc5afcf2a3996207c68af5363df3a42f83",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_historical_training_data_manifest_v1.json",
+      "sha256": "3a72067a4fc8f2b0edf1028d35932622cadc9f76e0e56d8d3ad44f3dd8145b9b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_independent_secondary_classifier_v1.py",
+      "sha256": "6f39e29f57f68b1f3941b4c097236f3b10032c9490d8ec70a33ade19c86e129e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_long_model_optimization.py",
+      "sha256": "3c91e18776f38822dd0b5ebc8e031718019aeb318888e2dcee09c83e0d89ef75",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_long_recent_walk_forward.py",
+      "sha256": "575b56a8a6d526a0102904dc873bac3a70d7569ac09c656720bfd76def768280",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_s4_dataset_decision_v1.json",
+      "sha256": "041ca9081cb8afd8b36981db357b40c01fd522e40a0e426be8fa29ea18c44ed9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_s4_provenance_v1.json",
+      "sha256": "e68a9804b914c98639487351a1baf251ed2fd7f25e1a49a83b27523abb550a7d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_s4_secondary_retrain_config_v1.json",
+      "sha256": "f9eab1700bd56b7b87d6baa10ed7294bfd6282b65d0276c8688ac59e0ff90a9d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_s4_secondary_retrain_v1.py",
+      "sha256": "3ae87be50000084fbf6dd07da255954999ce48c5bad90cd666581a1e64970c2c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_s4_training_data_policy_v1.json",
+      "sha256": "852cbdbfd85ab5cc4fa18af0b65de8116a4368c8313f04bdeaceaef389787e32",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_s4_training_data_v1.py",
+      "sha256": "c02e8d5f4ece873b6fe47cbeeb222ec0a5b027713c68e28f48e4a99366144895",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_s4_training_output_adapter_v1.py",
+      "sha256": "51c2f132cbee46511b248855c6805929c4e404800af52f6d17e1597198e744df",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_training_config_v1.json",
+      "sha256": "f124faaf544e64c7a1892f149c429450ce81d2dba2fef94af2046244190bce91",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_training_spec_v1.json",
+      "sha256": "e303f8d7f901e83a69cfe82fcf3025c11cfdd5c58a2fd67673fd18ec1761f7f8",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_training_workflow_v1.py",
+      "sha256": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_recent_walk_forward.py",
+      "sha256": "cf14bbd97e88632ae53cadaabf5e3341f844f5096e8dd0493f8f96a4bf810334",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_regime_experts_iterative.py",
+      "sha256": "914a1404a99a7a52def92d0fe3bca35ba9da6a1864d156368aec2b9a5b124a21",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_regime_experts_walk_forward.py",
+      "sha256": "905c5a2397e8cabc2b1d538c91ed60d97f73cb4b55578af95b996d065fc51694",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_rolling_champion.py",
+      "sha256": "1bfe529c44ca59019cc864a998ec128931c121d577c43bc3befa7e743ba560da",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_runtime_status_v1.py",
+      "sha256": "12a0688ed27cb43df98aae9caffb0ab4b497ce2689ffaf3bf9e0cd84ea2ef5eb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_short_rule_research.py",
+      "sha256": "fdf9262784a60a3a284b06a4fdc00b90ffe0a01d926fc552c562d7936015f7bb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/manual_training_launcher_v1.py",
+      "sha256": "62f6dc8f212d4f27bd4a70c835a9ff949812172227807046e4c0725a8e17a884",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/manual_training_policy_v1.json",
+      "sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/README_GOLD_MANUAL_S4_SECONDARY_RETRAIN_V1.md",
+      "sha256": "ef924492cbd121dffa0f31ebaa95bc9d852ed2c1aa8a122607f62005a0e56b2c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/run_gold_manual_s4_secondary_retrain_workflow_v1.py",
+      "sha256": "c7807f7cc651046d383ad7ac572c2c00ba1384a99b8fc230082d20670affc215",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/RUN_TRAINING.bat",
+      "sha256": "433a188e90bb32bbb2b4a7633ffe6b7e6c3922cd2b31815cb9aa60177e0b9eee",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/strategy_grid_search.py",
+      "sha256": "ad0c49c9a605718b90df49d0afb565b66af7bd3f3e9e68153dbd386be6663403",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/test_gold_manual_s4_secondary_retrain_v1.py",
+      "sha256": "513d30cef512e87322bc6f90d14aeebd36ab814e4689e3a9234eca61849fbd69",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/training_holdout_guard_v1.py",
+      "sha256": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/training_launcher_config_v1.json",
+      "sha256": "a2db14d921752876f8aa23255f9c21e094105e526c07293e2827d1f9ad3d2dea",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/training_script.py",
+      "sha256": "9e436e4fe723eb8ad354f5f27a342b60d051c5c71d533f523871b381fc7012c6",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/training_runs/20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1/training_script.py",
+      "sha256": "b7e38ba7a82d661d9236368d5ad6f6510a53698a35d72a5435fa68dac1efc82e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/validate_gold_manual_s4_secondary_retrain_workflow_v1.py",
+      "sha256": "68614e1b04130f9bbdf19dba72ff8b48fa82af2eb0e3779af965ac31fb72f569",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/validate_gold_manual_s4_training_run_v1.py",
+      "sha256": "8c69a9cee59624b917df28d84946824727dc640c0c106bc783a00268443c2716",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "stdout.log",
+      "sha256": "34e2831b0ba326f35985b5aa50184af8491de9c13b2cfe9fa6b13bff5d726851",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "training_dataset_decision.json",
+      "sha256": "041ca9081cb8afd8b36981db357b40c01fd522e40a0e426be8fa29ea18c44ed9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "training_script.py",
+      "sha256": "c7807f7cc651046d383ad7ac572c2c00ba1384a99b8fc230082d20670affc215",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "training_symbol_decision.json",
+      "sha256": "d67d2b7a2fcd4cee1ff6c6042944d41760f64a3c631e790b6d020dff15418fe0",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator.json",
+      "sha256": "270690f6c6c0fdf484175c66e6b9b24af8ed4c9310e858844028a42d599ce328",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator.md",
+      "sha256": "90697e0a54a979b5f9e52e23709ce3c4f45cf2fc763a12d6d5ba1e95b321da9e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_attempt.json",
+      "sha256": "d5047d0b33ea5e16ebd1e8dd73feaf5d4a41cb2c3f2f427450571b9f3ca22fdc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_script.py",
+      "sha256": "68614e1b04130f9bbdf19dba72ff8b48fa82af2eb0e3779af965ac31fb72f569",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_stdout.txt",
+      "sha256": "9614ae60e4e3262c43f02ab0abfcda2bd75f4644e197f23fd561624a878aa50d",
+      "retention_status": "stored_in_run_directory_and_git"
+    }
+  ],
+  "aborted_reason": null,
+  "source_commit": "d30c3d0ee82dab5b963f0193abb3c78bec1cf4b7",
+  "pre_run_remote_commit": "d30c3d0ee82dab5b963f0193abb3c78bec1cf4b7",
+  "pre_run_clean": true,
+  "input_snapshots": [
+    {
+      "source_path": "gold_manual_s4_secondary_retrain_v1.py",
+      "path": "source/gold_manual_s4_secondary_retrain_v1.py",
+      "sha256": "3ae87be50000084fbf6dd07da255954999ce48c5bad90cd666581a1e64970c2c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_s4_secondary_retrain_config_v1.json",
+      "path": "source/gold_manual_s4_secondary_retrain_config_v1.json",
+      "sha256": "f9eab1700bd56b7b87d6baa10ed7294bfd6282b65d0276c8688ac59e0ff90a9d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_s4_training_data_policy_v1.json",
+      "path": "source/gold_manual_s4_training_data_policy_v1.json",
+      "sha256": "852cbdbfd85ab5cc4fa18af0b65de8116a4368c8313f04bdeaceaef389787e32",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_s4_training_data_v1.py",
+      "path": "source/gold_manual_s4_training_data_v1.py",
+      "sha256": "c02e8d5f4ece873b6fe47cbeeb222ec0a5b027713c68e28f48e4a99366144895",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_s4_training_output_adapter_v1.py",
+      "path": "source/gold_manual_s4_training_output_adapter_v1.py",
+      "sha256": "51c2f132cbee46511b248855c6805929c4e404800af52f6d17e1597198e744df",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "validate_gold_manual_s4_training_run_v1.py",
+      "path": "source/validate_gold_manual_s4_training_run_v1.py",
+      "sha256": "8c69a9cee59624b917df28d84946824727dc640c0c106bc783a00268443c2716",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_s4_provenance_v1.json",
+      "path": "source/gold_manual_s4_provenance_v1.json",
+      "sha256": "e68a9804b914c98639487351a1baf251ed2fd7f25e1a49a83b27523abb550a7d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_s4_dataset_decision_v1.json",
+      "path": "source/gold_manual_s4_dataset_decision_v1.json",
+      "sha256": "041ca9081cb8afd8b36981db357b40c01fd522e40a0e426be8fa29ea18c44ed9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "README_GOLD_MANUAL_S4_SECONDARY_RETRAIN_V1.md",
+      "path": "source/README_GOLD_MANUAL_S4_SECONDARY_RETRAIN_V1.md",
+      "sha256": "ef924492cbd121dffa0f31ebaa95bc9d852ed2c1aa8a122607f62005a0e56b2c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "test_gold_manual_s4_secondary_retrain_v1.py",
+      "path": "source/test_gold_manual_s4_secondary_retrain_v1.py",
+      "sha256": "513d30cef512e87322bc6f90d14aeebd36ab814e4689e3a9234eca61849fbd69",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "run_gold_manual_s4_secondary_retrain_workflow_v1.py",
+      "path": "source/run_gold_manual_s4_secondary_retrain_workflow_v1.py",
+      "sha256": "c7807f7cc651046d383ad7ac572c2c00ba1384a99b8fc230082d20670affc215",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "validate_gold_manual_s4_secondary_retrain_workflow_v1.py",
+      "path": "source/validate_gold_manual_s4_secondary_retrain_workflow_v1.py",
+      "sha256": "68614e1b04130f9bbdf19dba72ff8b48fa82af2eb0e3779af965ac31fb72f569",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "approve_gold_manual_s4_training_v1.py",
+      "path": "source/approve_gold_manual_s4_training_v1.py",
+      "sha256": "2a4cd4b00dee025a0c139f5bf50129fbbb2583bf0e6bb3eb49523b2d20b8d77d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "execution_spec_gold_manual_s4_secondary_retrain_workflow_v1.json",
+      "path": "source/execution_spec_gold_manual_s4_secondary_retrain_workflow_v1.json",
+      "sha256": "b7389e3efe22316c26580b911b0bc1ea1b1b69ad6b3b1d40892207fb25736f09",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_training_workflow_v1.py",
+      "path": "source/gold_manual_training_workflow_v1.py",
+      "sha256": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "manual_training_launcher_v1.py",
+      "path": "source/manual_training_launcher_v1.py",
+      "sha256": "62f6dc8f212d4f27bd4a70c835a9ff949812172227807046e4c0725a8e17a884",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "training_holdout_guard_v1.py",
+      "path": "source/training_holdout_guard_v1.py",
+      "sha256": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_runtime_status_v1.py",
+      "path": "source/gold_runtime_status_v1.py",
+      "sha256": "12a0688ed27cb43df98aae9caffb0ab4b497ce2689ffaf3bf9e0cd84ea2ef5eb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "RUN_TRAINING.bat",
+      "path": "source/RUN_TRAINING.bat",
+      "sha256": "433a188e90bb32bbb2b4a7633ffe6b7e6c3922cd2b31815cb9aa60177e0b9eee",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "CHECK_STATUS.bat",
+      "path": "source/CHECK_STATUS.bat",
+      "sha256": "114513bb3ed7e101e8c8a93bca0f21ae6b2987635d618165cdb5cb93c16fd844",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "manual_training_policy_v1.json",
+      "path": "source/manual_training_policy_v1.json",
+      "sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "training_launcher_config_v1.json",
+      "path": "source/training_launcher_config_v1.json",
+      "sha256": "a2db14d921752876f8aa23255f9c21e094105e526c07293e2827d1f9ad3d2dea",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_training_spec_v1.json",
+      "path": "source/gold_manual_training_spec_v1.json",
+      "sha256": "e303f8d7f901e83a69cfe82fcf3025c11cfdd5c58a2fd67673fd18ec1761f7f8",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_training_config_v1.json",
+      "path": "source/gold_manual_training_config_v1.json",
+      "sha256": "f124faaf544e64c7a1892f149c429450ce81d2dba2fef94af2046244190bce91",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_historical_training_data_manifest_v1.json",
+      "path": "source/gold_historical_training_data_manifest_v1.json",
+      "sha256": "3a72067a4fc8f2b0edf1028d35932622cadc9f76e0e56d8d3ad44f3dd8145b9b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/training_script.py",
+      "path": "source/training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/training_script.py",
+      "sha256": "9e436e4fe723eb8ad354f5f27a342b60d051c5c71d533f523871b381fc7012c6",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "barrier_research_suite.py",
+      "path": "source/barrier_research_suite.py",
+      "sha256": "e9b0f84e0aedff532b0d24c5845191d724a7dc44ade15d928fe0a24b7c1341af",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "drl_trading_v2.py",
+      "path": "source/drl_trading_v2.py",
+      "sha256": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "drl_train_candidate.py",
+      "path": "source/drl_train_candidate.py",
+      "sha256": "8452fe54921dad32d9af0f77b203b78d67bed765eb4e832f39f2c8ed171fd762",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "barrier_final_train.py",
+      "path": "source/barrier_final_train.py",
+      "sha256": "a221bda6c61fa89bde0592453de7a8ac84efb80f06b74e7686b872484e2edee5",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "barrier_classifier_strategy.py",
+      "path": "source/barrier_classifier_strategy.py",
+      "sha256": "a743d15b90321e4d933e4657abd185922bb280b36ec48612b6f1688afb909174",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "strategy_grid_search.py",
+      "path": "source/strategy_grid_search.py",
+      "sha256": "ad0c49c9a605718b90df49d0afb565b66af7bd3f3e9e68153dbd386be6663403",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_gemini_execution_semantics_v1.py",
+      "path": "source/gold_gemini_execution_semantics_v1.py",
+      "sha256": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_recent_walk_forward.py",
+      "path": "source/gold_recent_walk_forward.py",
+      "sha256": "cf14bbd97e88632ae53cadaabf5e3341f844f5096e8dd0493f8f96a4bf810334",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gemini.py",
+      "path": "source/gemini.py",
+      "sha256": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_gemini_incumbent_robustness_v1.py",
+      "path": "source/gold_gemini_incumbent_robustness_v1.py",
+      "sha256": "adb83d97bc4bf7a44140da30f14b469425de3266b93544c6dd43e92f4ed0ae5f",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_generation11_execution_aligned.py",
+      "path": "source/gold_generation11_execution_aligned.py",
+      "sha256": "adabda7a5ed4fdd4a7c12a5f95e83835df191da102639295510cf93ebf0344fe",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_short_rule_research.py",
+      "path": "source/gold_short_rule_research.py",
+      "sha256": "fdf9262784a60a3a284b06a4fdc00b90ffe0a01d926fc552c562d7936015f7bb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_regime_experts_walk_forward.py",
+      "path": "source/gold_regime_experts_walk_forward.py",
+      "sha256": "905c5a2397e8cabc2b1d538c91ed60d97f73cb4b55578af95b996d065fc51694",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_long_model_optimization.py",
+      "path": "source/gold_long_model_optimization.py",
+      "sha256": "3c91e18776f38822dd0b5ebc8e031718019aeb318888e2dcee09c83e0d89ef75",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_long_recent_walk_forward.py",
+      "path": "source/gold_long_recent_walk_forward.py",
+      "sha256": "575b56a8a6d526a0102904dc873bac3a70d7569ac09c656720bfd76def768280",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_regime_experts_iterative.py",
+      "path": "source/gold_regime_experts_iterative.py",
+      "sha256": "914a1404a99a7a52def92d0fe3bca35ba9da6a1864d156368aec2b9a5b124a21",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_rolling_champion.py",
+      "path": "source/gold_rolling_champion.py",
+      "sha256": "1bfe529c44ca59019cc864a998ec128931c121d577c43bc3befa7e743ba560da",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_generation8_residual_walk_forward.py",
+      "path": "source/gold_generation8_residual_walk_forward.py",
+      "sha256": "470b0085b820d6ef53f80cd149fdc3bc5afcf2a3996207c68af5363df3a42f83",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_expected_r_walk_forward.py",
+      "path": "source/gold_expected_r_walk_forward.py",
+      "sha256": "7cd87b364644ab88441055662e18bc1dbe19ef4fb5ee9ebfdef121aa2fe37e2e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_expected_r_champion.py",
+      "path": "source/gold_expected_r_champion.py",
+      "sha256": "ae91fed8968b0d29b963d51ccf9b5f04eff63e4847f4bfbd50989b4b10c74ff9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_gemini_core_gate_v1.py",
+      "path": "source/gold_gemini_core_gate_v1.py",
+      "sha256": "ae31c09af94466bf5deeafae4800b2e3a580dfeb31564b1123be69887f57932c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_independent_secondary_classifier_v1.py",
+      "path": "source/gold_independent_secondary_classifier_v1.py",
+      "sha256": "6f39e29f57f68b1f3941b4c097236f3b10032c9490d8ec70a33ade19c86e129e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "execution_spec_gold_independent_secondary_classifier_v1.json",
+      "path": "source/execution_spec_gold_independent_secondary_classifier_v1.json",
+      "sha256": "3b62782d72ef5add4d13ae304338bbb7070be05864c8dc35212a3d5a2d175064",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "training_runs/20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1/training_script.py",
+      "path": "source/training_runs/20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1/training_script.py",
+      "sha256": "b7e38ba7a82d661d9236368d5ad6f6510a53698a35d72a5435fa68dac1efc82e",
+      "retention_status": "stored_in_run_directory_and_git"
+    }
+  ],
+  "formal_run_status": "PASS",
+  "methodology_provenance_status": "PASS",
+  "independent_validator_status": "PASS"
+}

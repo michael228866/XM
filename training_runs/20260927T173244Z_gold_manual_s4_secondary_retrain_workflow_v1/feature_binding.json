@@ -1,0 +1,42 @@
+{
+  "feature_list": [
+    "M1_RSI",
+    "ATR",
+    "MACD_HIST",
+    "BB_WIDTH",
+    "BIAS_20",
+    "BODY_PCT",
+    "ROC_5",
+    "VOLA_RATIO",
+    "HOUR_SIN",
+    "HOUR_COS",
+    "DAY_OF_WEEK",
+    "Daily_TREND",
+    "H12_TREND",
+    "H1_TREND",
+    "H2_TREND",
+    "H3_TREND",
+    "H4_TREND",
+    "H6_TREND",
+    "H8_TREND",
+    "M10_TREND",
+    "M12_TREND",
+    "M15_TREND",
+    "M20_TREND",
+    "M2_TREND",
+    "M30_TREND",
+    "M3_TREND",
+    "M4_TREND",
+    "M5_TREND",
+    "M6_TREND",
+    "Monthly_TREND",
+    "Weekly_TREND"
+  ],
+  "feature_list_sha256": "497acf4fffd0519fa8518b7f9619b5ceb14c40f1ed2bf8cbeed1cd2461b13784",
+  "feature_pipeline": {
+    "drl_trading_v2.py": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+    "barrier_final_train.py": "a221bda6c61fa89bde0592453de7a8ac84efb80f06b74e7686b872484e2edee5",
+    "barrier_classifier_strategy.py": "a743d15b90321e4d933e4657abd185922bb280b36ec48612b6f1688afb909174"
+  },
+  "feature_pipeline_sha256": "d56b5beed8d2ba75b4a07876caec7438404736165c7e71d3a4ff8d7f57c1aa2f"
+}

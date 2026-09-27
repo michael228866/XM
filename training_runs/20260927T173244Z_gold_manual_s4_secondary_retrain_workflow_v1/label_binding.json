@@ -1,0 +1,5 @@
+{
+  "label_pipeline": "training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/training_script.py",
+  "label_pipeline_sha256": "9e436e4fe723eb8ad354f5f27a342b60d051c5c71d533f523871b381fc7012c6",
+  "secondary_target_rule": "Exact archived C1 int8 target: standalone S5 net realized R > 0; otherwise 0"
+}

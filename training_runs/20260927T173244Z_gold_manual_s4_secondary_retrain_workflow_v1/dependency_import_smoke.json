@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "stdout": "{\"status\": \"PASS\", \"feature_count\": 31, \"reconstruction_called\": false, \"fit_called\": false, \"predict_called\": false}\n",
+  "stderr": "",
+  "status": "PASS",
+  "model_training_executed": false
+}

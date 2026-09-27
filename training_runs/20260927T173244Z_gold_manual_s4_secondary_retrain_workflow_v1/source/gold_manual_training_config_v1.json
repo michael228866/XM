@@ -1,0 +1,22 @@
+{
+  "experiment_name": "gold_manual_training_workflow_binding_v1",
+  "approval_status": "UNRESOLVED",
+  "spec": {
+    "path": "gold_manual_training_spec_v1.json",
+    "sha256": "e303f8d7f901e83a69cfe82fcf3025c11cfdd5c58a2fd67673fd18ec1761f7f8"
+  },
+  "symbol": null,
+  "historical_date_range": null,
+  "input_datasets": [],
+  "features": null,
+  "labels": null,
+  "execution_semantics": null,
+  "folds": null,
+  "model_hyperparameters": null,
+  "seed": null,
+  "output_directory_policy": "Unique training_runs directory; never production",
+  "validator": null,
+  "training_workflow_ready": false,
+  "auto_fetch_enabled": false,
+  "last_training": null
+}

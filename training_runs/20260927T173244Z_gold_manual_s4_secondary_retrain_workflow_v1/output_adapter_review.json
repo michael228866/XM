@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "run_local_only": true,
+  "three_fold_models": true,
+  "last_fold_is_not_latest_full_fit": true,
+  "production_overwrite_allowed": false,
+  "deterministic_fixture": true
+}

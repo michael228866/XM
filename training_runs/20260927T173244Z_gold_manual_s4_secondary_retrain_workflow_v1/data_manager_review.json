@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "local_legacy_status": "PASS",
+  "exact_files": 21,
+  "auto_fetch_policy": "Missing exact bytes attempted automatically; nonidentical fresh data rejected",
+  "live_smoke_status": "UNAVAILABLE",
+  "new_retrain_dataset_allowed": false,
+  "timestamp_mapping_claim": "Original broker/export clock retained; no historical UTC remapping"
+}
