@@ -1,0 +1,5 @@
+# Independent infrastructure validator
+
+PASS
+
+[]

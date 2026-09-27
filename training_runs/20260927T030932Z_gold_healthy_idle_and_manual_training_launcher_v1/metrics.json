@@ -1,0 +1,17 @@
+{
+  "formal_run_status": "PARTIAL",
+  "runtime_idle_policy_status": "PASS",
+  "synthetic_idle_heartbeat_status": "PASS",
+  "live_migration_status": "PENDING_VALIDATED_MIGRATION",
+  "training_manual_policy_status": "PASS",
+  "bat_infrastructure_status": "PASS",
+  "training_workflow_status": "BLOCKED_AWAITING_APPROVAL",
+  "holdout_audited_path_guard_status": "PASS",
+  "auto_training_disabled": true,
+  "model_training_executed": false,
+  "strategy_outcome_inspected": false,
+  "production_changed": false,
+  "production_promoted": false,
+  "chain_status": "PASS",
+  "validator_status": "PASS"
+}

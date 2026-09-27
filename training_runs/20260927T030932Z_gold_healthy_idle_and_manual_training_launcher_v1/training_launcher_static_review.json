@@ -1,0 +1,245 @@
+{
+  "status": "PASS",
+  "training_call_inventory": [
+    {
+      "path": "barrier_adaptive_walk_forward.py",
+      "training_call_lines": [
+        45
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "barrier_classifier_strategy.py",
+      "training_call_lines": [
+        816
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "barrier_final_train.py",
+      "training_call_lines": [
+        84
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "barrier_meta_regime_classifier.py",
+      "training_call_lines": [
+        97,
+        134
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "barrier_research_suite.py",
+      "training_call_lines": [
+        134,
+        143,
+        154
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "barrier_short_horizon_experiment.py",
+      "training_call_lines": [
+        74,
+        172
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "drl_trading_v2.py",
+      "training_call_lines": [
+        186,
+        187
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_event_rank_walk_forward.py",
+      "training_call_lines": [
+        476,
+        763
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_expected_r_walk_forward.py",
+      "training_call_lines": [
+        139
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_gemini_macro_event_timing_b0_b1_v1.py",
+      "training_call_lines": [
+        435,
+        474
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_generation10_adaptive_portfolio.py",
+      "training_call_lines": [
+        389,
+        390,
+        391,
+        400,
+        828,
+        831
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_generation12_executable_events.py",
+      "training_call_lines": [
+        185,
+        186,
+        191,
+        432,
+        434
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_generation13_directional_exits.py",
+      "training_call_lines": [
+        203,
+        206,
+        213
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_generation14_precision_frequency.py",
+      "training_call_lines": [
+        196,
+        201,
+        212,
+        243,
+        266
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_generation16_independent_families.py",
+      "training_call_lines": [
+        412,
+        413,
+        420
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_generation17_cross_regime.py",
+      "training_call_lines": [
+        338,
+        339,
+        346
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_generation20_direct_net_edge.py",
+      "training_call_lines": [
+        192,
+        193,
+        198
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_generation8_residual_walk_forward.py",
+      "training_call_lines": [
+        406,
+        419,
+        749,
+        754
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_independent_secondary_classifier_v1.py",
+      "training_call_lines": [
+        168
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_long_full_history_walk_forward.py",
+      "training_call_lines": [
+        130,
+        157
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_long_model_optimization.py",
+      "training_call_lines": [
+        92,
+        207,
+        236
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_recent_walk_forward.py",
+      "training_call_lines": [
+        181,
+        339,
+        357
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_regime_experts_iterative.py",
+      "training_call_lines": [
+        152
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_regime_experts_walk_forward.py",
+      "training_call_lines": [
+        119
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "gold_rolling_champion.py",
+      "training_call_lines": [
+        18
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "trade_quality_filter.py",
+      "training_call_lines": [
+        117
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "validate_cftc_gold_cot_b0_b1_v1.py",
+      "training_call_lines": [
+        580
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    },
+    {
+      "path": "validate_gold_independent_secondary_classifier_v1.py",
+      "training_call_lines": [
+        159
+      ],
+      "action": "Historical utility retained; not scheduled or selected"
+    }
+  ],
+  "actual_training_started": false,
+  "approved_workflow": null,
+  "known_active_runtime_imports_training": false,
+  "limitations": [
+    "No approved training script/config/dataset selected",
+    "CPython audit guard is not native-code OS isolation",
+    "Force-kill cancellation cannot guarantee finalization"
+  ]
+}

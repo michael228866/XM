@@ -1,0 +1,483 @@
+{
+  "overall": "PASS",
+  "checks": {
+    "stale_to_healthy_idle": true,
+    "stale_no_admission": true,
+    "stale_null_offset_skew": true,
+    "fresh_10800_full_validation_required": true,
+    "fresh_offset_7200": true,
+    "fresh_offset_14400": true,
+    "excessive_skew": true,
+    "reversal": true,
+    "identity_mismatch": true,
+    "chain_conflict_pauses": true,
+    "idle_heartbeat_updates": true,
+    "idle_sequence_unchanged": true,
+    "idle_no_snapshot_created": true,
+    "correct_python": true,
+    "unicode_root": true,
+    "utf8_source_review": true,
+    "invalid_python_blocks": true,
+    "production_mismatch_blocks": true,
+    "unapproved_workflow_blocks": true,
+    "holdout_absolute_blocked": true,
+    "holdout_traversal_blocked": true,
+    "audit_hook_blocks_open": true,
+    "non_user_scheduler_agent_rejected": true,
+    "import_does_not_train": true,
+    "dry_run_no_training": true,
+    "bat_no_arguments_failure_visible": true,
+    "bat_window_pause": true,
+    "bat_no_training_created": true,
+    "aborted_archive_preserved": true,
+    "logs_preserved": true
+  },
+  "test_count": 30,
+  "runtime_fixtures": [
+    {
+      "name": "stale_to_healthy_idle",
+      "samples": [
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000000,
+          "system_utc_epoch": 1800075600.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000000,
+          "system_utc_epoch": 1800075602.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000000,
+          "system_utc_epoch": 1800075604.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        }
+      ],
+      "previous_tick": 1799999700,
+      "last_bar": 1799999820,
+      "expected": "HEALTHY_IDLE",
+      "actual": "HEALTHY_IDLE"
+    },
+    {
+      "name": "fresh_10800_full_validation_required",
+      "samples": [
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000000,
+          "system_utc_epoch": 1799989200.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000002,
+          "system_utc_epoch": 1799989202.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000004,
+          "system_utc_epoch": 1799989204.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        }
+      ],
+      "previous_tick": 1799999700,
+      "last_bar": 1799999820,
+      "expected": "RUNNING",
+      "actual": "RUNNING"
+    },
+    {
+      "name": "fresh_offset_7200",
+      "samples": [
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000000,
+          "system_utc_epoch": 1799992800.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000002,
+          "system_utc_epoch": 1799992802.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000004,
+          "system_utc_epoch": 1799992804.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        }
+      ],
+      "previous_tick": 1799999700,
+      "last_bar": 1799999820,
+      "expected": "PAUSED_TIME_RULE",
+      "actual": "PAUSED_TIME_RULE"
+    },
+    {
+      "name": "fresh_offset_14400",
+      "samples": [
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000000,
+          "system_utc_epoch": 1799985600.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000002,
+          "system_utc_epoch": 1799985602.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000004,
+          "system_utc_epoch": 1799985604.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        }
+      ],
+      "previous_tick": 1799999700,
+      "last_bar": 1799999820,
+      "expected": "PAUSED_TIME_RULE",
+      "actual": "PAUSED_TIME_RULE"
+    },
+    {
+      "name": "excessive_skew",
+      "samples": [
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000000,
+          "system_utc_epoch": 1799989206.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000002,
+          "system_utc_epoch": 1799989208.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000004,
+          "system_utc_epoch": 1799989210.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        }
+      ],
+      "previous_tick": 1799999700,
+      "last_bar": 1799999820,
+      "expected": "PAUSED_TIME_RULE",
+      "actual": "PAUSED_TIME_RULE"
+    },
+    {
+      "name": "reversal",
+      "samples": [
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000000,
+          "system_utc_epoch": 1799989200.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000002,
+          "system_utc_epoch": 1799989202.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1799999999,
+          "system_utc_epoch": 1799989204.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        }
+      ],
+      "previous_tick": 1799999700,
+      "last_bar": 1799999820,
+      "expected": "PAUSED_TIME_RULE",
+      "actual": "PAUSED_TIME_RULE"
+    },
+    {
+      "name": "identity_mismatch",
+      "samples": [
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "other",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000000,
+          "system_utc_epoch": 1800075600.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000000,
+          "system_utc_epoch": 1800075602.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        },
+        {
+          "source_identity": {
+            "broker_company": "XM Global Limited",
+            "broker_server": "XMGlobal-MT5 6",
+            "source_account_environment": "demo",
+            "source_id": "XMGlobal-MT5-6_GOLD",
+            "symbol": "GOLD#",
+            "digits": 2,
+            "point": 0.01
+          },
+          "raw_tick_epoch": 1800000000,
+          "system_utc_epoch": 1800075604.5,
+          "m1_raw_epochs": [
+            1799999880,
+            1799999940,
+            1800000000
+          ]
+        }
+      ],
+      "previous_tick": 1799999700,
+      "last_bar": 1799999820,
+      "expected": "PAUSED_SOURCE_IDENTITY",
+      "actual": "PAUSED_SOURCE_IDENTITY"
+    }
+  ],
+  "bat_smoke_scope": "Programmatic failure-path smoke; real Explorer double-click training not executed",
+  "training_executed": false,
+  "training_workflow_status": "BLOCKED_AWAITING_APPROVAL",
+  "holdout_guard_scope": "CPython audited path access; not hostile native-code isolation"
+}
