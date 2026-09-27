@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "native_os_isolation": false,
+  "unapproved_worker_enabled": false,
+  "path_and_cutoff_tests_pass": true,
+  "holdout_tree_read_for_training": false
+}

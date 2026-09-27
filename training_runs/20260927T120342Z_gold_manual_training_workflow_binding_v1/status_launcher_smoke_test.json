@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "stdout": "Capture: PAUSED\nHeartbeat: FAIL\nChain: PASS\nCertified offset: 10800\nLast accepted sequence: 0\nLast source timestamp: 2026-09-25T19:24:00+00:00\nHoldout start: 2026-09-25T19:24:00+00:00\nHoldout evaluation start: None\nTRAINING WORKFLOW: NOT_READY\nTRAINING OWNER: USER\nAUTO DATA FETCH: DISABLED\nTRAINING SYMBOL: UNRESOLVED\nHISTORICAL DATA: INCOMPLETE\nLAST TRAINING: NEVER\n",
+  "stderr": "",
+  "status": "PASS",
+  "capture_restarted": false,
+  "capture_health_claim": "See observed stdout; configuration preservation is not a live-health claim"
+}

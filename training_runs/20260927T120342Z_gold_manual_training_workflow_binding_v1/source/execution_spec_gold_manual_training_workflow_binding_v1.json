@@ -1,0 +1,31 @@
+{
+  "experiment_name": "gold_manual_training_workflow_binding_v1",
+  "mode": "INFRASTRUCTURE_ONLY",
+  "training_execution_owner": "USER",
+  "actual_training_authorized": false,
+  "strategy_evaluation_authorized": false,
+  "permitted_verification": "synthetic static dry-run; no live historical fetch selected due unresolved requirements",
+  "expected_result": "PARTIAL",
+  "source_files": [
+    "gold_manual_training_provenance_v1.json",
+    "gold_manual_training_spec_v1.json",
+    "gold_manual_training_config_v1.json",
+    "gold_historical_training_data_manifest_v1.json",
+    "gold_historical_training_data_manager_v1.py",
+    "gold_manual_training_workflow_v1.py",
+    "README_GOLD_MANUAL_TRAINING_V1.md",
+    "test_gold_manual_training_workflow_binding_v1.py",
+    "run_gold_manual_training_workflow_binding_v1.py",
+    "validate_gold_manual_training_workflow_binding_v1.py",
+    "execution_spec_gold_manual_training_workflow_binding_v1.json",
+    "historical_training_data/README.md",
+    "historical_training_data/import/README.md",
+    "manual_training_launcher_v1.py",
+    "training_holdout_guard_v1.py",
+    "gold_runtime_status_v1.py",
+    "RUN_TRAINING.bat",
+    "CHECK_STATUS.bat",
+    "training_launcher_config_v1.json",
+    "manual_training_policy_v1.json"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "status": "PARTIAL",
+  "synthetic_fetch_status": "PASS",
+  "live_fetch_performed": false,
+  "reason": "No approved historical symbol/range/clock contract; bounded live smoke not necessary to prove unresolved binding",
+  "real_data_fetched": false,
+  "auto_fetch_enabled": false
+}

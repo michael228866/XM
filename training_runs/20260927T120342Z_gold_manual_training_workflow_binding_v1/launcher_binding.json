@@ -1,0 +1,8 @@
+{
+  "status": "PARTIAL",
+  "workflow_ready": false,
+  "single_approved_default": null,
+  "manual_owner": "USER",
+  "actual_training_executed": false,
+  "receipt_ttl_seconds": 30
+}

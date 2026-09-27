@@ -1,0 +1,11 @@
+{
+  "status": "PARTIAL",
+  "cache_directory": "historical_training_data",
+  "import_directory": "historical_training_data/import",
+  "auto_fetch_enabled": false,
+  "requirements": [],
+  "no_substitution": true,
+  "no_resampling": true,
+  "unknown_source_eligible": false,
+  "historical_timestamp_mapping": "UNRESOLVED; current 10800 offset is not a historical certification"
+}

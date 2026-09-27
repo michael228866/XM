@@ -1,0 +1,20 @@
+{
+  "formal_run_status": "PARTIAL",
+  "training_provenance_status": "PARTIAL",
+  "approved_training_script_status": "PARTIAL",
+  "approved_training_config_status": "PARTIAL",
+  "training_data_policy_status": "PARTIAL",
+  "auto_fetch_status": "PARTIAL",
+  "holdout_guard_status": "PASS",
+  "self_test_status": "PASS",
+  "bat_launcher_status": "PASS",
+  "training_workflow_ready": false,
+  "model_training_executed": false,
+  "strategy_outcome_inspected": false,
+  "production_changed": false,
+  "production_promoted": false,
+  "capture_automation_preserved": true,
+  "auto_training_disabled": true,
+  "validator_status": "PASS",
+  "methodology_provenance_status": "PASS"
+}

@@ -1,0 +1,578 @@
+{
+  "schema_version": 1,
+  "run_id": "20260927T120342Z_gold_manual_training_workflow_binding_v1",
+  "experiment_name": "gold_manual_training_workflow_binding_v1",
+  "status": "research_only",
+  "started_at_utc": "2026-09-27T12:03:42.528191Z",
+  "finished_at_utc": "2026-09-27T12:04:42.930390Z",
+  "git_commit": "aee1cdff234ffaac484e836863ec08840b51f5ae",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\run_gold_manual_training_workflow_binding_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "8633d269e9afcc599ba2dc9d9662d73e476c0e3257c3f39eaaf91fe4b68cda8e",
+  "exact_command": "D:\\XM\\數據\\.venv\\Scripts\\python.exe -B run_gold_manual_training_workflow_binding_v1.py --execute",
+  "arguments": [
+    "--execute"
+  ],
+  "random_seeds": {},
+  "random_seed_note": "Synthetic deterministic infrastructure only; no fitting",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "Synthetic tiny bar fixtures and source provenance metadata only"
+    ],
+    "source_files": [
+      {
+        "source_path": "gold_manual_training_provenance_v1.json",
+        "path": "source/gold_manual_training_provenance_v1.json",
+        "sha256": "158fd2d28aef9d6565fb73dc06fabdd562a95a5c3db50833d49aae77effa08eb",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_training_spec_v1.json",
+        "path": "source/gold_manual_training_spec_v1.json",
+        "sha256": "e303f8d7f901e83a69cfe82fcf3025c11cfdd5c58a2fd67673fd18ec1761f7f8",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_training_config_v1.json",
+        "path": "source/gold_manual_training_config_v1.json",
+        "sha256": "f124faaf544e64c7a1892f149c429450ce81d2dba2fef94af2046244190bce91",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_historical_training_data_manifest_v1.json",
+        "path": "source/gold_historical_training_data_manifest_v1.json",
+        "sha256": "3a72067a4fc8f2b0edf1028d35932622cadc9f76e0e56d8d3ad44f3dd8145b9b",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_historical_training_data_manager_v1.py",
+        "path": "source/gold_historical_training_data_manager_v1.py",
+        "sha256": "9cef9c98c0062c401def3f845a33da27505b35e287398349796cafd6815a0428",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_manual_training_workflow_v1.py",
+        "path": "source/gold_manual_training_workflow_v1.py",
+        "sha256": "09b5b05252addb64acd5005e4bdedbd484c1de24de26703b8297c25683fdffdb",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "README_GOLD_MANUAL_TRAINING_V1.md",
+        "path": "source/README_GOLD_MANUAL_TRAINING_V1.md",
+        "sha256": "0735171c959aa46d4ae3598355b7f0e731c83ebdb1dd758454d5f6ff23f03fdc",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "test_gold_manual_training_workflow_binding_v1.py",
+        "path": "source/test_gold_manual_training_workflow_binding_v1.py",
+        "sha256": "a55e224836a48aa4b3fb77723c36c589a57609224f750b2f8c5d052cd2bee7f1",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "run_gold_manual_training_workflow_binding_v1.py",
+        "path": "source/run_gold_manual_training_workflow_binding_v1.py",
+        "sha256": "8633d269e9afcc599ba2dc9d9662d73e476c0e3257c3f39eaaf91fe4b68cda8e",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "validate_gold_manual_training_workflow_binding_v1.py",
+        "path": "source/validate_gold_manual_training_workflow_binding_v1.py",
+        "sha256": "5b1723147ea8cb811a5549cb6be5d322bc12e43984c777bb4b9abbc540872e16",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "execution_spec_gold_manual_training_workflow_binding_v1.json",
+        "path": "source/execution_spec_gold_manual_training_workflow_binding_v1.json",
+        "sha256": "7b767e1b849b028861939fc9c9e90c6cf239da98eb3f10e1a08f5cc358d6837f",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "historical_training_data/README.md",
+        "path": "source/historical_training_data/README.md",
+        "sha256": "436631cf7a00176149bab53f385ced953d3c00fcd67dbe970ee4d2563de5f437",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "historical_training_data/import/README.md",
+        "path": "source/historical_training_data/import/README.md",
+        "sha256": "7e66a66f8b0cb4dc4dcf3a4708ddb45f25b575a7f6031f8c69ab5c5cbc2f9dd1",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "manual_training_launcher_v1.py",
+        "path": "source/manual_training_launcher_v1.py",
+        "sha256": "62f6dc8f212d4f27bd4a70c835a9ff949812172227807046e4c0725a8e17a884",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "training_holdout_guard_v1.py",
+        "path": "source/training_holdout_guard_v1.py",
+        "sha256": "c769625f4716127479041be1ba76566b0a9838d9211442b430b5a264fca6348f",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "gold_runtime_status_v1.py",
+        "path": "source/gold_runtime_status_v1.py",
+        "sha256": "b82c7362922089bdf623565cd77539f2c1486ee84fdc97a0f9a8bdf5bf5ea54c",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "RUN_TRAINING.bat",
+        "path": "source/RUN_TRAINING.bat",
+        "sha256": "433a188e90bb32bbb2b4a7633ffe6b7e6c3922cd2b31815cb9aa60177e0b9eee",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "CHECK_STATUS.bat",
+        "path": "source/CHECK_STATUS.bat",
+        "sha256": "114513bb3ed7e101e8c8a93bca0f21ae6b2987635d618165cdb5cb93c16fd844",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "training_launcher_config_v1.json",
+        "path": "source/training_launcher_config_v1.json",
+        "sha256": "a2db14d921752876f8aa23255f9c21e094105e526c07293e2827d1f9ad3d2dea",
+        "retention_status": "stored_in_run_directory_and_git"
+      },
+      {
+        "source_path": "manual_training_policy_v1.json",
+        "path": "source/manual_training_policy_v1.json",
+        "sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+        "retention_status": "stored_in_run_directory_and_git"
+      }
+    ],
+    "timezone": "UTC synthetic; real historical mapping unresolved",
+    "data_start_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "data_end_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "train_start_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "train_end_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "train_rows": 0,
+    "validation_start_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "validation_end_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "validation_rows": 0,
+    "test_start_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "test_end_utc": "NOT_APPLICABLE_NO_TRAINING",
+    "test_rows": 0,
+    "purge_details": "N/A: no training",
+    "embargo_details": "N/A: no training",
+    "raw_snapshot_retained": true,
+    "reproducibility_claim": "All synthetic test source retained; no real training data used",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "Synthetic fetch only; no approved real data requirements"
+    },
+    "symbol_usage": "Synthetic fixtures only; no real GOLD observations used for training"
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "Infrastructure only; no model fitting"
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "No strategy search or outcome evaluation"
+  },
+  "registry": {
+    "parent_or_incumbent": "GOLD user-only launcher",
+    "selected_configuration": "PARTIAL; provenance default unresolved; data policy/auto-fetch PARTIAL; 74 synthetic checks PASS; no model training; no production change/promotion; capture config unchanged, observed heartbeat FAIL",
+    "trades_per_day": "N/A: infrastructure only",
+    "realized_win_rate": "N/A: infrastructure only",
+    "pf": "N/A: infrastructure only",
+    "mean_r": "N/A: infrastructure only",
+    "pnl": "N/A: infrastructure only",
+    "max_dd": "N/A: infrastructure only",
+    "validator_result": "PASS (144 independent infrastructure checks; actual training unapproved)"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [
+    {
+      "path": "approved_training_config.json",
+      "sha256": "f124faaf544e64c7a1892f149c429450ce81d2dba2fef94af2046244190bce91",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "approved_training_spec.json",
+      "sha256": "e303f8d7f901e83a69cfe82fcf3025c11cfdd5c58a2fd67673fd18ec1761f7f8",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "auto_training_audit.json",
+      "sha256": "d855320a31c1317f6722b07eedcc7cb5100a86f489cee4513b62a0f52ee395b7",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "candidates.csv",
+      "sha256": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "environment.txt",
+      "sha256": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "execution_spec.json",
+      "sha256": "7b767e1b849b028861939fc9c9e90c6cf239da98eb3f10e1a08f5cc358d6837f",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "findings.md",
+      "sha256": "08113ad5b72a0c70974d220dcbe4e4f43e0b56cd4c5a33b8bec7f5715818a3fc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "historical_data_fetch_smoke_test.json",
+      "sha256": "d8c01c8dbe4f8a0891b4972293eaa3e09633c0deb310bbeb46439a86784fb4c9",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "historical_data_inventory.json",
+      "sha256": "3a72067a4fc8f2b0edf1028d35932622cadc9f76e0e56d8d3ad44f3dd8145b9b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "historical_data_requirements.json",
+      "sha256": "b77ae6836d3578a5ea85a719d9d4268c9cac75efc6a2110cbc2224bfb8be7901",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "holdout_guard_review.json",
+      "sha256": "c878ffed8061ccff59351deead3f5b960918c654ea45d6ad16dd1b9d6a2b0996",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "launcher_binding.json",
+      "sha256": "8553c566a1e1b1318031b92c126846dfc44d3d4bb235da2fb930b29c2486345d",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "launcher_smoke_test.json",
+      "sha256": "e87070435510a04aa5ff515048673f16f6f7d71d78c60b9b71ea94bcbf36ad2c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "metrics.json",
+      "sha256": "6952df67a1a8b7b0cfd430b1e3be6de77beea83def2a63152354db994c50be35",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "protection_checks.json",
+      "sha256": "a2ba138da8fbbe478513d75ba656addaf4e8a8b3e670b9d0fa70d46ef775d0dc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "report.md",
+      "sha256": "08113ad5b72a0c70974d220dcbe4e4f43e0b56cd4c5a33b8bec7f5715818a3fc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/CHECK_STATUS.bat",
+      "sha256": "114513bb3ed7e101e8c8a93bca0f21ae6b2987635d618165cdb5cb93c16fd844",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/execution_spec_gold_manual_training_workflow_binding_v1.json",
+      "sha256": "7b767e1b849b028861939fc9c9e90c6cf239da98eb3f10e1a08f5cc358d6837f",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_historical_training_data_manager_v1.py",
+      "sha256": "9cef9c98c0062c401def3f845a33da27505b35e287398349796cafd6815a0428",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_historical_training_data_manifest_v1.json",
+      "sha256": "3a72067a4fc8f2b0edf1028d35932622cadc9f76e0e56d8d3ad44f3dd8145b9b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_training_config_v1.json",
+      "sha256": "f124faaf544e64c7a1892f149c429450ce81d2dba2fef94af2046244190bce91",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_training_provenance_v1.json",
+      "sha256": "158fd2d28aef9d6565fb73dc06fabdd562a95a5c3db50833d49aae77effa08eb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_training_spec_v1.json",
+      "sha256": "e303f8d7f901e83a69cfe82fcf3025c11cfdd5c58a2fd67673fd18ec1761f7f8",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_manual_training_workflow_v1.py",
+      "sha256": "09b5b05252addb64acd5005e4bdedbd484c1de24de26703b8297c25683fdffdb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/gold_runtime_status_v1.py",
+      "sha256": "b82c7362922089bdf623565cd77539f2c1486ee84fdc97a0f9a8bdf5bf5ea54c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/historical_training_data/import/README.md",
+      "sha256": "7e66a66f8b0cb4dc4dcf3a4708ddb45f25b575a7f6031f8c69ab5c5cbc2f9dd1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/historical_training_data/README.md",
+      "sha256": "436631cf7a00176149bab53f385ced953d3c00fcd67dbe970ee4d2563de5f437",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/manual_training_launcher_v1.py",
+      "sha256": "62f6dc8f212d4f27bd4a70c835a9ff949812172227807046e4c0725a8e17a884",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/manual_training_policy_v1.json",
+      "sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/README_GOLD_MANUAL_TRAINING_V1.md",
+      "sha256": "0735171c959aa46d4ae3598355b7f0e731c83ebdb1dd758454d5f6ff23f03fdc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/run_gold_manual_training_workflow_binding_v1.py",
+      "sha256": "8633d269e9afcc599ba2dc9d9662d73e476c0e3257c3f39eaaf91fe4b68cda8e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/RUN_TRAINING.bat",
+      "sha256": "433a188e90bb32bbb2b4a7633ffe6b7e6c3922cd2b31815cb9aa60177e0b9eee",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/test_gold_manual_training_workflow_binding_v1.py",
+      "sha256": "a55e224836a48aa4b3fb77723c36c589a57609224f750b2f8c5d052cd2bee7f1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/training_holdout_guard_v1.py",
+      "sha256": "c769625f4716127479041be1ba76566b0a9838d9211442b430b5a264fca6348f",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/training_launcher_config_v1.json",
+      "sha256": "a2db14d921752876f8aa23255f9c21e094105e526c07293e2827d1f9ad3d2dea",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "source/validate_gold_manual_training_workflow_binding_v1.py",
+      "sha256": "5b1723147ea8cb811a5549cb6be5d322bc12e43984c777bb4b9abbc540872e16",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "status_launcher_smoke_test.json",
+      "sha256": "17b44a9858c09854705d7e798162a3c44871f61ac447734396e5e589ddb638e1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "stdout.log",
+      "sha256": "f01319977b4112332c260b197950fa627f882155d994f0b6acb9ebf696ceb8eb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "training_provenance_trace.json",
+      "sha256": "158fd2d28aef9d6565fb73dc06fabdd562a95a5c3db50833d49aae77effa08eb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "training_script.py",
+      "sha256": "8633d269e9afcc599ba2dc9d9662d73e476c0e3257c3f39eaaf91fe4b68cda8e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator.json",
+      "sha256": "f60b62dcceef4c4cda3e9c43d925ffb34dda3bd7654bdfb823f02960228cb598",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator.md",
+      "sha256": "6b36c43267dc1ae56e071424dd3c1d40be1db60e1f9321f6e7bbc33d7d7df670",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_attempt.json",
+      "sha256": "9c1ee52c5a43018e27562cc564066f9b063206f5a3c212035b1b8e1928d46b47",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_script.py",
+      "sha256": "5b1723147ea8cb811a5549cb6be5d322bc12e43984c777bb4b9abbc540872e16",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "path": "validator_stdout.txt",
+      "sha256": "ed9000fc4dc3aa986447493646c949ae367a43e1372692d347d86a0b20a9c162",
+      "retention_status": "stored_in_run_directory_and_git"
+    }
+  ],
+  "aborted_reason": null,
+  "source_commit": "aee1cdff234ffaac484e836863ec08840b51f5ae",
+  "pre_run_remote_commit": "aee1cdff234ffaac484e836863ec08840b51f5ae",
+  "pre_run_clean": true,
+  "input_snapshots": [
+    {
+      "source_path": "gold_manual_training_provenance_v1.json",
+      "path": "source/gold_manual_training_provenance_v1.json",
+      "sha256": "158fd2d28aef9d6565fb73dc06fabdd562a95a5c3db50833d49aae77effa08eb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_training_spec_v1.json",
+      "path": "source/gold_manual_training_spec_v1.json",
+      "sha256": "e303f8d7f901e83a69cfe82fcf3025c11cfdd5c58a2fd67673fd18ec1761f7f8",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_training_config_v1.json",
+      "path": "source/gold_manual_training_config_v1.json",
+      "sha256": "f124faaf544e64c7a1892f149c429450ce81d2dba2fef94af2046244190bce91",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_historical_training_data_manifest_v1.json",
+      "path": "source/gold_historical_training_data_manifest_v1.json",
+      "sha256": "3a72067a4fc8f2b0edf1028d35932622cadc9f76e0e56d8d3ad44f3dd8145b9b",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_historical_training_data_manager_v1.py",
+      "path": "source/gold_historical_training_data_manager_v1.py",
+      "sha256": "9cef9c98c0062c401def3f845a33da27505b35e287398349796cafd6815a0428",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_manual_training_workflow_v1.py",
+      "path": "source/gold_manual_training_workflow_v1.py",
+      "sha256": "09b5b05252addb64acd5005e4bdedbd484c1de24de26703b8297c25683fdffdb",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "README_GOLD_MANUAL_TRAINING_V1.md",
+      "path": "source/README_GOLD_MANUAL_TRAINING_V1.md",
+      "sha256": "0735171c959aa46d4ae3598355b7f0e731c83ebdb1dd758454d5f6ff23f03fdc",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "test_gold_manual_training_workflow_binding_v1.py",
+      "path": "source/test_gold_manual_training_workflow_binding_v1.py",
+      "sha256": "a55e224836a48aa4b3fb77723c36c589a57609224f750b2f8c5d052cd2bee7f1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "run_gold_manual_training_workflow_binding_v1.py",
+      "path": "source/run_gold_manual_training_workflow_binding_v1.py",
+      "sha256": "8633d269e9afcc599ba2dc9d9662d73e476c0e3257c3f39eaaf91fe4b68cda8e",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "validate_gold_manual_training_workflow_binding_v1.py",
+      "path": "source/validate_gold_manual_training_workflow_binding_v1.py",
+      "sha256": "5b1723147ea8cb811a5549cb6be5d322bc12e43984c777bb4b9abbc540872e16",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "execution_spec_gold_manual_training_workflow_binding_v1.json",
+      "path": "source/execution_spec_gold_manual_training_workflow_binding_v1.json",
+      "sha256": "7b767e1b849b028861939fc9c9e90c6cf239da98eb3f10e1a08f5cc358d6837f",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "historical_training_data/README.md",
+      "path": "source/historical_training_data/README.md",
+      "sha256": "436631cf7a00176149bab53f385ced953d3c00fcd67dbe970ee4d2563de5f437",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "historical_training_data/import/README.md",
+      "path": "source/historical_training_data/import/README.md",
+      "sha256": "7e66a66f8b0cb4dc4dcf3a4708ddb45f25b575a7f6031f8c69ab5c5cbc2f9dd1",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "manual_training_launcher_v1.py",
+      "path": "source/manual_training_launcher_v1.py",
+      "sha256": "62f6dc8f212d4f27bd4a70c835a9ff949812172227807046e4c0725a8e17a884",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "training_holdout_guard_v1.py",
+      "path": "source/training_holdout_guard_v1.py",
+      "sha256": "c769625f4716127479041be1ba76566b0a9838d9211442b430b5a264fca6348f",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "gold_runtime_status_v1.py",
+      "path": "source/gold_runtime_status_v1.py",
+      "sha256": "b82c7362922089bdf623565cd77539f2c1486ee84fdc97a0f9a8bdf5bf5ea54c",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "RUN_TRAINING.bat",
+      "path": "source/RUN_TRAINING.bat",
+      "sha256": "433a188e90bb32bbb2b4a7633ffe6b7e6c3922cd2b31815cb9aa60177e0b9eee",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "CHECK_STATUS.bat",
+      "path": "source/CHECK_STATUS.bat",
+      "sha256": "114513bb3ed7e101e8c8a93bca0f21ae6b2987635d618165cdb5cb93c16fd844",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "training_launcher_config_v1.json",
+      "path": "source/training_launcher_config_v1.json",
+      "sha256": "a2db14d921752876f8aa23255f9c21e094105e526c07293e2827d1f9ad3d2dea",
+      "retention_status": "stored_in_run_directory_and_git"
+    },
+    {
+      "source_path": "manual_training_policy_v1.json",
+      "path": "source/manual_training_policy_v1.json",
+      "sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+      "retention_status": "stored_in_run_directory_and_git"
+    }
+  ],
+  "formal_run_status": "PARTIAL",
+  "methodology_provenance_status": "PASS",
+  "independent_validator_status": "PASS"
+}
