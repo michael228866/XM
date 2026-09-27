@@ -1,9 +1,10 @@
-"""Manual binding gate. No actual training entrypoint is approved in this version."""
+"""Manual receipt and independently certified S4 binding gate; import never trains."""
 import hashlib
 import json
 import os
 import secrets
 import time
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -27,6 +28,27 @@ def consume_receipt(token):
 
 def binding_status(root=ROOT):
     root = Path(root)
+    approval = root/'gold_manual_s4_approval_v1.json'
+    if approval.exists():
+        verify_s4_approval(root)
+        config = json.loads((root/'gold_manual_s4_secondary_retrain_config_v1.json').read_text(encoding='utf-8'))
+        runs = sorted((root/'training_runs').glob('*_gold_manual_s4_secondary_retrain_v1/FINALIZED.json'))
+        from training_holdout_guard_v1 import check_path
+        inventory_hash = hashlib.sha256(json.dumps(config['required_datasets'], sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+        ready = True
+        for item in config['required_datasets']:
+            found = False
+            for p in (root/item['filename'], root/'historical_training_data/s4_exact'/inventory_hash/item['filename']):
+                p = check_path(p, root)
+                if p.is_file():
+                    with p.open('rb') as stream:
+                        found = hashlib.file_digest(stream, 'sha256').hexdigest() == item['sha256']
+                    if found:
+                        break
+            ready = ready and found
+        return {'workflow': 'READY', 'owner': 'USER', 'auto_fetch': 'ENABLED',
+                'symbol': config['training_symbol'], 'historical_data': 'READY' if ready else 'INCOMPLETE',
+                'last_training': runs[-1].parent.name if runs else 'NEVER', 'provenance_status': 'PASS', 'blockers': []}
     config = json.loads((root/'gold_manual_training_config_v1.json').read_text(encoding='utf-8'))
     spec_path = root/config['spec']['path']
     if hashlib.sha256(spec_path.read_bytes()).hexdigest() != config['spec']['sha256']:
@@ -47,13 +69,39 @@ def summary(run_id, status, output):
 
 
 def run_manual(token):
-    consume_receipt(token)
-    from manual_training_launcher_v1 import CONFIG, load, verify_environment
-    verify_environment(load(CONFIG))
-    state = binding_status()
-    raise ValueError('訓練流程尚未核准（PARTIAL）：production 重現、B0 與 S4 尚無唯一可重複執行預設；'
-                     '歷史 CSV／MT5 時間語義與資料替換亦未認證。請查看 README_GOLD_MANUAL_TRAINING_V1.md。'
-                     '\nTRAINING WORKFLOW: ' + state['workflow'] + '\n未下載資料、未啟動訓練。')
+    from gold_manual_s4_secondary_retrain_v1 import run_manual as retrain
+    return retrain(token)
+
+
+def verify_s4_approval(root=ROOT):
+    root = Path(root)
+    path = root/'gold_manual_s4_approval_v1.json'
+    if not path.is_file():
+        raise ValueError('S4 手動訓練尚未完成獨立認證與 approval commit；未啟動訓練')
+    approval = json.loads(path.read_text(encoding='utf-8'))
+    if approval.get('approved') is not True or approval.get('training_execution_owner') != 'USER':
+        raise PermissionError('Invalid S4 approval')
+    committed = subprocess.check_output(['git', 'show', 'HEAD:'+path.name], cwd=root)
+    if committed != path.read_bytes():
+        raise PermissionError('S4 approval must be committed')
+    for name, expected in approval['bindings'].items():
+        target = (root/name).resolve()
+        if not target.is_relative_to(root.resolve()) or hashlib.sha256(target.read_bytes()).hexdigest() != expected:
+            raise ValueError('S4 approved binding changed: '+name)
+    run = (root/approval['certification_run']).resolve()
+    if run.parent != (root/'training_runs').resolve():
+        raise PermissionError('Invalid certification path')
+    seal = json.loads((run/'FINALIZED.json').read_text(encoding='utf-8'))
+    if hashlib.sha256((run/'FINALIZED.json').read_bytes()).hexdigest() != approval['finalized_sha256']:
+        raise ValueError('Certification seal changed')
+    for name in ('validator.json', 'metrics.json'):
+        if hashlib.sha256((run/name).read_bytes()).hexdigest() != seal['file_sha256'][name]:
+            raise ValueError('Certification result changed')
+    validator = json.loads((run/'validator.json').read_text(encoding='utf-8'))
+    metrics = json.loads((run/'metrics.json').read_text(encoding='utf-8'))
+    if validator['overall'] != 'PASS' or metrics['formal_run_status'] != 'PASS':
+        raise PermissionError('S4 certification must PASS')
+    return approval
 
 
 if __name__ == '__main__':

@@ -57,3 +57,7 @@ untouched_forward/**/data/
 /future_holdout/gold_s4_v4/quarantine/*
 /future_holdout/gold_s4_v4/health/*
 /future_holdout/gold_s4_v4/PAUSED*.json
+
+# Exact historical S4 input cache and user imports remain local, hash-recorded data.
+/historical_training_data/s4_exact/
+/historical_training_data/import/*.csv
