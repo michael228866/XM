@@ -1,0 +1,1 @@
+CSV fallback staging only. Files require a reviewed, hash-bound sidecar proving exact symbol, source, native timeframe and UTC timestamp semantics. A filename is not certification. No current training workflow is approved. Never copy future_holdout data here.

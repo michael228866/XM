@@ -2,6 +2,15 @@
 import os
 import sys
 from pathlib import Path
+from datetime import datetime
+
+HOLDOUT_START = int(datetime.fromisoformat('2026-09-25T19:24:00+00:00').timestamp())
+
+
+def check_interval(start, end, cutoff):
+    if (any(type(value) is not int for value in (start, end, cutoff))
+            or not 0 <= start <= end <= cutoff < HOLDOUT_START):
+        raise PermissionError('歷史資料不得超過已核准 cutoff 或進入 locked holdout')
 
 
 def check_path(path, root):

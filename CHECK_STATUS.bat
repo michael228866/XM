@@ -1,4 +1,5 @@
 @echo off
+rem Displays capture and manual-training readiness separately.
 setlocal
 chcp 65001 >nul
 set "PYTHONUTF8=1"

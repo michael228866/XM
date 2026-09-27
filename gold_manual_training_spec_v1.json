@@ -1,0 +1,55 @@
+{
+  "training_symbol": null,
+  "training_source_id": null,
+  "training_script": null,
+  "training_script_sha256": null,
+  "training_entrypoint": null,
+  "training_config": null,
+  "training_config_sha256": null,
+  "feature_pipeline": null,
+  "feature_pipeline_sha256": null,
+  "ordered_feature_list": null,
+  "feature_list_sha256": null,
+  "label_pipeline": null,
+  "label_pipeline_sha256": null,
+  "execution_semantics": null,
+  "model_type": null,
+  "model_output_extension": null,
+  "historical_training_start": null,
+  "historical_training_end_rule": null,
+  "random_seed": null,
+  "fold_definition": null,
+  "hyperparameters": null,
+  "spec_version": 1,
+  "status": "PARTIAL",
+  "approval_status": "UNRESOLVED",
+  "training_execution_owner": "USER",
+  "workflow_class": "UNRESOLVED",
+  "required_timeframes": [],
+  "required_symbols": [],
+  "production_promotion": false,
+  "provenance_trace": {
+    "path": "gold_manual_training_provenance_v1.json",
+    "sha256": "158fd2d28aef9d6565fb73dc06fabdd562a95a5c3db50833d49aae77effa08eb"
+  },
+  "dataset_policy": {
+    "status": "PARTIAL",
+    "cache_directory": "historical_training_data",
+    "import_directory": "historical_training_data/import",
+    "auto_fetch_enabled": false,
+    "requirements": [],
+    "no_substitution": true,
+    "no_resampling": true,
+    "unknown_source_eligible": false,
+    "historical_timestamp_mapping": "UNRESOLVED; current 10800 offset is not a historical certification"
+  },
+  "holdout_policy": {
+    "locked_tree": "future_holdout/gold_s4_v4",
+    "start_utc": "2026-09-25T19:24:00+00:00",
+    "access": false
+  },
+  "blockers": [
+    "Evidence establishes historical lineages, not a single approved repeatable default. Choosing production reproduction versus B0-only versus fixed S4 confirmation changes labels, purpose and outputs. S4 is latest relevant research but frozen export reconstruction is not interchangeable with auto-fetched native data.",
+    "Approved exact data coverage, historical clock mapping and reusable run-output adapter/validator are not established"
+  ]
+}

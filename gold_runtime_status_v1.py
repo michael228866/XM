@@ -18,7 +18,12 @@ def status():
     print('Last source timestamp:',previous['rows'][-1]['SOURCE_TIMESTAMP'])
     print('Holdout start: 2026-09-25T19:24:00+00:00')
     print('Holdout evaluation start:',load(ROOT/'gold_future_holdout_evaluation_start_v1.json').get('holdout_evaluation_start'))
-    print('Training: IDLE / approval required' if load(ROOT/'training_launcher_config_v1.json')['approval_status'] != 'APPROVED' else 'Training: manual launcher only')
+    from gold_manual_training_workflow_v1 import binding_status
+    training = binding_status()
+    for label, key in [('TRAINING WORKFLOW','workflow'), ('TRAINING OWNER','owner'),
+                       ('AUTO DATA FETCH','auto_fetch'), ('TRAINING SYMBOL','symbol'),
+                       ('HISTORICAL DATA','historical_data'), ('LAST TRAINING','last_training')]:
+        print(label + ':', training[key] if training[key] is not None else 'UNRESOLVED')
 
 
 if __name__ == '__main__':

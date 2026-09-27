@@ -1,0 +1,1 @@
+Dedicated historical cache; currently empty and ineligible. The manager validates canonical UTF-8 bars and explicit expected timestamps. No market-session coverage or historical clock mapping is guessed. Runtime cache files must remain outside Git; preserve identities in the per-run manifest.
