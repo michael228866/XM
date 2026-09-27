@@ -51,13 +51,25 @@ def verify_workflow(config):
     return workflow
 
 
+def manual_parent_chain(chain, interpreter):
+    """Windows venv may insert one redirector process ahead of CMD."""
+    if chain and str(chain[0].get('ExecutablePath','')).casefold() == str(interpreter).casefold():
+        chain = chain[1:]
+    return (len(chain) >= 2 and chain[0].get('Name','').lower() == 'cmd.exe'
+            and chain[1].get('Name','').lower() == 'explorer.exe'
+            and chain[0].get('SessionId',0) > 0
+            and chain[0].get('ParentProcessId') == chain[1].get('ProcessId'))
+
+
 def user_double_click():
     """Require CMD launched directly by Explorer, not a scheduler/agent shell."""
     if os.name != 'nt' or os.environ.get('XM_USER_TRAINING_BAT') != 'RUN_TRAINING_V1':
         return False
-    command = "$p=Get-CimInstance Win32_Process -Filter ('ProcessId='+"+str(os.getpid())+"); $c=Get-CimInstance Win32_Process -Filter ('ProcessId='+$p.ParentProcessId); $e=Get-CimInstance Win32_Process -Filter ('ProcessId='+$c.ParentProcessId); [bool](($c.Name -ieq 'cmd.exe') -and ($e.Name -ieq 'explorer.exe') -and ($c.SessionId -gt 0))"
+    command = "[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false); $p=Get-CimInstance Win32_Process -Filter ('ProcessId='+"+str(os.getpid())+"); $chain=@(); for($i=0;$i -lt 3;$i++){ $p=Get-CimInstance Win32_Process -Filter ('ProcessId='+$p.ParentProcessId); if($null -eq $p){break}; $chain+=($p | Select-Object Name,ExecutablePath,SessionId,ProcessId,ParentProcessId) }; ConvertTo-Json -InputObject $chain -Compress"
     p = subprocess.run(['powershell.exe','-NoProfile','-NonInteractive','-Command',command],capture_output=True,timeout=15,check=False)
-    return p.returncode == 0 and p.stdout.decode('utf-8-sig').strip().lower() == 'true'
+    if p.returncode != 0:
+        return False
+    return manual_parent_chain(json.loads(p.stdout.decode('utf-8-sig')), (ROOT/load(CONFIG)['selected_interpreter']).resolve())
 
 
 def import_approved(path, name):

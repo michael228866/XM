@@ -12,7 +12,7 @@ from unittest.mock import patch
 
 from gold_future_capture_collector_v4_1 import operational_decision
 from gold_future_capture_supervisor_v1_1 import apply_cycle, publish
-from manual_training_launcher_v1 import ROOT, load, verify_environment, verify_workflow, user_double_click
+from manual_training_launcher_v1 import ROOT, load, verify_environment, verify_workflow, user_double_click, manual_parent_chain
 from training_holdout_guard_v1 import check_path
 
 
@@ -85,6 +85,13 @@ def tests():
     p=subprocess.run([sys.executable,'-B','-c',child],cwd=ROOT,capture_output=True,check=False)
     checks['audit_hook_blocks_open']=p.returncode!=0 and b'PermissionError' in p.stderr
     checks['non_user_scheduler_agent_rejected']=not user_double_click()
+    parent={'Name':'cmd.exe','SessionId':1,'ProcessId':2,'ParentProcessId':3}
+    explorer={'Name':'explorer.exe','ProcessId':3}
+    interpreter=(ROOT/config['selected_interpreter']).resolve()
+    checks['manual_cmd_explorer_allowed']=manual_parent_chain([parent,explorer],interpreter)
+    checks['manual_venv_redirector_allowed']=manual_parent_chain([{'ExecutablePath':str(interpreter)},parent,explorer],interpreter)
+    checks['scheduler_parent_denied']=not manual_parent_chain([parent,{'Name':'taskeng.exe','ProcessId':3}],interpreter)
+    checks['agent_parent_denied']=not manual_parent_chain([parent,{'Name':'python.exe','ProcessId':3}],interpreter)
     before=set((ROOT/'training_runs').iterdir())
     p=subprocess.run([sys.executable,'-B','-c','import manual_training_launcher_v1'],cwd=ROOT,capture_output=True,check=False)
     checks['import_does_not_train']=p.returncode==0 and set((ROOT/'training_runs').iterdir())==before
