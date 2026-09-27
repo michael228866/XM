@@ -1,0 +1,8 @@
+{
+  "failure": "UnicodeDecodeError",
+  "cause": "Validator source review used locale-default read_text on UTF-8 Traditional Chinese launcher",
+  "affected_file": "manual_training_launcher_v1.py",
+  "runtime_migration_performed": false,
+  "validator_retry": false,
+  "correction": "Explicit UTF-8 source decoding; new committed source and new formal run required"
+}

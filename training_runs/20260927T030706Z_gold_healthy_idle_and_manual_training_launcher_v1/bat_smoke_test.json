@@ -1,0 +1,8 @@
+{
+  "infrastructure_status": "PASS",
+  "ready_for_actual_training": false,
+  "default_no_argument_failure_visible": true,
+  "window_pause": true,
+  "actual_training_executed": false,
+  "reason": "Approved workflow not supplied"
+}

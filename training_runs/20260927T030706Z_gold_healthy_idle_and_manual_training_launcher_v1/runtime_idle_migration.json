@@ -1,0 +1,11 @@
+{
+  "previous_operational_state": "PAUSED",
+  "current_observed_runtime_classification": "NO_FRESH_MARKET_DATA",
+  "historical_original_pause_root_cause_proven": false,
+  "new_runtime_semantics_version": "gold_future_capture_supervisor_v1_1",
+  "resume_mode": "SAFE_IDLE_MIGRATION_WITH_NO_EVIDENCE_ADMISSION",
+  "original_pause_sha256": "806ba94e0d82831ec210feed75a182a5017d4a948e062e536612efb688d2aac5",
+  "historical_pause_reclassified": false,
+  "fresh_admission_requires_unchanged_v4_validation": true,
+  "status": "PROPOSED_PENDING_INDEPENDENT_VALIDATION"
+}

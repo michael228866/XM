@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "audited_open_blocked": true,
+  "absolute_and_traversal_blocked": true,
+  "native_os_isolation": false,
+  "unapproved_training_blocked": true
+}
