@@ -5,8 +5,109 @@
     11
   ],
   "interpreter_discovery": "Explicit existing repository working environment; no fallback",
-  "approval_status": "BLOCKED_AWAITING_APPROVED_WORKFLOW",
-  "workflow": null,
+  "approval_status": "APPROVED",
+  "workflow": {
+    "experiment_name": "gold_manual_s4_secondary_retrain_v1",
+    "script": {
+      "path": "gold_manual_s4_secondary_retrain_v1.py",
+      "sha256": "3ae87be50000084fbf6dd07da255954999ce48c5bad90cd666581a1e64970c2c"
+    },
+    "validator": {
+      "path": "validate_gold_manual_s4_training_run_v1.py",
+      "sha256": "8c69a9cee59624b917df28d84946824727dc640c0c106bc783a00268443c2716"
+    },
+    "configuration": {
+      "path": "gold_manual_s4_secondary_retrain_config_v1.json",
+      "sha256": "f9eab1700bd56b7b87d6baa10ed7294bfd6282b65d0276c8688ac59e0ff90a9d"
+    },
+    "datasets": [
+      {
+        "path": "GOLD#_Daily_201401020000_202605080000.csv",
+        "sha256": "2a309acb6e63bad17f1d06bb14c9d81c7427b309ff7161167c8cab6638627afb"
+      },
+      {
+        "path": "GOLD#_H12_201401020000_202605081200.csv",
+        "sha256": "c9c37e623d13f6d5ca9e6e28c342cdda394bb9372759759464edd6566e8602f8"
+      },
+      {
+        "path": "GOLD#_H1_201401020000_202605082300.csv",
+        "sha256": "66102d419bcbd8f693a32db8023c40eb2d8fad426d5e2b0495e3f1aa04f0aaba"
+      },
+      {
+        "path": "GOLD#_H2_201401020000_202605082200.csv",
+        "sha256": "07c6b7fc8275aa86f13c19c47570e58a4c4743da995a42486ace1653ecf677c3"
+      },
+      {
+        "path": "GOLD#_H3_201401020000_202605082100.csv",
+        "sha256": "b9b088a50a6da5acae48f9968544224b37006c337916f71c24152df8570d989d"
+      },
+      {
+        "path": "GOLD#_H4_201401020000_202605082000.csv",
+        "sha256": "570c59153ff62136b9024a8bf141a9ef4d2ba59be1065cc8156479279a73caba"
+      },
+      {
+        "path": "GOLD#_H6_201401020000_202605081800.csv",
+        "sha256": "95bf97074819faa43b20e44c1de7cfabbb55df71cbcc5cd67ad9511569606ba1"
+      },
+      {
+        "path": "GOLD#_H8_201401020000_202605081600.csv",
+        "sha256": "1ba71eb1c9291d5b7eb4f72b0c32ad29f077cf5af5d44e4263173ea6e0f7a727"
+      },
+      {
+        "path": "GOLD#_M10_201401020000_202605082350.csv",
+        "sha256": "e133b567dfc5abba4817402932d00fdf83000c287f42dda7a8b9d9edf95c72f9"
+      },
+      {
+        "path": "GOLD#_M12_201401020000_202605082348.csv",
+        "sha256": "e2e7b9924ca98bfe1cde485b4b819f803e626c840be7bfae5016d8da4490ea5f"
+      },
+      {
+        "path": "GOLD#_M15_201401020000_202605082345.csv",
+        "sha256": "739ef72fe599f2c002c7d5432ab0079545d7f1a0eb0d7c48ae77e9daec62ee94"
+      },
+      {
+        "path": "GOLD#_M1_201401020000_202605082357.csv",
+        "sha256": "6cd87c0c4518bc8e2ae090cef0a750fc90711e31b9d838cf9a27337cb58c49eb"
+      },
+      {
+        "path": "GOLD#_M20_201401020000_202605082340.csv",
+        "sha256": "f269d20ecfb2c895598a72e0aa08e3e8deeccfeba24c1f8390bd941eb8875067"
+      },
+      {
+        "path": "GOLD#_M2_201401020000_202605082356.csv",
+        "sha256": "3bb8aae60b85c35da6fabcbe653994e03df939b6be8ef9bba18df737ddb7f3b6"
+      },
+      {
+        "path": "GOLD#_M30_201401020000_202605082330.csv",
+        "sha256": "bc6697042d790fe702f054541d1e503827446cbb857a75e0031a4e9810936e2f"
+      },
+      {
+        "path": "GOLD#_M3_201401020000_202605082357.csv",
+        "sha256": "233e920241b680e1109badc459b00b6fd3f4144d23a0e7eebe411bcf92d50111"
+      },
+      {
+        "path": "GOLD#_M4_201401020000_202605082356.csv",
+        "sha256": "b5ae9dd1c045fe78e51d3db5b2450e99f526825f043eedeb9fecb68542c3fd98"
+      },
+      {
+        "path": "GOLD#_M5_201401020000_202605082355.csv",
+        "sha256": "8db72996cfb1b816aae10ee13bdcedc44b678425eb70a9b665173ce4c709369e"
+      },
+      {
+        "path": "GOLD#_M6_201401020000_202605082354.csv",
+        "sha256": "74198cdc6b6798022d5b0e425c61929e713da79761d4725879e66d34d4aa0e4b"
+      },
+      {
+        "path": "GOLD#_Monthly_201401010000_202605010000.csv",
+        "sha256": "f5832d795dd4f2913694dc2cf2994c81b36577ca7dd2af6fd395f64c8714d36b"
+      },
+      {
+        "path": "GOLD#_Weekly_201401050000_202605030000.csv",
+        "sha256": "26107d34bb565adf92d08a37c92b3f7eaec575ab23d72bec2bc24eb58b60c490"
+      }
+    ],
+    "native_io_review_pass": true
+  },
   "protected_sha256": {
     "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
     "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
