@@ -1,6 +1,6 @@
 {
   "experiment_name": "gold_healthy_idle_and_manual_training_launcher_v1",
-  "base_commit": "0cd8d88dd7347497e0d1ef4107ef7437ec225238",
+  "base_commit": "fc3ed352b6c0cd689503ef0eacaee66a975b273a",
   "source_files": [
     "AGENTS.md",
     "CHECK_STATUS.bat",
@@ -247,7 +247,8 @@
     "training_runs/20260926T195350Z_gold_future_fresh_market_resume_certification_v1/FINALIZED.json": "ea78bcb389e5818f62c1cdf95ea091ae1f78f3b2896c7b58ede7c7b9fb865ec9",
     "training_runs/20260927T025857Z_launcher_infrastructure_fixture/FINALIZED.json": "dc0881d1f94900c89f0dd149b9b2d743c50f2f1f3dad480f838245184f1f7580",
     "training_runs/20260927T030416Z_launcher_infrastructure_fixture/FINALIZED.json": "c9cdf1330419c7a9bd841ac971eb85ac4d6b3380d27a51fb2dbbc390b708bbe4",
-    "training_runs/20260927T030451Z_launcher_infrastructure_fixture/FINALIZED.json": "edceee0bc76ab7de7599f434b95faacf6cf82ddc8169a9577d290ece01838cd7"
+    "training_runs/20260927T030451Z_launcher_infrastructure_fixture/FINALIZED.json": "edceee0bc76ab7de7599f434b95faacf6cf82ddc8169a9577d290ece01838cd7",
+    "training_runs/20260927T030706Z_gold_healthy_idle_and_manual_training_launcher_v1/FINALIZED.json": "e6a3c3c4ae2fab15a9e06e197359ecdc7624e99533052394a809a488002bda6c"
   },
   "protected_sha256": {
     "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
@@ -255,5 +256,7 @@
   },
   "model_training_executed": false,
   "manual_training_workflow": "Not supplied; fail closed",
-  "runtime_migration_requires_independent_validator": true
+  "runtime_migration_requires_independent_validator": true,
+  "supersedes_failed_run": "training_runs/20260927T030706Z_gold_healthy_idle_and_manual_training_launcher_v1",
+  "correction": "Explicit UTF-8 validator source review; no retry of prior validator"
 }

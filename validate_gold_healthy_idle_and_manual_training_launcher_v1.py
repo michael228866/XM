@@ -77,7 +77,7 @@ def validate(run):
             and not {'fit','predict','predict_proba','order_send','order_check','run_training'}.intersection(calls))
         pending.extend(mod+'.py' for mod in modules if (root/(mod+'.py')).is_file())
     checks['runtime_hash_inventory']=scanned==policy['runtime_code_sha256']
-    collector=(root/'gold_future_capture_collector_v4_1.py').read_text()
+    collector=(root/'gold_future_capture_collector_v4_1.py').read_text(encoding='utf-8')
     checks['frozen_full_validation_retained']=('check_samples(frozen_samples' in collector and 'validate_payload(payload, freeze, activation, previous)' in collector
         and collector.index('validation = validate_payload')<collector.index("sealed_write(CAPTURE,CAPTURE/item['snapshot_path']"))
     checks['no_original_pause_delete']='unlink(' not in collector and 'os.remove' not in collector
@@ -88,7 +88,7 @@ def validate(run):
     checks['manual_policy']=(manual['training_execution_owner']=='USER' and manual['manual_launcher_required'] is True
         and all(manual[k] is False for k in ('automatic_training_by_codex','automatic_training_by_scheduler','automatic_training_on_startup','user_command_line_required','holdout_peeking_allowed','production_promotion_automatic')))
     checks['unapproved_training_disabled']=config['approval_status']=='BLOCKED_AWAITING_APPROVED_WORKFLOW' and config['workflow'] is None
-    launcher=(root/'manual_training_launcher_v1.py').read_text()
+    launcher=(root/'manual_training_launcher_v1.py').read_text(encoding='utf-8')
     checks['ownership_gate']='not user_double_click()' in launcher and "'explorer.exe'" in launcher and "'cmd.exe'" in launcher
     checks['bat_no_cli_required']=all(token in (root/'RUN_TRAINING.bat').read_text(encoding='utf-8') for token in ('%~dp0','manual_training_launcher_v1.py','pause >nul','PYTHONUTF8=1'))
     checks['guard_tests']=load(run/'holdout_guard_test.json')['audited_open_blocked'] is True

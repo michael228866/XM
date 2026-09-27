@@ -68,6 +68,7 @@ def tests():
     verify_environment(config)
     checks['correct_python']=Path(sys.executable).resolve()==(ROOT/config['selected_interpreter']).resolve()
     checks['unicode_root']=ROOT.name=='數據'
+    checks['utf8_source_review']='只能由使用者雙擊' in (ROOT/'manual_training_launcher_v1.py').read_text(encoding='utf-8')
     bad=copy.deepcopy(config); bad['selected_interpreter']='not-present/python.exe'
     try: verify_environment(bad)
     except ValueError: checks['invalid_python_blocks']=True
