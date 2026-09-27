@@ -69,3 +69,25 @@ test_gold_future_fresh_market_resume_certification_v1.py -text
 run_gold_future_fresh_market_resume_certification_v1.py -text
 validate_gold_future_fresh_market_resume_certification_v1.py -text
 execution_spec_gold_future_fresh_market_resume_certification_v1.json -text
+
+# Healthy-idle and manual launcher immutable source bytes
+RUN_TRAINING.bat -text whitespace=cr-at-eol
+CHECK_STATUS.bat -text whitespace=cr-at-eol
+MANUAL_TRAINING_POLICY_V1.md -text whitespace=cr-at-eol
+manual_training_policy_v1.json -text whitespace=cr-at-eol
+training_launcher_config_v1.json -text whitespace=cr-at-eol
+manual_training_launcher_v1.py -text whitespace=cr-at-eol
+training_holdout_guard_v1.py -text whitespace=cr-at-eol
+gold_runtime_status_v1.py -text whitespace=cr-at-eol
+gold_future_capture_collector_v4_1.py -text whitespace=cr-at-eol
+gold_future_capture_supervisor_v1_1.py -text whitespace=cr-at-eol
+start_gold_future_capture_v4_1.ps1 -text whitespace=cr-at-eol
+gold_future_capture_runtime_freshness_policy_v1.json -text whitespace=cr-at-eol
+README_GOLD_FUTURE_RUNTIME_FRESHNESS_POLICY_V1.md -text whitespace=cr-at-eol
+activate_gold_healthy_idle_v1.py -text whitespace=cr-at-eol
+test_gold_healthy_idle_and_manual_training_launcher_v1.py -text whitespace=cr-at-eol
+run_gold_healthy_idle_and_manual_training_launcher_v1.py -text whitespace=cr-at-eol
+validate_gold_healthy_idle_and_manual_training_launcher_v1.py -text whitespace=cr-at-eol
+execution_spec_gold_healthy_idle_and_manual_training_launcher_v1.json -text whitespace=cr-at-eol
+gold_future_runtime_idle_migration_v1.json -text whitespace=cr-at-eol
+gold_healthy_idle_deployment_v1.json -text whitespace=cr-at-eol

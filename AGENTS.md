@@ -1,5 +1,15 @@
 # XM GOLD Research Policy
 
+## Manual execution ownership (effective healthy-idle/manual-launcher v1)
+
+Model training, retraining, strategy evaluation and promotion research must be
+started by the USER through RUN_TRAINING.bat (or an explicitly approved EXE).
+Codex, Task Scheduler, startup and CI must not automatically start those jobs.
+Static checks, non-training self-tests, dry runs and infrastructure certification
+remain permitted. Automatic raw capture, heartbeat and chain checks remain enabled.
+Manual execution does not unlock future_holdout/gold_s4_v4 or authorize promotion.
+Follow MANUAL_TRAINING_POLICY_V1.md; unapproved workflow/config/datasets fail closed.
+
 ## 1. Primary strategy objective
 
 The primary objective of this repository is:
