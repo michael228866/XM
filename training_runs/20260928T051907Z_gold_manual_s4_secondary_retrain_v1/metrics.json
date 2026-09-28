@@ -1,0 +1,26 @@
+{
+  "formal_run_status": "PASS",
+  "research_verdict": {
+    "guardrail_failures": [],
+    "guardrails_pass": true,
+    "interesting": true,
+    "strong": false,
+    "target": false,
+    "frequency_uplift_pct": 7.837445573294621,
+    "delta_wr": 0.0005840676502704145,
+    "delta_trades_per_day": 0.021118498240125128
+  },
+  "classification": "historical_development_reproduction_only",
+  "trades": 743,
+  "wins": 421,
+  "losses": 322,
+  "realized_win_rate": 0.566621803499327,
+  "trades_per_day": 0.2905748924520923,
+  "profit_factor": 0.8271090428367022,
+  "mean_r": -0.07580700838089183,
+  "pnl_r": -56.32460722700263,
+  "max_drawdown_r": -62.009878061758215,
+  "stress_pf": 0.7857575699558063,
+  "production_promoted": false,
+  "validator_status": "PASS"
+}
