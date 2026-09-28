@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "checks": {
+    "subprocess_exact_same_run_unicode": true,
+    "one_shot_no_retry": true,
+    "validator_independent": true,
+    "validator_rejects:model_sha256": true,
+    "validator_rejects:config_sha256": true,
+    "validator_rejects:training_dataset_manifest_sha256": true,
+    "validator_rejects:feature_list_sha256": true,
+    "validator_rejects:label_pipeline_sha256": true,
+    "validator_rejects:training_symbol": true
+  },
+  "synthetic_only": true
+}

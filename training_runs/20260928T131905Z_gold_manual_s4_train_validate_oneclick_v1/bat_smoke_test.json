@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": {
+    "bat_pauses:PASS": true,
+    "bat_pauses:PARTIAL": true,
+    "bat_pauses:FAIL": true,
+    "bat_single_no_args_pause": true
+  },
+  "synthetic_only": true
+}

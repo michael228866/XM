@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "checks": {
+    "validator_production_mismatch": true,
+    "candidate_escape": true,
+    "validator_escape": true
+  },
+  "synthetic_only": true
+}

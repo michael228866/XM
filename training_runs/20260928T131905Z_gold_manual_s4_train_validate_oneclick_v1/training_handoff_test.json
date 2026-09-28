@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": {
+    "independent_handoff_valid": true,
+    "controller:PASS": true,
+    "data_fail_never_trains_or_validates": true,
+    "training_fail_skips_validator": true
+  },
+  "synthetic_only": true
+}

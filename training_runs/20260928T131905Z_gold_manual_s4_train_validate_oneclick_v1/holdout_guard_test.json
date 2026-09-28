@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "checks": {
+    "holdout_path": true,
+    "no_fit_or_predict": true,
+    "production_holdout_flags": true
+  },
+  "synthetic_only": true
+}

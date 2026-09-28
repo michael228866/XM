@@ -1,0 +1,126 @@
+# Finalized training-run archives are byte-for-byte provenance records.
+# Never normalize their line endings during add or checkout; retained CRLF is
+# content, not trailing-whitespace damage.
+training_runs/** -text whitespace=cr-at-eol
+# The archive documentation is maintained source text rather than run evidence.
+training_runs/README.md text eol=lf whitespace=-cr-at-eol
+training_runs/20260906T104638Z_gemini_usd_fx_pressure_foundation_v1/*.npz filter=lfs diff=lfs merge=lfs -text
+training_runs/*_gemini_usd_fx_pressure_source_reconciliation_v1/*.npz filter=lfs diff=lfs merge=lfs -text
+training_runs/*_gemini_usd_fx_pressure_source_reconciliation_v1/*.sqlite filter=lfs diff=lfs merge=lfs -text
+training_runs/*_gemini_dukascopy_fx_tick_gap_adjudication_v1/*.npz filter=lfs diff=lfs merge=lfs -text
+training_runs/*_gemini_dukascopy_fx_tick_gap_adjudication_v1/*.sqlite filter=lfs diff=lfs merge=lfs -text
+training_runs/*_gemini_dukascopy_fx_tick_gap_adjudication_v1/*.csv.gz filter=lfs diff=lfs merge=lfs -text
+# Preserve the finalized validator's original trailing blank line.
+training_runs/20260922T145335Z_gold_future_capture_certification_v1/validator.md whitespace=cr-at-eol,-blank-at-eof
+
+# V4 native-context source and frozen evidence use exact bytes.
+README_GOLD_FUTURE_NATIVE_CONTEXT_V4.md -text
+execution_spec_gold_future_native_context_and_current_regime_activation_v1.json -text
+gold_future_activation_workflow_v4.py -text
+gold_future_capture_activation_v4.json -text
+gold_future_capture_certification_v4.py -text
+gold_future_capture_collector_v4.py -text
+gold_future_capture_manifest_schema_v4.json -text
+gold_future_capture_protocol_v4.json -text
+gold_future_capture_time_attestation_v4.json -text
+gold_future_current_regime_diagnostic_v1.py -text
+gold_future_native_context_fetch_v1.py -text
+gold_future_source_identity_v4.py -text
+run_gold_future_native_context_and_current_regime_activation_v1.py -text
+test_gold_future_native_context_and_current_regime_activation_v1.py -text
+validate_gold_future_holdout_boundary_v4.py -text
+validate_gold_future_native_context_and_current_regime_activation_v1.py -text
+validate_gold_future_native_context_v1.py -text
+future_holdout/gold_s4_v4/** -text
+gold_future_locked_holdout_protocol_v4.json -text
+gold_future_capture_activation_record_v4.json -text
+gold_future_holdout_boundary_v4.json -text
+GOLD_FUTURE_LOCKED_HOLDOUT_PROTOCOL_V4.md -text
+
+# Feature eligibility and continuous-capture source: exact bytes.
+gold_future_holdout_feature_eligibility_v1.py -text
+gold_future_capture_supervisor_v1.py -text
+validate_gold_future_holdout_feature_eligibility_v1.py -text
+run_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py -text
+validate_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py -text
+test_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.py -text
+execution_spec_gold_future_holdout_feature_eligibility_and_continuous_capture_v1.json -text
+README_GOLD_FUTURE_CONTINUOUS_CAPTURE_V1.md -text
+start_gold_future_capture_v4.ps1 -text
+stop_gold_future_capture_v4.ps1 -text
+status_gold_future_capture_v4.ps1 -text
+install_gold_future_capture_task_v1.ps1 -text
+uninstall_gold_future_capture_task_v1.ps1 -text
+gold_future_holdout_feature_eligibility_v1.json -text
+gold_future_holdout_evaluation_start_v1.json -text
+gold_future_continuous_capture_deployment_v1.json -text
+
+# Versioned read-only pause adjudication source bytes
+gold_future_capture_pause_adjudication_v1.py -text
+test_gold_future_capture_pause_adjudication_v1.py -text
+run_gold_future_capture_pause_adjudication_v1.py -text
+validate_gold_future_capture_pause_adjudication_v1.py -text
+execution_spec_gold_future_capture_pause_adjudication_v1.json -text
+gold_future_capture_pause_diagnostic_v1.json -text
+
+# Fresh-market resume certification source bytes
+gold_future_fresh_market_diagnostic_v1.py -text
+test_gold_future_fresh_market_resume_certification_v1.py -text
+run_gold_future_fresh_market_resume_certification_v1.py -text
+validate_gold_future_fresh_market_resume_certification_v1.py -text
+execution_spec_gold_future_fresh_market_resume_certification_v1.json -text
+
+# Healthy-idle and manual launcher immutable source bytes
+RUN_TRAINING.bat -text whitespace=cr-at-eol
+CHECK_STATUS.bat -text whitespace=cr-at-eol
+MANUAL_TRAINING_POLICY_V1.md -text whitespace=cr-at-eol
+manual_training_policy_v1.json -text whitespace=cr-at-eol
+training_launcher_config_v1.json -text whitespace=cr-at-eol
+manual_training_launcher_v1.py -text whitespace=cr-at-eol
+training_holdout_guard_v1.py -text whitespace=cr-at-eol
+gold_runtime_status_v1.py -text whitespace=cr-at-eol
+gold_future_capture_collector_v4_1.py -text whitespace=cr-at-eol
+gold_future_capture_supervisor_v1_1.py -text whitespace=cr-at-eol
+start_gold_future_capture_v4_1.ps1 -text whitespace=cr-at-eol
+gold_future_capture_runtime_freshness_policy_v1.json -text whitespace=cr-at-eol
+README_GOLD_FUTURE_RUNTIME_FRESHNESS_POLICY_V1.md -text whitespace=cr-at-eol
+activate_gold_healthy_idle_v1.py -text whitespace=cr-at-eol
+test_gold_healthy_idle_and_manual_training_launcher_v1.py -text whitespace=cr-at-eol
+run_gold_healthy_idle_and_manual_training_launcher_v1.py -text whitespace=cr-at-eol
+validate_gold_healthy_idle_and_manual_training_launcher_v1.py -text whitespace=cr-at-eol
+execution_spec_gold_healthy_idle_and_manual_training_launcher_v1.json -text whitespace=cr-at-eol
+gold_future_runtime_idle_migration_v1.json -text whitespace=cr-at-eol
+gold_healthy_idle_deployment_v1.json -text whitespace=cr-at-eol
+gold_manual_training_provenance_v1.json -text whitespace=cr-at-eol
+gold_manual_training_spec_v1.json -text whitespace=cr-at-eol
+gold_manual_training_config_v1.json -text whitespace=cr-at-eol
+gold_historical_training_data_manifest_v1.json -text whitespace=cr-at-eol
+gold_historical_training_data_manager_v1.py -text whitespace=cr-at-eol
+gold_manual_training_workflow_v1.py -text whitespace=cr-at-eol
+README_GOLD_MANUAL_TRAINING_V1.md -text whitespace=cr-at-eol
+test_gold_manual_training_workflow_binding_v1.py -text whitespace=cr-at-eol
+run_gold_manual_training_workflow_binding_v1.py -text whitespace=cr-at-eol
+validate_gold_manual_training_workflow_binding_v1.py -text whitespace=cr-at-eol
+execution_spec_gold_manual_training_workflow_binding_v1.json -text whitespace=cr-at-eol
+historical_training_data/README.md -text whitespace=cr-at-eol
+historical_training_data/import/README.md -text whitespace=cr-at-eol
+gold_manual_s4_secondary_retrain_v1.py -text whitespace=cr-at-eol
+gold_manual_s4_secondary_retrain_config_v1.json -text whitespace=cr-at-eol
+gold_manual_s4_training_data_policy_v1.json -text whitespace=cr-at-eol
+gold_manual_s4_training_data_v1.py -text whitespace=cr-at-eol
+gold_manual_s4_training_output_adapter_v1.py -text whitespace=cr-at-eol
+validate_gold_manual_s4_training_run_v1.py -text whitespace=cr-at-eol
+gold_manual_s4_provenance_v1.json -text whitespace=cr-at-eol
+gold_manual_s4_dataset_decision_v1.json -text whitespace=cr-at-eol
+README_GOLD_MANUAL_S4_SECONDARY_RETRAIN_V1.md -text whitespace=cr-at-eol
+test_gold_manual_s4_secondary_retrain_v1.py -text whitespace=cr-at-eol
+run_gold_manual_s4_secondary_retrain_workflow_v1.py -text whitespace=cr-at-eol
+validate_gold_manual_s4_secondary_retrain_workflow_v1.py -text whitespace=cr-at-eol
+approve_gold_manual_s4_training_v1.py -text whitespace=cr-at-eol
+execution_spec_gold_manual_s4_secondary_retrain_workflow_v1.json -text whitespace=cr-at-eol
+gold_manual_s4_approval_v1.json -text whitespace=cr-at-eol
+gold_manual_s4_train_validate_v1.py -text whitespace=cr-at-eol
+test_gold_manual_s4_train_validate_oneclick_v1.py -text whitespace=cr-at-eol
+run_gold_manual_s4_train_validate_oneclick_v1.py -text whitespace=cr-at-eol
+validate_gold_manual_s4_train_validate_oneclick_v1.py -text whitespace=cr-at-eol
+execution_spec_gold_manual_s4_train_validate_oneclick_v1.json -text whitespace=cr-at-eol

@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checks": {
+    "status:PASS:PASS": true,
+    "status:PASS:PARTIAL": true,
+    "status:PASS:FAIL": true,
+    "status:FAIL:NOT_RUN": true,
+    "controller:CRASH": true,
+    "controller:ARCHIVE_FAIL": true,
+    "combined_fields": true,
+    "same_run_and_order:PASS": true,
+    "same_run_and_order:FAIL": true,
+    "display_failure_no_success": true
+  },
+  "synthetic_only": true
+}

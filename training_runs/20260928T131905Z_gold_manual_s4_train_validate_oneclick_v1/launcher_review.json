@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "checks": {
+    "bat_single_no_args_pause": true,
+    "no_second_bat": true,
+    "bat_failure_visible_and_pauses": true
+  },
+  "synthetic_only": true
+}

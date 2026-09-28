@@ -1,0 +1,10 @@
+{
+  "training_execution_owner": "USER",
+  "automatic_training_by_codex": false,
+  "automatic_training_by_scheduler": false,
+  "automatic_training_on_startup": false,
+  "manual_launcher_required": true,
+  "user_command_line_required": false,
+  "holdout_peeking_allowed": false,
+  "production_promotion_automatic": false
+}
