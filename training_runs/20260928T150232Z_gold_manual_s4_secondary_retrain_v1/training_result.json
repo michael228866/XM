@@ -1,0 +1,8 @@
+{
+  "run_id": "20260928T150232Z_gold_manual_s4_secondary_retrain_v1",
+  "train_status": "PASS",
+  "candidate_model_path": "models/secondary_2023_2024.json",
+  "candidate_model_sha256": "e60e6808aabecc94d24d563a1e1c9b5151e3dbdb3f6362367a9d7c334a145141",
+  "metrics_path": "metrics.json",
+  "training_completed_at_utc": "2026-09-28T15:05:47.524622+00:00"
+}
