@@ -1,5 +1,5 @@
 @echo off
-rem Displays capture and manual-training readiness separately.
+rem Displays capture health and the sealed historical train + validate result.
 setlocal
 chcp 65001 >nul
 set "PYTHONUTF8=1"

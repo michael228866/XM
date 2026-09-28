@@ -209,7 +209,8 @@ def tests():
     old_config = launcher.load(launcher.CONFIG)
     with patch.object(launcher.sys, 'executable', str(ROOT/'not-approved.exe')):
         reject('wrong_interpreter', lambda: launcher.verify_environment(old_config))
-    output = trainer.format_result('fixture', 'models/fixture.json', {'formal_run_status': 'PASS', 'realized_win_rate': .5, 'trades_per_day': .1, 'profit_factor': 1., 'mean_r': 0.})
+    from gold_manual_s4_train_validate_v1 import combined_result, format_result
+    output = format_result(combined_result(None, 'PASS', 'PASS', metrics={'realized_win_rate': .5, 'trades_per_day': .1, 'profit_factor': 1., 'mean_r': 0.}))
     checks['summary_format'] = all(x in output for x in ('XM GOLD S4', 'Win Rate:', 'Trades/Day:', 'PF:', 'Mean-R:', '未變更'))
     tree = ast.parse((ROOT/'validate_gold_manual_s4_training_run_v1.py').read_bytes())
     imports = [n.module for n in ast.walk(tree) if isinstance(n, ast.ImportFrom)] + [a.name for n in ast.walk(tree) if isinstance(n, ast.Import) for a in n.names]

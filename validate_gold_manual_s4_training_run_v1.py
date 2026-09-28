@@ -43,14 +43,37 @@ def equal(left, right):
     return type(left) is type(right) and left == right
 
 
-def validate(run):
+def validate_handoff(run, check):
+    """Independently bind the explicit handoff to on-disk artifacts."""
+    candidate = read(run/'candidate_model_manifest.json')
+    config = read(run/'approved_training_config.json')
+    handoff = read(run/'training_result.json')
+    check('handoff_run', handoff['run_id'] == run.name and handoff['train_status'] == 'PASS'
+          and candidate['run_id'] == run.name and handoff['metrics_path'] == 'metrics.json')
+    check('handoff_candidate', handoff['candidate_model_path'] == candidate['model_path']
+          and sha(safe_path(run, handoff['candidate_model_path'], models=True))
+          == handoff['candidate_model_sha256'] == candidate['model_sha256'])
+    for key, name in [('training_script_sha256', 'training_script.py'),
+                      ('config_sha256', 'approved_training_config.json'),
+                      ('training_dataset_manifest_sha256', 'training_dataset_manifest.json')]:
+        check('handoff:'+key, candidate[key] == sha(run/name))
+    for key in ('feature_list_sha256', 'feature_pipeline_sha256', 'label_pipeline_sha256'):
+        check('handoff:'+key, candidate[key] == config[key])
+    check('handoff_symbol', candidate['training_symbol'] == config['training_symbol'] == 'GOLD#')
+    check('handoff_range', candidate['training_range'] == [config['training_start'], config['training_end']]
+          and config['raw_data_cutoff'] < '2026-09-25T00:00:00')
+    check('handoff_production', all(sha(ROOT/name) == value for name, value in config['protected_sha256'].items()))
+
+
+def validate(run, checks=None):
     """Real model/output checks, called only after a USER-started training run."""
     import numpy as np
-    checks = {}
+    checks = {} if checks is None else checks
     def check(name, value):
         checks[name] = bool(value)
         if not value:
             raise ValueError(name)
+    validate_handoff(run, check)
     m = read(run/'manifest.json')
     c = read(run/'approved_training_config.json')
     candidate = read(run/'candidate_model_manifest.json')
@@ -141,11 +164,34 @@ def main():
         raise ValueError('New training run required')
     with (run/'validator_attempt.json').open('x', encoding='utf-8') as stream:
         json.dump({'rule': 'Do not retry validation', 'started_at_utc': datetime.now(timezone.utc).isoformat()}, stream)
+    checks = {}
     try:
-        checks = validate(run)
+        validate(run, checks)
         result = {'overall': 'PASS', 'checks': checks, 'failed_check_names': [], 'production_promoted': False}
     except Exception as error:
         result = {'overall': 'FAIL', 'failed_check_names': [str(error)], 'error_type': type(error).__name__, 'production_promoted': False}
+    result.update(checks=checks, validator_status=result['overall'], run_id=run.name,
+                  candidate_model_sha256=None, failed_checks=result['failed_check_names'])
+    try:
+        result['candidate_model_sha256'] = sha(safe_path(run, read(run/'candidate_model_manifest.json')['model_path'], models=True))
+    except (OSError, ValueError, KeyError):
+        pass
+    groups = {'dataset_manifest_valid': ['dataset_manifest_identity', 'dataset_inventory'],
+              'feature_binding_valid': ['feature_list', 'feature_pipeline', 'candidate_bindings'],
+              'label_binding_valid': ['label_pipeline', 'candidate_bindings'],
+              'conditioning_valid': ['gate', 'conditioning:fold1', 'conditioning:fold2', 'conditioning:fold3'],
+              'folds_valid': ['frozen_config', 'candidate_bindings', 'complete_evidence_inventory'],
+              'seed_valid': ['frozen_config', 'candidate_bindings'],
+              'metrics_valid': ['historical_metrics_exact', 'ledger_exact', 'display_metrics'],
+              'holdout_guard_valid': ['dataset_inventory', 'ledger_cutoff'],
+              'production_hashes_valid': ['production_unchanged']}
+    for key, names in groups.items():
+        result[key] = all(checks.get(name, False) for name in names)
+    try:
+        result['dataset_manifest_valid'] = result['dataset_manifest_valid'] and all(
+            checks.get('dataset:'+item['filename'], False) for item in read(run/'approved_training_config.json')['required_datasets'])
+    except (OSError, ValueError, KeyError, TypeError):
+        result['dataset_manifest_valid'] = False
     (run/'validator.json').write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8')
     (run/'validator.md').write_text('# Independent S4 reproduction validator\n\n'+result['overall']+'\n', encoding='utf-8')
     print(json.dumps(result))

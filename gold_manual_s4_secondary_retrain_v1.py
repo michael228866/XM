@@ -9,6 +9,9 @@ from pathlib import Path
 
 from gold_manual_s4_training_data_v1 import ROOT, prepare, read, sha, write
 from gold_manual_s4_training_output_adapter_v1 import model_path, publish
+from gold_manual_s4_train_validate_v1 import (
+    Tee, WorkflowError, combined_result, training_handoff, validate_exact_run,
+)
 
 CONFIG = ROOT/'gold_manual_s4_secondary_retrain_config_v1.json'
 EXPERIMENT = 'gold_manual_s4_secondary_retrain_v1'
@@ -50,12 +53,14 @@ def train_folds(run, config, discovery, helper, old, archive, data_dir):
     import xgboost as xgb
     spec = discovery.specification()
     old.drl_trading_v2.DATA_DIR = str(data_dir)
+    print('讀取資料與建立 frozen features / labels...', flush=True)
     frame, target, folds, identities = helper.reconstruct(old)
     discovery.write_json(run/'identity_audit.json', identities)
     ns = frame.TIME_DT.to_numpy(dtype='datetime64[ns]').astype(np.int64)
     evidence, inventory, frames, b0_parts, secondary_parts, fold_parts = {}, [], [], [], [], []
     with np.load(archive/'paired_oof_predictions.npz', allow_pickle=False) as original:
         for number, name, train, score in folds:
+            print(f'建立 Fold {number}/3...', flush=True)
             key = f'fold{number}'
             item = next(x for x in spec['b0_models'] if x['fold'] == name)
             if sha(archive/item['path']) != item['sha256']:
@@ -73,6 +78,7 @@ def train_folds(run, config, discovery, helper, old, archive, data_dir):
             if discovery.array_hash(target[train]) != spec['c1_target_sha256'][key+'_train']:
                 raise ValueError('C1 target identity mismatch')
             x = frame.loc[subset, spec['features']].astype(np.float32)
+            print(f'訓練 Fold {number}/3...', flush=True)
             model, weights = discovery.fit_secondary(x, target[subset], spec)
             path = model_path(run, name)
             model.save_model(path)
@@ -120,10 +126,11 @@ def run_manual(token):
     if (git('status', '--porcelain') or git('branch', '--show-current') != 'main'
             or git('rev-parse', '@{u}') != commit or git('ls-remote', 'origin', 'refs/heads/main').split()[0] != commit):
         raise ValueError('訓練前必須為乾淨且已推送的 main')
-    print('正在檢查歷史資料...')
+    print('[2/6] 檢查歷史資料...', flush=True)
     data_dir, dataset = prepare(config)
     print('資料檢查完成')
     import training_run_history as history
+    print('[3/6] 建立訓練 Run...', flush=True)
     run = history.create_run(EXPERIMENT, Path(__file__), 'RUN_TRAINING.bat (USER double-click)',
                              arguments=[], seeds={'secondary': 42}, seed_note='Three frozen CPU single-thread secondary folds')
     print('RUN_ID: '+run.name)
@@ -138,91 +145,121 @@ def run_manual(token):
     shutil.copyfile(ROOT/'gold_manual_s4_training_data_policy_v1.json', run/'data_policy.json')
     shutil.copyfile(ROOT/'validate_gold_manual_s4_training_run_v1.py', run/'validator_script.py')
     write(run/'execution_spec.json', spec)
-    with (run/'stdout.log').open('w', encoding='utf-8') as out:
+    train_status, validator_status = 'FAIL', 'NOT_RUN'
+    candidate, metrics = None, {}
+    combined = None
+    try:
+        print('[4/6] 訓練模型...', flush=True)
+        # Import the reviewed frozen dependency graph before native-library loading is locked.
+        import gold_independent_secondary_classifier_v1 as discovery
+        archive, helper, old = discovery.frozen_inputs(spec)
+        from training_holdout_guard_v1 import install
+        release = install(ROOT, write_root=run)
         try:
-            print('開始訓練 secondary S4；production 不變...')
-            # Import the reviewed frozen dependency graph before native-library loading is locked.
-            import gold_independent_secondary_classifier_v1 as discovery
-            archive, helper, old = discovery.frozen_inputs(spec)
-            from training_holdout_guard_v1 import install
-            release = install(ROOT, write_root=run)
-            try:
-                with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
-                    result, inventory = train_folds(run, config, discovery, helper, old, archive, data_dir)
-            finally:
-                release()
-            after = {n: sha(ROOT/n) for n in config['protected_sha256']}
-            if before != after or after != config['protected_sha256']:
-                raise ValueError('Protected production identity changed')
-            write(run/'production_after.json', after)
-            candidate = publish(run, config, inventory, sha(Path(__file__)), sha(CONFIG), sha(run/'training_dataset_manifest.json'))
-            row = result['metrics'][-1]
-            metrics = {'formal_run_status': 'PASS', 'research_verdict': result['assessment'],
-                       'classification': 'historical_development_reproduction_only',
-                       'trades': row['trades'], 'wins': row['wins'], 'losses': row['losses'],
-                       'realized_win_rate': row['realized_wr'], 'trades_per_day': row['trades_per_day'],
-                       'profit_factor': row['pf'], 'mean_r': row['mean_r'], 'pnl_r': row['pnl_r'],
-                       'max_drawdown_r': row['max_dd_r'], 'stress_pf': row['cost_stress_pf'],
-                       'production_promoted': False, 'validator_status': 'PENDING'}
-            write(run/'metrics.json', metrics)
-            m = read(run/'manifest.json')
-            m['data'] = read(archive/'manifest.json')['data']
-            m['data'].update(source_files=dataset['datasets'], data_sources=['Exact S4 legacy reproduction dataset'],
-                             raw_snapshot_retained=True, reproducibility_claim='Exact SHA256 local content-addressed cache; not remote raw backup',
-                             train_rows=sum(i['train_rows'] for i in inventory),
-                             secondary_training_rows_by_fold={i['fold']: i['train_rows'] for i in inventory})
-            if dataset['mt5_fetches']:
-                m['data']['mt5_fetch'] = {'used': True, 'terminal_path': r'D:\XM2\terminal64.exe',
-                    'terminal_info': {'requested_path': r'D:\XM2\terminal64.exe'},
-                    'broker_info': {'company': 'XM Global Limited', 'server': 'XMGlobal-MT5 6', 'trade_mode': 0},
-                    'fetch_start_utc': dataset['preparation_started_at_utc'],
-                    'fetch_end_utc': dataset['preparation_finished_at_utc'],
-                    'retrieved_at_utc': dataset['preparation_finished_at_utc'],
-                    'returned_rows': sum(x['returned_rows'] for x in dataset['mt5_fetches']),
-                    'requests': dataset['mt5_fetches'], 'acceptance': 'Original export SHA256 exact restoration'}
-            m['model'] = {**read(ROOT/'training_runs'/spec['c1_run']/'manifest.json')['model'],
-                          'trained': True, 'model_type': config['model_type'], 'parameters': config['hyperparameters'],
-                          'features': config['feature_list'], 'feature_count': 31,
-                          'artifact_path': candidate['model_path'], 'artifact_sha256': candidate['model_sha256'],
-                          'retention_status': 'stored_in_run_directory', 'boosted_rounds_or_estimators': 220}
-            m['search'] = {'performed': False, 'not_applicable_reason': 'Only frozen S4 .75; no tuning'}
-            m['registry'].update(parent_or_incumbent=config['discovery_run'], selected_configuration='S4 .75 exact historical secondary reproduction; no promotion',
-                                  validator_result='PENDING', trades_per_day=row['trades_per_day'], realized_win_rate=row['realized_wr'],
-                                  pf=row['pf'], mean_r=row['mean_r'], pnl=row['pnl_r'], max_dd=row['max_dd_r'])
-            (run/'model.sha256').write_text(candidate['model_sha256']+'  '+candidate['model_path']+'\n', encoding='utf-8')
-            (run/'report.md').write_text('# Manual S4 secondary retraining\n\nHistorical reproduction only; no production promotion.\n\n'+json.dumps(metrics, indent=2)+'\n', encoding='utf-8')
-            write(run/'manifest.json', m)
-            out.flush()
-            with (run/'validator_stdout.txt').open('x', encoding='utf-8') as vo, (run/'validator_stderr.txt').open('x', encoding='utf-8') as ve:
-                validated = subprocess.run([sys.executable, '-B', str(ROOT/'validate_gold_manual_s4_training_run_v1.py'), str(run)],
-                                           cwd=ROOT, stdout=vo, stderr=ve)
-            if validated.returncode or read(run/'validator.json')['overall'] != 'PASS':
-                raise ValueError('Independent validator failed; do not retry this run')
-            metrics['validator_status'] = 'PASS'
-            write(run/'metrics.json', metrics)
-            m['registry']['validator_result'] = 'PASS'
-            m['artifacts'] = [{'path': p.relative_to(run).as_posix(), 'sha256': sha(p),
-                               'retention_status': 'stored_in_run_directory_and_git'}
-                              for p in sorted(run.rglob('*')) if p.is_file() and p.name not in ('manifest.json', 'stdout.log')]
-            write(run/'manifest.json', m)
-        except BaseException as error:
-            out.flush()
-            write(run/'failure.json', {'error': type(error).__name__+': '+str(error), 'production_promoted': False})
-            current = read(run/'manifest.json')
-            current['model_training_attempted'] = True
-            current['completed_fold_models'] = [p.relative_to(run).as_posix() for p in (run/'models').glob('*.json')]
-            write(run/'manifest.json', current)
+            with (run/'training_stdout.txt').open('x', encoding='utf-8') as out, (run/'training_stderr.txt').open('x', encoding='utf-8') as err, contextlib.redirect_stdout(Tee(sys.stdout, out)), contextlib.redirect_stderr(Tee(sys.stderr, err)):
+                result, inventory = train_folds(run, config, discovery, helper, old, archive, data_dir)
+        finally:
+            release()
+        after = {n: sha(ROOT/n) for n in config['protected_sha256']}
+        if before != after or after != config['protected_sha256']:
+            raise ValueError('Protected production identity changed')
+        write(run/'production_after.json', after)
+        candidate = publish(run, config, inventory, sha(Path(__file__)), sha(CONFIG), sha(run/'training_dataset_manifest.json'))
+        row = result['metrics'][-1]
+        metrics = {'formal_run_status': 'PENDING', 'research_verdict': result['assessment'],
+                   'classification': 'historical_development_reproduction_only',
+                   'trades': row['trades'], 'wins': row['wins'], 'losses': row['losses'],
+                   'realized_win_rate': row['realized_wr'], 'trades_per_day': row['trades_per_day'],
+                   'profit_factor': row['pf'], 'mean_r': row['mean_r'], 'pnl_r': row['pnl_r'],
+                   'max_drawdown_r': row['max_dd_r'], 'stress_pf': row['cost_stress_pf'],
+                   'production_promoted': False, 'validator_status': 'PENDING'}
+        write(run/'metrics.json', metrics)
+        m = read(run/'manifest.json')
+        m['data'] = read(archive/'manifest.json')['data']
+        m['data'].update(source_files=dataset['datasets'], data_sources=['Exact S4 legacy reproduction dataset'],
+                         raw_snapshot_retained=True, reproducibility_claim='Exact SHA256 local content-addressed cache; not remote raw backup',
+                         train_rows=sum(i['train_rows'] for i in inventory),
+                         secondary_training_rows_by_fold={i['fold']: i['train_rows'] for i in inventory})
+        if dataset['mt5_fetches']:
+            m['data']['mt5_fetch'] = {'used': True, 'terminal_path': r'D:\XM2\terminal64.exe',
+                'terminal_info': {'requested_path': r'D:\XM2\terminal64.exe'},
+                'broker_info': {'company': 'XM Global Limited', 'server': 'XMGlobal-MT5 6', 'trade_mode': 0},
+                'fetch_start_utc': dataset['preparation_started_at_utc'],
+                'fetch_end_utc': dataset['preparation_finished_at_utc'],
+                'retrieved_at_utc': dataset['preparation_finished_at_utc'],
+                'returned_rows': sum(x['returned_rows'] for x in dataset['mt5_fetches']),
+                'requests': dataset['mt5_fetches'], 'acceptance': 'Original export SHA256 exact restoration'}
+        m['model'] = {**read(ROOT/'training_runs'/spec['c1_run']/'manifest.json')['model'],
+                      'trained': True, 'model_type': config['model_type'], 'parameters': config['hyperparameters'],
+                      'features': config['feature_list'], 'feature_count': 31,
+                      'artifact_path': candidate['model_path'], 'artifact_sha256': candidate['model_sha256'],
+                      'retention_status': 'stored_in_run_directory', 'boosted_rounds_or_estimators': 220}
+        m['search'] = {'performed': False, 'not_applicable_reason': 'Only frozen S4 .75; no tuning'}
+        m['registry'].update(parent_or_incumbent=config['discovery_run'], selected_configuration='S4 .75 exact historical secondary reproduction; no promotion',
+                              validator_result='PENDING', trades_per_day=row['trades_per_day'], realized_win_rate=row['realized_wr'],
+                              pf=row['pf'], mean_r=row['mean_r'], pnl=row['pnl_r'], max_dd=row['max_dd_r'])
+        (run/'model.sha256').write_text(candidate['model_sha256']+'  '+candidate['model_path']+'\n', encoding='utf-8')
+        (run/'report.md').write_text('# Manual S4 secondary retraining\n\nHistorical reproduction only; no production promotion.\n\n'+json.dumps(metrics, indent=2)+'\n', encoding='utf-8')
+        write(run/'manifest.json', m)
+        training_handoff(run, candidate)
+        train_status, validator_status = 'PASS', 'FAIL'
+        print('[5/6] 驗證訓練結果...', flush=True)
+        validation = validate_exact_run(run)
+        validator_status = validation['validator_status']
+        combined = combined_result(run, train_status, validator_status, candidate, metrics, validation['failed_checks'])
+        if combined['final_status'] == 'FAIL':
+            raise ValueError('; '.join(validation['failed_checks']) or 'Independent validator failed')
+        metrics['validator_status'] = validator_status
+        metrics['formal_run_status'] = combined['final_status']
+        write(run/'metrics.json', metrics)
+        (run/'report.md').write_text('# Manual S4 Train + Validate\n\n'+json.dumps(combined, indent=2)+'\n', encoding='utf-8')
+        m['registry']['validator_result'] = validator_status
+        m['artifacts'] = [{'path': p.relative_to(run).as_posix(), 'sha256': sha(p),
+                           'retention_status': 'stored_in_run_directory_and_git'}
+                          for p in sorted(run.rglob('*')) if p.is_file() and p.name not in ('manifest.json', 'stdout.log')]
+        write(run/'manifest.json', m)
+    except BaseException as error:
+        import traceback
+        with (run/'training_stderr.txt').open('a', encoding='utf-8') as err:
+            traceback.print_exc(file=err)
+        changed = any(not (ROOT/n).is_file() or sha(ROOT/n) != h for n, h in config['protected_sha256'].items())
+        combined = combined_result(run, train_status, validator_status, candidate, metrics,
+                                   [type(error).__name__+': '+str(error)], changed)
+        write(run/'metrics.json', {**metrics, 'formal_run_status': 'FAIL', 'validator_status': validator_status})
+        (run/'report.md').write_text('# Manual S4 Train + Validate failure\n\n'+json.dumps(combined, indent=2)+'\n', encoding='utf-8')
+        for name in ('training_stdout.txt', 'validator_stdout.txt', 'validator_stderr.txt'):
+            (run/name).touch(exist_ok=True)
+        if not (run/'training_result.json').exists():
+            write(run/'training_result.json', {'run_id': run.name, 'train_status': train_status,
+                  'candidate_model_path': None, 'candidate_model_sha256': None,
+                  'metrics_path': None, 'training_completed_at_utc': None})
+        write(run/'failure.json', {'error': type(error).__name__+': '+str(error), 'production_promoted': False})
+        current = read(run/'manifest.json')
+        current['model_training_attempted'] = True
+        current['completed_fold_models'] = [p.relative_to(run).as_posix() for p in (run/'models').glob('*.json')]
+        current['registry']['validator_result'] = validator_status
+        current['registry']['selected_configuration'] = 'S4 train='+train_status+'; validation='+validator_status+'; final=FAIL; no promotion'
+        write(run/'manifest.json', current)
+        print('[6/6] 封存結果...', flush=True)
+        try:
             errors = history.finalize_run(run, 'aborted', aborted_reason=str(error))
-            if not errors:
-                history.register_run(run)
-                archive_git(run)
-            raise
-    errors = history.finalize_run(run, 'research_only')
-    if errors:
-        raise ValueError('Archive validation failed: '+'; '.join(errors))
-    history.register_run(run)
-    archive_git(run)
-    print(format_result(run, candidate['model_path'], metrics))
+            if errors:
+                raise ValueError('; '.join(errors))
+            history.register_run(run)
+            archive_git(run)
+        except Exception as archive_error:
+            raise WorkflowError(combined, archive_error) from archive_error
+        return combined
+    print('[6/6] 封存結果...', flush=True)
+    try:
+        errors = history.finalize_run(run, 'research_only')
+        if errors:
+            raise ValueError('Archive validation failed: '+'; '.join(errors))
+        history.register_run(run)
+        archive_git(run)
+    except Exception as error:
+        raise WorkflowError(combined, error) from error
+    return combined
 
 
 def archive_git(run):
@@ -239,13 +276,6 @@ def archive_git(run):
         raise ValueError('Archive remote verification failed')
     if git('status', '--porcelain'):
         raise ValueError('Archive pushed; unrelated worktree changes remain')
-
-
-def format_result(run, model, metrics):
-    return ('========================================\nXM GOLD S4 訓練完成\n========================================\n'
-            f"RUN_ID:\n{Path(run).name}\n結果:\n{metrics['formal_run_status']}\n候選模型:\n{Path(run)/model}\n"
-            f"Win Rate:\n{metrics['realized_win_rate']}\nTrades/Day:\n{metrics['trades_per_day']}\n"
-            f"PF:\n{metrics['profit_factor']}\nMean-R:\n{metrics['mean_r']}\nProduction:\n未變更\n")
 
 
 if __name__ == '__main__':

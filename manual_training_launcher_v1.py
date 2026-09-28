@@ -73,13 +73,13 @@ def run_training(config):
     """Only the reviewed manual wrapper can decide whether training is available."""
     from gold_manual_training_workflow_v1 import issue_receipt, run_manual
     verify_environment(config)
-    run_manual(issue_receipt())
+    return run_manual(issue_receipt())
 
 
 def main():
     try:
-        print("========================================\nXM GOLD Manual Training\n========================================")
-        print("正在檢查環境...")
+        print("========================================\nXM GOLD S4 Train + Validate\n========================================")
+        print("[1/6] 檢查環境...")
         config = load(CONFIG)
         verify_environment(config)
         if sys.argv[1:] == ['--dry-run']:
@@ -91,9 +91,14 @@ def main():
         if sys.argv[1:] or not user_double_click():
             raise ValueError('只能由使用者雙擊 RUN_TRAINING.bat 啟動；排程器與自動程序禁止訓練')
         print("正在確認訓練設定...")
-        run_training(config)
-        return 0
+        from gold_manual_s4_train_validate_v1 import format_result
+        result = run_training(config)
+        print(format_result(result))
+        return {'PASS': 0, 'PARTIAL': 2, 'FAIL': 1}[result['final_status']]
     except Exception as error:
+        from gold_manual_s4_train_validate_v1 import combined_result, format_result
+        result = getattr(error, 'result', None)
+        print(format_result(result or combined_result(None, 'NOT_STARTED', 'NOT_RUN', errors=[str(error)])))
         print('[失敗] '+str(error),file=sys.stderr)
         return 1
 

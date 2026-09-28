@@ -23,12 +23,17 @@ def status():
     from gold_manual_training_workflow_v1 import binding_status
     training = binding_status()
     print('TRAINING\n--------')
-    print('Workflow: GOLD S4 Secondary Retrain v1')
+    print('Workflow: GOLD S4 Secondary Train + Validate v1')
     print('Ready:', 'YES' if training['workflow'] == 'READY' else 'NO')
     print('Owner: USER')
     print('Auto Fetch:', 'YES' if training['auto_fetch'] == 'ENABLED' else 'NO')
-    for label, key in [('Symbol','symbol'), ('Historical Data','historical_data'), ('Last Training','last_training')]:
+    for label, key in [('Symbol','symbol'), ('Historical Data','historical_data')]:
         print(label + ':', training[key] if training[key] is not None else 'UNRESOLVED')
+    from gold_manual_s4_train_validate_v1 import last_result
+    last = last_result(ROOT)
+    for label, key in [('Last Run', 'run_id'), ('Train', 'train_status'), ('Validation', 'validator_status'),
+                       ('Final', 'final_status'), ('Candidate', 'candidate_model_path')]:
+        print(label+':', last[key] or 'N/A')
     print('Production: UNCHANGED')
 
 
