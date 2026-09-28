@@ -10,11 +10,11 @@
     "experiment_name": "gold_manual_s4_secondary_retrain_v1",
     "script": {
       "path": "gold_manual_s4_secondary_retrain_v1.py",
-      "sha256": "3ae87be50000084fbf6dd07da255954999ce48c5bad90cd666581a1e64970c2c"
+      "sha256": "2470aeb7dd1384f9618a46b6b079ad0ca964dbc2baf19470e70f23bd3233b746"
     },
     "validator": {
       "path": "validate_gold_manual_s4_training_run_v1.py",
-      "sha256": "8c69a9cee59624b917df28d84946824727dc640c0c106bc783a00268443c2716"
+      "sha256": "b80f9e4cc7908210328deadd0ef8ecca7a6cd115e29fe47dd7ae8341506f35eb"
     },
     "configuration": {
       "path": "gold_manual_s4_secondary_retrain_config_v1.json",

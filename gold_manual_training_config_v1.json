@@ -3,7 +3,7 @@
   "approval_status": "APPROVED",
   "spec": {
     "path": "gold_manual_training_spec_v1.json",
-    "sha256": "e3bad817ecdac54307c06be81adbf9ad9057ae91aefeafa87f382d7769d3c1c1"
+    "sha256": "9e5440c4b92b353ce8f2a6ca2731de08f07722d43e2cf25d930bf6ccd5e98f16"
   },
   "symbol": "GOLD#",
   "historical_date_range": [
@@ -391,5 +391,7 @@
   "validator": "validate_gold_manual_s4_training_run_v1.py",
   "training_workflow_ready": true,
   "auto_fetch_enabled": true,
-  "last_training": null
+  "last_training": null,
+  "validation_mandatory": true,
+  "same_run_id_required": true
 }
