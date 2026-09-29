@@ -7,18 +7,18 @@
   "interpreter_discovery": "Explicit existing repository working environment; no fallback",
   "approval_status": "APPROVED",
   "workflow": {
-    "experiment_name": "gold_manual_s4_secondary_retrain_v1",
+    "experiment_name": "gold_s4_secondary_improvement_v1",
     "script": {
-      "path": "gold_manual_s4_secondary_retrain_v1.py",
-      "sha256": "2470aeb7dd1384f9618a46b6b079ad0ca964dbc2baf19470e70f23bd3233b746"
+      "path": "gold_s4_secondary_improvement_v1.py",
+      "sha256": "983d3536d8277186be3d6e9ad8cf8c07ac718c9d2b1870d49880bf2001a94b66"
     },
     "validator": {
-      "path": "validate_gold_manual_s4_training_run_v1.py",
-      "sha256": "b80f9e4cc7908210328deadd0ef8ecca7a6cd115e29fe47dd7ae8341506f35eb"
+      "path": "validate_gold_s4_secondary_improvement_run_v1.py",
+      "sha256": "ae353354cdf7a7301ca4dbe849a5568e9fd8aaf74387709761979d50eeac130d"
     },
     "configuration": {
-      "path": "gold_manual_s4_secondary_retrain_config_v1.json",
-      "sha256": "f9eab1700bd56b7b87d6baa10ed7294bfd6282b65d0276c8688ac59e0ff90a9d"
+      "path": "gold_s4_secondary_improvement_config_v1.json",
+      "sha256": "22c4f5117141fc591ff1cab47874da503b2a3d1c05b777d685f006a3ff4713eb"
     },
     "datasets": [
       {
