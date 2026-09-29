@@ -1,5 +1,5 @@
 @echo off
-rem Displays capture health and the sealed historical train + validate result.
+rem Displays capture health and the approved workflow's sealed research result.
 setlocal
 chcp 65001 >nul
 set "PYTHONUTF8=1"

@@ -20,6 +20,17 @@ def status():
     print('HOLDOUT\n-------')
     print('Holdout start: 2026-09-25T19:24:00+00:00')
     print('Holdout evaluation start:',load(ROOT/'gold_future_holdout_evaluation_start_v1.json').get('holdout_evaluation_start'))
+    if load(ROOT/'training_launcher_config_v1.json').get('workflow', {}).get('experiment_name') == 'gold_s4_secondary_improvement_v1':
+        from gold_s4_secondary_improvement_launcher_v1 import binding_status
+        training = binding_status()
+        print('TRAINING\n--------\nWorkflow: GOLD S4 Improvement v1')
+        print('Ready:', 'YES' if training['workflow'] == 'READY' else 'NO')
+        print('Owner: USER')
+        for label, key in [('Reference', 'reference_status'), ('Last Research Run', 'run_id'),
+                           ('Execution', 'execution_status'), ('Research Result', 'research_result'), ('Gate', 'candidate_gate')]:
+            print(label+':', training['last'][key])
+        print('Production: UNCHANGED')
+        return
     from gold_manual_training_workflow_v1 import binding_status
     training = binding_status()
     print('TRAINING\n--------')

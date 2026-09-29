@@ -73,17 +73,23 @@ def run_training(config):
     """Only the reviewed manual wrapper can decide whether training is available."""
     from gold_manual_training_workflow_v1 import issue_receipt, run_manual
     verify_environment(config)
+    if config.get('workflow', {}).get('experiment_name') == 'gold_s4_secondary_improvement_v1':
+        from gold_s4_secondary_improvement_v1 import run_manual
     return run_manual(issue_receipt())
 
 
 def main():
+    config = {}
     try:
-        print("========================================\nXM GOLD S4 Train + Validate\n========================================")
-        print("[1/6] 檢查環境...")
         config = load(CONFIG)
+        improvement = config.get('workflow', {}).get('experiment_name') == 'gold_s4_secondary_improvement_v1'
+        print('========================================\n'+('XM GOLD S4 Improvement Train + Validate' if improvement else 'XM GOLD S4 Train + Validate')+'\n========================================')
+        print('[1/8] 檢查環境' if improvement else '[1/6] 檢查環境...')
         verify_environment(config)
         if sys.argv[1:] == ['--dry-run']:
             from gold_manual_training_workflow_v1 import binding_status
+            if improvement:
+                from gold_s4_secondary_improvement_launcher_v1 import binding_status
             state = binding_status()
             print(json.dumps({'infrastructure':'PASS','training_enabled':state['workflow']=='READY',
                 'training_executed':False,'approval_status':config['approval_status']},ensure_ascii=False))
@@ -92,12 +98,16 @@ def main():
             raise ValueError('只能由使用者雙擊 RUN_TRAINING.bat 啟動；排程器與自動程序禁止訓練')
         print("正在確認訓練設定...")
         from gold_manual_s4_train_validate_v1 import format_result
+        if improvement:
+            from gold_s4_secondary_improvement_v1 import format_result
         result = run_training(config)
         print(format_result(result))
         return {'PASS': 0, 'PARTIAL': 2, 'FAIL': 1}[result['final_status']]
     except Exception as error:
         from gold_manual_s4_train_validate_v1 import combined_result, format_result
         result = getattr(error, 'result', None)
+        if config.get('workflow', {}).get('experiment_name') == 'gold_s4_secondary_improvement_v1':
+            from gold_s4_secondary_improvement_v1 import format_result
         print(format_result(result or combined_result(None, 'NOT_STARTED', 'NOT_RUN', errors=[str(error)])))
         print('[失敗] '+str(error),file=sys.stderr)
         return 1
