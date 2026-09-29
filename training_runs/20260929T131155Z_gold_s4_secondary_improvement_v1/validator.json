@@ -1,0 +1,7 @@
+{
+  "overall": "FAIL",
+  "run_id": "20260929T131155Z_gold_s4_secondary_improvement_v1",
+  "failed_checks": [
+    "ValueError: source_binding:gold_independent_secondary_classifier_v1.py"
+  ]
+}

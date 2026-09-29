@@ -1,0 +1,354 @@
+[
+  {
+    "candidate_id": "F0_REFERENCE",
+    "stage": 0,
+    "pooled": {
+      "trades": 743,
+      "wins": 421,
+      "losses": 322,
+      "realized_win_rate": 0.566621803499327,
+      "trades_per_day": 0.2905748924520923,
+      "profit_factor": 0.8271090428367022,
+      "mean_r": -0.07580700838089183,
+      "pnl_r": -56.32460722700263,
+      "max_drawdown_r": -62.009878061758215,
+      "stress_pf": 0.7857575699558063
+    }
+  },
+  {
+    "candidate_id": "F1_DEPTH3",
+    "stage": 1,
+    "pooled": {
+      "trades": 522,
+      "wins": 303,
+      "losses": 219,
+      "realized_win_rate": 0.5804597701149425,
+      "trades_per_day": 0.2858707557502738,
+      "profit_factor": 0.8669904643152833,
+      "mean_r": -0.056375105988495385,
+      "pnl_r": -29.42780532599459,
+      "max_drawdown_r": -49.53089994237419,
+      "stress_pf": 0.8247204352630038
+    }
+  },
+  {
+    "candidate_id": "F1_DEPTH5",
+    "stage": 1,
+    "pooled": {
+      "trades": 858,
+      "wins": 475,
+      "losses": 383,
+      "realized_win_rate": 0.5536130536130536,
+      "trades_per_day": 0.46987951807228917,
+      "profit_factor": 0.7905583648681579,
+      "mean_r": -0.09457889750621865,
+      "pnl_r": -81.1486940603356,
+      "max_drawdown_r": -84.08405458906243,
+      "stress_pf": 0.7475609120918203
+    }
+  },
+  {
+    "candidate_id": "F1_REGULARIZED",
+    "stage": 1,
+    "pooled": {
+      "trades": 540,
+      "wins": 312,
+      "losses": 228,
+      "realized_win_rate": 0.5777777777777777,
+      "trades_per_day": 0.29572836801752467,
+      "profit_factor": 0.8576387411148251,
+      "mean_r": -0.06075885684522826,
+      "pnl_r": -32.80978269642326,
+      "max_drawdown_r": -50.74913499786432,
+      "stress_pf": 0.8153317555171194
+    }
+  },
+  {
+    "candidate_id": "F1_REGULARIZED",
+    "stage": 2,
+    "pooled": {
+      "trades": 733,
+      "wins": 412,
+      "losses": 321,
+      "realized_win_rate": 0.5620736698499318,
+      "trades_per_day": 0.2866640594446617,
+      "profit_factor": 0.8124797519454064,
+      "mean_r": -0.08307965192627281,
+      "pnl_r": -60.897384861957974,
+      "max_drawdown_r": -67.74876145317391,
+      "stress_pf": 0.7719198942832461
+    }
+  },
+  {
+    "candidate_id": "F2_POS090",
+    "stage": 1,
+    "pooled": {
+      "trades": 525,
+      "wins": 305,
+      "losses": 220,
+      "realized_win_rate": 0.580952380952381,
+      "trades_per_day": 0.28751369112814895,
+      "profit_factor": 0.866534088364675,
+      "mean_r": -0.05650540404593868,
+      "pnl_r": -29.665337124117805,
+      "max_drawdown_r": -49.908048808117336,
+      "stress_pf": 0.8241455685761994
+    }
+  },
+  {
+    "candidate_id": "F2_POS110",
+    "stage": 1,
+    "pooled": {
+      "trades": 816,
+      "wins": 458,
+      "losses": 358,
+      "realized_win_rate": 0.5612745098039216,
+      "trades_per_day": 0.44687842278203727,
+      "profit_factor": 0.7996203811659768,
+      "mean_r": -0.08937179543881281,
+      "pnl_r": -72.92738507807125,
+      "max_drawdown_r": -77.21483462437189,
+      "stress_pf": 0.7569168436616306
+    }
+  },
+  {
+    "candidate_id": "F3_PLATT",
+    "stage": 1,
+    "pooled": {
+      "trades": 522,
+      "wins": 303,
+      "losses": 219,
+      "realized_win_rate": 0.5804597701149425,
+      "trades_per_day": 0.2858707557502738,
+      "profit_factor": 0.8670847953760996,
+      "mean_r": -0.056337099949180874,
+      "pnl_r": -29.407966173472417,
+      "max_drawdown_r": -49.51106078985202,
+      "stress_pf": 0.8247820245920156
+    }
+  },
+  {
+    "candidate_id": "F4_T700",
+    "stage": 1,
+    "pooled": {
+      "trades": 2791,
+      "wins": 1522,
+      "losses": 1269,
+      "realized_win_rate": 0.545324256538875,
+      "trades_per_day": 1.5284775465498357,
+      "profit_factor": 0.7737675100165966,
+      "mean_r": -0.10477443305682504,
+      "pnl_r": -292.4254426615987,
+      "max_drawdown_r": -299.17308953376113,
+      "stress_pf": 0.729002133461409
+    }
+  },
+  {
+    "candidate_id": "F4_T725",
+    "stage": 1,
+    "pooled": {
+      "trades": 993,
+      "wins": 551,
+      "losses": 442,
+      "realized_win_rate": 0.5548841893252769,
+      "trades_per_day": 0.5438116100766703,
+      "profit_factor": 0.7829692586121565,
+      "mean_r": -0.09793475489580279,
+      "pnl_r": -97.24921161153217,
+      "max_drawdown_r": -100.38900250675069,
+      "stress_pf": 0.7405926339289891
+    }
+  },
+  {
+    "candidate_id": "F4_T775",
+    "stage": 1,
+    "pooled": {
+      "trades": 523,
+      "wins": 303,
+      "losses": 220,
+      "realized_win_rate": 0.5793499043977055,
+      "trades_per_day": 0.2864184008762322,
+      "profit_factor": 0.8631011935414613,
+      "mean_r": -0.05818193388474375,
+      "pnl_r": -30.42915142172098,
+      "max_drawdown_r": -50.53224603810057,
+      "stress_pf": 0.8209875719591954
+    }
+  },
+  {
+    "candidate_id": "F4_T800",
+    "stage": 1,
+    "pooled": {
+      "trades": 522,
+      "wins": 303,
+      "losses": 219,
+      "realized_win_rate": 0.5804597701149425,
+      "trades_per_day": 0.2858707557502738,
+      "profit_factor": 0.8670847953760996,
+      "mean_r": -0.056337099949180874,
+      "pnl_r": -29.407966173472417,
+      "max_drawdown_r": -49.51106078985202,
+      "stress_pf": 0.8247820245920156
+    }
+  },
+  {
+    "candidate_id": "F5_NO_CLOCK",
+    "stage": 1,
+    "pooled": {
+      "trades": 556,
+      "wins": 322,
+      "losses": 234,
+      "realized_win_rate": 0.579136690647482,
+      "trades_per_day": 0.3044906900328587,
+      "profit_factor": 0.8596540135939005,
+      "mean_r": -0.059746369173667005,
+      "pnl_r": -33.218981260558856,
+      "max_drawdown_r": -50.54112132817915,
+      "stress_pf": 0.8159882643401956
+    }
+  },
+  {
+    "candidate_id": "F5_NO_CLOCK",
+    "stage": 2,
+    "pooled": {
+      "trades": 767,
+      "wins": 431,
+      "losses": 336,
+      "realized_win_rate": 0.5619295958279009,
+      "trades_per_day": 0.2999608916699257,
+      "profit_factor": 0.8108807206531622,
+      "mean_r": -0.08386967534695161,
+      "pnl_r": -64.32804099111189,
+      "max_drawdown_r": -65.53163325518247,
+      "stress_pf": 0.769743041901657
+    }
+  },
+  {
+    "candidate_id": "F5_NO_REDUNDANT_HTF",
+    "stage": 1,
+    "pooled": {
+      "trades": 545,
+      "wins": 315,
+      "losses": 230,
+      "realized_win_rate": 0.5779816513761468,
+      "trades_per_day": 0.29846659364731654,
+      "profit_factor": 0.8591437136258804,
+      "mean_r": -0.06012158142406797,
+      "pnl_r": -32.76626187611704,
+      "max_drawdown_r": -49.147635978412325,
+      "stress_pf": 0.8164149043773365
+    }
+  },
+  {
+    "candidate_id": "F5_NO_REDUNDANT_HTF",
+    "stage": 2,
+    "pooled": {
+      "trades": 768,
+      "wins": 438,
+      "losses": 330,
+      "realized_win_rate": 0.5703125,
+      "trades_per_day": 0.30035197497066873,
+      "profit_factor": 0.8436457240683531,
+      "mean_r": -0.06800170013341929,
+      "pnl_r": -52.22530570246601,
+      "max_drawdown_r": -56.4297416185602,
+      "stress_pf": 0.8016509741596182
+    }
+  },
+  {
+    "candidate_id": "F5_NO_FAST_TRENDS",
+    "stage": 1,
+    "pooled": {
+      "trades": 542,
+      "wins": 312,
+      "losses": 230,
+      "realized_win_rate": 0.5756457564575646,
+      "trades_per_day": 0.2968236582694414,
+      "profit_factor": 0.8516991023600643,
+      "mean_r": -0.06364272393279309,
+      "pnl_r": -34.49435637157386,
+      "max_drawdown_r": -49.30439754812582,
+      "stress_pf": 0.8095152520276712
+    }
+  },
+  {
+    "candidate_id": "F5_NO_FAST_TRENDS",
+    "stage": 2,
+    "pooled": {
+      "trades": 739,
+      "wins": 415,
+      "losses": 324,
+      "realized_win_rate": 0.5615696887686062,
+      "trades_per_day": 0.28901055924912006,
+      "profit_factor": 0.8121932313546555,
+      "mean_r": -0.08333915653278753,
+      "pnl_r": -61.58763667772999,
+      "max_drawdown_r": -63.027462475453646,
+      "stress_pf": 0.7715240662260205
+    }
+  },
+  {
+    "candidate_id": "F6_NORMALIZED",
+    "stage": 1,
+    "pooled": {
+      "trades": 581,
+      "wins": 338,
+      "losses": 243,
+      "realized_win_rate": 0.5817555938037866,
+      "trades_per_day": 0.3181818181818182,
+      "profit_factor": 0.8725490435462039,
+      "mean_r": -0.05396871598773747,
+      "pnl_r": -31.35582398887547,
+      "max_drawdown_r": -49.42578406358463,
+      "stress_pf": 0.8281809641655993
+    }
+  },
+  {
+    "candidate_id": "F6_NORMALIZED",
+    "stage": 2,
+    "pooled": {
+      "trades": 770,
+      "wins": 436,
+      "losses": 334,
+      "realized_win_rate": 0.5662337662337662,
+      "trades_per_day": 0.30113414157215485,
+      "profit_factor": 0.8267893259337189,
+      "mean_r": -0.07609608019682228,
+      "pnl_r": -58.59398175155316,
+      "max_drawdown_r": -64.38398933561577,
+      "stress_pf": 0.7846123377913312
+    }
+  },
+  {
+    "candidate_id": "F6_ALIGNMENT",
+    "stage": 1,
+    "pooled": {
+      "trades": 562,
+      "wins": 328,
+      "losses": 234,
+      "realized_win_rate": 0.5836298932384342,
+      "trades_per_day": 0.307776560788609,
+      "profit_factor": 0.8819543952285008,
+      "mean_r": -0.049712939929577024,
+      "pnl_r": -27.93867224042229,
+      "max_drawdown_r": -47.38427228164694,
+      "stress_pf": 0.8377465083349425
+    }
+  },
+  {
+    "candidate_id": "F6_ALIGNMENT",
+    "stage": 2,
+    "pooled": {
+      "trades": 778,
+      "wins": 439,
+      "losses": 339,
+      "realized_win_rate": 0.5642673521850899,
+      "trades_per_day": 0.30426280797809935,
+      "profit_factor": 0.822942631268559,
+      "mean_r": -0.07810135283501886,
+      "pnl_r": -60.76285250564467,
+      "max_drawdown_r": -64.34689860716483,
+      "stress_pf": 0.7815134134966053
+    }
+  }
+]

@@ -1,0 +1,156 @@
+[
+  {
+    "candidate_id": "F0_REFERENCE",
+    "stage": 0,
+    "stress_metrics": {
+      "stress_pf": 0.7857575699558063
+    }
+  },
+  {
+    "candidate_id": "F1_DEPTH3",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.8247204352630038
+    }
+  },
+  {
+    "candidate_id": "F1_DEPTH5",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.7475609120918203
+    }
+  },
+  {
+    "candidate_id": "F1_REGULARIZED",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.8153317555171194
+    }
+  },
+  {
+    "candidate_id": "F1_REGULARIZED",
+    "stage": 2,
+    "stress_metrics": {
+      "stress_pf": 0.7719198942832461
+    }
+  },
+  {
+    "candidate_id": "F2_POS090",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.8241455685761994
+    }
+  },
+  {
+    "candidate_id": "F2_POS110",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.7569168436616306
+    }
+  },
+  {
+    "candidate_id": "F3_PLATT",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.8247820245920156
+    }
+  },
+  {
+    "candidate_id": "F4_T700",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.729002133461409
+    }
+  },
+  {
+    "candidate_id": "F4_T725",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.7405926339289891
+    }
+  },
+  {
+    "candidate_id": "F4_T775",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.8209875719591954
+    }
+  },
+  {
+    "candidate_id": "F4_T800",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.8247820245920156
+    }
+  },
+  {
+    "candidate_id": "F5_NO_CLOCK",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.8159882643401956
+    }
+  },
+  {
+    "candidate_id": "F5_NO_CLOCK",
+    "stage": 2,
+    "stress_metrics": {
+      "stress_pf": 0.769743041901657
+    }
+  },
+  {
+    "candidate_id": "F5_NO_REDUNDANT_HTF",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.8164149043773365
+    }
+  },
+  {
+    "candidate_id": "F5_NO_REDUNDANT_HTF",
+    "stage": 2,
+    "stress_metrics": {
+      "stress_pf": 0.8016509741596182
+    }
+  },
+  {
+    "candidate_id": "F5_NO_FAST_TRENDS",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.8095152520276712
+    }
+  },
+  {
+    "candidate_id": "F5_NO_FAST_TRENDS",
+    "stage": 2,
+    "stress_metrics": {
+      "stress_pf": 0.7715240662260205
+    }
+  },
+  {
+    "candidate_id": "F6_NORMALIZED",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.8281809641655993
+    }
+  },
+  {
+    "candidate_id": "F6_NORMALIZED",
+    "stage": 2,
+    "stress_metrics": {
+      "stress_pf": 0.7846123377913312
+    }
+  },
+  {
+    "candidate_id": "F6_ALIGNMENT",
+    "stage": 1,
+    "stress_metrics": {
+      "stress_pf": 0.8377465083349425
+    }
+  },
+  {
+    "candidate_id": "F6_ALIGNMENT",
+    "stage": 2,
+    "stress_metrics": {
+      "stress_pf": 0.7815134134966053
+    }
+  }
+]

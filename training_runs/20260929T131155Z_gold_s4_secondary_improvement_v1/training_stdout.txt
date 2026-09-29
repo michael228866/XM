@@ -1,0 +1,53 @@
+Loaded Daily
+Loaded H12
+Loaded H1
+Loaded H2
+Loaded H3
+Loaded H4
+Loaded H6
+Loaded H8
+Loaded M10
+Loaded M12
+Loaded M15
+Loaded M1
+Loaded M20
+Loaded M2
+Loaded M30
+Loaded M3
+Loaded M4
+Loaded M5
+Loaded M6
+Loaded Monthly
+Loaded Weekly
+[3/8] 驗證 Reference Control
+讀取資料與建立 frozen features / labels...
+建立 Fold 1/3...
+訓練 Fold 1/3...
+建立 Fold 2/3...
+訓練 Fold 2/3...
+建立 Fold 3/3...
+訓練 Fold 3/3...
+[4/8] 執行 Improvement Research
+F1_DEPTH3 Stage 1
+F1_DEPTH5 Stage 1
+F1_REGULARIZED Stage 1
+F1_REGULARIZED Stage 2
+F2_POS090 Stage 1
+F2_POS110 Stage 1
+F3_PLATT Stage 1
+F4_T700 Stage 1
+F4_T725 Stage 1
+F4_T775 Stage 1
+F4_T800 Stage 1
+F5_NO_CLOCK Stage 1
+F5_NO_CLOCK Stage 2
+F5_NO_REDUNDANT_HTF Stage 1
+F5_NO_REDUNDANT_HTF Stage 2
+F5_NO_FAST_TRENDS Stage 1
+F5_NO_FAST_TRENDS Stage 2
+F6_NORMALIZED Stage 1
+F6_NORMALIZED Stage 2
+F6_ALIGNMENT Stage 1
+F6_ALIGNMENT Stage 2
+[5/8] 建立 Pareto Frontier
+[6/8] 選擇 Historical Candidate

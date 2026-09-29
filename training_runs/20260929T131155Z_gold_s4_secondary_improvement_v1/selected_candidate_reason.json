@@ -1,0 +1,31 @@
+{
+  "pareto_frontier": [
+    "F5_NO_REDUNDANT_HTF",
+    "F6_NORMALIZED"
+  ],
+  "selected_candidate": "F5_NO_REDUNDANT_HTF",
+  "research_result": "IMPROVEMENT_FOUND",
+  "tie_break": [
+    {
+      "candidate_id": "F5_NO_REDUNDANT_HTF",
+      "ordered_key": [
+        -0.5703125,
+        -0.30035197497066873,
+        -0.8016509741596182,
+        -0.8436457240683531,
+        0.06800170013341929,
+        56.4297416185602,
+        "F5_NO_REDUNDANT_HTF"
+      ]
+    }
+  ],
+  "tie_break_order": [
+    "WR desc",
+    "TPD desc",
+    "stress PF desc",
+    "PF desc",
+    "Mean-R desc",
+    "absolute drawdown asc",
+    "candidate ID asc only for exact numerical ties"
+  ]
+}

@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "D:\XM\數據\gold_s4_secondary_improvement_v1.py", line 318, in run_manual
+    raise ValueError('; '.join(validation.get('failed_checks', [])) or 'Independent validator failed')
+ValueError: ValueError: source_binding:gold_independent_secondary_classifier_v1.py
