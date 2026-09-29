@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "checks": {
+    "reference_immutable": true,
+    "reference_constants": true,
+    "reference_control_accepts_exact": true,
+    "reference_mismatch_stops": true,
+    "reference_model_mismatch": true,
+    "control_failure_stops_search": true,
+    "reference_internal_path_called": true
+  },
+  "synthetic_only": true
+}

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": {
+    "holdout_path": true,
+    "future_interval": true,
+    "causal_future_perturbation": true,
+    "folds_labels_frozen": true
+  },
+  "synthetic_only": true
+}

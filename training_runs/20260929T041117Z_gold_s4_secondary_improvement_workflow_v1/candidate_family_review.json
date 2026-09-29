@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "checks": {
+    "family_count_bounded": true,
+    "deterministic_ids": true,
+    "model_family": true,
+    "weighting_family": true,
+    "coarse_thresholds_fixed_reference": true,
+    "ablation_predeclared": true,
+    "six_extensions_only": true,
+    "calibration_maturity_purge": true,
+    "calibration_is_inner_not_outer": true,
+    "causal_prefix_invariance": true,
+    "causal_future_perturbation": true
+  },
+  "synthetic_only": true
+}

@@ -1,0 +1,125 @@
+{
+  "experiment": "gold_s4_secondary_improvement_workflow_v1",
+  "source_files": [
+    "gold_s4_secondary_improvement_v1.py",
+    "gold_s4_secondary_improvement_logic_v1.py",
+    "gold_s4_secondary_improvement_launcher_v1.py",
+    "gold_s4_secondary_improvement_config_v1.json",
+    "validate_gold_s4_secondary_improvement_run_v1.py",
+    "test_gold_s4_secondary_improvement_v1.py",
+    "README_GOLD_S4_SECONDARY_IMPROVEMENT_V1.md",
+    "run_gold_s4_secondary_improvement_workflow_v1.py",
+    "validate_gold_s4_secondary_improvement_workflow_v1.py",
+    "execution_spec_gold_s4_secondary_improvement_workflow_v1.json",
+    "RUN_TRAINING.bat",
+    "CHECK_STATUS.bat",
+    "manual_training_launcher_v1.py",
+    "gold_runtime_status_v1.py",
+    "gold_manual_training_workflow_v1.py",
+    "training_launcher_config_v1.json",
+    "manual_training_policy_v1.json",
+    "gold_manual_s4_secondary_retrain_v1.py",
+    "gold_manual_s4_secondary_retrain_config_v1.json",
+    "gold_manual_s4_training_data_v1.py",
+    "gold_manual_s4_training_data_policy_v1.json",
+    "gold_manual_s4_training_output_adapter_v1.py",
+    "gold_manual_s4_train_validate_v1.py",
+    "validate_gold_manual_s4_training_run_v1.py",
+    "gold_independent_secondary_classifier_v1.py",
+    "gold_gemini_execution_semantics_v1.py",
+    "training_holdout_guard_v1.py",
+    "training_run_history.py",
+    "test_gold_manual_s4_secondary_retrain_v1.py",
+    "test_gold_manual_s4_train_validate_oneclick_v1.py",
+    "run_gold_manual_training_workflow_binding_v1.py",
+    "gold_future_capture_runtime_freshness_policy_v1.json"
+  ],
+  "test_suites": [
+    "test_gold_manual_s4_secondary_retrain_v1.py",
+    "test_gold_manual_s4_train_validate_oneclick_v1.py",
+    "test_gold_s4_secondary_improvement_v1.py"
+  ],
+  "test_groups": {
+    "reference_control_fixture": [
+      "reference_immutable",
+      "reference_constants",
+      "reference_control_accepts_exact",
+      "reference_mismatch_stops",
+      "reference_model_mismatch",
+      "control_failure_stops_search",
+      "reference_internal_path_called"
+    ],
+    "candidate_family_review": [
+      "family_count_bounded",
+      "deterministic_ids",
+      "model_family",
+      "weighting_family",
+      "coarse_thresholds_fixed_reference",
+      "ablation_predeclared",
+      "six_extensions_only",
+      "calibration_maturity_purge",
+      "calibration_is_inner_not_outer",
+      "causal_prefix_invariance",
+      "causal_future_perturbation"
+    ],
+    "pareto_logic_test": [
+      "pareto_domination",
+      "deterministic_tie_break",
+      "independent_pareto",
+      "two_stage_shortlist_and_losers_retained",
+      "losing_candidate_removal_detected",
+      "posthoc_config_detected",
+      "posthoc_space_detected"
+    ],
+    "gate_logic_test": [
+      "requires_wr",
+      "requires_tpd",
+      "pf_guard",
+      "mean_guard",
+      "stress_guard",
+      "fold_trades",
+      "fold_wr",
+      "fold_pf",
+      "interesting",
+      "strong",
+      "target",
+      "no_improvement_execution_PASS"
+    ],
+    "holdout_guard_test": [
+      "holdout_path",
+      "future_interval",
+      "causal_future_perturbation",
+      "folds_labels_frozen"
+    ],
+    "production_protection_test": [
+      "production_write_guard",
+      "run_local_write",
+      "artifact_escape",
+      "no_automatic_promotion"
+    ],
+    "launcher_smoke_test": [
+      "launcher_routes_improvement",
+      "no_codex_training_receipt",
+      "single_bat_no_args_pause",
+      "bat_automation_denied_and_paused",
+      "no_automatic_training_policy"
+    ],
+    "validator_smoke_test": [
+      "same_run_validator_argument",
+      "orchestration:VALIDATOR_FAIL",
+      "orchestration:WRONG_RUN",
+      "orchestration:CRASH",
+      "reference_failure_NOT_RUN",
+      "finalize_order:PASS",
+      "finalize_order:VALIDATOR_FAIL",
+      "validator_before_finalization",
+      "independent_validator_no_trainer_import",
+      "validator_never_fits"
+    ]
+  },
+  "model_training_executed": false,
+  "strategy_replay_executed": false,
+  "holdout_used": false,
+  "real_search_execution_owner": "USER",
+  "approval_requires_independent_PASS": true
+}

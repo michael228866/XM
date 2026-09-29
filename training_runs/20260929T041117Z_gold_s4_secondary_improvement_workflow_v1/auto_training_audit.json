@@ -1,0 +1,173 @@
+{
+  "status": "PASS",
+  "live": {
+    "startup": [],
+    "tasks": [
+      {
+        "name": "GOLD-Future-Holdout-Capture-v4",
+        "execute": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "arguments": "-NoProfile -NonInteractive -WindowStyle Hidden -File \"D:\\XM\\數據\\start_gold_future_capture_v4_1.ps1\"",
+        "working_directory": "D:\\XM\\數據"
+      }
+    ]
+  },
+  "ci": [],
+  "repository_references": [
+    {
+      "path": "gold_historical_training_data_manager_v1.py",
+      "lines": [
+        164
+      ]
+    },
+    {
+      "path": "gold_manual_s4_secondary_retrain_v1.py",
+      "lines": [
+        134,
+        282
+      ]
+    },
+    {
+      "path": "gold_manual_training_workflow_v1.py",
+      "lines": [
+        108
+      ]
+    },
+    {
+      "path": "gold_s4_secondary_improvement_v1.py",
+      "lines": [
+        281,
+        414
+      ]
+    },
+    {
+      "path": "manual_training_launcher_v1.py",
+      "lines": [
+        98
+      ]
+    },
+    {
+      "path": "run_gold_manual_training_workflow_binding_v1.py",
+      "lines": [
+        15
+      ]
+    },
+    {
+      "path": "RUN_TRAINING.bat",
+      "lines": [
+        13
+      ]
+    },
+    {
+      "path": "test_gold_healthy_idle_and_manual_training_launcher_v1.py",
+      "lines": [
+        71,
+        98,
+        100,
+        102
+      ]
+    },
+    {
+      "path": "test_gold_manual_s4_secondary_retrain_v1.py",
+      "lines": [
+        203,
+        204,
+        206
+      ]
+    },
+    {
+      "path": "test_gold_manual_s4_train_validate_oneclick_v1.py",
+      "lines": [
+        188,
+        189,
+        194,
+        196,
+        197,
+        200
+      ]
+    },
+    {
+      "path": "test_gold_manual_training_workflow_binding_v1.py",
+      "lines": [
+        114,
+        142,
+        144,
+        147
+      ]
+    },
+    {
+      "path": "test_gold_s4_secondary_improvement_v1.py",
+      "lines": [
+        266,
+        267,
+        268
+      ]
+    },
+    {
+      "path": "validate_gold_healthy_idle_and_manual_training_launcher_v1.py",
+      "lines": [
+        91,
+        93
+      ]
+    },
+    {
+      "path": "validate_gold_manual_training_workflow_binding_v1.py",
+      "lines": [
+        67,
+        70,
+        71
+      ]
+    }
+  ],
+  "runtime_import_closure": {
+    "gold_future_capture_supervisor_v1_1.py": {
+      "sha256": "8419aba70003401ca8bcd676c936404ba143b499fa6a08d39034ac05ad4f750d",
+      "unchanged": true,
+      "trainer_reference": false,
+      "model_call": false
+    },
+    "gold_future_capture_collector_v4_1.py": {
+      "sha256": "687d352bd1e942b82d774764ff5e85dd2e8fe04028cc82b44c0fb6c467af2de4",
+      "unchanged": true,
+      "trainer_reference": false,
+      "model_call": false
+    },
+    "gold_future_source_identity_v4.py": {
+      "sha256": "7806116cdb29edbe8ba3d64139f9cbe0358196b2a04babe6b330dc5b99b53290",
+      "unchanged": true,
+      "trainer_reference": false,
+      "model_call": false
+    },
+    "gold_future_fresh_market_diagnostic_v1.py": {
+      "sha256": "00bd61a398fbf82a8109fbec20a5bc316ce68753af4b112f8da2fcdd8c6aea55",
+      "unchanged": true,
+      "trainer_reference": false,
+      "model_call": false
+    },
+    "gold_future_current_regime_diagnostic_v1.py": {
+      "sha256": "f270136c41217409710e3c95f72dbb39d09353611beb89a89114ee74ef889e92",
+      "unchanged": true,
+      "trainer_reference": false,
+      "model_call": false
+    },
+    "gold_future_capture_collector_v4.py": {
+      "sha256": "4b1e4edca3d7a5192c82c127b023ec560981d4710ab6ebc4ceb23aecb037a126",
+      "unchanged": true,
+      "trainer_reference": false,
+      "model_call": false
+    },
+    "gold_future_capture_collector_v2.py": {
+      "sha256": "045f52585e391876130271208fb6e5a1e8221102c002e4ac323d5b3e2fdae4fc",
+      "unchanged": true,
+      "trainer_reference": false,
+      "model_call": false
+    },
+    "gold_future_capture_supervisor_v1.py": {
+      "sha256": "d88d8950562fa73be8860b2c508efb1b794b7ca991e209ebd20352441e7339f2",
+      "unchanged": true,
+      "trainer_reference": false,
+      "model_call": false
+    }
+  },
+  "auto_training_disabled": true,
+  "reference_interpretation": "Manual BAT/launcher/wrapper and certification/test/static audit strings; runtime closure and installed startup/task actions verified separately"
+}

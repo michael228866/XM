@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "checks": {
+    "requires_wr": true,
+    "requires_tpd": true,
+    "pf_guard": true,
+    "mean_guard": true,
+    "stress_guard": true,
+    "fold_trades": true,
+    "fold_wr": true,
+    "fold_pf": true,
+    "interesting": true,
+    "strong": true,
+    "target": true,
+    "no_improvement_execution_PASS": true
+  },
+  "synthetic_only": true
+}

@@ -1,0 +1,13 @@
+{
+  "formal_run_status": "PASS",
+  "validator_status": "PASS",
+  "total_predeclared_candidates": 16,
+  "model_training_executed": false,
+  "strategy_replay_executed": false,
+  "holdout_used": false,
+  "production_changed": false,
+  "production_promoted": false,
+  "auto_training_disabled": true,
+  "approval_commit_pending": true,
+  "improvement_workflow_ready": false
+}

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "checks": {
+    "launcher_routes_improvement": true,
+    "no_codex_training_receipt": true,
+    "single_bat_no_args_pause": true,
+    "bat_automation_denied_and_paused": true,
+    "no_automatic_training_policy": true
+  },
+  "synthetic_only": true
+}

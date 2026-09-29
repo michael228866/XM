@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "checks": {
+    "pareto_domination": true,
+    "deterministic_tie_break": true,
+    "independent_pareto": true,
+    "two_stage_shortlist_and_losers_retained": true,
+    "losing_candidate_removal_detected": true,
+    "posthoc_config_detected": true,
+    "posthoc_space_detected": true
+  },
+  "synthetic_only": true
+}

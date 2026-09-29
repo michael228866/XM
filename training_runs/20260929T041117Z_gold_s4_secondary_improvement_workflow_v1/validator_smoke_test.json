@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checks": {
+    "same_run_validator_argument": true,
+    "orchestration:VALIDATOR_FAIL": true,
+    "orchestration:WRONG_RUN": true,
+    "orchestration:CRASH": true,
+    "reference_failure_NOT_RUN": true,
+    "finalize_order:PASS": true,
+    "finalize_order:VALIDATOR_FAIL": true,
+    "validator_before_finalization": true,
+    "independent_validator_no_trainer_import": true,
+    "validator_never_fits": true
+  },
+  "synthetic_only": true
+}

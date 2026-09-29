@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": {
+    "production_write_guard": true,
+    "run_local_write": true,
+    "artifact_escape": true,
+    "no_automatic_promotion": true
+  },
+  "synthetic_only": true
+}
