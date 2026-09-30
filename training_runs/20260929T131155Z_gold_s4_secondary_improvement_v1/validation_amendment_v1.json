@@ -1,0 +1,22 @@
+{
+  "target_run_id": "20260929T131155Z_gold_s4_secondary_improvement_v1",
+  "original_validation_status": "FAIL",
+  "original_failure": "source_binding:gold_independent_secondary_classifier_v1.py",
+  "repair_adjudication_status": "PASS",
+  "revalidation_status": "PASS",
+  "effective_validation_status": "PASS",
+  "effective_final_status": "PASS",
+  "research_result": "IMPROVEMENT_FOUND",
+  "candidate_gate": "INTERESTING",
+  "candidate": "F5_NO_REDUNDANT_HTF",
+  "candidate_model_sha256": "617e5724e2405e7423ec61b4104c4272d9094ed1fe29d6da95735326baf18753",
+  "repair_run": "training_runs/20260929T160233Z_gold_s4_source_binding_validator_repair_v1",
+  "revalidation_sha256": "46c49b8ebbe1afbb9d8adc3c6543e4d748e874e13cc34932118e9e808ef9840a",
+  "original_finalized_sha256": "2693777cd8d7ff8b2c6c56beb78933cc03e4f88af2ba0492678ff515028e8856",
+  "holdout_used": false,
+  "production_changed": false,
+  "production_promoted": false,
+  "evidence_scope": "Historical development only; not untouched promotion evidence",
+  "repair_finalized_sha256": "3d597e3924696f94a572985ad8fe814a805384ff0ab85ec6ed544d7e25092a16",
+  "result_commit": "cdba328e320e77e39735f3c2a5757de52a6d8752"
+}
