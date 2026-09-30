@@ -1,0 +1,9 @@
+{
+  "overall": "PASS",
+  "old_validator_sha256": "ae353354cdf7a7301ca4dbe849a5568e9fd8aaf74387709761979d50eeac130d",
+  "full_validation_function_unchanged": true,
+  "raw_hash_checks_retained": true,
+  "normalization_scope": "Only pinned discovery blob; CRLF to LF; raw snapshot remains exact",
+  "original_failure_preserved": true,
+  "training_search_runtime_guard": true
+}

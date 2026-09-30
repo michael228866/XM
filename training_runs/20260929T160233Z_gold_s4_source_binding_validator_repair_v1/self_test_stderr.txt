@@ -1,0 +1,19 @@
+test_additive_pass_requires_full_validation_same_run (__main__.RepairTests.test_additive_pass_requires_full_validation_same_run) ... ok
+test_exclusive_receipts_preserve_original (__main__.RepairTests.test_exclusive_receipts_preserve_original) ... ok
+test_filename_only (__main__.RepairTests.test_filename_only) ... ok
+test_historical_and_current_roles (__main__.RepairTests.test_historical_and_current_roles) ... ok
+test_holdout_and_target_writes_denied (__main__.RepairTests.test_holdout_and_target_writes_denied) ... ok
+test_missing_binding_fields (__main__.RepairTests.test_missing_binding_fields) ... ok
+test_missing_source_binding (__main__.RepairTests.test_missing_source_binding) ... ok
+test_mutation_rejected (__main__.RepairTests.test_mutation_rejected) ... ok
+test_normalization_not_general_bypass (__main__.RepairTests.test_normalization_not_general_bypass) ... ok
+test_original_run_identity (__main__.RepairTests.test_original_run_identity) ... ok
+test_real_windows_representation (__main__.RepairTests.test_real_windows_representation) ... ok
+test_role_swap (__main__.RepairTests.test_role_swap) ... ok
+test_training_and_search_blocked (__main__.RepairTests.test_training_and_search_blocked) ... ok
+test_wrong_hash_both_roles (__main__.RepairTests.test_wrong_hash_both_roles) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.032s
+
+OK

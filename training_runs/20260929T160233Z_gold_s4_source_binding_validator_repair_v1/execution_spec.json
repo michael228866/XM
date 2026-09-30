@@ -1,0 +1,16 @@
+{
+  "target_run_id": "20260929T131155Z_gold_s4_secondary_improvement_v1",
+  "original_finalized_sha256": "2693777cd8d7ff8b2c6c56beb78933cc03e4f88af2ba0492678ff515028e8856",
+  "source_commit": "5b99bf1a70a42875c3daecafb914dde0d2372f69",
+  "source_bindings": {
+    "run_gold_s4_source_binding_validator_repair_v1.py": "b4f8fe0f01245ce41a3a0a9f12ff0490b47deb74463a22439a92705b1b5f75ea",
+    "validate_gold_s4_secondary_improvement_run_v1_1.py": "35b0f37d5a11c6a690c1f9b02a0ddf3544403fcb58892eb18f61b836e47f2c89",
+    "test_gold_s4_source_binding_repair_v1.py": "2bb885b15ddd10f1fabf701e22eb0f67066315390c9be949d1b2199868c59ba7"
+  },
+  "scope": "Complete validation of existing immutable evidence; no new research evaluation",
+  "model_training_executed": false,
+  "research_search_executed": false,
+  "metrics_regenerated": false,
+  "holdout_used": false,
+  "production_changed": false
+}

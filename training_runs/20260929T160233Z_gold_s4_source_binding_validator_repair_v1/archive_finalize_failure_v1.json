@@ -1,0 +1,29 @@
+{
+  "original_archive_status": "FAIL",
+  "revalidation_status": "PASS",
+  "errors": [
+    "status is not final: 'completed'",
+    "missing manifest.data.timezone",
+    "missing manifest.data.data_start_utc",
+    "missing manifest.data.data_end_utc",
+    "missing manifest.data.train_start_utc",
+    "missing manifest.data.train_end_utc",
+    "missing manifest.data.train_rows",
+    "missing manifest.data.validation_start_utc",
+    "missing manifest.data.validation_end_utc",
+    "missing manifest.data.validation_rows",
+    "missing manifest.data.test_start_utc",
+    "missing manifest.data.test_end_utc",
+    "missing manifest.data.test_rows",
+    "missing manifest.data.purge_details",
+    "missing manifest.data.embargo_details",
+    "missing manifest.registry.trades_per_day",
+    "missing manifest.registry.realized_win_rate",
+    "missing manifest.registry.pf",
+    "missing manifest.registry.mean_r",
+    "missing manifest.registry.pnl",
+    "missing manifest.registry.max_dd"
+  ],
+  "cause": "Runner used completed instead of pass and omitted required non-training metadata",
+  "recovery": "Fill only unsealed repair manifest metadata; use training_run_history.finalize_run(status=pass); no validator retry"
+}

@@ -1,0 +1,5 @@
+{
+  "failure_reproduced": true,
+  "original_failure": "source_binding:gold_independent_secondary_classifier_v1.py",
+  "method": "Exact v1 source predicate, no old main invocation"
+}

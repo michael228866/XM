@@ -1,0 +1,5 @@
+{
+  "overall": "PASS",
+  "holdout_used": false,
+  "enforcement": "Existing audited file/subprocess guard; synthetic locked-path rejection"
+}
