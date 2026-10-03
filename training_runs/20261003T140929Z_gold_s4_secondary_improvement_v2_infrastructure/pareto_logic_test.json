@@ -1,0 +1,9 @@
+{
+  "overall": "PASS",
+  "synthetic_only": true,
+  "evidence": "self_tests.json",
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_VALIDATION_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false
+}
