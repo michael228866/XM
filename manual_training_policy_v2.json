@@ -1,0 +1,11 @@
+{
+  "training_execution_owner": "USER",
+  "validation_execution_owner": "USER_LAUNCHED_WORKFLOW",
+  "real_train_allowed_for_codex": false,
+  "real_validation_allowed_for_codex": false,
+  "real_research_allowed_for_codex": false,
+  "automatic_training": false,
+  "automatic_validation": false,
+  "automatic_research": false,
+  "bat_user_launch_required": true
+}

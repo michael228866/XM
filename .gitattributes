@@ -150,3 +150,16 @@ gold_s4_improvement_approval_v1.json -text whitespace=cr-at-eol
 validate_gold_s4_secondary_improvement_run_v1_1.py -text whitespace=cr-at-eol
 run_gold_s4_source_binding_validator_repair_v1.py -text whitespace=cr-at-eol
 test_gold_s4_source_binding_repair_v1.py -text whitespace=cr-at-eol
+
+gold_s4_secondary_improvement_v2.py -text whitespace=cr-at-eol
+gold_s4_secondary_improvement_v2_config.json -text whitespace=cr-at-eol
+gold_s4_secondary_improvement_v2_search_space.json -text whitespace=cr-at-eol
+gold_s4_f5_reference_v1.json -text whitespace=cr-at-eol
+gold_s4_secondary_improvement_v2_support.py -text whitespace=cr-at-eol
+gold_s4_secondary_improvement_v2_launcher.py -text whitespace=cr-at-eol
+validate_gold_s4_secondary_improvement_v2_run.py -text whitespace=cr-at-eol
+manual_training_policy_v2.json -text whitespace=cr-at-eol
+test_gold_s4_secondary_improvement_v2.py -text whitespace=cr-at-eol
+README_GOLD_S4_SECONDARY_IMPROVEMENT_V2.md -text whitespace=cr-at-eol
+certify_gold_s4_secondary_improvement_v2.py -text whitespace=cr-at-eol
+gold_s4_improvement_v2_approval.json -text whitespace=cr-at-eol
