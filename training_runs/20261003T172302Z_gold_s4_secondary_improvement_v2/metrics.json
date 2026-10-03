@@ -1,0 +1,15 @@
+{
+  "run_id": "20261003T172302Z_gold_s4_secondary_improvement_v2",
+  "execution_status": "FAIL",
+  "final_status": "FAIL",
+  "research_result": "NOT_RUN",
+  "candidate_gate": "NONE",
+  "economic_status": "NEGATIVE_EXPECTANCY",
+  "candidate": null,
+  "production_changed": false,
+  "production_promoted": false,
+  "holdout_used": false,
+  "failed_checks": [
+    "Independent validator failed: {'overall': 'FAIL', 'failed_checks': ['ValueError: Frozen chronological event chain']}"
+  ]
+}

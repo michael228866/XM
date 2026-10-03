@@ -1,0 +1,442 @@
+{
+  "candidate": {
+    "candidate_id": "A_NO_LONG_HTF",
+    "config": {
+      "candidate_id": "A_NO_LONG_HTF",
+      "family": "A",
+      "features": [
+        "M1_RSI",
+        "ATR",
+        "MACD_HIST",
+        "BB_WIDTH",
+        "BIAS_20",
+        "BODY_PCT",
+        "ROC_5",
+        "VOLA_RATIO",
+        "HOUR_SIN",
+        "HOUR_COS",
+        "DAY_OF_WEEK",
+        "Daily_TREND",
+        "H1_TREND",
+        "H4_TREND",
+        "M10_TREND",
+        "M12_TREND",
+        "M15_TREND",
+        "M20_TREND",
+        "M2_TREND",
+        "M30_TREND",
+        "M3_TREND",
+        "M4_TREND",
+        "M5_TREND",
+        "M6_TREND"
+      ],
+      "parameters": {
+        "objective": "binary:logistic",
+        "n_estimators": 220,
+        "learning_rate": 0.05,
+        "max_depth": 4,
+        "min_child_weight": 80,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "random_state": 42,
+        "tree_method": "hist",
+        "device": "cpu",
+        "n_jobs": 1,
+        "verbosity": 0,
+        "booster": "gbtree",
+        "max_bin": 256,
+        "reg_alpha": 0.0,
+        "reg_lambda": 1.0,
+        "gamma": 0.0,
+        "max_delta_step": 0.0,
+        "scale_pos_weight": 1.0,
+        "base_score": null,
+        "colsample_bylevel": 1.0,
+        "colsample_bynode": 1.0,
+        "grow_policy": "depthwise",
+        "max_leaves": 0,
+        "sampling_method": "uniform",
+        "validate_parameters": true
+      },
+      "threshold": 0.75,
+      "calibration": "RAW",
+      "weighting": "BALANCED",
+      "positive_weight_multiplier": 1.0,
+      "seed": 42
+    },
+    "models": [
+      {
+        "fold_number": 1,
+        "path": "models/A_NO_LONG_HTF/fold1.json",
+        "sha256": "a22bcf988f8851985a59ce0c8dfa255a2eabb5802129e8d8043cd82733c79ee6",
+        "evidence_path": "evidence/A_NO_LONG_HTF_fold1.npz",
+        "evidence_sha256": "2011e52fa216f2e0cc6437d7ea0d09e850c3acf629f2bcd357bfc9db4a1e867f",
+        "fit_feature_sha256": "2264b8715da66bb9db5771db8c5f77c1dc38fc6edff59a55598df447bedf9c59",
+        "fit_target_sha256": "860127780e276e9c13b8756b7ad759f2f2651dfc3896a58c0190c47a7b1a3bb1",
+        "calibration": null,
+        "model_configuration": {
+          "learner": {
+            "generic_param": {
+              "device": "cpu",
+              "fail_on_invalid_gpu_id": "0",
+              "n_jobs": "1",
+              "nthread": "1",
+              "random_state": "42",
+              "seed": "42",
+              "seed_per_iteration": "0",
+              "validate_parameters": "1"
+            },
+            "gradient_booster": {
+              "gbtree_model_param": {
+                "num_parallel_tree": "1",
+                "num_trees": "220"
+              },
+              "gbtree_train_param": {
+                "process_type": "default",
+                "tree_method": "hist",
+                "updater": "grow_quantile_histmaker",
+                "updater_seq": "grow_quantile_histmaker"
+              },
+              "name": "gbtree",
+              "specified_updater": false,
+              "tree_train_param": {
+                "alpha": "0",
+                "colsample_bylevel": "1",
+                "colsample_bynode": "1",
+                "colsample_bytree": "0.850000024",
+                "eta": "0.0500000007",
+                "gamma": "0",
+                "grow_policy": "depthwise",
+                "interaction_constraints": "",
+                "lambda": "1",
+                "learning_rate": "0.0500000007",
+                "max_bin": "256",
+                "max_cat_threshold": "64",
+                "max_cat_to_onehot": "4",
+                "max_delta_step": "0",
+                "max_depth": "4",
+                "max_leaves": "0",
+                "min_child_weight": "80",
+                "min_split_loss": "0",
+                "monotone_constraints": "()",
+                "refresh_leaf": "1",
+                "reg_alpha": "0",
+                "reg_lambda": "1",
+                "sampling_method": "uniform",
+                "sparse_threshold": "0.20000000000000001",
+                "subsample": "0.850000024"
+              },
+              "updater": [
+                {
+                  "hist_train_param": {
+                    "debug_synchronize": "0",
+                    "max_cached_hist_node": "18446744073709551615"
+                  },
+                  "name": "grow_quantile_histmaker"
+                }
+              ]
+            },
+            "learner_model_param": {
+              "base_score": "[5E-1]",
+              "boost_from_average": "1",
+              "num_class": "0",
+              "num_feature": "24",
+              "num_target": "1"
+            },
+            "learner_train_param": {
+              "booster": "gbtree",
+              "disable_default_eval_metric": "0",
+              "multi_strategy": "one_output_per_tree",
+              "objective": "binary:logistic"
+            },
+            "metrics": [
+              {
+                "name": "logloss"
+              }
+            ],
+            "objective": {
+              "name": "binary:logistic",
+              "reg_loss_param": {
+                "scale_pos_weight": "1"
+              }
+            }
+          },
+          "version": [
+            3,
+            2,
+            0
+          ]
+        }
+      },
+      {
+        "fold_number": 2,
+        "path": "models/A_NO_LONG_HTF/fold2.json",
+        "sha256": "42a46f0a383f3480c10a1089484799c90a3b778ac918619d33fc31cc50b8b57d",
+        "evidence_path": "evidence/A_NO_LONG_HTF_fold2.npz",
+        "evidence_sha256": "52967eee58131405c469e991cb0efa097772546ca6bd2588683db32b3ffb6d22",
+        "fit_feature_sha256": "53440f53b77d0c95f300043a9a8fde5e97e8e4b65fff20250a6ac289ca15da5a",
+        "fit_target_sha256": "832e07d39e1f142dda8a69ba9ea49ac2a03ca7086c6adfea9f8861153640bac7",
+        "calibration": null,
+        "model_configuration": {
+          "learner": {
+            "generic_param": {
+              "device": "cpu",
+              "fail_on_invalid_gpu_id": "0",
+              "n_jobs": "1",
+              "nthread": "1",
+              "random_state": "42",
+              "seed": "42",
+              "seed_per_iteration": "0",
+              "validate_parameters": "1"
+            },
+            "gradient_booster": {
+              "gbtree_model_param": {
+                "num_parallel_tree": "1",
+                "num_trees": "220"
+              },
+              "gbtree_train_param": {
+                "process_type": "default",
+                "tree_method": "hist",
+                "updater": "grow_quantile_histmaker",
+                "updater_seq": "grow_quantile_histmaker"
+              },
+              "name": "gbtree",
+              "specified_updater": false,
+              "tree_train_param": {
+                "alpha": "0",
+                "colsample_bylevel": "1",
+                "colsample_bynode": "1",
+                "colsample_bytree": "0.850000024",
+                "eta": "0.0500000007",
+                "gamma": "0",
+                "grow_policy": "depthwise",
+                "interaction_constraints": "",
+                "lambda": "1",
+                "learning_rate": "0.0500000007",
+                "max_bin": "256",
+                "max_cat_threshold": "64",
+                "max_cat_to_onehot": "4",
+                "max_delta_step": "0",
+                "max_depth": "4",
+                "max_leaves": "0",
+                "min_child_weight": "80",
+                "min_split_loss": "0",
+                "monotone_constraints": "()",
+                "refresh_leaf": "1",
+                "reg_alpha": "0",
+                "reg_lambda": "1",
+                "sampling_method": "uniform",
+                "sparse_threshold": "0.20000000000000001",
+                "subsample": "0.850000024"
+              },
+              "updater": [
+                {
+                  "hist_train_param": {
+                    "debug_synchronize": "0",
+                    "max_cached_hist_node": "18446744073709551615"
+                  },
+                  "name": "grow_quantile_histmaker"
+                }
+              ]
+            },
+            "learner_model_param": {
+              "base_score": "[5E-1]",
+              "boost_from_average": "1",
+              "num_class": "0",
+              "num_feature": "24",
+              "num_target": "1"
+            },
+            "learner_train_param": {
+              "booster": "gbtree",
+              "disable_default_eval_metric": "0",
+              "multi_strategy": "one_output_per_tree",
+              "objective": "binary:logistic"
+            },
+            "metrics": [
+              {
+                "name": "logloss"
+              }
+            ],
+            "objective": {
+              "name": "binary:logistic",
+              "reg_loss_param": {
+                "scale_pos_weight": "1"
+              }
+            }
+          },
+          "version": [
+            3,
+            2,
+            0
+          ]
+        }
+      },
+      {
+        "fold_number": 3,
+        "path": "models/A_NO_LONG_HTF/fold3.json",
+        "sha256": "e9bd52886d2297efe27232d3ef30a8260ad11d74d425976e10c11f135b0ccf54",
+        "evidence_path": "evidence/A_NO_LONG_HTF_fold3.npz",
+        "evidence_sha256": "e9bfeab61ed6a4a9455c3f4af1357351aa79ebf91b4fcf802f743e4d1c7d0c9c",
+        "fit_feature_sha256": "3742df775238783812a81e5bbde7126ea34a8327c97fb5530364c70292d578ec",
+        "fit_target_sha256": "10ce694461a40f99d18fb8eb671d195602b3002d53dae301151c560d9a0f6e70",
+        "calibration": null,
+        "model_configuration": {
+          "learner": {
+            "generic_param": {
+              "device": "cpu",
+              "fail_on_invalid_gpu_id": "0",
+              "n_jobs": "1",
+              "nthread": "1",
+              "random_state": "42",
+              "seed": "42",
+              "seed_per_iteration": "0",
+              "validate_parameters": "1"
+            },
+            "gradient_booster": {
+              "gbtree_model_param": {
+                "num_parallel_tree": "1",
+                "num_trees": "220"
+              },
+              "gbtree_train_param": {
+                "process_type": "default",
+                "tree_method": "hist",
+                "updater": "grow_quantile_histmaker",
+                "updater_seq": "grow_quantile_histmaker"
+              },
+              "name": "gbtree",
+              "specified_updater": false,
+              "tree_train_param": {
+                "alpha": "0",
+                "colsample_bylevel": "1",
+                "colsample_bynode": "1",
+                "colsample_bytree": "0.850000024",
+                "eta": "0.0500000007",
+                "gamma": "0",
+                "grow_policy": "depthwise",
+                "interaction_constraints": "",
+                "lambda": "1",
+                "learning_rate": "0.0500000007",
+                "max_bin": "256",
+                "max_cat_threshold": "64",
+                "max_cat_to_onehot": "4",
+                "max_delta_step": "0",
+                "max_depth": "4",
+                "max_leaves": "0",
+                "min_child_weight": "80",
+                "min_split_loss": "0",
+                "monotone_constraints": "()",
+                "refresh_leaf": "1",
+                "reg_alpha": "0",
+                "reg_lambda": "1",
+                "sampling_method": "uniform",
+                "sparse_threshold": "0.20000000000000001",
+                "subsample": "0.850000024"
+              },
+              "updater": [
+                {
+                  "hist_train_param": {
+                    "debug_synchronize": "0",
+                    "max_cached_hist_node": "18446744073709551615"
+                  },
+                  "name": "grow_quantile_histmaker"
+                }
+              ]
+            },
+            "learner_model_param": {
+              "base_score": "[5E-1]",
+              "boost_from_average": "1",
+              "num_class": "0",
+              "num_feature": "24",
+              "num_target": "1"
+            },
+            "learner_train_param": {
+              "booster": "gbtree",
+              "disable_default_eval_metric": "0",
+              "multi_strategy": "one_output_per_tree",
+              "objective": "binary:logistic"
+            },
+            "metrics": [
+              {
+                "name": "logloss"
+              }
+            ],
+            "objective": {
+              "name": "binary:logistic",
+              "reg_loss_param": {
+                "scale_pos_weight": "1"
+              }
+            }
+          },
+          "version": [
+            3,
+            2,
+            0
+          ]
+        }
+      }
+    ],
+    "pooled": {
+      "trades": 787,
+      "wins": 450,
+      "losses": 337,
+      "realized_win_rate": 0.5717916137229987,
+      "trades_per_day": 0.30778255768478685,
+      "profit_factor": 0.8521940468784924,
+      "mean_r": -0.06408993365369865,
+      "pnl_r": -50.438777785460836,
+      "max_drawdown_r": -52.34913835149044,
+      "stress_pf": 0.8093582289789337
+    },
+    "fold_metrics": [
+      {
+        "fold": "2018_2020",
+        "trades": 535,
+        "wins": 308,
+        "losses": 227,
+        "realized_win_rate": 0.5757009345794393,
+        "trades_per_day": 0.48813868613138683,
+        "profit_factor": 0.8553103222882102,
+        "mean_r": -0.06211510327558036,
+        "pnl_r": -33.23158025243549,
+        "max_drawdown_r": -47.40229251522064,
+        "stress_pf": 0.812128184209297
+      },
+      {
+        "fold": "2021_2022",
+        "trades": 25,
+        "wins": 15,
+        "losses": 10,
+        "realized_win_rate": 0.6,
+        "trades_per_day": 0.03424657534246575,
+        "profit_factor": 0.9376830017500809,
+        "mean_r": -0.025420217838031015,
+        "pnl_r": -0.6355054459507754,
+        "max_drawdown_r": -6.218159898164396,
+        "stress_pf": 0.8877008178288167
+      },
+      {
+        "fold": "2023_2024",
+        "trades": 227,
+        "wins": 127,
+        "losses": 100,
+        "realized_win_rate": 0.5594713656387665,
+        "trades_per_day": 0.31053351573187415,
+        "profit_factor": 0.8365342900939929,
+        "mean_r": -0.07300304884173818,
+        "pnl_r": -16.571692087074567,
+        "max_drawdown_r": -17.401555595935147,
+        "stress_pf": 0.7952053444476296
+      }
+    ],
+    "gate": {
+      "safety_pass": true,
+      "interesting": true,
+      "gate": "INTERESTING"
+    },
+    "economic_status": "NEGATIVE_EXPECTANCY",
+    "ledger_path": "ledgers/A_NO_LONG_HTF.json",
+    "ledger_sha256": "d73ba9df8acfbf48c0b738a6ddacd061359a0ff89efeb639a08867e8222466a2"
+  },
+  "classification": "HISTORICAL_RESEARCH_CANDIDATE",
+  "production_promoted": false
+}

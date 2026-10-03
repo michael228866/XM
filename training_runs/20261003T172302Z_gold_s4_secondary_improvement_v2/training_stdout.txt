@@ -1,0 +1,54 @@
+[3/8] 驗證 F5 Reference
+[4/8] 執行 v2 Candidate Training: A_NO_MOMENTUM
+[5/8] Historical Validation: A_NO_MOMENTUM
+[4/8] 執行 v2 Candidate Training: A_NO_OSCILLATOR
+[5/8] Historical Validation: A_NO_OSCILLATOR
+[4/8] 執行 v2 Candidate Training: A_NO_VOLATILITY
+[5/8] Historical Validation: A_NO_VOLATILITY
+[4/8] 執行 v2 Candidate Training: A_NO_LONG_HTF
+[5/8] Historical Validation: A_NO_LONG_HTF
+[4/8] 執行 v2 Candidate Training: A_NO_FAST_LTF
+[5/8] Historical Validation: A_NO_FAST_LTF
+[4/8] 執行 v2 Candidate Training: A_NO_MID_LTF
+[5/8] Historical Validation: A_NO_MID_LTF
+[4/8] 執行 v2 Candidate Training: A_NO_OSC_MOMENTUM
+[5/8] Historical Validation: A_NO_OSC_MOMENTUM
+[4/8] 執行 v2 Candidate Training: A_NO_VOL_BODY
+[5/8] Historical Validation: A_NO_VOL_BODY
+[4/8] 執行 v2 Candidate Training: B_PLATT
+[5/8] Historical Validation: B_PLATT
+[4/8] 執行 v2 Candidate Training: B_ISOTONIC
+[5/8] Historical Validation: B_ISOTONIC
+[4/8] 執行 v2 Candidate Training: C_NONE
+[5/8] Historical Validation: C_NONE
+[4/8] 執行 v2 Candidate Training: C_POS_110
+[5/8] Historical Validation: C_POS_110
+[4/8] 執行 v2 Candidate Training: C_POS_120
+[5/8] Historical Validation: C_POS_120
+[4/8] 執行 v2 Candidate Training: C_POS_130
+[5/8] Historical Validation: C_POS_130
+[4/8] 執行 v2 Candidate Training: D_DEPTH3
+[5/8] Historical Validation: D_DEPTH3
+[4/8] 執行 v2 Candidate Training: D_DEPTH5
+[5/8] Historical Validation: D_DEPTH5
+[4/8] 執行 v2 Candidate Training: D_CHILD120
+[5/8] Historical Validation: D_CHILD120
+[4/8] 執行 v2 Candidate Training: D_GAMMA010
+[5/8] Historical Validation: D_GAMMA010
+[4/8] 執行 v2 Candidate Training: D_ALPHA010
+[5/8] Historical Validation: D_ALPHA010
+[4/8] 執行 v2 Candidate Training: D_LAMBDA2
+[5/8] Historical Validation: D_LAMBDA2
+[4/8] 執行 v2 Candidate Training: D_SUB080
+[5/8] Historical Validation: D_SUB080
+[4/8] 執行 v2 Candidate Training: D_COL080
+[5/8] Historical Validation: D_COL080
+[4/8] 執行 v2 Candidate Training: E_MACD
+[5/8] Historical Validation: E_MACD
+[4/8] 執行 v2 Candidate Training: E_VOL
+[5/8] Historical Validation: E_VOL
+[4/8] 執行 v2 Candidate Training: E_ALIGN
+[5/8] Historical Validation: E_ALIGN
+[4/8] 執行 v2 Candidate Training: E_DIRECTION
+[5/8] Historical Validation: E_DIRECTION
+[6/8] 建立 Pareto Frontier

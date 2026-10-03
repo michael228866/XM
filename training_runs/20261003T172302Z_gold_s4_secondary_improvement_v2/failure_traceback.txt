@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "D:\XM\數據\gold_s4_secondary_improvement_v2.py", line 222, in _run
+    require(result['overall'] == 'PASS', 'Independent validator failed: '+repr(result))
+  File "D:\XM\數據\validate_gold_s4_secondary_improvement_run_v1.py", line 47, in require
+    raise ValueError(name)
+ValueError: Independent validator failed: {'overall': 'FAIL', 'failed_checks': ['ValueError: Frozen chronological event chain']}
