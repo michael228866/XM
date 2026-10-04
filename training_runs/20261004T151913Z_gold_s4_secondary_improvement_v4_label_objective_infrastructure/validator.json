@@ -1,0 +1,10 @@
+{
+  "overall": "NOT_RUN",
+  "failed_checks": [
+    "Infrastructure source-snapshot preflight FileNotFoundError: README_GOLD_S4_SECONDARY_IMPROVEMENT_V4_LABEL_OBJECTIVE.md; actual requested filename is README_GOLD_S4_SECONDARY_IMPROVEMENT_V4.md. No tests or real workflow executed."
+  ],
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_VALIDATION_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false
+}

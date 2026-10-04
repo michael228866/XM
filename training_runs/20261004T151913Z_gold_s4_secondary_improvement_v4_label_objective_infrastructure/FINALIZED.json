@@ -1,0 +1,17 @@
+{
+  "run_id": "20261004T151913Z_gold_s4_secondary_improvement_v4_label_objective_infrastructure",
+  "finalized_at_utc": "2026-10-04T15:19:44.766781Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "b0c07d1b8cfeb828a31fc573483985367cbb9428e01e9712f0a2796018dfd686",
+    "failure.json": "cda66675fb5fa83bdd130bae3c2ccd27023a3775b528109c8160d885811cbe51",
+    "findings.md": "c9bceb61cce61efe1f92c19432d030ee99f7eb44dcd3da081c91e200f1ee69c9",
+    "manifest.json": "56410198f4c1781b7357faf61c1029b35ffc87079f7b2db17f6e4dbfbd534ca4",
+    "metrics.json": "0b5124c94535cc2da3541ad06a35414584f0a5ebb41a7662fcf7a9aa4d367af8",
+    "report.md": "c9bceb61cce61efe1f92c19432d030ee99f7eb44dcd3da081c91e200f1ee69c9",
+    "source/CHECK_STATUS.bat": "48a38ce8068a5117dd865ee6280b81b8c357df3ac5eeb91fcec9b69f335dc5c7",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "training_script.py": "bb5280ae19c6b88ebc05d21c2b993e3e5dc2865b0510f03a803b339d8de961d2",
+    "validator.json": "865bfe22e6519e5190ac4d95442a07dd8c6471e96464f58589e481a0ac55fa81"
+  }
+}

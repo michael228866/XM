@@ -1,0 +1,8 @@
+{
+  "formal_run_status": "FAIL",
+  "validator_status": "NOT_RUN",
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_VALIDATION_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false
+}
