@@ -1,0 +1,8 @@
+{
+  "tree_sha256": "d6ec76380f3a6fe655cc25922d1e14519fa5c0a5db71a07a248dca7838dadc38",
+  "file_sha256": {
+    "event_chain_adjudication_v1.json": "ca72ba83f56d79c7d3fc34f2e58a9e360e229068a6b389bb292dcb9cf4bc468a",
+    "validation_amendment_v1.json": "fb20ed523793c0169491432b6d4f3f57949b531d5da2ff61e49d0d4c45ecef5f",
+    "validator_recheck_v1.json": "39d10789c8d18563cd1cc0f4dfe1f72b5d15e242bd5a9b58fe692d08463cc3f3"
+  }
+}

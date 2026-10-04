@@ -1,0 +1,14 @@
+{
+  "target_run_id": "20261003T172302Z_gold_s4_secondary_improvement_v2",
+  "root_cause": "REFERENCE_PASS_PAYLOAD_WRAPPER_MISMATCH: the archived trainer hashes the unwrapped control record, but the archived validator hashes dict(status=\"PASS\", **control). The status wrapper belongs only to reference_control.json; all original event hashes, links, sequence, timestamps and candidate transitions are valid.",
+  "original_failure": "Frozen chronological event chain",
+  "original_validation_status": "FAIL",
+  "failure_reproduced": true,
+  "event_chain_schema_status": "PASS",
+  "event_chain_integrity_status": "PASS",
+  "original_run_tree_sha256": "8b9ff3ace10ff482fff8f9ce5b63f909444baaa9efbdb7fa00c356961e7f7e48",
+  "original_tree_unchanged": true,
+  "revalidation_status": "PASS",
+  "research_result": "IMPROVEMENT_FOUND",
+  "selected_candidate": "A_NO_LONG_HTF"
+}

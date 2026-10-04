@@ -1,0 +1,23 @@
+{
+  "target_run_id": "20261003T172302Z_gold_s4_secondary_improvement_v2",
+  "original_validation_status": "FAIL",
+  "original_failure": "Frozen chronological event chain",
+  "effective_validation_status": "PASS",
+  "effective_final_status": "PASS",
+  "repair_run": "training_runs/20261003T184515Z_gold_s4_v2_event_chain_validator_repair_v1",
+  "repair_finalized_sha256": "9c3b4887500359553cad6ad1e640da766547f26237404c3b0d007fd1b33c9c34",
+  "original_run_tree_sha256": "8b9ff3ace10ff482fff8f9ce5b63f909444baaa9efbdb7fa00c356961e7f7e48",
+  "original_finalized_sha256": "f7bf22f3f8faf82941e0153b3fc71a68b853f7ce1d144282dae81b37d666edcd",
+  "research_result": "IMPROVEMENT_FOUND",
+  "selected_candidate": "A_NO_LONG_HTF",
+  "candidate_gate": "INTERESTING",
+  "model_training_already_executed_by_user": true,
+  "model_training_executed_by_repair": false,
+  "research_search_executed_by_repair": false,
+  "holdout_used": false,
+  "production_changed": false,
+  "production_promoted": false,
+  "evidence_scope": "Historical development only; not untouched promotion evidence",
+  "result_commit": "37b9e6228f8f2e3060f041d76a848b930ac2bfb1",
+  "revalidation_sha256": "39d10789c8d18563cd1cc0f4dfe1f72b5d15e242bd5a9b58fe692d08463cc3f3"
+}
