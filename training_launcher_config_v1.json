@@ -7,21 +7,21 @@
   "interpreter_discovery": "Explicit existing repository working environment; no fallback",
   "approval_status": "APPROVED",
   "workflow": {
-    "experiment_name": "gold_s4_secondary_improvement_v3",
+    "experiment_name": "gold_s4_secondary_improvement_v4_label_objective",
     "script": {
-      "path": "gold_s4_secondary_improvement_v3.py",
-      "sha256": "784451f3f25ccc020f4be071df3b051f76074cc6e9dff1530817d0bc6baabb10"
+      "path": "gold_s4_secondary_improvement_v4_label_objective.py",
+      "sha256": "0e32d6195b5e5cd5520558ed2e8b6eb61547edb98a259b744bca02a73615c1a3"
     },
     "validator": {
-      "path": "validate_gold_s4_secondary_improvement_v3_run.py",
-      "sha256": "6a535de485603b3cdefc9f57b969a195d554dab489b1067a56856e3412fced2f"
+      "path": "validate_gold_s4_secondary_improvement_v4_label_objective_run.py",
+      "sha256": "e10b2656ff39637c64f7ea68ab64492297d470fd4bcb41606ddf9b0d84baa2e7"
     },
     "configuration": {
-      "path": "gold_s4_secondary_improvement_v3_config.json",
-      "sha256": "4784e08a398e9c363679fa8975b75a1e2199a2002a52bcee0a3093f6c46705f8"
+      "path": "gold_s4_secondary_improvement_v4_label_objective_config.json",
+      "sha256": "740ee603c6a76ddc2ef777c74befd9cb5cc51bb0bbe8dace70a3ae5203653ebb"
     },
     "datasets": [],
-    "historical_input_mode": "SEALED_V1_INPUTS_V2_A_NO_LONG_HTF_MODELS",
+    "historical_input_mode": "SEALED_INPUTS_AND_EXACT_C1_LABEL_REGENERATION_USER_ONLY",
     "native_io_review_pass": true
   },
   "protected_sha256": {
