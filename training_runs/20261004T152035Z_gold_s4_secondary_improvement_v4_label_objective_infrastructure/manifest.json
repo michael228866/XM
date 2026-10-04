@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T152035Z_gold_s4_secondary_improvement_v4_label_objective_infrastructure",
+  "experiment_name": "gold_s4_secondary_improvement_v4_label_objective_infrastructure",
+  "status": "pass",
+  "started_at_utc": "2026-10-04T15:20:35.313553Z",
+  "finished_at_utc": "2026-10-04T15:20:38.291020Z",
+  "git_commit": "747f3237edcaae70ac095043e6b688e174dac74f",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\certify_gold_s4_secondary_improvement_v4_label_objective.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "a8e7209ba91e225b3eff03060f5a36c89c68fea9738bd4e521a3b8bd30b9b543",
+  "exact_command": ".venv\\Scripts\\python.exe -B certify_gold_s4_secondary_improvement_v4_label_objective.py --execute",
+  "arguments": [
+    "--execute"
+  ],
+  "random_seeds": {},
+  "random_seed_note": "Synthetic seed 42; no real execution",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "Synthetic fixtures and frozen reference metadata"
+    ],
+    "source_files": [
+      {
+        "path": "source/gold_s4_secondary_improvement_v4_label_objective_config.json",
+        "sha256": "740ee603c6a76ddc2ef777c74befd9cb5cc51bb0bbe8dace70a3ae5203653ebb",
+        "retention_status": "stored_in_run_directory"
+      }
+    ],
+    "timezone": "UTC",
+    "data_start_utc": "NOT_APPLICABLE_INFRASTRUCTURE_ONLY",
+    "data_end_utc": "NOT_APPLICABLE_INFRASTRUCTURE_ONLY",
+    "train_start_utc": "NOT_APPLICABLE_INFRASTRUCTURE_ONLY",
+    "train_end_utc": "NOT_APPLICABLE_INFRASTRUCTURE_ONLY",
+    "train_rows": 0,
+    "validation_start_utc": "NOT_APPLICABLE_INFRASTRUCTURE_ONLY",
+    "validation_end_utc": "NOT_APPLICABLE_INFRASTRUCTURE_ONLY",
+    "validation_rows": 0,
+    "test_start_utc": "NOT_APPLICABLE_INFRASTRUCTURE_ONLY",
+    "test_end_utc": "NOT_APPLICABLE_INFRASTRUCTURE_ONLY",
+    "test_rows": 0,
+    "purge_details": "Synthetic isolation tests",
+    "embargo_details": "No real folds executed",
+    "raw_snapshot_retained": true,
+    "reproducibility_claim": "synthetic fixtures only",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "No broker access"
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "No candidate model training"
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "No real strategy search; fake candidate metrics only"
+  },
+  "registry": {
+    "parent_or_incumbent": "20261003T172302Z_gold_s4_secondary_improvement_v2",
+    "selected_configuration": "8 frozen label/objective configurations; USER-only; approval pending",
+    "trades_per_day": "N/A: infrastructure only",
+    "realized_win_rate": "N/A: infrastructure only",
+    "pf": "N/A: infrastructure only",
+    "mean_r": "N/A: infrastructure only",
+    "pnl": "N/A: infrastructure only",
+    "max_dd": "N/A: infrastructure only",
+    "validator_result": "PASS"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [],
+  "aborted_reason": null,
+  "infrastructure_only": true,
+  "manual_start": false,
+  "execution_flags": {
+    "MODEL_TRAINING_EXECUTED": false,
+    "REAL_VALIDATION_EXECUTED": false,
+    "REAL_RESEARCH_EXECUTED": false,
+    "HISTORICAL_DATA_USED": false
+  }
+}

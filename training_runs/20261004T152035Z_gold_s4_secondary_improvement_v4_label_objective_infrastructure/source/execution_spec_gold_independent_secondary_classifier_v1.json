@@ -1,0 +1,264 @@
+{
+  "experiment": "gold_independent_secondary_classifier_v1",
+  "candidates": [
+    {
+      "candidate_id": "A0_BASELINE_075",
+      "secondary_threshold": null
+    },
+    {
+      "candidate_id": "S1_SECONDARY_P060",
+      "secondary_threshold": 0.6
+    },
+    {
+      "candidate_id": "S2_SECONDARY_P065",
+      "secondary_threshold": 0.65
+    },
+    {
+      "candidate_id": "S3_SECONDARY_P070",
+      "secondary_threshold": 0.7
+    },
+    {
+      "candidate_id": "S4_SECONDARY_P075",
+      "secondary_threshold": 0.75
+    }
+  ],
+  "primary_threshold": 0.75,
+  "secondary_training_universe": "corresponding archived B0 model predict_proba(TRAIN)[:, 1] < 0.75",
+  "secondary_inference": "B0 < 0.75 AND secondary_probability >= candidate threshold",
+  "combined_gate": "primary OR secondary; threshold comparison >=; overlap must be zero",
+  "parameters": {
+    "objective": "binary:logistic",
+    "n_estimators": 220,
+    "learning_rate": 0.05,
+    "max_depth": 4,
+    "min_child_weight": 80,
+    "subsample": 0.85,
+    "colsample_bytree": 0.85,
+    "random_state": 42,
+    "tree_method": "hist",
+    "device": "cpu",
+    "n_jobs": 1,
+    "verbosity": 0,
+    "booster": "gbtree",
+    "max_bin": 256,
+    "reg_alpha": 0.0,
+    "reg_lambda": 1.0,
+    "gamma": 0.0,
+    "max_delta_step": 0.0,
+    "scale_pos_weight": 1.0,
+    "base_score": null,
+    "colsample_bylevel": 1.0,
+    "colsample_bynode": 1.0,
+    "grow_policy": "depthwise",
+    "max_leaves": 0,
+    "sampling_method": "uniform",
+    "validate_parameters": true
+  },
+  "xgboost_version": "3.2.0",
+  "sample_weight": "subset N / (2 * subset class count); both classes required",
+  "fit_input": "31 named float32 columns in frozen order; int8 C1 target; float64 weights; no eval_set, calibration, early stopping, warm start or search",
+  "base_score": "XGBoost 3.2.0 automatic intercept from the fold training subset only",
+  "seed": 42,
+  "model_count": 3,
+  "train_window_months": 18,
+  "folds": [
+    [
+      "2018_2020",
+      "2018-01-01",
+      "2021-01-01"
+    ],
+    [
+      "2021_2022",
+      "2021-01-01",
+      "2023-01-01"
+    ],
+    [
+      "2023_2024",
+      "2023-01-01",
+      "2025-01-01"
+    ]
+  ],
+  "features": [
+    "M1_RSI",
+    "ATR",
+    "MACD_HIST",
+    "BB_WIDTH",
+    "BIAS_20",
+    "BODY_PCT",
+    "ROC_5",
+    "VOLA_RATIO",
+    "HOUR_SIN",
+    "HOUR_COS",
+    "DAY_OF_WEEK",
+    "Daily_TREND",
+    "H12_TREND",
+    "H1_TREND",
+    "H2_TREND",
+    "H3_TREND",
+    "H4_TREND",
+    "H6_TREND",
+    "H8_TREND",
+    "M10_TREND",
+    "M12_TREND",
+    "M15_TREND",
+    "M20_TREND",
+    "M2_TREND",
+    "M30_TREND",
+    "M3_TREND",
+    "M4_TREND",
+    "M5_TREND",
+    "M6_TREND",
+    "Monthly_TREND",
+    "Weekly_TREND"
+  ],
+  "blocks": {
+    "fold1_train": [
+      530218,
+      "6a7405a13f30c54e6863cf6e80ea1b2e9ee93a90902e5edd37fe4305d471aab6"
+    ],
+    "fold1_score": [
+      1058080,
+      "47086d0837f09e86d8874874de302e96e7573efb29236f24720f4a14e0e33c94"
+    ],
+    "fold2_train": [
+      532563,
+      "691d8d2b01c3829f010ab559b1daa07c1899f8425a5b8b23b3007bf58467df44"
+    ],
+    "fold2_score": [
+      708197,
+      "1fc6500ff642dbf7172328f71f13f38712d11f6c0ce873c38524745710c608b8"
+    ],
+    "fold3_train": [
+      533580,
+      "3cf7f68ba2cf994d23d4db97c2e7ec10b2ed772245e3d4b776272ed20ee06b1b"
+    ],
+    "fold3_score": [
+      708020,
+      "1451d2069b1d087dc8b4bb7b3ed5840a7b2c03d4adfb548eadc611ed07803449"
+    ]
+  },
+  "feature_matrix_sha256": {
+    "fold1_train": "14999ac58c67bff25d7977d63a80f6069dde0256752a20a9dee936c022db69cb",
+    "fold1_score": "3c6eb5d77182428306f059e9a7d7607d1a4b5de2e5cc5217d9099e74c85e0316",
+    "fold2_train": "c921f11aaa44799dc798a1b54d6a745bb636b678be1212d17ba33e046acc0ac4",
+    "fold2_score": "fd77cdad26894c813e9fba0deb77ed1a5fdcaaffceaad45488da9a2015f11c36",
+    "fold3_train": "64124692d42cdb077fdfff1d5cf9df26582c025ed738608168b02cfa1cb42470",
+    "fold3_score": "2b55883b3410e9613983b8cebfbe1e2ea7a47daa33f44a7df535c0a5b083e717"
+  },
+  "c1_target_sha256": {
+    "fold1_train": "d9bed87a073fd93c048b5a1ab8f0f7049f1a1bb8f3ff46f48a102c0b6763bbd3",
+    "fold2_train": "ff55356e8bdf1cb2cd5add50690156178ff32bc17f666f2103c8f51397fb3a12",
+    "fold3_train": "cd05d3647cd88a2fbd2b89fa3362ed5e2f9f13cbd611dee436f0e03e4a054259"
+  },
+  "reference_run": "20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1",
+  "reference_finalized_sha256": "592b68e98c1a0e9dd6f5e5af1d6aeadbca86df5072f2cbe85a064adf06c5ebfe",
+  "c1_run": "20260903T071729Z_gemini_execution_aligned_label_v1",
+  "timestamps_run": "20260905T171629Z_gemini_macro_event_integration_foundation_v1",
+  "source_hashes": {
+    "training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/training_script.py": "9e436e4fe723eb8ad354f5f27a342b60d051c5c71d533f523871b381fc7012c6",
+    "barrier_research_suite.py": "e9b0f84e0aedff532b0d24c5845191d724a7dc44ade15d928fe0a24b7c1341af",
+    "drl_trading_v2.py": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+    "drl_train_candidate.py": "8452fe54921dad32d9af0f77b203b78d67bed765eb4e832f39f2c8ed171fd762",
+    "barrier_final_train.py": "a221bda6c61fa89bde0592453de7a8ac84efb80f06b74e7686b872484e2edee5",
+    "barrier_classifier_strategy.py": "a743d15b90321e4d933e4657abd185922bb280b36ec48612b6f1688afb909174",
+    "strategy_grid_search.py": "ad0c49c9a605718b90df49d0afb565b66af7bd3f3e9e68153dbd386be6663403",
+    "gold_gemini_execution_semantics_v1.py": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+    "gold_recent_walk_forward.py": "cf14bbd97e88632ae53cadaabf5e3341f844f5096e8dd0493f8f96a4bf810334",
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_gemini_incumbent_robustness_v1.py": "adb83d97bc4bf7a44140da30f14b469425de3266b93544c6dd43e92f4ed0ae5f",
+    "gold_generation11_execution_aligned.py": "adabda7a5ed4fdd4a7c12a5f95e83835df191da102639295510cf93ebf0344fe",
+    "gold_short_rule_research.py": "fdf9262784a60a3a284b06a4fdc00b90ffe0a01d926fc552c562d7936015f7bb",
+    "gold_regime_experts_walk_forward.py": "905c5a2397e8cabc2b1d538c91ed60d97f73cb4b55578af95b996d065fc51694",
+    "gold_long_model_optimization.py": "3c91e18776f38822dd0b5ebc8e031718019aeb318888e2dcee09c83e0d89ef75",
+    "gold_long_recent_walk_forward.py": "575b56a8a6d526a0102904dc873bac3a70d7569ac09c656720bfd76def768280",
+    "gold_regime_experts_iterative.py": "914a1404a99a7a52def92d0fe3bca35ba9da6a1864d156368aec2b9a5b124a21",
+    "gold_rolling_champion.py": "1bfe529c44ca59019cc864a998ec128931c121d577c43bc3befa7e743ba560da",
+    "gold_generation8_residual_walk_forward.py": "470b0085b820d6ef53f80cd149fdc3bc5afcf2a3996207c68af5363df3a42f83",
+    "gold_expected_r_walk_forward.py": "7cd87b364644ab88441055662e18bc1dbe19ef4fb5ee9ebfdef121aa2fe37e2e",
+    "gold_expected_r_champion.py": "ae91fed8968b0d29b963d51ccf9b5f04eff63e4847f4bfbd50989b4b10c74ff9",
+    "gold_gemini_core_gate_v1.py": "ae31c09af94466bf5deeafae4800b2e3a580dfeb31564b1123be69887f57932c"
+  },
+  "b0_models": [
+    {
+      "candidate_id": "B0_31_technical",
+      "fold": "2018_2020",
+      "path": "models/B0_31_technical_2018_2020_xgb.json",
+      "sha256": "5eca73587d840b91117f096eaefe84c1538fb2920d7840bb1ec374dd170ea914"
+    },
+    {
+      "candidate_id": "B0_31_technical",
+      "fold": "2021_2022",
+      "path": "models/B0_31_technical_2021_2022_xgb.json",
+      "sha256": "744026a3a6e17f2465cc3850601f8efd65b75cdc1b35fa5e1572aa82f0012dc7"
+    },
+    {
+      "candidate_id": "B0_31_technical",
+      "fold": "2023_2024",
+      "path": "models/B0_31_technical_2023_2024_xgb.json",
+      "sha256": "67ca6ce4dd095ee3b314eeddb60bf78fc9081ee35d85bb88efc21dbc98793113"
+    }
+  ],
+  "baseline": {
+    "trades": 689,
+    "realized_wr": 0.5660377358490566,
+    "pf": 0.8247098331219882,
+    "mean_r": -0.07690539315994348,
+    "pnl_r": -52.98781588720106,
+    "cost_stress_pf": 0.7838186120438296,
+    "wins": 390,
+    "losses": 299,
+    "max_dd_r": -59.57958015890608,
+    "trades_per_day": 0.26945639421196715
+  },
+  "baseline_abs_tolerance": 1e-12,
+  "execution": "exact frozen S5; only raw entry gate and its episode identifiers change",
+  "execution_state": "continuous across combined chronological score folds, separately for each candidate",
+  "frozen_execution": [
+    "spread/cost",
+    "RSI",
+    "session",
+    "cooldown",
+    "position occupancy",
+    "TP/SL",
+    "timeout",
+    "risk sizing",
+    "same-bar semantics"
+  ],
+  "guardrails": {
+    "pooled": {
+      "pf": 0.8,
+      "mean_r": -0.10690539315994348,
+      "cost_stress_pf": 0.75
+    },
+    "fold": {
+      "trades": 10,
+      "realized_wr": 0.45,
+      "pf": 0.7
+    }
+  },
+  "interesting": {
+    "realized_wr_strict_min": 0.5660377358490566,
+    "trades_per_day_strict_min": 0.26945639421196715
+  },
+  "strong": {
+    "realized_wr_min": 0.58,
+    "trades_per_day_min": 0.4
+  },
+  "target": {
+    "realized_wr_min": 0.6,
+    "trades_per_day_min": 0.5
+  },
+  "all_assessments_require_guardrails": true,
+  "selected_candidate": null,
+  "production_promotion": false,
+  "adaptive_search": false,
+  "classification": "historical_development_only",
+  "diagnostics": {
+    "wins": "net_r > 0; zero is a loss",
+    "signal_counts": "raw model gates before any S5 blocking, pooled and per score fold",
+    "secondary_distribution": "all score rows and separately B0 < 0.75 eligible rows, pooled and per fold; float64 reductions; population std ddof=0; linear percentiles",
+    "zero_secondary_trades_wr": null,
+    "days": "full calendar score-window days; pooled sum; trades assigned by entry fold"
+  },
+  "validator": "one shot; independent reconstruction, deterministic refit once per fold, exact saved model/prediction and S5 replay verification; no tuning or retries"
+}
