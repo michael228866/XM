@@ -1,0 +1,34 @@
+{
+  "overall": "PASS",
+  "failed_checks": [],
+  "candidate_count": 8,
+  "economic_frontier": [
+    "A_NO_LONG_HTF_CONTROL"
+  ],
+  "pareto_frontier": [
+    "A_NO_LONG_HTF_CONTROL",
+    "L0_CURRENT_RAW"
+  ],
+  "economic_annotations": {
+    "A_NO_LONG_HTF_CONTROL": {
+      "profit_factor": 0.8521940468784924,
+      "mean_r": -0.06408993365369865,
+      "pnl_r": -50.438777785460836,
+      "max_drawdown_r": -52.34913835149044,
+      "stress_pf": 0.8093582289789337
+    },
+    "L0_CURRENT_RAW": {
+      "profit_factor": 0.8105620665856805,
+      "mean_r": -0.08629057821582582,
+      "pnl_r": -502.3837463725379,
+      "max_drawdown_r": -509.3933350891257,
+      "stress_pf": 0.7665485671570234
+    }
+  },
+  "selected_candidate": null,
+  "research_result": "NO_IMPROVEMENT_FOUND",
+  "tie_break": [],
+  "holdout_used": false,
+  "production_changed": false,
+  "production_promoted": false
+}

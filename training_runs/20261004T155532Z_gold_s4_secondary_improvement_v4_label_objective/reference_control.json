@@ -1,0 +1,163 @@
+{
+  "status": "PASS",
+  "candidate_id": "A_NO_LONG_HTF_CONTROL",
+  "config": {
+    "candidate_id": "A_NO_LONG_HTF_CONTROL",
+    "family": "CONTROL",
+    "features": [
+      "M1_RSI",
+      "ATR",
+      "MACD_HIST",
+      "BB_WIDTH",
+      "BIAS_20",
+      "BODY_PCT",
+      "ROC_5",
+      "VOLA_RATIO",
+      "HOUR_SIN",
+      "HOUR_COS",
+      "DAY_OF_WEEK",
+      "Daily_TREND",
+      "H1_TREND",
+      "H4_TREND",
+      "M10_TREND",
+      "M12_TREND",
+      "M15_TREND",
+      "M20_TREND",
+      "M2_TREND",
+      "M30_TREND",
+      "M3_TREND",
+      "M4_TREND",
+      "M5_TREND",
+      "M6_TREND"
+    ],
+    "parameters": {
+      "objective": "binary:logistic",
+      "n_estimators": 220,
+      "learning_rate": 0.05,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "random_state": 42,
+      "tree_method": "hist",
+      "device": "cpu",
+      "n_jobs": 1,
+      "verbosity": 0,
+      "booster": "gbtree",
+      "max_bin": 256,
+      "reg_alpha": 0.0,
+      "reg_lambda": 1.0,
+      "gamma": 0.0,
+      "max_delta_step": 0.0,
+      "scale_pos_weight": 1.0,
+      "base_score": null,
+      "colsample_bylevel": 1.0,
+      "colsample_bynode": 1.0,
+      "grow_policy": "depthwise",
+      "max_leaves": 0,
+      "sampling_method": "uniform",
+      "validate_parameters": true
+    },
+    "threshold": 0.75,
+    "calibration": "RAW",
+    "weighting": "BALANCED",
+    "positive_weight_multiplier": 1.0,
+    "seed": 42,
+    "reuse_reference_model": true,
+    "label_id": "L0_CURRENT",
+    "label_formula": "C1_NET_R > 0",
+    "objective_type": "BINARY",
+    "model_objective": "binary:logistic",
+    "feature_set_id": "A_NO_LONG_HTF",
+    "threshold_policy": "FROZEN_REFERENCE_075",
+    "threshold_grid": [
+      0.75
+    ],
+    "class_weight_policy": "FROZEN_REFERENCE_BALANCED",
+    "development_selection_rule": "maximize balanced accuracy; then recall; then higher threshold; development labels only"
+  },
+  "models": [
+    {
+      "fold_number": 1,
+      "path": "models/A_NO_LONG_HTF_CONTROL/fold1.json",
+      "sha256": "a22bcf988f8851985a59ce0c8dfa255a2eabb5802129e8d8043cd82733c79ee6"
+    },
+    {
+      "fold_number": 2,
+      "path": "models/A_NO_LONG_HTF_CONTROL/fold2.json",
+      "sha256": "42a46f0a383f3480c10a1089484799c90a3b778ac918619d33fc31cc50b8b57d"
+    },
+    {
+      "fold_number": 3,
+      "path": "models/A_NO_LONG_HTF_CONTROL/fold3.json",
+      "sha256": "e9bd52886d2297efe27232d3ef30a8260ad11d74d425976e10c11f135b0ccf54"
+    }
+  ],
+  "pooled": {
+    "trades": 787,
+    "wins": 450,
+    "losses": 337,
+    "realized_win_rate": 0.5717916137229987,
+    "trades_per_day": 0.30778255768478685,
+    "profit_factor": 0.8521940468784924,
+    "mean_r": -0.06408993365369865,
+    "pnl_r": -50.438777785460836,
+    "max_drawdown_r": -52.34913835149044,
+    "stress_pf": 0.8093582289789337
+  },
+  "fold_metrics": [
+    {
+      "fold": "2018_2020",
+      "trades": 535,
+      "wins": 308,
+      "losses": 227,
+      "realized_win_rate": 0.5757009345794393,
+      "trades_per_day": 0.48813868613138683,
+      "profit_factor": 0.8553103222882102,
+      "mean_r": -0.06211510327558036,
+      "pnl_r": -33.23158025243549,
+      "max_drawdown_r": -47.40229251522064,
+      "stress_pf": 0.812128184209297
+    },
+    {
+      "fold": "2021_2022",
+      "trades": 25,
+      "wins": 15,
+      "losses": 10,
+      "realized_win_rate": 0.6,
+      "trades_per_day": 0.03424657534246575,
+      "profit_factor": 0.9376830017500809,
+      "mean_r": -0.025420217838031015,
+      "pnl_r": -0.6355054459507754,
+      "max_drawdown_r": -6.218159898164396,
+      "stress_pf": 0.8877008178288167
+    },
+    {
+      "fold": "2023_2024",
+      "trades": 227,
+      "wins": 127,
+      "losses": 100,
+      "realized_win_rate": 0.5594713656387665,
+      "trades_per_day": 0.31053351573187415,
+      "profit_factor": 0.8365342900939929,
+      "mean_r": -0.07300304884173818,
+      "pnl_r": -16.571692087074567,
+      "max_drawdown_r": -17.401555595935147,
+      "stress_pf": 0.7952053444476296
+    }
+  ],
+  "gate": {
+    "safety_pass": true,
+    "interesting": false,
+    "gate": "NONE"
+  },
+  "economic_milestones": {
+    "PF_090": false,
+    "PF_100": false,
+    "MEAN_R_NONNEGATIVE": false,
+    "PNL_R_POSITIVE": false
+  },
+  "economic_status": "NEGATIVE_EXPECTANCY",
+  "ledger_path": "ledgers/A_NO_LONG_HTF_CONTROL.json",
+  "ledger_sha256": "f5f85668ca4200b3427aa213c977702165bca89a350d6fe3eb6b7c67b5d126d6"
+}

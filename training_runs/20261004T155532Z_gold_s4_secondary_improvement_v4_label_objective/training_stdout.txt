@@ -1,0 +1,39 @@
+[3/10] 驗證 A_NO_LONG_HTF Reference
+[4/10] Label Pipeline Audit Verification
+[5/10] Candidate Label Generation
+Loaded Daily
+Loaded H12
+Loaded H1
+Loaded H2
+Loaded H3
+Loaded H4
+Loaded H6
+Loaded H8
+Loaded M10
+Loaded M12
+Loaded M15
+Loaded M1
+Loaded M20
+Loaded M2
+Loaded M30
+Loaded M3
+Loaded M4
+Loaded M5
+Loaded M6
+Loaded Monthly
+Loaded Weekly
+[6/10] 執行 v4 Candidate Model Training: L0_CURRENT_RAW
+[7/10] Historical Validation: L0_CURRENT_RAW
+[6/10] 執行 v4 Candidate Model Training: L1_R_GE_025_RAW
+[7/10] Historical Validation: L1_R_GE_025_RAW
+[6/10] 執行 v4 Candidate Model Training: L1_R_GE_050_RAW
+[7/10] Historical Validation: L1_R_GE_050_RAW
+[6/10] 執行 v4 Candidate Model Training: L2_NONLOSS_GT_M025_RAW
+[7/10] Historical Validation: L2_NONLOSS_GT_M025_RAW
+[6/10] 執行 v4 Candidate Model Training: L2_NONLOSS_GT_M050_RAW
+[7/10] Historical Validation: L2_NONLOSS_GT_M050_RAW
+[6/10] 執行 v4 Candidate Model Training: L0_CURRENT_ISO
+[7/10] Historical Validation: L0_CURRENT_ISO
+[6/10] 執行 v4 Candidate Model Training: L1_R025_ISO
+[7/10] Historical Validation: L1_R025_ISO
+[8/10] Safety Gates / Pareto / Selection

@@ -1,0 +1,13 @@
+{
+  "run_id": "20261004T155532Z_gold_s4_secondary_improvement_v4_label_objective",
+  "execution_status": "PASS",
+  "final_status": "PASS",
+  "research_result": "NO_IMPROVEMENT_FOUND",
+  "candidate_gate": "NONE",
+  "economic_status": "NEGATIVE_EXPECTANCY",
+  "candidate": null,
+  "production_changed": false,
+  "production_promoted": false,
+  "holdout_used": false,
+  "failed_checks": []
+}
