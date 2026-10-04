@@ -1,0 +1,47 @@
+{
+  "overall": "PASS",
+  "scope": "SOURCE_AND_PROVENANCE_METADATA_ONLY",
+  "CURRENT_LABEL_NAME": "C1_EXECUTION_ALIGNED_STANDALONE_S5_NET_R_GT_0",
+  "CURRENT_LABEL_FORMULA": "int(C1_MATURE and C1_NET_R > 0); nonpositive -> 0; only mature samples eligible",
+  "FEATURE_TIMESTAMP": "31 source features shifted one M1 row; HTF trend shifted before join; A_NO_LONG_HTF selects exact 24 columns. feature_cutoff_time=decision_time is a conservative upper bound, not an invented observed bar timestamp.",
+  "DECISION_TIMESTAMP": "TIME_DT of next executable M1 bar; features originate from completed earlier bar",
+  "CANDIDATE_ENTRY_TIMESTAMP": "current decision row OPEN",
+  "LABEL_LOOKAHEAD": "entry bar HIGH/LOW onward; stop-first; timeout at first available OPEN at >=90 wall-clock minutes; existing loop checks offsets 0..90",
+  "CURRENT_R_FORMULA": "(gross_price - (effective_spread_points + BASE_EXTRA_COST_POINTS)*POINT)/(SL_distance + effective_spread_points*POINT)",
+  "LABEL_DEPENDENCIES": [
+    "TIME_DT",
+    "OPEN",
+    "HIGH",
+    "LOW",
+    "ATR",
+    "SPREAD"
+  ],
+  "EXECUTION_OUTCOME_DEPENDENCIES": [
+    "C1_NET_R",
+    "C1_MATURE",
+    "C1_MATURITY_NS",
+    "C1_EXIT_INDEX",
+    "C1_EXIT_TYPE"
+  ],
+  "LEAKAGE_BOUNDARY": "Features <= decision_time; future outcome columns labels-only. Train and development outcomes plus legacy 240-row maturity strictly before next partition start; no validation labels for fitting/calibration/threshold selection.",
+  "availability": "v1 fold NPZ retains binary C1 target and maturity but not continuous training R. Existing exact-export manifest and frozen C1 source support deterministic USER-only regeneration; bind feature matrices, timestamps, targets and maturities back to v1 evidence before accepting derived R. No new feeds or approximated path reconstruction.",
+  "raw_dataset_manifest": "training_runs/20260929T131155Z_gold_s4_secondary_improvement_v1/training_dataset_manifest.json",
+  "original_label_source": "training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/training_script.py",
+  "source_bindings": {
+    "gold_gemini_execution_aligned_label_v1.py": "9e436e4fe723eb8ad354f5f27a342b60d051c5c71d533f523871b381fc7012c6",
+    "training_runs/20260903T071729Z_gemini_execution_aligned_label_v1/training_script.py": "9e436e4fe723eb8ad354f5f27a342b60d051c5c71d533f523871b381fc7012c6",
+    "training_runs/20260913T141817Z_gemini_cftc_gold_cot_b0_b1_v1/training_script.py": "b7e38ba7a82d661d9236368d5ad6f6510a53698a35d72a5435fa68dac1efc82e",
+    "gold_s4_secondary_improvement_v1.py": "983d3536d8277186be3d6e9ad8cf8c07ac718c9d2b1870d49880bf2001a94b66",
+    "gold_s4_secondary_improvement_v3_support.py": "35a65f9719fb788134b34fcc4d5b0cf143dbf5d9ce675d75670b36da15625974",
+    "gold_gemini_execution_semantics_v1.py": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+    "barrier_final_train.py": "a221bda6c61fa89bde0592453de7a8ac84efb80f06b74e7686b872484e2edee5",
+    "barrier_classifier_strategy.py": "a743d15b90321e4d933e4657abd185922bb280b36ec48612b6f1688afb909174",
+    "barrier_research_suite.py": "e9b0f84e0aedff532b0d24c5845191d724a7dc44ade15d928fe0a24b7c1341af",
+    "drl_trading_v2.py": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+    "training_runs/20260929T131155Z_gold_s4_secondary_improvement_v1/training_dataset_manifest.json": "5948bdb7437fdf53395b47e93a5dd33d3d1055e85dba7745cb5f13f564505fc9"
+  },
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_VALIDATION_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false
+}

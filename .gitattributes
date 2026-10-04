@@ -194,3 +194,33 @@ test_gold_s4_secondary_improvement_v3.py -text whitespace=cr-at-eol
 certify_gold_s4_secondary_improvement_v3.py -text whitespace=cr-at-eol
 
 gold_s4_improvement_v3_approval.json -text whitespace=cr-at-eol
+
+gold_s4_secondary_improvement_v4_label_objective.py -text whitespace=cr-at-eol
+
+gold_s4_secondary_improvement_v4_label_objective_config.json -text whitespace=cr-at-eol
+
+gold_s4_secondary_improvement_v4_label_objective_search_space.json -text whitespace=cr-at-eol
+
+gold_s4_secondary_improvement_v4_label_objective_support.py -text whitespace=cr-at-eol
+
+gold_s4_secondary_improvement_v4_label_objective_launcher.py -text whitespace=cr-at-eol
+
+gold_s4_v4_label_definitions.py -text whitespace=cr-at-eol
+
+gold_s4_v4_label_pipeline_audit.py -text whitespace=cr-at-eol
+
+gold_s4_v4_label_pipeline_audit.json -text whitespace=cr-at-eol
+
+gold_s4_a_no_long_htf_reference_v2.json -text whitespace=cr-at-eol
+
+validate_gold_s4_secondary_improvement_v4_label_objective_run.py -text whitespace=cr-at-eol
+
+manual_training_policy_v4.json -text whitespace=cr-at-eol
+
+README_GOLD_S4_SECONDARY_IMPROVEMENT_V4.md -text whitespace=cr-at-eol
+
+test_gold_s4_secondary_improvement_v4_label_objective.py -text whitespace=cr-at-eol
+
+certify_gold_s4_secondary_improvement_v4_label_objective.py -text whitespace=cr-at-eol
+
+gold_s4_improvement_v4_approval.json -text whitespace=cr-at-eol
