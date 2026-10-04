@@ -1,0 +1,9 @@
+{
+  "formal_run_status": "PASS",
+  "validator_status": "PASS",
+  "total_predeclared_candidates": 23,
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_VALIDATION_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false
+}

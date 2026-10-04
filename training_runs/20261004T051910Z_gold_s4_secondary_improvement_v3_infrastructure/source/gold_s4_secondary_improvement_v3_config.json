@@ -1,0 +1,98 @@
+{
+  "workflow_version": "GOLD_S4_SECONDARY_IMPROVEMENT_V3",
+  "experiment": "gold_s4_secondary_improvement_v3",
+  "reference_binding": "gold_s4_a_no_long_htf_reference_v1.json",
+  "search_space": "gold_s4_secondary_improvement_v3_search_space.json",
+  "policy": "manual_training_policy_v3.json",
+  "folds": [
+    [
+      "2018_2020",
+      "2018-01-01",
+      "2021-01-01"
+    ],
+    [
+      "2021_2022",
+      "2021-01-01",
+      "2023-01-01"
+    ],
+    [
+      "2023_2024",
+      "2023-01-01",
+      "2025-01-01"
+    ]
+  ],
+  "input_features": [
+    "M1_RSI",
+    "ATR",
+    "MACD_HIST",
+    "BB_WIDTH",
+    "BIAS_20",
+    "BODY_PCT",
+    "ROC_5",
+    "VOLA_RATIO",
+    "HOUR_SIN",
+    "HOUR_COS",
+    "DAY_OF_WEEK",
+    "Daily_TREND",
+    "H12_TREND",
+    "H1_TREND",
+    "H2_TREND",
+    "H3_TREND",
+    "H4_TREND",
+    "H6_TREND",
+    "H8_TREND",
+    "M10_TREND",
+    "M12_TREND",
+    "M15_TREND",
+    "M20_TREND",
+    "M2_TREND",
+    "M30_TREND",
+    "M3_TREND",
+    "M4_TREND",
+    "M5_TREND",
+    "M6_TREND",
+    "Monthly_TREND",
+    "Weekly_TREND"
+  ],
+  "discovery_spec": "execution_spec_gold_independent_secondary_classifier_v1.json",
+  "protected_sha256": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "numeric_tolerance": 1e-12,
+  "calibration_months": 3,
+  "minimum_calibration_samples": 2000,
+  "minimum_calibration_class_samples": 100,
+  "candidate_count": 23,
+  "calibration_insufficient_action": "ABORT_NO_DYNAMIC_REMOVAL",
+  "historical_input_mode": "SEALED_V1_INPUTS_V2_A_NO_LONG_HTF_MODELS",
+  "source_bindings": {
+    "execution_spec_gold_independent_secondary_classifier_v1.json": "3b62782d72ef5add4d13ae304338bbb7070be05864c8dc35212a3d5a2d175064",
+    "gold_gemini_execution_semantics_v1.py": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+    "validate_gold_s4_secondary_improvement_run_v1.py": "ae353354cdf7a7301ca4dbe849a5568e9fd8aaf74387709761979d50eeac130d",
+    "gold_s4_secondary_improvement_logic_v1.py": "f46ff26b9cb700a3c6db3ddaad08a8d06c55ea9b8b42aa4228465242bb0a8a45",
+    "training_holdout_guard_v1.py": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+    "gold_manual_training_workflow_v1.py": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+    "training_run_history.py": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+    "gold_s4_a_no_long_htf_reference_v1.json": "54a6ca5358f76a16a114016afdd2aef04f8d02c2e40f0dad522711e3a12069eb",
+    "gold_s4_secondary_improvement_v3_search_space.json": "ac3d3a3ba2cff6cae2dd313559aa0c38c078ad35ff71c1b045b6329cdb1d9891",
+    "manual_training_policy_v3.json": "45ba5cb68619d644a48cc8f4f53d6419dbf79885e1e0e71da44a9e39f9292c21"
+  },
+  "historical_only": true,
+  "production_promoted": false,
+  "holdout_used": false,
+  "reference_metrics": {
+    "trades": 787,
+    "wins": 450,
+    "losses": 337,
+    "realized_win_rate": 0.5717916137229987,
+    "trades_per_day": 0.30778255768478685,
+    "profit_factor": 0.8521940468784924,
+    "mean_r": -0.06408993365369865,
+    "pnl_r": -50.438777785460836,
+    "max_drawdown_r": -52.34913835149044,
+    "stress_pf": 0.8093582289789337
+  },
+  "reference_config_sha256": "ea7c3ba4962205733bfdcff7a2b66aa4caf90d7a31b52b50f5a7b80db1d5a168",
+  "reference_feature_set_sha256": "40c97e4012e486aa2712685b219753e5b615cc9ec91c18188d6a8a4c2fa6fad1"
+}

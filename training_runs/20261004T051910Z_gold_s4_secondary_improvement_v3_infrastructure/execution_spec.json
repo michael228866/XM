@@ -1,0 +1,229 @@
+{
+  "kind": "INFRASTRUCTURE_ONLY",
+  "source_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+  "source_files": [
+    "CHECK_STATUS.bat",
+    "README_GOLD_S4_SECONDARY_IMPROVEMENT_V3.md",
+    "RUN_TRAINING.bat",
+    "certify_gold_s4_secondary_improvement_v3.py",
+    "execution_spec_gold_independent_secondary_classifier_v1.json",
+    "gold_gemini_execution_semantics_v1.py",
+    "gold_manual_s4_train_validate_v1.py",
+    "gold_manual_s4_training_data_v1.py",
+    "gold_manual_training_workflow_v1.py",
+    "gold_s4_a_no_long_htf_reference_v1.json",
+    "gold_s4_secondary_improvement_logic_v1.py",
+    "gold_s4_secondary_improvement_v3.py",
+    "gold_s4_secondary_improvement_v3_config.json",
+    "gold_s4_secondary_improvement_v3_launcher.py",
+    "gold_s4_secondary_improvement_v3_search_space.json",
+    "gold_s4_secondary_improvement_v3_support.py",
+    "manual_training_launcher_v1.py",
+    "manual_training_policy_v1.json",
+    "manual_training_policy_v3.json",
+    "test_gold_s4_secondary_improvement_v3.py",
+    "training_holdout_guard_v1.py",
+    "training_run_history.py",
+    "validate_gold_s4_secondary_improvement_run_v1.py",
+    "validate_gold_s4_secondary_improvement_v3_run.py"
+  ],
+  "source_bindings": [
+    {
+      "path": "CHECK_STATUS.bat",
+      "raw_file_sha256": "b253cdfda4b10517491c33f925fd01778a070eb937b5c984788d3162860df114",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "b253cdfda4b10517491c33f925fd01778a070eb937b5c984788d3162860df114",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "README_GOLD_S4_SECONDARY_IMPROVEMENT_V3.md",
+      "raw_file_sha256": "5b85ed88294ab827e419994d8e4ea3d61d82e309976c5243dccc9839001c1f61",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "5b85ed88294ab827e419994d8e4ea3d61d82e309976c5243dccc9839001c1f61",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "RUN_TRAINING.bat",
+      "raw_file_sha256": "6b1e6f3c6300c0027e749f46ed770407fefecc0a492eb5129e1b43de31b282dd",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "6b1e6f3c6300c0027e749f46ed770407fefecc0a492eb5129e1b43de31b282dd",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "certify_gold_s4_secondary_improvement_v3.py",
+      "raw_file_sha256": "4951e98c00ceac8b3710900c72110172b4556593ea4d0088e5b9fe7b3bf5cd6f",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "4951e98c00ceac8b3710900c72110172b4556593ea4d0088e5b9fe7b3bf5cd6f",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "execution_spec_gold_independent_secondary_classifier_v1.json",
+      "raw_file_sha256": "3b62782d72ef5add4d13ae304338bbb7070be05864c8dc35212a3d5a2d175064",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "d6bda09ee19ed3b87e41e3e121f9e2438a600c808bc9e36c141ecc9dadd8bfa4",
+      "line_ending_mode": "CRLF_TO_LF",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_gemini_execution_semantics_v1.py",
+      "raw_file_sha256": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_manual_s4_train_validate_v1.py",
+      "raw_file_sha256": "0b7120ca753b3c23088238785a3f714e057b8975e6c69a885bffa127139c91dd",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "0b7120ca753b3c23088238785a3f714e057b8975e6c69a885bffa127139c91dd",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_manual_s4_training_data_v1.py",
+      "raw_file_sha256": "c02e8d5f4ece873b6fe47cbeeb222ec0a5b027713c68e28f48e4a99366144895",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "c02e8d5f4ece873b6fe47cbeeb222ec0a5b027713c68e28f48e4a99366144895",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_manual_training_workflow_v1.py",
+      "raw_file_sha256": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_a_no_long_htf_reference_v1.json",
+      "raw_file_sha256": "54a6ca5358f76a16a114016afdd2aef04f8d02c2e40f0dad522711e3a12069eb",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "54a6ca5358f76a16a114016afdd2aef04f8d02c2e40f0dad522711e3a12069eb",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_secondary_improvement_logic_v1.py",
+      "raw_file_sha256": "f46ff26b9cb700a3c6db3ddaad08a8d06c55ea9b8b42aa4228465242bb0a8a45",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "f46ff26b9cb700a3c6db3ddaad08a8d06c55ea9b8b42aa4228465242bb0a8a45",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_secondary_improvement_v3.py",
+      "raw_file_sha256": "784451f3f25ccc020f4be071df3b051f76074cc6e9dff1530817d0bc6baabb10",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "784451f3f25ccc020f4be071df3b051f76074cc6e9dff1530817d0bc6baabb10",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_secondary_improvement_v3_config.json",
+      "raw_file_sha256": "4784e08a398e9c363679fa8975b75a1e2199a2002a52bcee0a3093f6c46705f8",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "4784e08a398e9c363679fa8975b75a1e2199a2002a52bcee0a3093f6c46705f8",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_secondary_improvement_v3_launcher.py",
+      "raw_file_sha256": "1c8dd655bbef575e49ae24ca01499ae343144a819729de8f88df63a18d006855",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "1c8dd655bbef575e49ae24ca01499ae343144a819729de8f88df63a18d006855",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_secondary_improvement_v3_search_space.json",
+      "raw_file_sha256": "ac3d3a3ba2cff6cae2dd313559aa0c38c078ad35ff71c1b045b6329cdb1d9891",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "ac3d3a3ba2cff6cae2dd313559aa0c38c078ad35ff71c1b045b6329cdb1d9891",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_secondary_improvement_v3_support.py",
+      "raw_file_sha256": "35a65f9719fb788134b34fcc4d5b0cf143dbf5d9ce675d75670b36da15625974",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "35a65f9719fb788134b34fcc4d5b0cf143dbf5d9ce675d75670b36da15625974",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "manual_training_launcher_v1.py",
+      "raw_file_sha256": "b45483d02482aaf78e4411cb9842d6f31c8da68292443d825ccf77f69d072d2e",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "b45483d02482aaf78e4411cb9842d6f31c8da68292443d825ccf77f69d072d2e",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "manual_training_policy_v1.json",
+      "raw_file_sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "manual_training_policy_v3.json",
+      "raw_file_sha256": "45ba5cb68619d644a48cc8f4f53d6419dbf79885e1e0e71da44a9e39f9292c21",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "45ba5cb68619d644a48cc8f4f53d6419dbf79885e1e0e71da44a9e39f9292c21",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "test_gold_s4_secondary_improvement_v3.py",
+      "raw_file_sha256": "0d2540e8976207844d5e33bbe0f0bcd56cb7c3d49f098e729ee01a7d3a22cf50",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "0d2540e8976207844d5e33bbe0f0bcd56cb7c3d49f098e729ee01a7d3a22cf50",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "training_holdout_guard_v1.py",
+      "raw_file_sha256": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "training_run_history.py",
+      "raw_file_sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "validate_gold_s4_secondary_improvement_run_v1.py",
+      "raw_file_sha256": "ae353354cdf7a7301ca4dbe849a5568e9fd8aaf74387709761979d50eeac130d",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "ae353354cdf7a7301ca4dbe849a5568e9fd8aaf74387709761979d50eeac130d",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "validate_gold_s4_secondary_improvement_v3_run.py",
+      "raw_file_sha256": "6a535de485603b3cdefc9f57b969a195d554dab489b1067a56856e3412fced2f",
+      "git_commit": "51dd910beb355174a80964bd8a5b33f49cdf722d",
+      "git_blob_sha256": "6a535de485603b3cdefc9f57b969a195d554dab489b1067a56856e3412fced2f",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    }
+  ],
+  "real_workflow_invoked": false,
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_VALIDATION_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false
+}
