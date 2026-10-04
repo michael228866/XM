@@ -1,0 +1,27 @@
+{
+  "overall": "PASS",
+  "policy": {
+    "schema_version": "GOLD_S4_V2_EVENT_CHAIN_POLICY_V1",
+    "research_chain_scope": [
+      "space_frozen",
+      "reference_pass",
+      "candidate_begin",
+      "candidate_result",
+      "research_complete"
+    ],
+    "validation_chain_scope": "Separate validator_attempt.json and validator.json artifacts; not research-chain events",
+    "archive_chain_scope": "Separate FINALIZED.json, Git commits, and external additive amendment receipts; not research-chain events",
+    "research_freeze_event": "research_complete",
+    "validation_allowed_after_research_freeze": true,
+    "archive_allowed_after_validation": true,
+    "timestamp_order_rule": "Nondecreasing UTC-aware ISO 8601; duplicate timestamps allowed; never regress",
+    "sequence_rule": "Zero-based contiguous integers in the exact predeclared candidate order",
+    "hash_rule": "SHA256 of canonical event object excluding event_sha256; previous_sha256 is null at root and the previous event hash thereafter",
+    "canonical_json_rule": "json.dumps(sort_keys=True, separators=(',', ':'), allow_nan=False), UTF-8; JSONL line endings are outside the hash",
+    "reference_pass_record_rule": "Hash the unwrapped F5 control candidate record, identical to the following candidate_result record; status=PASS belongs only to reference_control.json",
+    "amendment_rule": "External repair artifacts only; never overwrite or add files to the original finalized target tree",
+    "new_three_chain_system_introduced": false
+  },
+  "separation_required": false,
+  "reason": "Only the reference_pass payload comparator was incorrect; original research chain remains intact"
+}

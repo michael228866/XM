@@ -1,0 +1,11 @@
+{
+  "overall": "PASS",
+  "original_validator_sha256": "845c4124b3a994b54eb6d933469fcfe8eaf284cfd90a85a668082a82d7a91d31",
+  "repair_validator_sha256": "8c8bb927291d3cea25e0d4b1e1f5a95038a2eb7ba9b5df5b7ffa812c60c019b6",
+  "independent_checks_preserved": true,
+  "changed_checks": [
+    "reference_pass uses unwrapped record",
+    "UTC-aware nondecreasing timestamps",
+    "exact-run read-only capability; archived validator identity remains pinned"
+  ]
+}

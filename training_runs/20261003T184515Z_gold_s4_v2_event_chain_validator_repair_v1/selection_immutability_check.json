@@ -1,0 +1,10 @@
+{
+  "overall": "PASS",
+  "file_count": 4,
+  "file_sha256": {
+    "candidate_results.jsonl": "c70f153376f66a9f90cf4aa1e51a53dfc63c8a68644f984f9f5df997b981e64f",
+    "pareto_frontier.json": "c69a6131aa51012163dbf146f5b4c85dc45637d10f7b88bc56f756419cb7f685",
+    "selected_candidate.json": "c4d805e6f847eb591d8bf6c3e6b677876efc21598cdbf8ffd90688cad94895ae",
+    "selection.json": "5539926a4c58db4c8f38390d881cda32063faca0d0e23d9975f18ab56c8cbcbd"
+  }
+}

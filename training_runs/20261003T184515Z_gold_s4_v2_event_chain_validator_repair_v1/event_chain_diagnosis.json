@@ -1,0 +1,95 @@
+{
+  "target_run_id": "20261003T172302Z_gold_s4_secondary_improvement_v2",
+  "target_archive_commit": "70acd1780a005aa15285af7e3a6ad7a64ae858a1",
+  "root_cause": "REFERENCE_PASS_PAYLOAD_WRAPPER_MISMATCH: the archived trainer hashes the unwrapped control record, but the archived validator hashes dict(status=\"PASS\", **control). The status wrapper belongs only to reference_control.json; all original event hashes, links, sequence, timestamps and candidate transitions are valid.",
+  "original_predicate_result": {
+    "overall": "FAIL",
+    "failures": [
+      {
+        "event_index": 1,
+        "event_type": "reference_pass",
+        "timestamp": "2026-10-03T17:24:22.175481+00:00",
+        "sequence": 1,
+        "expected_previous_hash": "e9a5cdf35677b09304397ad11859c282c90ef100997dd5bd80fc302586379a6e",
+        "actual_previous_hash": "e9a5cdf35677b09304397ad11859c282c90ef100997dd5bd80fc302586379a6e",
+        "expected_record_hash": "b40e573d5f6aa750cbc546a7ce599685101be90a95fbfbbd153d8e749d8ced07",
+        "actual_record_hash": "4bafa6e97fb187e777cdcf35ba8b51c2e10b16cb2e9b0c87a47011b44459570d",
+        "freeze_state": "OPEN",
+        "failed_predicates": [
+          "record_hash"
+        ]
+      }
+    ],
+    "event_count": 56,
+    "chain_root": "e9a5cdf35677b09304397ad11859c282c90ef100997dd5bd80fc302586379a6e",
+    "chain_tip": "8684669f90b549d4e95cb7e0ad5206f3a85a8f1183324abcf69d39a960f0369b"
+  },
+  "corrected_chain_result": {
+    "overall": "PASS",
+    "failures": [],
+    "event_count": 56,
+    "chain_root": "e9a5cdf35677b09304397ad11859c282c90ef100997dd5bd80fc302586379a6e",
+    "chain_tip": "8684669f90b549d4e95cb7e0ad5206f3a85a8f1183324abcf69d39a960f0369b"
+  },
+  "research_result": "IMPROVEMENT_FOUND",
+  "selected_candidate": "A_NO_LONG_HTF",
+  "selected_metrics": {
+    "trades": 787,
+    "wins": 450,
+    "losses": 337,
+    "realized_win_rate": 0.5717916137229987,
+    "trades_per_day": 0.30778255768478685,
+    "profit_factor": 0.8521940468784924,
+    "mean_r": -0.06408993365369865,
+    "pnl_r": -50.438777785460836,
+    "max_drawdown_r": -52.34913835149044,
+    "stress_pf": 0.8093582289789337
+  },
+  "candidate_gate": "INTERESTING",
+  "selected_economic_status": "NEGATIVE_EXPECTANCY",
+  "research_chain_scope": {
+    "schema_version": "GOLD_S4_V2_EVENT_CHAIN_POLICY_V1",
+    "research_chain_scope": [
+      "space_frozen",
+      "reference_pass",
+      "candidate_begin",
+      "candidate_result",
+      "research_complete"
+    ],
+    "validation_chain_scope": "Separate validator_attempt.json and validator.json artifacts; not research-chain events",
+    "archive_chain_scope": "Separate FINALIZED.json, Git commits, and external additive amendment receipts; not research-chain events",
+    "research_freeze_event": "research_complete",
+    "validation_allowed_after_research_freeze": true,
+    "archive_allowed_after_validation": true,
+    "timestamp_order_rule": "Nondecreasing UTC-aware ISO 8601; duplicate timestamps allowed; never regress",
+    "sequence_rule": "Zero-based contiguous integers in the exact predeclared candidate order",
+    "hash_rule": "SHA256 of canonical event object excluding event_sha256; previous_sha256 is null at root and the previous event hash thereafter",
+    "canonical_json_rule": "json.dumps(sort_keys=True, separators=(',', ':'), allow_nan=False), UTF-8; JSONL line endings are outside the hash",
+    "reference_pass_record_rule": "Hash the unwrapped F5 control candidate record, identical to the following candidate_result record; status=PASS belongs only to reference_control.json",
+    "amendment_rule": "External repair artifacts only; never overwrite or add files to the original finalized target tree",
+    "new_three_chain_system_introduced": false
+  },
+  "duplicate_timestamp_count": 0,
+  "freeze_timestamp": "2026-10-03T18:19:46.186545+00:00",
+  "finalization_timestamp": "2026-10-03T18:19:46.834546Z",
+  "hypotheses": {
+    "A": "No time regression",
+    "B": "No duplicate timestamps; nondecreasing permits ties",
+    "C": "All 56 sequence numbers valid",
+    "D": "Every event and previous hash valid",
+    "E": "No post-freeze append",
+    "F": "Both sources freeze at research_complete before validation",
+    "G": "Finalization followed validator failure",
+    "H": "Validator attempt is not a research event",
+    "I": "No Git/archive events in research chain",
+    "J": "Same canonical JSON; wrong control payload wrapper in validator",
+    "K": "All event timestamps UTC aware",
+    "L": "Line endings outside canonical JSON hash; no event-byte mutation",
+    "M": "No three-chain conflation",
+    "N": "No mutable operational events validated as research"
+  },
+  "metadata_limitations": [
+    "combined_result research NOT_RUN reflects error handler, not completed candidate loops",
+    "candidates.csv is the preserved header-only placeholder; authoritative completed rows are candidate_results.jsonl"
+  ]
+}

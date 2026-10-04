@@ -1,0 +1,10 @@
+{
+  "formal_run_status": "PASS",
+  "revalidation_status": "PASS",
+  "research_result": "IMPROVEMENT_FOUND",
+  "selected_candidate": "A_NO_LONG_HTF",
+  "model_training_executed_by_repair": false,
+  "research_search_executed_by_repair": false,
+  "holdout_used": false,
+  "production_changed": false
+}

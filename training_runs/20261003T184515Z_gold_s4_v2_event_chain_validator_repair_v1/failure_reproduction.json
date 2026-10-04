@@ -1,0 +1,22 @@
+{
+  "overall": "FAIL",
+  "failures": [
+    {
+      "event_index": 1,
+      "event_type": "reference_pass",
+      "timestamp": "2026-10-03T17:24:22.175481+00:00",
+      "sequence": 1,
+      "expected_previous_hash": "e9a5cdf35677b09304397ad11859c282c90ef100997dd5bd80fc302586379a6e",
+      "actual_previous_hash": "e9a5cdf35677b09304397ad11859c282c90ef100997dd5bd80fc302586379a6e",
+      "expected_record_hash": "b40e573d5f6aa750cbc546a7ce599685101be90a95fbfbbd153d8e749d8ced07",
+      "actual_record_hash": "4bafa6e97fb187e777cdcf35ba8b51c2e10b16cb2e9b0c87a47011b44459570d",
+      "freeze_state": "OPEN",
+      "failed_predicates": [
+        "record_hash"
+      ]
+    }
+  ],
+  "event_count": 56,
+  "chain_root": "e9a5cdf35677b09304397ad11859c282c90ef100997dd5bd80fc302586379a6e",
+  "chain_tip": "8684669f90b549d4e95cb7e0ad5206f3a85a8f1183324abcf69d39a960f0369b"
+}

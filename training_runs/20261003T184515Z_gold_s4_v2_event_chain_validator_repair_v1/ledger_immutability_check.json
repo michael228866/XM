@@ -1,0 +1,33 @@
+{
+  "overall": "PASS",
+  "file_count": 27,
+  "file_sha256": {
+    "ledgers/A_NO_FAST_LTF.json": "f670f6f22ef154dd1b13fb233768c52673503484753b112ffd20cadf82e06311",
+    "ledgers/A_NO_LONG_HTF.json": "d73ba9df8acfbf48c0b738a6ddacd061359a0ff89efeb639a08867e8222466a2",
+    "ledgers/A_NO_MID_LTF.json": "2bc68bc79cd43c7acd0538a437e7a675fa87b91bfe2dc1761c06c53aaef93543",
+    "ledgers/A_NO_MOMENTUM.json": "7b6e2692e435b3855ded7ad45775da6821272adad4e2127240de159a4db864cc",
+    "ledgers/A_NO_OSC_MOMENTUM.json": "c2808b7ffd98aefd73177ee37767292939a802f56bf3a8bc1544338ba10e7915",
+    "ledgers/A_NO_OSCILLATOR.json": "8adaacf719bde18d4913085c5a2f0cb4ed1cd1b1094a67499a45336cfae9812a",
+    "ledgers/A_NO_VOL_BODY.json": "08a9490c40d6d16a347cb1c9ce38ba85fa58ae1c9ce17b582cf9e6ee2baa5344",
+    "ledgers/A_NO_VOLATILITY.json": "5d12a59aa80bbc8dfeaaf95fc4614c1af48357ee251cd2eee7597342832d5721",
+    "ledgers/B_ISOTONIC.json": "5ef73fda566727a5957bfd2d3dbdfec5327338e793924577bcb623326c770712",
+    "ledgers/B_PLATT.json": "16af76f741add7021310905788cf9aa6c5d243f64a6bdcf8763858217827955a",
+    "ledgers/C_NONE.json": "b28d6a91f52050ec9ee5a04d316636be705b43f7a00cb8a2e73fb50522b61672",
+    "ledgers/C_POS_110.json": "d2962ddfa86d6d77bef67bdc4c269789f28157bc05b1d0fbe24c67bab0c19bd8",
+    "ledgers/C_POS_120.json": "503bda5d2a170b3cb2808890e2864498d78af06ad2ae1d57efa8d378282392d7",
+    "ledgers/C_POS_130.json": "229b1a153b200efbbb7dc7dc25bf101d6d781184c2e200205d4f98b8357a1cb0",
+    "ledgers/D_ALPHA010.json": "6e51458e8828a9b5158fea60f85fcaf47fa56355a169d9e4c3deff5a21510506",
+    "ledgers/D_CHILD120.json": "59b8b029ec38e9a1a84eef6d59cde8e060ac877bcf380ada7f2c0f8da59479e7",
+    "ledgers/D_COL080.json": "1df043dc418d3d981bb519fd1e72be0f35bfb2ca3f35c6bbc3b1de913be66d38",
+    "ledgers/D_DEPTH3.json": "8eaf6f67c30cf23d54849782d4ae918d7f58f48859e576e06042fdefc92ae4c6",
+    "ledgers/D_DEPTH5.json": "1e9fb51e11de1aabe4447f51f2f66493abf98814d5a7b819761a1e30d9470c62",
+    "ledgers/D_GAMMA010.json": "e45cc7f33a899a3bfeefad0886c6cc45ea22e60160dcad32787587d98145a1ae",
+    "ledgers/D_LAMBDA2.json": "585de7050d592bc98a945276416a54fd548d45c919f28a4ad2c87dfb1e059dfb",
+    "ledgers/D_SUB080.json": "331125bbbe5e63f2dd897cc3747d191f888bea5e8c9ca1030989a9d177f6276d",
+    "ledgers/E_ALIGN.json": "1e18d05f933731bca6f04b03ce4fa1453733f1c051c627fad379ce8cd06a6d79",
+    "ledgers/E_DIRECTION.json": "9ed6ee44adf7081e6b003a4f25832f101d478af1d3a0ecff78f6a4f9b3a779c8",
+    "ledgers/E_MACD.json": "625c2a825790fcca3d7538e51fa9d7f7c020202bcbe75160a6d52000bba3815a",
+    "ledgers/E_VOL.json": "6de3a49a7f68ebbf3fa4bfbbd02bef5cab30c7644e9a1618af931c05fd6e592d",
+    "ledgers/F5_CONTROL.json": "225eba091afeee54c4ba641cebcb17239f41e246b001273f818f68b3455bcaef"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "run_id": "20261003T184515Z_gold_s4_v2_event_chain_validator_repair_v1",
+  "experiment_name": "gold_s4_v2_event_chain_validator_repair_v1",
+  "status": "pass",
+  "started_at_utc": "2026-10-03T18:45:15.699006Z",
+  "finished_at_utc": "2026-10-03T19:37:19.037615Z",
+  "git_commit": "87443e094d9e959d9dde6144cee66d198203e10d",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\run_gold_s4_v2_event_chain_repair_v1.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "e30ea77dcb4e3a20c78e97b9a059bf48e05d2927d0b6bd07a133522314d6a8c1",
+  "exact_command": ".venv\\Scripts\\python.exe -B run_gold_s4_v2_event_chain_repair_v1.py --execute",
+  "arguments": [
+    "--execute"
+  ],
+  "random_seeds": {},
+  "random_seed_note": "Existing-run validation only; no training or search",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "Existing immutable USER research evidence"
+    ],
+    "source_files": [
+      {
+        "path": "D:\\XM\\數據\\training_runs\\20261003T172302Z_gold_s4_secondary_improvement_v2\\FINALIZED.json",
+        "sha256": "f7bf22f3f8faf82941e0153b3fc71a68b853f7ce1d144282dae81b37d666edcd",
+        "retention_status": "external_immutable_archive"
+      }
+    ],
+    "timezone": "UTC",
+    "data_start_utc": "NOT_APPLICABLE_REPAIR_ONLY",
+    "data_end_utc": "NOT_APPLICABLE_REPAIR_ONLY",
+    "train_start_utc": "NOT_APPLICABLE_REPAIR_ONLY",
+    "train_end_utc": "NOT_APPLICABLE_REPAIR_ONLY",
+    "train_rows": 0,
+    "validation_start_utc": "NOT_APPLICABLE_REPAIR_ONLY",
+    "validation_end_utc": "NOT_APPLICABLE_REPAIR_ONLY",
+    "validation_rows": 0,
+    "test_start_utc": "NOT_APPLICABLE_REPAIR_ONLY",
+    "test_end_utc": "NOT_APPLICABLE_REPAIR_ONLY",
+    "test_rows": 0,
+    "purge_details": "Original frozen maturity and fold rules rechecked",
+    "embargo_details": "No new model training",
+    "raw_snapshot_retained": true,
+    "reproducibility_claim": "Validation repair only",
+    "mt5_fetch": {
+      "used": false,
+      "terminal_path": null,
+      "terminal_info": null,
+      "broker_info": null,
+      "fetch_start_utc": null,
+      "fetch_end_utc": null,
+      "retrieved_at_utc": null,
+      "returned_rows": null,
+      "not_applicable_reason": "No broker access"
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "No new training by repair; original USER models independently verified"
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "No new search; existing immutable research only"
+  },
+  "registry": {
+    "parent_or_incumbent": "20261003T172302Z_gold_s4_secondary_improvement_v2",
+    "selected_configuration": "A_NO_LONG_HTF unchanged",
+    "trades_per_day": "N/A: repair only",
+    "realized_win_rate": "N/A: repair only",
+    "pf": "N/A: repair only",
+    "mean_r": "N/A: repair only",
+    "pnl": "N/A: repair only",
+    "max_dd": "N/A: repair only",
+    "validator_result": "PASS"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [],
+  "aborted_reason": null
+}

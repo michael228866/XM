@@ -1,0 +1,29 @@
+Original failure reproduced; event chain integrity PASS; full independent revalidation begins
+Verified F5_CONTROL
+Verified A_NO_MOMENTUM
+Verified A_NO_OSCILLATOR
+Verified A_NO_VOLATILITY
+Verified A_NO_LONG_HTF
+Verified A_NO_FAST_LTF
+Verified A_NO_MID_LTF
+Verified A_NO_OSC_MOMENTUM
+Verified A_NO_VOL_BODY
+Verified B_PLATT
+Verified B_ISOTONIC
+Verified C_NONE
+Verified C_POS_110
+Verified C_POS_120
+Verified C_POS_130
+Verified D_DEPTH3
+Verified D_DEPTH5
+Verified D_CHILD120
+Verified D_GAMMA010
+Verified D_ALPHA010
+Verified D_LAMBDA2
+Verified D_SUB080
+Verified D_COL080
+Verified E_MACD
+Verified E_VOL
+Verified E_ALIGN
+Verified E_DIRECTION
+{"overall": "PASS", "target_run_id": "20261003T172302Z_gold_s4_secondary_improvement_v2", "full_validation_completed": true, "model_training_executed_by_repair": false, "research_search_executed_by_repair": false, "holdout_used": false, "production_changed": false, "production_promoted": false, "candidate_count": 27, "pareto_frontier": ["A_NO_LONG_HTF", "A_NO_VOL_BODY", "A_NO_VOLATILITY"], "selected_candidate": "A_NO_LONG_HTF", "research_result": "IMPROVEMENT_FOUND", "tie_break": [{"candidate_id": "A_NO_LONG_HTF", "ordered_key": [-0.5717916137229987, -0.30778255768478685, -0.8093582289789337, -0.8521940468784924, 0.06408993365369865, 52.34913835149044, "A_NO_LONG_HTF"]}], "failed_checks": [], "event_chain_integrity_status": "PASS", "original_tree_before": "8b9ff3ace10ff482fff8f9ce5b63f909444baaa9efbdb7fa00c356961e7f7e48", "original_tree_after": "8b9ff3ace10ff482fff8f9ce5b63f909444baaa9efbdb7fa00c356961e7f7e48", "candidate_gate": "INTERESTING", "selected_metrics": {"trades": 787, "wins": 450, "losses": 337, "realized_win_rate": 0.5717916137229987, "trades_per_day": 0.30778255768478685, "profit_factor": 0.8521940468784924, "mean_r": -0.06408993365369865, "pnl_r": -50.438777785460836, "max_drawdown_r": -52.34913835149044, "stress_pf": 0.8093582289789337}, "selected_economic_status": "NEGATIVE_EXPECTANCY"}
