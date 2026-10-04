@@ -170,3 +170,27 @@ test_gold_s4_v2_event_chain_repair_v1.py -text whitespace=cr-at-eol
 run_gold_s4_v2_event_chain_repair_v1.py -text whitespace=cr-at-eol
 gold_s4_v2_event_chain_policy_v1.json -text whitespace=cr-at-eol
 training_run_amendments/** -text whitespace=cr-at-eol
+
+gold_s4_secondary_improvement_v3.py -text whitespace=cr-at-eol
+
+gold_s4_secondary_improvement_v3_support.py -text whitespace=cr-at-eol
+
+gold_s4_secondary_improvement_v3_launcher.py -text whitespace=cr-at-eol
+
+gold_s4_secondary_improvement_v3_config.json -text whitespace=cr-at-eol
+
+gold_s4_secondary_improvement_v3_search_space.json -text whitespace=cr-at-eol
+
+gold_s4_a_no_long_htf_reference_v1.json -text whitespace=cr-at-eol
+
+validate_gold_s4_secondary_improvement_v3_run.py -text whitespace=cr-at-eol
+
+manual_training_policy_v3.json -text whitespace=cr-at-eol
+
+README_GOLD_S4_SECONDARY_IMPROVEMENT_V3.md -text whitespace=cr-at-eol
+
+test_gold_s4_secondary_improvement_v3.py -text whitespace=cr-at-eol
+
+certify_gold_s4_secondary_improvement_v3.py -text whitespace=cr-at-eol
+
+gold_s4_improvement_v3_approval.json -text whitespace=cr-at-eol
