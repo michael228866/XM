@@ -17,7 +17,7 @@ SOURCES = [
     'gold_s4_secondary_improvement_v4_label_objective_search_space.json', 'gold_s4_a_no_long_htf_reference_v2.json',
     'gold_s4_secondary_improvement_v4_label_objective_support.py', 'gold_s4_secondary_improvement_v4_label_objective_launcher.py',
     'validate_gold_s4_secondary_improvement_v4_label_objective_run.py', 'manual_training_policy_v4.json',
-    'test_gold_s4_secondary_improvement_v4_label_objective.py', 'README_GOLD_S4_SECONDARY_IMPROVEMENT_V4_LABEL_OBJECTIVE.md',
+    'test_gold_s4_secondary_improvement_v4_label_objective.py', 'README_GOLD_S4_SECONDARY_IMPROVEMENT_V4.md',
     'certify_gold_s4_secondary_improvement_v4_label_objective.py', 'RUN_TRAINING.bat', 'CHECK_STATUS.bat',
     'manual_training_launcher_v1.py', 'manual_training_policy_v1.json',
     'gold_manual_s4_training_data_v1.py', 'gold_manual_s4_train_validate_v1.py',
@@ -42,6 +42,7 @@ def clean_pushed():
 def execute():
     commit = clean_pushed()
     config, ref, space = configuration()
+    require(all((ROOT/name).is_file() for name in source_files()),'Complete infrastructure source inventory required')
     run = history.create_run(SLUG, Path(__file__), '.venv\\Scripts\\python.exe -B '+Path(__file__).name+' --execute',
                              arguments=['--execute'], seed_note='Synthetic seed 42; no real execution')
     print('INFRASTRUCTURE_RUN='+run.name, flush=True)
