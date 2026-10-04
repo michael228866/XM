@@ -1,0 +1,24 @@
+Verified A_NO_LONG_HTF_CONTROL
+Verified H_NO_DAILY
+Verified H_NO_H4
+Verified H_NO_H1
+Verified H_NEAREST_H1
+Verified H_NO_HTF
+Verified HC_TREND_CONSENSUS
+Verified HC_DIRECTION_COUNT
+Verified HC_ALIGNMENT_RATIO
+Verified HC_DISAGREEMENT_SCORE
+Verified T_070
+Verified T_072
+Verified T_074
+Verified T_076
+Verified T_078
+Verified T_080
+Verified CAL_PLATT
+Verified CAL_ISOTONIC
+Verified W_POS_0975
+Verified W_POS_1025
+Verified X_BODY_QUALITY
+Verified X_TRIGGER_DISTANCE
+Verified X_TIMING_PAIR
+{"overall": "PASS", "failed_checks": [], "candidate_count": 23, "pareto_frontier": ["CAL_ISOTONIC", "A_NO_LONG_HTF_CONTROL", "T_074", "T_072", "T_070"], "economic_annotations": {"CAL_ISOTONIC": {"profit_factor": 0.8559940109529712, "mean_r": -0.06192216637511739, "pnl_r": -43.531282961707525, "max_drawdown_r": -50.25757804766934, "stress_pf": 0.8136000163384126}, "A_NO_LONG_HTF_CONTROL": {"profit_factor": 0.8521940468784924, "mean_r": -0.06408993365369865, "pnl_r": -50.438777785460836, "max_drawdown_r": -52.34913835149044, "stress_pf": 0.8093582289789337}, "T_074": {"profit_factor": 0.8369258254203228, "mean_r": -0.07162668749345937, "pnl_r": -71.12530068100514, "max_drawdown_r": -71.78678545257878, "stress_pf": 0.793714623262223}, "T_072": {"profit_factor": 0.8123765344267678, "mean_r": -0.08477964100577101, "pnl_r": -214.57727138560642, "max_drawdown_r": -217.33008610083533, "stress_pf": 0.7685780525816567}, "T_070": {"profit_factor": 0.8002660551418173, "mean_r": -0.09149512254032192, "pnl_r": -522.1626643376172, "max_drawdown_r": -527.7797526301705, "stress_pf": 0.7556637380389962}}, "selected_candidate": null, "research_result": "NO_IMPROVEMENT_FOUND", "tie_break": [], "holdout_used": false, "production_changed": false, "production_promoted": false}

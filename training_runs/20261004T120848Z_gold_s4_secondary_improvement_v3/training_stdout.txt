@@ -1,0 +1,47 @@
+[3/9] 驗證 A_NO_LONG_HTF Reference
+[4/9] 執行 v3 Candidate Training: H_NO_DAILY
+[5/9] Historical Validation: H_NO_DAILY
+[4/9] 執行 v3 Candidate Training: H_NO_H4
+[5/9] Historical Validation: H_NO_H4
+[4/9] 執行 v3 Candidate Training: H_NO_H1
+[5/9] Historical Validation: H_NO_H1
+[4/9] 執行 v3 Candidate Training: H_NEAREST_H1
+[5/9] Historical Validation: H_NEAREST_H1
+[4/9] 執行 v3 Candidate Training: H_NO_HTF
+[5/9] Historical Validation: H_NO_HTF
+[4/9] 執行 v3 Candidate Training: HC_TREND_CONSENSUS
+[5/9] Historical Validation: HC_TREND_CONSENSUS
+[4/9] 執行 v3 Candidate Training: HC_DIRECTION_COUNT
+[5/9] Historical Validation: HC_DIRECTION_COUNT
+[4/9] 執行 v3 Candidate Training: HC_ALIGNMENT_RATIO
+[5/9] Historical Validation: HC_ALIGNMENT_RATIO
+[4/9] 執行 v3 Candidate Training: HC_DISAGREEMENT_SCORE
+[5/9] Historical Validation: HC_DISAGREEMENT_SCORE
+[4/9] 執行 v3 Candidate Training: T_070
+[5/9] Historical Validation: T_070
+[4/9] 執行 v3 Candidate Training: T_072
+[5/9] Historical Validation: T_072
+[4/9] 執行 v3 Candidate Training: T_074
+[5/9] Historical Validation: T_074
+[4/9] 執行 v3 Candidate Training: T_076
+[5/9] Historical Validation: T_076
+[4/9] 執行 v3 Candidate Training: T_078
+[5/9] Historical Validation: T_078
+[4/9] 執行 v3 Candidate Training: T_080
+[5/9] Historical Validation: T_080
+[4/9] 執行 v3 Candidate Training: CAL_PLATT
+[5/9] Historical Validation: CAL_PLATT
+[4/9] 執行 v3 Candidate Training: CAL_ISOTONIC
+[5/9] Historical Validation: CAL_ISOTONIC
+[4/9] 執行 v3 Candidate Training: W_POS_0975
+[5/9] Historical Validation: W_POS_0975
+[4/9] 執行 v3 Candidate Training: W_POS_1025
+[5/9] Historical Validation: W_POS_1025
+[4/9] 執行 v3 Candidate Training: X_BODY_QUALITY
+[5/9] Historical Validation: X_BODY_QUALITY
+[4/9] 執行 v3 Candidate Training: X_TRIGGER_DISTANCE
+[5/9] Historical Validation: X_TRIGGER_DISTANCE
+[4/9] 執行 v3 Candidate Training: X_TIMING_PAIR
+[5/9] Historical Validation: X_TIMING_PAIR
+[6/9] Safety Gates
+[7/9] 建立 Pareto Frontier
