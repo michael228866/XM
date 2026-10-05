@@ -1,0 +1,20 @@
+# GOLD S4 Trade Economics v1
+
+{
+  "run_id": "20261005T163507Z_gold_s4_trade_economics_v1",
+  "execution_status": "PASS",
+  "research_result": "NO_POSITIVE_EXPECTANCY_FOUND",
+  "economic_gate": "NONE",
+  "selected_candidate": null,
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_ECONOMICS_RESEARCH_EXECUTED": true,
+  "HISTORICAL_DATA_USED": true,
+  "production_changed": false,
+  "production_promoted": false,
+  "holdout_used": false,
+  "failed_checks": [],
+  "pareto_frontier": [],
+  "tie_break": []
+}
+
+Historical development only; no production promotion.

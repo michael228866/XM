@@ -1,0 +1,8 @@
+{
+  "candidate_id": "A_NO_LONG_HTF",
+  "signal_count": 787,
+  "accepted_trade_count": 787,
+  "entry_stream_sha256": "122b149410fb0e749446ce7bff83cf7001bdd459cbafe398e10fb59a0cb9f830",
+  "direction": "LONG",
+  "threshold": 0.75
+}

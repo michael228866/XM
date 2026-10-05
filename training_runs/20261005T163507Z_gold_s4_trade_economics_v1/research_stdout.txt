@@ -1,0 +1,28 @@
+[3/10] Load Frozen A_NO_LONG_HTF Signal Stream
+[4/10] Reproduce Reference Execution
+[5/10] Audit Path / Intrabar Semantics
+[6/10] Execute Frozen Candidate: E0_REFERENCE_EXECUTION
+[6/10] Execute Frozen Candidate: SL_0_75
+[6/10] Execute Frozen Candidate: SL_1_25
+[6/10] Execute Frozen Candidate: SL_1_5
+[6/10] Execute Frozen Candidate: TP_0_75
+[6/10] Execute Frozen Candidate: TP_1_0
+[6/10] Execute Frozen Candidate: TP_1_25
+[6/10] Execute Frozen Candidate: TP_1_5
+[6/10] Execute Frozen Candidate: TP_2_0
+[6/10] Execute Frozen Candidate: RR_DEFENSIVE
+[6/10] Execute Frozen Candidate: RR_ASYM
+[6/10] Execute Frozen Candidate: RR_WIDE
+[6/10] Execute Frozen Candidate: TIME_30M
+[6/10] Execute Frozen Candidate: TIME_60M
+[6/10] Execute Frozen Candidate: TIME_120M
+[6/10] Execute Frozen Candidate: TIME_240M
+[6/10] Execute Frozen Candidate: BE_0_5
+[6/10] Execute Frozen Candidate: BE_0_75
+[6/10] Execute Frozen Candidate: TRAIL_100_0_5
+[6/10] Execute Frozen Candidate: TRAIL_100_0_75
+[6/10] Execute Frozen Candidate: NO_PROGRESS_30M
+[6/10] Execute Frozen Candidate: NO_PROGRESS_60M
+[7/10] Robustness / Economics Gates
+[8/10] Pareto / Selection
+[9/10] Independent Validation
