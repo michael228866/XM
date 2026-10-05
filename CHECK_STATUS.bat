@@ -1,15 +1,15 @@
 @echo off
-rem Metadata-only GOLD S4 Improvement v4 Label / Objective status; never opens locked holdout.
 setlocal
 chcp 65001 >nul
 set "PYTHONUTF8=1"
 cd /d "%~dp0"
+rem GOLD_S4_TRADE_ECONOMICS_V1: USER only; no model training.
 if not exist "%~dp0.venv\Scripts\python.exe" (
-  echo [失敗] 找不到核准的 Python 環境
+  echo [??] ?????? Python ??
   goto done
 )
-"%~dp0.venv\Scripts\python.exe" -B "%~dp0gold_s4_secondary_improvement_v4_label_objective_launcher.py" --status
+"%~dp0.venv\Scripts\python.exe" -B "%~dp0gold_s4_trade_economics_v1_launcher.py" --status
 :done
-echo 請按任意鍵關閉
+echo ???????
 pause >nul
 endlocal

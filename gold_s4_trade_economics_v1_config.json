@@ -1,0 +1,58 @@
+{
+  "experiment": "gold_s4_trade_economics_v1",
+  "reference_binding": "gold_s4_a_no_long_htf_signal_reference_v1.json",
+  "search_space": "gold_s4_trade_economics_v1_search_space.json",
+  "candidate_count": 22,
+  "folds": [
+    [
+      "2018_2020",
+      "2018-01-01",
+      "2021-01-01"
+    ],
+    [
+      "2021_2022",
+      "2021-01-01",
+      "2023-01-01"
+    ],
+    [
+      "2023_2024",
+      "2023-01-01",
+      "2025-01-01"
+    ]
+  ],
+  "overlap_policy": "SINGLE_POSITION_REFERENCE_COMPATIBLE_ONLY",
+  "diagnostic_enabled": false,
+  "search_space_sha256": "9e6d6404f2f39b1e1ff0e30b825744f5564077a3b40622bfd1f3ae26c3e762d7",
+  "signal_reference_sha256": "f5c4ba3471b1bb63f3b3ff4afa5262f22f1b16bb99a42ef894d0453f887a81d7",
+  "source_bindings": {
+    "certify_gold_s4_trade_economics_v1.py": "81e30eff3159a4111bbb5e78ade833cbdb344e745297deca67ef6dec90085bed",
+    "gold_gemini_execution_semantics_v1.py": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+    "gold_manual_s4_train_validate_v1.py": "0b7120ca753b3c23088238785a3f714e057b8975e6c69a885bffa127139c91dd",
+    "gold_manual_s4_training_data_v1.py": "c02e8d5f4ece873b6fe47cbeeb222ec0a5b027713c68e28f48e4a99366144895",
+    "gold_manual_training_workflow_v1.py": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+    "gold_s4_a_no_long_htf_reference_v2.json": "7bba0fcb43921f5a881faa10d760ad9b3a256cd7f654550d236e02bf9486e2dd",
+    "gold_s4_a_no_long_htf_signal_reference_v1.json": "21f0d0c8bdd54b4c3c7958128686b5115e002c5572239a4adebd7eb74e52ac6a",
+    "gold_s4_trade_economics_path_audit.json": "38c5b7f64565908964cdcb67fd44105c9118097c0ebeb0af657a6a8f547980e7",
+    "gold_s4_trade_economics_path_audit.py": "5d5ee89b250f0c7b7b185e97bd4ae6096741b6af762a68a4b8ed253b3c35904d",
+    "gold_s4_trade_economics_v1.py": "1abf34ef2494ed6b0c3d773ef46822319a325d577f892331a8f9fa32e3d9e7d7",
+    "gold_s4_trade_economics_v1_launcher.py": "d3d07d16834cf0dc0000ad18e5b1689130ef025afc651a90b6a331bd1f1ebf2b",
+    "gold_s4_trade_economics_v1_search_space.json": "255403780dc4df8bf4cf49460a0679beeb08d85ccc6ae3e38c13aa482c814591",
+    "gold_s4_trade_economics_v1_support.py": "75c79e85ecce39aef0b010f3a75be81d44792c0eda8c519cf8033b4516df68e3",
+    "manual_trade_economics_policy_v1.json": "7df18fea4a5b1bb3d37bf6ef10cc9ecb590f9f29d594f1ead1ec190d48790996",
+    "manual_training_launcher_v1.py": "b45483d02482aaf78e4411cb9842d6f31c8da68292443d825ccf77f69d072d2e",
+    "manual_training_policy_v1.json": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+    "test_gold_s4_trade_economics_v1.py": "4496a0e5fc27c9795dc4945d19f93a5fdde988564d7f52ad19a7f59c5bd61f90",
+    "training_holdout_guard_v1.py": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+    "training_run_history.py": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+    "validate_gold_s4_trade_economics_v1_run.py": "a5db9809ae0db00515f979793a862c04a15e6eaa164e358d6578e49819e326d6"
+  },
+  "protected_sha256": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "numeric_tolerance": 1e-12,
+  "model_training_required": false,
+  "historical_only": true,
+  "production_promoted": false,
+  "holdout_used": false
+}
