@@ -7,21 +7,21 @@
   "interpreter_discovery": "Explicit existing repository working environment; no fallback",
   "approval_status": "APPROVED",
   "workflow": {
-    "experiment_name": "gold_s4_secondary_improvement_v4_label_objective",
+    "experiment_name": "gold_s4_trade_economics_v1",
     "script": {
-      "path": "gold_s4_secondary_improvement_v4_label_objective.py",
-      "sha256": "0e32d6195b5e5cd5520558ed2e8b6eb61547edb98a259b744bca02a73615c1a3"
+      "path": "gold_s4_trade_economics_v1.py",
+      "sha256": "1abf34ef2494ed6b0c3d773ef46822319a325d577f892331a8f9fa32e3d9e7d7"
     },
     "validator": {
-      "path": "validate_gold_s4_secondary_improvement_v4_label_objective_run.py",
-      "sha256": "e10b2656ff39637c64f7ea68ab64492297d470fd4bcb41606ddf9b0d84baa2e7"
+      "path": "validate_gold_s4_trade_economics_v1_run.py",
+      "sha256": "a5db9809ae0db00515f979793a862c04a15e6eaa164e358d6578e49819e326d6"
     },
     "configuration": {
-      "path": "gold_s4_secondary_improvement_v4_label_objective_config.json",
-      "sha256": "740ee603c6a76ddc2ef777c74befd9cb5cc51bb0bbe8dace70a3ae5203653ebb"
+      "path": "gold_s4_trade_economics_v1_config.json",
+      "sha256": "4f179b34d901059c010291c973adb21e4b70fe46ccd6bd5de62c9e29a3354a0d"
     },
     "datasets": [],
-    "historical_input_mode": "SEALED_INPUTS_AND_EXACT_C1_LABEL_REGENERATION_USER_ONLY",
+    "historical_input_mode": "SEALED_ACCEPTED_ENTRIES_AND_M1_PATH_USER_ONLY",
     "native_io_review_pass": true
   },
   "protected_sha256": {
