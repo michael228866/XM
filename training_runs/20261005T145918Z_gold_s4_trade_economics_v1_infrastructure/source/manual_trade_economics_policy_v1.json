@@ -1,0 +1,11 @@
+{
+  "execution_owner": "USER",
+  "validation_execution_owner": "USER_LAUNCHED_WORKFLOW",
+  "real_economics_research_allowed_for_codex": false,
+  "automatic_economics_research": false,
+  "user_bat_launch_required": true,
+  "model_training_required": false,
+  "signal_retraining_allowed": false,
+  "holdout_access_allowed": false,
+  "production_promotion_allowed": false
+}

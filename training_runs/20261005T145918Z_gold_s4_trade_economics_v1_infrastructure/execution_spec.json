@@ -1,0 +1,230 @@
+{
+  "kind": "INFRASTRUCTURE_ONLY",
+  "source_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+  "source_files": [
+    "CHECK_STATUS.bat",
+    "README_GOLD_S4_TRADE_ECONOMICS_V1.md",
+    "RUN_TRAINING.bat",
+    "certify_gold_s4_trade_economics_v1.py",
+    "gold_gemini_execution_semantics_v1.py",
+    "gold_manual_s4_train_validate_v1.py",
+    "gold_manual_s4_training_data_v1.py",
+    "gold_manual_training_workflow_v1.py",
+    "gold_s4_a_no_long_htf_reference_v2.json",
+    "gold_s4_a_no_long_htf_signal_reference_v1.json",
+    "gold_s4_trade_economics_path_audit.json",
+    "gold_s4_trade_economics_path_audit.py",
+    "gold_s4_trade_economics_v1.py",
+    "gold_s4_trade_economics_v1_config.json",
+    "gold_s4_trade_economics_v1_launcher.py",
+    "gold_s4_trade_economics_v1_search_space.json",
+    "gold_s4_trade_economics_v1_support.py",
+    "manual_trade_economics_policy_v1.json",
+    "manual_training_launcher_v1.py",
+    "manual_training_policy_v1.json",
+    "test_gold_s4_trade_economics_v1.py",
+    "training_holdout_guard_v1.py",
+    "training_run_history.py",
+    "validate_gold_s4_trade_economics_v1_run.py"
+  ],
+  "source_bindings": [
+    {
+      "path": "CHECK_STATUS.bat",
+      "raw_file_sha256": "a68c6349c29421ad6ca7d187779745aea3558da85bafc6bf78e977ff83670583",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "a68c6349c29421ad6ca7d187779745aea3558da85bafc6bf78e977ff83670583",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "README_GOLD_S4_TRADE_ECONOMICS_V1.md",
+      "raw_file_sha256": "a8156a29facccdd210591a0c71fcbdfac618ee7340d3fef4031f726fe8b13a88",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "a8156a29facccdd210591a0c71fcbdfac618ee7340d3fef4031f726fe8b13a88",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "RUN_TRAINING.bat",
+      "raw_file_sha256": "1bd748cba729ee5c6fb20c1d1a04533d6e5fe339ca1886414297963b4bc79d44",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "1bd748cba729ee5c6fb20c1d1a04533d6e5fe339ca1886414297963b4bc79d44",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "certify_gold_s4_trade_economics_v1.py",
+      "raw_file_sha256": "81e30eff3159a4111bbb5e78ade833cbdb344e745297deca67ef6dec90085bed",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "81e30eff3159a4111bbb5e78ade833cbdb344e745297deca67ef6dec90085bed",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_gemini_execution_semantics_v1.py",
+      "raw_file_sha256": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "fc540b959a9fdec6fafed9acce58d70b0e57261b53d6f57c81b2cb7c3e976757",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_manual_s4_train_validate_v1.py",
+      "raw_file_sha256": "0b7120ca753b3c23088238785a3f714e057b8975e6c69a885bffa127139c91dd",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "0b7120ca753b3c23088238785a3f714e057b8975e6c69a885bffa127139c91dd",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_manual_s4_training_data_v1.py",
+      "raw_file_sha256": "c02e8d5f4ece873b6fe47cbeeb222ec0a5b027713c68e28f48e4a99366144895",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "c02e8d5f4ece873b6fe47cbeeb222ec0a5b027713c68e28f48e4a99366144895",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_manual_training_workflow_v1.py",
+      "raw_file_sha256": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_a_no_long_htf_reference_v2.json",
+      "raw_file_sha256": "7bba0fcb43921f5a881faa10d760ad9b3a256cd7f654550d236e02bf9486e2dd",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "7bba0fcb43921f5a881faa10d760ad9b3a256cd7f654550d236e02bf9486e2dd",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_a_no_long_htf_signal_reference_v1.json",
+      "raw_file_sha256": "21f0d0c8bdd54b4c3c7958128686b5115e002c5572239a4adebd7eb74e52ac6a",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "21f0d0c8bdd54b4c3c7958128686b5115e002c5572239a4adebd7eb74e52ac6a",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_trade_economics_path_audit.json",
+      "raw_file_sha256": "38c5b7f64565908964cdcb67fd44105c9118097c0ebeb0af657a6a8f547980e7",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "38c5b7f64565908964cdcb67fd44105c9118097c0ebeb0af657a6a8f547980e7",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_trade_economics_path_audit.py",
+      "raw_file_sha256": "5d5ee89b250f0c7b7b185e97bd4ae6096741b6af762a68a4b8ed253b3c35904d",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "5d5ee89b250f0c7b7b185e97bd4ae6096741b6af762a68a4b8ed253b3c35904d",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_trade_economics_v1.py",
+      "raw_file_sha256": "1abf34ef2494ed6b0c3d773ef46822319a325d577f892331a8f9fa32e3d9e7d7",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "1abf34ef2494ed6b0c3d773ef46822319a325d577f892331a8f9fa32e3d9e7d7",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_trade_economics_v1_config.json",
+      "raw_file_sha256": "4f179b34d901059c010291c973adb21e4b70fe46ccd6bd5de62c9e29a3354a0d",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "4f179b34d901059c010291c973adb21e4b70fe46ccd6bd5de62c9e29a3354a0d",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_trade_economics_v1_launcher.py",
+      "raw_file_sha256": "d3d07d16834cf0dc0000ad18e5b1689130ef025afc651a90b6a331bd1f1ebf2b",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "d3d07d16834cf0dc0000ad18e5b1689130ef025afc651a90b6a331bd1f1ebf2b",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_trade_economics_v1_search_space.json",
+      "raw_file_sha256": "255403780dc4df8bf4cf49460a0679beeb08d85ccc6ae3e38c13aa482c814591",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "255403780dc4df8bf4cf49460a0679beeb08d85ccc6ae3e38c13aa482c814591",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_trade_economics_v1_support.py",
+      "raw_file_sha256": "75c79e85ecce39aef0b010f3a75be81d44792c0eda8c519cf8033b4516df68e3",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "75c79e85ecce39aef0b010f3a75be81d44792c0eda8c519cf8033b4516df68e3",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "manual_trade_economics_policy_v1.json",
+      "raw_file_sha256": "7df18fea4a5b1bb3d37bf6ef10cc9ecb590f9f29d594f1ead1ec190d48790996",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "7df18fea4a5b1bb3d37bf6ef10cc9ecb590f9f29d594f1ead1ec190d48790996",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "manual_training_launcher_v1.py",
+      "raw_file_sha256": "b45483d02482aaf78e4411cb9842d6f31c8da68292443d825ccf77f69d072d2e",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "b45483d02482aaf78e4411cb9842d6f31c8da68292443d825ccf77f69d072d2e",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "manual_training_policy_v1.json",
+      "raw_file_sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "test_gold_s4_trade_economics_v1.py",
+      "raw_file_sha256": "4496a0e5fc27c9795dc4945d19f93a5fdde988564d7f52ad19a7f59c5bd61f90",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "4496a0e5fc27c9795dc4945d19f93a5fdde988564d7f52ad19a7f59c5bd61f90",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "training_holdout_guard_v1.py",
+      "raw_file_sha256": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "training_run_history.py",
+      "raw_file_sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "validate_gold_s4_trade_economics_v1_run.py",
+      "raw_file_sha256": "a5db9809ae0db00515f979793a862c04a15e6eaa164e358d6578e49819e326d6",
+      "git_commit": "c391ec99fb743ff325798f34f7292ce920931e33",
+      "git_blob_sha256": "a5db9809ae0db00515f979793a862c04a15e6eaa164e358d6578e49819e326d6",
+      "line_ending_mode": "EXACT_BYTES",
+      "equivalence_status": "PASS"
+    }
+  ],
+  "real_workflow_invoked": false,
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_VALIDATION_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "REAL_ECONOMICS_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false
+}
