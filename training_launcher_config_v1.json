@@ -18,7 +18,7 @@
     },
     "configuration": {
       "path": "gold_s4_entry_edge_decomposition_v1_config.json",
-      "sha256": "ad5a1b9f6f6ec57090d006e416963803b51090d82a1c1318a05c158dff227797"
+      "sha256": "53d8f303b544f77f574648e8abaaf9429eaa729dfdf6dd3e9a67e25943af3174"
     },
     "datasets": [
       {
