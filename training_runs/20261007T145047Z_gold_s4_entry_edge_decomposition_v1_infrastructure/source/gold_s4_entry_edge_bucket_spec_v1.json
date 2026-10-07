@@ -1,0 +1,247 @@
+{
+  "version": 1,
+  "predeclared": true,
+  "outcome_optimized": false,
+  "bootstrap_enabled": false,
+  "dimensions": [
+    {
+      "name": "time_of_day",
+      "fields": [
+        "entry_time_actual_utc"
+      ],
+      "kind": "hour",
+      "labels": [
+        "00-04",
+        "04-08",
+        "08-12",
+        "12-16",
+        "16-20",
+        "20-24",
+        "MISSING"
+      ],
+      "timezone": "UTC"
+    },
+    {
+      "name": "day_of_week",
+      "fields": [
+        "entry_time_actual_utc"
+      ],
+      "kind": "weekday",
+      "labels": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun",
+        "MISSING"
+      ],
+      "timezone": "UTC"
+    },
+    {
+      "name": "volatility",
+      "fields": [
+        "VOLA_RATIO"
+      ],
+      "kind": "sign",
+      "labels": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "MISSING"
+      ],
+      "pivot": 1
+    },
+    {
+      "name": "short_term_trend",
+      "fields": [
+        "M5_TREND"
+      ],
+      "kind": "sign",
+      "labels": [
+        "DOWN",
+        "FLAT",
+        "UP",
+        "MISSING"
+      ],
+      "pivot": 0
+    },
+    {
+      "name": "trend_alignment",
+      "fields": [
+        "H1_TREND",
+        "M5_TREND"
+      ],
+      "kind": "alignment",
+      "labels": [
+        "ALIGNED",
+        "MIXED",
+        "OPPOSED",
+        "MISSING"
+      ]
+    },
+    {
+      "name": "trigger_extension",
+      "fields": [
+        "BIAS_20"
+      ],
+      "kind": "sign",
+      "labels": [
+        "BELOW_MA20",
+        "AT_MA20",
+        "ABOVE_MA20",
+        "MISSING"
+      ],
+      "pivot": 0
+    },
+    {
+      "name": "momentum_strength",
+      "fields": [
+        "ROC_5"
+      ],
+      "kind": "sign",
+      "labels": [
+        "NEGATIVE",
+        "ZERO",
+        "POSITIVE",
+        "MISSING"
+      ],
+      "pivot": 0
+    },
+    {
+      "name": "RSI_zone",
+      "fields": [
+        "M1_RSI"
+      ],
+      "kind": "bins",
+      "labels": [
+        "BELOW_30",
+        "30_TO_70",
+        "GE_70",
+        "MISSING"
+      ],
+      "edges": [
+        30,
+        70
+      ]
+    },
+    {
+      "name": "body_quality",
+      "fields": [
+        "BODY_PCT"
+      ],
+      "kind": "bins",
+      "labels": [
+        "MINORITY_BODY",
+        "MAJORITY_BODY",
+        "MISSING"
+      ],
+      "edges": [
+        0.5
+      ]
+    },
+    {
+      "name": "model_score",
+      "fields": [
+        "model_probability"
+      ],
+      "kind": "bins",
+      "labels": [
+        "LT_075",
+        "075_080",
+        "080_085",
+        "085_090",
+        "GE_090",
+        "MISSING"
+      ],
+      "edges": [
+        0.75,
+        0.8,
+        0.85,
+        0.9
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "time_of_day",
+      "trend_alignment"
+    ],
+    [
+      "volatility",
+      "trend_alignment"
+    ],
+    [
+      "model_score",
+      "trend_alignment"
+    ],
+    [
+      "model_score",
+      "volatility"
+    ],
+    [
+      "trigger_extension",
+      "volatility"
+    ],
+    [
+      "momentum_strength",
+      "trend_alignment"
+    ],
+    [
+      "RSI_zone",
+      "trend_alignment"
+    ],
+    [
+      "body_quality",
+      "volatility"
+    ]
+  ],
+  "missing_policy": "Explicit MISSING bucket; never drop a trade; missing cells descriptive only",
+  "boundary_rule": "bins: left inclusive right exclusive; sign: <, ==, > pivot",
+  "boundary_basis": "UTC clock; RSI conventional 30/70 zones; 50% candle majority; zero return/deviation; volatility ratio equality to causal rolling baseline; model score user-specified fixed edges. No fitted quantiles.",
+  "stability": {
+    "required_folds": [
+      "2018_2020",
+      "2021_2022",
+      "2023_2024"
+    ],
+    "minimum_each_fold": 8,
+    "positive_folds_required": 2,
+    "minimum_pf": 0.7,
+    "negative_maximum_pf": 1.0,
+    "negative_weak_folds_required": 2,
+    "negative_weak_pf": 0.85
+  },
+  "sample_guards": {
+    "univariate": 30,
+    "bivariate": 20,
+    "strong": 50
+  },
+  "classification": {
+    "positive_pf": 1.0,
+    "robust_pf": 1.1,
+    "robust_mean_r": 0.05,
+    "robust_stress_pf": 0.95,
+    "negative_pf": 0.85
+  },
+  "candidate": {
+    "positive_n": 50,
+    "positive_pf": 1.05,
+    "positive_mean_r": 0,
+    "positive_stress_pf": 0.95,
+    "negative_n": 50,
+    "negative_pf": 0.75,
+    "negative_mean_r": 0,
+    "negative_stress_pf": 0.75
+  },
+  "ranking": [
+    "sample_confidence",
+    "stress_pf",
+    "profit_factor",
+    "mean_r",
+    "stability",
+    "pnl_r"
+  ],
+  "higher_order_allowed": false
+}

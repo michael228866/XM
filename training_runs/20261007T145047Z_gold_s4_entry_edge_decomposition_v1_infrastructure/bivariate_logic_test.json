@@ -1,0 +1,9 @@
+{
+  "overall": "PASS",
+  "evidence": "Eight complete Cartesian partitions, including empty and missing cells; no filtered ledger",
+  "synthetic_only": true,
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false,
+  "ENTRY_FILTERING_EXECUTED": false
+}

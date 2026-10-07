@@ -1,0 +1,28 @@
+{
+  "overall": "PASS",
+  "scope": "STATIC_AND_SYNTHETIC_INDEPENDENT_FIXTURES",
+  "checks": {
+    "reference_binding_review": true,
+    "feature_inventory_review": true,
+    "bucket_spec_review": true,
+    "causality_test": true,
+    "sample_guard_test": true,
+    "univariate_logic_test": true,
+    "bivariate_logic_test": true,
+    "fold_stability_test": true,
+    "stress_metric_test": true,
+    "multiple_testing_test": true,
+    "validator_fixture_test": true,
+    "event_chain_test": true,
+    "manual_execution_guard_test": true,
+    "holdout_guard_test": true,
+    "production_protection_test": true,
+    "bat_static_test": true,
+    "reference_reproduction_spec_test": true
+  },
+  "failed_checks": [],
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false,
+  "ENTRY_FILTERING_EXECUTED": false
+}

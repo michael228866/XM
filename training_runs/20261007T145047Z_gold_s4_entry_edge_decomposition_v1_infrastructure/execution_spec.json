@@ -1,0 +1,214 @@
+{
+  "kind": "INFRASTRUCTURE_ONLY",
+  "source_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+  "source_files": [
+    "CHECK_STATUS.bat",
+    "README_GOLD_S4_ENTRY_EDGE_DECOMPOSITION_V1.md",
+    "RUN_TRAINING.bat",
+    "certify_gold_s4_entry_edge_decomposition_v1.py",
+    "gold_manual_s4_train_validate_v1.py",
+    "gold_manual_s4_training_data_v1.py",
+    "gold_manual_training_workflow_v1.py",
+    "gold_s4_entry_edge_bucket_spec_v1.json",
+    "gold_s4_entry_edge_decomposition_v1.py",
+    "gold_s4_entry_edge_decomposition_v1_config.json",
+    "gold_s4_entry_edge_decomposition_v1_launcher.py",
+    "gold_s4_entry_edge_decomposition_v1_support.py",
+    "gold_s4_entry_edge_feature_inventory_v1.json",
+    "gold_s4_entry_edge_feature_inventory_v1.py",
+    "gold_s4_entry_edge_reference_v1.json",
+    "manual_entry_edge_decomposition_policy_v1.json",
+    "manual_training_launcher_v1.py",
+    "manual_training_policy_v1.json",
+    "test_gold_s4_entry_edge_decomposition_v1.py",
+    "training_holdout_guard_v1.py",
+    "training_run_history.py",
+    "validate_gold_s4_entry_edge_decomposition_v1_run.py"
+  ],
+  "source_bindings": [
+    {
+      "path": "CHECK_STATUS.bat",
+      "raw_file_sha256": "27b4b2f196b41af14f93e6bb57aae1040fafbed89796649d332d905eee7502c3",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "27b4b2f196b41af14f93e6bb57aae1040fafbed89796649d332d905eee7502c3",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "README_GOLD_S4_ENTRY_EDGE_DECOMPOSITION_V1.md",
+      "raw_file_sha256": "cde770062c205197fdf5e51fc0bb999e765a939c41c43a646bb2a3d9317f4a2b",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "ab5520ff58afe6fcb057254d4b448b3726552ca3f9e5a3a7deda99ad8952c5e3",
+      "line_endings": "CRLF_TO_LF",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "RUN_TRAINING.bat",
+      "raw_file_sha256": "b08844b365d154667b5866908c2bb768cf202ba8e47eedc484771a2a3cec9b5b",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "b08844b365d154667b5866908c2bb768cf202ba8e47eedc484771a2a3cec9b5b",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "certify_gold_s4_entry_edge_decomposition_v1.py",
+      "raw_file_sha256": "00a9d9beb304b1a5fd982ad988ba7bf3e9eebfffe7c2057c71785ce0638c7156",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "435c1883891b38eb08adca27b00d7f59391f43fc6d2840e438ac4401a8fc0a17",
+      "line_endings": "CRLF_TO_LF",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_manual_s4_train_validate_v1.py",
+      "raw_file_sha256": "0b7120ca753b3c23088238785a3f714e057b8975e6c69a885bffa127139c91dd",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "0b7120ca753b3c23088238785a3f714e057b8975e6c69a885bffa127139c91dd",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_manual_s4_training_data_v1.py",
+      "raw_file_sha256": "c02e8d5f4ece873b6fe47cbeeb222ec0a5b027713c68e28f48e4a99366144895",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "c02e8d5f4ece873b6fe47cbeeb222ec0a5b027713c68e28f48e4a99366144895",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_manual_training_workflow_v1.py",
+      "raw_file_sha256": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_entry_edge_bucket_spec_v1.json",
+      "raw_file_sha256": "c473bc3a9befe31724ec9c336dc375b82962ceecdd589a1e64880e422de8dfef",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "16f64b7eb4ff3e59c7d73c3b31b31f906f8587d7a8bfe4314b56477ea40d3cf3",
+      "line_endings": "CRLF_TO_LF",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_entry_edge_decomposition_v1.py",
+      "raw_file_sha256": "44aa38ec4d4a044d80fe5a9b324475c0bb56994e5f007aa5c86c53924c3adb8c",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "44aa38ec4d4a044d80fe5a9b324475c0bb56994e5f007aa5c86c53924c3adb8c",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_entry_edge_decomposition_v1_config.json",
+      "raw_file_sha256": "53d8f303b544f77f574648e8abaaf9429eaa729dfdf6dd3e9a67e25943af3174",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "1ace0355d5d6a11615b07768d7606d5eecdac40bf7dadc443847de223244539b",
+      "line_endings": "CRLF_TO_LF",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_entry_edge_decomposition_v1_launcher.py",
+      "raw_file_sha256": "4511cee1d229fb8994700c882b9db48f0c4e69b6185fd52cff2dc51dbc702536",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "4511cee1d229fb8994700c882b9db48f0c4e69b6185fd52cff2dc51dbc702536",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_entry_edge_decomposition_v1_support.py",
+      "raw_file_sha256": "e895f606a62294777fdf3ed52581b7411bb2d9da8924d55c8ec6bf8c4c56a8ad",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "c1bc42fe8de361360b781c399187d0d7cb4c6f5a43c18c717fc4784449997951",
+      "line_endings": "CRLF_TO_LF",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_entry_edge_feature_inventory_v1.json",
+      "raw_file_sha256": "b851e2b6c6dadfcf7693d129928df3bd2c40c295e402b9009404ab76f3596942",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "4fccb3d0d14c680f9da2c9fdd7b90d562e698299a1e3322e2061c49df1a20b93",
+      "line_endings": "CRLF_TO_LF",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_entry_edge_feature_inventory_v1.py",
+      "raw_file_sha256": "a4ec3386b3a5293eb7210b9ade76402aeba5f16e00418316d67d99e316003d25",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "4b34839f5ac04210c374133c1f6902ddaafd6f39b8940e105c5c08e9b96d9020",
+      "line_endings": "CRLF_TO_LF",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "gold_s4_entry_edge_reference_v1.json",
+      "raw_file_sha256": "817e148c850a53b1775cffeb04509ec0cda200ea9f1ad670badd20236c4c045c",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "a291098dc9959e557a15732cdabd7e5358cdc33f7350304c0388c98e2dd956f0",
+      "line_endings": "CRLF_TO_LF",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "manual_entry_edge_decomposition_policy_v1.json",
+      "raw_file_sha256": "80688470c0e8410efce29971e1e526af635a45997360c06e33b4aae198924466",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "9b01e6596851e355a9c0b1620c0aca25816b9ffe7acb88e592f721556b856258",
+      "line_endings": "CRLF_TO_LF",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "manual_training_launcher_v1.py",
+      "raw_file_sha256": "b45483d02482aaf78e4411cb9842d6f31c8da68292443d825ccf77f69d072d2e",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "b45483d02482aaf78e4411cb9842d6f31c8da68292443d825ccf77f69d072d2e",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "manual_training_policy_v1.json",
+      "raw_file_sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "test_gold_s4_entry_edge_decomposition_v1.py",
+      "raw_file_sha256": "0d383026d4e15906c0f80a2f7b451739c2fc71ec5d316446d56b2f3b75c6d86e",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "0d383026d4e15906c0f80a2f7b451739c2fc71ec5d316446d56b2f3b75c6d86e",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "training_holdout_guard_v1.py",
+      "raw_file_sha256": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "training_run_history.py",
+      "raw_file_sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549",
+      "line_endings": "EXACT",
+      "equivalence_status": "PASS"
+    },
+    {
+      "path": "validate_gold_s4_entry_edge_decomposition_v1_run.py",
+      "raw_file_sha256": "73ecc3aa68322e2b2297495ba55cf9581b7ed71b40bc6fdffbfafca8600ab2ee",
+      "git_commit": "f291768950cd93cc01e9da4aa3b67a022284ec9c",
+      "git_blob_sha256": "8b5f30b91a0e42d2c1b04f3b41dcc19d3ba4293985fa8b747005ba2a9a24a785",
+      "line_endings": "CRLF_TO_LF",
+      "equivalence_status": "PASS"
+    }
+  ],
+  "prospective_bat": {
+    "RUN_TRAINING.bat": "@echo off\nsetlocal\nchcp 65001 >nul\nset \"PYTHONUTF8=1\"\ncd /d \"%~dp0\"\nrem GOLD_S4_ENTRY_EDGE_DECOMPOSITION_V1: USER only; no training or entry filtering.\nset \"XM_USER_TRAINING_BAT=RUN_TRAINING_V1\"\nif not exist \"%~dp0.venv\\Scripts\\python.exe\" (\n  echo [FAIL] Repository Python is missing.\n  goto done\n)\n\"%~dp0.venv\\Scripts\\python.exe\" -B \"%~dp0gold_s4_entry_edge_decomposition_v1_launcher.py\"\n:done\necho Press any key to close.\npause >nul\nendlocal\n",
+    "CHECK_STATUS.bat": "@echo off\nsetlocal\nchcp 65001 >nul\nset \"PYTHONUTF8=1\"\ncd /d \"%~dp0\"\nrem GOLD_S4_ENTRY_EDGE_DECOMPOSITION_V1: USER only; no training or entry filtering.\nif not exist \"%~dp0.venv\\Scripts\\python.exe\" (\n  echo [FAIL] Repository Python is missing.\n  goto done\n)\n\"%~dp0.venv\\Scripts\\python.exe\" -B \"%~dp0gold_s4_entry_edge_decomposition_v1_launcher.py\" --status\n:done\necho Press any key to close.\npause >nul\nendlocal\n"
+  },
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false,
+  "ENTRY_FILTERING_EXECUTED": false
+}

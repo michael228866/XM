@@ -1,0 +1,51 @@
+{
+  "experiment": "gold_s4_entry_edge_decomposition_v1",
+  "reference_binding": "gold_s4_entry_edge_reference_v1.json",
+  "bucket_spec": "gold_s4_entry_edge_bucket_spec_v1.json",
+  "feature_inventory": "gold_s4_entry_edge_feature_inventory_v1.json",
+  "policy": "manual_entry_edge_decomposition_policy_v1.json",
+  "folds": [
+    [
+      "2018_2020",
+      "2018-01-01",
+      "2021-01-01"
+    ],
+    [
+      "2021_2022",
+      "2021-01-01",
+      "2023-01-01"
+    ],
+    [
+      "2023_2024",
+      "2023-01-01",
+      "2025-01-01"
+    ]
+  ],
+  "numeric_tolerance": 1e-12,
+  "protected_sha256": {
+    "gemini.py": "0ccb4a66c54981e3b207e0f20db1ca64a3f8d76ebe8a74784d1b9b6102fc4b07",
+    "gold_long_recent_candidate_xgb.json": "2dc32e3b3c0ea6ca8fa2e30187bebf8ff3f7e7e03109b39b3f70f013e3a755f2"
+  },
+  "source_bindings": {
+    "gold_s4_entry_edge_decomposition_v1.py": "44aa38ec4d4a044d80fe5a9b324475c0bb56994e5f007aa5c86c53924c3adb8c",
+    "gold_s4_entry_edge_bucket_spec_v1.json": "c473bc3a9befe31724ec9c336dc375b82962ceecdd589a1e64880e422de8dfef",
+    "gold_s4_entry_edge_decomposition_v1_support.py": "e895f606a62294777fdf3ed52581b7411bb2d9da8924d55c8ec6bf8c4c56a8ad",
+    "gold_s4_entry_edge_decomposition_v1_launcher.py": "4511cee1d229fb8994700c882b9db48f0c4e69b6185fd52cff2dc51dbc702536",
+    "gold_s4_entry_edge_feature_inventory_v1.py": "a4ec3386b3a5293eb7210b9ade76402aeba5f16e00418316d67d99e316003d25",
+    "gold_s4_entry_edge_feature_inventory_v1.json": "b851e2b6c6dadfcf7693d129928df3bd2c40c295e402b9009404ab76f3596942",
+    "gold_s4_entry_edge_reference_v1.json": "817e148c850a53b1775cffeb04509ec0cda200ea9f1ad670badd20236c4c045c",
+    "validate_gold_s4_entry_edge_decomposition_v1_run.py": "73ecc3aa68322e2b2297495ba55cf9581b7ed71b40bc6fdffbfafca8600ab2ee",
+    "manual_entry_edge_decomposition_policy_v1.json": "80688470c0e8410efce29971e1e526af635a45997360c06e33b4aae198924466",
+    "README_GOLD_S4_ENTRY_EDGE_DECOMPOSITION_V1.md": "cde770062c205197fdf5e51fc0bb999e765a939c41c43a646bb2a3d9317f4a2b",
+    "test_gold_s4_entry_edge_decomposition_v1.py": "0d383026d4e15906c0f80a2f7b451739c2fc71ec5d316446d56b2f3b75c6d86e",
+    "certify_gold_s4_entry_edge_decomposition_v1.py": "00a9d9beb304b1a5fd982ad988ba7bf3e9eebfffe7c2057c71785ce0638c7156",
+    "manual_training_launcher_v1.py": "b45483d02482aaf78e4411cb9842d6f31c8da68292443d825ccf77f69d072d2e",
+    "manual_training_policy_v1.json": "6591c3b74ab53108336f73b3d962717c3383700695494cf800ef9e3847cf6306",
+    "gold_manual_training_workflow_v1.py": "18825d603c55898b6b88af61b8832e27c18fe19bb438e9fd00093b4c30afb7ed",
+    "gold_manual_s4_train_validate_v1.py": "0b7120ca753b3c23088238785a3f714e057b8975e6c69a885bffa127139c91dd",
+    "gold_manual_s4_training_data_v1.py": "c02e8d5f4ece873b6fe47cbeeb222ec0a5b027713c68e28f48e4a99366144895",
+    "training_holdout_guard_v1.py": "a79b3372cb5cbf168998d44474428e4395dcf7d38ab1d2e6d303bd3ebff3c248",
+    "training_run_history.py": "90d168089ccd4c9c8c1d42caa24a227e0765acfde4b06558ccf589c5636df549"
+  },
+  "bootstrap_enabled": false
+}
