@@ -279,6 +279,20 @@ def event_chain_test():
 
 
 def manual_execution_guard_test():
+    with tempfile.TemporaryDirectory() as folder:
+        root=Path(folder); run=root/'training_runs'/'synthetic_infrastructure'; run.mkdir(parents=True)
+        s.write(run/'validator.json',dict(overall='PASS'))
+        s.write(run/'metrics.json',dict(formal_run_status='PASS'))
+        s.write(run/'FINALIZED.json',dict(file_sha256={name:s.sha(run/name) for name in ('validator.json','metrics.json')}))
+        approval=dict(approved=True,workflow='GOLD_S4_ENTRY_EDGE_DECOMPOSITION_V1',bindings={},
+            certification_run='training_runs/synthetic_infrastructure',finalized_sha256=s.sha(run/'FINALIZED.json'))
+        canonical=(json.dumps(approval,indent=2)+'\n').encode()
+        for newline in (b'\n',b'\r\n'):
+            (root/launcher.APPROVAL).write_bytes(canonical.replace(b'\n',newline))
+            with patch.object(launcher.subprocess,'check_output',return_value=canonical):
+                assert launcher.verify_approval(root)==approval
+                (root/launcher.APPROVAL).write_bytes(canonical.replace(b'true',b'false',1))
+                rejected(lambda:launcher.verify_approval(root))
     launcher.check_policy()
     rejected(launcher.require_session)
     rejected(lambda:launcher.begin_session('fake'))
@@ -294,7 +308,7 @@ def manual_execution_guard_test():
         rejected(lambda:launcher.consume_validation(token,Path('.')))
         token=launcher.validation_permit(Path('.'))
         rejected(lambda:launcher.consume_validation(token,Path('wrong')))
-    return 'All real I/O/research/validation entry points blocked without USER session; single-use/wrong-run permit checks'
+    return 'LF/CRLF committed approvals equivalent; changed approval rejected; all historical entry points guarded; single-use/wrong-run permits'
 
 
 def holdout_guard_test():

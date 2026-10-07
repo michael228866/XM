@@ -61,7 +61,10 @@ def verify_approval(root=ROOT):
     root = Path(root)
     a = read(root/APPROVAL)
     require(a['approved'] is True and a['workflow']=='GOLD_S4_ENTRY_EDGE_DECOMPOSITION_V1','Workflow approval')
-    require(subprocess.check_output(['git','show','HEAD:'+APPROVAL],cwd=root)==(root/APPROVAL).read_bytes(),'Committed approval')
+    committed = subprocess.check_output(['git','show','HEAD:'+APPROVAL],cwd=root)
+    working = (root/APPROVAL).read_bytes()
+    require(committed.replace(b'\r\n', b'\n') == working.replace(b'\r\n', b'\n'),
+            'Committed approval')
     for name,expected in a['bindings'].items():
         path = (root/name).resolve()
         require(path.is_relative_to(root.resolve()) and sha(path)==expected,'Approved source changed: '+name)
