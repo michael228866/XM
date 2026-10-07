@@ -1,0 +1,11 @@
+{
+  "execution_owner": "USER",
+  "real_research_allowed_for_codex": false,
+  "automatic_research": false,
+  "model_training_required": false,
+  "signal_retraining_allowed": false,
+  "entry_filtering_allowed": false,
+  "production_promotion_allowed": false,
+  "user_bat_launch_required": true,
+  "holdout_access_allowed": false
+}

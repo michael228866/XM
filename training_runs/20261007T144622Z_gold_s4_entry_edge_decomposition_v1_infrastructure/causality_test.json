@@ -1,0 +1,9 @@
+{
+  "overall": "PASS",
+  "evidence": "Eight future/outcome fields rejected by runner and independent validator; 3-way pair rejected",
+  "synthetic_only": true,
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false,
+  "ENTRY_FILTERING_EXECUTED": false
+}

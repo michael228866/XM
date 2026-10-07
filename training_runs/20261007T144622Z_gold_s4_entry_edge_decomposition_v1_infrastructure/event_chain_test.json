@@ -1,0 +1,9 @@
+{
+  "overall": "PASS",
+  "evidence": "Canonical raw event payload, artifact hashes, ordered ten-event lifecycle, wrappers and append-after-finalization rejected",
+  "synthetic_only": true,
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false,
+  "ENTRY_FILTERING_EXECUTED": false
+}

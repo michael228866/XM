@@ -1,0 +1,9 @@
+{
+  "overall": "PASS",
+  "evidence": "15 corrupted table, count, identity, R, stress, fold, boundary and audit fixtures rejected",
+  "synthetic_only": true,
+  "MODEL_TRAINING_EXECUTED": false,
+  "REAL_RESEARCH_EXECUTED": false,
+  "HISTORICAL_DATA_USED": false,
+  "ENTRY_FILTERING_EXECUTED": false
+}
