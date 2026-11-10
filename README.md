@@ -4,6 +4,16 @@
 
 > `gemini.py` 目前 `DRY_RUN = False`，會實際送出委託。啟動前務必確認 MT5 連線的是測試帳戶。
 
+Demo 研究基礎、帳戶驗證、逐次啟動版本紀錄與完整交易帳本，見 [Demo Trading Research Foundation V1](DEMO_TRADING_RESEARCH_FOUNDATION_V1.md)。新版本須明確設定 `XM_EXPECTED_LOGIN`、`XM_EXPECTED_SERVER`，並由程式驗證 Demo 身分；本次開發未重啟 runner。
+
+既有成交的唯讀對帳與可重現績效報告入口，見 [Forward Test Ledger Verification V2](FORWARD_TEST_LEDGER_VERIFICATION_V2.md)。缺少帳戶／時區／版本的舊資料保留 Unknown，另列附條件的檔案記錄值統計。
+
+同一批 V2 交易的盈虧結構、成本敏感度、版本覆蓋率與統計不確定性，見 [Forward Trading Edge Diagnosis V3](FORWARD_EDGE_DIAGNOSIS_V3.md)。此工具只做已保存 Forward 記錄診斷，不變更策略或啟動 MT5。
+
+新 Forward 樣本的帳戶／版本歸屬、初始風險、完整成本與出場證據驗收，見 [Forward 資料品質驗收 V4](FORWARD_DATA_QUALITY_V4.md)。缺證據輸出 `NOT_READY`，不補造舊交易身分，也不自動啟動交易。
+
+**2026-11 策略研究與第二個 Demo runner（H1 C）**：所有實驗、結果、成本核對、目前在 Demo 上跑的策略與操作方式，見 [策略研究紀錄 2026-11](STRATEGY_RESEARCH_2026_11.md)。
+
 ## `gemini.py` 與目前模型是怎麼來的
 
 `gemini.py` 是 MT5 執行器，不是模型訓練程式。現在的執行鏈如下：
@@ -38,8 +48,8 @@ Git 與模型沿革：
 | Model | `gold_long_recent_candidate_xgb.json` |
 | Output / direction | `long_binary` / long only |
 | Meta overlay | 關閉 |
-| 主要進場門檻 | `P(long) >= 0.75` |
-| Risk | 每筆 `1.4%` |
+| 主要進場門檻 | 模型分數 `>= 0.65`（2026-11-04 起）；原始選模門檻為 `0.75`。10/15–10/16 曾短暫以約 `0.55` 執行，19 筆平均 `-0.15R` |
+| Risk | 每筆 `2%`（2026-11-04 起，原 `1.4%`）；算出手數低於 0.01 但不少於 0.01 的 1/1.5 時，以最小手數 0.01 下單（`MIN_LOT_MAX_RISK_MULT = 1.5`） |
 | TP / SL | `1.3 ATR / 1.6 ATR`；最低價格距離 `1.5 / 0.6` |
 | 最長持倉 | `90` 分鐘 |
 | Position limit | 最多 `1` 個 GOLD# position |
@@ -88,7 +98,7 @@ Git 與模型沿革：
 - Long positive：未來區間最高價到達 TP，且整個區間最低價沒有到達 SL。
 - 其他事件全部作為 binary negative class；class-balanced sample weights。
 
-這個舊標籤使用未來區間 extrema 判定 clean event，不是後來 Generation 研究採用的逐 bar TP／SL first-touch label。選模回測則使用盤中 `HIGH`／`LOW` 的 executable first-touch 邏輯，以及另外選出的 runtime `1.3/1.6 ATR` exit profile。也就是說，training label 與 execution exit 並非同一組 TP/SL 語義；這是目前模型已知的研究限制，不能在文件中把它誤稱為完整 execution-aligned first-touch model。
+這個舊標籤使用未來區間 extrema 判定 clean event，不是後來 Generation 研究採用的逐 bar TP／SL first-touch label。原始選模 caller 未傳入 `HIGH`／`LOW`，實際使用 close-only 出場；後續 S0–S5 調和研究才分別核對盤中 first-touch 與 runtime `1.3/1.6 ATR` exit profile。Training label、原始回測與 runtime 並非同一組執行語義，不能稱為完整 execution-aligned first-touch model；差異與隔離測試見 Demo Foundation 規格。
 
 31 個 entry-time features 全部由已完成 bars 產生：
 
@@ -237,6 +247,6 @@ py -3.10 gemini.py
 - `gemini_trade_history.csv`
 - `runtime_logs/`
 
-Runner 重啟不代表舊 CSV 自動消失，但同一份 log 可能跨越不同 model／threshold／risk 設定。分析時必須以每次啟動行、model hash、設定變更時間與 Git commit 切分 era，不能把 5/18 以來所有 rows 當作目前 0.75 long-binary 版本的成績。
+Runner 重啟不代表舊 CSV 自動消失，但同一份 log 可能跨越不同 model／threshold／risk 設定。新版使用 run manifest 與明確 ID 關聯切分版本；舊紀錄缺乏足夠證據時維持 Unknown，不能把 5/18 以來所有 rows 當作單一 long-binary 設定版本的成績。
 
 執行日誌可能包含帳戶與 broker 細節，而且會持續增長，因此不納入 Git。大型 `GOLD#_*.csv` 歷史資料與生成式研究 JSON 也預設只留本機；需要重現時應使用明確版本的 artifact storage 或 Git LFS，不能把缺少的原始 snapshot 當成已保存。

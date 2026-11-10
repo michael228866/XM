@@ -1,0 +1,62 @@
+{
+  "candidate": "C_long_3.0_1.5_48h",
+  "spec": {
+    "side": "long",
+    "tp": 3.0,
+    "sl": 1.5,
+    "hold": 48
+  },
+  "threshold": 0.6094,
+  "features": [
+    "RSI",
+    "ATR_PCT",
+    "MACD_PCT",
+    "BB_WIDTH",
+    "BIAS_20",
+    "BODY_PCT",
+    "ROC_5",
+    "ROC_24",
+    "VOLA_RATIO",
+    "HOUR_SIN",
+    "HOUR_COS",
+    "DAY_OF_WEEK",
+    "H4_TREND",
+    "Daily_TREND",
+    "Weekly_TREND",
+    "Monthly_TREND"
+  ],
+  "min_spread_fraction": 8e-05,
+  "cutoff_utc": "2026-11-04T16:19:48+00:00",
+  "source_run": "forward_reports\\20261105_h1_lab_v1_gold_only",
+  "development_test": {
+    "n": 268,
+    "win_rate": 0.403,
+    "avg_r": 0.161,
+    "profit_factor": 1.27,
+    "avg_r_95ci": [
+      -0.011,
+      0.333
+    ]
+  },
+  "development_baselines": {
+    "always_in": {
+      "n": 1462,
+      "win_rate": 0.371,
+      "avg_r": 0.09,
+      "profit_factor": 1.144,
+      "avg_r_95ci": [
+        0.017,
+        0.164
+      ]
+    },
+    "random_avg_r_median": 0.107,
+    "random_share_at_or_above_model": 0.093
+  },
+  "sha256": {
+    "model_xgb.json": "9f956f81d01345d868e6b0bcc0b4ff32c3ac3632c7c84a3c4886ba627a52d1cc",
+    "h1_lab_v1.py": "397d6c246d3fc768e83b3484c85e856ec6736c17cda8600682198b009408bcf6",
+    "strategy_lab_v1.py": "9886a0fd0c175eb24848f8a39e507947d609ed167a0b290a441bfe88d410007d",
+    "drl_trading_v2.py": "b129d90d4a4a02cbf6d77903351ed7c3273af3cb3d4464b6a146aa25153ef767",
+    "gold_recent_walk_forward.py": "cf14bbd97e88632ae53cadaabf5e3341f844f5096e8dd0493f8f96a4bf810334"
+  }
+}

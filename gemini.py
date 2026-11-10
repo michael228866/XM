@@ -3,12 +3,101 @@ import json
 import math
 import os
 import time
+import uuid
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 import MetaTrader5 as mt5
 import numpy as np
 import pandas as pd
 import xgboost as xgb
+
+from demo_runtime_foundation_v1 import (
+    RuntimeRun, TradingSafetyError, canonical_bytes, require_demo_account,
+)
+
+
+RUNTIME_RUN = None
+_captured_deals = {}
+
+
+def verify_demo_identity():
+    account = require_demo_account(
+        mt5, os.environ.get("XM_EXPECTED_LOGIN"), os.environ.get("XM_EXPECTED_SERVER")
+    )
+    if RUNTIME_RUN is not None and (
+            str(account.login) != RUNTIME_RUN.identity["account_login"]
+            or account.server != RUNTIME_RUN.identity["account_server"]):
+        raise TradingSafetyError("Account differs from this run's pinned identity")
+    return account
+
+
+def start_runtime_run():
+    global RUNTIME_RUN
+    _captured_deals.clear()
+    account = verify_demo_identity()
+    # Capture every strategy constant, including future additions, without importing research.
+    configuration = {
+        name: value for name, value in globals().items()
+        if name.isupper() and isinstance(value, (str, int, float, bool, list, dict, set, tuple, type(None)))
+        and name != "RUNTIME_RUN"
+    }
+    configuration["expected_login"] = os.environ.get("XM_EXPECTED_LOGIN")
+    configuration["expected_server"] = os.environ.get("XM_EXPECTED_SERVER")
+    configuration["daily_boundary"] = "host_local_midnight_legacy"
+    RUNTIME_RUN = RuntimeRun(
+        Path(__file__).resolve().parent / "runtime_logs" / "demo_foundation_v1",
+        configuration, MODEL_FILE, __file__, account,
+    )
+    print(f"Demo research run: {RUNTIME_RUN.run_id}")
+
+
+def send_demo_order(request, *, opening=False, signal=None):
+    """The only order_send boundary, including closes and any future SL/TP request."""
+    if DRY_RUN:
+        return None
+    opening = opening or (request.get("action") == mt5.TRADE_ACTION_DEAL
+                          and not request.get("position"))
+    verify_demo_identity()
+    if RUNTIME_RUN is None:
+        raise TradingSafetyError("Missing runtime provenance; order blocked")
+    if opening:
+        # Fresh queries must succeed even when called outside the main-loop guards.
+        get_strategy_positions()
+        get_daily_realized_pnl()
+        sync_trade_history()
+    operation = uuid.uuid4().hex
+    context = {**(signal or {}), **RUNTIME_RUN.identity,
+               "request": request, "order_event_id": operation,
+               "event_time": format_log_time(utc_now())}
+    RUNTIME_RUN.append("orders", {**context, "stage": "intent"})
+    if signal is not None:
+        signal["order_event_id"] = operation
+    try:
+        verify_demo_identity()
+        result = mt5.order_send(request)
+    except Exception as exc:
+        RUNTIME_RUN.append("orders", {**context, "stage": "error", "error": str(exc)})
+        raise
+    record = {**context, "stage": "result"}
+    fill_trade_result_log(record, result)
+    record["filled_volume"] = getattr(result, "volume", None)
+    record["initial_risk"] = None
+    record["risk_source"] = "order_calc_profit_fill_to_requested_initial_sl"
+    if opening and result is not None and result.retcode in (
+            mt5.TRADE_RETCODE_DONE, getattr(mt5, "TRADE_RETCODE_DONE_PARTIAL", -1)):
+        try:
+            risk = mt5.order_calc_profit(request["type"], request["symbol"],
+                                         result.volume, result.price, request["sl"])
+            if risk is not None and math.isfinite(risk) and risk < 0:
+                record["initial_risk"] = -risk
+            else:
+                record["risk_error"] = "Broker initial-SL loss calculation unavailable/invalid"
+        except Exception as exc:
+            # Missing risk remains Unknown; never substitute the planned risk budget.
+            record["risk_error"] = str(exc)
+    RUNTIME_RUN.append("orders", record)
+    return result
 
 
 SYMBOL = "GOLD#"
@@ -24,8 +113,10 @@ TRADE_HISTORY_LOG_FILE = "gemini_trade_history.csv"
 TRADE_HISTORY_LOOKBACK_DAYS = 14
 LOG_TIMEZONE = timezone.utc
 
-RISK_PER_TRADE = 0.014
-CONF_THRESHOLD = 0.70
+RISK_PER_TRADE = 0.02
+# Round a too-small lot up to the broker minimum only while real risk stays <= this multiple of budget.
+MIN_LOT_MAX_RISK_MULT = 1.5
+CONF_THRESHOLD = 0.65
 EDGE_THRESHOLD = 0.0
 LOWER_CONF_THRESHOLD = 1.01
 LOWER_CONF_MIN_EDGE = 0.30
@@ -266,18 +357,12 @@ def ensure_signal_log_schema():
         reader = csv.DictReader(file)
         if reader.fieldnames == SIGNAL_LOG_FIELDS:
             return
-        rows = list(reader)
-
-    tmp_file = f"{SIGNAL_LOG_FILE}.tmp"
-    with open(tmp_file, "w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=SIGNAL_LOG_FIELDS)
-        writer.writeheader()
-        for row in rows:
-            writer.writerow({field: row.get(field, "") for field in SIGNAL_LOG_FIELDS})
-    os.replace(tmp_file, SIGNAL_LOG_FILE)
+        raise TradingSafetyError("Legacy signal schema differs; refusing to rewrite CSV")
 
 
 def append_signal_log(row):
+    if RUNTIME_RUN is not None:
+        RUNTIME_RUN.append("signals", {**row, **RUNTIME_RUN.identity})
     ensure_signal_log_schema()
     needs_header = (
         not os.path.exists(SIGNAL_LOG_FILE)
@@ -348,12 +433,31 @@ def sync_trade_history():
     start_time = end_time - timedelta(days=TRADE_HISTORY_LOOKBACK_DAYS)
     deals = mt5.history_deals_get(start_time, end_time)
     if deals is None:
-        return
+        raise TradingSafetyError(f"history_deals_get failed: {mt5.last_error()}")
 
     recorded_ids = get_recorded_deal_ids()
     now_text = format_log_time(end_time)
     rows = []
+    strategy_positions = {deal.position_id for deal in deals
+                          if deal.symbol == SYMBOL and deal.magic == MAGIC_NUMBER}
     for deal in deals:
+        if (RUNTIME_RUN is not None and deal.symbol == SYMBOL
+                and deal.position_id in strategy_positions):
+            observation = {
+                "deal_id": str(deal.ticket), "order_id": str(deal.order),
+                "position_id": str(deal.position_id), "deal_time": format_log_time(deal.time),
+                "time_msc": getattr(deal, "time_msc", None), "symbol": deal.symbol,
+                "magic": deal.magic, "type": deal.type, "entry": deal.entry,
+                "volume": deal.volume, "price": deal.price, "profit": deal.profit,
+                "commission": deal.commission, "swap": deal.swap,
+                "fee": getattr(deal, "fee", None),
+            }
+            fingerprint = canonical_bytes(observation)
+            if _captured_deals.get(str(deal.ticket)) != fingerprint:
+                # Revisions are retained, so the ledger can flag a conflicting deal.
+                RUNTIME_RUN.append("deals", observation)
+                _captured_deals[str(deal.ticket)] = fingerprint
+
         if deal.symbol != SYMBOL or deal.magic != MAGIC_NUMBER:
             continue
 
@@ -630,6 +734,13 @@ def get_current_features(regime_features=None):
     return feat_df, regime_df, last_row["TIME_DT"]
 
 
+def closed_bar_changed(last_bar_time):
+    # Poll instead of waiting for second 0: MT5 often opens the new M1 bar a moment late.
+    rates = mt5.copy_rates_from_pos(SYMBOL, mt5.TIMEFRAME_M1, 1, 1)
+    return (rates is not None and len(rates) > 0
+            and (last_bar_time is None or rates[0]["time"] != last_bar_time.timestamp()))
+
+
 def normalize_model_probs(raw_probs):
     probs = np.asarray(raw_probs, dtype=np.float32).reshape(-1)
     if MODEL_OUTPUT_MODE == "three_class" and len(probs) == 3:
@@ -685,7 +796,7 @@ def get_meta_quality_and_risk_mult(meta_model, meta_config, regime_df, probs):
 def get_strategy_positions():
     positions = mt5.positions_get(symbol=SYMBOL)
     if positions is None:
-        return []
+        raise TradingSafetyError(f"positions_get failed: {mt5.last_error()}")
     return [pos for pos in positions if pos.magic == MAGIC_NUMBER]
 
 
@@ -762,7 +873,7 @@ def get_daily_realized_pnl():
     day_start = datetime(now.year, now.month, now.day)
     deals = mt5.history_deals_get(day_start, now)
     if deals is None:
-        return 0.0
+        raise TradingSafetyError(f"daily history query failed: {mt5.last_error()}")
     return sum(
         deal.profit
         + deal.swap
@@ -778,7 +889,7 @@ def get_daily_entry_count():
     day_start = datetime(now.year, now.month, now.day)
     deals = mt5.history_deals_get(day_start, now)
     if deals is None:
-        return 0
+        raise TradingSafetyError(f"daily entry query failed: {mt5.last_error()}")
     return sum(
         1
         for deal in deals
@@ -796,14 +907,16 @@ def normalize_lot(raw_lot):
     max_lot = info.volume_max
     step = info.volume_step
     if raw_lot < min_lot:
-        return None
+        return min_lot if raw_lot * MIN_LOT_MAX_RISK_MULT >= min_lot else None
     steps = math.floor(min(raw_lot, max_lot) / step)
     lot = steps * step
     precision = max(0, int(round(-math.log10(step)))) if step < 1 else 0
     return round(lot, precision)
 
 
-def execute_trade(order_type, lot, sl_distance, tp_distance):
+def execute_trade(order_type, lot, sl_distance, tp_distance, signal=None):
+    if DRY_RUN:
+        return None
     tick = mt5.symbol_info_tick(SYMBOL)
     if tick is None:
         return None
@@ -823,7 +936,7 @@ def execute_trade(order_type, lot, sl_distance, tp_distance):
         "type_time": mt5.ORDER_TIME_GTC,
         "type_filling": mt5.ORDER_FILLING_IOC,
     }
-    return mt5.order_send(request)
+    return send_demo_order(request, opening=True, signal=signal)
 
 
 def get_current_spread_points():
@@ -848,6 +961,8 @@ def get_spread_to_tp_ratio(spread_points, tp_distance):
 
 
 def close_position(position):
+    if DRY_RUN:
+        return False
     tick = mt5.symbol_info_tick(SYMBOL)
     if tick is None:
         return False
@@ -869,11 +984,13 @@ def close_position(position):
         "type_time": mt5.ORDER_TIME_GTC,
         "type_filling": mt5.ORDER_FILLING_IOC,
     }
-    result = mt5.order_send(request)
+    result = send_demo_order(request)
     return result is not None and result.retcode == mt5.TRADE_RETCODE_DONE
 
 
 def manage_open_positions():
+    if DRY_RUN:
+        return
     for position in get_strategy_positions():
         held_seconds = time.time() - position.time
         if held_seconds >= MAX_HOLD_MINUTES * 60:
@@ -902,6 +1019,12 @@ def live_trading_loop():
         print("MT5 initialize failed")
         return
 
+    try:
+        start_runtime_run()
+    except Exception:
+        mt5.shutdown()
+        raise
+
     model = xgb.XGBClassifier()
     model.load_model(MODEL_FILE)
     model.set_params(device="cpu")
@@ -918,12 +1041,13 @@ def live_trading_loop():
     last_history_sync_time = 0
     while True:
         try:
+            verify_demo_identity()
             manage_open_positions()
             now = utc_now()
             if time.time() - last_history_sync_time >= 60:
                 sync_trade_history()
                 last_history_sync_time = time.time()
-            if now.second != 0:
+            if not closed_bar_changed(last_bar_time):
                 time.sleep(0.5)
                 continue
 
@@ -1200,7 +1324,7 @@ def live_trading_loop():
                 time.sleep(1)
                 continue
 
-            result = execute_trade(mt5.ORDER_TYPE_BUY, lot, sl_distance, tp_distance)
+            result = execute_trade(mt5.ORDER_TYPE_BUY, lot, sl_distance, tp_distance, log_row)
             fill_trade_result_log(log_row, result)
             if result is not None and result.retcode == mt5.TRADE_RETCODE_DONE:
                 print(
@@ -1220,6 +1344,9 @@ def live_trading_loop():
             time.sleep(1)
         except Exception as exc:
             print(f"Error: {exc}")
+            if RUNTIME_RUN is not None:
+                RUNTIME_RUN.append("events", {"event_time": format_log_time(utc_now()),
+                                              "status": "runtime_error", "message": str(exc)})
             time.sleep(5)
 
 

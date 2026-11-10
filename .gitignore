@@ -6,6 +6,8 @@ GOLD#_*.csv
 數據集/
 
 # Live/demo runtime logs.
+/runtime_logs/demo_foundation_v1/
+/forward_reports/
 gemini_signal_log.csv
 gemini_trade_history.csv
 codex_signal_log*.csv
@@ -61,3 +63,7 @@ untouched_forward/**/data/
 # Exact historical S4 input cache and user imports remain local, hash-recorded data.
 /historical_training_data/s4_exact/
 /historical_training_data/import/*.csv
+
+# H1 runner logs and the local demo account identity used by the runner .bat files.
+h1_runner_signal_log.csv
+local_demo_account.bat

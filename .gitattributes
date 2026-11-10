@@ -240,3 +240,5 @@ manual_trade_economics_policy_v1.json -text whitespace=cr-at-eol
 test_gold_s4_trade_economics_v1.py -text whitespace=cr-at-eol
 validate_gold_s4_trade_economics_v1_run.py -text whitespace=cr-at-eol
 gold_s4_trade_economics_v1_approval.json -text whitespace=cr-at-eol
+# Frozen candidates are verified by sha256 of the working copy; never rewrite their line endings.
+frozen/** -text
