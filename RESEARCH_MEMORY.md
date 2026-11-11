@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 51；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 52；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -42,8 +42,8 @@
 | H-012 | 低流動時段的單根急動（> 3 倍 ATR）在 15-60 分鐘內部分回補，扣除當下實際點差後期望為正 | transient_anomaly | open | 33.0 | 2018-2022 以實際點差計的平均淨回補 <= 0；事件數 < 200 則判定樣本不足 |
 | H-003 | US macro surprises (actual vs forecast) cause post-release gold drift | event_surprise | open | 31.0 | post-release returns in the surprise direction are not positive beyond spread at the pre-declared horizon in 2014-2022 |
 | H-010 | 重要美國數據公布前後的波動放大可由事件類型和預期差大小預測；公布前後停止進場能改善 M1 策略 | event_volatility | open | 31.0 | 公布後／公布前實現波動比與 &#124;預期差&#124; 的等級相關 <= 0，或 ±30 分鐘不交易使回放淨 R 改善 < 0.02R |
-| H-004 | Gold's drift concentrates in specific sessions; intraday-only longs capture it without swap | session_structure | testing | 28.0 | no session's mean return exceeds spread consistently across 2018-2022 years |
 | H-007 | For M1 trading, execution cost (hour-of-day spread, entry method) matters more than the model | execution | open | 28.0 | restricting to the cheapest hours does not raise replay mean R by more than 0.03R |
+| H-004 | Gold's drift concentrates in specific sessions; intraday-only longs capture it without swap | session_structure | testing | 26.5 | no session's mean return exceeds spread consistently across 2018-2022 years |
 | H-002 | Exogenous macro data work at their native weekly horizon | exogenous_horizon | underpowered | 25.5 | discovery (2016-2022) IC in the wrong direction or &#124;t&#124; < 1 |
 | H-006 | Strategy timing skill persists over months (premise of any regime switch or bandit) | adaptivity | parked | 20.0 | rank correlation of consecutive 3-month residuals <= 0 |
 | H-015 | 同一組價格／技術指標特徵的方向預測變體（Gen1-21、S4、經典規則、網路策略、LSTM、組合規則）含有可交易的進場時機優勢 | price_direction_variants | exhausted_needs_new_data | 5.0 | 前瞻資料上，預先凍結的候選時機殘差（扣當月漂移）連續 6 個月 <= 0 |
@@ -61,6 +61,8 @@
   失敗原因：`none`；學到：timing skill exists beyond drift for H1_C_frozen
 - 實驗 **E-007**（H-005）：Sharpe MANAGED - CONST_EQUAL_EXPOSURE: 2018-2023 -0.061 (CI [-0.292, 0.162]), 2024+ 0.524; cost x3.0 2018-2023 -0.072; shuffled >= managed 0.65  
   失敗原因：`information`；學到：inverse-vol sizing at equal exposure: refuted
+- 實驗 **E-005**（H-004）：refuted: sessions with excess over proportional drift passing all rules: none; best 2018-2022 excess t 0.75 (Sidak p over 8: 0.872)  
+  失敗原因：`information`；學到：direction question: refuted; see report for cost sensitivity
 
 ## 4. 受資料重複使用影響的結論
 
@@ -68,15 +70,12 @@
 - 實驗 **E-002**：inconclusive（證據等級 `development`，登錄前已有 5 次使用重疊）：weekly-horizon verdicts: {'REAL10Y_CHG_20D': 'refuted', 'COT_MM_NET_PCT_OI': 'inconclusive'}
 - 實驗 **E-006**：inconclusive（證據等級 `development`，登錄前已有 14 次使用重疊）：inconclusive: Sharpe INTRADAY_LONG vs ALWAYS_LONG (cost x1): 2018-2022 0.152 vs -0.029, 2023+ 0.999 vs 0.773; better in both windows at cost x1.5, live31 and low swap: False
 - 實驗 **E-007**：refuted（證據等級 `development`，登錄前已有 18 次使用重疊）：Sharpe MANAGED - CONST_EQUAL_EXPOSURE: 2018-2023 -0.061 (CI [-0.292, 0.162]), 2024+ 0.524; cost x3.0 2018-2023 -0.072; shuffled >= managed 0.65
+- 實驗 **E-005**：refuted（證據等級 `development`，登錄前已有 12 次使用重疊）：refuted: sessions with excess over proportional drift passing all rules: none; best 2018-2022 excess t 0.75 (Sidak p over 8: 0.872)
 
 ## 5. 已登錄、尚未有結果的實驗
 
 - ~~E-003~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
 - ~~E-004~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
-- **E-005** → H-004（exploratory）：`exp_session_structure_v2`；審查：通過，可執行  
-  判定規則：At cost x1 a session x side passes if its excess over proportional drift is positive in >= 4 of 5 years 2018-2022 with Sidak p < 0.05 over 8 trials (times family trials), its 2018-2022 excess stays > 0 at cost x2, its 2023+ excess is > 0, and its raw traded net mean is > 0 in both windows. supported if any passes; refuted if the best 2018-2022 excess t has Sidak p >= 0.5; otherwise not_significant (ledger outcome inconclusive)
-  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 12 earlier uses; evidence is development only
-  - 審查 `critic_agent` → **approve**：round 1 (draft): approve with notes — refuted rule is lenient (69.5% of null simulations end refuted), so a negative result only excludes effects >= ~4 bp/day; month drift used same-day data; hour-based share leaves ~0.3 bp/day vol-share bias; cost used only the first bar's spread；fixes: leave-one-out month drift, segment cost = max(first, last bar spread), claim_scope narrowed to >= ~4 bp/day, vol-share bias documented；round 2: approve; leave-one-out and cost verified on synthetic H1; a 1-day month gives NaN and is dropped (harmless)；after round 2 only text changed: docstring and directional_benchmark now say leave-one-out (critic's round-2 note 4)
 
 ## 6. 所有實驗結果與下一個問題
 
@@ -92,6 +91,9 @@
 - **E-007**（H-005）`refuted` / `development`：Sharpe MANAGED - CONST_EQUAL_EXPOSURE: 2018-2023 -0.061 (CI [-0.292, 0.162]), 2024+ 0.524; cost x3.0 2018-2023 -0.072; shuffled >= managed 0.65  
   下一個問題：second-moment sizing alone is not an edge; test H-011 forecasting quality  
   紀錄：`training_runs/20261111T150249Z_research_e007_exp_vol_managed_v2`
+- **E-005**（H-004）`refuted` / `development`：refuted: sessions with excess over proportional drift passing all rules: none; best 2018-2022 excess t 0.75 (Sidak p over 8: 0.872)  
+  下一個問題：session structure carries no usable edge at these costs; prefer H-003/H-009+ questions  
+  紀錄：`training_runs/20261111T150317Z_research_e005_exp_session_structure_v2`
 
 ## 7. 決策紀錄
 
