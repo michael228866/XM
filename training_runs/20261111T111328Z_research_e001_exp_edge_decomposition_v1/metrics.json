@@ -1,0 +1,657 @@
+{
+  "summary": {
+    "candidates": {
+      "H1_C_frozen": {
+        "reliable_2018_2023": {
+          "trades": {
+            "n": 363,
+            "win_rate": 0.521,
+            "avg_r": 0.41,
+            "profit_factor": 1.829,
+            "avg_r_95ci": [
+              0.263,
+              0.556
+            ]
+          },
+          "always_in": {
+            "n": 3054,
+            "win_rate": 0.336,
+            "avg_r": -0.101,
+            "profit_factor": 0.858,
+            "avg_r_95ci": [
+              -0.149,
+              -0.052
+            ]
+          },
+          "drift_component_mean_r": -0.0318,
+          "timing_residual_mean_r": 0.4415,
+          "timing_residual_t": 5.94,
+          "timing_residual_p_sidak": 0.0,
+          "trials_in_family": 1,
+          "mean_r_ci_month_bootstrap": [
+            0.2778,
+            0.5369
+          ],
+          "timing_residual_ci_month_bootstrap": [
+            0.31,
+            0.5785
+          ],
+          "month_matched_random_mean_r_median": -0.0292,
+          "month_matched_random_share_at_or_above": 0.0,
+          "share_positive_years": 1.0,
+          "share_positive_timing_years": 1.0,
+          "by_year": {
+            "2018": {
+              "n": 56.0,
+              "mean_r": 0.4007,
+              "timing_resid": 0.6018
+            },
+            "2019": {
+              "n": 67.0,
+              "mean_r": 0.7484,
+              "timing_resid": 0.7395
+            },
+            "2020": {
+              "n": 89.0,
+              "mean_r": 0.4498,
+              "timing_resid": 0.3186
+            },
+            "2021": {
+              "n": 54.0,
+              "mean_r": 0.0622,
+              "timing_resid": 0.2213
+            },
+            "2022": {
+              "n": 57.0,
+              "mean_r": 0.4368,
+              "timing_resid": 0.5134
+            },
+            "2023": {
+              "n": 40.0,
+              "mean_r": 0.1959,
+              "timing_resid": 0.1859
+            }
+          }
+        },
+        "recent_2024_on": {
+          "trades": {
+            "n": 274,
+            "win_rate": 0.398,
+            "avg_r": 0.132,
+            "profit_factor": 1.216,
+            "avg_r_95ci": [
+              -0.038,
+              0.301
+            ]
+          },
+          "always_in": {
+            "n": 1475,
+            "win_rate": 0.369,
+            "avg_r": 0.053,
+            "profit_factor": 1.082,
+            "avg_r_95ci": [
+              -0.02,
+              0.125
+            ]
+          },
+          "drift_component_mean_r": 0.0486,
+          "timing_residual_mean_r": 0.0831,
+          "timing_residual_t": 0.97,
+          "timing_residual_p_sidak": 0.165,
+          "trials_in_family": 1,
+          "mean_r_ci_month_bootstrap": [
+            -0.0195,
+            0.3003
+          ],
+          "timing_residual_ci_month_bootstrap": [
+            -0.052,
+            0.2089
+          ],
+          "month_matched_random_mean_r_median": 0.0504,
+          "month_matched_random_share_at_or_above": 0.15,
+          "share_positive_years": 1.0,
+          "share_positive_timing_years": 1.0,
+          "by_year": {
+            "2024": {
+              "n": 52.0,
+              "mean_r": 0.2587,
+              "timing_resid": 0.1006
+            },
+            "2025": {
+              "n": 83.0,
+              "mean_r": 0.2609,
+              "timing_resid": 0.0966
+            },
+            "2026": {
+              "n": 139.0,
+              "mean_r": 0.0071,
+              "timing_resid": 0.0686
+            }
+          }
+        }
+      },
+      "COMBO_A_k2": {
+        "reliable_2018_2023": {
+          "trades": {
+            "n": 835,
+            "win_rate": 0.356,
+            "avg_r": -0.038,
+            "profit_factor": 0.945,
+            "avg_r_95ci": [
+              -0.133,
+              0.057
+            ]
+          },
+          "always_in": {
+            "n": 3054,
+            "win_rate": 0.336,
+            "avg_r": -0.101,
+            "profit_factor": 0.858,
+            "avg_r_95ci": [
+              -0.149,
+              -0.052
+            ]
+          },
+          "drift_component_mean_r": -0.0204,
+          "timing_residual_mean_r": -0.0175,
+          "timing_residual_t": -0.37,
+          "timing_residual_p_sidak": 0.6426,
+          "trials_in_family": 1,
+          "mean_r_ci_month_bootstrap": [
+            -0.1427,
+            0.0674
+          ],
+          "timing_residual_ci_month_bootstrap": [
+            -0.0943,
+            0.0561
+          ],
+          "month_matched_random_mean_r_median": -0.019,
+          "month_matched_random_share_at_or_above": 0.644,
+          "share_positive_years": 0.5,
+          "share_positive_timing_years": 0.5,
+          "by_year": {
+            "2018": {
+              "n": 108.0,
+              "mean_r": -0.3054,
+              "timing_resid": -0.1055
+            },
+            "2019": {
+              "n": 164.0,
+              "mean_r": 0.099,
+              "timing_resid": 0.0734
+            },
+            "2020": {
+              "n": 182.0,
+              "mean_r": 0.1292,
+              "timing_resid": 0.0082
+            },
+            "2021": {
+              "n": 107.0,
+              "mean_r": -0.2213,
+              "timing_resid": -0.0768
+            },
+            "2022": {
+              "n": 108.0,
+              "mean_r": -0.1889,
+              "timing_resid": -0.2106
+            },
+            "2023": {
+              "n": 166.0,
+              "mean_r": 0.0339,
+              "timing_resid": 0.0856
+            }
+          }
+        },
+        "recent_2024_on": {
+          "trades": {
+            "n": 552,
+            "win_rate": 0.399,
+            "avg_r": 0.147,
+            "profit_factor": 1.238,
+            "avg_r_95ci": [
+              0.026,
+              0.268
+            ]
+          },
+          "always_in": {
+            "n": 1475,
+            "win_rate": 0.369,
+            "avg_r": 0.053,
+            "profit_factor": 1.082,
+            "avg_r_95ci": [
+              -0.02,
+              0.125
+            ]
+          },
+          "drift_component_mean_r": 0.153,
+          "timing_residual_mean_r": -0.0062,
+          "timing_residual_t": -0.1,
+          "timing_residual_p_sidak": 0.54,
+          "trials_in_family": 1,
+          "mean_r_ci_month_bootstrap": [
+            0.0285,
+            0.2556
+          ],
+          "timing_residual_ci_month_bootstrap": [
+            -0.0949,
+            0.0789
+          ],
+          "month_matched_random_mean_r_median": 0.154,
+          "month_matched_random_share_at_or_above": 0.538,
+          "share_positive_years": 1.0,
+          "share_positive_timing_years": 0.0,
+          "by_year": {
+            "2024": {
+              "n": 208.0,
+              "mean_r": 0.1115,
+              "timing_resid": -0.0035
+            },
+            "2025": {
+              "n": 258.0,
+              "mean_r": 0.1812,
+              "timing_resid": -0.01
+            },
+            "2026": {
+              "n": 86.0,
+              "mean_r": 0.1294,
+              "timing_resid": -0.0009
+            }
+          }
+        }
+      },
+      "EMA_BREAKOUT_20_50_20": {
+        "reliable_2018_2023": {
+          "trades": {
+            "n": 706,
+            "win_rate": 0.331,
+            "avg_r": -0.099,
+            "profit_factor": 0.86,
+            "avg_r_95ci": [
+              -0.202,
+              0.003
+            ]
+          },
+          "always_in": {
+            "n": 3054,
+            "win_rate": 0.336,
+            "avg_r": -0.101,
+            "profit_factor": 0.858,
+            "avg_r_95ci": [
+              -0.149,
+              -0.052
+            ]
+          },
+          "drift_component_mean_r": -0.031,
+          "timing_residual_mean_r": -0.0684,
+          "timing_residual_t": -1.33,
+          "timing_residual_p_sidak": 0.9081,
+          "trials_in_family": 1,
+          "mean_r_ci_month_bootstrap": [
+            -0.1999,
+            0.0088
+          ],
+          "timing_residual_ci_month_bootstrap": [
+            -0.1454,
+            0.0164
+          ],
+          "month_matched_random_mean_r_median": -0.032,
+          "month_matched_random_share_at_or_above": 0.902,
+          "share_positive_years": 0.167,
+          "share_positive_timing_years": 0.0,
+          "by_year": {
+            "2018": {
+              "n": 88.0,
+              "mean_r": -0.2164,
+              "timing_resid": -0.0163
+            },
+            "2019": {
+              "n": 137.0,
+              "mean_r": -0.0366,
+              "timing_resid": -0.0382
+            },
+            "2020": {
+              "n": 139.0,
+              "mean_r": 0.0569,
+              "timing_resid": -0.0501
+            },
+            "2021": {
+              "n": 109.0,
+              "mean_r": -0.2653,
+              "timing_resid": -0.138
+            },
+            "2022": {
+              "n": 111.0,
+              "mean_r": -0.1391,
+              "timing_resid": -0.1366
+            },
+            "2023": {
+              "n": 122.0,
+              "mean_r": -0.0796,
+              "timing_resid": -0.0367
+            }
+          }
+        },
+        "recent_2024_on": {
+          "trades": {
+            "n": 405,
+            "win_rate": 0.427,
+            "avg_r": 0.239,
+            "profit_factor": 1.407,
+            "avg_r_95ci": [
+              0.096,
+              0.382
+            ]
+          },
+          "always_in": {
+            "n": 1475,
+            "win_rate": 0.369,
+            "avg_r": 0.053,
+            "profit_factor": 1.082,
+            "avg_r_95ci": [
+              -0.02,
+              0.125
+            ]
+          },
+          "drift_component_mean_r": 0.1342,
+          "timing_residual_mean_r": 0.1045,
+          "timing_residual_t": 1.46,
+          "timing_residual_p_sidak": 0.0719,
+          "trials_in_family": 1,
+          "mean_r_ci_month_bootstrap": [
+            0.0921,
+            0.395
+          ],
+          "timing_residual_ci_month_bootstrap": [
+            -0.0082,
+            0.2362
+          ],
+          "month_matched_random_mean_r_median": 0.1388,
+          "month_matched_random_share_at_or_above": 0.068,
+          "share_positive_years": 1.0,
+          "share_positive_timing_years": 0.667,
+          "by_year": {
+            "2024": {
+              "n": 143.0,
+              "mean_r": 0.1108,
+              "timing_resid": -0.0159
+            },
+            "2025": {
+              "n": 167.0,
+              "mean_r": 0.4395,
+              "timing_resid": 0.2389
+            },
+            "2026": {
+              "n": 95.0,
+              "mean_r": 0.0781,
+              "timing_resid": 0.0494
+            }
+          }
+        }
+      },
+      "H1_RSI2_L": {
+        "reliable_2018_2023": {
+          "trades": {
+            "n": 1136,
+            "win_rate": 0.336,
+            "avg_r": -0.12,
+            "profit_factor": 0.832,
+            "avg_r_95ci": [
+              -0.2,
+              -0.041
+            ]
+          },
+          "always_in": {
+            "n": 3054,
+            "win_rate": 0.336,
+            "avg_r": -0.101,
+            "profit_factor": 0.858,
+            "avg_r_95ci": [
+              -0.149,
+              -0.052
+            ]
+          },
+          "drift_component_mean_r": -0.0446,
+          "timing_residual_mean_r": -0.0758,
+          "timing_residual_t": -1.88,
+          "timing_residual_p_sidak": 0.9699,
+          "trials_in_family": 1,
+          "mean_r_ci_month_bootstrap": [
+            -0.1932,
+            -0.0439
+          ],
+          "timing_residual_ci_month_bootstrap": [
+            -0.1438,
+            -0.0064
+          ],
+          "month_matched_random_mean_r_median": -0.0416,
+          "month_matched_random_share_at_or_above": 0.976,
+          "share_positive_years": 0.167,
+          "share_positive_timing_years": 0.167,
+          "by_year": {
+            "2018": {
+              "n": 181.0,
+              "mean_r": -0.2957,
+              "timing_resid": -0.0902
+            },
+            "2019": {
+              "n": 208.0,
+              "mean_r": -0.0951,
+              "timing_resid": -0.0586
+            },
+            "2020": {
+              "n": 213.0,
+              "mean_r": 0.0057,
+              "timing_resid": -0.1021
+            },
+            "2021": {
+              "n": 176.0,
+              "mean_r": -0.1924,
+              "timing_resid": -0.0691
+            },
+            "2022": {
+              "n": 177.0,
+              "mean_r": -0.1619,
+              "timing_resid": -0.1447
+            },
+            "2023": {
+              "n": 181.0,
+              "mean_r": -0.0122,
+              "timing_resid": 0.0107
+            }
+          }
+        },
+        "recent_2024_on": {
+          "trades": {
+            "n": 614,
+            "win_rate": 0.386,
+            "avg_r": 0.103,
+            "profit_factor": 1.164,
+            "avg_r_95ci": [
+              -0.01,
+              0.217
+            ]
+          },
+          "always_in": {
+            "n": 1475,
+            "win_rate": 0.369,
+            "avg_r": 0.053,
+            "profit_factor": 1.082,
+            "avg_r_95ci": [
+              -0.02,
+              0.125
+            ]
+          },
+          "drift_component_mean_r": 0.1277,
+          "timing_residual_mean_r": -0.0242,
+          "timing_residual_t": -0.42,
+          "timing_residual_p_sidak": 0.6636,
+          "trials_in_family": 1,
+          "mean_r_ci_month_bootstrap": [
+            -0.0161,
+            0.2062
+          ],
+          "timing_residual_ci_month_bootstrap": [
+            -0.116,
+            0.0621
+          ],
+          "month_matched_random_mean_r_median": 0.132,
+          "month_matched_random_share_at_or_above": 0.7,
+          "share_positive_years": 0.667,
+          "share_positive_timing_years": 0.667,
+          "by_year": {
+            "2024": {
+              "n": 216.0,
+              "mean_r": 0.112,
+              "timing_resid": 0.0064
+            },
+            "2025": {
+              "n": 261.0,
+              "mean_r": 0.1929,
+              "timing_resid": 0.0016
+            },
+            "2026": {
+              "n": 137.0,
+              "mean_r": -0.0805,
+              "timing_resid": -0.1216
+            }
+          }
+        }
+      },
+      "RANDOM_2PCT": {
+        "reliable_2018_2023": {
+          "trades": {
+            "n": 547,
+            "win_rate": 0.316,
+            "avg_r": -0.157,
+            "profit_factor": 0.785,
+            "avg_r_95ci": [
+              -0.271,
+              -0.044
+            ]
+          },
+          "always_in": {
+            "n": 3054,
+            "win_rate": 0.336,
+            "avg_r": -0.101,
+            "profit_factor": 0.858,
+            "avg_r_95ci": [
+              -0.149,
+              -0.052
+            ]
+          },
+          "drift_component_mean_r": -0.1222,
+          "timing_residual_mean_r": -0.0351,
+          "timing_residual_t": -0.62,
+          "timing_residual_p_sidak": 0.7308,
+          "trials_in_family": 1,
+          "mean_r_ci_month_bootstrap": [
+            -0.2596,
+            -0.0494
+          ],
+          "timing_residual_ci_month_bootstrap": [
+            -0.1244,
+            0.0584
+          ],
+          "month_matched_random_mean_r_median": -0.1241,
+          "month_matched_random_share_at_or_above": 0.748,
+          "share_positive_years": 0.0,
+          "share_positive_timing_years": 0.333,
+          "by_year": {
+            "2018": {
+              "n": 84.0,
+              "mean_r": -0.2462,
+              "timing_resid": -0.0236
+            },
+            "2019": {
+              "n": 80.0,
+              "mean_r": -0.0176,
+              "timing_resid": 0.1022
+            },
+            "2020": {
+              "n": 85.0,
+              "mean_r": -0.0055,
+              "timing_resid": -0.0792
+            },
+            "2021": {
+              "n": 98.0,
+              "mean_r": -0.3643,
+              "timing_resid": -0.1703
+            },
+            "2022": {
+              "n": 95.0,
+              "mean_r": -0.0116,
+              "timing_resid": 0.106
+            },
+            "2023": {
+              "n": 105.0,
+              "mean_r": -0.2543,
+              "timing_resid": -0.1148
+            }
+          }
+        },
+        "recent_2024_on": {
+          "trades": {
+            "n": 270,
+            "win_rate": 0.407,
+            "avg_r": 0.171,
+            "profit_factor": 1.283,
+            "avg_r_95ci": [
+              -0.002,
+              0.344
+            ]
+          },
+          "always_in": {
+            "n": 1475,
+            "win_rate": 0.369,
+            "avg_r": 0.053,
+            "profit_factor": 1.082,
+            "avg_r_95ci": [
+              -0.02,
+              0.125
+            ]
+          },
+          "drift_component_mean_r": 0.0609,
+          "timing_residual_mean_r": 0.1098,
+          "timing_residual_t": 1.26,
+          "timing_residual_p_sidak": 0.103,
+          "trials_in_family": 1,
+          "mean_r_ci_month_bootstrap": [
+            -0.0309,
+            0.3549
+          ],
+          "timing_residual_ci_month_bootstrap": [
+            -0.0323,
+            0.2662
+          ],
+          "month_matched_random_mean_r_median": 0.0703,
+          "month_matched_random_share_at_or_above": 0.13,
+          "share_positive_years": 0.667,
+          "share_positive_timing_years": 1.0,
+          "by_year": {
+            "2024": {
+              "n": 92.0,
+              "mean_r": 0.1929,
+              "timing_resid": 0.0763
+            },
+            "2025": {
+              "n": 91.0,
+              "mean_r": 0.3331,
+              "timing_resid": 0.1948
+            },
+            "2026": {
+              "n": 87.0,
+              "mean_r": -0.0225,
+              "timing_resid": 0.0563
+            }
+          }
+        }
+      }
+    },
+    "skilled": [
+      "H1_C_frozen"
+    ],
+    "control_ok": true,
+    "mean_r": 0.1727
+  },
+  "folds": []
+}

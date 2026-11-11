@@ -12,6 +12,8 @@ Demo 研究基礎、帳戶驗證、逐次啟動版本紀錄與完整交易帳本
 
 新 Forward 樣本的帳戶／版本歸屬、初始風險、完整成本與出場證據驗收，見 [Forward 資料品質驗收 V4](FORWARD_DATA_QUALITY_V4.md)。缺證據輸出 `NOT_READY`，不補造舊交易身分，也不自動啟動交易。
 
+**研究流程（2026-11-12 起）**：研究盲點與新假說見 [研究架構審計 V1](RESEARCH_ARCHITECTURE_AUDIT_V1.md)；目前所有已驗證觀察、假說、失敗與資料重複使用狀態見 [RESEARCH_MEMORY.md](RESEARCH_MEMORY.md)（由 `research_memory_v1.py render` 產生）。新實驗先登錄假說與預先登記，再由使用者執行 `run_research_experiment.bat E-xxx`。
+
 **2026-11 策略研究與第二個 Demo runner（H1 C）**：所有實驗、結果、成本核對、目前在 Demo 上跑的策略與操作方式，見 [策略研究紀錄 2026-11](STRATEGY_RESEARCH_2026_11.md)。
 
 ## `gemini.py` 與目前模型是怎麼來的

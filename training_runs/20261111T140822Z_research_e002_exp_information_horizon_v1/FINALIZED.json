@@ -1,0 +1,13 @@
+{
+  "run_id": "20261111T140822Z_research_e002_exp_information_horizon_v1",
+  "finalized_at_utc": "2026-11-11T14:08:22.860223Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "82dd397d828044aeceb4a45ee74c8fccb2070a2c229762ffc7d98cbd2e111f96",
+    "manifest.json": "861385ae98af5c4db92d714b8fb50b9607c6876d9e8ac8370d06dc8e552142df",
+    "metrics.json": "28a8af561597ddb2589ce443f3f0c4a2db69ad6aceafa897b59813fbe0fc434d",
+    "report.md": "63a9e4756a061a4761ca121a69eb8069f21a6954072723c692322be04bf7d0fb",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "training_script.py": "8226c4e88b0920a63000ef3417faf961917194c801258c71af2fa7a04b16b15d"
+  }
+}

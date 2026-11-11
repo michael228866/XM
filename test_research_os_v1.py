@@ -1,0 +1,263 @@
+import json
+import tempfile
+import unittest
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+import research_eval_v1 as ev
+import research_memory_v1 as rm
+
+
+def hyp(i="H-1", family="f"):
+    return {"kind": "hypothesis", "id": i, "title": "t", "family": family, "mechanism": "m", "novelty": "n",
+            "information_needed": "i", "falsified_if": "x", "data_mining_risk": "low", "status": "open"}
+
+
+def prereg(root, i="E-1", role="exploratory", window=("2020-01-01", "2021-01-01")):
+    code = root / "exp.py"
+    if not code.exists():
+        code.write_text("x = 1\n", encoding="utf-8")
+    return {"kind": "preregistration", "id": i, "hypothesis": "H-1", "role": role, "module": "exp",
+            "code_files": {"exp.py": rm.file_sha256(code)}, "spec": {"a": 1},
+            "evaluation_windows": [list(window)], "decision_rule": "r"}
+
+
+def result(exp="E-1", evidence="development"):
+    return {"kind": "result", "experiment": exp, "outcome": "refuted", "evidence_class": evidence, "summary": "s",
+            "failure_cause": "information", "lessons": "l", "next_questions": "q"}
+
+
+class LedgerTests(unittest.TestCase):
+    def setUp(self):
+        self.dir = Path(tempfile.mkdtemp())
+        self.ledger = self.dir / "ledger.jsonl"
+
+    def add(self, *events):
+        return rm.append(list(events), ledger=self.ledger, root=self.dir)
+
+    def test_chain_detects_edits(self):
+        self.add(hyp(), prereg(self.dir), result())
+        self.assertEqual(rm.verify(rm.read(self.ledger)), [])
+        lines = self.ledger.read_text(encoding="utf-8").splitlines()
+        edited = json.loads(lines[2])
+        edited["outcome"] = "supported"
+        lines[2] = json.dumps(edited)
+        self.ledger.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        self.assertTrue(rm.verify(rm.read(self.ledger)))
+        with self.assertRaises(ValueError):
+            self.add(hyp("H-2"))
+
+    def test_research_rules(self):
+        self.add(hyp(), {"kind": "data_usage", "window": ["2019-01-01", "2024-01-01"], "by": "old", "note": "n"})
+        with self.assertRaises(ValueError):  # confirmatory on a window already used
+            self.add(prereg(self.dir, role="confirmatory"))
+        self.add(prereg(self.dir, "E-1"), prereg(self.dir, "E-2", "confirmatory", ("2026-12-01", "2027-06-01")))
+        with self.assertRaises(ValueError):  # result without preregistration
+            self.add(result("E-9"))
+        with self.assertRaises(ValueError):  # reused window cannot be clean forward evidence
+            self.add(result("E-1", "clean_forward"))
+        self.add(result("E-1"))
+        with self.assertRaises(ValueError):  # one result per experiment
+            self.add(result("E-1"))
+        stale = prereg(self.dir, "E-3")
+        (self.dir / "exp.py").write_text("x = 2\n", encoding="utf-8")
+        with self.assertRaises(ValueError):  # code changed after the hash was taken
+            self.add(stale)
+
+    def test_render_sections(self):
+        self.add(hyp(), prereg(self.dir), result(),
+                 {"kind": "observation", "id": "O-1", "statement": "s", "evidence": "e", "status": "verified"})
+        out = self.dir / "M.md"
+        rm.render(rm.read(self.ledger), out)
+        text = out.read_text(encoding="utf-8")
+        for section in ("已驗證的觀察", "失敗的實驗", "受資料重複使用影響", "資料區間使用帳"):
+            self.assertIn(section, text)
+
+
+def frame(n=4000, drift=0.02, seed=0):
+    rng = np.random.default_rng(seed)
+    close = 1000 + np.cumsum(rng.normal(drift, 1, n))
+    open_ = np.r_[close[0], close[:-1]]
+    return pd.DataFrame({"TIME_DT": pd.date_range("2020-01-01", periods=n, freq="h"), "OPEN": open_, "CLOSE": close,
+                         "HIGH": np.maximum(open_, close) + 0.3, "LOW": np.minimum(open_, close) - 0.3,
+                         "SPREAD": 0.0, "ATR": 1.0})
+
+
+class EvalTests(unittest.TestCase):
+    def test_random_entries_show_no_timing_but_perfect_foresight_does(self):
+        f = frame()
+        rng = np.random.default_rng(1)
+        rand = ev.evaluate(f, rng.random(len(f)) < 0.05, "long", 3.0, 1.5, 24)
+        self.assertLess(abs(rand["timing_residual_mean_r"]), 0.15)
+        r, _ = ev.trade_returns(f, "long", 3.0, 1.5, 24)
+        cheat = ev.evaluate(f, np.nan_to_num(r) > 0, "long", 3.0, 1.5, 24)
+        self.assertGreater(cheat["timing_residual_mean_r"], 0.5)
+        self.assertGreater(cheat["timing_residual_ci_month_bootstrap"][0], 0)
+
+    def test_sidak_grows_with_trials(self):
+        self.assertLess(ev.sidak_p(2.0, 1), ev.sidak_p(2.0, 20))
+
+
+class InformationHorizonTests(unittest.TestCase):
+    def test_weekly_panel_respects_availability_and_long_flat_costs(self):
+        import exp_information_horizon_v1 as ih
+        days = pd.bdate_range("2020-01-06", periods=200)
+        d1 = pd.DataFrame({"TIME_DT": days, "OPEN": np.linspace(100, 120, 200), "CLOSE": np.linspace(100, 120, 200)})
+        ns = (pd.DatetimeIndex(days) + pd.Timedelta(hours=21)).asi8  # each rate is known the evening of its date
+        treasury = pd.DataFrame({"real_10y": np.arange(200.0), "availability_ns": ns})
+        cot = pd.DataFrame({"availability_time_utc": [str(d + pd.Timedelta(days=4)) + "+00:00" for d in days[::5]],
+                            "COT_MM_NET_PCT_OI": np.arange(len(days[::5]), dtype=float)})
+        panel = ih.weekly_panel(d1, treasury, cot)
+        self.assertTrue((panel["TIME_DT"].dt.dayofweek == 0).all())
+        # Monday 00:00 decision sees Friday's rate (index i-1), never Monday's own.
+        first = panel.iloc[0]
+        monday_index = list(days).index(first["TIME_DT"])
+        self.assertEqual(first["REAL10Y_CHG_20D"], 20.0)
+        self.assertGreaterEqual(monday_index - 1, 20)
+        net, always, share = ih.long_flat(panel, "REAL10Y_CHG_20D", -1, cost_frac=0.001, swap_frac_per_night=-0.0001)
+        self.assertTrue(0 <= share <= 1)
+        self.assertEqual(net.iloc[0], 0.0)  # first week has no past median, so it stays flat and pays nothing
+        self.assertLess(always.iloc[0], panel["ret"].iloc[0])  # always-long pays swap
+
+
+class SessionAndVolTests(unittest.TestCase):
+    def test_session_returns_cover_only_their_hours(self):
+        import exp_session_structure_v1 as ss
+        times = pd.date_range("2021-03-01", periods=48, freq="h")
+        h1 = pd.DataFrame({"TIME_DT": times, "OPEN": 100.0 + np.arange(48), "CLOSE": 101.0 + np.arange(48),
+                           "SPREAD": 0})
+        s = ss.session_returns(h1, 0.0001, 0.01)
+        asia = s[s["session"] == "ASIA"].iloc[0]
+        self.assertAlmostEqual(asia["ret"], 109 / 101 - 1)  # bars 01..08: open of 01, close of 08
+        self.assertEqual(asia["cost"], 0.0001)
+        self.assertEqual(len(s), 8)  # 2 days x 4 sessions; the 00 bar is in none
+
+    def test_vol_managed_uses_yesterdays_sigma_and_pays_costs(self):
+        import exp_vol_managed_v1 as vm
+        rng = np.random.default_rng(0)
+        close = 100 * np.cumprod(1 + rng.normal(0, 0.01, 300))
+        d1 = pd.DataFrame({"TIME_DT": pd.bdate_range("2020-01-01", periods=300), "CLOSE": close})
+        out = vm.vol_managed(d1, 0.94, 2.0, 0.0, 0.0)
+        bumped = d1.copy()
+        bumped.loc[250, "CLOSE"] *= 1.2  # a shock at day 250 cannot change day 250's own weight
+        self.assertAlmostEqual(vm.vol_managed(bumped, 0.94, 2.0, 0.0, 0.0)["w"][250], out["w"][250])
+        self.assertTrue((out["w"].dropna() <= 2.0).all())
+        swap = vm.vol_managed(d1, 0.94, 2.0, 0.0, -0.05)
+        self.assertTrue((swap["constant"].iloc[1:] < out["constant"].iloc[1:]).all())
+
+
+class V2DesignTests(unittest.TestCase):
+    def test_session_excess_removes_proportional_drift(self):
+        import exp_session_structure_v2 as ss
+        times = pd.date_range("2021-03-01", periods=24 * 40, freq="h")
+        close = 100 * np.exp(np.arange(len(times)) * 0.001)  # steady uptrend: no session is special
+        h1 = pd.DataFrame({"TIME_DT": times, "OPEN": np.r_[close[0], close[:-1]], "CLOSE": close, "SPREAD": 0})
+        t = ss.day_table(h1, 0.01, 0.0)
+        s = ss.strategies(t, 0.01, 0.0)
+        self.assertTrue((s["ASIA_long"] > 0).all())  # raw long looks good in a rising market
+        for name in ss.SESSIONS:
+            self.assertLess(abs(s[f"{name}_long_excess"].mean()), 2e-4)  # but carries no excess over its share
+        swap = ss.strategies(t, 0.01, -0.05)
+        self.assertTrue((swap["ALWAYS_LONG"] < s["ALWAYS_LONG"]).all())
+        self.assertTrue((swap["INTRADAY_LONG"] == s["INTRADAY_LONG"]).all())  # intraday pays no swap
+
+    def test_vol_managed_v2_controls(self):
+        import exp_vol_managed_v2 as vm
+        rng = np.random.default_rng(0)
+        close = pd.Series(100 * np.cumprod(1 + rng.normal(0, 0.01, 400)))
+        w = vm.managed_weights(close, 0.94, 2.0)
+        bumped = close.copy()
+        bumped[300] *= 1.2
+        self.assertAlmostEqual(vm.managed_weights(bumped, 0.94, 2.0)[300], w[300])
+        months = pd.Series(pd.bdate_range("2020-01-01", periods=400)).dt.to_period("M")
+        sh = vm.month_shuffle(w.fillna(1.0), months, np.random.default_rng(1))
+        self.assertEqual(sorted(np.round(sh, 9)), sorted(np.round(w.fillna(1.0).to_numpy(), 9)))
+        ret = close.pct_change().fillna(0)
+        net = vm.net_returns(ret, pd.Series(0.0, index=ret.index), np.full(400, 0.5), 0.001)
+        self.assertAlmostEqual(net[0], -0.0005)  # constant pays the spread once, on entry
+        self.assertAlmostEqual(net[5], 0.5 * ret[5])
+
+
+class GovernanceTests(unittest.TestCase):
+    def setUp(self):
+        self.dir = Path(tempfile.mkdtemp())
+        self.ledger = self.dir / "ledger.jsonl"
+
+    def add(self, *events):
+        return rm.append(list(events), ledger=self.ledger, root=self.dir)
+
+    def test_review_gate_and_withdraw(self):
+        p = {**prereg(self.dir), "author": "researcher"}
+        self.add(hyp(), p)
+        events = rm.read(self.ledger)
+        self.assertEqual(len(rm.review_gate(events, "E-1")), 2)
+        with self.assertRaises(ValueError):  # the author cannot approve their own design
+            self.add({"kind": "review", "experiment": "E-1", "reviewer": "researcher", "verdict": "approve",
+                      "findings": ["ok"]})
+        self.add({"kind": "review", "experiment": "E-1", "reviewer": "mechanical", "verdict": "approve", "findings": ["ok"]},
+                 {"kind": "review", "experiment": "E-1", "reviewer": "critic", "verdict": "revise", "findings": ["leak"]})
+        self.assertIn("critic says revise", rm.review_gate(rm.read(self.ledger), "E-1"))
+        self.add({"kind": "review", "experiment": "E-1", "reviewer": "critic", "verdict": "approve", "findings": ["fixed"]})
+        self.assertEqual(rm.review_gate(rm.read(self.ledger), "E-1"), [])
+        self.add({"kind": "decision", "id": "D-1", "statement": "s", "rationale": "r", "withdraw": ["E-1"],
+                  "set_status": {"H-1": "underpowered"}})
+        events = rm.read(self.ledger)
+        self.assertEqual(rm.withdrawn(events), {"E-1"})
+        self.assertEqual(rm.state(events)[0]["H-1"]["status"], "underpowered")
+        with self.assertRaises(ValueError):
+            self.add({"kind": "decision", "id": "D-2", "statement": "s", "rationale": "r", "withdraw": ["E-9"]})
+
+    def test_mechanical_critic_blocks_incomplete_design(self):
+        import research_critic_v1 as rc
+        p = prereg(self.dir)
+        self.add(hyp(), p)
+        blocking, _ = rc.critique(rm.read(self.ledger)[1], rm.read(self.ledger), root=self.dir)
+        self.assertTrue(any(b.startswith("controls") for b in blocking))
+        good = {**prereg(self.dir, "E-2"), "training_window_note": "no model", "claim_scope": "only X",
+                "decision_rule": "pass if Sidak p < 0.05 over 8 trials",
+                "spec": {"controls": ["a"], "directional_benchmark": "always long", "trials_declared": 8,
+                         "cost_multipliers": [1, 2], "cost_note": "spread and swap", "power_note": "n=1000",
+                         "metrics": ["net_mean", "sharpe", "calmar", "max_dd"]}}
+        events = self.add(good)
+        self.assertEqual(rc.critique(events[-1], events, root=self.dir)[0], [])
+
+    def test_planner_ranks_by_research_value(self):
+        import research_planner_v1 as rp
+        inputs = dict.fromkeys(rm.PRIORITY_KEYS, 3)
+        self.add({**hyp("H-1", "a"), "priority_inputs": {**inputs, "info_gain": 5}},
+                 {**hyp("H-2", "b"), "priority_inputs": {**inputs, "mining_risk": 5},
+                  "tags": {"information": ["implied_vol"], "target": ["volatility"]}})
+        ranked = rp.rank(rm.read(self.ledger))
+        self.assertEqual([h["id"] for h, _ in ranked], ["H-1", "H-2"])
+        self.assertNotIn(("implied_vol", "volatility"), rp.proposals(rm.read(self.ledger), limit=100))
+        with self.assertRaises(ValueError):
+            self.add({**hyp("H-3"), "priority_inputs": {"info_gain": 9}})
+
+
+class FakeMt5:
+    def terminal_info(self):
+        return type("T", (), {"path": "C:/mt5", "build": 1, "name": "MT5"})()
+
+    def account_info(self):
+        return type("A", (), {"server": "demo", "company": "broker"})()
+
+
+class RunIntegrationTests(unittest.TestCase):
+    def test_research_run_passes_training_run_validator(self):
+        import research_run_v1 as rr
+        import training_run_history as trh
+        tmp = Path(tempfile.mkdtemp())
+        run_dir = trh.create_run("research_fixture", Path(rr.__file__), "python -B research_run_v1.py E-0",
+                                 seed_note="fixture", runs_root=tmp)
+        (run_dir / "stdout.log").write_text("ok", encoding="utf-8")
+        out = {"outcome": "refuted", "report": "# fixture", "metrics": {"mean_r": -0.1},
+               "manifest_data": rr.mt5_manifest_data(FakeMt5(), ["GOLD#"], "2020-01-01", "2021-01-01", 10,
+                                                     [["2020-01-01", "2021-01-01"]], "fixture")}
+        self.assertEqual(rr.finalize(run_dir, out, "H-1", "E-0"), [])
+        self.assertTrue((run_dir / "FINALIZED.json").exists())
+
+
+if __name__ == "__main__":
+    unittest.main()

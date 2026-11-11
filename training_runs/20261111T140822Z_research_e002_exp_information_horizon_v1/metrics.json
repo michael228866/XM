@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "signals": {
+      "REAL10Y_CHG_20D": {
+        "discovery_2016_2022": {
+          "weeks": 364,
+          "ic": -0.0486,
+          "ic_t": -0.93,
+          "ic_in_expected_direction": true,
+          "long_flat_sharpe": 0.14,
+          "always_long_sharpe": -0.2,
+          "long_flat_annual": 0.0131,
+          "always_long_annual": -0.027,
+          "share_long": 0.434
+        },
+        "check_2023_2024": {
+          "weeks": 105,
+          "ic": 0.1117,
+          "ic_t": 1.14,
+          "ic_in_expected_direction": false,
+          "long_flat_sharpe": 0.37,
+          "always_long_sharpe": 0.61,
+          "long_flat_annual": 0.0353,
+          "always_long_annual": 0.0833,
+          "share_long": 0.562
+        }
+      },
+      "COT_MM_NET_PCT_OI": {
+        "discovery_2016_2022": {
+          "weeks": 364,
+          "ic": -0.0685,
+          "ic_t": -1.31,
+          "ic_in_expected_direction": true,
+          "long_flat_sharpe": -0.29,
+          "always_long_sharpe": -0.2,
+          "long_flat_annual": -0.0297,
+          "always_long_annual": -0.027,
+          "share_long": 0.651
+        },
+        "check_2023_2024": {
+          "weeks": 105,
+          "ic": -0.0703,
+          "ic_t": -0.72,
+          "ic_in_expected_direction": true,
+          "long_flat_sharpe": 1.15,
+          "always_long_sharpe": 0.61,
+          "long_flat_annual": 0.0902,
+          "always_long_annual": 0.0833,
+          "share_long": 0.248
+        }
+      }
+    },
+    "verdicts": {
+      "REAL10Y_CHG_20D": "refuted",
+      "COT_MM_NET_PCT_OI": "inconclusive"
+    },
+    "weeks": 469
+  },
+  "folds": []
+}
