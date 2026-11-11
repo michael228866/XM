@@ -6,8 +6,8 @@ Refuses if the experiment has no preregistration, was withdrawn, lacks an approv
 approving independent critic review, already has a result, or any of its code files changed since
 preregistration. The experiment module exposes run(run_dir, spec, trials) -> dict with keys:
 outcome, evidence_class, summary, failure_cause, lessons, next_questions, metrics (dict), report (markdown),
-manifest_data (dict merged into manifest["data"]). The run is finalized as research_only and registered;
-the result is appended to the ledger and RESEARCH_MEMORY.md is re-rendered.
+manifest_data (dict merged into manifest["data"]). The run is finalized as research_only and registered,
+the result is appended to the ledger, RESEARCH_MEMORY.md is re-rendered, and the evidence is committed and pushed.
 """
 import argparse
 import contextlib
@@ -84,6 +84,21 @@ def git_problems(paths):
     return problems
 
 
+def archive(run_dir, experiment_id, outcome):
+    """AGENTS.md post-run step: commit and push the run's evidence so the next run starts from a clean state."""
+    paths = [f"training_runs/{run_dir.name}", "research_memory/ledger.jsonl", "RESEARCH_MEMORY.md", "TRAINING_RUNS.md"]
+    root = str(rm.ROOT)
+    steps = [["git", "add", "--", *paths],
+             ["git", "commit", "-q", "-m", f"research {experiment_id}: {outcome} ({run_dir.name})", "--", *paths],
+             ["git", "push", "-q"]]
+    for cmd in steps:
+        done = subprocess.run(cmd, cwd=root, capture_output=True, text=True)
+        if done.returncode:
+            print(f"ARCHIVE NOT DONE at '{' '.join(cmd[:2])}': {done.stderr.strip()} -- commit and push these by hand: {paths}")
+            return
+    print("archived: committed and pushed")
+
+
 def run(experiment_id):
     events = rm.read()
     problems = rm.verify(events)
@@ -125,6 +140,7 @@ def run(experiment_id):
                     "failure_cause": "method", "lessons": "see stdout.log", "next_questions": "fix and preregister again",
                     "run_dir": run_dir.name}])
         rm.render(rm.read())
+        archive(run_dir, experiment_id, "aborted")
         raise SystemExit(f"aborted; run {run_dir.name}; finalize errors {errors}")
     (run_dir / "stdout.log").write_text(log.getvalue(), encoding="utf-8")
     errors = finalize(run_dir, out, p["hypothesis"], experiment_id)
@@ -137,6 +153,7 @@ def run(experiment_id):
     rm.render(rm.read())
     print(json.dumps({k: out[k] for k in ("outcome", "evidence_class", "summary")}, ensure_ascii=False, indent=2))
     print(f"run: training_runs/{run_dir.name}")
+    archive(run_dir, experiment_id, out["outcome"])
 
 
 def main(argv=None):
