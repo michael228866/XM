@@ -236,6 +236,65 @@ class GovernanceTests(unittest.TestCase):
             self.add({**hyp("H-3"), "priority_inputs": {"info_gain": 9}})
 
 
+def synthetic_h1(years=6, seed=0):
+    """GOLD-like H1 bars with persistent (GARCH-ish) volatility, 24 bars per weekday."""
+    rng = np.random.default_rng(seed)
+    days = pd.bdate_range("2014-01-01", periods=260 * years)
+    vol, rows, price = 0.002, [], 1300.0
+    for d in days:
+        vol = np.sqrt(0.00000005 + 0.9 * vol ** 2 + 0.08 * (vol * rng.normal()) ** 2)
+        for hr in range(24):
+            r = vol * rng.normal()
+            o, price = price, price * np.exp(r)
+            rows.append((d + pd.Timedelta(hours=hr), o, max(o, price) * 1.0001, min(o, price) * 0.9999, price))
+    return pd.DataFrame(rows, columns=["TIME_DT", "OPEN", "HIGH", "LOW", "CLOSE"])
+
+
+class VolForecastTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import exp_vol_forecast_v1 as vf
+        cls.vf, cls.h1 = vf, synthetic_h1()
+        cls.spec = {"estimation_window": ["2014-01-01", "2016-01-01"],
+                    "windows": [["2016-01-01", "2019-01-01"], ["2019-01-01", "2099-01-01"]], "min_years_better": 2}
+
+    def test_partial_days_dropped_and_targets_aligned(self):
+        vf = self.vf
+        h1 = self.h1[~((self.h1["TIME_DT"].dt.normalize() == pd.Timestamp("2014-03-05"))
+                       & (self.h1["TIME_DT"].dt.hour >= 10))]
+        days = vf.daily_rv(h1)
+        self.assertNotIn(pd.Timestamp("2014-03-05"), days.index)
+        x = vf.design(days["rv"])
+        i = 30
+        self.assertAlmostEqual(x["y5"].iloc[i], days["rv"].iloc[i + 1:i + 6].mean())
+        self.assertAlmostEqual(x["rv_w"].iloc[i], days["rv"].iloc[i - 4:i + 1].mean())
+
+    def test_forecasts_never_see_the_future(self):
+        vf = self.vf
+        rv = vf.daily_rv(self.h1)["rv"]
+        k = 700  # shock a day after the estimation window
+        bumped = rv.copy()
+        bumped.iloc[k] *= 50
+        est = (pd.Timestamp("2014-01-01"), pd.Timestamp("2016-01-01"))
+        out = []
+        for series in (rv, bumped):
+            x = vf.design(series)
+            paths = {lam: vf.ewma_path(series, lam) for lam in vf.LAMBDAS}
+            fz, _ = vf.frozen(x, series, paths, 5, est)
+            rc = vf.recursive(x, series, paths, 5, pd.Timestamp("2016-01-01"), est[0])
+            out.append((fz, rc))
+        np.testing.assert_allclose(out[0][0].iloc[:k].to_numpy(), out[1][0].iloc[:k].to_numpy())
+        np.testing.assert_allclose(out[0][1].iloc[:k].dropna().to_numpy(), out[1][1].iloc[:k].dropna().to_numpy())
+        self.assertFalse(np.allclose(out[0][0].iloc[k:].to_numpy(), out[1][0].iloc[k:].to_numpy()))
+
+    def test_end_to_end_on_persistent_volatility(self):
+        results, params, _ = self.vf.evaluate(self.h1, self.spec)
+        r = results["FROZEN|h1|eval_2016_2018"] if "FROZEN|h1|eval_2016_2018" in results else results["FROZEN|h1|eval_2018_2023"]
+        self.assertLess(r["HAR_vs_HIST"]["qlike_ratio"], 1.0)  # persistent vol: conditional beats unconditional
+        self.assertIn(self.vf.decide(results, self.spec), ("supported", "refuted", "not_significant"))
+        self.assertTrue(0.8 <= params[1]["lambda"] <= 0.99)
+
+
 class FakeMt5:
     def terminal_info(self):
         return type("T", (), {"path": "C:/mt5", "build": 1, "name": "MT5"})()

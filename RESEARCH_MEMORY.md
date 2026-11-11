@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 55；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 60；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -35,8 +35,9 @@
 |---|---|---|---|---|---|
 | H-014 | 黃金隱含波動率（CBOE GVZ）與實現波動的差（變異數風險溢酬）預測未來 5-20 日的實現波動與報酬 | new_information_implied_vol | open | 39.0 | 把 GVZ 加進 HAR 後 QLIKE 沒有下降（DM &#124;t&#124; < 2），且溢酬對 20 日報酬的 IC &#124;t&#124; < 1 |
 | H-008 | 收盤前平倉、只做盤中多單，比一直持有多單（付過夜利息）的風險調整後報酬更好 | cost_structure | inconclusive | 38.5 | 2018-2022 成本 x1 下 INTRADAY_LONG 的 Sharpe 不高於 ALWAYS_LONG |
-| H-011 | HAR 實現波動模型對次日波動的預測優於 EWMA，且高波動狀態下的報酬分布（偏態、尾部）顯著不同 | second_moment_forecast | open | 38.0 | 2018-2023 HAR 的 QLIKE 不低於 EWMA（Diebold-Mariano &#124;t&#124; < 2） |
+| H-011 | HAR 實現波動模型對次日波動的預測優於 EWMA，且高波動狀態下的報酬分布（偏態、尾部）顯著不同 | second_moment_forecast | testing | 38.0 | 2018-2023 HAR 的 QLIKE 不低於 EWMA（Diebold-Mariano &#124;t&#124; < 2） |
 | H-013 | 可以預測未來 1 小時的波動是否大於 k 倍點差（不預測方向），而 gemini 的虧損集中在預測『不值得交易』的時段 | tradeability | open | 36.0 | 樣本外波動大小分類 AUC <= 0.55，或低可交易性組的 gemini 回放 R 沒有比其他組低 0.05R 以上 |
+| H-018 | 波動預測能改善交易決策：倉位風險控制、實際回撤、辨識不值得交易的環境，且改善足以抵銷額外交易成本 | second_moment_decision_value | open | 35.0 | 2018-2023 以凍結預測做風險目標倉位與不交易濾網，在相同平均曝險下，扣除額外換手成本後 Sharpe 不高於固定風險版本，且最大回撤降低 < 10% |
 | H-009 | 點差相對同時段常態異常擴大時，接下來的波動與滑價較大，是不值得進場的時刻 | microstructure | open | 34.0 | 點差 z 值最高 10% 時段之後 30 分鐘的實現波動比 < 1.2，或排除這些時段進場使既有策略回放淨 R 改善 < 0.02R |
 | H-012 | 低流動時段的單根急動（> 3 倍 ATR）在 15-60 分鐘內部分回補，扣除當下實際點差後期望為正 | transient_anomaly | open | 33.0 | 2018-2022 以實際點差計的平均淨回補 <= 0；事件數 < 200 則判定樣本不足 |
 | H-016 | 波動調整倉位只在特定市況（如 2024 年後的高波動趨勢）改善風險調整後報酬；前瞻資料上仍成立 | second_moment_regime | open | 32.0 | 2026-11-12 起至少 12 個月的前瞻資料上，MANAGED 對 CONST_EQUAL_EXPOSURE 的 Sharpe 差 <= 0 |
@@ -78,6 +79,10 @@
 
 - ~~E-003~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
 - ~~E-004~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
+- **E-008** → H-011（exploratory）：`exp_vol_forecast_v1`；審查：通過，可執行  
+  判定規則：Primary (single test): FROZEN parameters, h=1, 2018-2023, HAR vs EWMA_FIT on QLIKE. refuted only if HAR is significantly worse: one-sided Diebold-Mariano p < 0.05 in that direction (Newey-West lag 5). supported only if all hold: QLIKE ratio < 1 with one-sided DM p < 0.05 for HAR better; HAR QLIKE also below EWMA_094 and RW; HAR better in >= 4 of 6 calendar years; HAR better in >= 2 of 3 volatility regimes. Otherwise not_significant (ledger outcome inconclusive). h=5/22, RECURSIVE, MSE/RMSE/MAE, lag-22 DM, weekday table, scaled-Parkinson check and 2024+ are descriptive and cannot change the outcome.
+  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 20 earlier uses; evidence is development only
+  - 審查 `critic_agent_2` → **approve**：round 1 (draft): revise — BLOCKING refuted on point estimate ratio >= 1 with no test (null effect -> ~50% refuted, synthetic ratio 1.003 t 0.25 judged refuted); BLOCKING Parkinson condition is scale-sensitive (biased-low forecasts win when proxy scale < ~0.8)；round 1 notes: OLS-fit HAR vs QLIKE-selected EWMA lambda favoured EWMA; NW lag 5 may be short for long memory; weekday/gap effect; power not simulated; floor can blow up QLIKE；fixes: refuted only if HAR significantly worse (one-sided DM p < 0.05); Parkinson descriptive with estimation-window scale c; HAR by QLIKE-type IRLS; lag-22 DM, weekday table, har_at_floor reported；round 2: approve; refuted mis-judgement case now not_significant; IRLS converges in 5 steps and lowers in-window QLIKE；residual notes: check frozen HAR beta signs and har_at_floor first when reading results; not_significant means undetectable at this sample size, not absence of effect
 
 ## 6. 所有實驗結果與下一個問題
 
@@ -106,6 +111,7 @@
 - **D-005** Start E-003 (H-004) and E-004 (H-005)：D-004 left price-only timing closed; these test cost structure and second-moment sizing, neither of which predicts direction
 - **D-006** 依證據強度重新分類並縮小結論範圍：H-001 改為『未找到顯著優勢』、H-002 改為『樣本不足』；D-001 的範圍縮小為『同一組價格特徵的方向預測參數／模型變體已過度研究，需要新資料』；作廢 E-003、E-004（執行前審查發現設計缺陷，從未產生結果）；H-004 只保留時段方向問題，成本問題移到 H-008：H-001：只檢驗了 3 個固定候選（TP3/SL1.5/48h），H1_C 樣本外只有 274 筆，無法偵測 < 0.15R 的時機能力；這不代表價格型策略或機器學習沒有研究價值。H-002：實質利率部分符合預先登記的推翻條件，COT 方向在兩段一致但 |t| < 1.4，資料只到 2024。D-001：更多同類變體在同一段歷史資料上無法產生獨立證據，只能用 2026-11-12 之後的資料或新資訊、新預測目標（H-011、H-013）判定。E-003 缺：成本與方向未分開、無方向曝險對照、缺換日段、無成本壓力測試與 Sharpe/Calmar/回撤；E-004 缺：與 w=1 比較的風險預算不同、無權重打亂對照、成本與 swap 只有單一假設。
 - **D-007** E-005、E-006、E-007 判讀：H-004 推翻（範圍：4 個固定時段、每天 >= 約 4 bp 的方向效果）；H-005 依預先登記規則推翻（2018-2023 無改善），但 2024+ 有強烈效果，另立 H-016 用前瞻資料確認；H-008 維持 inconclusive（結論取決於 swap 水準：今日利率下盤中持有在所有點差情境都較好，swap 減半時 2018-2022 沒有優勢），另立 H-017 檢驗套用到 H1 C runner：不在看到結果後改判定規則；E-007 兩段期間相反，屬於 regime_dependence，不能用已看過的 2024+ 再確認；E-005 的推翻門檻偏寬（審查員註記），所以只排除大效果；E-006 的唯一失敗格是 2018-2022 swap x0.5，因此結論應限定在『今日 swap 水準』
+- **D-008** H-011 分兩層：E-008 只檢驗統計預測能力（H-011 的預測子句）；條件報酬分布子句延後；交易決策價值另立 H-018，於 E-008 有結果後才預先登記 E-009。E-008 結果如何對應下一步：supported → E-009 用 HAR 凍結預測；refuted／not_significant → E-009 改用 EWMA，問題變成『任何波動預測是否改善決策』；無論哪個結果，H-014（GVZ）以 E-008 中表現最好的『FROZEN 2014-2017 參數』模型為基準，不得改用看過 2024+ 後選的模型：避免把『預測誤差較小』和『可以賺錢』混在同一個實驗；兩層都要能各自被推翻
 
 ## 8. 資料區間使用帳（越多次越不能當獨立驗證）
 
@@ -126,6 +132,8 @@
 | 2023-01-01 → 2099-01-01 | E-006 |
 | 2018-01-01 → 2024-01-01 | E-007 |
 | 2024-01-01 → 2099-01-01 | E-007 |
+| 2018-01-01 → 2024-01-01 | E-008 |
+| 2024-01-01 → 2099-01-01 | E-008 |
 
 ## 9. 研究空間覆蓋與自動產生的候選問題
 
@@ -133,7 +141,7 @@
 
 | 資訊來源 | 取得狀態 | 漲跌方向 | 未來波動 | 報酬分布／尾部 | 值不值得交易 | 成本與執行 | 市況轉換 |
 |---|---|---|---|---|---|---|---|
-| 價格 K 線 | in_hand | 29 | 3 | 1 | 1 | 3 | 3 |
+| 價格 K 線 | in_hand | 29 | 4 | 1 | 2 | 3 | 3 |
 | Tick／點差動態 | in_hand (MT5 ticks, months of history) | 2 | 1 | 0 | 1 | 2 | 0 |
 | 經濟事件實際值／預期值 | export_needed (ExportUsdCalendarValues) | 3 | 1 | 0 | 1 | 0 | 0 |
 | 利率／總經 | in_hand (to 2024-12) | 3 | 0 | 0 | 0 | 0 | 0 |
