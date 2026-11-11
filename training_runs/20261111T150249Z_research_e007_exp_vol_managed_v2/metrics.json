@@ -1,0 +1,350 @@
+{
+  "summary": {
+    "windows": {
+      "discovery_2018_2023": {
+        "cost x1.0": {
+          "MANAGED": {
+            "days": 1548,
+            "net_mean_bp": 0.258,
+            "t": 0.13,
+            "annual_pct": 0.65,
+            "sharpe": 0.051,
+            "max_dd_pct": -29.6,
+            "calmar": 0.022,
+            "positive_years": 3,
+            "years": 6
+          },
+          "CONST_EQUAL_EXPOSURE": {
+            "days": 1548,
+            "net_mean_bp": 0.616,
+            "t": 0.28,
+            "annual_pct": 1.55,
+            "sharpe": 0.112,
+            "max_dd_pct": -32.7,
+            "calmar": 0.047,
+            "positive_years": 3,
+            "years": 6
+          },
+          "CONST_VOL_MATCHED": {
+            "days": 1548,
+            "net_mean_bp": 0.567,
+            "t": 0.28,
+            "annual_pct": 1.43,
+            "sharpe": 0.112,
+            "max_dd_pct": -30.41,
+            "calmar": 0.047,
+            "positive_years": 3,
+            "years": 6
+          },
+          "SHUFFLED": {
+            "sharpe_median": 0.087,
+            "share_at_or_above_managed": 0.65
+          },
+          "mean_weight": 1.003,
+          "sharpe_diff": -0.061
+        },
+        "cost x2.0": {
+          "MANAGED": {
+            "days": 1548,
+            "net_mean_bp": 0.231,
+            "t": 0.11,
+            "annual_pct": 0.58,
+            "sharpe": 0.046,
+            "max_dd_pct": -29.74,
+            "calmar": 0.02,
+            "positive_years": 3,
+            "years": 6
+          },
+          "CONST_EQUAL_EXPOSURE": {
+            "days": 1548,
+            "net_mean_bp": 0.616,
+            "t": 0.28,
+            "annual_pct": 1.55,
+            "sharpe": 0.112,
+            "max_dd_pct": -32.7,
+            "calmar": 0.047,
+            "positive_years": 3,
+            "years": 6
+          },
+          "CONST_VOL_MATCHED": {
+            "days": 1548,
+            "net_mean_bp": 0.567,
+            "t": 0.28,
+            "annual_pct": 1.43,
+            "sharpe": 0.112,
+            "max_dd_pct": -30.41,
+            "calmar": 0.047,
+            "positive_years": 3,
+            "years": 6
+          },
+          "SHUFFLED": {
+            "sharpe_median": 0.081,
+            "share_at_or_above_managed": 0.64
+          },
+          "mean_weight": 1.003,
+          "sharpe_diff": -0.066
+        },
+        "cost x3.0": {
+          "MANAGED": {
+            "days": 1548,
+            "net_mean_bp": 0.204,
+            "t": 0.1,
+            "annual_pct": 0.51,
+            "sharpe": 0.04,
+            "max_dd_pct": -29.88,
+            "calmar": 0.017,
+            "positive_years": 3,
+            "years": 6
+          },
+          "CONST_EQUAL_EXPOSURE": {
+            "days": 1548,
+            "net_mean_bp": 0.615,
+            "t": 0.28,
+            "annual_pct": 1.55,
+            "sharpe": 0.112,
+            "max_dd_pct": -32.7,
+            "calmar": 0.047,
+            "positive_years": 3,
+            "years": 6
+          },
+          "CONST_VOL_MATCHED": {
+            "days": 1548,
+            "net_mean_bp": 0.566,
+            "t": 0.28,
+            "annual_pct": 1.43,
+            "sharpe": 0.112,
+            "max_dd_pct": -30.4,
+            "calmar": 0.047,
+            "positive_years": 3,
+            "years": 6
+          },
+          "SHUFFLED": {
+            "sharpe_median": 0.074,
+            "share_at_or_above_managed": 0.64
+          },
+          "mean_weight": 1.003,
+          "sharpe_diff": -0.072
+        },
+        "swap x0.5": {
+          "MANAGED": {
+            "days": 1548,
+            "net_mean_bp": 1.632,
+            "t": 0.8,
+            "annual_pct": 4.11,
+            "sharpe": 0.322,
+            "max_dd_pct": -22.98,
+            "calmar": 0.179,
+            "positive_years": 3,
+            "years": 6
+          },
+          "CONST_EQUAL_EXPOSURE": {
+            "days": 1548,
+            "net_mean_bp": 1.989,
+            "t": 0.89,
+            "annual_pct": 5.01,
+            "sharpe": 0.361,
+            "max_dd_pct": -27.16,
+            "calmar": 0.185,
+            "positive_years": 3,
+            "years": 6
+          },
+          "CONST_VOL_MATCHED": {
+            "days": 1548,
+            "net_mean_bp": 1.83,
+            "t": 0.89,
+            "annual_pct": 4.61,
+            "sharpe": 0.361,
+            "max_dd_pct": -25.15,
+            "calmar": 0.183,
+            "positive_years": 3,
+            "years": 6
+          },
+          "SHUFFLED": {
+            "sharpe_median": 0.33,
+            "share_at_or_above_managed": 0.525
+          },
+          "mean_weight": 1.003,
+          "sharpe_diff": -0.039
+        }
+      },
+      "check_2024_on": {
+        "cost x1.0": {
+          "MANAGED": {
+            "days": 739,
+            "net_mean_bp": 7.472,
+            "t": 2.36,
+            "annual_pct": 18.83,
+            "sharpe": 1.378,
+            "max_dd_pct": -19.53,
+            "calmar": 0.964,
+            "positive_years": 2,
+            "years": 3
+          },
+          "CONST_EQUAL_EXPOSURE": {
+            "days": 739,
+            "net_mean_bp": 5.379,
+            "t": 1.46,
+            "annual_pct": 13.56,
+            "sharpe": 0.854,
+            "max_dd_pct": -24.53,
+            "calmar": 0.553,
+            "positive_years": 2,
+            "years": 3
+          },
+          "CONST_VOL_MATCHED": {
+            "days": 739,
+            "net_mean_bp": 4.632,
+            "t": 1.46,
+            "annual_pct": 11.67,
+            "sharpe": 0.854,
+            "max_dd_pct": -21.35,
+            "calmar": 0.547,
+            "positive_years": 2,
+            "years": 3
+          },
+          "SHUFFLED": {
+            "sharpe_median": 0.815,
+            "share_at_or_above_managed": 0.005
+          },
+          "mean_weight": 0.74,
+          "sharpe_diff": 0.524
+        },
+        "cost x2.0": {
+          "MANAGED": {
+            "days": 739,
+            "net_mean_bp": 7.452,
+            "t": 2.35,
+            "annual_pct": 18.78,
+            "sharpe": 1.374,
+            "max_dd_pct": -19.55,
+            "calmar": 0.96,
+            "positive_years": 2,
+            "years": 3
+          },
+          "CONST_EQUAL_EXPOSURE": {
+            "days": 739,
+            "net_mean_bp": 5.378,
+            "t": 1.46,
+            "annual_pct": 13.55,
+            "sharpe": 0.854,
+            "max_dd_pct": -24.53,
+            "calmar": 0.552,
+            "positive_years": 2,
+            "years": 3
+          },
+          "CONST_VOL_MATCHED": {
+            "days": 739,
+            "net_mean_bp": 4.631,
+            "t": 1.46,
+            "annual_pct": 11.67,
+            "sharpe": 0.854,
+            "max_dd_pct": -21.35,
+            "calmar": 0.547,
+            "positive_years": 2,
+            "years": 3
+          },
+          "SHUFFLED": {
+            "sharpe_median": 0.81,
+            "share_at_or_above_managed": 0.005
+          },
+          "mean_weight": 0.74,
+          "sharpe_diff": 0.52
+        },
+        "cost x3.0": {
+          "MANAGED": {
+            "days": 739,
+            "net_mean_bp": 7.432,
+            "t": 2.35,
+            "annual_pct": 18.73,
+            "sharpe": 1.37,
+            "max_dd_pct": -19.57,
+            "calmar": 0.957,
+            "positive_years": 2,
+            "years": 3
+          },
+          "CONST_EQUAL_EXPOSURE": {
+            "days": 739,
+            "net_mean_bp": 5.378,
+            "t": 1.46,
+            "annual_pct": 13.55,
+            "sharpe": 0.854,
+            "max_dd_pct": -24.53,
+            "calmar": 0.552,
+            "positive_years": 2,
+            "years": 3
+          },
+          "CONST_VOL_MATCHED": {
+            "days": 739,
+            "net_mean_bp": 4.63,
+            "t": 1.46,
+            "annual_pct": 11.67,
+            "sharpe": 0.854,
+            "max_dd_pct": -21.35,
+            "calmar": 0.547,
+            "positive_years": 2,
+            "years": 3
+          },
+          "SHUFFLED": {
+            "sharpe_median": 0.806,
+            "share_at_or_above_managed": 0.005
+          },
+          "mean_weight": 0.74,
+          "sharpe_diff": 0.516
+        },
+        "swap x0.5": {
+          "MANAGED": {
+            "days": 739,
+            "net_mean_bp": 8.481,
+            "t": 2.68,
+            "annual_pct": 21.37,
+            "sharpe": 1.563,
+            "max_dd_pct": -18.46,
+            "calmar": 1.158,
+            "positive_years": 2,
+            "years": 3
+          },
+          "CONST_EQUAL_EXPOSURE": {
+            "days": 739,
+            "net_mean_bp": 6.388,
+            "t": 1.74,
+            "annual_pct": 16.1,
+            "sharpe": 1.014,
+            "max_dd_pct": -23.01,
+            "calmar": 0.699,
+            "positive_years": 2,
+            "years": 3
+          },
+          "CONST_VOL_MATCHED": {
+            "days": 739,
+            "net_mean_bp": 5.504,
+            "t": 1.74,
+            "annual_pct": 13.87,
+            "sharpe": 1.014,
+            "max_dd_pct": -20.0,
+            "calmar": 0.693,
+            "positive_years": 2,
+            "years": 3
+          },
+          "SHUFFLED": {
+            "sharpe_median": 0.966,
+            "share_at_or_above_managed": 0.005
+          },
+          "mean_weight": 0.74,
+          "sharpe_diff": 0.549
+        }
+      }
+    },
+    "sharpe_diff_ci": {
+      "discovery_2018_2023": [
+        -0.292,
+        0.162
+      ],
+      "check_2024_on": [
+        0.141,
+        0.918
+      ]
+    },
+    "mean_r": "n/a"
+  },
+  "folds": []
+}

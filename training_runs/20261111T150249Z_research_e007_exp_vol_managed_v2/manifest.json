@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "run_id": "20261111T150249Z_research_e007_exp_vol_managed_v2",
+  "experiment_name": "research_e007_exp_vol_managed_v2",
+  "status": "research_only",
+  "started_at_utc": "2026-11-11T15:02:50.033427Z",
+  "finished_at_utc": "2026-11-11T15:02:58.758482Z",
+  "git_commit": "2360be6fe21913c5b4c193e8ad95e8c6e0dcfa57",
+  "git_dirty": false,
+  "training_script": "D:\\XM\\數據\\exp_vol_managed_v2.py",
+  "training_script_snapshot": "training_script.py",
+  "training_script_sha256": "2eaea1ab5746d2a2d4a32e9420d091b8eebd9527ba02f2af2132b1a73176aada",
+  "exact_command": "python -B research_run_v1.py E-007",
+  "arguments": [
+    "E-007"
+  ],
+  "random_seeds": {},
+  "random_seed_note": "fixed seeds inside the experiment module",
+  "data": {
+    "symbols": [
+      "GOLD#"
+    ],
+    "data_sources": [
+      "MT5 copy_rates_range (XM)"
+    ],
+    "source_files": [],
+    "timezone": "MT5 server time (UTC+2/+3)",
+    "data_start_utc": "2014-01-01 00:00:00+00:00",
+    "data_end_utc": "2026-11-11 15:02:50.041553+00:00",
+    "train_start_utc": "not_applicable_no_training",
+    "train_end_utc": "not_applicable_no_training",
+    "train_rows": "not_applicable_no_training",
+    "validation_start_utc": "not_applicable_no_training",
+    "validation_end_utc": "not_applicable_no_training",
+    "validation_rows": "not_applicable_no_training",
+    "test_start_utc": "2018-01-01",
+    "test_end_utc": "2099-01-01",
+    "test_rows": 3321,
+    "purge_details": "not_applicable_no_training",
+    "embargo_details": "not_applicable_no_training",
+    "raw_snapshot_retained": false,
+    "reproducibility_claim": "code_and_parameters_only; MT5 history can be revised by the broker",
+    "mt5_fetch": {
+      "used": true,
+      "terminal_path": "D:\\XM2",
+      "terminal_info": {
+        "build": 6230,
+        "name": "XM Global MT5"
+      },
+      "broker_info": {
+        "server": "XMGlobal-MT5 6",
+        "company": "XM Global Limited"
+      },
+      "fetch_start_utc": "2014-01-01 00:00:00+00:00",
+      "fetch_end_utc": "2026-11-11 15:02:50.041553+00:00",
+      "retrieved_at_utc": "2026-11-11T15:02:50.042557Z",
+      "returned_rows": 3321,
+      "not_applicable_reason": null
+    }
+  },
+  "model": {
+    "trained": false,
+    "model_type": null,
+    "parameters": {},
+    "boosted_rounds_or_estimators": null,
+    "features": [],
+    "feature_count": 0,
+    "label_definition": null,
+    "horizon": null,
+    "label_tp_sl_semantics": null,
+    "execution_tp_sl_semantics": null,
+    "calibration_method": null,
+    "artifact_path": null,
+    "artifact_sha256": null,
+    "retention_status": null,
+    "not_applicable_reason": "no model; fixed EWMA volatility rule"
+  },
+  "search": {
+    "performed": false,
+    "predefined_search_space": {},
+    "candidate_results_file": null,
+    "not_applicable_reason": "preregistered single specification; no search"
+  },
+  "registry": {
+    "parent_or_incumbent": "H-005",
+    "selected_configuration": "none (research only)",
+    "trades_per_day": "n/a",
+    "realized_win_rate": "n/a",
+    "pf": "n/a",
+    "mean_r": "n/a",
+    "pnl": "n/a",
+    "max_dd": "n/a",
+    "validator_result": "research_memory E-007: refuted"
+  },
+  "promotion": {
+    "requested": false,
+    "gate_result": "not_requested",
+    "replacement_authorized": false,
+    "operational_artifact_changed": false
+  },
+  "artifacts": [],
+  "aborted_reason": null
+}

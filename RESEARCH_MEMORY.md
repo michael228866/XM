@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 50；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 51；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -35,8 +35,8 @@
 |---|---|---|---|---|---|
 | H-014 | 黃金隱含波動率（CBOE GVZ）與實現波動的差（變異數風險溢酬）預測未來 5-20 日的實現波動與報酬 | new_information_implied_vol | open | 39.0 | 把 GVZ 加進 HAR 後 QLIKE 沒有下降（DM &#124;t&#124; < 2），且溢酬對 20 日報酬的 IC &#124;t&#124; < 1 |
 | H-008 | 收盤前平倉、只做盤中多單，比一直持有多單（付過夜利息）的風險調整後報酬更好 | cost_structure | open | 38.5 | 2018-2022 成本 x1 下 INTRADAY_LONG 的 Sharpe 不高於 ALWAYS_LONG |
-| H-005 | Scaling long exposure by inverse forecast volatility improves risk-adjusted drift harvesting | second_moment | testing | 38.0 | vol-managed Sharpe <= constant exposure in 2018-2023 after costs |
 | H-011 | HAR 實現波動模型對次日波動的預測優於 EWMA，且高波動狀態下的報酬分布（偏態、尾部）顯著不同 | second_moment_forecast | open | 38.0 | 2018-2023 HAR 的 QLIKE 不低於 EWMA（Diebold-Mariano &#124;t&#124; < 2） |
+| H-005 | Scaling long exposure by inverse forecast volatility improves risk-adjusted drift harvesting | second_moment | testing | 36.5 | vol-managed Sharpe <= constant exposure in 2018-2023 after costs |
 | H-013 | 可以預測未來 1 小時的波動是否大於 k 倍點差（不預測方向），而 gemini 的虧損集中在預測『不值得交易』的時段 | tradeability | open | 36.0 | 樣本外波動大小分類 AUC <= 0.55，或低可交易性組的 gemini 回放 R 沒有比其他組低 0.05R 以上 |
 | H-009 | 點差相對同時段常態異常擴大時，接下來的波動與滑價較大，是不值得進場的時刻 | microstructure | open | 34.0 | 點差 z 值最高 10% 時段之後 30 分鐘的實現波動比 < 1.2，或排除這些時段進場使既有策略回放淨 R 改善 < 0.02R |
 | H-012 | 低流動時段的單根急動（> 3 倍 ATR）在 15-60 分鐘內部分回補，扣除當下實際點差後期望為正 | transient_anomaly | open | 33.0 | 2018-2022 以實際點差計的平均淨回補 <= 0；事件數 < 200 則判定樣本不足 |
@@ -59,12 +59,15 @@
 
 - 實驗 **E-001**（H-001）：timing skill beyond monthly drift (2018-2023 CI > 0 and 2024+ > 0): ['H1_C_frozen']; controls OK  
   失敗原因：`none`；學到：timing skill exists beyond drift for H1_C_frozen
+- 實驗 **E-007**（H-005）：Sharpe MANAGED - CONST_EQUAL_EXPOSURE: 2018-2023 -0.061 (CI [-0.292, 0.162]), 2024+ 0.524; cost x3.0 2018-2023 -0.072; shuffled >= managed 0.65  
+  失敗原因：`information`；學到：inverse-vol sizing at equal exposure: refuted
 
 ## 4. 受資料重複使用影響的結論
 
 - 實驗 **E-001**：refuted（證據等級 `reuse_contaminated`，登錄前已有 2 次使用重疊）：timing skill beyond monthly drift (2018-2023 CI > 0 and 2024+ > 0): ['H1_C_frozen']; controls OK
 - 實驗 **E-002**：inconclusive（證據等級 `development`，登錄前已有 5 次使用重疊）：weekly-horizon verdicts: {'REAL10Y_CHG_20D': 'refuted', 'COT_MM_NET_PCT_OI': 'inconclusive'}
 - 實驗 **E-006**：inconclusive（證據等級 `development`，登錄前已有 14 次使用重疊）：inconclusive: Sharpe INTRADAY_LONG vs ALWAYS_LONG (cost x1): 2018-2022 0.152 vs -0.029, 2023+ 0.999 vs 0.773; better in both windows at cost x1.5, live31 and low swap: False
+- 實驗 **E-007**：refuted（證據等級 `development`，登錄前已有 18 次使用重疊）：Sharpe MANAGED - CONST_EQUAL_EXPOSURE: 2018-2023 -0.061 (CI [-0.292, 0.162]), 2024+ 0.524; cost x3.0 2018-2023 -0.072; shuffled >= managed 0.65
 
 ## 5. 已登錄、尚未有結果的實驗
 
@@ -74,10 +77,6 @@
   判定規則：At cost x1 a session x side passes if its excess over proportional drift is positive in >= 4 of 5 years 2018-2022 with Sidak p < 0.05 over 8 trials (times family trials), its 2018-2022 excess stays > 0 at cost x2, its 2023+ excess is > 0, and its raw traded net mean is > 0 in both windows. supported if any passes; refuted if the best 2018-2022 excess t has Sidak p >= 0.5; otherwise not_significant (ledger outcome inconclusive)
   - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 12 earlier uses; evidence is development only
   - 審查 `critic_agent` → **approve**：round 1 (draft): approve with notes — refuted rule is lenient (69.5% of null simulations end refuted), so a negative result only excludes effects >= ~4 bp/day; month drift used same-day data; hour-based share leaves ~0.3 bp/day vol-share bias; cost used only the first bar's spread；fixes: leave-one-out month drift, segment cost = max(first, last bar spread), claim_scope narrowed to >= ~4 bp/day, vol-share bias documented；round 2: approve; leave-one-out and cost verified on synthetic H1; a 1-day month gives NaN and is dropped (harmless)；after round 2 only text changed: docstring and directional_benchmark now say leave-one-out (critic's round-2 note 4)
-- **E-007** → H-005（exploratory）：`exp_vol_managed_v2`；審查：通過，可執行  
-  判定規則：refuted if Sharpe(MANAGED) - Sharpe(CONST_EQUAL_EXPOSURE) <= 0 in 2018-2023 at cost x1; supported if the difference is > 0 in 2024+ at cost x1, its 2018-2023 month-bootstrap 95% CI is above 0, it stays > 0 in 2018-2023 at cost x3, and <= 5% of month-shuffled weight paths reach MANAGED's 2018-2023 Sharpe; otherwise inconclusive
-  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 18 earlier uses; evidence is development only
-  - 審查 `critic_agent` → **approve**：round 1 (draft): revise — BLOCKING fixed-point swap overcharged low-price, low-vol years where MANAGED is overweight, biasing sharpe_diff against MANAGED; notes: summary said cost x2 but rule used x3; power_note understated paired power；fixes: carry as a constant rate per night, summary uses max cost multiplier, power_note rewritten (paired SE ~0.175)；round 2: approve (code read; not run on synthetic data)
 
 ## 6. 所有實驗結果與下一個問題
 
@@ -90,6 +89,9 @@
 - **E-006**（H-008）`inconclusive` / `development`：inconclusive: Sharpe INTRADAY_LONG vs ALWAYS_LONG (cost x1): 2018-2022 0.152 vs -0.029, 2023+ 0.999 vs 0.773; better in both windows at cost x1.5, live31 and low swap: False  
   下一個問題：session structure carries no usable edge at these costs; prefer H-003/H-009+ questions  
   紀錄：`training_runs/20261111T144849Z_research_e006_exp_session_structure_v2`
+- **E-007**（H-005）`refuted` / `development`：Sharpe MANAGED - CONST_EQUAL_EXPOSURE: 2018-2023 -0.061 (CI [-0.292, 0.162]), 2024+ 0.524; cost x3.0 2018-2023 -0.072; shuffled >= managed 0.65  
+  下一個問題：second-moment sizing alone is not an edge; test H-011 forecasting quality  
+  紀錄：`training_runs/20261111T150249Z_research_e007_exp_vol_managed_v2`
 
 ## 7. 決策紀錄
 
