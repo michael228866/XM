@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 69；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 71；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -34,7 +34,6 @@
 | ID | 假說 | 族群 | 狀態 | 優先分 | 推翻條件 |
 |---|---|---|---|---|---|
 | H-008 | 收盤前平倉、只做盤中多單，比一直持有多單（付過夜利息）的風險調整後報酬更好 | cost_structure | inconclusive | 38.5 | 2018-2022 成本 x1 下 INTRADAY_LONG 的 Sharpe 不高於 ALWAYS_LONG |
-| H-014 | 黃金隱含波動率（CBOE GVZ）與實現波動的差（變異數風險溢酬）預測未來 5-20 日的實現波動與報酬 | new_information_implied_vol | testing | 37.5 | 把 GVZ 加進 HAR 後 QLIKE 沒有下降（DM &#124;t&#124; < 2），且溢酬對 20 日報酬的 IC &#124;t&#124; < 1 |
 | H-013 | 可以預測未來 1 小時的波動是否大於 k 倍點差（不預測方向），而 gemini 的虧損集中在預測『不值得交易』的時段 | tradeability | open | 36.0 | 樣本外波動大小分類 AUC <= 0.55，或低可交易性組的 gemini 回放 R 沒有比其他組低 0.05R 以上 |
 | H-018 | 波動預測能改善交易決策：倉位風險控制、實際回撤、辨識不值得交易的環境，且改善足以抵銷額外交易成本 | second_moment_decision_value | open | 35.0 | 2018-2023 以凍結預測做風險目標倉位與不交易濾網，在相同平均曝險下，扣除額外換手成本後 Sharpe 不高於固定風險版本，且最大回撤降低 < 10% |
 | H-009 | 點差相對同時段常態異常擴大時，接下來的波動與滑價較大，是不值得進場的時刻 | microstructure | open | 34.0 | 點差 z 值最高 10% 時段之後 30 分鐘的實現波動比 < 1.2，或排除這些時段進場使既有策略回放淨 R 改善 < 0.02R |
@@ -51,7 +50,7 @@
 
 ## 2b. 證據狀態分類（結論不得超出這個範圍）
 
-- **證據推翻**：H-004 Gold's drift concentrates in specific sessions; intraday-only longs capture it without swap；H-005 Scaling long exposure by inverse forecast volatility improves risk-adjusted drift harvesting；H-011 HAR 實現波動模型對次日波動的預測優於 EWMA，且高波動狀態下的報酬分布（偏態、尾部）顯著不同
+- **證據推翻**：H-004 Gold's drift concentrates in specific sessions; intraday-only longs capture it without swap；H-005 Scaling long exposure by inverse forecast volatility improves risk-adjusted drift harvesting；H-011 HAR 實現波動模型對次日波動的預測優於 EWMA，且高波動狀態下的報酬分布（偏態、尾部）顯著不同；H-014 黃金隱含波動率（CBOE GVZ）與實現波動的差（變異數風險溢酬）預測未來 5-20 日的實現波動與報酬
 - **未找到顯著優勢（不代表不存在）**：H-001 Candidate H1 edges are drift exposure, not timing skill
 - **樣本不足，無法判定**：H-002 Exogenous macro data work at their native weekly horizon
 - **已過度研究，需要新資料才能判定**：H-015 同一組價格／技術指標特徵的方向預測變體（Gen1-21、S4、經典規則、網路策略、LSTM、組合規則）含有可交易的進場時機優勢
@@ -61,6 +60,7 @@
 - **H-004** Gold's drift concentrates in specific sessions; intraday-only longs capture it without swap（refuted）
 - **H-005** Scaling long exposure by inverse forecast volatility improves risk-adjusted drift harvesting（refuted）
 - **H-011** HAR 實現波動模型對次日波動的預測優於 EWMA，且高波動狀態下的報酬分布（偏態、尾部）顯著不同（refuted）
+- **H-014** 黃金隱含波動率（CBOE GVZ）與實現波動的差（變異數風險溢酬）預測未來 5-20 日的實現波動與報酬（refuted）
 - 實驗 **E-001**（H-001）：timing skill beyond monthly drift (2018-2023 CI > 0 and 2024+ > 0): ['H1_C_frozen']; controls OK  
   失敗原因：`none`；學到：timing skill exists beyond drift for H1_C_frozen
 - 實驗 **E-007**（H-005）：Sharpe MANAGED - CONST_EQUAL_EXPOSURE: 2018-2023 -0.061 (CI [-0.292, 0.162]), 2024+ 0.524; cost x3.0 2018-2023 -0.072; shuffled >= managed 0.65  
@@ -123,6 +123,7 @@
 - **D-008** H-011 分兩層：E-008 只檢驗統計預測能力（H-011 的預測子句）；條件報酬分布子句延後；交易決策價值另立 H-018，於 E-008 有結果後才預先登記 E-009。E-008 結果如何對應下一步：supported → E-009 用 HAR 凍結預測；refuted／not_significant → E-009 改用 EWMA，問題變成『任何波動預測是否改善決策』；無論哪個結果，H-014（GVZ）以 E-008 中表現最好的『FROZEN 2014-2017 參數』模型為基準，不得改用看過 2024+ 後選的模型：避免把『預測誤差較小』和『可以賺錢』混在同一個實驗；兩層都要能各自被推翻
 - **D-009** E-008 依預先登記規則判為 refuted：凍結 2014-2017 參數的 HAR 在 2018-2023 h=1 QLIKE 顯著差於 EWMA_FIT（比值 1.139，DM t 2.94，lag 22 t 2.26，6 年中僅 1 年較好）。H-011 預測子句設為 refuted，範圍限於『此設定、凍結參數』；不代表 HAR 類模型無用，也不涵蓋條件報酬分布子句。依 D-008：E-009（H-018）改用 EWMA_094 作波動輸入，問題是『任何波動預測是否改善決策』；H-014（GVZ）以 EWMA_094 為基準。EWMA_094 是 E-008 主要窗口中最佳的 FROZEN 模型，且沒有任何擬合參數。不得改用 RECURSIVE HAR 或 2024+ 表現較好的模型。H-019 只能用前瞻資料判定：照預先登記執行，不在看到結果後改寫判定；EWMA_094 原本就是預先宣告的對照，選它不引入新的擬合；但它是依 2018-2023 結果選出，所以 E-009／H-014 在 2018-2023 的結果須標示此選擇
 - **D-010** H-014 先只檢驗波動子句，問題是『資訊增量』：同一種擬合、同一批資料列下，加入 GVZ 的模型是否優於只用價格歷史（EWMA_094）的模型；不是單純追求比 EWMA 更低的誤差。分三個預先指定的問題：一般波動（h=5）、極端波動（未來 5 日超過過去 90 百分位）、狀態轉變（未來 22 日波動升到過去 22 日的 1.5 倍以上），Sidak 校正 3 次。溢酬預測報酬的子句延後。GVZ 時間規則：起點 t 只用美國日期 <= t-1 日的值（歷史發布時間無法驗證，採保守延遲），另以再晚一筆的 lag 2 作為必要條件。實驗編號 E-010；E-009 保留給 H-018。H-018 保留為下一個獨立方向：在固定交易訊號下，檢驗 EWMA_094 波動預測能否改善風險調整後報酬、最大回撤或尾部風險，核心不是預測準確度；E-010 結果不改變 H-018 的波動輸入（仍為 EWMA_094），除非某個問題 supported 且經前瞻資料確認。GVZ 與任何未驗證模型都不接入 Runner：把重新校準的效果和新資訊的效果分開；預先固定問題、期間、參數與狀態，避免事後挑選
+- **D-011** E-010 依預先登記規則三題皆 refuted（general A/R 1.125 DM t 3.09；extreme 1.559 t 5.40；regime_up 1.110 t 2.47；lag 2 與對照 P 方向一致）。H-014 波動子句設為 refuted，範圍限於『GVZ 以 log 水準、lag 1、2014-2017 凍結係數加入EWMA_094 模型』；依審查意見，這表示凍結的 GVZ 模型樣本外較差，不代表 GVZ 不含資訊；報酬子句未檢驗。2024+ 的 general A/R 0.98、h22 0.92 只是描述，不得用來挽回結論。H-018 不變：下一個獨立研究方向，以 EWMA_094（無擬合參數）作波動輸入，在固定交易訊號下檢驗風險調整後報酬、最大回撤與尾部風險，編號 E-009。GVZ 的尺度不變形式（相對自身過去的變化）屬事後想法，若要研究須另立假設並只用前瞻資料判定；目前不登記：照預先登記執行；兩次失敗都指向凍結的水準校準，但這是看過結果後的歸納，不能在同一段資料上再驗證
 
 ## 8. 資料區間使用帳（越多次越不能當獨立驗證）
 
