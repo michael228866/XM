@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 89；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 90；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -37,8 +37,8 @@
 |---|---|---|---|---|---|
 | H-008 | 收盤前平倉、只做盤中多單，比一直持有多單（付過夜利息）的風險調整後報酬更好 | cost_structure | inconclusive | 38.5 | 2018-2022 成本 x1 下 INTRADAY_LONG 的 Sharpe 不高於 ALWAYS_LONG |
 | H-013 | 可以預測未來 1 小時的波動是否大於 k 倍點差（不預測方向），而 gemini 的虧損集中在預測『不值得交易』的時段 | tradeability | open | 36.0 | 樣本外波動大小分類 AUC <= 0.55，或低可交易性組的 gemini 回放 R 沒有比其他組低 0.05R 以上 |
-| H-018 | 波動預測能改善交易決策：倉位風險控制、實際回撤、辨識不值得交易的環境，且改善足以抵銷額外交易成本 | second_moment_decision_value | testing | 35.0 | 2018-2023 以凍結預測做風險目標倉位與不交易濾網，在相同平均曝險下，扣除額外換手成本後 Sharpe 不高於固定風險版本，且最大回撤降低 < 10% |
 | H-009 | 點差相對同時段常態異常擴大時，接下來的波動與滑價較大，是不值得進場的時刻 | microstructure | open | 34.0 | 點差 z 值最高 10% 時段之後 30 分鐘的實現波動比 < 1.2，或排除這些時段進場使既有策略回放淨 R 改善 < 0.02R |
+| H-018 | 波動預測能改善交易決策：倉位風險控制、實際回撤、辨識不值得交易的環境，且改善足以抵銷額外交易成本 | second_moment_decision_value | testing | 33.5 | 2018-2023 以凍結預測做風險目標倉位與不交易濾網，在相同平均曝險下，扣除額外換手成本後 Sharpe 不高於固定風險版本，且最大回撤降低 < 10% |
 | H-012 | 低流動時段的單根急動（> 3 倍 ATR）在 15-60 分鐘內部分回補，扣除當下實際點差後期望為正 | transient_anomaly | open | 33.0 | 2018-2022 以實際點差計的平均淨回補 <= 0；事件數 < 200 則判定樣本不足 |
 | H-021 | 2018 年前的 XM GOLD# H1 資料放大了日實現波動（資料源或報價斷點），使 2014-2017 擬合的水準不能代表之後的市場 | data_quality | open | 33.0 | 以不涉及模型擬合的一致性比較：H1 加總的日實現波動相對 D1 收盤對收盤變異數（或外部來源）的比例，在 2018 年前後差異 < 10% |
 | H-016 | 波動調整倉位只在特定市況（如 2024 年後的高波動趨勢）改善風險調整後報酬；前瞻資料上仍成立 | second_moment_regime | open | 32.0 | 2026-11-12 起至少 12 個月的前瞻資料上，MANAGED 對 CONST_EQUAL_EXPOSURE 的 Sharpe 差 <= 0 |
@@ -90,15 +90,12 @@
 - 實驗 **E-010**：refuted（證據等級 `development`，登錄前已有 22 次使用重疊）：refuted: general: refuted (A/R 1.1248, DM t 3.09, Sidak p 1.0, gain -12.48% ub95 -5.83%, years 2/6, lag2 A/R 1.1183, A/P 1.116); extreme: refuted (A/R 1.5593, DM t 5.4, Sidak p 1.0, gain -55.93% ub95 -38.91%, years 0/6, lag2 A/R 1.4282, A/P 1.5058); regime_up: refuted (A/R 1.1101, DM t 2.47, Sidak p 1.0, gain -11.01% ub95 -3.68%, years 2/6, lag2 A/R 1.1025, A/P 1.1069)
 - 實驗 **E-011**：inconclusive（證據等級 `development`，登錄前已有 20 次使用重疊）：descriptive diagnostic of fixed-parameter drift; see report tables (no verdict)
 - 實驗 **E-009**：aborted（證據等級 `development`，登錄前已有 10 次使用重疊）：aborted before any evaluation: the pre-run guard found GOLD# swap_mode 0 (DISABLED) where the design assumed swap in points; bars were fetched but no signal, trade or P&L was computed
+- 實驗 **E-012**：inconclusive（證據等級 `development`，登錄前已有 12 次使用重疊）：underpowered: 2024+ 274 trades / 33 months with trades; Sharpe EWMA_RISK 1.291 vs FIXED_RISK 1.087 (delta 0.204, 95% month-block CI [-0.29, 0.617]); vol-matched MDD -5.401% vs -4.877%, CVaR5 -91.025 vs -93.608 bp; alpha on FIXED+market {'alpha_bp': 0.625, 'nw_t': 1.41, 'betas': [0.7317, -0.0121]}; delta Sharpe spread x2 0.202, quoted swap x1.5 0.207; descriptive EWMA_TARGET vs FIXED_RISK {'delta_sharpe': 0.032, 'ci': [-0.278, 0.344]}, vs CONSTANT_NOTIONAL {'delta_sharpe': 0.111, 'ci': [-0.412, 0.621]}; hour R^2 of weight ratios {'EWMA_RISK': 0.072, 'EWMA_TARGET': 0.065, 'CONSTANT_NOTIONAL': 0.081}
 
 ## 5. 已登錄、尚未有結果的實驗
 
 - ~~E-003~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
 - ~~E-004~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
-- **E-012** → H-018（exploratory）：`exp_vol_sizing_v1`；審查：通過，可執行  
-  判定規則：Primary: window 2024+, base costs, delta Sharpe = Sharpe(EWMA_RISK) - Sharpe(FIXED_RISK) of daily net returns, 95% month-block bootstrap CI (2000 draws), a single test. inconclusive_sample if < 150 trades or < 24 months with a trade. refuted if the CI upper bound < 0. If the CI lower bound > 0: supported only if all hold - delta Sharpe > 0 under spread x2 and under quoted swap x1.5 (base swap is the account's 0); vol-matched max drawdown and vol-matched daily CVaR 5% of EWMA_RISK no worse than FIXED_RISK; EWMA_RISK Sharpe >= FIXED_RISK in all but at most one volatility regime with >= 60 days (if only one such regime, in that one; if none, supported is impossible; regime label from the previous day); and in >= 2 of the calendar years 2024-2026 - otherwise significant_not_robust. If the CI contains 0: not_significant if CI upper < 0.2 and the vol-matched drawdown cut < 10%, else underpowered. Ledger outcome: supported / refuted / inconclusive (all other verdicts). Alpha t, raw metrics, EWMA_TARGET, CONSTANT_NOTIONAL, Calmar, cost, concentration and the 2018-2023 window are descriptive.
-  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 12 earlier uses; evidence is development only；family 'second_moment_decision_value' already has 1 result(s); the runner widens the Sidak count
-  - 審查 `critic_agent_4` → **approve**：round 3: approve; reusing the E-009 design under a new id is legitimate: the abort happened at the swap guard before any signal, trade or P&L (empty metrics, 0-byte stdout); the only change is the swap cost, driven by broker settings and deal records, not by results；swap treatment sound: base = account actual (DISABLED, 0 in deals), quoted swap x1.5 as robustness condition is stricter than before; other swap modes raise; runner now catches SystemExit (KeyboardInterrupt still not)；notes: account-swap evidence is 9 rollover-crossing positions plus swap_mode; manual abort path must be committed by hand; the aborted run counts as a family trial; E-011 results were seen between E-009 and E-012 (disclosed in D-013)
 
 ## 6. 所有實驗結果與下一個問題
 
@@ -129,6 +126,9 @@
 - **E-009**（H-018）`aborted` / `development`：aborted before any evaluation: the pre-run guard found GOLD# swap_mode 0 (DISABLED) where the design assumed swap in points; bars were fetched but no signal, trade or P&L was computed  
   下一個問題：E-012: same design with the account's actual swap (0) and the quoted swap as stress  
   紀錄：`training_runs/20261112T135141Z_research_e009_exp_vol_sizing_v1`
+- **E-012**（H-018）`inconclusive` / `development`：underpowered: 2024+ 274 trades / 33 months with trades; Sharpe EWMA_RISK 1.291 vs FIXED_RISK 1.087 (delta 0.204, 95% month-block CI [-0.29, 0.617]); vol-matched MDD -5.401% vs -4.877%, CVaR5 -91.025 vs -93.608 bp; alpha on FIXED+market {'alpha_bp': 0.625, 'nw_t': 1.41, 'betas': [0.7317, -0.0121]}; delta Sharpe spread x2 0.202, quoted swap x1.5 0.207; descriptive EWMA_TARGET vs FIXED_RISK {'delta_sharpe': 0.032, 'ci': [-0.278, 0.344]}, vs CONSTANT_NOTIONAL {'delta_sharpe': 0.111, 'ci': [-0.412, 0.621]}; hour R^2 of weight ratios {'EWMA_RISK': 0.072, 'EWMA_TARGET': 0.065, 'CONSTANT_NOTIONAL': 0.081}  
+  下一個問題：if no sizing value: turn to questions with a different economic mechanism (H-008/H-013/H-009)  
+  紀錄：`training_runs/20261112T142415Z_research_e012_exp_vol_sizing_v1`
 
 ## 7. 決策紀錄
 

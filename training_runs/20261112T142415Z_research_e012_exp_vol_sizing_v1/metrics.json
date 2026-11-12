@@ -1,0 +1,713 @@
+{
+  "summary": {
+    "results": {
+      "in_sample_2018_2023": {
+        "base": {
+          "trades": 363,
+          "months_with_trades": 67,
+          "capped": {
+            "FIXED_RISK": 0,
+            "EWMA_RISK": 4,
+            "EWMA_TARGET": 0,
+            "CONSTANT_NOTIONAL": 0
+          },
+          "arms": {
+            "FIXED_RISK": {
+              "days": 1548,
+              "net_mean_bp": 6.148,
+              "t": 6.51,
+              "annual_pct": 15.49,
+              "sharpe": 2.629,
+              "max_dd_pct": -4.36,
+              "calmar": 3.557,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -4.431,
+              "vol_matched_cvar5_bp": -63.807,
+              "worst_day_bp": -157.619,
+              "avg_w": 1.129,
+              "max_w": 3.133,
+              "return_per_unit_notional_bp": 23.218,
+              "cost_bp_total": -450.26,
+              "top10pct_trades_abs_pnl_share": 0.138,
+              "month_pnl_herfindahl": 0.0261
+            },
+            "EWMA_RISK": {
+              "days": 1548,
+              "net_mean_bp": 7.339,
+              "t": 6.74,
+              "annual_pct": 18.49,
+              "sharpe": 2.718,
+              "max_dd_pct": -4.42,
+              "calmar": 4.182,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -3.896,
+              "vol_matched_cvar5_bp": -60.102,
+              "worst_day_bp": -157.21,
+              "avg_w": 1.366,
+              "max_w": 5.0,
+              "return_per_unit_notional_bp": 22.911,
+              "cost_bp_total": -535.43,
+              "top10pct_trades_abs_pnl_share": 0.212,
+              "month_pnl_herfindahl": 0.0305
+            },
+            "EWMA_TARGET": {
+              "days": 1548,
+              "net_mean_bp": 5.439,
+              "t": 5.59,
+              "annual_pct": 13.71,
+              "sharpe": 2.257,
+              "max_dd_pct": -4.86,
+              "calmar": 2.821,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -4.798,
+              "vol_matched_cvar5_bp": -71.287,
+              "worst_day_bp": -280.386,
+              "avg_w": 1.075,
+              "max_w": 1.903,
+              "return_per_unit_notional_bp": 21.585,
+              "cost_bp_total": -422.03,
+              "top10pct_trades_abs_pnl_share": 0.191,
+              "month_pnl_herfindahl": 0.0274
+            },
+            "CONSTANT_NOTIONAL": {
+              "days": 1548,
+              "net_mean_bp": 5.02,
+              "t": 4.65,
+              "annual_pct": 12.65,
+              "sharpe": 1.876,
+              "max_dd_pct": -8.99,
+              "calmar": 1.407,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -8.09,
+              "vol_matched_cvar5_bp": -72.397,
+              "worst_day_bp": -388.363,
+              "avg_w": 0.986,
+              "max_w": 0.986,
+              "return_per_unit_notional_bp": 21.699,
+              "cost_bp_total": -404.44,
+              "top10pct_trades_abs_pnl_share": 0.22,
+              "month_pnl_herfindahl": 0.0306
+            }
+          },
+          "delta_sharpe": 0.089,
+          "delta_sharpe_ci": [
+            -0.106,
+            0.267
+          ],
+          "hour_r2_log_weight_ratio": {
+            "EWMA_RISK": 0.104,
+            "EWMA_TARGET": 0.122,
+            "CONSTANT_NOTIONAL": 0.112
+          },
+          "descriptive_EWMA_TARGET_vs_FIXED_RISK": {
+            "delta_sharpe": -0.372,
+            "ci": [
+              -0.626,
+              -0.128
+            ]
+          },
+          "descriptive_EWMA_TARGET_vs_CONSTANT_NOTIONAL": {
+            "delta_sharpe": 0.381,
+            "ci": [
+              -0.002,
+              0.694
+            ]
+          },
+          "alpha_on_fixed_and_market": {
+            "alpha_bp": 0.611,
+            "nw_t": 2.32,
+            "betas": [
+              1.1096,
+              -0.028
+            ]
+          },
+          "by_regime_sharpe": {
+            "low": {
+              "days": 544,
+              "EWMA_RISK": 3.357,
+              "FIXED_RISK": 3.31
+            },
+            "mid": {
+              "days": 725,
+              "EWMA_RISK": 2.084,
+              "FIXED_RISK": 1.99
+            },
+            "high": {
+              "days": 215,
+              "EWMA_RISK": 2.413,
+              "FIXED_RISK": 2.535
+            }
+          },
+          "by_year_sharpe": {
+            "2018": {
+              "EWMA_RISK": 2.476,
+              "FIXED_RISK": 2.464
+            },
+            "2019": {
+              "EWMA_RISK": 4.9,
+              "FIXED_RISK": 5.038
+            },
+            "2020": {
+              "EWMA_RISK": 3.069,
+              "FIXED_RISK": 3.062
+            },
+            "2021": {
+              "EWMA_RISK": 0.849,
+              "FIXED_RISK": 0.904
+            },
+            "2022": {
+              "EWMA_RISK": 2.712,
+              "FIXED_RISK": 2.442
+            },
+            "2023": {
+              "EWMA_RISK": 1.332,
+              "FIXED_RISK": 1.348
+            }
+          }
+        },
+        "spread_x2": {
+          "trades": 364,
+          "months_with_trades": 67,
+          "capped": {
+            "FIXED_RISK": 0,
+            "EWMA_RISK": 4,
+            "EWMA_TARGET": 0,
+            "CONSTANT_NOTIONAL": 0
+          },
+          "arms": {
+            "FIXED_RISK": {
+              "days": 1548,
+              "net_mean_bp": 5.932,
+              "t": 6.33,
+              "annual_pct": 14.95,
+              "sharpe": 2.553,
+              "max_dd_pct": -4.38,
+              "calmar": 3.41,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -4.461,
+              "vol_matched_cvar5_bp": -63.678,
+              "worst_day_bp": -156.543,
+              "avg_w": 1.128,
+              "max_w": 3.134,
+              "return_per_unit_notional_bp": 22.368,
+              "cost_bp_total": -922.38,
+              "top10pct_trades_abs_pnl_share": 0.138,
+              "month_pnl_herfindahl": 0.0254
+            },
+            "EWMA_RISK": {
+              "days": 1548,
+              "net_mean_bp": 7.147,
+              "t": 6.57,
+              "annual_pct": 18.01,
+              "sharpe": 2.651,
+              "max_dd_pct": -4.45,
+              "calmar": 4.045,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -3.903,
+              "vol_matched_cvar5_bp": -59.758,
+              "worst_day_bp": -156.139,
+              "avg_w": 1.363,
+              "max_w": 5.0,
+              "return_per_unit_notional_bp": 22.298,
+              "cost_bp_total": -1079.74,
+              "top10pct_trades_abs_pnl_share": 0.212,
+              "month_pnl_herfindahl": 0.0299
+            },
+            "EWMA_TARGET": {
+              "days": 1548,
+              "net_mean_bp": 5.279,
+              "t": 5.45,
+              "annual_pct": 13.3,
+              "sharpe": 2.198,
+              "max_dd_pct": -4.86,
+              "calmar": 2.737,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -4.784,
+              "vol_matched_cvar5_bp": -70.39,
+              "worst_day_bp": -280.363,
+              "avg_w": 1.073,
+              "max_w": 1.903,
+              "return_per_unit_notional_bp": 20.926,
+              "cost_bp_total": -859.34,
+              "top10pct_trades_abs_pnl_share": 0.191,
+              "month_pnl_herfindahl": 0.027
+            },
+            "CONSTANT_NOTIONAL": {
+              "days": 1548,
+              "net_mean_bp": 4.78,
+              "t": 4.46,
+              "annual_pct": 12.05,
+              "sharpe": 1.799,
+              "max_dd_pct": -9.0,
+              "calmar": 1.339,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -8.099,
+              "vol_matched_cvar5_bp": -72.421,
+              "worst_day_bp": -388.298,
+              "avg_w": 0.986,
+              "max_w": 0.986,
+              "return_per_unit_notional_bp": 20.608,
+              "cost_bp_total": -846.64,
+              "top10pct_trades_abs_pnl_share": 0.22,
+              "month_pnl_herfindahl": 0.0291
+            }
+          },
+          "delta_sharpe": 0.098
+        },
+        "swap_quoted_x1.5": {
+          "trades": 363,
+          "months_with_trades": 67,
+          "capped": {
+            "FIXED_RISK": 0,
+            "EWMA_RISK": 4,
+            "EWMA_TARGET": 0,
+            "CONSTANT_NOTIONAL": 0
+          },
+          "arms": {
+            "FIXED_RISK": {
+              "days": 1548,
+              "net_mean_bp": 5.459,
+              "t": 5.86,
+              "annual_pct": 13.76,
+              "sharpe": 2.364,
+              "max_dd_pct": -5.04,
+              "calmar": 2.732,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -5.117,
+              "vol_matched_cvar5_bp": -65.086,
+              "worst_day_bp": -161.596,
+              "avg_w": 1.129,
+              "max_w": 3.133,
+              "return_per_unit_notional_bp": 20.615,
+              "cost_bp_total": -1517.09,
+              "top10pct_trades_abs_pnl_share": 0.14,
+              "month_pnl_herfindahl": 0.0264
+            },
+            "EWMA_RISK": {
+              "days": 1548,
+              "net_mean_bp": 6.518,
+              "t": 6.1,
+              "annual_pct": 16.43,
+              "sharpe": 2.463,
+              "max_dd_pct": -5.15,
+              "calmar": 3.19,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -4.564,
+              "vol_matched_cvar5_bp": -62.627,
+              "worst_day_bp": -161.166,
+              "avg_w": 1.366,
+              "max_w": 5.0,
+              "return_per_unit_notional_bp": 20.349,
+              "cost_bp_total": -1805.86,
+              "top10pct_trades_abs_pnl_share": 0.207,
+              "month_pnl_herfindahl": 0.0303
+            },
+            "EWMA_TARGET": {
+              "days": 1548,
+              "net_mean_bp": 4.734,
+              "t": 4.93,
+              "annual_pct": 11.93,
+              "sharpe": 1.987,
+              "max_dd_pct": -4.9,
+              "calmar": 2.437,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -4.83,
+              "vol_matched_cvar5_bp": -73.081,
+              "worst_day_bp": -280.386,
+              "avg_w": 1.075,
+              "max_w": 1.903,
+              "return_per_unit_notional_bp": 18.786,
+              "cost_bp_total": -1513.84,
+              "top10pct_trades_abs_pnl_share": 0.189,
+              "month_pnl_herfindahl": 0.0274
+            },
+            "CONSTANT_NOTIONAL": {
+              "days": 1548,
+              "net_mean_bp": 4.373,
+              "t": 4.08,
+              "annual_pct": 11.02,
+              "sharpe": 1.646,
+              "max_dd_pct": -9.07,
+              "calmar": 1.215,
+              "positive_years": 6,
+              "years": 6,
+              "vol_matched_max_dd_pct": -8.119,
+              "vol_matched_cvar5_bp": -73.527,
+              "worst_day_bp": -388.363,
+              "avg_w": 0.986,
+              "max_w": 0.986,
+              "return_per_unit_notional_bp": 18.906,
+              "cost_bp_total": -1404.69,
+              "top10pct_trades_abs_pnl_share": 0.22,
+              "month_pnl_herfindahl": 0.0313
+            }
+          },
+          "delta_sharpe": 0.099
+        }
+      },
+      "oos_2024_on": {
+        "base": {
+          "trades": 274,
+          "months_with_trades": 33,
+          "capped": {
+            "FIXED_RISK": 0,
+            "EWMA_RISK": 0,
+            "EWMA_TARGET": 0,
+            "CONSTANT_NOTIONAL": 0
+          },
+          "arms": {
+            "FIXED_RISK": {
+              "days": 740,
+              "net_mean_bp": 2.922,
+              "t": 1.86,
+              "annual_pct": 7.36,
+              "sharpe": 1.087,
+              "max_dd_pct": -4.88,
+              "calmar": 1.51,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -4.877,
+              "vol_matched_cvar5_bp": -93.608,
+              "worst_day_bp": -153.329,
+              "avg_w": 0.752,
+              "max_w": 2.021,
+              "return_per_unit_notional_bp": 10.489,
+              "cost_bp_total": -165.35,
+              "top10pct_trades_abs_pnl_share": 0.145,
+              "month_pnl_herfindahl": 0.0621
+            },
+            "EWMA_RISK": {
+              "days": 740,
+              "net_mean_bp": 2.645,
+              "t": 2.21,
+              "annual_pct": 6.66,
+              "sharpe": 1.291,
+              "max_dd_pct": -4.14,
+              "calmar": 1.612,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -5.401,
+              "vol_matched_cvar5_bp": -91.025,
+              "worst_day_bp": -158.641,
+              "avg_w": 0.566,
+              "max_w": 2.581,
+              "return_per_unit_notional_bp": 12.625,
+              "cost_bp_total": -124.49,
+              "top10pct_trades_abs_pnl_share": 0.234,
+              "month_pnl_herfindahl": 0.0825
+            },
+            "EWMA_TARGET": {
+              "days": 740,
+              "net_mean_bp": 2.928,
+              "t": 1.92,
+              "annual_pct": 7.38,
+              "sharpe": 1.119,
+              "max_dd_pct": -5.56,
+              "calmar": 1.328,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -5.776,
+              "vol_matched_cvar5_bp": -97.504,
+              "worst_day_bp": -240.632,
+              "avg_w": 0.676,
+              "max_w": 1.33,
+              "return_per_unit_notional_bp": 11.703,
+              "cost_bp_total": -148.54,
+              "top10pct_trades_abs_pnl_share": 0.191,
+              "month_pnl_herfindahl": 0.0722
+            },
+            "CONSTANT_NOTIONAL": {
+              "days": 740,
+              "net_mean_bp": 4.182,
+              "t": 1.73,
+              "annual_pct": 10.54,
+              "sharpe": 1.009,
+              "max_dd_pct": -8.1,
+              "calmar": 1.301,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -5.421,
+              "vol_matched_cvar5_bp": -97.799,
+              "worst_day_bp": -280.72,
+              "avg_w": 0.986,
+              "max_w": 0.986,
+              "return_per_unit_notional_bp": 11.448,
+              "cost_bp_total": -216.64,
+              "top10pct_trades_abs_pnl_share": 0.22,
+              "month_pnl_herfindahl": 0.0799
+            }
+          },
+          "delta_sharpe": 0.204,
+          "delta_sharpe_ci": [
+            -0.29,
+            0.617
+          ],
+          "hour_r2_log_weight_ratio": {
+            "EWMA_RISK": 0.072,
+            "EWMA_TARGET": 0.065,
+            "CONSTANT_NOTIONAL": 0.081
+          },
+          "descriptive_EWMA_TARGET_vs_FIXED_RISK": {
+            "delta_sharpe": 0.032,
+            "ci": [
+              -0.278,
+              0.344
+            ]
+          },
+          "descriptive_EWMA_TARGET_vs_CONSTANT_NOTIONAL": {
+            "delta_sharpe": 0.111,
+            "ci": [
+              -0.412,
+              0.621
+            ]
+          },
+          "alpha_on_fixed_and_market": {
+            "alpha_bp": 0.625,
+            "nw_t": 1.41,
+            "betas": [
+              0.7317,
+              -0.0121
+            ]
+          },
+          "by_regime_sharpe": {
+            "low": {
+              "days": 139,
+              "EWMA_RISK": 2.212,
+              "FIXED_RISK": 2.132
+            },
+            "mid": {
+              "days": 217,
+              "EWMA_RISK": 1.318,
+              "FIXED_RISK": 1.266
+            },
+            "high": {
+              "days": 375,
+              "EWMA_RISK": 0.79,
+              "FIXED_RISK": 0.759
+            }
+          },
+          "by_year_sharpe": {
+            "2024": {
+              "EWMA_RISK": 1.629,
+              "FIXED_RISK": 1.501
+            },
+            "2025": {
+              "EWMA_RISK": 1.703,
+              "FIXED_RISK": 1.544
+            },
+            "2026": {
+              "EWMA_RISK": 0.223,
+              "FIXED_RISK": 0.403
+            }
+          }
+        },
+        "spread_x2": {
+          "trades": 274,
+          "months_with_trades": 33,
+          "capped": {
+            "FIXED_RISK": 0,
+            "EWMA_RISK": 0,
+            "EWMA_TARGET": 0,
+            "CONSTANT_NOTIONAL": 0
+          },
+          "arms": {
+            "FIXED_RISK": {
+              "days": 740,
+              "net_mean_bp": 2.511,
+              "t": 1.61,
+              "annual_pct": 6.33,
+              "sharpe": 0.942,
+              "max_dd_pct": -4.88,
+              "calmar": 1.296,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -4.882,
+              "vol_matched_cvar5_bp": -93.454,
+              "worst_day_bp": -153.337,
+              "avg_w": 0.752,
+              "max_w": 2.021,
+              "return_per_unit_notional_bp": 9.011,
+              "cost_bp_total": -330.69,
+              "top10pct_trades_abs_pnl_share": 0.146,
+              "month_pnl_herfindahl": 0.059
+            },
+            "EWMA_RISK": {
+              "days": 740,
+              "net_mean_bp": 2.315,
+              "t": 1.96,
+              "annual_pct": 5.83,
+              "sharpe": 1.144,
+              "max_dd_pct": -4.14,
+              "calmar": 1.41,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -5.423,
+              "vol_matched_cvar5_bp": -91.097,
+              "worst_day_bp": -158.641,
+              "avg_w": 0.566,
+              "max_w": 2.581,
+              "return_per_unit_notional_bp": 11.049,
+              "cost_bp_total": -248.98,
+              "top10pct_trades_abs_pnl_share": 0.234,
+              "month_pnl_herfindahl": 0.0799
+            },
+            "EWMA_TARGET": {
+              "days": 740,
+              "net_mean_bp": 2.606,
+              "t": 1.72,
+              "annual_pct": 6.57,
+              "sharpe": 1.003,
+              "max_dd_pct": -5.56,
+              "calmar": 1.182,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -5.765,
+              "vol_matched_cvar5_bp": -97.167,
+              "worst_day_bp": -240.613,
+              "avg_w": 0.676,
+              "max_w": 1.33,
+              "return_per_unit_notional_bp": 10.417,
+              "cost_bp_total": -297.06,
+              "top10pct_trades_abs_pnl_share": 0.192,
+              "month_pnl_herfindahl": 0.069
+            },
+            "CONSTANT_NOTIONAL": {
+              "days": 740,
+              "net_mean_bp": 3.777,
+              "t": 1.57,
+              "annual_pct": 9.52,
+              "sharpe": 0.914,
+              "max_dd_pct": -8.11,
+              "calmar": 1.173,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -5.404,
+              "vol_matched_cvar5_bp": -97.265,
+              "worst_day_bp": -281.487,
+              "avg_w": 0.986,
+              "max_w": 0.986,
+              "return_per_unit_notional_bp": 10.342,
+              "cost_bp_total": -433.25,
+              "top10pct_trades_abs_pnl_share": 0.221,
+              "month_pnl_herfindahl": 0.077
+            }
+          },
+          "delta_sharpe": 0.202
+        },
+        "swap_quoted_x1.5": {
+          "trades": 274,
+          "months_with_trades": 33,
+          "capped": {
+            "FIXED_RISK": 0,
+            "EWMA_RISK": 0,
+            "EWMA_TARGET": 0,
+            "CONSTANT_NOTIONAL": 0
+          },
+          "arms": {
+            "FIXED_RISK": {
+              "days": 740,
+              "net_mean_bp": 2.402,
+              "t": 1.53,
+              "annual_pct": 6.05,
+              "sharpe": 0.894,
+              "max_dd_pct": -5.64,
+              "calmar": 1.073,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -5.682,
+              "vol_matched_cvar5_bp": -95.941,
+              "worst_day_bp": -154.999,
+              "avg_w": 0.752,
+              "max_w": 2.021,
+              "return_per_unit_notional_bp": 8.623,
+              "cost_bp_total": -550.19,
+              "top10pct_trades_abs_pnl_share": 0.146,
+              "month_pnl_herfindahl": 0.0601
+            },
+            "EWMA_RISK": {
+              "days": 740,
+              "net_mean_bp": 2.254,
+              "t": 1.89,
+              "annual_pct": 5.68,
+              "sharpe": 1.101,
+              "max_dd_pct": -4.84,
+              "calmar": 1.173,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -6.367,
+              "vol_matched_cvar5_bp": -93.59,
+              "worst_day_bp": -158.641,
+              "avg_w": 0.566,
+              "max_w": 2.581,
+              "return_per_unit_notional_bp": 10.758,
+              "cost_bp_total": -413.81,
+              "top10pct_trades_abs_pnl_share": 0.23,
+              "month_pnl_herfindahl": 0.0803
+            },
+            "EWMA_TARGET": {
+              "days": 740,
+              "net_mean_bp": 2.439,
+              "t": 1.6,
+              "annual_pct": 6.15,
+              "sharpe": 0.935,
+              "max_dd_pct": -6.13,
+              "calmar": 1.002,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -6.365,
+              "vol_matched_cvar5_bp": -99.743,
+              "worst_day_bp": -240.632,
+              "avg_w": 0.676,
+              "max_w": 1.33,
+              "return_per_unit_notional_bp": 9.748,
+              "cost_bp_total": -510.4,
+              "top10pct_trades_abs_pnl_share": 0.187,
+              "month_pnl_herfindahl": 0.0705
+            },
+            "CONSTANT_NOTIONAL": {
+              "days": 740,
+              "net_mean_bp": 3.456,
+              "t": 1.43,
+              "annual_pct": 8.71,
+              "sharpe": 0.836,
+              "max_dd_pct": -8.34,
+              "calmar": 1.045,
+              "positive_years": 3,
+              "years": 3,
+              "vol_matched_max_dd_pct": -5.553,
+              "vol_matched_cvar5_bp": -99.618,
+              "worst_day_bp": -280.72,
+              "avg_w": 0.986,
+              "max_w": 0.986,
+              "return_per_unit_notional_bp": 9.463,
+              "cost_bp_total": -753.22,
+              "top10pct_trades_abs_pnl_share": 0.217,
+              "month_pnl_herfindahl": 0.0773
+            }
+          },
+          "delta_sharpe": 0.207
+        }
+      }
+    },
+    "calibration": {
+      "sigma_target": 0.008783908914697672,
+      "constant_w": 0.9864782244556155,
+      "sigma_ref": 0.008904311009546147,
+      "bars": 1263
+    },
+    "verdict": "underpowered",
+    "mean_r": "n/a"
+  },
+  "folds": []
+}

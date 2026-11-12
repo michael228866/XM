@@ -1,0 +1,13 @@
+{
+  "run_id": "20261112T142415Z_research_e012_exp_vol_sizing_v1",
+  "finalized_at_utc": "2026-11-12T14:24:30.388953Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "82dd397d828044aeceb4a45ee74c8fccb2070a2c229762ffc7d98cbd2e111f96",
+    "manifest.json": "365d74e8047dcb7d4bb11633e2736db9c0ee7c1972b614075c58727952932c85",
+    "metrics.json": "f04c4c060b8f6e596e48d7fd0151fc0148f54b6185736d805ab491d7b4b215c9",
+    "report.md": "35aadac936d88728038b81e76f1464ab7e68738a145b9014780b1ed33527a219",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "training_script.py": "d3856e86a3391f2e9f9215288a6a91a8839488516d5e4a0a0f659f393262e8a3"
+  }
+}
