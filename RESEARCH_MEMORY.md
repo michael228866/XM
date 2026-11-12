@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 96；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 97；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -39,8 +39,8 @@
 | H-013 | 可以預測未來 1 小時的波動是否大於 k 倍點差（不預測方向），而 gemini 的虧損集中在預測『不值得交易』的時段 | tradeability | open | 36.0 | 樣本外波動大小分類 AUC <= 0.55，或低可交易性組的 gemini 回放 R 沒有比其他組低 0.05R 以上 |
 | H-009 | 點差相對同時段常態異常擴大時，接下來的波動與滑價較大，是不值得進場的時刻 | microstructure | open | 34.0 | 點差 z 值最高 10% 時段之後 30 分鐘的實現波動比 < 1.2，或排除這些時段進場使既有策略回放淨 R 改善 < 0.02R |
 | H-012 | 低流動時段的單根急動（> 3 倍 ATR）在 15-60 分鐘內部分回補，扣除當下實際點差後期望為正 | transient_anomaly | open | 33.0 | 2018-2022 以實際點差計的平均淨回補 <= 0；事件數 < 200 則判定樣本不足 |
-| H-021 | 2018 年前的 XM GOLD# H1 資料放大了日實現波動（資料源或報價斷點），使 2014-2017 擬合的水準不能代表之後的市場 | data_quality | testing | 33.0 | 以不涉及模型擬合的一致性比較：H1 加總的日實現波動相對 D1 收盤對收盤變異數（或外部來源）的比例，在 2018 年前後差異 < 10% |
 | H-016 | 波動調整倉位只在特定市況（如 2024 年後的高波動趨勢）改善風險調整後報酬；前瞻資料上仍成立 | second_moment_regime | open | 32.0 | 2026-11-12 起至少 12 個月的前瞻資料上，MANAGED 對 CONST_EQUAL_EXPOSURE 的 Sharpe 差 <= 0 |
+| H-021 | 2018 年前的 XM GOLD# H1 資料放大了日實現波動（資料源或報價斷點），使 2014-2017 擬合的水準不能代表之後的市場 | data_quality | testing | 31.5 | 以不涉及模型擬合的一致性比較：H1 加總的日實現波動相對 D1 收盤對收盤變異數（或外部來源）的比例，在 2018 年前後差異 < 10% |
 | H-003 | US macro surprises (actual vs forecast) cause post-release gold drift | event_surprise | open | 31.0 | post-release returns in the surprise direction are not positive beyond spread at the pre-declared horizon in 2014-2022 |
 | H-010 | 重要美國數據公布前後的波動放大可由事件類型和預期差大小預測；公布前後停止進場能改善 M1 策略 | event_volatility | open | 31.0 | 公布後／公布前實現波動比與 &#124;預期差&#124; 的等級相關 <= 0，或 ±30 分鐘不交易使回放淨 R 改善 < 0.02R |
 | H-007 | For M1 trading, execution cost (hour-of-day spread, entry method) matters more than the model | execution | open | 28.0 | restricting to the cheapest hours does not raise replay mean R by more than 0.03R |
@@ -91,15 +91,12 @@
 - 實驗 **E-011**：inconclusive（證據等級 `development`，登錄前已有 20 次使用重疊）：descriptive diagnostic of fixed-parameter drift; see report tables (no verdict)
 - 實驗 **E-009**：aborted（證據等級 `development`，登錄前已有 10 次使用重疊）：aborted before any evaluation: the pre-run guard found GOLD# swap_mode 0 (DISABLED) where the design assumed swap in points; bars were fetched but no signal, trade or P&L was computed
 - 實驗 **E-012**：inconclusive（證據等級 `development`，登錄前已有 12 次使用重疊）：underpowered: 2024+ 274 trades / 33 months with trades; Sharpe EWMA_RISK 1.291 vs FIXED_RISK 1.087 (delta 0.204, 95% month-block CI [-0.29, 0.617]); vol-matched MDD -5.401% vs -4.877%, CVaR5 -91.025 vs -93.608 bp; alpha on FIXED+market {'alpha_bp': 0.625, 'nw_t': 1.41, 'betas': [0.7317, -0.0121]}; delta Sharpe spread x2 0.202, quoted swap x1.5 0.207; descriptive EWMA_TARGET vs FIXED_RISK {'delta_sharpe': 0.032, 'ci': [-0.278, 0.344]}, vs CONSTANT_NOTIONAL {'delta_sharpe': 0.111, 'ci': [-0.412, 0.621]}; hour R^2 of weight ratios {'EWMA_RISK': 0.072, 'EWMA_TARGET': 0.065, 'CONSTANT_NOTIONAL': 0.081}
+- 實驗 **E-013**：supported（證據等級 `development`，登錄前已有 22 次使用重疊）：supported: VR_day P0 0.4341 P1 0.932 (delta 0.4979, CI [0.405, 0.5979]), VR_week delta 0.4577 (CI [0.2796, 0.6539]); RV level P1/P0 0.4653, VR-adjusted 0.999; change months {'spread_zero_share': '2018-10', 'h1_bars_per_day': '2018-04', 'm1_zero_return_share': '2020-03'}; findings: M1 spread field: confirmed_defect; H1 spread field: confirmed_defect; D1 spread field: confirmed_defect; session length: confirmed_collection_change; RV level shift: intraday_reversal_excess_consistent_with_quote_noise; external cross-check: undetermined
 
 ## 5. 已登錄、尚未有結果的實驗
 
 - ~~E-003~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
 - ~~E-004~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
-- **E-013** → H-021（exploratory）：`exp_data_quality_v1`；審查：通過，可執行  
-  判定規則：Primary: VR_day = sum over days of (sum of the day's H1 log returns)^2 / sum of squared H1 log returns (consecutive H1 bars, overnight included), per period; VR_week the same with weekly sums. delta = VR_day(P1) - VR_day(P0), 95% month-block bootstrap CI (2000 draws, months resampled within each period). supported (pre-2018 H1 returns show excess intraday reversal consistent with quote noise that inflated H1 RV; real intraday mean reversion cannot be excluded) only if all hold: delta >= 0.10, the CI lower bound > 0, delta_week = VR_week(P1) - VR_week(P0) > 0, the 95% CI of VR_day(P0) lies below 1, and the 95% CI of VR_day(P1) contains 1 (so a post-2018 market change cannot be booked as a pre-2018 defect). not_explained_by_quote_noise (ledger outcome refuted: quote noise reverting within about a week does not explain the RV level change; a feed-wide difference is not excluded and it is not called a market difference) if the CI lies inside (-0.15, 0.15) and |delta_week| < 0.25. Otherwise inconclusive. Independently of the verdict, findings are classed by fixed rules: confirmed_defect for SPREAD = 0 on > 50% of a year's bars (a missing cost field, not a price defect), OHLC inconsistency > 0.1% of bars, or aggregation mismatch > 1% before 2018 and > 5x the 2018-2023 rate; confirmed_collection_change if the median H1 bars per day before 2018 and in 2018-2023 share no value; the cross-symbol check is undetermined if any change month is on or before 2017-08; the external cross-check is always undetermined. M1 must start by 2014-01-06 or the run aborts. All other tables (Roll noise share, spikes, RV_H1/RV_15m, aggregation, cross residual) are descriptive.
-  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 22 earlier uses; evidence is development only
-  - 審查 `critic_agent_5` → **approve**：round 1: revise - B1 Roll/one-lag noise share blind to persistent noise (4h half-life AR noise inflating P0 RV ~3.5x judged refuted=market difference); B2 M1/H1/D1 agreement low-discrimination (same stored M1); B3 refuted over-claims market difference; B4 spike threshold collapses to 0 with stale quotes (ratio 1.15e14); B5 change may be at 2017-08 not 2018-01 (cross check new vs new); B6 M1 coverage not checked；round 2 fixes: primary variance ratio across time scales (VR_day, VR_week) with month-block bootstrap; hour-of-day decomposition; renamed not_explained_by_quote_noise; spike sigma from non-zero returns floored at 2 ticks; change months; M1 start guard; clean() for JSON; scope on period exclusion；round 2: revise - B7 supported could be triggered by post-2018 intraday trending (VR_day P1 > 1) with clean P0；round 3 fixes: supported also needs VR_day(P0) CI below 1 and VR_day(P1) CI containing 1; finding renamed intraday_reversal_excess_consistent_with_quote_noise; scope notes real intraday mean reversion and <15% noise not excluded；round 3: approve; demo4 drift cases now inconclusive, persistent-noise cases still supported, 8%-of-RV single-hour excursion not_explained (inside the declared 15% band)；residual notes: low power, the likely real outcome is inconclusive; show P0/P1 VR_day CIs and the hour decomposition prominently
 
 ## 6. 所有實驗結果與下一個問題
 
@@ -133,6 +130,9 @@
 - **E-012**（H-018）`inconclusive` / `development`：underpowered: 2024+ 274 trades / 33 months with trades; Sharpe EWMA_RISK 1.291 vs FIXED_RISK 1.087 (delta 0.204, 95% month-block CI [-0.29, 0.617]); vol-matched MDD -5.401% vs -4.877%, CVaR5 -91.025 vs -93.608 bp; alpha on FIXED+market {'alpha_bp': 0.625, 'nw_t': 1.41, 'betas': [0.7317, -0.0121]}; delta Sharpe spread x2 0.202, quoted swap x1.5 0.207; descriptive EWMA_TARGET vs FIXED_RISK {'delta_sharpe': 0.032, 'ci': [-0.278, 0.344]}, vs CONSTANT_NOTIONAL {'delta_sharpe': 0.111, 'ci': [-0.412, 0.621]}; hour R^2 of weight ratios {'EWMA_RISK': 0.072, 'EWMA_TARGET': 0.065, 'CONSTANT_NOTIONAL': 0.081}  
   下一個問題：if no sizing value: turn to questions with a different economic mechanism (H-008/H-013/H-009)  
   紀錄：`training_runs/20261112T142415Z_research_e012_exp_vol_sizing_v1`
+- **E-013**（H-021）`supported` / `development`：supported: VR_day P0 0.4341 P1 0.932 (delta 0.4979, CI [0.405, 0.5979]), VR_week delta 0.4577 (CI [0.2796, 0.6539]); RV level P1/P0 0.4653, VR-adjusted 0.999; change months {'spread_zero_share': '2018-10', 'h1_bars_per_day': '2018-04', 'm1_zero_return_share': '2020-03'}; findings: M1 spread field: confirmed_defect; H1 spread field: confirmed_defect; D1 spread field: confirmed_defect; session length: confirmed_collection_change; RV level shift: intraday_reversal_excess_consistent_with_quote_noise; external cross-check: undetermined  
+  下一個問題：excluding or re-weighting any period needs its own preregistration; past results stay as recorded and reruns on other periods are not confirmatory  
+  紀錄：`training_runs/20261112T154049Z_research_e013_exp_data_quality_v1`
 
 ## 7. 決策紀錄
 
