@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 79；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 80；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -44,9 +44,9 @@
 | H-017 | H1 C runner 在換日前平倉、隔日重新評估，能在今日 swap 水準下改善每筆淨 R | cost_structure | open | 29.5 | 在 2024+ 回放與前瞻 demo 上，換日前平倉版本的平均淨 R 不高於原版，或差距 < 0.02R |
 | H-007 | For M1 trading, execution cost (hour-of-day spread, entry method) matters more than the model | execution | open | 28.0 | restricting to the cheapest hours does not raise replay mean R by more than 0.03R |
 | H-002 | Exogenous macro data work at their native weekly horizon | exogenous_horizon | underpowered | 25.5 | discovery (2016-2022) IC in the wrong direction or &#124;t&#124; < 1 |
-| H-020 | E-008／E-010 固定參數模型的退化可分解為可量測的來源（目標分布、共變量、概念、校準、資料品質），且主要來源可在前瞻資料上單獨檢驗 | fixed_parameter_drift | open | 21.0 | 描述性診斷本身不判定；後續每個解釋各自預先登記前瞻檢驗 |
 | H-006 | Strategy timing skill persists over months (premise of any regime switch or bandit) | adaptivity | parked | 20.0 | rank correlation of consecutive 3-month residuals <= 0 |
 | H-019 | 對波動水準不敏感的 HAR（log-HAR 或無截距比例形式）凍結參數後不輸 EWMA | second_moment_forecast | open | 19.5 | 前瞻至少 250 個完整交易日，凍結 log-HAR 的 QLIKE 不低於 EWMA_094（DM 單尾 p >= 0.05） |
+| H-020 | E-008／E-010 固定參數模型的退化可分解為可量測的來源（目標分布、共變量、概念、校準、資料品質），且主要來源可在前瞻資料上單獨檢驗 | fixed_parameter_drift | open | 19.5 | 描述性診斷本身不判定；後續每個解釋各自預先登記前瞻檢驗 |
 | H-015 | 同一組價格／技術指標特徵的方向預測變體（Gen1-21、S4、經典規則、網路策略、LSTM、組合規則）含有可交易的進場時機優勢 | price_direction_variants | exhausted_needs_new_data | 5.0 | 前瞻資料上，預先凍結的候選時機殘差（扣當月漂移）連續 6 個月 <= 0 |
 
 ## 2b. 證據狀態分類（結論不得超出這個範圍）
@@ -82,6 +82,7 @@
 - 實驗 **E-005**：refuted（證據等級 `development`，登錄前已有 12 次使用重疊）：refuted: sessions with excess over proportional drift passing all rules: none; best 2018-2022 excess t 0.75 (Sidak p over 8: 0.872)
 - 實驗 **E-008**：refuted（證據等級 `development`，登錄前已有 20 次使用重疊）：refuted: FROZEN h=1 2018-2023 QLIKE HAR/EWMA_FIT 1.1392 (DM t 2.94, p 0.9984), HAR better in 1/6 years, regimes {'low': 1.1849, 'mid': 1.1215, 'high': 0.74}; DM t lag 22 2.26; scaled-Parkinson agrees True (descriptive)
 - 實驗 **E-010**：refuted（證據等級 `development`，登錄前已有 22 次使用重疊）：refuted: general: refuted (A/R 1.1248, DM t 3.09, Sidak p 1.0, gain -12.48% ub95 -5.83%, years 2/6, lag2 A/R 1.1183, A/P 1.116); extreme: refuted (A/R 1.5593, DM t 5.4, Sidak p 1.0, gain -55.93% ub95 -38.91%, years 0/6, lag2 A/R 1.4282, A/P 1.5058); regime_up: refuted (A/R 1.1101, DM t 2.47, Sidak p 1.0, gain -11.01% ub95 -3.68%, years 2/6, lag2 A/R 1.1025, A/P 1.1069)
+- 實驗 **E-011**：inconclusive（證據等級 `development`，登錄前已有 20 次使用重疊）：descriptive diagnostic of fixed-parameter drift; see report tables (no verdict)
 
 ## 5. 已登錄、尚未有結果的實驗
 
@@ -91,10 +92,6 @@
   判定規則：Primary: window 2024+, base costs, delta Sharpe = Sharpe(EWMA_RISK) - Sharpe(FIXED_RISK) of daily net returns, 95% month-block bootstrap CI (2000 draws), a single test. inconclusive_sample if < 150 trades or < 24 months with a trade. refuted if the CI upper bound < 0. If the CI lower bound > 0: supported only if all hold - delta Sharpe > 0 under spread x2 and under swap x1.5; vol-matched max drawdown and vol-matched daily CVaR 5% of EWMA_RISK no worse than FIXED_RISK; EWMA_RISK Sharpe >= FIXED_RISK in all but at most one volatility regime with >= 60 days (if only one such regime, in that one; if none, supported is impossible; regime label from the previous day); and in >= 2 of the calendar years 2024-2026 - otherwise significant_not_robust. If the CI contains 0: not_significant if CI upper < 0.2 and the vol-matched drawdown cut < 10%, else underpowered. Ledger outcome: supported / refuted / inconclusive (all other verdicts). Alpha t, raw metrics, EWMA_TARGET, CONSTANT_NOTIONAL, Calmar, cost, concentration and the 2018-2023 window are descriptive.
   - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 10 earlier uses; evidence is development only
   - 審查 `critic_agent_4` → **approve**：round 1 (draft): revise - BLOCKING primary EWMA_TARGET vs FIXED_RISK replaced the H1 ATR by daily EWMA, so the weight ratio ATR%/sigma mostly re-weighted by entry hour (61% of log ratio variance explained by hour; with uninformative EWMA delta Sharpe -0.198 CI [-0.47,0.09]); could end refuted/supported on seasonality alone；round 1: BLOCKING decide() labelled a significantly positive but non-robust result not_significant (CI [0.05,0.18])；round 1 notes: percentile month-block CI slightly narrow (~4.8%/2.8% tails); min_months always passed; regime condition could make supported impossible and used same-day RV; 2024+ not a clean holdout (H1 C chosen after its 2024+ test); E-007 overlap; gap fills at stop optimistic; swap_mode assumption；fixes: nested primary EWMA_RISK = FIXED_RISK x sigma_ref/sigma; EWMA_TARGET and CONSTANT_NOTIONAL descriptive with CIs; hour R^2 of weight ratios; significant_not_robust label; months_with_trades; regime label shifted; scope/docstring caveats; swap_mode check; failure_cause fixed；round 2: approve; seasonal synthetic now not_significant with hour R^2 0.047/0.012; GARCH double-count check shows no bias (delta -0.008)；residual notes: EWMA_RISK hits the leverage cap more often in quiet periods (read capped); conclusion is about this scaling rule, not about all EWMA information beyond ATR
-- **E-011** → H-020（exploratory）：`exp_fixed_param_drift_v1`；審查：通過，可執行  
-  判定規則：Descriptive only: 0 hypothesis tests; outcome is always inconclusive whatever the numbers (no threshold decides anything). Interpretations are recorded as provisional observations; each candidate explanation needs its own preregistered test on data after 2026-11-12.
-  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 20 earlier uses; evidence is development only
-  - 審查 `critic_agent_4` → **approve**：round 1: approve with notes - compare rebuilt params with E-008/E-010 records; HAR floor can blow up mean(y/f); HAR has no in-year refit; L_refit <= L_scaled by construction；fixes: floor days excluded and counted; docstring and report caveats; rebuilt params and training mean(y/f) reported；round 2: approve; residual: rebuilt parameters must be compared with the E-008/E-010 records by hand after the run
 
 ## 6. 所有實驗結果與下一個問題
 
@@ -119,6 +116,9 @@
 - **E-010**（H-014）`refuted` / `development`：refuted: general: refuted (A/R 1.1248, DM t 3.09, Sidak p 1.0, gain -12.48% ub95 -5.83%, years 2/6, lag2 A/R 1.1183, A/P 1.116); extreme: refuted (A/R 1.5593, DM t 5.4, Sidak p 1.0, gain -55.93% ub95 -38.91%, years 0/6, lag2 A/R 1.4282, A/P 1.5058); regime_up: refuted (A/R 1.1101, DM t 2.47, Sidak p 1.0, gain -11.01% ub95 -3.68%, years 2/6, lag2 A/R 1.1025, A/P 1.1069)  
   下一個問題：H-018 with EWMA_094 stays next; a supported question names GVZ only for that question and needs forward data before any runner use  
   紀錄：`training_runs/20261112T130455Z_research_e010_exp_gvz_increment_v1`
+- **E-011**（H-020）`inconclusive` / `development`：descriptive diagnostic of fixed-parameter drift; see report tables (no verdict)  
+  下一個問題：pick the dominant measurable part and preregister a forward-data test for it  
+  紀錄：`training_runs/20261112T135155Z_research_e011_exp_fixed_param_drift_v1`
 
 ## 7. 決策紀錄
 

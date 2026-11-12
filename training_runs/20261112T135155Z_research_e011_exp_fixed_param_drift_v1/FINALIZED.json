@@ -1,0 +1,13 @@
+{
+  "run_id": "20261112T135155Z_research_e011_exp_fixed_param_drift_v1",
+  "finalized_at_utc": "2026-11-12T13:51:55.457777Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "82dd397d828044aeceb4a45ee74c8fccb2070a2c229762ffc7d98cbd2e111f96",
+    "manifest.json": "a07bacc0f75227b6775dcc088c2d8acc2489235f383b640f248e2056c6ac30d6",
+    "metrics.json": "aadaeb6f04019ac6c3792b734d827df2772a44d8cb05d56ca9d2d4c99b3ccf66",
+    "report.md": "cefa113ee4af26f70c3a9e9700d3d7f0f96375f94c7458ef99a51dcc0979aec8",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "training_script.py": "b3d160bf2ae977a163479d9f381402afde9f6a8f9a1baa14ada2f53b50b2c166"
+  }
+}
