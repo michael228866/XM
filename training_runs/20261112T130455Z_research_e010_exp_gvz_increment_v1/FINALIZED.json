@@ -1,0 +1,13 @@
+{
+  "run_id": "20261112T130455Z_research_e010_exp_gvz_increment_v1",
+  "finalized_at_utc": "2026-11-12T13:04:55.561135Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "82dd397d828044aeceb4a45ee74c8fccb2070a2c229762ffc7d98cbd2e111f96",
+    "manifest.json": "fcaed88b502e4f93bf119e4e94e3feb5a52c47563dfc30cdff9ca9a82b049ace",
+    "metrics.json": "4ecf260378871caef8e83f2192bf2212123838d1ed4f8fda444461a14566e84b",
+    "report.md": "f4591a3cce0f314d2090b4df112c38fb69e4a48337c0f4b82374b76ac567b840",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "training_script.py": "3c4918a6be0f8b60c6b7ab66f7a4ea3323b8f0b255b385c6ed733b5c1a18b6d6"
+  }
+}

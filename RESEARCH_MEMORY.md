@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 68；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 69；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -33,8 +33,8 @@
 
 | ID | 假說 | 族群 | 狀態 | 優先分 | 推翻條件 |
 |---|---|---|---|---|---|
-| H-014 | 黃金隱含波動率（CBOE GVZ）與實現波動的差（變異數風險溢酬）預測未來 5-20 日的實現波動與報酬 | new_information_implied_vol | testing | 39.0 | 把 GVZ 加進 HAR 後 QLIKE 沒有下降（DM &#124;t&#124; < 2），且溢酬對 20 日報酬的 IC &#124;t&#124; < 1 |
 | H-008 | 收盤前平倉、只做盤中多單，比一直持有多單（付過夜利息）的風險調整後報酬更好 | cost_structure | inconclusive | 38.5 | 2018-2022 成本 x1 下 INTRADAY_LONG 的 Sharpe 不高於 ALWAYS_LONG |
+| H-014 | 黃金隱含波動率（CBOE GVZ）與實現波動的差（變異數風險溢酬）預測未來 5-20 日的實現波動與報酬 | new_information_implied_vol | testing | 37.5 | 把 GVZ 加進 HAR 後 QLIKE 沒有下降（DM &#124;t&#124; < 2），且溢酬對 20 日報酬的 IC &#124;t&#124; < 1 |
 | H-013 | 可以預測未來 1 小時的波動是否大於 k 倍點差（不預測方向），而 gemini 的虧損集中在預測『不值得交易』的時段 | tradeability | open | 36.0 | 樣本外波動大小分類 AUC <= 0.55，或低可交易性組的 gemini 回放 R 沒有比其他組低 0.05R 以上 |
 | H-018 | 波動預測能改善交易決策：倉位風險控制、實際回撤、辨識不值得交易的環境，且改善足以抵銷額外交易成本 | second_moment_decision_value | open | 35.0 | 2018-2023 以凍結預測做風險目標倉位與不交易濾網，在相同平均曝險下，扣除額外換手成本後 Sharpe 不高於固定風險版本，且最大回撤降低 < 10% |
 | H-009 | 點差相對同時段常態異常擴大時，接下來的波動與滑價較大，是不值得進場的時刻 | microstructure | open | 34.0 | 點差 z 值最高 10% 時段之後 30 分鐘的實現波動比 < 1.2，或排除這些時段進場使既有策略回放淨 R 改善 < 0.02R |
@@ -69,6 +69,8 @@
   失敗原因：`information`；學到：direction question: refuted; see report for cost sensitivity
 - 實驗 **E-008**（H-011）：refuted: FROZEN h=1 2018-2023 QLIKE HAR/EWMA_FIT 1.1392 (DM t 2.94, p 0.9984), HAR better in 1/6 years, regimes {'low': 1.1849, 'mid': 1.1215, 'high': 0.74}; DM t lag 22 2.26; scaled-Parkinson agrees True (descriptive)  
   失敗原因：`information`；學到：HAR vs EWMA forecasting (layer 1): refuted
+- 實驗 **E-010**（H-014）：refuted: general: refuted (A/R 1.1248, DM t 3.09, Sidak p 1.0, gain -12.48% ub95 -5.83%, years 2/6, lag2 A/R 1.1183, A/P 1.116); extreme: refuted (A/R 1.5593, DM t 5.4, Sidak p 1.0, gain -55.93% ub95 -38.91%, years 0/6, lag2 A/R 1.4282, A/P 1.5058); regime_up: refuted (A/R 1.1101, DM t 2.47, Sidak p 1.0, gain -11.01% ub95 -3.68%, years 2/6, lag2 A/R 1.1025, A/P 1.1069)  
+  失敗原因：`information`；學到：GVZ increment over price history: {'general': 'refuted', 'extreme': 'refuted', 'regime_up': 'refuted'}
 
 ## 4. 受資料重複使用影響的結論
 
@@ -78,15 +80,12 @@
 - 實驗 **E-007**：refuted（證據等級 `development`，登錄前已有 18 次使用重疊）：Sharpe MANAGED - CONST_EQUAL_EXPOSURE: 2018-2023 -0.061 (CI [-0.292, 0.162]), 2024+ 0.524; cost x3.0 2018-2023 -0.072; shuffled >= managed 0.65
 - 實驗 **E-005**：refuted（證據等級 `development`，登錄前已有 12 次使用重疊）：refuted: sessions with excess over proportional drift passing all rules: none; best 2018-2022 excess t 0.75 (Sidak p over 8: 0.872)
 - 實驗 **E-008**：refuted（證據等級 `development`，登錄前已有 20 次使用重疊）：refuted: FROZEN h=1 2018-2023 QLIKE HAR/EWMA_FIT 1.1392 (DM t 2.94, p 0.9984), HAR better in 1/6 years, regimes {'low': 1.1849, 'mid': 1.1215, 'high': 0.74}; DM t lag 22 2.26; scaled-Parkinson agrees True (descriptive)
+- 實驗 **E-010**：refuted（證據等級 `development`，登錄前已有 22 次使用重疊）：refuted: general: refuted (A/R 1.1248, DM t 3.09, Sidak p 1.0, gain -12.48% ub95 -5.83%, years 2/6, lag2 A/R 1.1183, A/P 1.116); extreme: refuted (A/R 1.5593, DM t 5.4, Sidak p 1.0, gain -55.93% ub95 -38.91%, years 0/6, lag2 A/R 1.4282, A/P 1.5058); regime_up: refuted (A/R 1.1101, DM t 2.47, Sidak p 1.0, gain -11.01% ub95 -3.68%, years 2/6, lag2 A/R 1.1025, A/P 1.1069)
 
 ## 5. 已登錄、尚未有結果的實驗
 
 - ~~E-003~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
 - ~~E-004~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
-- **E-010** → H-014（exploratory）：`exp_gvz_increment_v1`；審查：通過，可執行  
-  判定規則：Three primary tests (general h=5, extreme h=5, regime_up h=22), FROZEN coefficients fit on 2014-2017, evaluated 2018-2023; each compares A (with GVZ) to R (without) on the question's own loss, one-sided Diebold-Mariano with Newey-West lag 5, 5 and 22, p Sidak-adjusted for 3 tests (times earlier trials in the family). R is nested in A (A adds only log IV). Per question: underpowered if any of R/A/P/A_lag2 fails to converge within 100 Newton steps or (logistic questions) the estimation rows hold < 30 events; else refuted if A is significantly worse (adjusted p < 0.05). supported only if all hold: A/R loss ratio < 1 with adjusted p < 0.05; A_lag2 loss below R; A loss below P; A better in >= 4 of 6 calendar years. Otherwise not_significant if the one-sided 95% upper bound of A's loss reduction is < 2% of R's loss, else underpowered. Experiment outcome: supported if any question is supported (the claim is limited to that question), else refuted if any is refuted, else inconclusive. general h=1 and h=22, level controls, regime splits, lag-22 DM and 2024+ are descriptive and cannot change verdicts.
-  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 22 earlier uses; evidence is development only
-  - 審查 `critic_agent_3` → **approve**：round 1 (draft): revise - BLOCKING extreme/regime_up not nested: R tied the EWMA and reference coefficients (+b,-b) and A unlocked the reference (log q90 / log RV22), so pure-noise GVZ got credited (overall false supported ~8.5% over 130 synthetic seeds, extreme DM t sd 2.77)；round 1 notes: timing lag 1 conservative and DST-safe; no other leakage (q90, regimes, estimation mask, IV scale); refuted under no-information is common (frozen drift) so wording must not say GVZ has no information; report Newton convergence; narrow docstring to beyond EWMA_094；fixes: nested R with free coefficients, A/P/A_lag2 add one column; fit returns iterations and gradient; underpowered guard for non-convergence or < 30 training events; claim scope refuted wording; noise tests for all questions；round 2: approve; noise false supported 3/100 (nominal 5%), price-history-only GVZ 7/100, informative GVZ 34/40; general DM t sd 1.02; guard fired only for < 30 events；residual notes: never claim beyond price history (A<P is a point check); regime_up has almost no power, not_significant there is weak evidence; unit tests do not exercise extreme with events; read train_events with the result
 
 ## 6. 所有實驗結果與下一個問題
 
@@ -108,6 +107,9 @@
 - **E-008**（H-011）`refuted` / `development`：refuted: FROZEN h=1 2018-2023 QLIKE HAR/EWMA_FIT 1.1392 (DM t 2.94, p 0.9984), HAR better in 1/6 years, regimes {'low': 1.1849, 'mid': 1.1215, 'high': 0.74}; DM t lag 22 2.26; scaled-Parkinson agrees True (descriptive)  
   下一個問題：keep EWMA as the volatility input for H-014/H-018; test whether GVZ adds information  
   紀錄：`training_runs/20261112T020611Z_research_e008_exp_vol_forecast_v1`
+- **E-010**（H-014）`refuted` / `development`：refuted: general: refuted (A/R 1.1248, DM t 3.09, Sidak p 1.0, gain -12.48% ub95 -5.83%, years 2/6, lag2 A/R 1.1183, A/P 1.116); extreme: refuted (A/R 1.5593, DM t 5.4, Sidak p 1.0, gain -55.93% ub95 -38.91%, years 0/6, lag2 A/R 1.4282, A/P 1.5058); regime_up: refuted (A/R 1.1101, DM t 2.47, Sidak p 1.0, gain -11.01% ub95 -3.68%, years 2/6, lag2 A/R 1.1025, A/P 1.1069)  
+  下一個問題：H-018 with EWMA_094 stays next; a supported question names GVZ only for that question and needs forward data before any runner use  
+  紀錄：`training_runs/20261112T130455Z_research_e010_exp_gvz_increment_v1`
 
 ## 7. 決策紀錄
 
