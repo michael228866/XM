@@ -1,0 +1,22 @@
+{
+ "source": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=GVZCLS",
+ "retrieved_at_utc": "2026-11-12T10:40:04+00:00",
+ "sha256": "c38f48da2048bf4e0337cdca1fe20763b809387e6948784c8e01eff97c868552",
+ "rows": 4811,
+ "last_observation": "2026-11-10",
+ "alfred_revision_check": {
+  "2020-03-17": {
+   "rows": 3076,
+   "changed_values": 2
+  },
+  "2022-06-15": {
+   "rows": 3662,
+   "changed_values": 0
+  },
+  "2024-08-07": {
+   "rows": 4222,
+   "changed_values": 0
+  }
+ },
+ "publication_time": "not verifiable historically (ALFRED vintages of this daily series include the vintage date's own value); handled by the lag-1 rule in this module's docstring"
+}

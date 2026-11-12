@@ -295,6 +295,66 @@ class VolForecastTests(unittest.TestCase):
         self.assertTrue(0.8 <= params[1]["lambda"] <= 0.99)
 
 
+class GvzIncrementTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import exp_gvz_increment_v1 as gi
+        import exp_vol_forecast_v1 as vf
+        import research_data_gvz_v1 as gd
+        cls.gi, cls.gd, cls.h1 = gi, gd, synthetic_h1()
+        cls.rv = vf.daily_rv(cls.h1)["rv"]
+        cls.x = vf.design(cls.rv)
+        cls.spec = {"estimation_window": ["2014-01-01", "2016-01-01"],
+                    "windows": [["2016-01-01", "2019-01-01"], ["2019-01-01", "2099-01-01"]],
+                    "min_years_better": 2, "materiality_pct": 2}
+
+    def gvz_from(self, values):
+        """GVZ dated the calendar day before each server day, i.e. the newest value lag 1 allows."""
+        return pd.Series(values, index=self.rv.index - pd.Timedelta(days=1)).dropna()
+
+    def test_align_uses_only_earlier_dates_and_drops_stale(self):
+        gvz = pd.Series([10.0, 11.0, 12.0, 13.0], index=pd.to_datetime(["2020-01-02", "2020-01-03", "2020-01-06",
+                                                                          "2020-01-20"]))
+        days = pd.to_datetime(["2020-01-03", "2020-01-06", "2020-01-07", "2020-01-14"])
+        a, a2 = self.gd.align(gvz, days), self.gd.align(gvz, days, extra_lag=1)
+        self.assertEqual(a["gvz"].tolist()[:3], [10.0, 11.0, 12.0])  # Friday's value for Monday, never same day
+        self.assertTrue(np.isnan(a["gvz"].iloc[3]))  # 8 days old -> missing
+        self.assertEqual(a2["gvz"].tolist()[1:3], [10.0, 11.0])
+
+    def test_fit_recovers_coefficients(self):
+        rng = np.random.default_rng(1)
+        X = np.column_stack([np.ones(4000), rng.normal(size=4000)])
+        e = (rng.random(4000) < 1 / (1 + np.exp(-(X @ [-1.0, 2.0])))).astype(float)
+        np.testing.assert_allclose(self.gi.fit("logit", X, e)[0], [-1.0, 2.0], atol=0.15)
+        y = np.exp(X @ [0.5, 0.3]) * rng.exponential(size=4000)  # E[y | x] = exp(Xb): QLIKE target
+        np.testing.assert_allclose(self.gi.fit("qlike", X, y)[0], [0.5, 0.3], atol=0.08)
+
+    def test_informative_gvz_is_credited_and_noise_is_not(self):
+        rng = np.random.default_rng(2)
+        oracle = self.gvz_from(100 * np.sqrt(252 * self.x["y5"]) * np.exp(0.1 * rng.normal(size=len(self.rv))))
+        res, _, _ = self.gi.evaluate(self.h1, oracle, self.spec)
+        self.assertLess(res["general|eval_2018_2023"]["A_vs_R"]["ratio"], 0.9)
+        self.assertEqual(self.gi.decide(res, self.spec)[1]["general"], "supported")
+        # synthetic burn-in leaves no extreme events before 2016: separation must end as underpowered, not refuted
+        self.assertEqual(self.gi.decide(res, self.spec)[1]["extreme"], "underpowered")
+        for seed in range(3):  # noise must not be credited in any question (critic B1 caught extreme/regime_up)
+            noise = self.gvz_from(np.exp(np.random.default_rng(seed + 10).normal(3, 0.3, size=len(self.rv))))
+            res, _, _ = self.gi.evaluate(self.h1, noise, self.spec)
+            overall, verdicts = self.gi.decide(res, self.spec)
+            self.assertNotIn("supported", verdicts.values(), (seed, verdicts))
+            self.assertIn(overall, ("refuted", "inconclusive"))
+
+    def test_gvz_on_or_after_origin_does_not_change_inputs(self):
+        gvz = self.gvz_from(np.full(len(self.rv), 20.0))
+        k = 700
+        bumped = gvz.copy()
+        bumped[bumped.index >= self.rv.index[k] - pd.Timedelta(days=1)] *= 3  # values dated t-1 onwards
+        qa = self.gi.questions(self.rv, self.x, gvz)[0]["general"]["regs"]["A"]
+        qb = self.gi.questions(self.rv, self.x, bumped)[0]["general"]["regs"]["A"]
+        np.testing.assert_allclose(qa.iloc[:k].dropna().to_numpy(), qb.iloc[:k].dropna().to_numpy())
+        self.assertFalse(np.allclose(qa.iloc[k:].dropna().to_numpy(), qb.iloc[k:].dropna().to_numpy()))
+
+
 class FakeMt5:
     def terminal_info(self):
         return type("T", (), {"path": "C:/mt5", "build": 1, "name": "MT5"})()

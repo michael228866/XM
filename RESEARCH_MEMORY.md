@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 64；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 68；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -33,7 +33,7 @@
 
 | ID | 假說 | 族群 | 狀態 | 優先分 | 推翻條件 |
 |---|---|---|---|---|---|
-| H-014 | 黃金隱含波動率（CBOE GVZ）與實現波動的差（變異數風險溢酬）預測未來 5-20 日的實現波動與報酬 | new_information_implied_vol | open | 39.0 | 把 GVZ 加進 HAR 後 QLIKE 沒有下降（DM &#124;t&#124; < 2），且溢酬對 20 日報酬的 IC &#124;t&#124; < 1 |
+| H-014 | 黃金隱含波動率（CBOE GVZ）與實現波動的差（變異數風險溢酬）預測未來 5-20 日的實現波動與報酬 | new_information_implied_vol | testing | 39.0 | 把 GVZ 加進 HAR 後 QLIKE 沒有下降（DM &#124;t&#124; < 2），且溢酬對 20 日報酬的 IC &#124;t&#124; < 1 |
 | H-008 | 收盤前平倉、只做盤中多單，比一直持有多單（付過夜利息）的風險調整後報酬更好 | cost_structure | inconclusive | 38.5 | 2018-2022 成本 x1 下 INTRADAY_LONG 的 Sharpe 不高於 ALWAYS_LONG |
 | H-013 | 可以預測未來 1 小時的波動是否大於 k 倍點差（不預測方向），而 gemini 的虧損集中在預測『不值得交易』的時段 | tradeability | open | 36.0 | 樣本外波動大小分類 AUC <= 0.55，或低可交易性組的 gemini 回放 R 沒有比其他組低 0.05R 以上 |
 | H-018 | 波動預測能改善交易決策：倉位風險控制、實際回撤、辨識不值得交易的環境，且改善足以抵銷額外交易成本 | second_moment_decision_value | open | 35.0 | 2018-2023 以凍結預測做風險目標倉位與不交易濾網，在相同平均曝險下，扣除額外換手成本後 Sharpe 不高於固定風險版本，且最大回撤降低 < 10% |
@@ -83,6 +83,10 @@
 
 - ~~E-003~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
 - ~~E-004~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
+- **E-010** → H-014（exploratory）：`exp_gvz_increment_v1`；審查：通過，可執行  
+  判定規則：Three primary tests (general h=5, extreme h=5, regime_up h=22), FROZEN coefficients fit on 2014-2017, evaluated 2018-2023; each compares A (with GVZ) to R (without) on the question's own loss, one-sided Diebold-Mariano with Newey-West lag 5, 5 and 22, p Sidak-adjusted for 3 tests (times earlier trials in the family). R is nested in A (A adds only log IV). Per question: underpowered if any of R/A/P/A_lag2 fails to converge within 100 Newton steps or (logistic questions) the estimation rows hold < 30 events; else refuted if A is significantly worse (adjusted p < 0.05). supported only if all hold: A/R loss ratio < 1 with adjusted p < 0.05; A_lag2 loss below R; A loss below P; A better in >= 4 of 6 calendar years. Otherwise not_significant if the one-sided 95% upper bound of A's loss reduction is < 2% of R's loss, else underpowered. Experiment outcome: supported if any question is supported (the claim is limited to that question), else refuted if any is refuted, else inconclusive. general h=1 and h=22, level controls, regime splits, lag-22 DM and 2024+ are descriptive and cannot change verdicts.
+  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 22 earlier uses; evidence is development only
+  - 審查 `critic_agent_3` → **approve**：round 1 (draft): revise - BLOCKING extreme/regime_up not nested: R tied the EWMA and reference coefficients (+b,-b) and A unlocked the reference (log q90 / log RV22), so pure-noise GVZ got credited (overall false supported ~8.5% over 130 synthetic seeds, extreme DM t sd 2.77)；round 1 notes: timing lag 1 conservative and DST-safe; no other leakage (q90, regimes, estimation mask, IV scale); refuted under no-information is common (frozen drift) so wording must not say GVZ has no information; report Newton convergence; narrow docstring to beyond EWMA_094；fixes: nested R with free coefficients, A/P/A_lag2 add one column; fit returns iterations and gradient; underpowered guard for non-convergence or < 30 training events; claim scope refuted wording; noise tests for all questions；round 2: approve; noise false supported 3/100 (nominal 5%), price-history-only GVZ 7/100, informative GVZ 34/40; general DM t sd 1.02; guard fired only for < 30 events；residual notes: never claim beyond price history (A<P is a point check); regime_up has almost no power, not_significant there is weak evidence; unit tests do not exercise extreme with events; read train_events with the result
 
 ## 6. 所有實驗結果與下一個問題
 
@@ -116,6 +120,7 @@
 - **D-007** E-005、E-006、E-007 判讀：H-004 推翻（範圍：4 個固定時段、每天 >= 約 4 bp 的方向效果）；H-005 依預先登記規則推翻（2018-2023 無改善），但 2024+ 有強烈效果，另立 H-016 用前瞻資料確認；H-008 維持 inconclusive（結論取決於 swap 水準：今日利率下盤中持有在所有點差情境都較好，swap 減半時 2018-2022 沒有優勢），另立 H-017 檢驗套用到 H1 C runner：不在看到結果後改判定規則；E-007 兩段期間相反，屬於 regime_dependence，不能用已看過的 2024+ 再確認；E-005 的推翻門檻偏寬（審查員註記），所以只排除大效果；E-006 的唯一失敗格是 2018-2022 swap x0.5，因此結論應限定在『今日 swap 水準』
 - **D-008** H-011 分兩層：E-008 只檢驗統計預測能力（H-011 的預測子句）；條件報酬分布子句延後；交易決策價值另立 H-018，於 E-008 有結果後才預先登記 E-009。E-008 結果如何對應下一步：supported → E-009 用 HAR 凍結預測；refuted／not_significant → E-009 改用 EWMA，問題變成『任何波動預測是否改善決策』；無論哪個結果，H-014（GVZ）以 E-008 中表現最好的『FROZEN 2014-2017 參數』模型為基準，不得改用看過 2024+ 後選的模型：避免把『預測誤差較小』和『可以賺錢』混在同一個實驗；兩層都要能各自被推翻
 - **D-009** E-008 依預先登記規則判為 refuted：凍結 2014-2017 參數的 HAR 在 2018-2023 h=1 QLIKE 顯著差於 EWMA_FIT（比值 1.139，DM t 2.94，lag 22 t 2.26，6 年中僅 1 年較好）。H-011 預測子句設為 refuted，範圍限於『此設定、凍結參數』；不代表 HAR 類模型無用，也不涵蓋條件報酬分布子句。依 D-008：E-009（H-018）改用 EWMA_094 作波動輸入，問題是『任何波動預測是否改善決策』；H-014（GVZ）以 EWMA_094 為基準。EWMA_094 是 E-008 主要窗口中最佳的 FROZEN 模型，且沒有任何擬合參數。不得改用 RECURSIVE HAR 或 2024+ 表現較好的模型。H-019 只能用前瞻資料判定：照預先登記執行，不在看到結果後改寫判定；EWMA_094 原本就是預先宣告的對照，選它不引入新的擬合；但它是依 2018-2023 結果選出，所以 E-009／H-014 在 2018-2023 的結果須標示此選擇
+- **D-010** H-014 先只檢驗波動子句，問題是『資訊增量』：同一種擬合、同一批資料列下，加入 GVZ 的模型是否優於只用價格歷史（EWMA_094）的模型；不是單純追求比 EWMA 更低的誤差。分三個預先指定的問題：一般波動（h=5）、極端波動（未來 5 日超過過去 90 百分位）、狀態轉變（未來 22 日波動升到過去 22 日的 1.5 倍以上），Sidak 校正 3 次。溢酬預測報酬的子句延後。GVZ 時間規則：起點 t 只用美國日期 <= t-1 日的值（歷史發布時間無法驗證，採保守延遲），另以再晚一筆的 lag 2 作為必要條件。實驗編號 E-010；E-009 保留給 H-018。H-018 保留為下一個獨立方向：在固定交易訊號下，檢驗 EWMA_094 波動預測能否改善風險調整後報酬、最大回撤或尾部風險，核心不是預測準確度；E-010 結果不改變 H-018 的波動輸入（仍為 EWMA_094），除非某個問題 supported 且經前瞻資料確認。GVZ 與任何未驗證模型都不接入 Runner：把重新校準的效果和新資訊的效果分開；預先固定問題、期間、參數與狀態，避免事後挑選
 
 ## 8. 資料區間使用帳（越多次越不能當獨立驗證）
 
@@ -138,6 +143,8 @@
 | 2024-01-01 → 2099-01-01 | E-007 |
 | 2018-01-01 → 2024-01-01 | E-008 |
 | 2024-01-01 → 2099-01-01 | E-008 |
+| 2018-01-01 → 2024-01-01 | E-010 |
+| 2024-01-01 → 2099-01-01 | E-010 |
 
 ## 9. 研究空間覆蓋與自動產生的候選問題
 

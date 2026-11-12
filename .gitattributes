@@ -259,3 +259,6 @@ exp_vol_managed_v2.py -text whitespace=cr-at-eol
 test_research_os_v1.py -text whitespace=cr-at-eol
 run_research_experiment.bat -text whitespace=cr-at-eol
 exp_vol_forecast_v1.py -text whitespace=cr-at-eol
+exp_gvz_increment_v1.py -text whitespace=cr-at-eol
+research_data_gvz_v1.py -text whitespace=cr-at-eol
+research_data/gvz/* -text
