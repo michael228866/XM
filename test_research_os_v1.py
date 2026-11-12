@@ -355,6 +355,97 @@ class GvzIncrementTests(unittest.TestCase):
         self.assertFalse(np.allclose(qa.iloc[k:].dropna().to_numpy(), qb.iloc[k:].dropna().to_numpy()))
 
 
+class VolSizingTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import exp_vol_sizing_v1 as vs
+        h1 = synthetic_h1(years=6)
+        h1["SPREAD"] = 30.0
+        h1["ATR"] = (h1["HIGH"] - h1["LOW"]).rolling(14).mean().bfill()
+        cls.vs, cls.frame = vs, h1.reset_index(drop=True)
+        cls.signal = np.random.default_rng(3).random(len(h1)) < 0.03
+        cls.spec = {"tp": 3.0, "sl": 1.5, "hold": 48, "risk_per_trade": 0.005, "leverage_cap": 5.0,
+                    "calibration_window": ["2014-03-01", "2017-01-01"],
+                    "labelled_windows": {"in_sample_2018_2023": ["2014-03-01", "2017-01-01"],
+                                         "oos_2024_on": ["2017-01-01", "2099-01-01"]},
+                    "seed": 0, "bootstrap_draws": 200, "min_trades": 150, "min_months": 24, "min_regime_days": 60,
+                    "materiality_sharpe": 0.2, "materiality_mdd_cut": 0.10}
+
+    def test_fixed_risk_trade_pnl_is_risk_times_r(self):
+        vs = self.vs
+        t = vs.trades(self.frame, self.signal, self.spec, 1.0)
+        sigma, _ = vs.entry_sigma(self.frame)
+        calib = vs.calibrate(self.frame, self.signal, self.spec, sigma, pd.Timestamp("2014-03-01"), pd.Timestamp("2017-01-01"))
+        w, _ = vs.weights(t, sigma, self.spec, calib)
+        _, per_trade, _ = vs.daily_pnl(self.frame, t, w["FIXED_RISK"], 0.0, 1.0)
+        capped = w["FIXED_RISK"].to_numpy() >= self.spec["leverage_cap"]
+        np.testing.assert_allclose(per_trade[~capped], 0.005 * t["r"].to_numpy()[~capped], rtol=1e-9)
+        self.assertGreater(len(t), 100)
+
+    def test_entry_sigma_uses_only_earlier_days(self):
+        vs = self.vs
+        base, _ = vs.entry_sigma(self.frame)
+        day = self.frame["TIME_DT"].dt.normalize()
+        k = day.unique()[400]
+        bumped = self.frame.copy()
+        rows = np.flatnonzero((day == k).to_numpy())
+        bumped.loc[rows[10]:rows[12], "CLOSE"] *= 1.05  # a shock inside day k
+        new, _ = vs.entry_sigma(bumped)
+        through_k = (day <= k).to_numpy()
+        np.testing.assert_allclose(base[through_k], new[through_k], equal_nan=True)
+        self.assertFalse(np.allclose(base[(day > k).to_numpy()][:24], new[(day > k).to_numpy()][:24]))
+
+    def test_vol_matched_metrics_are_scale_free(self):
+        vs = self.vs
+        ret = pd.Series(np.random.default_rng(4).normal(1e-4, 1e-3, 600), index=pd.bdate_range("2020-01-01", periods=600))
+        a = vs.arm_metrics(ret, 1e-3, np.ones(5), np.ones(5), 0.0)
+        b = vs.arm_metrics(ret * 2, 1e-3, np.ones(5), np.ones(5), 0.0)
+        self.assertAlmostEqual(a["sharpe"], b["sharpe"], places=3)
+        self.assertAlmostEqual(a["vol_matched_max_dd_pct"], b["vol_matched_max_dd_pct"], places=6)
+
+    def test_end_to_end_same_trades_and_budget(self):
+        vs = self.vs
+        results, calib = vs.evaluate(self.frame, self.signal, self.spec, -1e-4)
+        base = results["oos_2024_on"]["base"]
+        self.assertEqual(len({base["arms"][a]["days"] for a in vs.ARMS}), 1)
+        self.assertAlmostEqual(base["arms"]["CONSTANT_NOTIONAL"]["avg_w"], calib["constant_w"], places=3)
+        self.assertIn(vs.decide(results, self.spec),
+                      ("supported", "refuted", "not_significant", "underpowered", "inconclusive_sample"))
+        self.assertLess(results["oos_2024_on"]["spread_x2"]["arms"]["FIXED_RISK"]["cost_bp_total"],
+                        base["arms"]["FIXED_RISK"]["cost_bp_total"])
+        # nested EWMA_RISK only rescales by a day-level factor, so entry hour explains little of its weight ratio
+        self.assertLess(base["hour_r2_log_weight_ratio"]["EWMA_RISK"], 0.2)
+
+    def test_decide_positive_ci_is_never_not_significant(self):
+        arm = {"vol_matched_max_dd_pct": -5.0, "vol_matched_cvar5_bp": -50.0}
+        base = {"trades": 300, "months_with_trades": 30, "delta_sharpe_ci": [0.05, 0.18],
+                "arms": {"EWMA_RISK": arm, "FIXED_RISK": arm},
+                "by_regime_sharpe": {"low": {"days": 100, "EWMA_RISK": 1.0, "FIXED_RISK": 0.9},
+                                     "high": {"days": 100, "EWMA_RISK": 1.0, "FIXED_RISK": 0.9}},
+                "by_year_sharpe": {2024: {"EWMA_RISK": 1, "FIXED_RISK": 0}, 2025: {"EWMA_RISK": 1, "FIXED_RISK": 0}}}
+        results = {"oos_2024_on": {"base": base, "spread_x2": {"delta_sharpe": -0.01}, "swap_x1.5": {"delta_sharpe": 0.1}}}
+        self.assertEqual(self.vs.decide(results, self.spec), "significant_not_robust")
+        results["oos_2024_on"]["spread_x2"]["delta_sharpe"] = 0.01
+        self.assertEqual(self.vs.decide(results, self.spec), "supported")
+
+
+class DriftDiagnosticTests(unittest.TestCase):
+    def test_runs_on_synthetic_and_scaling_removes_level_bias(self):
+        import exp_fixed_param_drift_v1 as dd
+        h1 = synthetic_h1(years=11)
+        h1["spread"], h1["tick_volume"] = 0, 100
+        rv = dd.vf.daily_rv(h1)["rv"]
+        gvz = pd.Series(100 * np.sqrt(252 * rv.rolling(5).mean().bfill()), index=rv.index - pd.Timedelta(days=1))
+        out = dd.evaluate(h1, gvz)
+        for name, by in out["calibration_concept"].items():
+            for y, r in by.items():
+                if isinstance(y, int):
+                    self.assertLessEqual(r["L_scaled"], r["L_frozen"] + 1e-9, (name, y))  # optimal scalar never hurts
+        self.assertIn("ks_vs_P0", out["target_shift"]["log_rv"]["P1_2018_2023"])
+        self.assertAlmostEqual(out["rebuilt_params"]["R_h5"]["train_mean_y_over_f"], 1.0, places=3)  # QLIKE FOC
+        self.assertEqual(out["data_quality"][2015]["spread_zero_share"], 1.0)
+
+
 class FakeMt5:
     def terminal_info(self):
         return type("T", (), {"path": "C:/mt5", "build": 1, "name": "MT5"})()

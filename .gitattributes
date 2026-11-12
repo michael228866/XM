@@ -262,3 +262,5 @@ exp_vol_forecast_v1.py -text whitespace=cr-at-eol
 exp_gvz_increment_v1.py -text whitespace=cr-at-eol
 research_data_gvz_v1.py -text whitespace=cr-at-eol
 research_data/gvz/* -text
+exp_vol_sizing_v1.py -text whitespace=cr-at-eol
+exp_fixed_param_drift_v1.py -text whitespace=cr-at-eol
