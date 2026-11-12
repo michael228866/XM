@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 60；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 61；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -35,7 +35,7 @@
 |---|---|---|---|---|---|
 | H-014 | 黃金隱含波動率（CBOE GVZ）與實現波動的差（變異數風險溢酬）預測未來 5-20 日的實現波動與報酬 | new_information_implied_vol | open | 39.0 | 把 GVZ 加進 HAR 後 QLIKE 沒有下降（DM &#124;t&#124; < 2），且溢酬對 20 日報酬的 IC &#124;t&#124; < 1 |
 | H-008 | 收盤前平倉、只做盤中多單，比一直持有多單（付過夜利息）的風險調整後報酬更好 | cost_structure | inconclusive | 38.5 | 2018-2022 成本 x1 下 INTRADAY_LONG 的 Sharpe 不高於 ALWAYS_LONG |
-| H-011 | HAR 實現波動模型對次日波動的預測優於 EWMA，且高波動狀態下的報酬分布（偏態、尾部）顯著不同 | second_moment_forecast | testing | 38.0 | 2018-2023 HAR 的 QLIKE 不低於 EWMA（Diebold-Mariano &#124;t&#124; < 2） |
+| H-011 | HAR 實現波動模型對次日波動的預測優於 EWMA，且高波動狀態下的報酬分布（偏態、尾部）顯著不同 | second_moment_forecast | testing | 36.5 | 2018-2023 HAR 的 QLIKE 不低於 EWMA（Diebold-Mariano &#124;t&#124; < 2） |
 | H-013 | 可以預測未來 1 小時的波動是否大於 k 倍點差（不預測方向），而 gemini 的虧損集中在預測『不值得交易』的時段 | tradeability | open | 36.0 | 樣本外波動大小分類 AUC <= 0.55，或低可交易性組的 gemini 回放 R 沒有比其他組低 0.05R 以上 |
 | H-018 | 波動預測能改善交易決策：倉位風險控制、實際回撤、辨識不值得交易的環境，且改善足以抵銷額外交易成本 | second_moment_decision_value | open | 35.0 | 2018-2023 以凍結預測做風險目標倉位與不交易濾網，在相同平均曝險下，扣除額外換手成本後 Sharpe 不高於固定風險版本，且最大回撤降低 < 10% |
 | H-009 | 點差相對同時段常態異常擴大時，接下來的波動與滑價較大，是不值得進場的時刻 | microstructure | open | 34.0 | 點差 z 值最高 10% 時段之後 30 分鐘的實現波動比 < 1.2，或排除這些時段進場使既有策略回放淨 R 改善 < 0.02R |
@@ -66,6 +66,8 @@
   失敗原因：`information`；學到：inverse-vol sizing at equal exposure: refuted
 - 實驗 **E-005**（H-004）：refuted: sessions with excess over proportional drift passing all rules: none; best 2018-2022 excess t 0.75 (Sidak p over 8: 0.872)  
   失敗原因：`information`；學到：direction question: refuted; see report for cost sensitivity
+- 實驗 **E-008**（H-011）：refuted: FROZEN h=1 2018-2023 QLIKE HAR/EWMA_FIT 1.1392 (DM t 2.94, p 0.9984), HAR better in 1/6 years, regimes {'low': 1.1849, 'mid': 1.1215, 'high': 0.74}; DM t lag 22 2.26; scaled-Parkinson agrees True (descriptive)  
+  失敗原因：`information`；學到：HAR vs EWMA forecasting (layer 1): refuted
 
 ## 4. 受資料重複使用影響的結論
 
@@ -74,15 +76,12 @@
 - 實驗 **E-006**：inconclusive（證據等級 `development`，登錄前已有 14 次使用重疊）：inconclusive: Sharpe INTRADAY_LONG vs ALWAYS_LONG (cost x1): 2018-2022 0.152 vs -0.029, 2023+ 0.999 vs 0.773; better in both windows at cost x1.5, live31 and low swap: False
 - 實驗 **E-007**：refuted（證據等級 `development`，登錄前已有 18 次使用重疊）：Sharpe MANAGED - CONST_EQUAL_EXPOSURE: 2018-2023 -0.061 (CI [-0.292, 0.162]), 2024+ 0.524; cost x3.0 2018-2023 -0.072; shuffled >= managed 0.65
 - 實驗 **E-005**：refuted（證據等級 `development`，登錄前已有 12 次使用重疊）：refuted: sessions with excess over proportional drift passing all rules: none; best 2018-2022 excess t 0.75 (Sidak p over 8: 0.872)
+- 實驗 **E-008**：refuted（證據等級 `development`，登錄前已有 20 次使用重疊）：refuted: FROZEN h=1 2018-2023 QLIKE HAR/EWMA_FIT 1.1392 (DM t 2.94, p 0.9984), HAR better in 1/6 years, regimes {'low': 1.1849, 'mid': 1.1215, 'high': 0.74}; DM t lag 22 2.26; scaled-Parkinson agrees True (descriptive)
 
 ## 5. 已登錄、尚未有結果的實驗
 
 - ~~E-003~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
 - ~~E-004~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
-- **E-008** → H-011（exploratory）：`exp_vol_forecast_v1`；審查：通過，可執行  
-  判定規則：Primary (single test): FROZEN parameters, h=1, 2018-2023, HAR vs EWMA_FIT on QLIKE. refuted only if HAR is significantly worse: one-sided Diebold-Mariano p < 0.05 in that direction (Newey-West lag 5). supported only if all hold: QLIKE ratio < 1 with one-sided DM p < 0.05 for HAR better; HAR QLIKE also below EWMA_094 and RW; HAR better in >= 4 of 6 calendar years; HAR better in >= 2 of 3 volatility regimes. Otherwise not_significant (ledger outcome inconclusive). h=5/22, RECURSIVE, MSE/RMSE/MAE, lag-22 DM, weekday table, scaled-Parkinson check and 2024+ are descriptive and cannot change the outcome.
-  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 20 earlier uses; evidence is development only
-  - 審查 `critic_agent_2` → **approve**：round 1 (draft): revise — BLOCKING refuted on point estimate ratio >= 1 with no test (null effect -> ~50% refuted, synthetic ratio 1.003 t 0.25 judged refuted); BLOCKING Parkinson condition is scale-sensitive (biased-low forecasts win when proxy scale < ~0.8)；round 1 notes: OLS-fit HAR vs QLIKE-selected EWMA lambda favoured EWMA; NW lag 5 may be short for long memory; weekday/gap effect; power not simulated; floor can blow up QLIKE；fixes: refuted only if HAR significantly worse (one-sided DM p < 0.05); Parkinson descriptive with estimation-window scale c; HAR by QLIKE-type IRLS; lag-22 DM, weekday table, har_at_floor reported；round 2: approve; refuted mis-judgement case now not_significant; IRLS converges in 5 steps and lowers in-window QLIKE；residual notes: check frozen HAR beta signs and har_at_floor first when reading results; not_significant means undetectable at this sample size, not absence of effect
 
 ## 6. 所有實驗結果與下一個問題
 
@@ -101,6 +100,9 @@
 - **E-005**（H-004）`refuted` / `development`：refuted: sessions with excess over proportional drift passing all rules: none; best 2018-2022 excess t 0.75 (Sidak p over 8: 0.872)  
   下一個問題：session structure carries no usable edge at these costs; prefer H-003/H-009+ questions  
   紀錄：`training_runs/20261111T150317Z_research_e005_exp_session_structure_v2`
+- **E-008**（H-011）`refuted` / `development`：refuted: FROZEN h=1 2018-2023 QLIKE HAR/EWMA_FIT 1.1392 (DM t 2.94, p 0.9984), HAR better in 1/6 years, regimes {'low': 1.1849, 'mid': 1.1215, 'high': 0.74}; DM t lag 22 2.26; scaled-Parkinson agrees True (descriptive)  
+  下一個問題：keep EWMA as the volatility input for H-014/H-018; test whether GVZ adds information  
+  紀錄：`training_runs/20261112T020611Z_research_e008_exp_vol_forecast_v1`
 
 ## 7. 決策紀錄
 

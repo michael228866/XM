@@ -1,0 +1,13 @@
+{
+  "run_id": "20261112T020611Z_research_e008_exp_vol_forecast_v1",
+  "finalized_at_utc": "2026-11-12T02:06:13.981725Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "82dd397d828044aeceb4a45ee74c8fccb2070a2c229762ffc7d98cbd2e111f96",
+    "manifest.json": "4b57c8f64106b74b4d673821ad800299f481f3f20ce954b816e04bf9d46d7287",
+    "metrics.json": "3cfc96b1f301c855378753acead03a0e4899c9f7d461caccfcbf317099c80b41",
+    "report.md": "4c72ace05d1683d2a5518046cde52a1675e642ed87b8612347f2f8c6844de384",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "training_script.py": "4c2056bac2cdf417fd7b5bfc56411d8b23d98d8e2f7176cea6ec1d8700c8a6f9"
+  }
+}
