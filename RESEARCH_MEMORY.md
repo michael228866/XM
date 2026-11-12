@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 92；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 96；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -39,7 +39,7 @@
 | H-013 | 可以預測未來 1 小時的波動是否大於 k 倍點差（不預測方向），而 gemini 的虧損集中在預測『不值得交易』的時段 | tradeability | open | 36.0 | 樣本外波動大小分類 AUC <= 0.55，或低可交易性組的 gemini 回放 R 沒有比其他組低 0.05R 以上 |
 | H-009 | 點差相對同時段常態異常擴大時，接下來的波動與滑價較大，是不值得進場的時刻 | microstructure | open | 34.0 | 點差 z 值最高 10% 時段之後 30 分鐘的實現波動比 < 1.2，或排除這些時段進場使既有策略回放淨 R 改善 < 0.02R |
 | H-012 | 低流動時段的單根急動（> 3 倍 ATR）在 15-60 分鐘內部分回補，扣除當下實際點差後期望為正 | transient_anomaly | open | 33.0 | 2018-2022 以實際點差計的平均淨回補 <= 0；事件數 < 200 則判定樣本不足 |
-| H-021 | 2018 年前的 XM GOLD# H1 資料放大了日實現波動（資料源或報價斷點），使 2014-2017 擬合的水準不能代表之後的市場 | data_quality | open | 33.0 | 以不涉及模型擬合的一致性比較：H1 加總的日實現波動相對 D1 收盤對收盤變異數（或外部來源）的比例，在 2018 年前後差異 < 10% |
+| H-021 | 2018 年前的 XM GOLD# H1 資料放大了日實現波動（資料源或報價斷點），使 2014-2017 擬合的水準不能代表之後的市場 | data_quality | testing | 33.0 | 以不涉及模型擬合的一致性比較：H1 加總的日實現波動相對 D1 收盤對收盤變異數（或外部來源）的比例，在 2018 年前後差異 < 10% |
 | H-016 | 波動調整倉位只在特定市況（如 2024 年後的高波動趨勢）改善風險調整後報酬；前瞻資料上仍成立 | second_moment_regime | open | 32.0 | 2026-11-12 起至少 12 個月的前瞻資料上，MANAGED 對 CONST_EQUAL_EXPOSURE 的 Sharpe 差 <= 0 |
 | H-003 | US macro surprises (actual vs forecast) cause post-release gold drift | event_surprise | open | 31.0 | post-release returns in the surprise direction are not positive beyond spread at the pre-declared horizon in 2014-2022 |
 | H-010 | 重要美國數據公布前後的波動放大可由事件類型和預期差大小預測；公布前後停止進場能改善 M1 策略 | event_volatility | open | 31.0 | 公布後／公布前實現波動比與 &#124;預期差&#124; 的等級相關 <= 0，或 ±30 分鐘不交易使回放淨 R 改善 < 0.02R |
@@ -96,6 +96,10 @@
 
 - ~~E-003~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
 - ~~E-004~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
+- **E-013** → H-021（exploratory）：`exp_data_quality_v1`；審查：通過，可執行  
+  判定規則：Primary: VR_day = sum over days of (sum of the day's H1 log returns)^2 / sum of squared H1 log returns (consecutive H1 bars, overnight included), per period; VR_week the same with weekly sums. delta = VR_day(P1) - VR_day(P0), 95% month-block bootstrap CI (2000 draws, months resampled within each period). supported (pre-2018 H1 returns show excess intraday reversal consistent with quote noise that inflated H1 RV; real intraday mean reversion cannot be excluded) only if all hold: delta >= 0.10, the CI lower bound > 0, delta_week = VR_week(P1) - VR_week(P0) > 0, the 95% CI of VR_day(P0) lies below 1, and the 95% CI of VR_day(P1) contains 1 (so a post-2018 market change cannot be booked as a pre-2018 defect). not_explained_by_quote_noise (ledger outcome refuted: quote noise reverting within about a week does not explain the RV level change; a feed-wide difference is not excluded and it is not called a market difference) if the CI lies inside (-0.15, 0.15) and |delta_week| < 0.25. Otherwise inconclusive. Independently of the verdict, findings are classed by fixed rules: confirmed_defect for SPREAD = 0 on > 50% of a year's bars (a missing cost field, not a price defect), OHLC inconsistency > 0.1% of bars, or aggregation mismatch > 1% before 2018 and > 5x the 2018-2023 rate; confirmed_collection_change if the median H1 bars per day before 2018 and in 2018-2023 share no value; the cross-symbol check is undetermined if any change month is on or before 2017-08; the external cross-check is always undetermined. M1 must start by 2014-01-06 or the run aborts. All other tables (Roll noise share, spikes, RV_H1/RV_15m, aggregation, cross residual) are descriptive.
+  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 22 earlier uses; evidence is development only
+  - 審查 `critic_agent_5` → **approve**：round 1: revise - B1 Roll/one-lag noise share blind to persistent noise (4h half-life AR noise inflating P0 RV ~3.5x judged refuted=market difference); B2 M1/H1/D1 agreement low-discrimination (same stored M1); B3 refuted over-claims market difference; B4 spike threshold collapses to 0 with stale quotes (ratio 1.15e14); B5 change may be at 2017-08 not 2018-01 (cross check new vs new); B6 M1 coverage not checked；round 2 fixes: primary variance ratio across time scales (VR_day, VR_week) with month-block bootstrap; hour-of-day decomposition; renamed not_explained_by_quote_noise; spike sigma from non-zero returns floored at 2 ticks; change months; M1 start guard; clean() for JSON; scope on period exclusion；round 2: revise - B7 supported could be triggered by post-2018 intraday trending (VR_day P1 > 1) with clean P0；round 3 fixes: supported also needs VR_day(P0) CI below 1 and VR_day(P1) CI containing 1; finding renamed intraday_reversal_excess_consistent_with_quote_noise; scope notes real intraday mean reversion and <15% noise not excluded；round 3: approve; demo4 drift cases now inconclusive, persistent-noise cases still supported, 8%-of-RV single-hour excursion not_explained (inside the declared 15% band)；residual notes: low power, the likely real outcome is inconclusive; show P0/P1 VR_day CIs and the hour decomposition prominently
 
 ## 6. 所有實驗結果與下一個問題
 
@@ -146,6 +150,7 @@
 - **D-012** 暫停尋找新的波動預測模型。E-009（H-018）：固定 H1 C 凍結訊號與出場（TP 3／SL 1.5 ATR／48h，一次一筆），只改變進場時固定的部位大小。主要比較為巢狀設計：EWMA_RISK = 固定風險倉位 × (σ_ref/σ_EWMA) vs 固定風險（固定風險本身已以 H1 ATR 調整；審查發現直接以 EWMA 取代 ATR 主要只是按進場小時重新加權，所以改成保留同一個 ATR 停損、只加入日線 EWMA 縮放）。純目標波動（EWMA_TARGET）與固定名目（CONSTANT_NOTIONAL，runner 固定手數的對應）只作描述，各自附信賴區間。不測不交易濾網，因為它會改變交易樣本。判定只用 2024+（H1 C 在 2014-2022 擬合、2023 選門檻）；2018-2023 為樣本內，只作描述。H-018 原 falsified_if 的點估計寫法由 E-009 預先登記的檢定式規則取代。E-011（H-020）為獨立的描述性診斷，不判定任何假設，不混入 E-009。若 E-009 顯示部位管理沒有額外價值，轉向不同經濟機制的問題（H-008／H-013／H-009）：訊號固定才能把部位管理的價值和方向預測分開；同一套交易、同一成本、同一槓桿上限，並以事前預算對齊與事後波動對齊兩種尺度報告
 - **D-013** E-009 在任何計算前被 swap 單位檢查中止（GOLD# swap_mode 為 DISABLED），記為 aborted；Runner 修正為也能接住模組拋出的 SystemExit。E-012 沿用 E-009 已審查的設計，只改 swap：基準情境用帳戶實際 swap（0），報價 swap_long×1.5 改為壓力情境。O-016 推翻了 E-001／E-006／E-007 的 swap 成本前提：H-008（E-006 的『盤中優於持有』主要來自 swap）需以帳戶實際成本重新檢驗，狀態維持 inconclusive；H-017（換日前平倉以省 swap）的前提不成立，設為 parked。E-011 的判讀記為 O-015，可檢驗的後續方向登記為 H-021（資料品質，可用一致性比較檢驗）與 H-022（只用前瞻資料）：成本前提必須以真實成交紀錄驗證；中止發生在看到任何結果之前，所以沿用同一設計不構成事後調整。揭露：E-009 與 E-012 之間已看過 E-011 的描述結果（O-015，波動水準，沒有部位管理的損益）；trials_in_family 會把這次中止算成 H-018 家族的一次嘗試
 - **D-014** H-018 設為 underpowered：E-012 既不能排除 0.2 Sharpe 量級的改善，也不能排除同量級的惡化；風險面（同波動回撤、集中度）沒有改善跡象。以 H1 C 每年約 100 筆的頻率，要把 CI 半寬從約 0.45 縮到 0.2 需要約 5 倍資料（十年以上），所以 H-018 以 H1 C 繼續累積的資訊增益很低，調降優先序；不更動任何 Runner。依使用者指示，部位管理沒有可證實的額外價值，研究轉向不同經濟機制：優先順序依 Priority Engine，其中 H-008 必須先以帳戶實際 swap（O-016）重新設計。：照預先登記執行；underpowered 不是推翻，但在可預見的資料量下也無法判定，繼續投入的價值低
+- **D-015** 使用者決定的順序：H-021（歷史資料可信度）→ H-009（點差異常與可執行性）→ H-013（交易經濟優勢判斷，主要方向），並改進 Priority Engine（前提有效性、資料可用性、假說依賴、已有反證與範圍、研究多樣性、資料品質對下游的影響；失效假說自動轉入適當狀態並保留原因與證據）。E-013 是資料診斷：不訓練模型、不評估策略、不得用來重新宣稱任何過去策略具有獨立樣本外優勢。外部獨立黃金資料（Stooq／Dukascopy／Yahoo）在 2026-11-12 從本機無法取得，改以 GOLD# 的 M1／H1／D1 互相核對與 GOLD#／EURUSD／XAUEUR# 交叉匯率恆等式核對；能只靠外部資料判定的部分歸為無法判定：後續所有研究都依賴歷史資料；先確認哪些缺陷已證實、哪些是真實市場差異、哪些無法判定
 
 ## 8. 資料區間使用帳（越多次越不能當獨立驗證）
 
@@ -173,6 +178,7 @@
 | 2024-01-01 → 2099-01-01 | E-009 |
 | 2018-01-01 → 2099-01-01 | E-011 |
 | 2024-01-01 → 2099-01-01 | E-012 |
+| 2014-01-01 → 2099-01-01 | E-013 |
 
 ## 9. 研究空間覆蓋與自動產生的候選問題
 

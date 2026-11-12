@@ -446,6 +446,113 @@ class DriftDiagnosticTests(unittest.TestCase):
         self.assertEqual(out["data_quality"][2015]["spread_zero_share"], 1.0)
 
 
+def synthetic_m1(noise_before_2018=0.0, spikes_before_2018=0, zero_spread_before_2018=False, seed=0,
+                 days_per_month=3, ar_noise_before_2018=None, stale_share_before_2018=0.0, daily_drift_after_2018=0.0):
+    """Server days 2015-2019 (days_per_month each), 1440 M1 bars each. Before 2018 optionally: i.i.d. quote noise,
+    AR(1) noise (sd, half-life in minutes) that persists across bars, one-minute bad ticks, stale (repeated) quotes."""
+    rng = np.random.default_rng(seed)
+    days = [d for m in pd.date_range("2015-01-01", "2019-12-01", freq="MS") for d in pd.bdate_range(m, periods=days_per_month)]
+    rows, price, u = [], 1300.0, 0.0
+    for d in days:
+        early = d < pd.Timestamp("2018-01-01")
+        r = rng.normal(0, 0.0003, 1440)
+        if not early and daily_drift_after_2018:
+            r = r + rng.normal(0, daily_drift_after_2018) / 1440  # trending days: real market, no quote noise
+        true = price * np.exp(np.cumsum(r))
+        obs = true * np.exp(rng.normal(0, noise_before_2018, 1440)) if early and noise_before_2018 else true.copy()
+        if early and ar_noise_before_2018:
+            sd, half = ar_noise_before_2018
+            phi = 0.5 ** (1 / half)
+            noise = np.empty(1440)
+            for k in range(1440):
+                u = phi * u + sd * np.sqrt(1 - phi ** 2) * rng.normal()
+                noise[k] = u
+            obs = obs * np.exp(noise)
+        if early and stale_share_before_2018:
+            keep = rng.random(1440) >= stale_share_before_2018
+            keep[0] = True
+            obs = obs[np.maximum.accumulate(np.where(keep, np.arange(1440), 0))]
+        if early:
+            for k in rng.choice(np.arange(10, 1430), spikes_before_2018, replace=False):
+                obs[k] *= 1.01  # one-minute bad tick that reverts next minute
+        price = true[-1]
+        t = d + pd.to_timedelta(np.arange(1440), unit="min")
+        o = np.r_[obs[0], obs[:-1]]
+        spread = np.where(early and zero_spread_before_2018, 0, 30)
+        rows.append(pd.DataFrame({"TIME_DT": t, "OPEN": o, "HIGH": np.maximum(o, obs), "LOW": np.minimum(o, obs),
+                                  "CLOSE": obs, "SPREAD": spread, "TV": 100}))
+    return pd.concat(rows, ignore_index=True)
+
+
+def aggregate(m1, freq):
+    g = m1.groupby(m1["TIME_DT"].dt.floor(freq))
+    return pd.DataFrame({"OPEN": g["OPEN"].first(), "HIGH": g["HIGH"].max(), "LOW": g["LOW"].min(), "CLOSE": g["CLOSE"].last(),
+                         "SPREAD": g["SPREAD"].first(), "TV": g["TV"].sum()}).rename_axis("TIME_DT").reset_index()
+
+
+class DataQualityTests(unittest.TestCase):
+    spec = {"seed": 0, "bootstrap_draws": 200, "min_m1_bars": 600, "ohlc_defect_rate": 0.001,
+            "mismatch_defect_rate": 0.01, "vr_inflation_delta": 0.10, "vr_equivalence_band": 0.15,
+            "vr_week_tolerance": 0.25}
+
+    def run_case(self, m1):
+        import exp_data_quality_v1 as dq
+        h1, d1 = aggregate(m1, "h"), aggregate(m1, "D")
+        out = dq.evaluate(m1, h1, d1, None, None, self.spec)
+        return dq.classify(out, self.spec), out
+
+    def test_clean_history_shows_no_inflation(self):
+        (verdict, findings), out = self.run_case(synthetic_m1(days_per_month=8))
+        p = out["primary"]
+        self.assertNotEqual(verdict, "supported", p)
+        self.assertLess(p["delta_vr_day_ci95"][0], 0)
+        self.assertGreater(p["delta_vr_day_ci95"][1], 0)
+        self.assertFalse([f for f in findings if f[1] == "confirmed_defect"])
+        self.assertEqual(out["mismatch"]["H1_vs_M1"].max(), 0.0)
+
+    def test_persistent_noise_invisible_to_roll_is_detected(self):
+        # critic B1: AR noise with a 4-hour half-life barely moves the one-lag M1 autocovariance but inflates H1 RV
+        (verdict, findings), out = self.run_case(synthetic_m1(days_per_month=8, ar_noise_before_2018=(0.004, 240),
+                                                              zero_spread_before_2018=True))
+        p = out["primary"]
+        self.assertLess(out["by_period"]["P0"]["roll_noise_share_h1"], 0.02)
+        self.assertEqual(verdict, "supported", p)
+        self.assertIn(("M1 spread field", "confirmed_defect"), [(a, b) for a, b, _ in findings])
+
+    def test_post_2018_trending_days_are_not_a_pre_2018_defect(self):
+        # critic B7: clean P0, intraday drift only after 2018 raises VR_day(P1), which must not count as P0 noise
+        (verdict, _), out = self.run_case(synthetic_m1(days_per_month=8, daily_drift_after_2018=0.008))
+        self.assertGreater(out["primary"]["vr_day_P1"], 1.1, out["primary"])
+        self.assertNotEqual(verdict, "supported", out["primary"])
+
+    def test_stale_quotes_do_not_explode_spike_count(self):
+        # critic B4: > 50% zero returns used to set the spike threshold to zero
+        out = self.run_case(synthetic_m1(stale_share_before_2018=0.6))[1]
+        self.assertGreater(out["by_period"]["P0"]["m1_zero_return_share"], 0.5)
+        self.assertLess(out["by_period"]["P0"]["spikes_per_1000_days"], 50)
+
+    def test_not_explained_branch_wording(self):
+        import exp_data_quality_v1 as dq
+        out = {"primary": {"delta_vr_day": 0.01, "delta_vr_day_ci95": [-0.05, 0.07], "delta_vr_week": 0.02,
+                           "vr_day_P0": 0.98, "vr_day_P1": 0.99, "vr_day_P0_ci95": [0.9, 1.06],
+                           "vr_day_P1_ci95": [0.93, 1.05]},
+               "integrity": {}, "mismatch": {}, "sessions": {}, "change_months": {}, "hours": {}}
+        verdict, findings = dq.classify(out, self.spec)
+        self.assertEqual(verdict, "not_explained_by_quote_noise")
+        self.assertNotIn("market_difference", [b for _, b, _ in findings])
+
+    def test_cross_rate_identity_residual(self):
+        import exp_data_quality_v1 as dq
+        rng = np.random.default_rng(5)
+        t = pd.date_range("2017-09-01", periods=24 * 600, freq="h")
+        lg, le = np.cumsum(rng.normal(0, 1e-3, len(t))), np.cumsum(rng.normal(0, 5e-4, len(t)))
+        noise = np.where(t < "2018-01-01", rng.normal(0, 1e-3, len(t)), 0.0)  # gold quotes noisy only in 2017
+        mk = lambda x: pd.DataFrame({"TIME_DT": t, "CLOSE": np.exp(x)})
+        out = dq.cross_residual(mk(lg + noise), mk(le), mk(lg - le))
+        self.assertGreater(out["2017_08_12"]["var_ratio"], 1.0)
+        self.assertLess(out["2018"]["var_ratio"], 0.001)  # only the first 2018 return touches a noisy 2017 quote
+
+
 class FakeMt5:
     def terminal_info(self):
         return type("T", (), {"path": "C:/mt5", "build": 1, "name": "MT5"})()
