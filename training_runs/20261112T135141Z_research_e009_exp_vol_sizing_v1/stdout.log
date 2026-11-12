@@ -1,0 +1,2 @@
+SystemExit: swap_mode 0: swap_frac assumes swap in points
+(raised inside the module before any evaluation; the runner did not catch SystemExit, so the run was finalized afterwards by research_memory/batch_2026_11_12_e012.py)

@@ -132,7 +132,7 @@ def run(experiment_id):
     try:
         with contextlib.redirect_stdout(log):
             out = module.run(run_dir, p["spec"], trials)
-    except Exception:
+    except (Exception, SystemExit):  # a module's SystemExit must not leave an unfinalized run (E-009)
         (run_dir / "stdout.log").write_text(log.getvalue() + traceback.format_exc(), encoding="utf-8")
         errors = trh.finalize_run(run_dir, "aborted", aborted_reason="exception; see stdout.log")
         rm.append([{"kind": "result", "experiment": experiment_id, "outcome": "aborted",

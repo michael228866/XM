@@ -405,7 +405,7 @@ class VolSizingTests(unittest.TestCase):
 
     def test_end_to_end_same_trades_and_budget(self):
         vs = self.vs
-        results, calib = vs.evaluate(self.frame, self.signal, self.spec, -1e-4)
+        results, calib = vs.evaluate(self.frame, self.signal, self.spec, {"account": 0.0, "quoted": -1e-4})
         base = results["oos_2024_on"]["base"]
         self.assertEqual(len({base["arms"][a]["days"] for a in vs.ARMS}), 1)
         self.assertAlmostEqual(base["arms"]["CONSTANT_NOTIONAL"]["avg_w"], calib["constant_w"], places=3)
@@ -423,7 +423,7 @@ class VolSizingTests(unittest.TestCase):
                 "by_regime_sharpe": {"low": {"days": 100, "EWMA_RISK": 1.0, "FIXED_RISK": 0.9},
                                      "high": {"days": 100, "EWMA_RISK": 1.0, "FIXED_RISK": 0.9}},
                 "by_year_sharpe": {2024: {"EWMA_RISK": 1, "FIXED_RISK": 0}, 2025: {"EWMA_RISK": 1, "FIXED_RISK": 0}}}
-        results = {"oos_2024_on": {"base": base, "spread_x2": {"delta_sharpe": -0.01}, "swap_x1.5": {"delta_sharpe": 0.1}}}
+        results = {"oos_2024_on": {"base": base, "spread_x2": {"delta_sharpe": -0.01}, "swap_quoted_x1.5": {"delta_sharpe": 0.1}}}
         self.assertEqual(self.vs.decide(results, self.spec), "significant_not_robust")
         results["oos_2024_on"]["spread_x2"]["delta_sharpe"] = 0.01
         self.assertEqual(self.vs.decide(results, self.spec), "supported")

@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 80；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 89；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -26,6 +26,8 @@
   證據：training_runs/20261111T111328Z_research_e001_exp_edge_decomposition_v1/manifest.json、training_runs/20261111T140822Z_research_e002_exp_information_horizon_v1/manifest.json；之後 research_run_v1 改為未 commit/push 時拒絕執行
 - **O-012** research_eval_v1.py 在 E-001 執行之後只在檔尾新增 daily_stats()（E-005~E-007 使用），E-001 用到的函式未改；因此目前檔案的 sha256 不等於 E-001 登記值，這是預期的，不代表 E-001 結果被改動。  
   證據：git 提交 2026-11-11 研究治理版本；E-001 preregistration code_files
+- **O-016** XM demo 帳戶的 GOLD# swap_mode = 0（SYMBOL_SWAP_MODE_DISABLED），雖然 swap_long 報 -78.59。唯讀檢查 400 天內 575 筆已平倉部位：9 筆跨過伺服器換日（多空皆有，含跨週三三倍夜的多單 2026-04-14→04-16），swap 全為 0。E-001、E-006、E-007 以每年約 7% 的 swap 計成本，對這個帳戶不成立；真實帳戶可能不同，需另行確認  
+  證據：read-only MT5 symbol_info and history_deals_get on 2026-11-12 (no orders sent)
 
 ## 2. 尚未驗證的假說（依 Research Priority Engine 排序）
 
@@ -38,12 +40,14 @@
 | H-018 | 波動預測能改善交易決策：倉位風險控制、實際回撤、辨識不值得交易的環境，且改善足以抵銷額外交易成本 | second_moment_decision_value | testing | 35.0 | 2018-2023 以凍結預測做風險目標倉位與不交易濾網，在相同平均曝險下，扣除額外換手成本後 Sharpe 不高於固定風險版本，且最大回撤降低 < 10% |
 | H-009 | 點差相對同時段常態異常擴大時，接下來的波動與滑價較大，是不值得進場的時刻 | microstructure | open | 34.0 | 點差 z 值最高 10% 時段之後 30 分鐘的實現波動比 < 1.2，或排除這些時段進場使既有策略回放淨 R 改善 < 0.02R |
 | H-012 | 低流動時段的單根急動（> 3 倍 ATR）在 15-60 分鐘內部分回補，扣除當下實際點差後期望為正 | transient_anomaly | open | 33.0 | 2018-2022 以實際點差計的平均淨回補 <= 0；事件數 < 200 則判定樣本不足 |
+| H-021 | 2018 年前的 XM GOLD# H1 資料放大了日實現波動（資料源或報價斷點），使 2014-2017 擬合的水準不能代表之後的市場 | data_quality | open | 33.0 | 以不涉及模型擬合的一致性比較：H1 加總的日實現波動相對 D1 收盤對收盤變異數（或外部來源）的比例，在 2018 年前後差異 < 10% |
 | H-016 | 波動調整倉位只在特定市況（如 2024 年後的高波動趨勢）改善風險調整後報酬；前瞻資料上仍成立 | second_moment_regime | open | 32.0 | 2026-11-12 起至少 12 個月的前瞻資料上，MANAGED 對 CONST_EQUAL_EXPOSURE 的 Sharpe 差 <= 0 |
 | H-003 | US macro surprises (actual vs forecast) cause post-release gold drift | event_surprise | open | 31.0 | post-release returns in the surprise direction are not positive beyond spread at the pre-declared horizon in 2014-2022 |
 | H-010 | 重要美國數據公布前後的波動放大可由事件類型和預期差大小預測；公布前後停止進場能改善 M1 策略 | event_volatility | open | 31.0 | 公布後／公布前實現波動比與 &#124;預期差&#124; 的等級相關 <= 0，或 ±30 分鐘不交易使回放淨 R 改善 < 0.02R |
-| H-017 | H1 C runner 在換日前平倉、隔日重新評估，能在今日 swap 水準下改善每筆淨 R | cost_structure | open | 29.5 | 在 2024+ 回放與前瞻 demo 上，換日前平倉版本的平均淨 R 不高於原版，或差距 < 0.02R |
 | H-007 | For M1 trading, execution cost (hour-of-day spread, entry method) matters more than the model | execution | open | 28.0 | restricting to the cheapest hours does not raise replay mean R by more than 0.03R |
 | H-002 | Exogenous macro data work at their native weekly horizon | exogenous_horizon | underpowered | 25.5 | discovery (2016-2022) IC in the wrong direction or &#124;t&#124; < 1 |
+| H-017 | H1 C runner 在換日前平倉、隔日重新評估，能在今日 swap 水準下改善每筆淨 R | cost_structure | parked | 24.5 | 在 2024+ 回放與前瞻 demo 上，換日前平倉版本的平均淨 R 不高於原版，或差距 < 0.02R |
+| H-022 | 只做水準重新校準（每月一個尺度參數，用過去資料）的 EWMA_094 預測，在前瞻資料上優於凍結與未校準版本 | fixed_parameter_drift | open | 23.5 | 前瞻至少 250 個完整交易日，校準版 QLIKE 不低於原始 EWMA_094（DM 單尾 p >= 0.05） |
 | H-006 | Strategy timing skill persists over months (premise of any regime switch or bandit) | adaptivity | parked | 20.0 | rank correlation of consecutive 3-month residuals <= 0 |
 | H-019 | 對波動水準不敏感的 HAR（log-HAR 或無截距比例形式）凍結參數後不輸 EWMA | second_moment_forecast | open | 19.5 | 前瞻至少 250 個完整交易日，凍結 log-HAR 的 QLIKE 不低於 EWMA_094（DM 單尾 p >= 0.05） |
 | H-020 | E-008／E-010 固定參數模型的退化可分解為可量測的來源（目標分布、共變量、概念、校準、資料品質），且主要來源可在前瞻資料上單獨檢驗 | fixed_parameter_drift | open | 19.5 | 描述性診斷本身不判定；後續每個解釋各自預先登記前瞻檢驗 |
@@ -72,6 +76,8 @@
   失敗原因：`information`；學到：HAR vs EWMA forecasting (layer 1): refuted
 - 實驗 **E-010**（H-014）：refuted: general: refuted (A/R 1.1248, DM t 3.09, Sidak p 1.0, gain -12.48% ub95 -5.83%, years 2/6, lag2 A/R 1.1183, A/P 1.116); extreme: refuted (A/R 1.5593, DM t 5.4, Sidak p 1.0, gain -55.93% ub95 -38.91%, years 0/6, lag2 A/R 1.4282, A/P 1.5058); regime_up: refuted (A/R 1.1101, DM t 2.47, Sidak p 1.0, gain -11.01% ub95 -3.68%, years 2/6, lag2 A/R 1.1025, A/P 1.1069)  
   失敗原因：`information`；學到：GVZ increment over price history: {'general': 'refuted', 'extreme': 'refuted', 'regime_up': 'refuted'}
+- 實驗 **E-009**（H-018）：aborted before any evaluation: the pre-run guard found GOLD# swap_mode 0 (DISABLED) where the design assumed swap in points; bars were fetched but no signal, trade or P&L was computed  
+  失敗原因：`method`；學到：verify broker cost settings against real deals before preregistering costs; the runner did not catch SystemExit from a module (fixed)
 
 ## 4. 受資料重複使用影響的結論
 
@@ -83,15 +89,16 @@
 - 實驗 **E-008**：refuted（證據等級 `development`，登錄前已有 20 次使用重疊）：refuted: FROZEN h=1 2018-2023 QLIKE HAR/EWMA_FIT 1.1392 (DM t 2.94, p 0.9984), HAR better in 1/6 years, regimes {'low': 1.1849, 'mid': 1.1215, 'high': 0.74}; DM t lag 22 2.26; scaled-Parkinson agrees True (descriptive)
 - 實驗 **E-010**：refuted（證據等級 `development`，登錄前已有 22 次使用重疊）：refuted: general: refuted (A/R 1.1248, DM t 3.09, Sidak p 1.0, gain -12.48% ub95 -5.83%, years 2/6, lag2 A/R 1.1183, A/P 1.116); extreme: refuted (A/R 1.5593, DM t 5.4, Sidak p 1.0, gain -55.93% ub95 -38.91%, years 0/6, lag2 A/R 1.4282, A/P 1.5058); regime_up: refuted (A/R 1.1101, DM t 2.47, Sidak p 1.0, gain -11.01% ub95 -3.68%, years 2/6, lag2 A/R 1.1025, A/P 1.1069)
 - 實驗 **E-011**：inconclusive（證據等級 `development`，登錄前已有 20 次使用重疊）：descriptive diagnostic of fixed-parameter drift; see report tables (no verdict)
+- 實驗 **E-009**：aborted（證據等級 `development`，登錄前已有 10 次使用重疊）：aborted before any evaluation: the pre-run guard found GOLD# swap_mode 0 (DISABLED) where the design assumed swap in points; bars were fetched but no signal, trade or P&L was computed
 
 ## 5. 已登錄、尚未有結果的實驗
 
 - ~~E-003~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
 - ~~E-004~~ 已作廢（執行前發現設計缺陷，見決策紀錄）
-- **E-009** → H-018（exploratory）：`exp_vol_sizing_v1`；審查：通過，可執行  
-  判定規則：Primary: window 2024+, base costs, delta Sharpe = Sharpe(EWMA_RISK) - Sharpe(FIXED_RISK) of daily net returns, 95% month-block bootstrap CI (2000 draws), a single test. inconclusive_sample if < 150 trades or < 24 months with a trade. refuted if the CI upper bound < 0. If the CI lower bound > 0: supported only if all hold - delta Sharpe > 0 under spread x2 and under swap x1.5; vol-matched max drawdown and vol-matched daily CVaR 5% of EWMA_RISK no worse than FIXED_RISK; EWMA_RISK Sharpe >= FIXED_RISK in all but at most one volatility regime with >= 60 days (if only one such regime, in that one; if none, supported is impossible; regime label from the previous day); and in >= 2 of the calendar years 2024-2026 - otherwise significant_not_robust. If the CI contains 0: not_significant if CI upper < 0.2 and the vol-matched drawdown cut < 10%, else underpowered. Ledger outcome: supported / refuted / inconclusive (all other verdicts). Alpha t, raw metrics, EWMA_TARGET, CONSTANT_NOTIONAL, Calmar, cost, concentration and the 2018-2023 window are descriptive.
-  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 10 earlier uses; evidence is development only
-  - 審查 `critic_agent_4` → **approve**：round 1 (draft): revise - BLOCKING primary EWMA_TARGET vs FIXED_RISK replaced the H1 ATR by daily EWMA, so the weight ratio ATR%/sigma mostly re-weighted by entry hour (61% of log ratio variance explained by hour; with uninformative EWMA delta Sharpe -0.198 CI [-0.47,0.09]); could end refuted/supported on seasonality alone；round 1: BLOCKING decide() labelled a significantly positive but non-robust result not_significant (CI [0.05,0.18])；round 1 notes: percentile month-block CI slightly narrow (~4.8%/2.8% tails); min_months always passed; regime condition could make supported impossible and used same-day RV; 2024+ not a clean holdout (H1 C chosen after its 2024+ test); E-007 overlap; gap fills at stop optimistic; swap_mode assumption；fixes: nested primary EWMA_RISK = FIXED_RISK x sigma_ref/sigma; EWMA_TARGET and CONSTANT_NOTIONAL descriptive with CIs; hour R^2 of weight ratios; significant_not_robust label; months_with_trades; regime label shifted; scope/docstring caveats; swap_mode check; failure_cause fixed；round 2: approve; seasonal synthetic now not_significant with hour R^2 0.047/0.012; GARCH double-count check shows no bias (delta -0.008)；residual notes: EWMA_RISK hits the leverage cap more often in quiet periods (read capped); conclusion is about this scaling rule, not about all EWMA information beyond ATR
+- **E-012** → H-018（exploratory）：`exp_vol_sizing_v1`；審查：通過，可執行  
+  判定規則：Primary: window 2024+, base costs, delta Sharpe = Sharpe(EWMA_RISK) - Sharpe(FIXED_RISK) of daily net returns, 95% month-block bootstrap CI (2000 draws), a single test. inconclusive_sample if < 150 trades or < 24 months with a trade. refuted if the CI upper bound < 0. If the CI lower bound > 0: supported only if all hold - delta Sharpe > 0 under spread x2 and under quoted swap x1.5 (base swap is the account's 0); vol-matched max drawdown and vol-matched daily CVaR 5% of EWMA_RISK no worse than FIXED_RISK; EWMA_RISK Sharpe >= FIXED_RISK in all but at most one volatility regime with >= 60 days (if only one such regime, in that one; if none, supported is impossible; regime label from the previous day); and in >= 2 of the calendar years 2024-2026 - otherwise significant_not_robust. If the CI contains 0: not_significant if CI upper < 0.2 and the vol-matched drawdown cut < 10%, else underpowered. Ledger outcome: supported / refuted / inconclusive (all other verdicts). Alpha t, raw metrics, EWMA_TARGET, CONSTANT_NOTIONAL, Calmar, cost, concentration and the 2018-2023 window are descriptive.
+  - 審查 `mechanical` → **approve**：data reuse: evaluation windows overlap 12 earlier uses; evidence is development only；family 'second_moment_decision_value' already has 1 result(s); the runner widens the Sidak count
+  - 審查 `critic_agent_4` → **approve**：round 3: approve; reusing the E-009 design under a new id is legitimate: the abort happened at the swap guard before any signal, trade or P&L (empty metrics, 0-byte stdout); the only change is the swap cost, driven by broker settings and deal records, not by results；swap treatment sound: base = account actual (DISABLED, 0 in deals), quoted swap x1.5 as robustness condition is stricter than before; other swap modes raise; runner now catches SystemExit (KeyboardInterrupt still not)；notes: account-swap evidence is 9 rollover-crossing positions plus swap_mode; manual abort path must be committed by hand; the aborted run counts as a family trial; E-011 results were seen between E-009 and E-012 (disclosed in D-013)
 
 ## 6. 所有實驗結果與下一個問題
 
@@ -119,6 +126,9 @@
 - **E-011**（H-020）`inconclusive` / `development`：descriptive diagnostic of fixed-parameter drift; see report tables (no verdict)  
   下一個問題：pick the dominant measurable part and preregister a forward-data test for it  
   紀錄：`training_runs/20261112T135155Z_research_e011_exp_fixed_param_drift_v1`
+- **E-009**（H-018）`aborted` / `development`：aborted before any evaluation: the pre-run guard found GOLD# swap_mode 0 (DISABLED) where the design assumed swap in points; bars were fetched but no signal, trade or P&L was computed  
+  下一個問題：E-012: same design with the account's actual swap (0) and the quoted swap as stress  
+  紀錄：`training_runs/20261112T135141Z_research_e009_exp_vol_sizing_v1`
 
 ## 7. 決策紀錄
 
@@ -134,6 +144,7 @@
 - **D-010** H-014 先只檢驗波動子句，問題是『資訊增量』：同一種擬合、同一批資料列下，加入 GVZ 的模型是否優於只用價格歷史（EWMA_094）的模型；不是單純追求比 EWMA 更低的誤差。分三個預先指定的問題：一般波動（h=5）、極端波動（未來 5 日超過過去 90 百分位）、狀態轉變（未來 22 日波動升到過去 22 日的 1.5 倍以上），Sidak 校正 3 次。溢酬預測報酬的子句延後。GVZ 時間規則：起點 t 只用美國日期 <= t-1 日的值（歷史發布時間無法驗證，採保守延遲），另以再晚一筆的 lag 2 作為必要條件。實驗編號 E-010；E-009 保留給 H-018。H-018 保留為下一個獨立方向：在固定交易訊號下，檢驗 EWMA_094 波動預測能否改善風險調整後報酬、最大回撤或尾部風險，核心不是預測準確度；E-010 結果不改變 H-018 的波動輸入（仍為 EWMA_094），除非某個問題 supported 且經前瞻資料確認。GVZ 與任何未驗證模型都不接入 Runner：把重新校準的效果和新資訊的效果分開；預先固定問題、期間、參數與狀態，避免事後挑選
 - **D-011** E-010 依預先登記規則三題皆 refuted（general A/R 1.125 DM t 3.09；extreme 1.559 t 5.40；regime_up 1.110 t 2.47；lag 2 與對照 P 方向一致）。H-014 波動子句設為 refuted，範圍限於『GVZ 以 log 水準、lag 1、2014-2017 凍結係數加入EWMA_094 模型』；依審查意見，這表示凍結的 GVZ 模型樣本外較差，不代表 GVZ 不含資訊；報酬子句未檢驗。2024+ 的 general A/R 0.98、h22 0.92 只是描述，不得用來挽回結論。H-018 不變：下一個獨立研究方向，以 EWMA_094（無擬合參數）作波動輸入，在固定交易訊號下檢驗風險調整後報酬、最大回撤與尾部風險，編號 E-009。GVZ 的尺度不變形式（相對自身過去的變化）屬事後想法，若要研究須另立假設並只用前瞻資料判定；目前不登記：照預先登記執行；兩次失敗都指向凍結的水準校準，但這是看過結果後的歸納，不能在同一段資料上再驗證
 - **D-012** 暫停尋找新的波動預測模型。E-009（H-018）：固定 H1 C 凍結訊號與出場（TP 3／SL 1.5 ATR／48h，一次一筆），只改變進場時固定的部位大小。主要比較為巢狀設計：EWMA_RISK = 固定風險倉位 × (σ_ref/σ_EWMA) vs 固定風險（固定風險本身已以 H1 ATR 調整；審查發現直接以 EWMA 取代 ATR 主要只是按進場小時重新加權，所以改成保留同一個 ATR 停損、只加入日線 EWMA 縮放）。純目標波動（EWMA_TARGET）與固定名目（CONSTANT_NOTIONAL，runner 固定手數的對應）只作描述，各自附信賴區間。不測不交易濾網，因為它會改變交易樣本。判定只用 2024+（H1 C 在 2014-2022 擬合、2023 選門檻）；2018-2023 為樣本內，只作描述。H-018 原 falsified_if 的點估計寫法由 E-009 預先登記的檢定式規則取代。E-011（H-020）為獨立的描述性診斷，不判定任何假設，不混入 E-009。若 E-009 顯示部位管理沒有額外價值，轉向不同經濟機制的問題（H-008／H-013／H-009）：訊號固定才能把部位管理的價值和方向預測分開；同一套交易、同一成本、同一槓桿上限，並以事前預算對齊與事後波動對齊兩種尺度報告
+- **D-013** E-009 在任何計算前被 swap 單位檢查中止（GOLD# swap_mode 為 DISABLED），記為 aborted；Runner 修正為也能接住模組拋出的 SystemExit。E-012 沿用 E-009 已審查的設計，只改 swap：基準情境用帳戶實際 swap（0），報價 swap_long×1.5 改為壓力情境。O-016 推翻了 E-001／E-006／E-007 的 swap 成本前提：H-008（E-006 的『盤中優於持有』主要來自 swap）需以帳戶實際成本重新檢驗，狀態維持 inconclusive；H-017（換日前平倉以省 swap）的前提不成立，設為 parked。E-011 的判讀記為 O-015，可檢驗的後續方向登記為 H-021（資料品質，可用一致性比較檢驗）與 H-022（只用前瞻資料）：成本前提必須以真實成交紀錄驗證；中止發生在看到任何結果之前，所以沿用同一設計不構成事後調整。揭露：E-009 與 E-012 之間已看過 E-011 的描述結果（O-015，波動水準，沒有部位管理的損益）；trials_in_family 會把這次中止算成 H-018 家族的一次嘗試
 
 ## 8. 資料區間使用帳（越多次越不能當獨立驗證）
 
@@ -160,6 +171,7 @@
 | 2024-01-01 → 2099-01-01 | E-010 |
 | 2024-01-01 → 2099-01-01 | E-009 |
 | 2018-01-01 → 2099-01-01 | E-011 |
+| 2024-01-01 → 2099-01-01 | E-012 |
 
 ## 9. 研究空間覆蓋與自動產生的候選問題
 
@@ -167,7 +179,7 @@
 
 | 資訊來源 | 取得狀態 | 漲跌方向 | 未來波動 | 報酬分布／尾部 | 值不值得交易 | 成本與執行 | 市況轉換 |
 |---|---|---|---|---|---|---|---|
-| 價格 K 線 | in_hand | 29 | 6 | 1 | 2 | 3 | 3 |
+| 價格 K 線 | in_hand | 29 | 7 | 1 | 2 | 3 | 3 |
 | Tick／點差動態 | in_hand (MT5 ticks, months of history) | 2 | 1 | 0 | 1 | 2 | 0 |
 | 經濟事件實際值／預期值 | export_needed (ExportUsdCalendarValues) | 3 | 1 | 0 | 1 | 0 | 0 |
 | 利率／總經 | in_hand (to 2024-12) | 3 | 0 | 0 | 0 | 0 | 0 |

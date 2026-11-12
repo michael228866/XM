@@ -25,7 +25,10 @@ each comparison is only intraday re-weighting.
 
 Daily P&L: positions marked to the bid close of each H1 bar, exit at the stop/target/timeout price; swap charged
 at each server rollover crossed (Wednesday triple) at today's rate as a fraction of notional; returns summed per
-complete server day, zero when flat (non-compounding). Costs scenarios: base, spread x2, swap x1.5.
+complete server day, zero when flat (non-compounding). Swap: the account's actual swap is the base case. The
+XM demo account reports GOLD# swap_mode DISABLED and charged 0 swap on every position that crossed a rollover
+(O-016), so base swap = 0; the quoted swap_long (as points) x 1.5 is a stress scenario. Cost scenarios: base,
+spread x2, quoted swap x1.5.
 Raw metrics use each arm's own budget; "vol-matched" rescales an arm ex post to FIXED_RISK's realised daily
 volatility in the same window, so drawdown/tail gains from simply holding less cannot pass as skill
 (raw max_dd_pct compounds, vol-matched drawdown is a non-compounded sum).
@@ -45,7 +48,7 @@ from research_run_v1 import mt5_manifest_data
 from strategy_lab_v1 import PRICE_PER_POINT, first_touch, trade
 
 ARMS = ("FIXED_RISK", "EWMA_RISK", "EWMA_TARGET", "CONSTANT_NOTIONAL")
-SCENARIOS = {"base": (1.0, 1.0), "spread_x2": (2.0, 1.0), "swap_x1.5": (1.0, 1.5)}
+SCENARIOS = {"base": (1.0, "account", 1.0), "spread_x2": (2.0, "account", 1.0), "swap_quoted_x1.5": (1.0, "quoted", 1.5)}
 
 
 def entry_sigma(frame):
@@ -140,12 +143,12 @@ def window_eval(frame, signal, spec, sigma, rv, calib, swap_frac, a, b):
     f = frame[m]
     sig = np.asarray(signal)[m]
     out = {}
-    for sc, (spread_mult, swap_mult) in SCENARIOS.items():
+    for sc, (spread_mult, swap_source, swap_mult) in SCENARIOS.items():
         t = trades(f, sig, spec, spread_mult)
         w, capped = weights(t, sigma, spec, calib)
         series, per_trade, cost = {}, {}, {}
         for arm in ARMS:
-            series[arm], per_trade[arm], cost[arm] = daily_pnl(frame, t, w[arm], swap_frac, swap_mult)
+            series[arm], per_trade[arm], cost[arm] = daily_pnl(frame, t, w[arm], swap_frac[swap_source], swap_mult)
         days = series["FIXED_RISK"].index
         days = days[(days >= a) & (days < b)]
         series = {k: v.reindex(days, fill_value=0.0) for k, v in series.items()}
@@ -222,7 +225,7 @@ def decide(results, spec):
     wins = sum(v["EWMA_RISK"] >= v["FIXED_RISK"] for v in regs)
     regime_ok = wins >= len(regs) - 1 if len(regs) >= 2 else len(regs) == 1 and wins == 1
     if lo > 0:
-        robust = (all(p[s]["delta_sharpe"] > 0 for s in ("spread_x2", "swap_x1.5"))
+        robust = (all(p[s]["delta_sharpe"] > 0 for s in ("spread_x2", "swap_quoted_x1.5"))
                   and e["vol_matched_max_dd_pct"] >= f["vol_matched_max_dd_pct"]
                   and e["vol_matched_cvar5_bp"] >= f["vol_matched_cvar5_bp"]
                   and regime_ok and sum(v["EWMA_RISK"] >= v["FIXED_RISK"] for v in years) >= 2)
@@ -245,8 +248,8 @@ def run(run_dir, spec, trials):
         h1 = lab.copy_rates("H1", start - timedelta(days=60), end)
         higher = {tf: lab.copy_rates(tf, start - timedelta(days=900), end) for tf in lab.HIGHER}
         info = mt5.symbol_info("GOLD#")
-        if info.swap_mode != mt5.SYMBOL_SWAP_MODE_POINTS:
-            raise SystemExit(f"swap_mode {info.swap_mode}: swap_frac assumes swap in points")
+        if info.swap_mode not in (mt5.SYMBOL_SWAP_MODE_DISABLED, mt5.SYMBOL_SWAP_MODE_POINTS):
+            raise RuntimeError(f"swap_mode {info.swap_mode}: only DISABLED and POINTS are handled")
         manifest_data = mt5_manifest_data(mt5, ["GOLD#"], start - timedelta(days=900), end, len(h1),
                                           spec["windows"], "MT5 history can be revised by the broker")
     finally:
@@ -255,7 +258,8 @@ def run(run_dir, spec, trials):
     frame = frame[frame["TIME_DT"].dt.normalize() < frame["TIME_DT"].dt.normalize().max()]  # drop today's day
     frame = frame.reset_index(drop=True)
     signal = model.predict_proba(frame[config["features"]].astype(np.float32))[:, 1] >= config["threshold"]
-    swap_frac = info.swap_long * info.point / float(frame["CLOSE"].iloc[-1])  # per night, fraction of notional
+    quoted = info.swap_long * info.point / float(frame["CLOSE"].iloc[-1])  # per night, fraction of notional
+    swap_frac = {"account": 0.0 if info.swap_mode == mt5.SYMBOL_SWAP_MODE_DISABLED else quoted, "quoted": quoted}
     results, calib = evaluate(frame, signal, spec, swap_frac)
     verdict = decide(results, spec)
     outcome = {"supported": "supported", "refuted": "refuted"}.get(verdict, "inconclusive")
@@ -267,7 +271,7 @@ def run(run_dir, spec, trials):
                f"vol-matched MDD {e['vol_matched_max_dd_pct']}% vs {f['vol_matched_max_dd_pct']}%, CVaR5 "
                f"{e['vol_matched_cvar5_bp']} vs {f['vol_matched_cvar5_bp']} bp; alpha on FIXED+market "
                f"{b['alpha_on_fixed_and_market']}; delta Sharpe spread x2 {results['oos_2024_on']['spread_x2']['delta_sharpe']}, "
-               f"swap x1.5 {results['oos_2024_on']['swap_x1.5']['delta_sharpe']}; descriptive EWMA_TARGET vs FIXED_RISK "
+               f"quoted swap x1.5 {results['oos_2024_on']['swap_quoted_x1.5']['delta_sharpe']}; descriptive EWMA_TARGET vs FIXED_RISK "
                f"{b['descriptive_EWMA_TARGET_vs_FIXED_RISK']}, vs CONSTANT_NOTIONAL "
                f"{b['descriptive_EWMA_TARGET_vs_CONSTANT_NOTIONAL']}; hour R^2 of weight ratios {b['hour_r2_log_weight_ratio']}")
     keys = ("days", "net_mean_bp", "annual_pct", "sharpe", "max_dd_pct", "calmar", "vol_matched_max_dd_pct",
@@ -285,7 +289,7 @@ def run(run_dir, spec, trials):
         "| window | scenario | arm | trades | " + " | ".join(keys) + " |", "|---|---|---|---|" + "---|" * len(keys), *rows, "",
         f"By regime (2024+, base): {b['by_regime_sharpe']}", f"By year (2024+, base): {b['by_year_sharpe']}",
         f"Leverage cap binding (2024+, base): {b['capped']}", f"Calibration (2018-2023 signal bars, entry info only): {calib}",
-        f"Swap per night (fraction of notional, today's rate): {swap_frac:.6f}"])
+        f"Swap per night (fraction of notional): account {swap_frac['account']:.6f}, quoted {swap_frac['quoted']:.6f}"])
     return {"outcome": outcome, "evidence_class": "development", "summary": summary,
             "failure_cause": "none" if verdict == "supported" else "information" if verdict in ("refuted", "not_significant")
             else "method" if verdict == "significant_not_robust" else "data",  # underpowered / too few trades
