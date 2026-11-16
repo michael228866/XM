@@ -34,9 +34,17 @@ REQUIRED = {
 # refuted = evidence contradicts it; not_significant = tested, no significant effect found (absence not proven);
 # underpowered = sample too small to decide; exhausted_needs_new_data = over-explored, only fresh or new data can decide.
 HYPOTHESIS_STATUS = {"open", "testing", "supported", "refuted", "not_significant", "underpowered",
-                     "exhausted_needs_new_data", "inconclusive", "parked", "closed"}
+                     "exhausted_needs_new_data", "inconclusive", "parked", "closed", "premise_invalid",
+                     "needs_revalidation"}
+# premise_invalid = a premise it rests on was shown false (not refuted: the claim itself was never tested on valid
+# ground); needs_revalidation = evidence it rests on used defective data or results (not refuted either).
 STATUS_LABEL = {"refuted": "證據推翻", "not_significant": "未找到顯著優勢（不代表不存在）",
-                "underpowered": "樣本不足，無法判定", "exhausted_needs_new_data": "已過度研究，需要新資料才能判定"}
+                "underpowered": "樣本不足，無法判定", "exhausted_needs_new_data": "已過度研究，需要新資料才能判定",
+                "premise_invalid": "前提失效（不等於假說被推翻）", "needs_revalidation": "依賴的證據受影響，需要重新驗證（不等於假說被推翻）"}
+# Dependency graph (decision.set_depends / decision.flag): nodes are ledger ids or assets named data:/model:/premise:.
+DEP_TYPES = {"data", "premise", "evidence"}
+FLAG_STATES = {"defective", "invalid", "ok"}  # defective = unreliable, invalid = shown false, ok = repaired/verified
+ASSET_PREFIXES = ("data:", "model:", "premise:")
 VERDICTS = {"approve", "revise", "reject"}
 PRIORITY_KEYS = {"info_gain", "novelty", "falsifiability", "data_quality", "economic_value", "simplicity",
                  "mining_risk"}
@@ -148,6 +156,17 @@ def check(event, events, root=ROOT):
             if h not in hyps:
                 raise ValueError(f"unknown hypothesis {h}")
             check_priority_inputs(inputs)
+        for n, ds in event.get("set_depends", {}).items():
+            if not (n in ids or n.startswith(ASSET_PREFIXES)) or not isinstance(ds, list):
+                raise ValueError(f"set_depends needs a ledger id or data:/model:/premise: asset and a list: {n}")
+            for d in ds:
+                if d.get("type") not in DEP_TYPES or not d.get("on"):
+                    raise ValueError(f"dependency of {n} needs 'on' and type in {sorted(DEP_TYPES)}: {d}")
+        for n, f in event.get("flag", {}).items():
+            if f.get("state") not in FLAG_STATES:
+                raise ValueError(f"flag state must be one of {sorted(FLAG_STATES)}: {n}")
+            if not f.get("evidence") or any(x not in ids for x in f["evidence"]):
+                raise ValueError(f"flag on {n} needs evidence ids already in the ledger")  # every adjustment cites evidence
         prereg = {e["id"] for e in events if e["kind"] == "preregistration"}
         done = {e["experiment"] for e in events if e["kind"] == "result"}
         for x in event.get("withdraw", []):
@@ -252,11 +271,28 @@ def render(events, path=RENDERED):
     import research_planner_v1 as planner  # late import: the planner uses this module's state()
     out += ["", "## 2. 尚未驗證的假說（依 Research Priority Engine 排序）", "",
             "分數綜合資訊增益、與過去研究的差異、可反證性、資料品質與取得成本、經濟價值、工程簡單度，"
-            "扣掉資料探勘風險與同族群已試次數。失敗但能排除重要可能性的實驗同樣得分。公式見 `research_planner_v1.py`。", "",
-            "| ID | 假說 | 族群 | 狀態 | 優先分 | 推翻條件 |", "|---|---|---|---|---|---|"]
-    for h, score in planner.rank(events):
-        out.append(f"| {h['id']} | {h['title']} | {h['family']} | {h['status']} | {score} | "
-                   f"{h['falsified_if'].replace('|', '&#124;')} |")
+            "扣掉資料探勘風險與同族群已試次數。失敗但能排除重要可能性的實驗同樣得分。公式見 `research_planner_v1.py`。",
+            "「原始分」是輸入值算出的分數；「系統自動調整」由依賴圖推得，每項都附決策與證據編號，"
+            "屬於系統建議，狀態變更仍需決策核准（見 2c）。前提失效的假說不排序（見 2a）。", "",
+            "| ID | 項目 | 狀態 | 原始分 | 系統自動調整（證據） | 最終分 | 推翻條件 |", "|---|---|---|---|---|---|---|"]
+    cell = lambda t: str(t).replace("|", "&#124;")
+    for r in planner.ranking(events):
+        adj = "<br>".join(f"{d:+g} {cell(w)}（{', '.join(c)}）" for d, w, c in r["adjust"]) or "—"
+        out.append(f"| {r['id']} | {cell(r['title'])} | {r['status']} | {r['base'] if r['base'] is not None else '—'} | "
+                   f"{adj} | {r['score']} | {cell(r['falsified_if'])} |")
+    a = planner.assess(events)
+    out += ["", "## 2a. 前提失效（不排序；不等於假說被推翻）", ""]
+    for h in hyps.values():
+        if a[h["id"]]["state"] == "premise_invalid" or (h["status"] == "premise_invalid" and not a[h["id"]]["deps"]):
+            out.append(f"- **{h['id']}** {h['title']}（核准狀態 {h['status']}）：{planner.why(a[h['id']])}")
+    out += ["", "## 2c. 系統自動建議（尚未核准；核准須以決策 set_status 記錄）", "",
+            "| 節點 | 核准狀態 | 系統建議 | 原因（依賴路徑） | 證據 |", "|---|---|---|---|---|"]
+    for n, status, suggestion, reason, cited in planner.suggestions(events):
+        out.append(f"| {n} | {status} | {suggestion} | {cell(reason)} | {', '.join(cited)} |")
+    out += ["", "`annotate_only`：已有結論的假說、實驗結果、觀察與模型只標註其證據受影響，不改變狀態，也不宣稱過去策略失效。",
+            "", "## 2d. 重排紀錄（每次改變引擎輸入的決策造成的名次與分數變化）", ""]
+    for decision, moves in planner.rerank_log(events):
+        out.append(f"- **{decision}**：" + "；".join(moves))
     out += ["", "## 2b. 證據狀態分類（結論不得超出這個範圍）", ""]
     for status, label in STATUS_LABEL.items():
         names = [f"{h['id']} {h['title']}" for h in hyps.values() if h["status"] == status]

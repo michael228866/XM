@@ -1,6 +1,6 @@
 # XM 研究記憶（自動產生，請勿手改）
 
-由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 99；帳本完整性：OK。
+由 `research_memory_v1.py render` 從 `research_memory/ledger.jsonl` 產生。事件數 102；帳本完整性：OK。
 
 分類規則：**已驗證觀察**＝有證據且未撤回；**假說**＝尚未有結論；**失敗**＝被推翻或中止；**資料重複使用**＝評估區間在登錄前已被看過，只能當開發證據。
 
@@ -30,29 +30,72 @@
   證據：read-only MT5 symbol_info and history_deals_get on 2026-11-12 (no orders sent)
 - **O-018** E-013（依預先登記判為 supported）：2014-2017 的 VR_day 0.434（CI 0.39-0.49），2018-2023 為 0.932（CI 0.85-1.02），差 0.498（CI 0.41-0.60），週頻差 0.458。逐年 VR_day：2014 0.67、2015 0.45、2016 0.35、2017 0.36、2018 0.69（過渡）、2019-2023 0.88-1.02、2024-2026 1.02-1.16。2018 年前伺服器 0 時與 1 時兩根 H1 合占全部 H1 報酬平方的 58%（各約 29%），2018 年後約 9%；0 時那根只在 2018 年前存在（每日 24 根→23 根，變更月 2018-04）；0 時與 1 時份額相等，呈現換日時段報價先跳開再回歸的型態。RV_H1／Parkinson 2014-2017 為 2.30，之後約 1.0。經變異比調整後，2018-2023 對 2014-2017 的 RV 水準比由 0.465 變為 0.999：所謂 2018 年後波動減半幾乎全部來自這個型態。SPREAD 欄位在 2013-2018 有一半以上為 0（變更月 2018-10），屬成本欄位缺失。XM 自家交叉匯率殘差 2017 下半年 1.49，2018 與 2020 約 0.55，2023 年後約 0.002，品質逐年改善。按預先登記的措辭，這是『與報價雜訊相符的日內反轉過多』，形式上不能排除真實的日內均值回歸；但集中在換日一小時並在下一小時回歸、規模達日變異的一半以上，解讀上指向換日時段的報價瑕疵。外部資料源無法取得，資料源層級差異未判定  
   證據：training_runs/20261112T154049Z_research_e013_exp_data_quality_v1/report.md
+- **O-019** 訓練資料稽核（讀程式與紀錄，未重跑）：H1 C（frozen/h1_C_long_v1）以 GOLD# H1 擬合 2014-01-01 至 2022-12-31（依持有期 purge），2023 挑門檻，2024-01-01 起測試。16 個特徵中 ATR_PCT、BB_WIDTH、VOLA_RATIO、BODY_PCT、ROC_5、HOUR_SIN/COS 直接取自 H1 K 棒，標籤是以 H1 ATR 為單位（TP 3.0／SL 1.5）在 H1 高低價上的先觸及，兩者都暴露在 E-013 的換日時段型態（2014-2017 的 0、1 時 K 棒）之下；2018 年前 SPREAD=0，因此以價格的 0.008% 作成本下限。結論：H1 C 的擬合期受影響（約 5 年中有 4 年在 2014-2017、1 年在過渡年 2018），2023 門檻期與 2024+ 測試期不受影響。gemini.py 載入的 gold_long_recent_candidate_xgb.json 由 gold_long_recent_walk_forward.py 以 M1 訓練，資料起點 2025-01-01（驗證 2026-04-01、測試 2026-06-01），高階週期暖機最多回推 760 天（約 2022-12），全部在 2019 年之後，不受 E-013 揭露的問題影響  
+  證據：frozen/h1_C_long_v1/h1_lab_v1.py（docstring 與 FEATURES）、frozen/h1_C_long_v1/config.json、gold_long_recent_walk_forward.json（data.start／validation_start／test_start）、gold_recent_walk_forward.py
 
 ## 2. 尚未驗證的假說（依 Research Priority Engine 排序）
 
 分數綜合資訊增益、與過去研究的差異、可反證性、資料品質與取得成本、經濟價值、工程簡單度，扣掉資料探勘風險與同族群已試次數。失敗但能排除重要可能性的實驗同樣得分。公式見 `research_planner_v1.py`。
+「原始分」是輸入值算出的分數；「系統自動調整」由依賴圖推得，每項都附決策與證據編號，屬於系統建議，狀態變更仍需決策核准（見 2c）。前提失效的假說不排序（見 2a）。
 
-| ID | 假說 | 族群 | 狀態 | 優先分 | 推翻條件 |
-|---|---|---|---|---|---|
-| H-008 | 收盤前平倉、只做盤中多單，比一直持有多單（付過夜利息）的風險調整後報酬更好 | cost_structure | inconclusive | 38.5 | 2018-2022 成本 x1 下 INTRADAY_LONG 的 Sharpe 不高於 ALWAYS_LONG |
-| H-013 | 可以預測未來 1 小時的波動是否大於 k 倍點差（不預測方向），而 gemini 的虧損集中在預測『不值得交易』的時段 | tradeability | open | 36.0 | 樣本外波動大小分類 AUC <= 0.55，或低可交易性組的 gemini 回放 R 沒有比其他組低 0.05R 以上 |
-| H-009 | 點差相對同時段常態異常擴大時，接下來的波動與滑價較大，是不值得進場的時刻 | microstructure | open | 34.0 | 點差 z 值最高 10% 時段之後 30 分鐘的實現波動比 < 1.2，或排除這些時段進場使既有策略回放淨 R 改善 < 0.02R |
-| H-012 | 低流動時段的單根急動（> 3 倍 ATR）在 15-60 分鐘內部分回補，扣除當下實際點差後期望為正 | transient_anomaly | open | 33.0 | 2018-2022 以實際點差計的平均淨回補 <= 0；事件數 < 200 則判定樣本不足 |
-| H-016 | 波動調整倉位只在特定市況（如 2024 年後的高波動趨勢）改善風險調整後報酬；前瞻資料上仍成立 | second_moment_regime | open | 32.0 | 2026-11-12 起至少 12 個月的前瞻資料上，MANAGED 對 CONST_EQUAL_EXPOSURE 的 Sharpe 差 <= 0 |
-| H-003 | US macro surprises (actual vs forecast) cause post-release gold drift | event_surprise | open | 31.0 | post-release returns in the surprise direction are not positive beyond spread at the pre-declared horizon in 2014-2022 |
-| H-010 | 重要美國數據公布前後的波動放大可由事件類型和預期差大小預測；公布前後停止進場能改善 M1 策略 | event_volatility | open | 31.0 | 公布後／公布前實現波動比與 &#124;預期差&#124; 的等級相關 <= 0，或 ±30 分鐘不交易使回放淨 R 改善 < 0.02R |
-| H-007 | For M1 trading, execution cost (hour-of-day spread, entry method) matters more than the model | execution | open | 28.0 | restricting to the cheapest hours does not raise replay mean R by more than 0.03R |
-| H-002 | Exogenous macro data work at their native weekly horizon | exogenous_horizon | underpowered | 25.5 | discovery (2016-2022) IC in the wrong direction or &#124;t&#124; < 1 |
-| H-017 | H1 C runner 在換日前平倉、隔日重新評估，能在今日 swap 水準下改善每筆淨 R | cost_structure | parked | 24.5 | 在 2024+ 回放與前瞻 demo 上，換日前平倉版本的平均淨 R 不高於原版，或差距 < 0.02R |
-| H-022 | 只做水準重新校準（每月一個尺度參數，用過去資料）的 EWMA_094 預測，在前瞻資料上優於凍結與未校準版本 | fixed_parameter_drift | open | 23.5 | 前瞻至少 250 個完整交易日，校準版 QLIKE 不低於原始 EWMA_094（DM 單尾 p >= 0.05） |
-| H-018 | 波動預測能改善交易決策：倉位風險控制、實際回撤、辨識不值得交易的環境，且改善足以抵銷額外交易成本 | second_moment_decision_value | underpowered | 20.5 | 2018-2023 以凍結預測做風險目標倉位與不交易濾網，在相同平均曝險下，扣除額外換手成本後 Sharpe 不高於固定風險版本，且最大回撤降低 < 10% |
-| H-006 | Strategy timing skill persists over months (premise of any regime switch or bandit) | adaptivity | parked | 20.0 | rank correlation of consecutive 3-month residuals <= 0 |
-| H-019 | 對波動水準不敏感的 HAR（log-HAR 或無截距比例形式）凍結參數後不輸 EWMA | second_moment_forecast | open | 19.5 | 前瞻至少 250 個完整交易日，凍結 log-HAR 的 QLIKE 不低於 EWMA_094（DM 單尾 p >= 0.05） |
-| H-020 | E-008／E-010 固定參數模型的退化可分解為可量測的來源（目標分布、共變量、概念、校準、資料品質），且主要來源可在前瞻資料上單獨檢驗 | fixed_parameter_drift | open | 19.5 | 描述性診斷本身不判定；後續每個解釋各自預先登記前瞻檢驗 |
-| H-015 | 同一組價格／技術指標特徵的方向預測變體（Gen1-21、S4、經典規則、網路策略、LSTM、組合規則）含有可交易的進場時機優勢 | price_direction_variants | exhausted_needs_new_data | 5.0 | 前瞻資料上，預先凍結的候選時機殘差（扣當月漂移）連續 6 個月 <= 0 |
+| ID | 項目 | 狀態 | 原始分 | 系統自動調整（證據） | 最終分 | 推翻條件 |
+|---|---|---|---|---|---|---|
+| H-013 | 可以預測未來 1 小時的波動是否大於 k 倍點差（不預測方向），而 gemini 的虧損集中在預測『不值得交易』的時段 | open | 36.0 | — | 36.0 | 樣本外波動大小分類 AUC <= 0.55，或低可交易性組的 gemini 回放 R 沒有比其他組低 0.05R 以上 |
+| H-009 | 點差相對同時段常態異常擴大時，接下來的波動與滑價較大，是不值得進場的時刻 | open | 34.0 | — | 34.0 | 點差 z 值最高 10% 時段之後 30 分鐘的實現波動比 < 1.2，或排除這些時段進場使既有策略回放淨 R 改善 < 0.02R |
+| H-012 | 低流動時段的單根急動（> 3 倍 ATR）在 15-60 分鐘內部分回補，扣除當下實際點差後期望為正 | open | 33.0 | — | 33.0 | 2018-2022 以實際點差計的平均淨回補 <= 0；事件數 < 200 則判定樣本不足 |
+| H-016 | 波動調整倉位只在特定市況（如 2024 年後的高波動趨勢）改善風險調整後報酬；前瞻資料上仍成立 | open | 32.0 | — | 32.0 | 2026-11-12 起至少 12 個月的前瞻資料上，MANAGED 對 CONST_EQUAL_EXPOSURE 的 Sharpe 差 <= 0 |
+| H-003 | US macro surprises (actual vs forecast) cause post-release gold drift | open | 31.0 | — | 31.0 | post-release returns in the surprise direction are not positive beyond spread at the pre-declared horizon in 2014-2022 |
+| H-010 | 重要美國數據公布前後的波動放大可由事件類型和預期差大小預測；公布前後停止進場能改善 M1 策略 | open | 31.0 | — | 31.0 | 公布後／公布前實現波動比與 &#124;預期差&#124; 的等級相關 <= 0，或 ±30 分鐘不交易使回放淨 R 改善 < 0.02R |
+| H-007 | For M1 trading, execution cost (hour-of-day spread, entry method) matters more than the model | open | 28.0 | — | 28.0 | restricting to the cheapest hours does not raise replay mean R by more than 0.03R |
+| H-002 | Exogenous macro data work at their native weekly horizon | underpowered | 25.5 | — | 25.5 | discovery (2016-2022) IC in the wrong direction or &#124;t&#124; < 1 |
+| data:gold_h1_2014_2017 | 上游修復：處理 data:gold_h1_2014_2017 並重新驗證 H-018、H-019、H-020、H-022、model:h1_c | repair | — | +0 換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%）（D-017, O-018, E-013） | 25.5 | — |
+| data:gold_h1_2018 | 上游修復：處理 data:gold_h1_2018 並重新驗證 H-018、model:h1_c | repair | — | +0 過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起（D-017, O-018） | 21.0 | — |
+| data:gold_spread_field_pre_2018_10 | 上游修復：處理 data:gold_spread_field_pre_2018_10 並重新驗證 H-018、model:h1_c | repair | — | +0 SPREAD 欄位一半以上為 0（D-017, O-018） | 21.0 | — |
+| H-006 | Strategy timing skill persists over months (premise of any regime switch or bandit) | parked | 20.0 | — | 20.0 | rank correlation of consecutive 3-month residuals <= 0 |
+| H-022 | 只做水準重新校準（每月一個尺度參數，用過去資料）的 EWMA_094 預測，在前瞻資料上優於凍結與未校準版本 | needs_revalidation | 23.5 | -4 資料品質：上游資料有缺陷，data_quality 降為 1（D-017, E-013, O-018, data:gold_h1_2014_2017）<br>-5 依賴證據可信度：H-022 → O-014 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合）；H-022 → O-014 → E-010 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 EWMA／GVZ 模型以 2014-2017 擬合）；H-022 → O-015 → E-011 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合）（D-017, E-013, O-018） | 14.5 | 前瞻至少 250 個完整交易日，校準版 QLIKE 不低於原始 EWMA_094（DM 單尾 p >= 0.05） |
+| H-018 | 波動預測能改善交易決策：倉位風險控制、實際回撤、辨識不值得交易的環境，且改善足以抵銷額外交易成本 | underpowered | 20.5 | -4 資料品質：上游資料有缺陷，data_quality 降為 1（D-017, E-013, O-018, data:gold_h1_2014_2017, data:gold_h1_2018, data:gold_spread_field_pre_2018_10）<br>-5 依賴證據可信度：H-018 → E-012 → model:h1_c → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 擬合 2014-2022；2023 門檻與 2024+ 測試不受影響，保留）；H-018 → E-012 → model:h1_c → data:gold_h1_2018（defective：過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起）；H-018 → E-012 → model:h1_c → data:gold_spread_field_pre_2018_10（defective：SPREAD 欄位一半以上為 0 / 以 0.008% 成本下限代替）（D-017, E-013, O-018） | 11.5 | 2018-2023 以凍結預測做風險目標倉位與不交易濾網，在相同平均曝險下，扣除額外換手成本後 Sharpe 不高於固定風險版本，且最大回撤降低 < 10% |
+| H-020 | E-008／E-010 固定參數模型的退化可分解為可量測的來源（目標分布、共變量、概念、校準、資料品質），且主要來源可在前瞻資料上單獨檢驗 | open | 19.5 | -3 資料品質：上游資料有缺陷，data_quality 降為 1（D-017, E-013, O-018, data:gold_h1_2014_2017）<br>-5 依賴證據可信度：H-020 → O-013 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合）；H-020 → O-014 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合）；H-020 → O-014 → E-010 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 EWMA／GVZ 模型以 2014-2017 擬合）（D-017, E-013, O-018） | 11.5 | 描述性診斷本身不判定；後續每個解釋各自預先登記前瞻檢驗 |
+| H-019 | 對波動水準不敏感的 HAR（log-HAR 或無截距比例形式）凍結參數後不輸 EWMA | needs_revalidation | 19.5 | -4 資料品質：上游資料有缺陷，data_quality 降為 1（D-017, E-013, O-018, data:gold_h1_2014_2017）<br>-5 依賴證據可信度：H-019 → O-013 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合）（D-017, E-013, O-018） | 10.5 | 前瞻至少 250 個完整交易日，凍結 log-HAR 的 QLIKE 不低於 EWMA_094（DM 單尾 p >= 0.05） |
+| H-015 | 同一組價格／技術指標特徵的方向預測變體（Gen1-21、S4、經典規則、網路策略、LSTM、組合規則）含有可交易的進場時機優勢 | exhausted_needs_new_data | 5.0 | — | 5.0 | 前瞻資料上，預先凍結的候選時機殘差（扣當月漂移）連續 6 個月 <= 0 |
+
+## 2a. 前提失效（不排序；不等於假說被推翻）
+
+- **H-008** 收盤前平倉、只做盤中多單，比一直持有多單（付過夜利息）的風險調整後報酬更好（核准狀態 premise_invalid）：H-008 → premise:overnight_swap_charged（invalid：本 demo 帳戶 swap_mode=DISABLED，跨換日部位未被收 swap（真實帳戶另需確認） / 隔夜持有多單要付 swap）
+- **H-017** H1 C runner 在換日前平倉、隔日重新評估，能在今日 swap 水準下改善每筆淨 R（核准狀態 parked）：H-017 → premise:overnight_swap_charged（invalid：本 demo 帳戶 swap_mode=DISABLED，跨換日部位未被收 swap（真實帳戶另需確認））；H-017 → model:h1_c → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 擬合 2014-2022；2023 門檻與 2024+ 測試不受影響，保留）；H-017 → model:h1_c → data:gold_h1_2018（defective：過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起）
+
+## 2c. 系統自動建議（尚未核准；核准須以決策 set_status 記錄）
+
+| 節點 | 核准狀態 | 系統建議 | 原因（依賴路徑） | 證據 |
+|---|---|---|---|---|
+| E-001 | — | annotate_only | E-001 → model:h1_c → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 擬合 2014-2022；2023 門檻與 2024+ 測試不受影響，保留）；E-001 → model:h1_c → data:gold_h1_2018（defective：過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起）；E-001 → model:h1_c → data:gold_spread_field_pre_2018_10（defective：SPREAD 欄位一半以上為 0 / 以 0.008% 成本下限代替） | D-017, E-013, O-018 |
+| E-008 | — | annotate_only | E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合） | D-017, E-013, O-018 |
+| E-010 | — | annotate_only | E-010 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 EWMA／GVZ 模型以 2014-2017 擬合） | D-017, E-013, O-018 |
+| E-011 | — | annotate_only | E-011 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合）；E-011 → E-010 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 EWMA／GVZ 模型以 2014-2017 擬合）；E-011 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 與 2014-2017 分布比較） | D-017, E-013, O-018 |
+| E-012 | — | annotate_only | E-012 → model:h1_c → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 擬合 2014-2022；2023 門檻與 2024+ 測試不受影響，保留）；E-012 → model:h1_c → data:gold_h1_2018（defective：過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起）；E-012 → model:h1_c → data:gold_spread_field_pre_2018_10（defective：SPREAD 欄位一半以上為 0 / 以 0.008% 成本下限代替）；E-012 → data:gold_h1_2018（defective：過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起 / 校準窗 2018-2023） | D-017, E-013, O-018 |
+| H-011 | refuted | annotate_only | H-011 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合） | D-017, E-013, O-018 |
+| H-014 | refuted | annotate_only | H-014 → E-010 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 EWMA／GVZ 模型以 2014-2017 擬合） | D-017, E-013, O-018 |
+| H-017 | parked | premise_invalid | H-017 → premise:overnight_swap_charged（invalid：本 demo 帳戶 swap_mode=DISABLED，跨換日部位未被收 swap（真實帳戶另需確認））；H-017 → model:h1_c → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 擬合 2014-2022；2023 門檻與 2024+ 測試不受影響，保留）；H-017 → model:h1_c → data:gold_h1_2018（defective：過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起）；H-017 → model:h1_c → data:gold_spread_field_pre_2018_10（defective：SPREAD 欄位一半以上為 0 / 以 0.008% 成本下限代替） | D-017, E-013, O-016, O-018 |
+| H-018 | underpowered | needs_revalidation | H-018 → E-012 → model:h1_c → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 擬合 2014-2022；2023 門檻與 2024+ 測試不受影響，保留）；H-018 → E-012 → model:h1_c → data:gold_h1_2018（defective：過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起）；H-018 → E-012 → model:h1_c → data:gold_spread_field_pre_2018_10（defective：SPREAD 欄位一半以上為 0 / 以 0.008% 成本下限代替）；H-018 → E-012 → data:gold_h1_2018（defective：過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起 / 校準窗 2018-2023） | D-017, E-013, O-018 |
+| H-020 | open | needs_revalidation | H-020 → O-013 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合）；H-020 → O-014 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合）；H-020 → O-014 → E-010 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 EWMA／GVZ 模型以 2014-2017 擬合）；H-020 → O-015 → E-011 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合） | D-017, E-013, O-018 |
+| O-013 | — | annotate_only | O-013 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合） | D-017, E-013, O-018 |
+| O-014 | — | annotate_only | O-014 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合）；O-014 → E-010 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 EWMA／GVZ 模型以 2014-2017 擬合） | D-017, E-013, O-018 |
+| O-015 | — | annotate_only | O-015 → E-011 → E-008 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 HAR 以 2014-2017 擬合）；O-015 → E-011 → E-010 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 凍結 EWMA／GVZ 模型以 2014-2017 擬合）；O-015 → E-011 → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 與 2014-2017 分布比較） | D-017, E-013, O-018 |
+| O-017 | — | annotate_only | O-017 → E-012 → model:h1_c → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 擬合 2014-2022；2023 門檻與 2024+ 測試不受影響，保留）；O-017 → E-012 → model:h1_c → data:gold_h1_2018（defective：過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起）；O-017 → E-012 → model:h1_c → data:gold_spread_field_pre_2018_10（defective：SPREAD 欄位一半以上為 0 / 以 0.008% 成本下限代替）；O-017 → E-012 → data:gold_h1_2018（defective：過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起 / 校準窗 2018-2023） | D-017, E-013, O-018 |
+| model:h1_c | — | annotate_only | model:h1_c → data:gold_h1_2014_2017（defective：換日時段型態放大 H1 實現波動（VR_day 0.43，0/1 時占 58%） / 擬合 2014-2022；2023 門檻與 2024+ 測試不受影響，保留）；model:h1_c → data:gold_h1_2018（defective：過渡年（VR_day 0.69）；D-016 規定 H1 擬合與校準自 2019-01-01 起）；model:h1_c → data:gold_spread_field_pre_2018_10（defective：SPREAD 欄位一半以上為 0 / 以 0.008% 成本下限代替） | D-017, E-013, O-018 |
+
+`annotate_only`：已有結論的假說、實驗結果、觀察與模型只標註其證據受影響，不改變狀態，也不宣稱過去策略失效。
+
+## 2d. 重排紀錄（每次改變引擎輸入的決策造成的名次與分數變化）
+
+- **D-004**：H-001 None → 未列入（名次 1 → —）
+- **D-006**：H-002 None → 25.5（名次 8 → 12）；H-003 None → 31.0（名次 9 → 8）；H-004 None → 28.0（名次 10 → 10）；H-005 None → 38.0（名次 11 → 3）；H-006 None → 20.0（名次 12 → 13）；H-007 None → 28.0（名次 13 → 11）
+- **D-007**：H-004 26.5 → 未列入（名次 13 → —）；H-005 36.5 → 未列入（名次 4 → —）
+- **D-009**：H-011 36.5 → 未列入（名次 3 → —）
+- **D-011**：H-014 37.5 → 未列入（名次 2 → —）
+- **D-013**：H-017 29.5 → 24.5（名次 10 → 12）
+- **D-014**：H-018 33.5 → 20.5（名次 4 → 13）
+- **D-016**：H-021 31.5 → 未列入（名次 6 → —）
+- **D-017**：H-008 38.5 → 未列入（名次 1 → —）；H-017 24.5 → 未列入（名次 10 → —）；H-018 20.5 → 11.5（名次 12 → 14）；H-019 19.5 → 10.5（名次 14 → 16）；H-020 19.5 → 11.5（名次 15 → 15）；H-022 23.5 → 14.5（名次 11 → 13）；data:gold_h1_2014_2017 未列入 → 25.5（名次 — → 9）；data:gold_h1_2018 未列入 → 21.0（名次 — → 10）；data:gold_spread_field_pre_2018_10 未列入 → 21.0（名次 — → 11）
 
 ## 2b. 證據狀態分類（結論不得超出這個範圍）
 
@@ -60,6 +103,8 @@
 - **未找到顯著優勢（不代表不存在）**：H-001 Candidate H1 edges are drift exposure, not timing skill
 - **樣本不足，無法判定**：H-002 Exogenous macro data work at their native weekly horizon；H-018 波動預測能改善交易決策：倉位風險控制、實際回撤、辨識不值得交易的環境，且改善足以抵銷額外交易成本
 - **已過度研究，需要新資料才能判定**：H-015 同一組價格／技術指標特徵的方向預測變體（Gen1-21、S4、經典規則、網路策略、LSTM、組合規則）含有可交易的進場時機優勢
+- **前提失效（不等於假說被推翻）**：H-008 收盤前平倉、只做盤中多單，比一直持有多單（付過夜利息）的風險調整後報酬更好
+- **依賴的證據受影響，需要重新驗證（不等於假說被推翻）**：H-019 對波動水準不敏感的 HAR（log-HAR 或無截距比例形式）凍結參數後不輸 EWMA；H-022 只做水準重新校準（每月一個尺度參數，用過去資料）的 EWMA_094 預測，在前瞻資料上優於凍結與未校準版本
 
 ## 3. 失敗的實驗與被推翻的假說
 
@@ -153,6 +198,8 @@
 - **D-014** H-018 設為 underpowered：E-012 既不能排除 0.2 Sharpe 量級的改善，也不能排除同量級的惡化；風險面（同波動回撤、集中度）沒有改善跡象。以 H1 C 每年約 100 筆的頻率，要把 CI 半寬從約 0.45 縮到 0.2 需要約 5 倍資料（十年以上），所以 H-018 以 H1 C 繼續累積的資訊增益很低，調降優先序；不更動任何 Runner。依使用者指示，部位管理沒有可證實的額外價值，研究轉向不同經濟機制：優先順序依 Priority Engine，其中 H-008 必須先以帳戶實際 swap（O-016）重新設計。：照預先登記執行；underpowered 不是推翻，但在可預見的資料量下也無法判定，繼續投入的價值低
 - **D-015** 使用者決定的順序：H-021（歷史資料可信度）→ H-009（點差異常與可執行性）→ H-013（交易經濟優勢判斷，主要方向），並改進 Priority Engine（前提有效性、資料可用性、假說依賴、已有反證與範圍、研究多樣性、資料品質對下游的影響；失效假說自動轉入適當狀態並保留原因與證據）。E-013 是資料診斷：不訓練模型、不評估策略、不得用來重新宣稱任何過去策略具有獨立樣本外優勢。外部獨立黃金資料（Stooq／Dukascopy／Yahoo）在 2026-11-12 從本機無法取得，改以 GOLD# 的 M1／H1／D1 互相核對與 GOLD#／EURUSD／XAUEUR# 交叉匯率恆等式核對；能只靠外部資料判定的部分歸為無法判定：後續所有研究都依賴歷史資料；先確認哪些缺陷已證實、哪些是真實市場差異、哪些無法判定
 - **D-016** H-021 設為 supported（範圍：2018 年前 H1 層級的價格統計受換日時段型態嚴重放大）。資料使用規則：任何以 H1（或更細）價格統計擬合、校準或估計成本的研究，預設只用 2019-01-01 之後的資料；2018 為過渡年；2019 之前的期間只能在預先登記中說明理由並把它當成獨立的資料品質條件。點差研究只能用 2018-10 之後（之前欄位缺失）。受影響的既有結論（保留原紀錄，不改寫，只註記）：E-008／E-010 的凍結模型以 2014-2017 擬合，主要學到被放大的波動水準；O-013 至 O-015 中『固定參數退化／目標分布改變／校準漂移』大部分應歸因於資料而非市場；H-019／H-022 的前提需重新審視；H1 C 的訓練期 2014-2022 包含受影響期間（其 2024+ 評估不因此失效，但模型可能學到換日瑕疵），Demo Runner 不更動，是否重新訓練由使用者決定並另行預先登記。不得以 E-013 重新宣稱任何過去策略的樣本外優勢：後續研究的資料基礎必須先可靠；把資料缺陷、收集方式改變與未判定部分分開記錄
+- **D-017** Priority Engine 依賴圖（第一版）與上游標記。資料：2014-2017 H1 與 2018 H1（過渡年）標為 defective，2018-10 前的 SPREAD 欄位標為 defective，2019+ H1 與 2025+ M1 為乾淨葉節點；前提：本 demo 帳戶隔夜收 swap 標為 invalid。依賴：E-008／E-010 以 2014-2017 擬合；E-011 重建兩者的凍結參數；E-012 用 H1 C 訊號並以 2018-2023 校準；E-001 用 H1 C；model:h1_c 以 2014-2022 擬合；model:gemini 以 2025+ M1；O-013／O-014／O-015／O-017 分別以 E-008、E-008+E-010、E-011、E-012 為證據；H-019、H-020、H-022 以這些觀察為前提；H-018 以 E-012／O-017 為證據；H-008、H-017 以隔夜收 swap 為前提；H-011、H-014 的結論以 E-008、E-010 為證據。只宣告依賴，不改變任何實驗結果或已結案假說的狀態：E-013 證明上游資料出問題時，下游假說仍可能被當成有效證據；讓引擎沿依賴路徑追蹤受影響的證據並據以重排
+- **D-018** 核准（使用者 2026-11-16 指示）：H-008 設為 premise_invalid（隔夜收 swap 的前提在本帳戶不成立，停止依原假設推進）；H-019、H-022 設為 needs_revalidation（前提來自受 2014-2017 資料影響的觀察；不等於被推翻）。model:h1_c 經 D-017 標為訓練資料可能受污染，2024+ 評估保留，Demo Runner 不變，是否重訓另行預先登記。引擎另建議 H-017 premise_invalid、H-018 與 H-020 needs_revalidation，屬系統建議，未在本決策核准：區分已核准的研究決策與系統自動建議；needs_revalidation 只代表證據基礎需要以 2019+ 資料重新驗證
 
 ## 8. 資料區間使用帳（越多次越不能當獨立驗證）
 

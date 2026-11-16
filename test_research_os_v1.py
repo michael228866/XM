@@ -236,6 +236,124 @@ class GovernanceTests(unittest.TestCase):
             self.add({**hyp("H-3"), "priority_inputs": {"info_gain": 9}})
 
 
+class PriorityEngineTests(unittest.TestCase):
+    """Evidence-failure propagation: upstream data/premise problems reach every dependent, repairs bring them back."""
+
+    def setUp(self):
+        self.dir = Path(tempfile.mkdtemp())
+        self.ledger = self.dir / "ledger.jsonl"
+        inputs = dict.fromkeys(rm.PRIORITY_KEYS, 3)
+        self.add({**hyp("H-1", "a"), "priority_inputs": {**inputs, "info_gain": 5, "economic_value": 5}},
+                 {**hyp("H-2", "b"), "priority_inputs": inputs}, {**hyp("H-3", "c"), "priority_inputs": inputs},
+                 {**hyp("H-9", "d"), "status": "refuted"}, prereg(self.dir),
+                 result(), {"kind": "observation", "id": "O-1", "statement": "s", "evidence": "E-1", "status": "verified"})
+
+    def add(self, *events):
+        return rm.append(list(events), ledger=self.ledger, root=self.dir)
+
+    def decide(self, i, **fields):
+        return self.add({"kind": "decision", "id": i, "statement": "s", "rationale": "r", **fields})
+
+    def graph(self):
+        # H-1 -premise-> O-1 -evidence-> E-1 -data-> data:old (three hops); H-2 -premise-> premise:p; H-9 refuted on E-1
+        self.decide("D-1", set_depends={
+            "data:old": [], "premise:p": [], "E-1": [{"on": "data:old", "type": "data"}],
+            "O-1": [{"on": "E-1", "type": "evidence"}], "H-1": [{"on": "O-1", "type": "premise"}],
+            "H-2": [{"on": "premise:p", "type": "premise"}], "H-9": [{"on": "E-1", "type": "evidence"}],
+            "model:m": [{"on": "data:old", "type": "data"}]})
+
+    def ids(self, events):
+        import research_planner_v1 as rp
+        return [r["id"] for r in rp.ranking(events)]
+
+    def test_upstream_failure_reaches_all_dependents_without_touching_results(self):
+        import research_planner_v1 as rp
+        self.graph()
+        before = self.ledger.read_bytes()
+        events = self.decide("D-2", flag={"data:old": {"state": "defective", "evidence": ["O-1"], "note": "bad"},
+                                          "premise:p": {"state": "invalid", "evidence": ["O-1"]}})
+        a = rp.assess(events)
+        self.assertEqual(a["H-1"]["state"], "needs_revalidation")  # through three hops, not refuted
+        self.assertEqual(a["H-1"]["reasons"][-1]["path"], ["H-1", "O-1", "E-1", "data:old"])
+        self.assertEqual(a["H-2"]["state"], "premise_invalid")
+        rows = {r["id"]: r for r in rp.ranking(events)}
+        self.assertNotIn("H-2", rows)  # top-tier inputs cannot rank a hypothesis whose premise is false
+        self.assertEqual(rows["H-1"]["base"], 30.5)  # original score kept beside the adjusted one
+        self.assertEqual(rows["H-1"]["score"], 30.5 - 2 - rp.CREDIBILITY_PENALTY)  # data_quality 3 -> 1, credibility
+        self.assertTrue(all(c for _, _, c in rows["H-1"]["adjust"]))  # every adjustment cites evidence
+        self.assertEqual(rows["data:old"]["kind"], "repair")
+        self.assertIn("model:m", rows["data:old"]["title"])
+        sugg = {n: s for n, _, s, _, _ in rp.suggestions(events)}
+        self.assertEqual((sugg["H-1"], sugg["H-2"]), ("needs_revalidation", "premise_invalid"))
+        self.assertEqual((sugg["H-9"], sugg["E-1"], sugg["model:m"]), ("annotate_only",) * 3)
+        hyps, _, results = rm.state(events)
+        self.assertEqual(hyps["H-9"]["status"], "refuted")  # nothing approved, nothing rewritten
+        self.assertEqual(hyps["H-1"]["status"], "open")
+        self.assertEqual(results["E-1"]["outcome"], "refuted")
+        self.assertTrue(self.ledger.read_bytes().startswith(before))
+        rm.render(events, path=self.dir / "m.md")
+        self.assertEqual(rm.verify(rm.read(self.ledger)), [])
+        log = dict(rp.rerank_log(events))
+        self.assertTrue(any(m.startswith("H-2 ") and "未列入" in m for m in log["D-2"]))
+
+    def test_repair_brings_hypotheses_back(self):
+        import research_planner_v1 as rp
+        self.graph()
+        self.decide("D-2", flag={"data:old": {"state": "defective", "evidence": ["O-1"]},
+                                 "premise:p": {"state": "invalid", "evidence": ["O-1"]}},
+                    set_status={"H-2": "premise_invalid", "H-1": "needs_revalidation"})
+        events = rm.read(self.ledger)
+        self.assertNotIn("H-2", self.ids(events))
+        # E-1 re-checked on clean data shields what rests on it; the premise is restored
+        events = self.decide("D-3", flag={"E-1": {"state": "ok", "evidence": ["O-1"]},
+                                          "premise:p": {"state": "ok", "evidence": ["O-1"]}})
+        rows = {r["id"]: r for r in rp.ranking(events)}
+        self.assertEqual(rows["H-1"]["score"], rows["H-1"]["base"])
+        self.assertIn("H-2", rows)
+        self.assertTrue(rows["data:old"]["title"].endswith("model:m"))  # only the model still rests on it
+        sugg = {n: s for n, _, s, _, _ in rp.suggestions(events)}
+        self.assertEqual((sugg["H-1"], sugg["H-2"]), ("open", "open"))  # suggested, not applied
+        self.assertEqual(rm.state(events)[0]["H-2"]["status"], "premise_invalid")
+        events = self.decide("D-4", set_depends={"H-3": [{"on": "data:old", "type": "data"}]})
+        self.assertEqual(rp.assess(events)["H-3"]["state"], "needs_revalidation")
+        events = self.decide("D-5", set_depends={"H-3": [{"on": "data:new", "type": "data"}], "data:new": []})
+        self.assertEqual(rp.assess(events)["H-3"]["state"], "ok")  # rebased onto clean data
+
+    def test_cycles_missing_and_several_failed_premises(self):
+        import research_planner_v1 as rp
+        events = self.decide("D-1", set_depends={
+            "H-1": [{"on": "H-2", "type": "premise"}], "H-2": [{"on": "H-1", "type": "premise"}],
+            "H-3": [{"on": "premise:a", "type": "premise"}, {"on": "premise:b", "type": "premise"},
+                    {"on": "data:never_declared", "type": "data"}],
+            "premise:a": [], "premise:b": []})
+        a = rp.assess(events)  # terminates on the cycle
+        self.assertEqual(a["H-1"]["state"], "needs_revalidation")
+        self.assertIn(["H-1", "H-2", "H-1"], a["H-1"]["cycles"])
+        self.assertEqual(a["H-3"]["missing"], [["H-3", "data:never_declared"]])
+        self.assertEqual(a["H-3"]["state"], "needs_revalidation")
+        events = self.decide("D-2", flag={"premise:a": {"state": "invalid", "evidence": ["O-1"]},
+                                          "premise:b": {"state": "invalid", "evidence": ["E-1"]}})
+        a = rp.assess(events)
+        self.assertEqual(a["H-3"]["state"], "premise_invalid")
+        self.assertEqual({r["node"] for r in a["H-3"]["reasons"]}, {"premise:a", "premise:b"})
+        # repairing one of two failed premises is not enough
+        events = self.decide("D-3", flag={"premise:a": {"state": "ok", "evidence": ["O-1"]}})
+        self.assertEqual(rp.assess(events)["H-3"]["state"], "premise_invalid")
+        # a premise on a refuted hypothesis fails through research outcomes alone, no flag needed
+        events = self.decide("D-4", set_depends={"H-2": [{"on": "H-9", "type": "premise"}]})
+        self.assertEqual(rp.assess(events)["H-2"]["state"], "premise_invalid")
+        self.assertEqual(rp.assess(events)["H-1"]["state"], "premise_invalid")  # H-1 -> H-2 -> H-9, all premises
+
+    def test_bad_graph_inputs_are_rejected(self):
+        for fields in ({"set_depends": {"H-1": [{"on": "O-1", "type": "hunch"}]}},
+                       {"set_depends": {"nonsense": []}},
+                       {"flag": {"data:x": {"state": "broken", "evidence": ["O-1"]}}},
+                       {"flag": {"data:x": {"state": "defective", "evidence": ["O-404"]}}},
+                       {"flag": {"data:x": {"state": "defective"}}}):
+            with self.assertRaises(ValueError):
+                self.decide("D-9", **fields)
+
+
 def synthetic_h1(years=6, seed=0):
     """GOLD-like H1 bars with persistent (GARCH-ish) volatility, 24 bars per weekday."""
     rng = np.random.default_rng(seed)
