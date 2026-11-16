@@ -1,0 +1,13 @@
+{
+  "run_id": "20261116T153137Z_research_e014_exp_spread_cost_v1",
+  "finalized_at_utc": "2026-11-16T15:32:21.208865Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "82dd397d828044aeceb4a45ee74c8fccb2070a2c229762ffc7d98cbd2e111f96",
+    "manifest.json": "ee92bb163f5890ac259b0b8b972961ce74e0591386dec4075a5fd014279db179",
+    "metrics.json": "b49dacf5b98751896f26ab1d6ec8275b97c2a5d5dafad8517ef2c9ca8389a1ae",
+    "report.md": "5807a52e281a8e1e406664c5aee86609619ed5c699d42ce9b66ac87ed04c5e58",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "training_script.py": "e15b3cf9afffba6f6ed65d3298a56407384ad3d09c332c2a87be6ece13630d34"
+  }
+}

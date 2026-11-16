@@ -1,0 +1,564 @@
+# E-014 GOLD# spread data, cost model and spread anomalies (H-009)
+
+Outcome (Q2): **refuted**
+
+Q2 (H-009 volatility clause; replay clause untested) refuted: next-30m volatility ratio after top-decile spread z 0.9647 (CI [0.8841, 1.0471], threshold 1.2; excl. rollover 0.9655, by year {2023: 0.9479, 2024: 0.9074, 2025: 1.0753, 2026: 0.9407}, median-based 1.0159), increment beyond recent variance -0.0045 log RV (CI [-0.047, 0.0442]), anomaly share 0.163; Q1 cost model not_reliable: MAE ratio hour-of-week/global 0.9451 (CI [0.9288, 0.9635], excl. rollover 0.9288), adaptive vs same-window global 0.9549; Q3 bar SPREAD field = min of the minute's tick spreads (tick mean / bar mean 1.2126), demo fills 1162 with mean adverse -0.04 points; H-013 cost input ready: False
+
+Quoted spread (bar field, ticks) is not execution cost; demo fills are a demo account, not live. No strategy is evaluated: the H-009 replay clause (net R of filtered entries) is not tested here.
+
+## Units and collection
+
+{
+ "point": 0.01,
+ "digits": 2,
+ "spread_unit": "points (1 point = 0.01 USD per oz)",
+ "spread_float": true,
+ "tick_days_sampled": 85,
+ "tick_rows": 21871569
+}
+
+## Spread by year (zero = missing)
+
+{
+ "2018": {
+  "bars": 87549,
+  "missing_share": 0.119,
+  "bars_per_day_median": 1373.0,
+  "n": 77127,
+  "mean": 22.47,
+  "median": 22.0,
+  "p90": 26.0,
+  "p95": 28.0,
+  "p99": 39.0
+ },
+ "2019": {
+  "bars": 352158,
+  "missing_share": 0.0,
+  "bars_per_day_median": 1378.0,
+  "n": 352149,
+  "mean": 21.91,
+  "median": 22.0,
+  "p90": 26.0,
+  "p95": 27.0,
+  "p99": 31.0
+ },
+ "2020": {
+  "bars": 354255,
+  "missing_share": 0.0,
+  "bars_per_day_median": 1379.0,
+  "n": 354254,
+  "mean": 34.77,
+  "median": 23.0,
+  "p90": 57.0,
+  "p95": 101.0,
+  "p99": 257.0
+ },
+ "2021": {
+  "bars": 353758,
+  "missing_share": 0.0001,
+  "bars_per_day_median": 1379.0,
+  "n": 353738,
+  "mean": 23.79,
+  "median": 25.0,
+  "p90": 26.0,
+  "p95": 26.0,
+  "p99": 32.0
+ },
+ "2022": {
+  "bars": 354439,
+  "missing_share": 0.0,
+  "bars_per_day_median": 1379.0,
+  "n": 354439,
+  "mean": 18.02,
+  "median": 18.0,
+  "p90": 25.0,
+  "p95": 28.0,
+  "p99": 36.0
+ },
+ "2023": {
+  "bars": 353042,
+  "missing_share": 0.0,
+  "bars_per_day_median": 1379.0,
+  "n": 353042,
+  "mean": 14.62,
+  "median": 13.0,
+  "p90": 20.0,
+  "p95": 22.0,
+  "p99": 28.0
+ },
+ "2024": {
+  "bars": 354978,
+  "missing_share": 0.0,
+  "bars_per_day_median": 1379.0,
+  "n": 354978,
+  "mean": 18.56,
+  "median": 18.0,
+  "p90": 21.0,
+  "p95": 23.0,
+  "p99": 32.0
+ },
+ "2025": {
+  "bars": 353069,
+  "missing_share": 0.0,
+  "bars_per_day_median": 1379.0,
+  "n": 353069,
+  "mean": 18.0,
+  "median": 17.0,
+  "p90": 20.0,
+  "p95": 21.0,
+  "p99": 30.0
+ },
+ "2026": {
+  "bars": 308703,
+  "missing_share": 0.0,
+  "bars_per_day_median": 1379.0,
+  "n": 308703,
+  "mean": 25.02,
+  "median": 25.0,
+  "p90": 29.0,
+  "p95": 30.0,
+  "p99": 33.0
+ }
+}
+
+## Sessions (2018-10+)
+
+{
+ "rollover_23_01": {
+  "n": 243168,
+  "mean": 27.87,
+  "median": 24.0,
+  "p90": 36.0,
+  "p95": 50.0,
+  "p99": 144.3299999999872
+ },
+ "asia_02_09": {
+  "n": 999299,
+  "mean": 22.59,
+  "median": 20.0,
+  "p90": 28.0,
+  "p95": 30.0,
+  "p99": 83.0
+ },
+ "london_10_15": {
+  "n": 751970,
+  "mean": 20.57,
+  "median": 19.0,
+  "p90": 26.0,
+  "p95": 27.0,
+  "p99": 51.0
+ },
+ "new_york_16_20": {
+  "n": 624237,
+  "mean": 19.95,
+  "median": 18.0,
+  "p90": 25.0,
+  "p95": 26.0,
+  "p99": 41.0
+ },
+ "late_21_22": {
+  "n": 242825,
+  "mean": 21.12,
+  "median": 19.0,
+  "p90": 26.0,
+  "p95": 28.0,
+  "p99": 75.0
+ }
+}
+
+## By server hour
+
+{
+ "0": {
+  "n": 8856,
+  "mean": 33.03,
+  "median": 25.0,
+  "p90": 44.0,
+  "p95": 72.25,
+  "p99": 212.35000000000218
+ },
+ "1": {
+  "n": 124525,
+  "mean": 30.46,
+  "median": 25.0,
+  "p90": 40.0,
+  "p95": 58.0,
+  "p99": 166.0
+ },
+ "2": {
+  "n": 124761,
+  "mean": 25.42,
+  "median": 22.0,
+  "p90": 30.0,
+  "p95": 36.0,
+  "p99": 131.39999999999418
+ },
+ "3": {
+  "n": 124842,
+  "mean": 22.75,
+  "median": 20.0,
+  "p90": 28.0,
+  "p95": 30.0,
+  "p99": 86.0
+ },
+ "4": {
+  "n": 124850,
+  "mean": 22.17,
+  "median": 20.0,
+  "p90": 28.0,
+  "p95": 30.0,
+  "p99": 79.0
+ },
+ "5": {
+  "n": 124839,
+  "mean": 22.3,
+  "median": 20.0,
+  "p90": 28.0,
+  "p95": 30.0,
+  "p99": 74.0
+ },
+ "6": {
+  "n": 124818,
+  "mean": 22.65,
+  "median": 21.0,
+  "p90": 28.0,
+  "p95": 30.0,
+  "p99": 81.0
+ },
+ "7": {
+  "n": 124821,
+  "mean": 22.63,
+  "median": 20.0,
+  "p90": 28.0,
+  "p95": 29.0,
+  "p99": 80.80000000000291
+ },
+ "8": {
+  "n": 125071,
+  "mean": 21.93,
+  "median": 20.0,
+  "p90": 27.0,
+  "p95": 29.0,
+  "p99": 74.0
+ },
+ "9": {
+  "n": 125297,
+  "mean": 20.89,
+  "median": 19.0,
+  "p90": 26.0,
+  "p95": 27.0,
+  "p99": 53.0
+ },
+ "10": {
+  "n": 125322,
+  "mean": 20.53,
+  "median": 19.0,
+  "p90": 26.0,
+  "p95": 27.0,
+  "p99": 47.0
+ },
+ "11": {
+  "n": 125321,
+  "mean": 20.62,
+  "median": 19.0,
+  "p90": 26.0,
+  "p95": 27.0,
+  "p99": 51.0
+ },
+ "12": {
+  "n": 125335,
+  "mean": 20.68,
+  "median": 19.0,
+  "p90": 26.0,
+  "p95": 27.0,
+  "p99": 48.0
+ },
+ "13": {
+  "n": 125318,
+  "mean": 20.71,
+  "median": 19.0,
+  "p90": 26.0,
+  "p95": 27.0,
+  "p99": 52.0
+ },
+ "14": {
+  "n": 125336,
+  "mean": 20.64,
+  "median": 19.0,
+  "p90": 26.0,
+  "p95": 27.0,
+  "p99": 55.0
+ },
+ "15": {
+  "n": 125338,
+  "mean": 20.25,
+  "median": 18.0,
+  "p90": 25.0,
+  "p95": 26.0,
+  "p99": 55.0
+ },
+ "16": {
+  "n": 125354,
+  "mean": 19.81,
+  "median": 18.0,
+  "p90": 25.0,
+  "p95": 26.0,
+  "p99": 39.470000000001164
+ },
+ "17": {
+  "n": 125376,
+  "mean": 19.76,
+  "median": 18.0,
+  "p90": 25.0,
+  "p95": 26.0,
+  "p99": 41.0
+ },
+ "18": {
+  "n": 125319,
+  "mean": 19.78,
+  "median": 18.0,
+  "p90": 25.0,
+  "p95": 26.0,
+  "p99": 36.0
+ },
+ "19": {
+  "n": 124891,
+  "mean": 20.01,
+  "median": 19.0,
+  "p90": 25.0,
+  "p95": 26.0,
+  "p99": 42.0
+ },
+ "20": {
+  "n": 123297,
+  "mean": 20.38,
+  "median": 19.0,
+  "p90": 25.0,
+  "p95": 26.0,
+  "p99": 49.0
+ },
+ "21": {
+  "n": 121950,
+  "mean": 20.79,
+  "median": 19.0,
+  "p90": 26.0,
+  "p95": 27.0,
+  "p99": 66.0
+ },
+ "22": {
+  "n": 120875,
+  "mean": 21.45,
+  "median": 19.0,
+  "p90": 26.0,
+  "p95": 29.0,
+  "p99": 83.0
+ },
+ "23": {
+  "n": 109787,
+  "mean": 24.51,
+  "median": 22.0,
+  "p90": 31.0,
+  "p95": 37.0,
+  "p99": 119.0
+ }
+}
+
+## Rollover spike hour by season (timestamp consistency)
+
+{
+ "2018_winter": 1,
+ "2018_summer": 0,
+ "2019_winter": 0,
+ "2019_summer": 1,
+ "2020_winter": 0,
+ "2020_summer": 1,
+ "2021_winter": 23,
+ "2021_summer": 1,
+ "2022_winter": 23,
+ "2022_summer": 1,
+ "2023_winter": 1,
+ "2023_summer": 0,
+ "2024_winter": 1,
+ "2024_summer": 0,
+ "2025_winter": 0,
+ "2025_summer": 1,
+ "2026_winter": 0,
+ "2026_summer": 1
+}
+
+Bars not minute-aligned: 0.0; first valid spread bar 2018-10-10 16:40:00
+
+## Q1 cost model (C1 vs train global median C0; C2 monthly re-estimated vs the same window's global median)
+
+{
+ "train_global_median": 23.0,
+ "test_bars": 1369792,
+ "months": 47,
+ "mae_ratio_C1": 0.9451,
+ "mae_ratio_C1_ci": [
+  0.9288,
+  0.9635
+ ],
+ "mae_ratio_C1_excl_rollover": 0.9288,
+ "mae_ratio_C2": 0.9549,
+ "mae_ratio_C2_ci": [
+  0.9133,
+  0.9959
+ ],
+ "mae_ratio_C2_excl_rollover": 1.0084,
+ "by_year": {
+  "2023": {
+   "bars": 353042,
+   "actual_mean": 14.62,
+   "mae_ratio_C1": 0.9457,
+   "mae_ratio_C2": 0.8638,
+   "mean_bias_C1": 0.6841,
+   "mean_bias_C2": -0.0574
+  },
+  "2024": {
+   "bars": 354978,
+   "actual_mean": 18.56,
+   "mae_ratio_C1": 0.9026,
+   "mae_ratio_C2": 1.0046,
+   "mean_bias_C1": 0.3266,
+   "mean_bias_C2": 0.0027
+  },
+  "2025": {
+   "bars": 353069,
+   "actual_mean": 18.0,
+   "mae_ratio_C1": 0.9242,
+   "mae_ratio_C2": 0.9757,
+   "mean_bias_C1": 0.3682,
+   "mean_bias_C2": -0.0046
+  },
+  "2026": {
+   "bars": 308703,
+   "actual_mean": 25.02,
+   "mae_ratio_C1": 1.0378,
+   "mae_ratio_C2": 0.9809,
+   "mean_bias_C1": -0.0153,
+   "mean_bias_C2": -0.0627
+  }
+ },
+ "C1_passes": false,
+ "C2_passes": false,
+ "extreme_runs_test": {
+  "minutes_above_p99_share": 0.0001,
+  "runs": 66,
+  "runs_per_100_trading_hours": 0.29,
+  "run_minutes_median": 2.0,
+  "run_minutes_p90": 5.0,
+  "run_minutes_max": 11
+ }
+}
+
+## Q2 spread anomalies (trailing 90-day norms, within-month ratios)
+
+{
+ "z_threshold_median": 1.2236,
+ "test_minutes": 1335378,
+ "anomaly_share_test": 0.163,
+ "anomalies_test": 217602,
+ "months_with_anomalies": 47,
+ "months": 47,
+ "vol_ratio": 0.9647,
+ "vol_ratio_ci": [
+  0.8841,
+  1.0471
+ ],
+ "vol_ratio_median_based": 1.0159,
+ "vol_ratio_mid_price": 0.9647,
+ "vol_ratio_excl_rollover": 0.9655,
+ "vol_ratio_by_year": {
+  "2023": 0.9479,
+  "2024": 0.9074,
+  "2025": 1.0753,
+  "2026": 0.9407
+ },
+ "increment_log_rv": -0.0045,
+ "increment_ci": [
+  -0.047,
+  0.0442
+ ],
+ "increment_with_4h_control_descriptive": -0.0125,
+ "flat_windows_dropped_from_increment": 27750,
+ "direct_cost": {
+  "spread_mean_anomaly": 22.14,
+  "spread_mean_other": 18.11,
+  "spread_over_move_median_anomaly": 0.0683,
+  "spread_over_move_median_other": 0.0539
+ }
+}
+
+## Q3 bar field vs ticks
+
+{
+ "minutes": 116166,
+ "varied_minutes": 115173,
+ "match_share_varied": {
+  "min": 0.9984,
+  "max": 0.0001,
+  "first": 0.1169,
+  "last": 0.1152,
+  "mean": 0.0261
+ },
+ "label": "min",
+ "bar_field_mean": 19.91,
+ "tick_mean_of_minute_means": 24.15,
+ "tick_mean_over_bar_mean": 1.2126
+}
+
+## Q3 demo fills vs tick quote
+
+{
+ "fills": 1162,
+ "adverse_points": {
+  "n": 1162,
+  "mean": -0.04,
+  "median": 0.0,
+  "p90": 0.0,
+  "p95": 0.0,
+  "p99": 0.0
+ },
+ "share_adverse_gt_0": 0.0017,
+ "quoted_spread_points": {
+  "n": 1162,
+  "mean": 29.64,
+  "median": 29.0,
+  "p90": 33.0,
+  "p95": 33.0,
+  "p99": 44.3900000000001
+ },
+ "effective_cost_points_mean": 14.78,
+ "quote_lag_ms": {
+  "n": 1162,
+  "mean": 98.86,
+  "median": 24.0,
+  "p90": 236.0,
+  "p95": 417.7500000000002,
+  "p99": 980.9500000000005
+ },
+ "by_reason": {
+  "0": {
+   "fills": 12,
+   "adverse_mean": 0.0
+  },
+  "3": {
+   "fills": 669,
+   "adverse_mean": -0.11
+  },
+  "4": {
+   "fills": 249,
+   "adverse_mean": 0.0
+  },
+  "5": {
+   "fills": 231,
+   "adverse_mean": 0.1
+  },
+  "6": {
+   "fills": 1,
+   "adverse_mean": 0.0
+  }
+ },
+ "skipped_no_quote_within_60s": 0
+}
