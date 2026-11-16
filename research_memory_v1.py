@@ -45,6 +45,9 @@ STATUS_LABEL = {"refuted": "證據推翻", "not_significant": "未找到顯著�
 DEP_TYPES = {"data", "premise", "evidence"}
 FLAG_STATES = {"defective", "invalid", "ok"}  # defective = unreliable, invalid = shown false, ok = repaired/verified
 ASSET_PREFIXES = ("data:", "model:", "premise:")
+# D-016: earliest usable date per data use (None = no boundary). A window using several uses takes the latest.
+DATA_BOUNDARIES = {"spread_field": "2018-10-01", "h1_or_finer_price": "2019-01-01", "daily_or_coarser_price": None,
+                   "external": None}
 VERDICTS = {"approve", "revise", "reject"}
 PRIORITY_KEYS = {"info_gain", "novelty", "falsifiability", "data_quality", "economic_value", "simplicity",
                  "mining_risk"}

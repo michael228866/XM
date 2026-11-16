@@ -219,9 +219,27 @@ class GovernanceTests(unittest.TestCase):
                 "decision_rule": "pass if Sidak p < 0.05 over 8 trials",
                 "spec": {"controls": ["a"], "directional_benchmark": "always long", "trials_declared": 8,
                          "cost_multipliers": [1, 2], "cost_note": "spread and swap", "power_note": "n=1000",
-                         "metrics": ["net_mean", "sharpe", "calmar", "max_dd"]}}
+                         "metrics": ["net_mean", "sharpe", "calmar", "max_dd"],
+                         "data_windows": [{"window": ["2020-01-01", "2021-01-01"], "uses": ["h1_or_finer_price"]}]}}
         events = self.add(good)
         self.assertEqual(rc.critique(events[-1], events, root=self.dir)[0], [])
+
+    def test_data_boundaries_are_checked_mechanically(self):
+        import research_critic_v1 as rc
+        p = lambda windows, ev=("2019-01-01", "2020-01-01"), **extra: {
+            **prereg(self.dir, window=ev), "spec": {"data_windows": windows, **extra}}
+        spread_only = [{"window": ["2018-10-01", "2019-01-01"], "uses": ["spread_field"]}]
+        joint = [{"window": ["2018-10-01", "2020-01-01"], "uses": ["spread_field", "h1_or_finer_price"]}]
+        self.assertEqual(rc.boundary_problems(p(spread_only + [{"window": ["2019-01-01", "2020-01-01"],
+                                                                "uses": ["h1_or_finer_price"]}])), [])
+        self.assertTrue(rc.boundary_problems(p(joint)))  # joint use defaults to the later 2019-01-01 boundary
+        self.assertTrue(rc.boundary_problems(p(spread_only, ev=("2018-10-01", "2020-01-01"),)) == [])
+        self.assertTrue(rc.boundary_problems(p([{"window": ["2018-12-01", "2020-01-01"], "uses": ["h1_or_finer_price"]}])))
+        self.assertTrue(rc.boundary_problems(p([{"window": ["2019-01-01", "2020-01-01"], "uses": ["tick_magic"]}])))
+        self.assertTrue(rc.boundary_problems(p(None)))
+        self.assertEqual(rc.boundary_problems(p(joint, boundary_exception="why")), [])
+        self.assertEqual(rc.boundary_problems(p([{"window": ["2014-01-01", "2020-01-01"], "uses": ["daily_or_coarser_price"]}],
+                                                ev=("2014-01-01", "2020-01-01"))), [])
 
     def test_planner_ranks_by_research_value(self):
         import research_planner_v1 as rp
@@ -669,6 +687,97 @@ class DataQualityTests(unittest.TestCase):
         out = dq.cross_residual(mk(lg + noise), mk(le), mk(lg - le))
         self.assertGreater(out["2017_08_12"]["var_ratio"], 1.0)
         self.assertLess(out["2018"]["var_ratio"], 0.001)  # only the first 2018 return touches a noisy 2017 quote
+
+
+def synthetic_spread_m1(informative=True, zero_share=0.02, seed=0, q4_shift=False):
+    """2019 M1 bars, server hours 8-15: hour-dependent spreads, 3-minute widenings (+20 points) on ~1% of minutes;
+    if informative, volatility doubles for the 30 minutes after a widening starts."""
+    rng = np.random.default_rng(seed)
+    days = pd.bdate_range("2019-01-01", "2019-12-31")
+    t = (days.values[:, None] + (np.arange(8 * 60, 16 * 60) * 60_000_000_000)[None, :].astype("timedelta64[ns]")).ravel()
+    n = len(t)
+    hour = pd.DatetimeIndex(t).hour.to_numpy()
+    spread = 20 + 3 * (hour % 4) + rng.integers(0, 3, n)
+    start = np.flatnonzero(rng.random(n) < 0.01)
+    wide = np.zeros(n, bool)
+    hot = np.zeros(n, bool)
+    for s in start:
+        wide[s:s + 3] = True
+        hot[s + 1:s + 31] = True
+    spread = np.where(wide, spread + 20, spread)
+    sigma = np.where(hot & informative, 4e-4, 2e-4)
+    if q4_shift:  # period-level drift only: Q4 spreads +60% and volatility +50%, unrelated minute by minute
+        q4 = pd.DatetimeIndex(t).month.to_numpy() >= 10
+        spread, sigma = np.where(q4, np.rint(spread * 1.6), spread), np.where(q4, sigma * 1.5, sigma)
+    close = 1300 * np.exp(np.cumsum(rng.normal(0, sigma)))
+    spread = np.where(rng.random(n) < zero_share, 0, spread)
+    return pd.DataFrame({"TIME_DT": pd.DatetimeIndex(t), "OPEN": close, "HIGH": close, "LOW": close, "CLOSE": close,
+                         "SPREAD": spread})
+
+
+SPREAD_SPEC = {"spread_start": "2018-10-01", "train": ["2019-01-01", "2019-07-01"], "test": ["2019-07-01", "2020-01-01"],
+               "bootstrap_draws": 200, "min_cell_bars": 50, "min_cell_bars_adaptive": 20, "adaptive_days": 90,
+               "mae_ratio_max": 0.95, "mean_bias_max": 0.10, "horizon_minutes": 30, "max_span_minutes": 40,
+               "anomaly_quantile": 0.9, "vol_ratio_threshold": 1.2, "min_anomalies": 500, "min_months": 6,
+               "year_share_min": 0.75, "anomaly_share_band": [0.05, 0.20],
+               "min_fills": 100, "point": 0.01}
+
+
+class SpreadCostTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.informative, cls.noise = synthetic_spread_m1(True), synthetic_spread_m1(False, seed=1)
+
+    def evaluate(self, m1):
+        import exp_spread_cost_v1 as sc
+        rng = np.random.default_rng(0)
+        return sc.cost_model(m1, SPREAD_SPEC, 0.95, rng), sc.anomaly(m1, SPREAD_SPEC, 0.95, rng)
+
+    def test_informative_widening_is_detected_and_cost_model_generalizes(self):
+        import exp_spread_cost_v1 as sc
+        cm, an = self.evaluate(self.informative)
+        self.assertGreater(an["vol_ratio"], 1.2, an)  # top-decile z also catches ordinary noise
+        self.assertTrue(cm["C1_passes"], cm)  # the hour pattern beats one global median out of sample
+        exe = {"fills": 200}
+        q1, q2, ready = sc.decide(cm, an, {"label": "min"}, exe, SPREAD_SPEC)
+        self.assertEqual((q1, q2, ready), ("static_generalizes", "vol_clause_not_refuted", True))
+        d = sc.describe(self.informative, SPREAD_SPEC)
+        self.assertAlmostEqual(d["by_year"][2019]["missing_share"], 0.02, delta=0.005)
+        self.assertGreaterEqual(d["by_year"][2019]["median"], 20)  # zeros are missing, never zero cost
+
+    def test_uninformative_widening_is_refuted(self):
+        import exp_spread_cost_v1 as sc
+        cm, an = self.evaluate(self.noise)
+        self.assertLess(an["vol_ratio_ci"][1], 1.2, an)
+        self.assertEqual(sc.decide(cm, an, {"label": "min"}, {"fills": 200}, SPREAD_SPEC)[1], "refuted")
+        small = {**an, "anomalies_test": 10}
+        self.assertEqual(sc.decide(cm, small, {"label": "min"}, {}, SPREAD_SPEC)[1:], ("inconclusive_sample", False))
+
+    def test_norms_trail_and_period_drift_is_not_an_anomaly(self):
+        import exp_spread_cost_v1 as sc
+        v = sc.with_cells(self.noise)
+        start = pd.Timestamp("2019-09-01")
+        w = sc.trailing(v, start, SPREAD_SPEC)
+        self.assertLess(w["TIME_DT"].max(), start - pd.Timedelta(minutes=30))  # no forward window reaches the month
+        self.assertGreaterEqual(w["TIME_DT"].min(), start - pd.Timedelta(days=90))
+        # critic_agent_6 B1: level drift in Q4 (spread and volatility together) must not pass as H-009
+        cm, an = self.evaluate(synthetic_spread_m1(False, seed=2, q4_shift=True))
+        self.assertNotIn(sc.decide(cm, an, {"label": "min"}, {"fills": 200}, SPREAD_SPEC)[1],
+                         ("vol_clause_not_refuted", "vol_clause_not_refuted_but_redundant"), an)
+
+    def test_bar_field_semantics_and_fill_cost_sign(self):
+        import exp_spread_cost_v1 as sc
+        minute = pd.Timestamp("2025-03-04 10:00")
+        base = minute.value // 10**6
+        ticks = pd.DataFrame({"time_msc": [base + 1000, base + 20000, base + 50000, base + 61000],
+                              "bid": [100.00, 100.00, 100.00, 100.00], "ask": [100.30, 100.25, 100.40, 100.35]})
+        m1 = pd.DataFrame({"TIME_DT": [minute, minute + pd.Timedelta(minutes=1)], "SPREAD": [25, 35]})
+        out = sc.field_semantics(ticks, m1, 0.01)
+        self.assertEqual(out["label"], "min")
+        fills = pd.DataFrame({"side": ["buy", "sell"], "price": [100.32, 99.98], "bid": [100.0, 100.0],
+                              "ask": [100.30, 100.30], "reason": [3, 4], "lag_ms": [120, 900]})
+        exe = sc.execution(fills, 0.01)
+        self.assertAlmostEqual(exe["adverse_points"]["mean"], 2.0)  # buy paid 2 above ask, sell got 2 below bid
 
 
 class FakeMt5:

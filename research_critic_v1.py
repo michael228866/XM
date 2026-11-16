@@ -11,6 +11,9 @@ Blocking checks read these preregistration fields:
         metrics (net_mean, sharpe, calmar, max_dd), power_note, optional model_train_end
   A forecast-only experiment sets spec.involves_trading = false: the cost, direction and trading-metric checks
   are replaced by a required not_applicable_reason, and metrics must name forecast losses instead.
+  spec.data_windows: [{window, uses, purpose}] for every window read for statistics, fitting or evaluation, uses
+  from rm.DATA_BOUNDARIES (D-016); each window must start on or after the latest boundary of its uses, and every
+  evaluation window on or after the latest boundary of all uses, unless spec.boundary_exception explains why.
 
     python -B research_critic_v1.py E-005            # print findings
     python -B research_critic_v1.py E-005 --record   # append them to the ledger as a review
@@ -60,6 +63,9 @@ def critique(p, events, root=rm.ROOT):
         blocking.append("over-generalisation: no claim_scope (what a result can and cannot conclude)")
     if not re.search(r"\d", p["decision_rule"]):
         blocking.append("decision rule has no numeric threshold")
+    blocking += boundary_problems(p)
+    if spec.get("boundary_exception"):
+        notes.append(f"data boundary exception (D-016) declared: {spec['boundary_exception']}")
     for name, digest in p["code_files"].items():
         if not (root / name).exists() or rm.file_sha256(root / name) != digest:
             blocking.append(f"code: {name} differs from the preregistered hash")
@@ -75,6 +81,27 @@ def critique(p, events, root=rm.ROOT):
     if done:
         notes.append(f"family '{family}' already has {done} result(s); the runner widens the Sidak count")
     return blocking, notes
+
+
+def boundary_problems(p):
+    """D-016 data boundaries, checked from the declared data_windows instead of by hand."""
+    windows = p["spec"].get("data_windows")
+    if not windows:
+        return ["data boundary: spec.data_windows missing ([{window, uses, purpose}] for every window read)"]
+    floor = lambda uses: max((rm.DATA_BOUNDARIES[u] for u in uses if rm.DATA_BOUNDARIES[u]), default="")
+    problems, all_uses = [], set()
+    for w in windows:
+        unknown = set(w.get("uses", [])) - set(rm.DATA_BOUNDARIES)
+        if not w.get("uses") or unknown:
+            problems.append(f"data boundary: window {w.get('window')} needs uses from {sorted(rm.DATA_BOUNDARIES)}")
+            continue
+        all_uses |= set(w["uses"])
+        if w["window"][0] < floor(w["uses"]):
+            problems.append(f"data boundary (D-016): {w['window']} uses {w['uses']} but starts before {floor(w['uses'])}")
+    for w in p["evaluation_windows"]:
+        if w[0] < floor(all_uses):
+            problems.append(f"data boundary (D-016): evaluation window {w} starts before {floor(all_uses)}")
+    return [] if p["spec"].get("boundary_exception") else problems
 
 
 def main(argv=None):
