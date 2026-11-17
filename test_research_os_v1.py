@@ -464,7 +464,9 @@ class PriorityEngineV2Tests(unittest.TestCase):
         self.assertEqual(len(top["blockers"]), 2)  # approval and the unmet prerequisite, each with its unblock step
         self.assertTrue(all(b["unblock"] for b in top["blockers"]))
         self.assertIn((0, ["O-1"]), [(d, c) for d, w, c in top["adjust"] if "成本輸入" in w])  # shown, not double-priced
-        with mock.patch.object(rr.rm, "read", lambda *a, **k: events), self.assertRaises(SystemExit) as stop:
+        # readiness gate only; the interpreter gate has its own tests (InterpreterPolicyTests)
+        with mock.patch.object(rr, "interpreter_problem", lambda *a, **k: None), \
+                mock.patch.object(rr.rm, "read", lambda *a, **k: events), self.assertRaises(SystemExit) as stop:
             rr.run("E-1")
         self.assertIn("not ready", str(stop.exception))
         rm.render(events, path=self.dir / "m.md")
@@ -1181,6 +1183,77 @@ class H013BuildingBlockTests(unittest.TestCase):
         self.assertGreater(got["ns"], 0)
         self.assertEqual(len(set(got.values())), 1)  # pandas 3 (s/us) and pandas 2 (ns) join the same minutes
 
+    def test_quote_and_gate_never_pass_bad_inputs(self):
+        h = self.h
+        cols = ["time_msc", "bid", "ask"]
+        empty = pd.DataFrame(columns=cols, dtype=float)
+        invalid = pd.DataFrame({"time_msc": [900.0, 950.0, 960.0, np.inf], "bid": [0.0, 2000.0, np.nan, 2000.0],
+                                "ask": [0.0, np.inf, 2000.3, 2000.3]})
+        for name, ticks in (("empty", empty), ("all invalid", invalid)):
+            with self.subTest(ticks=name):
+                qt, qs = h.quote_at(ticks, [1000, 2000])
+                self.assertTrue(np.isnan(qt).all() and np.isnan(qs).all())
+                self.assertEqual(list(h.cost_gate([1000, 2000], qt, qs, [35.0, 35.0], 60_000)), ["no_quote"] * 2)
+        qt, qs = h.quote_at(empty, [])
+        self.assertEqual((len(qt), len(qs)), (0, 0))
+        self.assertEqual(list(h.cost_gate([], [], [], [], 60_000)), [])
+        with self.assertRaises(ValueError):
+            h.quote_at(empty, [np.nan])
+        cases = [("C95 inf", [1000], [1000], [30.0], [np.inf], "no_bound"),
+                 ("C95 zero", [1000], [1000], [30.0], [0.0], "no_bound"),
+                 ("negative spread", [1000], [1000], [-1.0], [35.0], "invalid_quote"),
+                 ("inf spread", [1000], [1000], [np.inf], [35.0], "invalid_quote"),
+                 ("valid", [1000], [1000], [30.0], [35.0], "ok"),
+                 ("above C95", [1000], [1000], [40.0], [35.0], "cost_gate")]
+        for name, d, qt, q, c, want in cases:
+            with self.subTest(case=name):
+                self.assertEqual(list(h.cost_gate(d, qt, q, c, 60_000)), [want])
+        for name, d, age in (("decision NaN", [np.nan], 60_000), ("max_age NaN", [1000], np.nan),
+                             ("max_age negative", [1000], -1), ("max_age inf", [1000], np.inf)):
+            with self.subTest(bad=name), self.assertRaises(ValueError):
+                h.cost_gate(d, [1000], [30.0], [35.0], age)
+
+    def hourly(self, nan_feature_rows=False):
+        rng = np.random.default_rng(5)
+        t = pd.date_range("2024-01-01", "2024-03-03", freq="h", inclusive="left")
+        f = pd.DataFrame({"TIME_DT": t, "f1": rng.normal(size=len(t)), "f2": rng.normal(size=len(t))})
+        f[self.h.LABEL] = (f["f1"] + rng.normal(size=len(t)) > 0).astype(float)
+        if nan_feature_rows:
+            march = np.where(f["TIME_DT"] >= "2024-03-01")[0]
+            f.loc[march[::2], "f2"] = np.nan
+        return f
+
+    def test_models_are_compared_on_the_same_rows(self):
+        h = self.h
+        res, preds = h.question_b(self.hourly(True), ["f1", "f2"], "2024-03-01", "2024-03-03", 60, min_train=100)
+        aux = res["auxiliary_all_available"]
+        self.assertEqual((aux["base_rate_by_hour"]["n_scored"], aux["logistic"]["n_scored"]), (48, 24))
+        self.assertEqual(res["primary"]["n_common"], 24)
+        common = preds["common"]
+        for m in h.MODELS:  # every model scored on exactly the common rows in the primary comparison
+            self.assertTrue(np.isfinite(preds[m][common]).all())
+        self.assertEqual(res["folds"][0]["excluded"], {"no_label": 0, "no_model_fit": 0, "missing_feature": 24})
+        self.assertEqual((res["folds"][0]["rows"], res["folds"][0]["common"]), (48, 24))
+        full, _ = h.question_b(self.hourly(False), ["f1", "f2"], "2024-03-01", "2024-03-03", 60, min_train=100)
+        self.assertEqual(full["primary"]["n_common"], 48)
+        for m in h.MODELS:  # no missing values: primary and auxiliary are the same numbers
+            self.assertEqual(full["primary"]["auc"][m], full["auxiliary_all_available"][m]["auc"])
+
+    def test_later_months_do_not_change_earlier_fold_predictions(self):
+        h = self.h
+        base = self.hourly(False)
+        _, p0 = h.question_b(base, ["f1", "f2"], "2024-02-01", "2024-03-03", 60, min_train=100)
+        later = base["TIME_DT"] >= "2024-03-01"
+        shocked = base.copy()
+        shocked.loc[later, h.LABEL] = 1 - shocked.loc[later, h.LABEL]
+        shocked.loc[later, ["f1", "f2"]] *= -3
+        _, p1 = h.question_b(shocked, ["f1", "f2"], "2024-02-01", "2024-03-03", 60, min_train=100)
+        feb = ((base["TIME_DT"] >= "2024-02-01") & (base["TIME_DT"] < "2024-03-01")).to_numpy()
+        for m in h.MODELS:
+            self.assertTrue(np.isfinite(p0[m][feb]).all())
+            np.testing.assert_array_equal(p0[m][feb], p1[m][feb])
+        self.assertFalse(np.array_equal(p0["logistic"][later.to_numpy()], p1["logistic"][later.to_numpy()]))
+
     def test_purged_folds_and_prediction_on_synthetic_volatility(self):
         h = self.h
         bars = synthetic_m1_vol(days=75, seed=2)
@@ -1192,11 +1265,11 @@ class H013BuildingBlockTests(unittest.TestCase):
         self.assertTrue(0.2 < np.nanmean(fr[h.LABEL]) < 0.8)
         feats = ["rv_30", "rv_240", "rv_1440", "hour_sin", "hour_cos"]
         res, _ = h.question_b(fr, feats, "2024-03-01", "2024-04-01", 120)
-        self.assertGreater(res["logistic"]["auc"], 0.7)  # persistent volatility is predictable from the past
+        self.assertGreater(res["primary"]["auc"]["logistic"], 0.7)  # persistent volatility is predictable from the past
         noise = bars.assign(**h.past_features(bars, np.full(len(bars), 30.0), np.full(len(bars), 35.0), 60))
         noise[h.LABEL] = np.random.default_rng(3).integers(0, 2, len(bars)).astype(float)
         res0, _ = h.question_b(noise, feats, "2024-03-01", "2024-04-01", 120)
-        self.assertLess(abs(res0["logistic"]["auc"] - 0.5), 0.05)
+        self.assertLess(abs(res0["primary"]["auc"]["logistic"] - 0.5), 0.05)
         with self.assertRaises(ValueError):
             h.question_b(fr, feats + [h.LABEL], "2024-03-01", "2024-04-01", 120)  # leakage refused
 
@@ -1213,6 +1286,41 @@ class H013BuildingBlockTests(unittest.TestCase):
         self.assertFalse(r["ready"])
         self.assertEqual(r["approval"], "design_only")
         self.assertTrue(any("trade_sample" in b["what"] for b in r["blockers"]))
+
+
+class InterpreterPolicyTests(unittest.TestCase):
+    def test_policy_interpreter_check(self):
+        import research_run_v1 as rr
+        venv = str(rm.ROOT / ".venv" / "Scripts" / "python.exe")
+        self.assertIsNone(rr.interpreter_problem(venv, (3, 11, 9)))
+        self.assertIsNone(rr.interpreter_problem(venv.upper(), (3, 11, 0)))  # Windows paths ignore case
+        self.assertIn("not the repository", rr.interpreter_problem(r"C:\Python310\python.exe", (3, 11, 9)))
+        self.assertIn("3.10", rr.interpreter_problem(venv, (3, 10, 0)))
+
+    def test_wrong_interpreter_is_refused_before_any_side_effect(self):
+        import research_run_v1 as rr
+        from unittest import mock
+        boom = mock.Mock(side_effect=AssertionError("side effect reached"))
+        venv = str(rm.ROOT / ".venv" / "Scripts" / "python.exe")
+        for exe, ver in ((r"C:\Users\User\AppData\Local\Programs\Python\Python310\python.exe", (3, 10, 0)),
+                         (venv, (3, 10, 0))):
+            with self.subTest(exe=exe, ver=ver), \
+                    mock.patch.object(rr.sys, "executable", exe), mock.patch.object(rr.sys, "version_info", ver), \
+                    mock.patch.object(rr.rm, "read", boom), mock.patch.object(rr.rm, "append", boom), \
+                    mock.patch.object(rr.trh, "create_run", boom), mock.patch.object(rr.importlib, "import_module", boom), \
+                    mock.patch.object(rr.subprocess, "run", boom), self.assertRaises(SystemExit) as stop:
+                rr.run("E-1")
+            self.assertIn("refused", str(stop.exception))
+        boom.assert_not_called()
+
+    def test_research_bat_uses_the_repository_venv_and_keeps_the_exit_code(self):
+        text = (rm.ROOT / "run_research_experiment.bat").read_text(encoding="ascii")
+        self.assertNotIn("Python310", text)
+        self.assertIn(r'set "PY=%~dp0.venv\Scripts\python.exe"', text)
+        self.assertIn('if not exist "%PY%"', text)
+        self.assertIn('"%PY%" -B research_run_v1.py %1', text)
+        self.assertIn("exit /b %RC%", text)
+        self.assertIn("pause", text)
 
 
 class FakeMt5:

@@ -1,8 +1,9 @@
 """Run one preregistered research experiment from the ledger inside a formal training_runs/ directory.
 
-    python -B research_run_v1.py E-001
+    .venv\\Scripts\\python.exe -B research_run_v1.py E-001      (or run_research_experiment.bat E-001)
 
-Refuses if the experiment has no preregistration, was withdrawn, lacks an approving mechanical and an
+Refuses first, before reading the ledger or any side effect, unless the interpreter is the repository
+.venv\\Scripts\\python.exe on Python 3.11 (MANUAL_TRAINING_POLICY_V1.md). Then refuses if the experiment has no preregistration, was withdrawn, lacks an approving mechanical and an
 approving independent critic review, already has a result, any of its code files changed since
 preregistration, or its hypothesis has a readiness blocker (research_planner_v1.readiness: lifecycle, premise,
 user approval below formal, unmet prerequisite). The experiment module exposes run(run_dir, spec, trials) -> dict with keys:
@@ -15,12 +16,28 @@ import contextlib
 import importlib
 import io
 import json
+import os
 import subprocess
 import sys
 import traceback
 
 import research_memory_v1 as rm
 import training_run_history as trh
+
+REQUIRED_PYTHON = (3, 11)  # MANUAL_TRAINING_POLICY_V1.md: repository .venv, Python 3.11, no automatic fallback
+
+
+def interpreter_problem(executable=None, version=None):
+    """None if this is the policy interpreter (ROOT/.venv/Scripts/python.exe, Python 3.11), else the reason."""
+    executable = executable or sys.executable
+    version = tuple((version or sys.version_info)[:2])
+    want = rm.ROOT / ".venv" / "Scripts" / "python.exe"
+    same = os.path.normcase(os.path.abspath(executable)) == os.path.normcase(os.path.abspath(want))
+    if not same:
+        return f"interpreter {executable} is not the repository {want} (MANUAL_TRAINING_POLICY_V1.md)"
+    if version != REQUIRED_PYTHON:
+        return f"Python {version[0]}.{version[1]} is not the required {REQUIRED_PYTHON[0]}.{REQUIRED_PYTHON[1]}"
+    return None
 
 
 def mt5_manifest_data(mt5, symbols, fetch_start, fetch_end, rows, test_windows, note):
@@ -101,6 +118,9 @@ def archive(run_dir, experiment_id, outcome):
 
 
 def run(experiment_id):
+    bad = interpreter_problem()
+    if bad:  # before the ledger, the run directory, the module import, git or MT5
+        raise SystemExit(f"refused: {bad}")
     events = rm.read()
     problems = rm.verify(events)
     if problems:
@@ -132,7 +152,8 @@ def run(experiment_id):
     module = importlib.import_module(p["module"])
     trials = trials_in_family(events, p["hypothesis"])
     run_dir = trh.create_run(f"research_{experiment_id.lower().replace('-', '')}_{p['module']}",
-                             rm.ROOT / f"{p['module']}.py", f"python -B research_run_v1.py {experiment_id}",
+                             rm.ROOT / f"{p['module']}.py",
+                             subprocess.list2cmdline([sys.executable, "-B", "research_run_v1.py", experiment_id]),
                              arguments=[experiment_id], seed_note="fixed seeds inside the experiment module")
     log = io.StringIO()
     try:

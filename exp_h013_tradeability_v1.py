@@ -95,28 +95,47 @@ def quote_at(ticks, decision_msc, point=0.01):
     Returns (quote_msc, spread_points), NaN where no tick came before. Later ticks never count. In a replay the
     decision time is the bar open plus the preregistered decision latency, so a first tick of the minute that
     arrived before the decision is included; quote_before (last tick of an earlier minute) is NOT this quote."""
-    tk = ticks[(ticks["bid"] > 0) & (ticks["ask"] > ticks["bid"])].sort_values("time_msc", kind="stable")
-    tm = tk["time_msc"].to_numpy()
-    sp = np.rint((tk["ask"].to_numpy() - tk["bid"].to_numpy()) / point)
-    d = np.asarray(decision_msc, dtype=np.int64)
-    j = np.searchsorted(tm, d, side="right") - 1
-    have = j >= 0
-    jj = np.maximum(j, 0)
-    return np.where(have, tm[jj], np.nan), np.where(have, sp[jj], np.nan)
+    d = _decision_times(decision_msc)
+    t, b, a = (ticks[c].to_numpy(float) for c in ("time_msc", "bid", "ask"))
+    ok = np.isfinite(t) & np.isfinite(b) & np.isfinite(a) & (b > 0) & (a > b)  # inf / zero / crossed: not a quote
+    order = np.argsort(t[ok], kind="stable")
+    tm, sp = t[ok][order], np.rint((a[ok] - b[ok]) / point)[order]
+    qt, qs = np.full(len(d), np.nan), np.full(len(d), np.nan)
+    if len(tm):  # no valid tick at all -> every decision gets no quote
+        j = np.searchsorted(tm, d, side="right") - 1
+        have = j >= 0
+        qt[have], qs[have] = tm[j[have]], sp[j[have]]
+    return qt, qs
+
+
+def _decision_times(decision_msc):
+    d = np.atleast_1d(np.asarray(decision_msc, dtype=float))
+    if not np.isfinite(d).all():
+        raise ValueError("decision times must be finite")
+    return d
 
 
 def cost_gate(decision_msc, quote_msc, quote_spread, c95, max_age_ms):
-    """Reason per decision: 'no_quote', 'stale_quote' (older than max_age_ms, preregistered), 'no_bound' (C95
-    missing: not evaluable, not free), 'cost_gate' (live quote above C95; spikes are not covered, E-015) or 'ok'.
-    A quote stamped after the decision is a look-ahead bug and raises."""
-    d, qt = np.asarray(decision_msc, float), np.asarray(quote_msc, float)
-    q, c = np.asarray(quote_spread, float), np.asarray(c95, float)
-    if np.any(qt > d):
+    """Reason per decision, first match wins: 'no_quote' (no quote time), 'invalid_quote' (spread not finite or
+    <= 0), 'stale_quote' (older than max_age_ms, preregistered), 'no_bound' (C95 not finite or <= 0: not evaluable,
+    not free), 'cost_gate' (live quote above C95; spikes are not covered, E-015), else 'ok'. Only a finite decision
+    time, a valid quote and a finite positive C95 can pass. Bad settings, non-finite decision times and a quote
+    stamped after its decision (a look-ahead bug) raise."""
+    if not (np.isscalar(max_age_ms) and np.isfinite(max_age_ms) and max_age_ms >= 0):
+        raise ValueError(f"max_age_ms must be finite and >= 0, got {max_age_ms!r}")
+    d = _decision_times(decision_msc)
+    qt, q, c = (np.atleast_1d(np.asarray(x, dtype=float)) for x in (quote_msc, quote_spread, c95))
+    if not (len(qt) == len(q) == len(c) == len(d)):
+        raise ValueError("decision, quote and C95 arrays must have the same length")
+    if np.any(qt > d):  # NaN compares False
         raise ValueError("quote time after decision time: later ticks must not reach a decision")
-    out = np.where(np.isnan(c), "no_bound", np.where(q > c, "cost_gate", "ok")).astype(object)
-    out[d - qt > max_age_ms] = "stale_quote"
-    out[np.isnan(qt) | np.isnan(q)] = "no_quote"
-    return out.astype(str)
+    reason = np.full(len(d), "ok", dtype=object)
+    reason[q > c] = "cost_gate"
+    reason[~(np.isfinite(c) & (c > 0))] = "no_bound"
+    reason[d - qt > max_age_ms] = "stale_quote"
+    reason[~(np.isfinite(q) & (q > 0))] = "invalid_quote"
+    reason[~np.isfinite(qt)] = "no_quote"
+    return reason.astype(str)
 
 
 def skip_reason(gate, p_pred, threshold):
@@ -146,9 +165,15 @@ def auc(y, p):
     return float(roc_auc_score(y[ok], p[ok])) if ok.sum() and len(np.unique(y[ok])) == 2 else float("nan")
 
 
+MODELS = ("base_rate_by_hour", "logistic")
+
+
 def question_b(frame, features, start, end, purge_min, min_train=5000):
     """Fixed model set, refit each month on past rows only: 'base_rate_by_hour' and 'logistic' (standardized
-    features, sklearn defaults). Refuses label-derived columns as features (leakage)."""
+    features, sklearn defaults). Refuses label-derived columns as features (leakage).
+    primary: every model scored on the SAME rows (valid label and a finite prediction from every model), so the
+    AUCs compare models on one set of times. auxiliary_all_available: each model on all its own rows (not
+    comparable across models). folds: rows, valid labels, common rows and exclusion counts per fold."""
     from sklearn.linear_model import LogisticRegression
     from sklearn.pipeline import make_pipeline
     from sklearn.preprocessing import StandardScaler
@@ -158,18 +183,40 @@ def question_b(frame, features, start, end, purge_min, min_train=5000):
     y = frame[LABEL].to_numpy(float)
     X = frame[features].to_numpy(float)
     hour = frame["TIME_DT"].dt.hour.to_numpy()
-    preds = {"base_rate_by_hour": np.full(len(frame), np.nan), "logistic": np.full(len(frame), np.nan)}
+    preds = {name: np.full(len(frame), np.nan) for name in MODELS}
+    in_range = np.zeros(len(frame), bool)
+    fitted = np.zeros(len(frame), bool)
+    folds = []
     for tr, te in walk_forward_folds(frame["TIME_DT"], start, end, purge_min):
+        in_range[te] = True
         tr = tr[~np.isnan(y[tr]) & ~np.isnan(X[tr]).any(1)]
-        if len(tr) < min_train or not len(te) or len(np.unique(y[tr])) < 2:
-            continue
-        rate = pd.Series(y[tr]).groupby(hour[tr]).mean()
-        preds["base_rate_by_hour"][te] = pd.Series(hour[te]).map(rate).fillna(y[tr].mean()).to_numpy()
-        ok = te[~np.isnan(X[te]).any(1)]
-        if len(ok):
-            m = make_pipeline(StandardScaler(), LogisticRegression(max_iter=1000)).fit(X[tr], y[tr])
-            preds["logistic"][ok] = m.predict_proba(X[ok])[:, 1]
-    return {name: {"auc": auc(y, p), "n_scored": int((~np.isnan(p) & ~np.isnan(y)).sum())} for name, p in preds.items()}, preds
+        if len(tr) >= min_train and len(te) and len(np.unique(y[tr])) == 2:
+            fitted[te] = True
+            rate = pd.Series(y[tr]).groupby(hour[tr]).mean()
+            preds["base_rate_by_hour"][te] = pd.Series(hour[te]).map(rate).fillna(y[tr].mean()).to_numpy()
+            ok = te[~np.isnan(X[te]).any(1)]
+            if len(ok):
+                m = make_pipeline(StandardScaler(), LogisticRegression(max_iter=1000)).fit(X[tr], y[tr])
+                preds["logistic"][ok] = m.predict_proba(X[ok])[:, 1]
+        folds.append(te)
+    label_ok = np.isfinite(y)
+    common = in_range & label_ok & np.logical_and.reduce([np.isfinite(preds[m]) for m in MODELS])
+    fold_rows = []
+    for te in folds:
+        lab, fit = label_ok[te], fitted[te]
+        feat = ~np.isnan(X[te]).any(1)
+        fold_rows.append({
+            "start": str(frame["TIME_DT"].iloc[te[0]]) if len(te) else None, "rows": int(len(te)),
+            "valid_label": int(lab.sum()), "common": int(common[te].sum()),
+            "excluded": {"no_label": int((~lab).sum()), "no_model_fit": int((lab & ~fit).sum()),
+                         "missing_feature": int((lab & fit & ~feat).sum())}})
+    res = {"primary": {"n_common": int(common.sum()),
+                       "auc": {m: auc(y[common], preds[m][common]) for m in MODELS}},
+           "auxiliary_all_available": {m: {"auc": auc(y[in_range], preds[m][in_range]),
+                                           "n_scored": int((in_range & label_ok & np.isfinite(preds[m])).sum())}
+                                       for m in MODELS},
+           "folds": fold_rows}
+    return res, {**preds, "common": common}
 
 
 def two_group_se(sd, n, share_low, deff=1.0):

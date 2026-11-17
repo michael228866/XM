@@ -261,4 +261,5 @@
 - 包含成本契約（fill／bid／mid 三種價格基準，一筆來回只付一次點差）、事後標籤 `y_ex_post`、只用過去資料的特徵、即時報價閘門與不交易原因、清除標籤窗口的逐月前推切分、固定的小模型集合（各小時基準率、logistic），以及檢定力函式。
 - 沒有 `run()`：要等使用者選定方案、預先登記與 Critic 審查之後才寫。設計與樣本身分見 `H013_PREREG_DRAFT_V2.md` v2.2。
 - 第二輪修正：閘門用決策當下的報價（`quote_at`，含報價時效與報價時間檢查）；標籤遇到缺值或非有限值時為 NaN；前推切分限制在 `[start, end)` 內。
-- pandas 3 相容（`.venv` 為 Python 3.11.9／pandas 3.0.5）：秒數換算改用 `exp_spread_cost_v1.epoch_seconds()`，`merge_asof` 的時間鍵統一為 ns。E-014／E-015 封存時是 Python 3.10／pandas 2.3，舊程式在那個版本下換算正確，封存結論不受影響。
+- pandas 3 相容（`.venv` 為 Python 3.11.9／pandas 3.0.5）：秒數換算改用 `exp_spread_cost_v1.epoch_seconds()`，`merge_asof` 的時間鍵統一為 ns。E-014／E-015 封存時是 Python 3.10／pandas 2.3：在 `datetime64[ns]` 輸入下，舊公式和新函式算出相同的秒數，這一點只由公式推導與合成測試確認。兩次實驗**沒有重跑**，真實資料結果沒有逐值核對；封存證據保留原樣。
+- 研究執行環境（第三輪）：`run_research_experiment.bat` 改用 repo 的 `.venv`，找不到時直接失敗，不改用系統 Python，並傳回失敗碼。`research_run_v1.run()` 在讀帳本、建立 run、匯入模組、git 或 MT5 之前，先檢查直譯器必須是 `.venv\Scripts\python.exe`、Python 3.11。新 run 記錄實際的 `sys.executable` 指令。
