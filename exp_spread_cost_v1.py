@@ -28,6 +28,12 @@ SESSIONS = {"rollover_23_01": ROLLOVER_HOURS, "asia_02_09": tuple(range(2, 10)),
 EPS = 1e-10  # floor for log realized variance (flat 30-minute windows)
 
 
+def epoch_seconds(times):
+    """Unix seconds of naive datetimes, whatever the datetime64 unit (pandas 3 defaults to s/us, not ns, so
+    astype("int64") // 10**9 is wrong there)."""
+    return (pd.Series(times) - pd.Timestamp(0)) // pd.Timedelta(seconds=1)
+
+
 def frame(rates):
     f = pd.DataFrame(rates)
     f["TIME_DT"] = pd.to_datetime(f["time"], unit="s")  # MT5 server time
@@ -290,7 +296,7 @@ def field_semantics(ticks, m1, point):
     d = pd.DataFrame({"m": (tk["time_msc"] // 60000) * 60, "sp": np.rint((tk["ask"] - tk["bid"]) / point)})
     g = d.groupby("m")["sp"]
     agg = pd.DataFrame({"min": g.min(), "max": g.max(), "first": g.first(), "last": g.last(), "mean": g.mean()})
-    bar = m1.set_index(m1["TIME_DT"].astype("int64") // 10**9)["SPREAD"]
+    bar = m1.set_index(epoch_seconds(m1["TIME_DT"]).to_numpy())["SPREAD"]
     j = agg.join(bar.rename("bar"), how="inner")
     j = j[j["bar"] > 0]
     varied = j[j["min"] != j["max"]]

@@ -28,7 +28,7 @@ from datetime import datetime, timezone
 import numpy as np
 import pandas as pd
 
-from exp_spread_cost_v1 import ROLLOVER_HOURS, SESSIONS, ci, execution, frame
+from exp_spread_cost_v1 import ROLLOVER_HOURS, SESSIONS, ci, epoch_seconds, execution, frame
 
 ENTRY = ["A_fixed", "A_cal", "A_x1.5", "A_x2", "B95", "C95", "D95"]
 
@@ -207,7 +207,7 @@ def factor_stability(mt, bars, spec):
     """tick-mean / bar-mean (the 1.21 of E-014) and first-quote / bar-mean, on matching minutes, by window, year,
     session and calibration-tercile spread level. Stable if forward years are within year_tol and forward sessions
     and levels within group_tol of the calibration value."""
-    bar = bars.set_index(bars["TIME_DT"].astype("int64") // 10**9)["SPREAD"]
+    bar = bars.set_index(epoch_seconds(bars["TIME_DT"]).to_numpy())["SPREAD"]
     j = mt.join(bar.rename("bar"), on="m", how="inner")
     j = j[j["bar"] > 0].copy()
     j["year"], j["session"] = j["TIME_DT"].dt.year, session(j["hour"].to_numpy())

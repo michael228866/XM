@@ -60,19 +60,25 @@ def y_ex_post(bars, horizon_min, k, cost):
     """Question A label: 1 if the bid high-low range over minutes (t, t+h] exceeds k x cost(t), else 0; NaN when the
     cost is missing or the window is not complete (fewer than h bars inside, e.g. a weekend). Uses the future."""
     h = horizon_min
-    fwd = lambda s, how: getattr(s.shift(-1)[::-1].rolling(h, min_periods=h), how)()[::-1].to_numpy()  # bars i+1..i+h
-    hi, lo = fwd(bars["HIGH"].astype(float).reset_index(drop=True), "max"), fwd(bars["LOW"].astype(float).reset_index(drop=True), "min")
     t = bars["TIME_DT"].reset_index(drop=True)
-    complete = ((t.shift(-h) - t) == pd.Timedelta(minutes=h)).to_numpy()  # h bars and no gap inside the window
+    if not t.is_monotonic_increasing or not t.is_unique:
+        raise ValueError("bar times must be unique and increasing")
+    fwd = lambda s, how: getattr(s.shift(-1)[::-1].rolling(h, min_periods=h), how)()[::-1].to_numpy()  # bars i+1..i+h
+    hi_s = bars["HIGH"].astype(float).reset_index(drop=True).replace([np.inf, -np.inf], np.nan)
+    lo_s = bars["LOW"].astype(float).reset_index(drop=True).replace([np.inf, -np.inf], np.nan)
+    finite = (hi_s.notna() & lo_s.notna()).astype(float)
+    all_finite = fwd(finite, "sum") == h  # every bar inside the window has a finite HIGH and LOW
+    complete = ((t.shift(-h) - t) == pd.Timedelta(minutes=h)).to_numpy()  # unique + increasing: h bars, no gap
     cost = np.asarray(cost, float)
-    rng = (hi - lo) / 0.01
-    return np.where(complete & ~np.isnan(cost), (rng > k * cost).astype(float), np.nan)
+    ok = complete & all_finite & np.isfinite(cost) & (cost > 0)
+    rng = (fwd(hi_s, "max") - fwd(lo_s, "min")) / 0.01
+    return np.where(ok, (rng > k * cost).astype(float), np.nan)
 
 
 def past_features(bars, quote_before, c95, horizon_min):
     """Features known at the open of minute t: realized volatility of bid closes strictly before t over the last
-    30 / 240 / 1440 bars, server hour, scheduled exit rollover flag, the last quote before t (the live quote a
-    decision sees) and the day's C95 (from earlier days only, exp_cost_bound_v1.bounds)."""
+    30 / 240 / 1440 bars, server hour, scheduled exit rollover flag, the last quote of an earlier minute (a
+    prediction input only; the gate uses quote_at) and the day's C95 (earlier days only, exp_cost_bound_v1.bounds)."""
     r = np.log(bars["CLOSE"].astype(float)).diff()
     f = pd.DataFrame(index=bars.index)
     for w in (30, 240, 1440):
@@ -84,11 +90,33 @@ def past_features(bars, quote_before, c95, horizon_min):
     return f
 
 
-def cost_gate(quote_before, c95):
-    """Reason per decision minute: 'no_bound' (C95 missing: not evaluable, not free), 'cost_gate' (live quote above
-    C95; spikes are not covered, E-015) or 'ok'. Uses the quote visible at decision time only."""
-    q, c = np.asarray(quote_before, float), np.asarray(c95, float)
-    return np.where(np.isnan(c) | np.isnan(q), "no_bound", np.where(q > c, "cost_gate", "ok"))
+def quote_at(ticks, decision_msc, point=0.01):
+    """The live quote a decision sees: the last valid tick with time_msc <= the decision time (bid > 0, ask > bid).
+    Returns (quote_msc, spread_points), NaN where no tick came before. Later ticks never count. In a replay the
+    decision time is the bar open plus the preregistered decision latency, so a first tick of the minute that
+    arrived before the decision is included; quote_before (last tick of an earlier minute) is NOT this quote."""
+    tk = ticks[(ticks["bid"] > 0) & (ticks["ask"] > ticks["bid"])].sort_values("time_msc", kind="stable")
+    tm = tk["time_msc"].to_numpy()
+    sp = np.rint((tk["ask"].to_numpy() - tk["bid"].to_numpy()) / point)
+    d = np.asarray(decision_msc, dtype=np.int64)
+    j = np.searchsorted(tm, d, side="right") - 1
+    have = j >= 0
+    jj = np.maximum(j, 0)
+    return np.where(have, tm[jj], np.nan), np.where(have, sp[jj], np.nan)
+
+
+def cost_gate(decision_msc, quote_msc, quote_spread, c95, max_age_ms):
+    """Reason per decision: 'no_quote', 'stale_quote' (older than max_age_ms, preregistered), 'no_bound' (C95
+    missing: not evaluable, not free), 'cost_gate' (live quote above C95; spikes are not covered, E-015) or 'ok'.
+    A quote stamped after the decision is a look-ahead bug and raises."""
+    d, qt = np.asarray(decision_msc, float), np.asarray(quote_msc, float)
+    q, c = np.asarray(quote_spread, float), np.asarray(c95, float)
+    if np.any(qt > d):
+        raise ValueError("quote time after decision time: later ticks must not reach a decision")
+    out = np.where(np.isnan(c), "no_bound", np.where(q > c, "cost_gate", "ok")).astype(object)
+    out[d - qt > max_age_ms] = "stale_quote"
+    out[np.isnan(qt) | np.isnan(q)] = "no_quote"
+    return out.astype(str)
 
 
 def skip_reason(gate, p_pred, threshold):
@@ -98,12 +126,16 @@ def skip_reason(gate, p_pred, threshold):
 
 
 def walk_forward_folds(times, start, end, purge_min):
-    """Monthly folds: test = one calendar month; train = everything before the month minus purge_min minutes (purge
-    must cover the label window)."""
+    """Monthly folds inside [start, end): test = the part of each calendar month inside the range; train =
+    everything before that fold's first test time minus purge_min minutes (purge must cover the label window).
+    Never evaluates outside [start, end)."""
     t = pd.DatetimeIndex(times)
+    s, e = pd.Timestamp(start), pd.Timestamp(end)
+    if s >= e:
+        raise ValueError(f"empty evaluation range [{s}, {e})")
     folds = []
-    for m in pd.period_range(pd.Timestamp(start), pd.Timestamp(end) - pd.Timedelta(days=1), freq="M"):
-        a, b = m.start_time, (m + 1).start_time
+    for m in pd.period_range(s, e - pd.Timedelta(microseconds=1), freq="M"):
+        a, b = max(m.start_time, s), min((m + 1).start_time, e)
         folds.append((np.where(t < a - pd.Timedelta(minutes=purge_min))[0], np.where((t >= a) & (t < b))[0]))
     return folds
 

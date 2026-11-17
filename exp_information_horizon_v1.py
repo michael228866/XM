@@ -32,12 +32,12 @@ def weekly_panel(d1, treasury, cot):
     first["ret"] = first["OPEN"].shift(-1) / first["OPEN"] - 1
     first["nights"] = (first["TIME_DT"].shift(-1) - first["TIME_DT"]).dt.days  # swap charged every calendar night
     # Server time is ~UTC+2/3; using the bar time as UTC makes availability checks ~2-3 h conservative.
-    decision = first["TIME_DT"].dt.tz_localize("UTC")
+    decision = first["TIME_DT"].dt.tz_localize("UTC").dt.as_unit("ns")  # merge_asof needs one unit (pandas 3: s/us)
     t = treasury.copy()
-    t["avail"] = pd.to_datetime(t["availability_ns"], utc=True)
+    t["avail"] = pd.to_datetime(t["availability_ns"], utc=True).dt.as_unit("ns")
     t["REAL10Y_CHG_20D"] = t["real_10y"] - t["real_10y"].shift(20)
     c = cot.copy()
-    c["avail"] = pd.to_datetime(c["availability_time_utc"], utc=True)
+    c["avail"] = pd.to_datetime(c["availability_time_utc"], utc=True).dt.as_unit("ns")
     panel = pd.merge_asof(first.assign(decision=decision).sort_values("decision"),
                           t[["avail", "REAL10Y_CHG_20D"]].sort_values("avail"),
                           left_on="decision", right_on="avail", direction="backward", allow_exact_matches=False)

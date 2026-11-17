@@ -259,4 +259,6 @@
 **H-013 離線模組（2026-11-17，`exp_h013_tradeability_v1.py`，只核准設計）**
 
 - 包含成本契約（fill／bid／mid 三種價格基準，一筆來回只付一次點差）、事後標籤 `y_ex_post`、只用過去資料的特徵、即時報價閘門與不交易原因、清除標籤窗口的逐月前推切分、固定的小模型集合（各小時基準率、logistic），以及檢定力函式。
-- 沒有 `run()`：要等使用者選定方案、預先登記與 Critic 審查之後才寫。設計與樣本身分見 `H013_PREREG_DRAFT_V2.md` v2.1。
+- 沒有 `run()`：要等使用者選定方案、預先登記與 Critic 審查之後才寫。設計與樣本身分見 `H013_PREREG_DRAFT_V2.md` v2.2。
+- 第二輪修正：閘門用決策當下的報價（`quote_at`，含報價時效與報價時間檢查）；標籤遇到缺值或非有限值時為 NaN；前推切分限制在 `[start, end)` 內。
+- pandas 3 相容（`.venv` 為 Python 3.11.9／pandas 3.0.5）：秒數換算改用 `exp_spread_cost_v1.epoch_seconds()`，`merge_asof` 的時間鍵統一為 ns。E-014／E-015 封存時是 Python 3.10／pandas 2.3，舊程式在那個版本下換算正確，封存結論不受影響。

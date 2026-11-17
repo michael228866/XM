@@ -105,7 +105,8 @@ class InformationHorizonTests(unittest.TestCase):
         import exp_information_horizon_v1 as ih
         days = pd.bdate_range("2020-01-06", periods=200)
         d1 = pd.DataFrame({"TIME_DT": days, "OPEN": np.linspace(100, 120, 200), "CLOSE": np.linspace(100, 120, 200)})
-        ns = (pd.DatetimeIndex(days) + pd.Timedelta(hours=21)).asi8  # each rate is known the evening of its date
+        # each rate is known the evening of its date; ns explicitly (pandas 3 asi8 follows the index unit)
+        ns = (pd.DatetimeIndex(days) + pd.Timedelta(hours=21)).as_unit("ns").asi8
         treasury = pd.DataFrame({"real_10y": np.arange(200.0), "availability_ns": ns})
         cot = pd.DataFrame({"availability_time_utc": [str(d + pd.Timedelta(days=4)) + "+00:00" for d in days[::5]],
                             "COT_MM_NET_PCT_OI": np.arange(len(days[::5]), dtype=float)})
@@ -1094,8 +1095,6 @@ class H013BuildingBlockTests(unittest.TestCase):
         q2[i + 1:] = 99  # later quotes
         f1 = h.past_features(shocked, q2, c95, 60)
         pd.testing.assert_series_equal(f0.loc[i], f1.loc[i])
-        self.assertEqual(list(h.cost_gate([30, 40, 30, np.nan], [35, 35, np.nan, 35])),
-                         ["ok", "cost_gate", "no_bound", "no_bound"])
         reasons = h.skip_reason(np.array(["ok", "ok", "cost_gate", "ok"]), [0.9, 0.2, 0.9, np.nan], 0.5)
         self.assertEqual(list(reasons), ["trade", "model_filter", "cost_gate", "no_prediction"])
         cost = np.full(n, 30.0)
@@ -1113,6 +1112,74 @@ class H013BuildingBlockTests(unittest.TestCase):
         self.assertTrue(np.isnan(h.y_ex_post(bars, 60, 2.0, cost)[i]))
         self.assertEqual(list(h.roll_exit_scheduled(pd.DatetimeIndex(["2024-01-02 22:30", "2024-01-02 21:30"]), 60)),
                          [True, False])  # keyed on t + 60, known at t
+
+    def test_gate_uses_the_quote_live_at_decision_time(self):
+        h = self.h
+        t0 = int(pd.Timestamp("2024-01-02 10:00").value // 10**6)  # minute open, ms
+        ticks = pd.DataFrame({"time_msc": [t0 - 20_000, t0 + 500, t0 + 2_000],
+                              "bid": [2000.0, 2000.0, 2000.0], "ask": [2000.30, 2002.00, 2000.10]})
+        dec = t0 + 1_000  # bar open + preregistered decision latency
+        qt, sp = h.quote_at(ticks, [dec])
+        self.assertEqual((qt[0], sp[0]), (t0 + 500, 200.0))  # the new 200, not the previous minute's 30
+        self.assertEqual(list(h.cost_gate([dec], qt, sp, [35.0], 60_000)), ["cost_gate"])  # old 30 -> new 200 -> blocked
+        later = pd.concat([ticks, pd.DataFrame({"time_msc": [t0 + 1_500], "bid": [2000.0], "ask": [2000.05]})])
+        self.assertEqual(h.quote_at(later, [dec])[1][0], 200.0)  # a tick after the decision never reaches it
+        qt2, sp2 = h.quote_at(ticks, [t0 + 10 * 60_000])  # ten minutes without a tick
+        self.assertEqual(list(h.cost_gate([t0 + 10 * 60_000], qt2, sp2, [999.0], 60_000)), ["stale_quote"])
+        qt3, sp3 = h.quote_at(ticks, [t0 - 60_000])  # before any tick
+        self.assertEqual(list(h.cost_gate([t0 - 60_000], qt3, sp3, [35.0], 60_000)), ["no_quote"])
+        self.assertEqual(list(h.cost_gate([dec, dec], [dec, dec], [30.0, 30.0], [35.0, np.nan], 60_000)),
+                         ["ok", "no_bound"])
+        with self.assertRaises(ValueError):
+            h.cost_gate([dec], [dec + 1], [30.0], [35.0], 60_000)  # quote stamped after the decision
+
+    def test_label_never_turns_missing_data_into_zero(self):
+        h = self.h
+        t = pd.date_range("2024-01-02 10:00", periods=4, freq="min")
+        bars = pd.DataFrame({"TIME_DT": t, "HIGH": [100, np.nan, 105, 105], "LOW": [99.0] * 4})
+        y = h.y_ex_post(bars, 2, 1.0, np.full(4, 30.0))
+        self.assertTrue(np.isnan(y[0]))  # the reviewer's case: NaN HIGH inside the window, was 0.0
+        self.assertEqual(y[1], 1.0)  # window bars 2-3: range 600 points > 30
+        inf = bars.assign(HIGH=[100, 101, np.inf, 105])
+        self.assertTrue(np.isnan(h.y_ex_post(inf, 2, 1.0, np.full(4, 30.0))[0]))
+        self.assertTrue(np.isnan(h.y_ex_post(bars.assign(HIGH=100.0), 2, 1.0, [0.0, -1, np.inf, 30])[:3]).all())
+        with self.assertRaises(ValueError):
+            h.y_ex_post(bars.iloc[[0, 1, 1, 2]].assign(HIGH=100.0), 2, 1.0, np.full(4, 30.0))  # duplicate time
+        with self.assertRaises(ValueError):
+            h.y_ex_post(bars.iloc[[0, 2, 1, 3]].assign(HIGH=100.0), 2, 1.0, np.full(4, 30.0))  # out of order
+
+    def test_folds_stay_inside_the_requested_range(self):
+        h = self.h
+        times = pd.Series(pd.date_range("2024-02-25", "2024-04-05", freq="h"))
+        folds = h.walk_forward_folds(times, "2024-03-15", "2024-03-20", 60)
+        self.assertEqual(len(folds), 1)
+        te = times[folds[0][1]]
+        self.assertEqual((te.min(), te.max()), (pd.Timestamp("2024-03-15"), pd.Timestamp("2024-03-19 23:00")))
+        self.assertLess(times[folds[0][0]].max(), pd.Timestamp("2024-03-15") - pd.Timedelta(minutes=60))
+        span = h.walk_forward_folds(times, "2024-03-20 06:00", "2024-04-02 12:00", 60)  # mid-month across months
+        tested = pd.concat([times[te] for _, te in span])
+        self.assertTrue(((tested >= "2024-03-20 06:00") & (tested < "2024-04-02 12:00")).all())
+        self.assertEqual(len(tested), int(((times >= "2024-03-20 06:00") & (times < "2024-04-02 12:00")).sum()))
+        self.assertLess(times[span[1][0]].max(), pd.Timestamp("2024-04-01") - pd.Timedelta(minutes=60))
+        same_day = h.walk_forward_folds(times, "2024-03-10 05:00", "2024-03-10 08:00", 0)
+        self.assertEqual(list(times[same_day[0][1]].dt.hour), [5, 6, 7])  # end is exclusive
+        for a, b in (("2024-03-10", "2024-03-10"), ("2024-03-11", "2024-03-10")):
+            with self.assertRaises(ValueError):
+                h.walk_forward_folds(times, a, b, 60)
+
+    def test_epoch_seconds_ignore_the_datetime_unit(self):
+        import exp_cost_bound_v1 as cb
+        from exp_spread_cost_v1 import epoch_seconds
+        t = pd.Series(pd.to_datetime(["2024-01-02 10:00", "2024-01-02 10:01"]))
+        want = [1704189600, 1704189660]
+        for unit in ("s", "ms", "us", "ns"):
+            self.assertEqual(list(epoch_seconds(t.dt.as_unit(unit))), want)
+        ticks, bars = synthetic_quotes()
+        mt = cb.minute_table(ticks, 0.01)
+        got = {u: cb.factor_stability(mt, bars.assign(TIME_DT=bars["TIME_DT"].dt.as_unit(u)), COST_SPEC)["minutes_matched"]
+               for u in ("s", "us", "ns")}
+        self.assertGreater(got["ns"], 0)
+        self.assertEqual(len(set(got.values())), 1)  # pandas 3 (s/us) and pandas 2 (ns) join the same minutes
 
     def test_purged_folds_and_prediction_on_synthetic_volatility(self):
         h = self.h
