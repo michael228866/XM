@@ -1043,6 +1043,111 @@ class CostBoundTests(unittest.TestCase):
         self.assertEqual((rt["commission_total"], rt["swap_total"]), (-0.1, -0.2))
 
 
+def synthetic_m1_vol(days=75, seed=0, informative=True):
+    """Bid M1 bars on weekdays; volatility switches by 4-hour block (persistent if informative, else i.i.d.)."""
+    rng = np.random.default_rng(seed)
+    idx = pd.DatetimeIndex([d + pd.Timedelta(minutes=m) for d in pd.bdate_range("2024-01-01", periods=days)
+                            for m in range(1440)])
+    block = np.arange(len(idx)) // 240
+    state = np.zeros(block.max() + 1)
+    for b in range(1, len(state)):
+        state[b] = (state[b - 1] if rng.random() < 0.9 else 1 - state[b - 1]) if informative else float(rng.random() < 0.5)
+    sig = np.where(state[block] > 0, 0.0009, 0.0002)
+    close = 2000 * np.exp(np.cumsum(rng.normal(0, sig)))
+    wig = np.abs(rng.normal(0, sig)) * close
+    return pd.DataFrame({"TIME_DT": idx, "CLOSE": close, "HIGH": close + wig, "LOW": close - wig})
+
+
+class H013BuildingBlockTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import exp_h013_tradeability_v1 as h
+        cls.h = h
+
+    def test_cost_contract_is_one_spread_and_matches_by_hand(self):
+        h = self.h
+        eb, ea, xb, xa = 2000.00, 2000.30, 2001.00, 2001.40  # quotes: 30-point entry spread, 40-point exit spread
+        mid = lambda b, a: (b + a) / 2
+        for side, fill_in, fill_out, want in (("long", ea, xb, 70.0), ("short", eb, xa, -140.0)):
+            got = [float(h.net_points(side, "fill", fill_in, fill_out)),
+                   float(h.net_points(side, "bid", eb, xb, 30, 40)),
+                   float(h.net_points(side, "mid", mid(eb, ea), mid(xb, xa), 30, 40))]
+            np.testing.assert_allclose(got, [want] * 3, atol=1e-6)  # same PnL on every price basis
+        self.assertAlmostEqual(float(h.net_points("long", "fill", ea, xb, extra_points=5)), 65.0, places=6)
+        self.assertEqual(float(h.label_cost(30, 15)), 30.0)  # max(long, short), never C95 + E95x
+        self.assertEqual(float(h.label_cost(30, 20)), 40.0)  # E95x x 2 (D-022 stress) when the short side is worse
+        self.assertTrue(np.isnan(h.label_cost(np.nan, 10)))  # missing bound: not evaluable, never 0
+        self.assertTrue(np.isnan(h.net_points("long", "bid", eb, xb, np.nan, 40)))
+        with self.assertRaises(ValueError):
+            h.net_points("long", "ask", eb, xb, 30, 40)
+
+    def test_features_gate_and_label_use_the_right_times(self):
+        h = self.h
+        bars = synthetic_m1_vol(days=3, seed=1)
+        n, i = len(bars), 2500
+        q = np.full(n, 30.0)
+        c95 = np.full(n, 35.0)
+        f0 = h.past_features(bars, q, c95, 60)
+        shocked = bars.copy()
+        shocked.loc[i:, ["CLOSE", "HIGH", "LOW"]] *= 1.5  # bar i's own close is not known at its open
+        q2 = q.copy()
+        q2[i + 1:] = 99  # later quotes
+        f1 = h.past_features(shocked, q2, c95, 60)
+        pd.testing.assert_series_equal(f0.loc[i], f1.loc[i])
+        self.assertEqual(list(h.cost_gate([30, 40, 30, np.nan], [35, 35, np.nan, 35])),
+                         ["ok", "cost_gate", "no_bound", "no_bound"])
+        reasons = h.skip_reason(np.array(["ok", "ok", "cost_gate", "ok"]), [0.9, 0.2, 0.9, np.nan], 0.5)
+        self.assertEqual(list(reasons), ["trade", "model_filter", "cost_gate", "no_prediction"])
+        cost = np.full(n, 30.0)
+        y0 = h.y_ex_post(bars, 60, 2.0, cost)
+        far = bars.copy()
+        far.loc[i + 61:, ["HIGH", "LOW"]] *= [1.5, 0.5]  # outside (t, t+60]: label unchanged
+        np.testing.assert_array_equal(y0[i], h.y_ex_post(far, 60, 2.0, cost)[i])
+        near = bars.copy()
+        near.loc[i + 60, "HIGH"] *= 1.5  # inside the window: label becomes 1
+        self.assertEqual(h.y_ex_post(near, 60, 2.0, cost)[i], 1.0)
+        self.assertTrue(np.isnan(y0[n - 30]))  # window runs past the data: no label
+        gap = bars.drop(index=range(i + 10, i + 20)).reset_index(drop=True)
+        self.assertTrue(np.isnan(h.y_ex_post(gap, 60, 2.0, np.full(len(gap), 30.0))[i]))  # gap inside the window
+        cost[i] = np.nan
+        self.assertTrue(np.isnan(h.y_ex_post(bars, 60, 2.0, cost)[i]))
+        self.assertEqual(list(h.roll_exit_scheduled(pd.DatetimeIndex(["2024-01-02 22:30", "2024-01-02 21:30"]), 60)),
+                         [True, False])  # keyed on t + 60, known at t
+
+    def test_purged_folds_and_prediction_on_synthetic_volatility(self):
+        h = self.h
+        bars = synthetic_m1_vol(days=75, seed=2)
+        times = bars["TIME_DT"]
+        for tr, te in h.walk_forward_folds(times, "2024-03-01", "2024-04-01", 120):
+            self.assertLess(times[tr].max(), times[te].min() - pd.Timedelta(minutes=120))
+        fr = bars.assign(**h.past_features(bars, np.full(len(bars), 30.0), np.full(len(bars), 35.0), 60))
+        fr[h.LABEL] = h.y_ex_post(bars, 60, 50.0, np.full(len(bars), 30.0))  # threshold between the two regimes
+        self.assertTrue(0.2 < np.nanmean(fr[h.LABEL]) < 0.8)
+        feats = ["rv_30", "rv_240", "rv_1440", "hour_sin", "hour_cos"]
+        res, _ = h.question_b(fr, feats, "2024-03-01", "2024-04-01", 120)
+        self.assertGreater(res["logistic"]["auc"], 0.7)  # persistent volatility is predictable from the past
+        noise = bars.assign(**h.past_features(bars, np.full(len(bars), 30.0), np.full(len(bars), 35.0), 60))
+        noise[h.LABEL] = np.random.default_rng(3).integers(0, 2, len(bars)).astype(float)
+        res0, _ = h.question_b(noise, feats, "2024-03-01", "2024-04-01", 120)
+        self.assertLess(abs(res0["logistic"]["auc"] - 0.5), 0.05)
+        with self.assertRaises(ValueError):
+            h.question_b(fr, feats + [h.LABEL], "2024-03-01", "2024-04-01", 120)  # leakage refused
+
+    def test_power_is_a_function_not_a_constant(self):
+        h = self.h
+        self.assertAlmostEqual(2 * h.two_group_se(0.9, 6912, 0.25), 0.05, places=3)  # the draft's ~7,000 = 2 SE
+        self.assertEqual(h.n_required(0.05, 0.9, 0.25), 10684)  # 80% power, one-sided 5%
+        self.assertGreater(h.n_required(0.05, 0.9, 0.25, deff=1.5), h.n_required(0.05, 0.9, 0.25))
+        self.assertLess(h.power(0.05, 0.9, 157, 0.25), 0.15)  # the 157 demo trades cannot test the clause
+
+    def test_h013_formal_run_is_still_blocked_on_the_real_ledger(self):
+        import research_planner_v1 as rp
+        r = rp.readiness(rm.read(), "H-013")
+        self.assertFalse(r["ready"])
+        self.assertEqual(r["approval"], "design_only")
+        self.assertTrue(any("trade_sample" in b["what"] for b in r["blockers"]))
+
+
 class FakeMt5:
     def terminal_info(self):
         return type("T", (), {"path": "C:/mt5", "build": 1, "name": "MT5"})()
