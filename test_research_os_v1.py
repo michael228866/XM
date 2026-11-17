@@ -1254,6 +1254,48 @@ class H013BuildingBlockTests(unittest.TestCase):
             np.testing.assert_array_equal(p0[m][feb], p1[m][feb])
         self.assertFalse(np.array_equal(p0["logistic"][later.to_numpy()], p1["logistic"][later.to_numpy()]))
 
+    def test_non_finite_features_and_labels_are_excluded_not_crashing(self):
+        h = self.h
+        run = lambda f: h.question_b(f, ["f1", "f2"], "2024-03-01", "2024-03-03", 60, min_train=100)
+        for value in (np.inf, -np.inf):
+            for where, row in (("train", "2024-02-10 05:00"), ("test", "2024-03-01 05:00")):
+                with self.subTest(value=value, where=where):
+                    f = self.hourly(False)
+                    f.loc[f["TIME_DT"] == row, "f2"] = value
+                    res, preds = run(f)  # sklearn never sees the inf
+                    fold = res["folds"][0]
+                    if where == "test":
+                        self.assertEqual(res["primary"]["n_common"], 47)
+                        self.assertEqual(fold["excluded"], {"no_label": 0, "no_model_fit": 0, "missing_feature": 1})
+                        self.assertEqual(res["auxiliary_all_available"]["logistic"]["n_scored"], 47)
+                        self.assertEqual(res["auxiliary_all_available"]["base_rate_by_hour"]["n_scored"], 48)
+                    else:
+                        self.assertEqual(res["primary"]["n_common"], 48)
+                        self.assertEqual(fold["excluded"], {"no_label": 0, "no_model_fit": 0, "missing_feature": 0})
+        f = self.hourly(False)
+        f.loc[f["TIME_DT"] == "2024-03-01 05:00", h.LABEL] = np.inf
+        res, _ = run(f)
+        self.assertEqual(res["folds"][0]["excluded"]["no_label"], 1)  # non-finite label: not evaluable
+        self.assertEqual(res["primary"]["n_common"], 47)
+        f.loc[f["TIME_DT"] == "2024-03-01 06:00", h.LABEL] = 2.0
+        with self.assertRaises(ValueError):
+            run(f)  # outside the 0 / 1 contract: refused
+
+    def test_invalid_close_never_becomes_a_volatility_input(self):
+        h = self.h
+        bars = synthetic_m1_vol(days=3, seed=4)
+        i = 2000
+        clean = h.past_features(bars, np.full(len(bars), 30.0), np.full(len(bars), 35.0), 60)
+        for value in (0.0, -1.0, np.inf, np.nan):
+            with self.subTest(close=value):
+                b = bars.copy()
+                b.loc[i, "CLOSE"] = value
+                f = h.past_features(b, np.full(len(b), 30.0), np.full(len(b), 35.0), 60)
+                self.assertTrue(f.loc[i + 1:i + 31, "rv_30"].isna().all())  # every window holding close i
+                self.assertTrue(np.isfinite(f.loc[i + 32, "rv_30"]))
+                self.assertEqual(f.loc[i, "rv_30"], clean.loc[i, "rv_30"])  # earlier rows unchanged
+                self.assertTrue(f.loc[i + 1:i + 241, "rv_240"].isna().all())
+
     def test_purged_folds_and_prediction_on_synthetic_volatility(self):
         h = self.h
         bars = synthetic_m1_vol(days=75, seed=2)
@@ -1312,6 +1354,43 @@ class InterpreterPolicyTests(unittest.TestCase):
                 rr.run("E-1")
             self.assertIn("refused", str(stop.exception))
         boom.assert_not_called()
+
+    def test_new_run_records_the_actual_interpreter_command(self):
+        import research_planner_v1 as rp
+        import research_run_v1 as rr
+        from unittest import mock
+
+        class Stop(Exception):
+            pass
+
+        seen = {}
+
+        def create_run(name, script, command, **kw):
+            seen.update(name=name, command=command, **kw)
+            raise Stop
+
+        boom = mock.Mock(side_effect=AssertionError("reached after create_run"))
+        module = mock.Mock(run=boom)
+        p = {"id": "E-1", "hypothesis": "H-1", "module": "exp_fixture", "spec": {}, "code_files": {}}
+        exe = r"C:\Program Files\Py 311\python.exe"  # a path with spaces
+        with mock.patch.object(rr, "interpreter_problem", lambda *a, **k: None), \
+                mock.patch.object(rr.sys, "executable", exe), \
+                mock.patch.object(rr.rm, "read", lambda *a, **k: []), mock.patch.object(rr.rm, "verify", lambda e: []), \
+                mock.patch.object(rr.rm, "state", lambda e: ({}, {"E-1": p}, {})), \
+                mock.patch.object(rr.rm, "withdrawn", lambda e: set()), \
+                mock.patch.object(rr.rm, "review_gate", lambda e, x: None), \
+                mock.patch.object(rp, "readiness", lambda e, h: {"blockers": []}), \
+                mock.patch.object(rr, "git_problems", lambda paths: []), \
+                mock.patch.object(rr.importlib, "import_module", lambda name: module), \
+                mock.patch.object(rr, "trials_in_family", lambda e, h: 1), \
+                mock.patch.object(rr.trh, "create_run", create_run), \
+                mock.patch.object(rr.rm, "append", boom), mock.patch.object(rr.rm, "render", boom), \
+                mock.patch.object(rr, "archive", boom), mock.patch.object(rr.subprocess, "run", boom), \
+                self.assertRaises(Stop):
+            rr.run("E-1")
+        self.assertEqual(seen["command"], '"C:\\Program Files\\Py 311\\python.exe" -B research_run_v1.py E-1')
+        self.assertEqual(seen["arguments"], ["E-1"])
+        boom.assert_not_called()  # no experiment call, ledger write, render, archive or push
 
     def test_research_bat_uses_the_repository_venv_and_keeps_the_exit_code(self):
         text = (rm.ROOT / "run_research_experiment.bat").read_text(encoding="ascii")

@@ -78,11 +78,17 @@ def y_ex_post(bars, horizon_min, k, cost):
 def past_features(bars, quote_before, c95, horizon_min):
     """Features known at the open of minute t: realized volatility of bid closes strictly before t over the last
     30 / 240 / 1440 bars, server hour, scheduled exit rollover flag, the last quote of an earlier minute (a
-    prediction input only; the gate uses quote_at) and the day's C95 (earlier days only, exp_cost_bound_v1.bounds)."""
-    r = np.log(bars["CLOSE"].astype(float)).diff()
+    prediction input only; the gate uses quote_at) and the day's C95 (earlier days only, exp_cost_bound_v1.bounds).
+    A CLOSE that is not finite or <= 0 is invalid: every rv window that contains it is NaN (not evaluable), it is
+    never skipped or filled."""
+    close = bars["CLOSE"].astype(float)
+    bad = ~(np.isfinite(close) & (close > 0))
+    r = np.log(close.where(~bad)).diff()
     f = pd.DataFrame(index=bars.index)
     for w in (30, 240, 1440):
-        f[f"rv_{w}"] = r.rolling(w, min_periods=w // 2).std().shift(1)  # shift: bar t's close is not known at t
+        rv = r.rolling(w, min_periods=w // 2).std()
+        rv[bad.astype(float).rolling(w + 1, min_periods=1).sum() > 0] = np.nan  # w returns use w + 1 closes
+        f[f"rv_{w}"] = rv.shift(1)  # shift: bar t's close is not known at t
     hour = bars["TIME_DT"].dt.hour
     f["hour_sin"], f["hour_cos"] = np.sin(2 * np.pi * hour / 24), np.cos(2 * np.pi * hour / 24)
     f["roll_exit_sched"] = roll_exit_scheduled(bars["TIME_DT"], horizon_min).astype(float)
@@ -161,7 +167,7 @@ def walk_forward_folds(times, start, end, purge_min):
 
 def auc(y, p):
     from sklearn.metrics import roc_auc_score
-    ok = ~(np.isnan(y) | np.isnan(p))
+    ok = np.isfinite(y) & np.isfinite(p)
     return float(roc_auc_score(y[ok], p[ok])) if ok.sum() and len(np.unique(y[ok])) == 2 else float("nan")
 
 
@@ -181,7 +187,12 @@ def question_b(frame, features, start, end, purge_min, min_train=5000):
     if bad:
         raise ValueError(f"leakage: label or future columns used as features: {bad}")
     y = frame[LABEL].to_numpy(float)
+    off = np.isfinite(y) & ~np.isin(y, (0.0, 1.0))
+    if off.any():  # binary contract: 0 / 1, or non-finite = not evaluable
+        raise ValueError(f"label must be 0, 1 or missing; got {np.unique(y[off])[:5].tolist()}")
     X = frame[features].to_numpy(float)
+    x_ok = np.isfinite(X).all(1)  # one validity rule for fitting, prediction and the exclusion counts (NaN and +-inf)
+    label_ok = np.isfinite(y)
     hour = frame["TIME_DT"].dt.hour.to_numpy()
     preds = {name: np.full(len(frame), np.nan) for name in MODELS}
     in_range = np.zeros(len(frame), bool)
@@ -189,22 +200,21 @@ def question_b(frame, features, start, end, purge_min, min_train=5000):
     folds = []
     for tr, te in walk_forward_folds(frame["TIME_DT"], start, end, purge_min):
         in_range[te] = True
-        tr = tr[~np.isnan(y[tr]) & ~np.isnan(X[tr]).any(1)]
+        tr = tr[label_ok[tr] & x_ok[tr]]
         if len(tr) >= min_train and len(te) and len(np.unique(y[tr])) == 2:
             fitted[te] = True
             rate = pd.Series(y[tr]).groupby(hour[tr]).mean()
             preds["base_rate_by_hour"][te] = pd.Series(hour[te]).map(rate).fillna(y[tr].mean()).to_numpy()
-            ok = te[~np.isnan(X[te]).any(1)]
+            ok = te[x_ok[te]]
             if len(ok):
                 m = make_pipeline(StandardScaler(), LogisticRegression(max_iter=1000)).fit(X[tr], y[tr])
                 preds["logistic"][ok] = m.predict_proba(X[ok])[:, 1]
         folds.append(te)
-    label_ok = np.isfinite(y)
     common = in_range & label_ok & np.logical_and.reduce([np.isfinite(preds[m]) for m in MODELS])
     fold_rows = []
     for te in folds:
         lab, fit = label_ok[te], fitted[te]
-        feat = ~np.isnan(X[te]).any(1)
+        feat = x_ok[te]
         fold_rows.append({
             "start": str(frame["TIME_DT"].iloc[te[0]]) if len(te) else None, "rows": int(len(te)),
             "valid_label": int(lab.sum()), "common": int(common[te].sum()),
