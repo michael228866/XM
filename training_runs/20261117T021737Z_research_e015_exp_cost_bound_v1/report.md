@@ -1,0 +1,1226 @@
+# E-015 GOLD# conservative cost upper bound (H-023)
+
+Outcome: **supported**
+
+supported: recommended entry bound C95, exit bound E95x (spikes covered {'entry': False, 'exit': False}). Forward 2025-01-01+ (242 sampled days). ENTRY: A_fixed cov 0.6829 (CI [0.5388, 0.7936], years {'2025': 0.7322, '2026': 0.6266}, rollover 0.4337, HH:00 0.6605, uncovered 0.0758, bound/cost 0.99, high-cost miss 1.0) fail: coverage,coverage_ci_lower,every_year,rollover,other_hours,hour_start,uncovered_cost_share; A_cal cov 0.7001 (CI [0.5343, 0.8155], years {'2025': 0.7395, '2026': 0.6552}, rollover 0.4503, HH:00 0.6777, uncovered 0.0738, bound/cost 0.996, high-cost miss 1.0) fail: coverage,coverage_ci_lower,every_year,rollover,other_hours,hour_start,uncovered_cost_share; A_x1.5 cov 0.9728 (CI [0.961, 0.9832], years {'2025': 0.9654, '2026': 0.9812}, rollover 0.7978, HH:00 0.9462, uncovered 0.0371, bound/cost 1.484, high-cost miss 1.0) fail: rollover,uncovered_cost_share; A_x2 cov 0.9838 (CI [0.9729, 0.9919], years {'2025': 0.9753, '2026': 0.9936}, rollover 0.8737, HH:00 0.9709, uncovered 0.0268, bound/cost 1.979, high-cost miss 0.9945) fail: not_too_loose; B95 cov 0.9547 (CI [0.9331, 0.9696], years {'2025': 0.9567, '2026': 0.9524}, rollover 0.7363, HH:00 0.9201, uncovered 0.0447, bound/cost 1.186, high-cost miss 1.0) fail: rollover,uncovered_cost_share; C95 cov 0.9573 (CI [0.9226, 0.9794], years {'2025': 0.9663, '2026': 0.947}, rollover 0.9562, HH:00 0.9317, uncovered 0.0275, bound/cost 1.272, high-cost miss 1.0) PASS; D95 cov 0.9591 (CI [0.9307, 0.9797], years {'2025': 0.9566, '2026': 0.962}, rollover 0.9513, HH:00 0.9332, uncovered 0.0261, bound/cost 1.326, high-cost miss 1.0) PASS. EXIT (+60 min): B95 cov 0.9418 (CI [0.9207, 0.956], years {'2025': 0.9496, '2026': 0.933}, rollover 0.5389, HH:00 0.9256, uncovered 0.0676, bound/cost 1.157, high-cost miss 1.0) fail: rollover,uncovered_cost_share; C95x cov 0.9527 (CI [0.917, 0.9744], years {'2025': 0.9561, '2026': 0.9488}, rollover 0.8947, HH:00 0.9345, uncovered 0.0388, bound/cost 1.223, high-cost miss 1.0) fail: uncovered_cost_share; D95x cov 0.954 (CI [0.9252, 0.9776], years {'2025': 0.9454, '2026': 0.9639}, rollover 0.8838, HH:00 0.9364, uncovered 0.0384, bound/cost 1.275, high-cost miss 1.0) fail: uncovered_cost_share; E95x cov 0.9545 (CI [0.9462, 0.9628], years {'2025': 0.9548, '2026': 0.9542}, rollover 0.9509, HH:00 0.9434, uncovered 0.0152, bound/cost 1.427, high-cost miss 0.6574) PASS. Stress coverage {'A_fixed_x1': 0.6829, 'A_fixed_x1.5': 0.9728, 'A_fixed_x2': 0.9838}. Factor tick-mean/bar: calibration 1.2237, forward by year {'2025': 1.2107, '2026': 1.1778}, stable True; rollover flag 23/0/1 holds True (0.9895 of months); demo round trips 581 profit = fill-price difference 1.0
+
+Quoted spreads only; demo deals are a demo account, not live. Stress multipliers are scenarios, not validated costs. Forward 2025+ spreads were partly seen in E-014, so this is development evidence.
+
+## Units
+
+{
+ "point": 0.01,
+ "digits": 2,
+ "contract_size": 100.0,
+ "spread_unit": "points (1 point = 0.01 USD/oz), same as gemini.py (ask - bid) / point",
+ "tick_days_sampled": 424,
+ "tick_rows": 107964568,
+ "minutes": 581279,
+ "ci_level": 0.9953478282678027
+}
+
+## Verdict per candidate (forward)
+
+{
+ "A_fixed": {
+  "pass": false,
+  "failed": [
+   "coverage",
+   "coverage_ci_lower",
+   "every_year",
+   "rollover",
+   "other_hours",
+   "hour_start",
+   "uncovered_cost_share"
+  ],
+  "spikes_covered": false
+ },
+ "A_cal": {
+  "pass": false,
+  "failed": [
+   "coverage",
+   "coverage_ci_lower",
+   "every_year",
+   "rollover",
+   "other_hours",
+   "hour_start",
+   "uncovered_cost_share"
+  ],
+  "spikes_covered": false
+ },
+ "A_x1.5": {
+  "pass": false,
+  "failed": [
+   "rollover",
+   "uncovered_cost_share"
+  ],
+  "spikes_covered": false
+ },
+ "A_x2": {
+  "pass": false,
+  "failed": [
+   "not_too_loose"
+  ],
+  "spikes_covered": false
+ },
+ "B95": {
+  "pass": false,
+  "failed": [
+   "rollover",
+   "uncovered_cost_share"
+  ],
+  "spikes_covered": false
+ },
+ "C95": {
+  "pass": true,
+  "failed": [],
+  "spikes_covered": false
+ },
+ "D95": {
+  "pass": true,
+  "failed": [],
+  "spikes_covered": false
+ }
+}
+
+{
+ "B95": {
+  "pass": false,
+  "failed": [
+   "rollover",
+   "uncovered_cost_share"
+  ],
+  "spikes_covered": false
+ },
+ "C95x": {
+  "pass": false,
+  "failed": [
+   "uncovered_cost_share"
+  ],
+  "spikes_covered": false
+ },
+ "D95x": {
+  "pass": false,
+  "failed": [
+   "uncovered_cost_share"
+  ],
+  "spikes_covered": false
+ },
+ "E95x": {
+  "pass": true,
+  "failed": [],
+  "spikes_covered": false
+ }
+}
+
+## Forward entry
+
+{
+ "A_fixed": {
+  "n": 331616,
+  "months": 23,
+  "coverage": 0.6829,
+  "coverage_ci": [
+   0.5388,
+   0.7936
+  ],
+  "coverage_ci_3month_blocks": [
+   0.5062,
+   0.8206
+  ],
+  "coverage_by_year": {
+   "2025": 0.7322,
+   "2026": 0.6266
+  },
+  "coverage_rollover": 0.4337,
+  "coverage_other": 0.706,
+  "coverage_hour_start": 0.6605,
+  "hour_start_minutes": 5535,
+  "coverage_spike_window_2355_0105": 0.2438,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.6221,
+   "late_21_22": 0.766,
+   "london_10_15": 0.7527,
+   "new_york_16_20": 0.7611,
+   "rollover_23_01": 0.4337
+  },
+  "worst_month": [
+   "2026-03",
+   0.0166
+  ],
+  "worst_quarter": [
+   "2026Q1",
+   0.3448
+  ],
+  "uncovered_cost_share": 0.0758,
+  "bound_over_cost": 0.99,
+  "high_cost_events_non_rollover": 1819,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 3846,
+  "high_cost_miss_rate_rollover": 1.0,
+  "mean_bound": 25.11,
+  "mean_cost": 25.37,
+  "mae": 3.58,
+  "bias_share": -0.0104
+ },
+ "A_cal": {
+  "n": 331616,
+  "months": 23,
+  "coverage": 0.7001,
+  "coverage_ci": [
+   0.5343,
+   0.8155
+  ],
+  "coverage_ci_3month_blocks": [
+   0.5034,
+   0.8435
+  ],
+  "coverage_by_year": {
+   "2025": 0.7395,
+   "2026": 0.6552
+  },
+  "coverage_rollover": 0.4503,
+  "coverage_other": 0.7233,
+  "coverage_hour_start": 0.6777,
+  "hour_start_minutes": 5535,
+  "coverage_spike_window_2355_0105": 0.2563,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.644,
+   "late_21_22": 0.7769,
+   "london_10_15": 0.769,
+   "new_york_16_20": 0.7748,
+   "rollover_23_01": 0.4503
+  },
+  "worst_month": [
+   "2026-03",
+   0.0166
+  ],
+  "worst_quarter": [
+   "2026Q1",
+   0.3675
+  ],
+  "uncovered_cost_share": 0.0738,
+  "bound_over_cost": 0.996,
+  "high_cost_events_non_rollover": 1819,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 3846,
+  "high_cost_miss_rate_rollover": 1.0,
+  "mean_bound": 25.28,
+  "mean_cost": 25.37,
+  "mae": 3.65,
+  "bias_share": -0.0036
+ },
+ "A_x1.5": {
+  "n": 331616,
+  "months": 23,
+  "coverage": 0.9728,
+  "coverage_ci": [
+   0.961,
+   0.9832
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9583,
+   0.988
+  ],
+  "coverage_by_year": {
+   "2025": 0.9654,
+   "2026": 0.9812
+  },
+  "coverage_rollover": 0.7978,
+  "coverage_other": 0.989,
+  "coverage_hour_start": 0.9462,
+  "hour_start_minutes": 5535,
+  "coverage_spike_window_2355_0105": 0.5894,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.9833,
+   "late_21_22": 0.9911,
+   "london_10_15": 0.99,
+   "new_york_16_20": 0.996,
+   "rollover_23_01": 0.7978
+  },
+  "worst_month": [
+   "2025-04",
+   0.9321
+  ],
+  "worst_quarter": [
+   "2026Q1",
+   0.9521
+  ],
+  "uncovered_cost_share": 0.0371,
+  "bound_over_cost": 1.484,
+  "high_cost_events_non_rollover": 1819,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 3846,
+  "high_cost_miss_rate_rollover": 1.0,
+  "mean_bound": 37.66,
+  "mean_cost": 25.37,
+  "mae": 14.17,
+  "bias_share": 0.4843
+ },
+ "A_x2": {
+  "n": 331616,
+  "months": 23,
+  "coverage": 0.9838,
+  "coverage_ci": [
+   0.9729,
+   0.9919
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9692,
+   0.9946
+  ],
+  "coverage_by_year": {
+   "2025": 0.9753,
+   "2026": 0.9936
+  },
+  "coverage_rollover": 0.8737,
+  "coverage_other": 0.994,
+  "coverage_hour_start": 0.9709,
+  "hour_start_minutes": 5535,
+  "coverage_spike_window_2355_0105": 0.7608,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.9903,
+   "late_21_22": 0.994,
+   "london_10_15": 0.9951,
+   "new_york_16_20": 0.9987,
+   "rollover_23_01": 0.8737
+  },
+  "worst_month": [
+   "2025-01",
+   0.9452
+  ],
+  "worst_quarter": [
+   "2025Q1",
+   0.9573
+  ],
+  "uncovered_cost_share": 0.0268,
+  "bound_over_cost": 1.979,
+  "high_cost_events_non_rollover": 1819,
+  "high_cost_miss_rate": 0.9945,
+  "high_cost_events_rollover": 3846,
+  "high_cost_miss_rate_rollover": 0.9217,
+  "mean_bound": 50.21,
+  "mean_cost": 25.37,
+  "mae": 26.2,
+  "bias_share": 0.9791
+ },
+ "B95": {
+  "n": 331616,
+  "months": 23,
+  "coverage": 0.9547,
+  "coverage_ci": [
+   0.9331,
+   0.9696
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9306,
+   0.9716
+  ],
+  "coverage_by_year": {
+   "2025": 0.9567,
+   "2026": 0.9524
+  },
+  "coverage_rollover": 0.7363,
+  "coverage_other": 0.9749,
+  "coverage_hour_start": 0.9201,
+  "hour_start_minutes": 5535,
+  "coverage_spike_window_2355_0105": 0.4917,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.9623,
+   "late_21_22": 0.9787,
+   "london_10_15": 0.9811,
+   "new_york_16_20": 0.9862,
+   "rollover_23_01": 0.7363
+  },
+  "worst_month": [
+   "2026-03",
+   0.8381
+  ],
+  "worst_quarter": [
+   "2026Q1",
+   0.9037
+  ],
+  "uncovered_cost_share": 0.0447,
+  "bound_over_cost": 1.186,
+  "high_cost_events_non_rollover": 1819,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 3846,
+  "high_cost_miss_rate_rollover": 0.9974,
+  "mean_bound": 30.08,
+  "mean_cost": 25.37,
+  "mae": 6.98,
+  "bias_share": 0.1857
+ },
+ "C95": {
+  "n": 331616,
+  "months": 23,
+  "coverage": 0.9573,
+  "coverage_ci": [
+   0.9226,
+   0.9794
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9173,
+   0.9786
+  ],
+  "coverage_by_year": {
+   "2025": 0.9663,
+   "2026": 0.947
+  },
+  "coverage_rollover": 0.9562,
+  "coverage_other": 0.9574,
+  "coverage_hour_start": 0.9317,
+  "hour_start_minutes": 5535,
+  "coverage_spike_window_2355_0105": 0.9,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.9366,
+   "late_21_22": 0.9657,
+   "london_10_15": 0.9697,
+   "new_york_16_20": 0.9729,
+   "rollover_23_01": 0.9562
+  },
+  "worst_month": [
+   "2026-03",
+   0.7628
+  ],
+  "worst_quarter": [
+   "2026Q1",
+   0.8695
+  ],
+  "uncovered_cost_share": 0.0275,
+  "bound_over_cost": 1.272,
+  "high_cost_events_non_rollover": 1819,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 3846,
+  "high_cost_miss_rate_rollover": 0.3198,
+  "mean_bound": 32.26,
+  "mean_cost": 25.37,
+  "mae": 8.28,
+  "bias_share": 0.2716
+ },
+ "D95": {
+  "n": 331616,
+  "months": 23,
+  "coverage": 0.9591,
+  "coverage_ci": [
+   0.9307,
+   0.9797
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9259,
+   0.9837
+  ],
+  "coverage_by_year": {
+   "2025": 0.9566,
+   "2026": 0.962
+  },
+  "coverage_rollover": 0.9513,
+  "coverage_other": 0.9598,
+  "coverage_hour_start": 0.9332,
+  "hour_start_minutes": 5535,
+  "coverage_spike_window_2355_0105": 0.8892,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.9486,
+   "late_21_22": 0.9645,
+   "london_10_15": 0.9661,
+   "new_york_16_20": 0.9685,
+   "rollover_23_01": 0.9513
+  },
+  "worst_month": [
+   "2026-03",
+   0.832
+  ],
+  "worst_quarter": [
+   "2026Q1",
+   0.8903
+  ],
+  "uncovered_cost_share": 0.0261,
+  "bound_over_cost": 1.326,
+  "high_cost_events_non_rollover": 1819,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 3846,
+  "high_cost_miss_rate_rollover": 0.3263,
+  "mean_bound": 33.64,
+  "mean_cost": 25.37,
+  "mae": 9.59,
+  "bias_share": 0.3258
+ },
+ "B50": {
+  "n": 331616,
+  "months": 23,
+  "coverage": 0.5675,
+  "coverage_ci": [
+   0.4537,
+   0.6584
+  ],
+  "coverage_ci_3month_blocks": [
+   0.4473,
+   0.6791
+  ],
+  "coverage_by_year": {
+   "2025": 0.6023,
+   "2026": 0.5277
+  },
+  "coverage_rollover": 0.3286,
+  "coverage_other": 0.5896,
+  "coverage_hour_start": 0.5465,
+  "hour_start_minutes": 5535,
+  "coverage_spike_window_2355_0105": 0.1586,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.4797,
+   "late_21_22": 0.68,
+   "london_10_15": 0.6503,
+   "new_york_16_20": 0.658,
+   "rollover_23_01": 0.3286
+  },
+  "worst_month": [
+   "2026-03",
+   0.0075
+  ],
+  "worst_quarter": [
+   "2026Q1",
+   0.3309
+  ],
+  "uncovered_cost_share": 0.099,
+  "bound_over_cost": 0.929,
+  "high_cost_events_non_rollover": 1819,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 3846,
+  "high_cost_miss_rate_rollover": 1.0,
+  "mean_bound": 23.56,
+  "mean_cost": 25.37,
+  "mae": 3.21,
+  "bias_share": -0.0713
+ }
+}
+
+## Forward exit (+60 min, across the daily break)
+
+{
+ "B95": {
+  "n": 328408,
+  "months": 23,
+  "coverage": 0.9418,
+  "coverage_ci": [
+   0.9207,
+   0.956
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9181,
+   0.9566
+  ],
+  "coverage_by_year": {
+   "2025": 0.9496,
+   "2026": 0.933
+  },
+  "coverage_rollover": 0.5389,
+  "coverage_other": 0.9749,
+  "coverage_hour_start": 0.9256,
+  "hour_start_minutes": 5485,
+  "coverage_spike_window_2355_0105": 0.1378,
+  "coverage_exit_crossing_break": 0.0796,
+  "coverage_by_session": {
+   "asia_02_09": 0.9692,
+   "late_21_22": 0.9094,
+   "london_10_15": 0.9819,
+   "new_york_16_20": 0.9861,
+   "rollover_23_01": 0.5936
+  },
+  "worst_month": [
+   "2026-03",
+   0.8275
+  ],
+  "worst_quarter": [
+   "2026Q1",
+   0.8903
+  ],
+  "uncovered_cost_share": 0.0676,
+  "bound_over_cost": 1.157,
+  "high_cost_events_non_rollover": 1819,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 4186,
+  "high_cost_miss_rate_rollover": 1.0,
+  "mean_bound": 30.08,
+  "mean_cost": 26.0,
+  "mae": 7.59,
+  "bias_share": 0.1569
+ },
+ "C95x": {
+  "n": 328408,
+  "months": 23,
+  "coverage": 0.9527,
+  "coverage_ci": [
+   0.917,
+   0.9744
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9116,
+   0.9781
+  ],
+  "coverage_by_year": {
+   "2025": 0.9561,
+   "2026": 0.9488
+  },
+  "coverage_rollover": 0.8947,
+  "coverage_other": 0.9574,
+  "coverage_hour_start": 0.9345,
+  "hour_start_minutes": 5485,
+  "coverage_spike_window_2355_0105": 0.7985,
+  "coverage_exit_crossing_break": 0.7855,
+  "coverage_by_session": {
+   "asia_02_09": 0.9478,
+   "late_21_22": 0.9646,
+   "london_10_15": 0.9706,
+   "new_york_16_20": 0.9723,
+   "rollover_23_01": 0.8464
+  },
+  "worst_month": [
+   "2026-03",
+   0.763
+  ],
+  "worst_quarter": [
+   "2026Q1",
+   0.8691
+  ],
+  "uncovered_cost_share": 0.0388,
+  "bound_over_cost": 1.223,
+  "high_cost_events_non_rollover": 1819,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 4186,
+  "high_cost_miss_rate_rollover": 0.612,
+  "mean_bound": 31.79,
+  "mean_cost": 26.0,
+  "mae": 7.81,
+  "bias_share": 0.2227
+ },
+ "D95x": {
+  "n": 328408,
+  "months": 23,
+  "coverage": 0.954,
+  "coverage_ci": [
+   0.9252,
+   0.9776
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9188,
+   0.9844
+  ],
+  "coverage_by_year": {
+   "2025": 0.9454,
+   "2026": 0.9639
+  },
+  "coverage_rollover": 0.8838,
+  "coverage_other": 0.9598,
+  "coverage_hour_start": 0.9364,
+  "hour_start_minutes": 5485,
+  "coverage_spike_window_2355_0105": 0.7768,
+  "coverage_exit_crossing_break": 0.7621,
+  "coverage_by_session": {
+   "asia_02_09": 0.9558,
+   "late_21_22": 0.9629,
+   "london_10_15": 0.9668,
+   "new_york_16_20": 0.968,
+   "rollover_23_01": 0.8542
+  },
+  "worst_month": [
+   "2026-03",
+   0.8366
+  ],
+  "worst_quarter": [
+   "2026Q1",
+   0.8907
+  ],
+  "uncovered_cost_share": 0.0384,
+  "bound_over_cost": 1.275,
+  "high_cost_events_non_rollover": 1819,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 4186,
+  "high_cost_miss_rate_rollover": 0.6567,
+  "mean_bound": 33.15,
+  "mean_cost": 26.0,
+  "mae": 9.15,
+  "bias_share": 0.2752
+ },
+ "E95x": {
+  "n": 328166,
+  "months": 23,
+  "coverage": 0.9545,
+  "coverage_ci": [
+   0.9462,
+   0.9628
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9499,
+   0.9606
+  ],
+  "coverage_by_year": {
+   "2025": 0.9548,
+   "2026": 0.9542
+  },
+  "coverage_rollover": 0.9509,
+  "coverage_other": 0.9548,
+  "coverage_hour_start": 0.9434,
+  "hour_start_minutes": 5244,
+  "coverage_spike_window_2355_0105": 0.9267,
+  "coverage_exit_crossing_break": 0.9258,
+  "coverage_by_session": {
+   "asia_02_09": 0.9645,
+   "late_21_22": 0.9526,
+   "london_10_15": 0.9501,
+   "new_york_16_20": 0.9457,
+   "rollover_23_01": 0.9513
+  },
+  "worst_month": [
+   "2026-05",
+   0.9219
+  ],
+  "worst_quarter": [
+   "2026Q2",
+   0.9469
+  ],
+  "uncovered_cost_share": 0.0152,
+  "bound_over_cost": 1.427,
+  "high_cost_events_non_rollover": 1795,
+  "high_cost_miss_rate": 0.6574,
+  "high_cost_events_rollover": 4182,
+  "high_cost_miss_rate_rollover": 0.2336,
+  "mean_bound": 37.1,
+  "mean_cost": 26.0,
+  "mae": 11.89,
+  "bias_share": 0.4269
+ }
+}
+
+## Calibration window (reported, not decisive)
+
+{
+ "A_fixed": {
+  "n": 222259,
+  "months": 15,
+  "coverage": 0.5529,
+  "coverage_ci": [
+   0.4324,
+   0.6484
+  ],
+  "coverage_ci_3month_blocks": [
+   0.3676,
+   0.6836
+  ],
+  "coverage_by_year": {
+   "2023": 0.3173,
+   "2024": 0.611
+  },
+  "coverage_rollover": 0.2691,
+  "coverage_other": 0.5793,
+  "coverage_hour_start": 0.5286,
+  "hour_start_minutes": 3712,
+  "coverage_spike_window_2355_0105": 0.1282,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.4786,
+   "late_21_22": 0.5934,
+   "london_10_15": 0.6693,
+   "new_york_16_20": 0.6269,
+   "rollover_23_01": 0.2691
+  },
+  "worst_month": [
+   "2023-10",
+   0.1282
+  ],
+  "worst_quarter": [
+   "2023Q4",
+   0.3173
+  ],
+  "uncovered_cost_share": 0.0951,
+  "bound_over_cost": 0.981,
+  "high_cost_events_non_rollover": 557,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 1568,
+  "high_cost_miss_rate_rollover": 1.0,
+  "mean_bound": 21.98,
+  "mean_cost": 22.41,
+  "mae": 3.84,
+  "bias_share": -0.0189
+ },
+ "A_cal": {
+  "n": 222259,
+  "months": 15,
+  "coverage": 0.5623,
+  "coverage_ci": [
+   0.4436,
+   0.6548
+  ],
+  "coverage_ci_3month_blocks": [
+   0.3912,
+   0.7036
+  ],
+  "coverage_by_year": {
+   "2023": 0.3251,
+   "2024": 0.6208
+  },
+  "coverage_rollover": 0.2742,
+  "coverage_other": 0.589,
+  "coverage_hour_start": 0.5385,
+  "hour_start_minutes": 3712,
+  "coverage_spike_window_2355_0105": 0.1296,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.4881,
+   "late_21_22": 0.6046,
+   "london_10_15": 0.6789,
+   "new_york_16_20": 0.6369,
+   "rollover_23_01": 0.2742
+  },
+  "worst_month": [
+   "2023-10",
+   0.1358
+  ],
+  "worst_quarter": [
+   "2023Q4",
+   0.3251
+  ],
+  "uncovered_cost_share": 0.0921,
+  "bound_over_cost": 0.988,
+  "high_cost_events_non_rollover": 557,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 1568,
+  "high_cost_miss_rate_rollover": 1.0,
+  "mean_bound": 22.14,
+  "mean_cost": 22.41,
+  "mae": 3.86,
+  "bias_share": -0.0121
+ },
+ "A_x1.5": {
+  "n": 222259,
+  "months": 15,
+  "coverage": 0.9604,
+  "coverage_ci": [
+   0.9386,
+   0.9773
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9285,
+   0.9818
+  ],
+  "coverage_by_year": {
+   "2023": 0.9231,
+   "2024": 0.9696
+  },
+  "coverage_rollover": 0.7257,
+  "coverage_other": 0.9822,
+  "coverage_hour_start": 0.9197,
+  "hour_start_minutes": 3712,
+  "coverage_spike_window_2355_0105": 0.4611,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.9642,
+   "late_21_22": 0.9879,
+   "london_10_15": 0.9953,
+   "new_york_16_20": 0.9931,
+   "rollover_23_01": 0.7257
+  },
+  "worst_month": [
+   "2023-10",
+   0.883
+  ],
+  "worst_quarter": [
+   "2023Q4",
+   0.9231
+  ],
+  "uncovered_cost_share": 0.0171,
+  "bound_over_cost": 1.472,
+  "high_cost_events_non_rollover": 557,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 1568,
+  "high_cost_miss_rate_rollover": 1.0,
+  "mean_bound": 32.98,
+  "mean_cost": 22.41,
+  "mae": 11.33,
+  "bias_share": 0.4717
+ },
+ "A_x2": {
+  "n": 222259,
+  "months": 15,
+  "coverage": 0.9915,
+  "coverage_ci": [
+   0.986,
+   0.9945
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9866,
+   0.9943
+  ],
+  "coverage_by_year": {
+   "2023": 0.9908,
+   "2024": 0.9917
+  },
+  "coverage_rollover": 0.9253,
+  "coverage_other": 0.9977,
+  "coverage_hour_start": 0.9472,
+  "hour_start_minutes": 3712,
+  "coverage_spike_window_2355_0105": 0.7042,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.9965,
+   "late_21_22": 0.9983,
+   "london_10_15": 0.9985,
+   "new_york_16_20": 0.9983,
+   "rollover_23_01": 0.9253
+  },
+  "worst_month": [
+   "2024-12",
+   0.968
+  ],
+  "worst_quarter": [
+   "2024Q4",
+   0.9847
+  ],
+  "uncovered_cost_share": 0.0083,
+  "bound_over_cost": 1.962,
+  "high_cost_events_non_rollover": 557,
+  "high_cost_miss_rate": 0.7989,
+  "high_cost_events_rollover": 1568,
+  "high_cost_miss_rate_rollover": 0.801,
+  "mean_bound": 43.97,
+  "mean_cost": 22.41,
+  "mae": 21.93,
+  "bias_share": 0.9622
+ },
+ "B95": {
+  "n": 222259,
+  "months": 15,
+  "coverage": 0.9448,
+  "coverage_ci": [
+   0.9233,
+   0.9589
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9189,
+   0.9595
+  ],
+  "coverage_by_year": {
+   "2023": 0.9089,
+   "2024": 0.9537
+  },
+  "coverage_rollover": 0.6603,
+  "coverage_other": 0.9713,
+  "coverage_hour_start": 0.9065,
+  "hour_start_minutes": 3712,
+  "coverage_spike_window_2355_0105": 0.4138,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.9426,
+   "late_21_22": 0.9812,
+   "london_10_15": 0.9924,
+   "new_york_16_20": 0.988,
+   "rollover_23_01": 0.6603
+  },
+  "worst_month": [
+   "2023-10",
+   0.8683
+  ],
+  "worst_quarter": [
+   "2023Q4",
+   0.9089
+  ],
+  "uncovered_cost_share": 0.0215,
+  "bound_over_cost": 1.356,
+  "high_cost_events_non_rollover": 557,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 1568,
+  "high_cost_miss_rate_rollover": 1.0,
+  "mean_bound": 30.38,
+  "mean_cost": 22.41,
+  "mae": 8.94,
+  "bias_share": 0.356
+ },
+ "C95": {
+  "n": 222259,
+  "months": 15,
+  "coverage": 0.9454,
+  "coverage_ci": [
+   0.9212,
+   0.9605
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9164,
+   0.9617
+  ],
+  "coverage_by_year": {
+   "2023": 0.9066,
+   "2024": 0.9549
+  },
+  "coverage_rollover": 0.9306,
+  "coverage_other": 0.9467,
+  "coverage_hour_start": 0.8887,
+  "hour_start_minutes": 3712,
+  "coverage_spike_window_2355_0105": 0.7167,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.9004,
+   "late_21_22": 0.9603,
+   "london_10_15": 0.9818,
+   "new_york_16_20": 0.9736,
+   "rollover_23_01": 0.9306
+  },
+  "worst_month": [
+   "2023-10",
+   0.8579
+  ],
+  "worst_quarter": [
+   "2023Q4",
+   0.9066
+  ],
+  "uncovered_cost_share": 0.0157,
+  "bound_over_cost": 1.33,
+  "high_cost_events_non_rollover": 557,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 1568,
+  "high_cost_miss_rate_rollover": 0.6747,
+  "mean_bound": 29.81,
+  "mean_cost": 22.41,
+  "mae": 8.1,
+  "bias_share": 0.3302
+ },
+ "D95": {
+  "n": 222259,
+  "months": 15,
+  "coverage": 0.9506,
+  "coverage_ci": [
+   0.9368,
+   0.9626
+  ],
+  "coverage_ci_3month_blocks": [
+   0.9426,
+   0.9629
+  ],
+  "coverage_by_year": {
+   "2023": 0.9423,
+   "2024": 0.9526
+  },
+  "coverage_rollover": 0.9327,
+  "coverage_other": 0.9523,
+  "coverage_hour_start": 0.892,
+  "hour_start_minutes": 3712,
+  "coverage_spike_window_2355_0105": 0.7382,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.9164,
+   "late_21_22": 0.9633,
+   "london_10_15": 0.9795,
+   "new_york_16_20": 0.9726,
+   "rollover_23_01": 0.9327
+  },
+  "worst_month": [
+   "2024-05",
+   0.9159
+  ],
+  "worst_quarter": [
+   "2023Q4",
+   0.9423
+  ],
+  "uncovered_cost_share": 0.0149,
+  "bound_over_cost": 1.354,
+  "high_cost_events_non_rollover": 557,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 1568,
+  "high_cost_miss_rate_rollover": 0.7143,
+  "mean_bound": 30.34,
+  "mean_cost": 22.41,
+  "mae": 8.6,
+  "bias_share": 0.3539
+ },
+ "B50": {
+  "n": 222259,
+  "months": 15,
+  "coverage": 0.5155,
+  "coverage_ci": [
+   0.4283,
+   0.5884
+  ],
+  "coverage_ci_3month_blocks": [
+   0.4393,
+   0.5983
+  ],
+  "coverage_by_year": {
+   "2023": 0.4068,
+   "2024": 0.5423
+  },
+  "coverage_rollover": 0.2378,
+  "coverage_other": 0.5413,
+  "coverage_hour_start": 0.4946,
+  "hour_start_minutes": 3712,
+  "coverage_spike_window_2355_0105": 0.1148,
+  "coverage_exit_crossing_break": null,
+  "coverage_by_session": {
+   "asia_02_09": 0.4332,
+   "late_21_22": 0.5577,
+   "london_10_15": 0.637,
+   "new_york_16_20": 0.5931,
+   "rollover_23_01": 0.2378
+  },
+  "worst_month": [
+   "2023-10",
+   0.2598
+  ],
+  "worst_quarter": [
+   "2023Q4",
+   0.4068
+  ],
+  "uncovered_cost_share": 0.1136,
+  "bound_over_cost": 0.935,
+  "high_cost_events_non_rollover": 557,
+  "high_cost_miss_rate": 1.0,
+  "high_cost_events_rollover": 1568,
+  "high_cost_miss_rate_rollover": 1.0,
+  "mean_bound": 20.96,
+  "mean_cost": 22.41,
+  "mae": 3.64,
+  "bias_share": -0.0647
+ }
+}
+
+## Demo deal minutes (reported)
+
+{
+ "minutes_on_sampled_days": 267,
+ "entry_coverage": 0.9101,
+ "exit_coverage": 0.9396
+}
+
+## 1.21 factor stability
+
+{
+ "calibration_tick_mean_over_bar": 1.2237,
+ "forward_tick_mean_over_bar": 1.1927,
+ "calibration_first_over_bar": 1.2184,
+ "forward_first_over_bar": 1.1898,
+ "by_year_all": {
+  "2023": 1.2533,
+  "2024": 1.2129,
+  "2025": 1.2107,
+  "2026": 1.1778
+ },
+ "forward_by_year": {
+  "2025": 1.2107,
+  "2026": 1.1778
+ },
+ "forward_by_session": {
+  "asia_02_09": 1.1769,
+  "late_21_22": 1.1665,
+  "london_10_15": 1.1777,
+  "new_york_16_20": 1.1831,
+  "rollover_23_01": 1.3193
+ },
+ "forward_by_level_tercile": {
+  "high": 1.1885,
+  "low": 1.2123,
+  "mid": 1.1689
+ },
+ "level_cuts_points": [
+  17.0,
+  19.0
+ ],
+ "level_note": "terciles cut on 2023-24 bar spreads; forward levels drift up, so low/mid groups can be small",
+ "first_over_bar_by_year": {
+  "2023": 1.2498,
+  "2024": 1.207,
+  "2025": 1.2095,
+  "2026": 1.1736
+ },
+ "stable": true,
+ "k_cal_first_over_bar": 1.2184,
+ "minutes_matched": 581279
+}
+
+## Rollover flag across DST
+
+{
+ "months": 95,
+ "share_spike_in_flag": 0.9895,
+ "forward_share_spike_in_flag": 0.9565,
+ "months_outside": {
+  "2025-07": 2
+ },
+ "spike_hour_counts": {
+  "1": 74,
+  "0": 16,
+  "23": 4,
+  "2": 1
+ },
+ "flag_holds": true
+}
+
+## Demo round trips: cost components
+
+{
+ "round_trips": 581,
+ "profit_equals_price_difference_share": 1.0,
+ "commission_total": 0.0,
+ "fee_total": 0.0,
+ "swap_total": 0.0,
+ "lots_total": 53.01
+}
+
+## Demo fills vs tick quote (slippage)
+
+{
+ "fills": 1162,
+ "adverse_points": {
+  "n": 1162,
+  "mean": -0.04,
+  "median": 0.0,
+  "p90": 0.0,
+  "p95": 0.0,
+  "p99": 0.0
+ },
+ "share_adverse_gt_0": 0.0017,
+ "quoted_spread_points": {
+  "n": 1162,
+  "mean": 29.64,
+  "median": 29.0,
+  "p90": 33.0,
+  "p95": 33.0,
+  "p99": 44.3900000000001
+ },
+ "effective_cost_points_mean": 14.78,
+ "quote_lag_ms": {
+  "n": 1162,
+  "mean": 98.86,
+  "median": 24.0,
+  "p90": 236.0,
+  "p95": 417.7500000000002,
+  "p99": 980.9500000000005
+ },
+ "by_reason": {
+  "0": {
+   "fills": 12,
+   "adverse_mean": 0.0
+  },
+  "3": {
+   "fills": 669,
+   "adverse_mean": -0.11
+  },
+  "4": {
+   "fills": 249,
+   "adverse_mean": 0.0
+  },
+  "5": {
+   "fills": 231,
+   "adverse_mean": 0.1
+  },
+  "6": {
+   "fills": 1,
+   "adverse_mean": 0.0
+  }
+ },
+ "skipped_no_quote_within_60s": 0
+}

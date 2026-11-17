@@ -1,0 +1,13 @@
+{
+  "run_id": "20261117T021737Z_research_e015_exp_cost_bound_v1",
+  "finalized_at_utc": "2026-11-17T02:20:40.531734Z",
+  "file_sha256": {
+    "candidates.csv": "a8954a431a07121932d814d36fe2aa3beb0099acf3deacd8dfc34917e5830809",
+    "environment.txt": "82dd397d828044aeceb4a45ee74c8fccb2070a2c229762ffc7d98cbd2e111f96",
+    "manifest.json": "c5fe962c6684b704f45eca48e5acea935887478cadedb14d09bfe1aa1a5a73f2",
+    "metrics.json": "a069f95763f33f785cdd7c2a402f30533bbac060f70cce39ddbabb45030d38ab",
+    "report.md": "7fbd33efc89cc8b9bf557018c4dad38f48c944deb0b31090be41dd521d67f85d",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "training_script.py": "05d13c0e509d7f40ed0f1af073ce3f4efa8bcbbd0fe09496b0ba30be2685b723"
+  }
+}
