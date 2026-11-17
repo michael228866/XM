@@ -219,10 +219,14 @@ class GovernanceTests(unittest.TestCase):
                 "decision_rule": "pass if Sidak p < 0.05 over 8 trials",
                 "spec": {"controls": ["a"], "directional_benchmark": "always long", "trials_declared": 8,
                          "cost_multipliers": [1, 2], "cost_note": "spread and swap", "power_note": "n=1000",
-                         "metrics": ["net_mean", "sharpe", "calmar", "max_dd"],
+                         "metrics": ["net_mean", "sharpe", "calmar", "max_dd"], "cost_accounting": "one spread per trip",
                          "data_windows": [{"window": ["2020-01-01", "2021-01-01"], "uses": ["h1_or_finer_price"]}]}}
         events = self.add(good)
         self.assertEqual(rc.critique(events[-1], events, root=self.dir)[0], [])
+        sloppy = {**good, "spec": {**good["spec"], "cost_accounting": "", "candidates": ["a", "b"]}}
+        found = " ".join(rc.critique(sloppy, events, root=self.dir)[0])
+        self.assertIn("cost_accounting", found)  # double counting of spreads must be ruled out in the design
+        self.assertIn("selection_rule", found)  # several candidates need the pick fixed in advance
 
     def test_data_boundaries_are_checked_mechanically(self):
         import research_critic_v1 as rc
@@ -370,6 +374,123 @@ class PriorityEngineTests(unittest.TestCase):
                        {"flag": {"data:x": {"state": "defective"}}}):
             with self.assertRaises(ValueError):
                 self.decide("D-9", **fields)
+
+
+class PriorityEngineV2Tests(unittest.TestCase):
+    """Engine v2: lifecycle, evidence quality, premise, data quality, readiness and approval stay separate."""
+
+    def setUp(self):
+        self.dir = Path(tempfile.mkdtemp())
+        self.ledger = self.dir / "ledger.jsonl"
+        inputs = dict.fromkeys(rm.PRIORITY_KEYS, 3)
+        self.add({**hyp("H-1", "a"), "priority_inputs": {**inputs, "info_gain": 5}},
+                 {**hyp("H-2", "b"), "priority_inputs": inputs}, {**hyp("H-3", "c"), "priority_inputs": inputs},
+                 {**prereg(self.dir), "author": "researcher"},
+                 {"kind": "observation", "id": "O-1", "statement": "s", "evidence": "e", "status": "verified"})
+
+    def add(self, *events):
+        return rm.append(list(events), ledger=self.ledger, root=self.dir)
+
+    def decide(self, i, **fields):
+        return self.add({"kind": "decision", "id": i, "statement": "s", "rationale": "r", **fields})
+
+    def rows(self, events):
+        import research_planner_v1 as rp
+        return {r["id"]: r for r in rp.ranking(events)}
+
+    def test_status_change_never_drops_an_evidence_quality_problem(self):
+        import research_planner_v1 as rp
+        open_score = self.rows(rm.read(self.ledger))["H-1"]["score"]
+        events = self.decide("D-1", set_status={"H-1": "underpowered"})
+        under = self.rows(events)["H-1"]
+        self.assertEqual(under["score"], open_score - rp.QUALITY_PENALTY["underpowered"])
+        self.assertEqual(under["base"], open_score)  # the original score stays beside the adjusted one
+        # the v1 defect: replacing underpowered by needs_revalidation (new negative evidence) raised the score
+        events = self.decide("D-2", set_status={"H-1": "needs_revalidation"})
+        self.assertEqual(self.rows(events)["H-1"]["score"], under["score"])
+        self.assertEqual(rp.quality(events)["H-1"]["underpowered"]["state"], "open")
+        events = self.decide("D-3", set_depends={"data:x": [], "H-1": [{"on": "data:x", "type": "data"}]},
+                             flag={"data:x": {"state": "defective", "evidence": ["O-1"]}})
+        both = self.rows(events)["H-1"]
+        self.assertLess(both["score"], under["score"])  # more negative evidence, lower score
+        self.assertEqual(sum(1 for _, w, _ in both["adjust"] if w.startswith("證據品質")), 1)
+        self.assertEqual(rp.violations(events), [])
+        # only an explicit, evidenced decision or a decisive result closes it
+        events = self.decide("D-4", quality={"H-1": {"underpowered": {"state": "resolved", "evidence": ["O-1"],
+                                                                     "note": "power re-checked"}}})
+        self.assertEqual(self.rows(events)["H-1"]["score"], both["score"] + rp.QUALITY_PENALTY["underpowered"])
+        self.decide("D-5", set_status={"H-2": "underpowered"})
+        self.add({**prereg(self.dir, "E-2"), "hypothesis": "H-2"}, result("E-2"))
+        self.assertEqual(rp.quality(rm.read(self.ledger))["H-2"]["underpowered"]["state"], "resolved")
+
+    def test_violation_detector_catches_a_status_bound_penalty(self):
+        import research_planner_v1 as rp
+        from unittest import mock
+        self.decide("D-1", set_status={"H-1": "underpowered"})
+        events = self.decide("D-2", set_status={"H-1": "needs_revalidation"})
+        with mock.patch.dict(rp.RANKED_STATUS, {"underpowered": 2}), \
+                mock.patch.dict(rp.QUALITY_PENALTY, {"underpowered": 0}):
+            found = rp.violations(events)  # v1 behaviour reproduced
+        self.assertEqual([d for d, _ in found], ["D-2"])
+
+    def test_one_root_cause_counts_once_across_paths_and_layers(self):
+        import research_planner_v1 as rp
+        events = self.decide("D-1", set_depends={
+            "data:x": [], "E-1": [{"on": "data:x", "type": "data"}],
+            "O-1": [{"on": "E-1", "type": "evidence"}, {"on": "data:x", "type": "data"}],
+            "H-2": [{"on": "data:x", "type": "data"}],
+            "H-3": [{"on": "O-1", "type": "evidence"}, {"on": "E-1", "type": "evidence"}]},
+            flag={"data:x": {"state": "defective", "evidence": ["O-1"]}})
+        rows, a = self.rows(events), rp.assess(events)
+        self.assertGreater(len(a["H-3"]["reasons"]), 1)  # three paths, two layers deep
+        self.assertEqual([r["node"] for r in rp.roots(a["H-3"])], ["data:x"])
+        self.assertEqual([d for d, _, _ in rows["H-2"]["adjust"]], [d for d, _, _ in rows["H-3"]["adjust"]])
+
+    def test_rank_first_is_not_ready_and_the_runner_refuses(self):
+        import research_planner_v1 as rp
+        import research_run_v1 as rr
+        from unittest import mock
+        self.add({"kind": "review", "experiment": "E-1", "reviewer": "mechanical", "verdict": "approve", "findings": ["ok"]},
+                 {"kind": "review", "experiment": "E-1", "reviewer": "critic", "verdict": "approve", "findings": ["ok"]})
+        self.add({**prereg(self.dir, "E-5"), "hypothesis": "H-2"})
+        need = [{"id": "cost_bound", "need": "cost upper bound holds", "unblock": "run E-5",
+                 "met_by": {"experiment": "E-5", "outcomes": ["supported"]}}]
+        events = self.decide("D-1", set_approval={"H-1": "design_only"}, set_prerequisites={"H-1": need},
+                             quality={"H-1": {"cost_input_unreliable": {"state": "open", "evidence": ["O-1"],
+                                                                        "note": "cost model failed"}}})
+        top = rp.ranking(events)[0]
+        self.assertEqual((top["id"], top["ready"]), ("H-1", False))
+        self.assertEqual(len(top["blockers"]), 2)  # approval and the unmet prerequisite, each with its unblock step
+        self.assertTrue(all(b["unblock"] for b in top["blockers"]))
+        self.assertIn((0, ["O-1"]), [(d, c) for d, w, c in top["adjust"] if "成本輸入" in w])  # shown, not double-priced
+        with mock.patch.object(rr.rm, "read", lambda *a, **k: events), self.assertRaises(SystemExit) as stop:
+            rr.run("E-1")
+        self.assertIn("not ready", str(stop.exception))
+        rm.render(events, path=self.dir / "m.md")
+        self.assertIn("解除需要", (self.dir / "m.md").read_text(encoding="utf-8"))
+        self.add({"kind": "review", "experiment": "E-5", "reviewer": "mechanical", "verdict": "approve", "findings": ["ok"]},
+                 {**result("E-5"), "outcome": "supported"})
+        events = self.decide("D-2", set_approval={"H-1": "formal"})
+        self.assertTrue(rp.readiness(events, "H-1")["ready"])
+
+    def test_bad_v2_inputs_are_rejected(self):
+        for fields in ({"quality": {"H-1": {"underpowered": {"state": "open"}}}},
+                       {"quality": {"H-1": {"vibes": {"state": "open", "evidence": ["O-1"]}}}},
+                       {"set_approval": {"H-1": "maybe"}},
+                       {"set_prerequisites": {"H-1": [{"id": "p", "need": "n"}]}},
+                       {"set_prerequisites": {"H-1": [{"id": "p", "need": "n", "unblock": "u",
+                                                       "met_by": {"experiment": "E-1", "outcomes": ["great"]}}]}},
+                       {"meet_prerequisites": {"H-1": ["never_declared"]}}):
+            with self.assertRaises(ValueError):
+                self.decide("D-9", **fields)
+
+    def test_real_ledger_has_no_negative_status_score_gain(self):
+        import research_planner_v1 as rp
+        events = rm.read()
+        self.assertEqual(rp.violations(events), [])
+        i = next(k for k, e in enumerate(events) if e.get("id") == "D-019")
+        score = lambda ev: {r["id"]: r["score"] for r in rp.ranking(ev)}["H-018"]
+        self.assertLessEqual(score(events[:i + 1]), score(events[:i]))  # the v1 D-019 +2 is gone
 
 
 def synthetic_h1(years=6, seed=0):
@@ -778,6 +899,143 @@ class SpreadCostTests(unittest.TestCase):
                               "ask": [100.30, 100.30], "reason": [3, 4], "lag_ms": [120, 900]})
         exe = sc.execution(fills, 0.01)
         self.assertAlmostEqual(exe["adverse_points"]["mean"], 2.0)  # buy paid 2 above ask, sell got 2 below bid
+
+
+COST_SPEC = {"quantile": 0.95, "adaptive_days": 90, "level_days": 5, "min_trailing_tick_days": 20,
+             "min_cell_minutes": 200, "a_factor_d020": 1.21, "calibration": ["2023-08-07", "2025-01-01"],
+             "forward": ["2025-01-01", "2099-01-01"], "bootstrap_draws": 200, "seed": 1, "high_cost_multiple": 2.0,
+             "min_group_minutes": 500, "horizon_minutes": 60, "rollover_check_start": "2023-08-01",
+             "max_exit_gap_minutes": 180,
+             "rollover_flag_share_min": 0.9, "factor_year_tol": 0.10, "factor_group_tol": 0.15, "point": 0.01,
+             "preference": ["A_fixed", "A_cal", "A_x1.5", "A_x2", "B95", "C95", "D95"],
+             "exit_preference": ["B95", "C95x", "D95x", "E95x"],
+             "criteria": {"coverage_min": 0.93, "coverage_ci_lower_min": 0.90, "year_coverage_min": 0.90,
+                          "hour_start_coverage_min": 0.90,
+                          "rollover_coverage_min": 0.85, "other_coverage_min": 0.90, "uncovered_cost_share_max": 0.03,
+                          "bound_over_cost_max": 1.75, "high_cost_miss_max": 0.5}}
+
+
+def synthetic_quotes(drift=1.0, seed=0, every=3, spikes=0.0):
+    """Ticks at seconds 0/20/40 of minutes 0-9 of every hour on every `every`-th weekday 2023-08-07..2026-03;
+    spread = level(day) x 2.5 in server hours 23/0/1 x lognormal. drift = level multiple reached at the end of the
+    forward window (1 = stationary). Bars carry the minute minimum, like the XM M1 SPREAD field."""
+    rng = np.random.default_rng(seed)
+    days = pd.bdate_range("2023-08-07", "2026-03-31")[::every]
+    fwd = pd.Timestamp("2025-01-01")
+    rows = []
+    for d in days:
+        level = 15.0 * (1 + (drift - 1) * max(0.0, (d - fwd).days) / (days[-1] - fwd).days)
+        for h in range(24):
+            mult = 2.5 if h in (23, 0, 1) else 1.0
+            for m in range(10):
+                t0 = int((d + pd.Timedelta(hours=h, minutes=m)).value // 10**6)
+                sp = np.rint(level * mult * rng.lognormal(0, 0.25, 3)
+                             * (3.5 if mult == 1.0 and rng.random() < spikes else 1.0))  # news-type spikes
+                for k in range(3):
+                    rows.append((t0 + 20_000 * k, 2000.0, 2000.0 + sp[k] * 0.01))
+    ticks = pd.DataFrame(rows, columns=["time_msc", "bid", "ask"])
+    mins = ticks.assign(m=(ticks["time_msc"] // 60000) * 60, sp=np.rint((ticks["ask"] - ticks["bid"]) / 0.01))
+    bars = mins.groupby("m")["sp"].min().reset_index()
+    bars = pd.DataFrame({"TIME_DT": pd.to_datetime(bars["m"], unit="s"), "SPREAD": bars["sp"]})
+    return ticks, bars
+
+
+class CostBoundTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import exp_cost_bound_v1 as cb
+        cls.cb = cb
+        cls.stationary = synthetic_quotes()
+        cls.drifting = synthetic_quotes(drift=2.5, seed=1)
+        cls.spiky = synthetic_quotes(seed=2, spikes=0.012)
+
+    def analyse(self, data):
+        ticks, bars = data
+        mt = self.cb.minute_table(ticks, 0.01, horizon_min=COST_SPEC["horizon_minutes"])
+        return self.cb.analyse(mt, bars, {"round_trips": 0}, pd.DataFrame(), COST_SPEC, 0.95, np.random.default_rng(0))
+
+    def test_minute_table_targets_stay_inside_the_day_and_drop_bad_quotes(self):
+        base = int(pd.Timestamp("2024-01-02 22:00").value // 10**6)
+        ticks = pd.DataFrame({"time_msc": [base, base + 30_000, base + 60_000, base + 3_600_000, base + 7_140_000,
+                                           base + 7_200_000, base + 10_800_000],
+                              "bid": [1.0] * 7, "ask": [1.2, 1.3, 1.0, 1.5, 1.4, 1.9, 1.7]})
+        mt = self.cb.minute_table(ticks, 0.01)
+        first = mt.set_index("TIME_DT")
+        self.assertEqual(first.loc["2024-01-02 22:00", "first"], 20)
+        self.assertEqual(first.loc["2024-01-02 22:00", "last"], 30)
+        self.assertNotIn(pd.Timestamp("2024-01-02 22:01"), first.index)  # zero spread = missing, never free
+        self.assertEqual(first.loc["2024-01-02 22:00", "y_exit"], 50)  # 60 minutes later, same day
+        # the exit of a 23:59 entry is the reopen quote across the daily break, flagged and keyed on its own hour
+        self.assertEqual(first.loc["2024-01-02 23:59", "y_exit"], 70)
+        self.assertTrue(first.loc["2024-01-02 23:59", "exit_crosses_day"] and first.loc["2024-01-02 23:59", "roll_exit"])
+        self.assertEqual(first.loc["2024-01-02 23:59", "quote_before"], 50)  # last quote before, despite the gap
+        self.assertTrue(first.loc["2024-01-02 23:00", "roll"])
+        cut = self.cb.minute_table(ticks, 0.01, day_end="2024-01-03")
+        self.assertNotIn(pd.Timestamp("2024-01-03 01:00"), set(cut["TIME_DT"]))  # next morning only feeds exits
+        self.assertEqual(cut.set_index("TIME_DT").loc["2024-01-02 23:59", "y_exit"], 70)
+
+    def test_bounds_use_only_earlier_days(self):
+        ticks, bars = self.stationary
+        mt = self.cb.minute_table(ticks, 0.01, max_exit_gap_min=10_000)  # exits reach the next sampled day
+        day = sorted(mt["day"].unique())[60]
+        b0 = self.cb.bounds(mt, bars, COST_SPEC).loc[day]
+        later = mt["day"] >= day
+        shocked = mt.copy()
+        shocked.loc[later, ["first", "last", "tmean", "y_exit", "quote_before"]] *= 10
+        bars2 = bars.copy()
+        bars2.loc[bars2["TIME_DT"] >= day, "SPREAD"] *= 10
+        b1 = self.cb.bounds(shocked, bars2, COST_SPEC).loc[day]
+        pd.testing.assert_series_equal(b0, b1)
+
+    def test_stationary_quotes_give_a_bound_and_the_mean_rule_is_not_one(self):
+        res = self.analyse(self.stationary)
+        v, fe = res["verdict"], res["scores"]["forward_entry"]
+        self.assertFalse(v["A_fixed"]["pass"])  # a mean x factor is a cost estimate, not an upper bound
+        self.assertLess(fe["A_fixed"]["coverage"], 0.8)
+        self.assertIn("rollover", v["B95"]["failed"])  # one quantile for all hours under-covers rollover
+        self.assertTrue(v["C95"]["pass"], v["C95"])
+        self.assertEqual((res["outcome"], res["recommended_entry_bound"], res["recommended_exit_bound"]),
+                         ("supported", "C95", "C95x"))
+        fx = res["scores"]["forward_exit"]
+        self.assertGreater(fx["C95x"]["coverage_rollover"], 0.85)  # exit rollover keyed on the exit time
+        self.assertLess(fx["B95"]["coverage_rollover"], 0.85)
+        self.assertTrue(res["factor"]["stable"])
+        self.assertGreater(res["factor"]["calibration_tick_mean_over_bar"], 1)  # the bar field is the minute minimum
+        self.assertTrue(res["rollover_flag"]["flag_holds"])
+
+    def test_level_drift_breaks_static_quantiles_and_is_reported(self):
+        res = self.analyse(self.drifting)
+        fe = res["scores"]["forward_entry"]
+        self.assertFalse(res["verdict"]["C95"]["pass"])
+        self.assertGreater(fe["D95"]["coverage"], fe["C95"]["coverage"])  # the level-adaptive bound tracks the drift
+
+    def test_news_spikes_outside_rollover_are_not_diluted(self):
+        res = self.analyse(self.spiky)
+        c95 = res["scores"]["forward_entry"]["C95"]
+        self.assertGreater(c95["high_cost_events_non_rollover"], 100)
+        self.assertGreater(c95["high_cost_miss_rate"], 0.5)  # critic_agent_7 B1: spikes missed are now visible
+        self.assertFalse(res["verdict"]["C95"]["spikes_covered"])  # binding label: H-013 needs a live-quote gate
+
+    def test_entry_bound_without_exit_bound_is_not_supported(self):
+        cb = self.cb
+        ok = {"pass": True, "failed": [], "spikes_covered": True}
+        from unittest import mock
+        with mock.patch.object(cb, "passes", lambda s, spec, f=True, c="": ok if s == "entry" else
+                               {"pass": False, "failed": ["coverage"], "spikes_covered": False}):
+            scores = {"forward_entry": {c: "entry" for c in cb.ENTRY},
+                      "forward_exit": {c: "exit" for c in COST_SPEC["exit_preference"]}}
+            outcome, _, _, entry, exit_ = cb.decide(scores, COST_SPEC, True)
+        self.assertEqual((outcome, entry, exit_), ("inconclusive", "A_fixed", None))
+
+    def test_round_trip_profit_identity_and_cost_components(self):
+        deals = pd.DataFrame({"position_id": [1, 1, 2, 2], "entry": [0, 1, 0, 1], "type": [0, 1, 1, 0],
+                              "price": [2000.30, 2001.00, 2000.00, 1999.50], "volume": [0.02, 0.02, 0.01, 0.01],
+                              "profit": [0.0, 1.40, 0.0, 0.50], "commission": [0.0, 0.0, -0.1, 0.0],
+                              "fee": 0.0, "swap": [0.0, -0.2, 0.0, 0.0]})
+        rt = self.cb.round_trips(deals, 100)
+        self.assertEqual(rt["round_trips"], 2)
+        self.assertEqual(rt["profit_equals_price_difference_share"], 1.0)  # spread sits inside the fill prices
+        self.assertEqual((rt["commission_total"], rt["swap_total"]), (-0.1, -0.2))
 
 
 class FakeMt5:

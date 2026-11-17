@@ -214,3 +214,41 @@
 - 預先登記的 `spec.data_windows` 必須列出每個讀來做統計、擬合或評估的視窗：`{window, uses, purpose}`，`uses` 取自 `research_memory_v1.DATA_BOUNDARIES`。
 - 每個視窗依它自己的用途檢查最早日期：`spread_field` 2018-10-01、`h1_or_finer_price` 2019-01-01；同時用兩者時取較晚的 2019-01-01。所有評估視窗都要符合全部用途中最晚的邊界。
 - 缺少 `data_windows`、用途不明或早於邊界時，機械審查判 revise，runner 因此拒絕執行；只有在 `spec.boundary_exception` 寫明理由時才放行，理由會記在審查紀錄裡。
+
+## 10. V2（2026-11-17）：Priority Engine v2，六個維度分開（D-021）
+
+起因：H-018 從 `underpowered` 改成 `needs_revalidation` 後，樣本不足的 2 分扣分消失，分數反而上升（D-019，11.5 → 13.5）。原因是證據品質被綁在生命週期狀態上，換一個狀態就連帶把品質問題一起換掉。
+
+**六個維度**（`research_planner_v1.py` 開頭有對照表）
+
+| 維度 | 存在哪裡 | 會不會因狀態變更消失 |
+|---|---|---|
+| 1 生命週期狀態 | `set_status`，只代表工作流程位置（parked −5、exhausted −8） | — |
+| 2 證據品質／檢定力 | `quality()`：`underpowered`（−2）、`cost_input_unreliable`（0，只標示） | 不會，只有附證據的決策 `quality: resolved`，或之後的實驗達到判定才關閉 |
+| 3 前提有效性 | `assess()` 的 `premise_invalid` | 由依賴圖決定 |
+| 4 資料品質 | priority input；上游有缺陷資料時降為 1 | 由依賴圖決定 |
+| 5 執行資格 | `readiness()`：生命週期、前提、核准層級、前置條件 | 由各條件決定 |
+| 6 使用者核准 | `set_approval`：`none`／`design_only`／`formal` | 只有決策能改 |
+
+**規則**
+
+- 同一個根因，在每個維度只計一次，不管有幾條路徑、隔幾層才碰到（`roots()`）。資料品質和依賴證據可信度是兩個不同維度，各計一次。
+- 「上游修復」的分數不計修復後仍會存在的扣分（例如樣本不足），所以修復項目不會因為狀態更新而虛增。
+- 負面狀態變更卻讓分數上升時，`violations()` 會抓出來，RESEARCH_MEMORY.md §2d 用 ⚠ 標示。測試會檢查整本帳本沒有這種情況。
+- **排名第一不代表可以正式執行**。`readiness()` 列出每個阻擋，以及解除它所需的最小工作；`research_run_v1.py` 在任何阻擋存在時拒絕正式執行；機械審查把阻擋列入審查紀錄，但仍允許先審查設計。
+- 沒有記錄核准層級的假說沿用舊流程（預先登記加上兩份審查即視為授權），不會被阻擋。新的假說應在決策中明確記錄核准層級。
+- 新的決策欄位：
+  - `quality: {H: {條件: {state, evidence, note}}}`
+  - `set_approval: {H: 層級}`
+  - `set_prerequisites: {H: [{id, need, unblock, met_by?: {experiment, outcomes}, evidence?}]}`
+  - `meet_prerequisites: {H: [id]}`
+
+  `research_memory_v1.check()` 會檢查格式，以及引用的證據是否存在。
+- RESEARCH_MEMORY.md：§2 加上「執行資格」欄；新增 §2e，列出每個被阻擋的假說和解除條件。
+
+**歷史紀錄不改寫**：v1 算出的重排紀錄凍結在 `research_memory/rerank_history_engine_v1.md`。§2d 只顯示 seq ≥ 110 起由 v2 計算的紀錄；同一本帳本在 v1 和 v2 下的排序差異，見 `research_memory/engine_v2_rank_diff.md`。
+
+**Critic 的新機械檢查**
+
+- 成本研究或交易研究必須寫 `cost_accounting`，說明單位、一筆來回付幾次點差，以及點差、滑價、佣金、隔夜利息各自含不含。
+- 有多個候選時，必須事先寫好 `selection_rule`。

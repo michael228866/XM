@@ -3,8 +3,9 @@
     python -B research_run_v1.py E-001
 
 Refuses if the experiment has no preregistration, was withdrawn, lacks an approving mechanical and an
-approving independent critic review, already has a result, or any of its code files changed since
-preregistration. The experiment module exposes run(run_dir, spec, trials) -> dict with keys:
+approving independent critic review, already has a result, any of its code files changed since
+preregistration, or its hypothesis has a readiness blocker (research_planner_v1.readiness: lifecycle, premise,
+user approval below formal, unmet prerequisite). The experiment module exposes run(run_dir, spec, trials) -> dict with keys:
 outcome, evidence_class, summary, failure_cause, lessons, next_questions, metrics (dict), report (markdown),
 manifest_data (dict merged into manifest["data"]). The run is finalized as research_only and registered,
 the result is appended to the ledger, RESEARCH_MEMORY.md is re-rendered, and the evidence is committed and pushed.
@@ -115,6 +116,11 @@ def run(experiment_id):
     if gate:
         raise SystemExit(f"{experiment_id} has not passed review: {gate}")
     p = prereg[experiment_id]
+    import research_planner_v1 as planner  # hard preconditions: premise, lifecycle, user approval, prerequisites
+    blockers = planner.readiness(events, p["hypothesis"])["blockers"]
+    if blockers:
+        raise SystemExit(f"{p['hypothesis']} is not ready for a formal run: "
+                         + "; ".join(f"{b['what']} -> {b['unblock']}" for b in blockers))
     for name, digest in p["code_files"].items():
         if rm.file_sha256(rm.ROOT / name) != digest:
             raise SystemExit(f"{name} changed since preregistration; preregister a new experiment")

@@ -63,6 +63,11 @@ def critique(p, events, root=rm.ROOT):
         blocking.append("over-generalisation: no claim_scope (what a result can and cannot conclude)")
     if not re.search(r"\d", p["decision_rule"]):
         blocking.append("decision rule has no numeric threshold")
+    if (trading or spec.get("cost_target")) and not spec.get("cost_accounting"):
+        blocking.append("costs: no cost_accounting (unit, how many spreads a round trip pays, which of spread / "
+                        "slippage / commission / swap are included) -- double counting or omission goes unseen")
+    if len(spec.get("candidates", [])) > 1 and not spec.get("selection_rule"):
+        blocking.append("post-hoc selection: several candidates but no selection_rule fixed before the evaluation")
     blocking += boundary_problems(p)
     if spec.get("boundary_exception"):
         notes.append(f"data boundary exception (D-016) declared: {spec['boundary_exception']}")
@@ -80,6 +85,10 @@ def critique(p, events, root=rm.ROOT):
     done = sum(1 for e in events if e["kind"] == "result" and hyps[prereg[e["experiment"]]["hypothesis"]]["family"] == family)
     if done:
         notes.append(f"family '{family}' already has {done} result(s); the runner widens the Sidak count")
+    if p["hypothesis"] in {e["id"] for e in events if e["kind"] == "hypothesis"}:
+        import research_planner_v1 as planner  # a design may be reviewed while blocked; the runner refuses to run it
+        for b in planner.readiness(events, p["hypothesis"])["blockers"]:
+            notes.append(f"not ready for a formal run: {b['what']} -> {b['unblock']}")
     return blocking, notes
 
 

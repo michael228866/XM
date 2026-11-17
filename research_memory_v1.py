@@ -48,6 +48,10 @@ ASSET_PREFIXES = ("data:", "model:", "premise:")
 # D-016: earliest usable date per data use (None = no boundary). A window using several uses takes the latest.
 DATA_BOUNDARIES = {"spread_field": "2018-10-01", "h1_or_finer_price": "2019-01-01", "daily_or_coarser_price": None,
                    "external": None}
+# Engine v2 (D-021): evidence-quality conditions survive status changes; approval and prerequisites gate formal runs.
+QUALITY_CONDITIONS = {"underpowered", "cost_input_unreliable"}
+QUALITY_STATES = {"open", "resolved"}
+APPROVAL = {"none", "design_only", "formal"}
 VERDICTS = {"approve", "revise", "reject"}
 PRIORITY_KEYS = {"info_gain", "novelty", "falsifiability", "data_quality", "economic_value", "simplicity",
                  "mining_risk"}
@@ -170,6 +174,31 @@ def check(event, events, root=ROOT):
                 raise ValueError(f"flag state must be one of {sorted(FLAG_STATES)}: {n}")
             if not f.get("evidence") or any(x not in ids for x in f["evidence"]):
                 raise ValueError(f"flag on {n} needs evidence ids already in the ledger")  # every adjustment cites evidence
+        for h, conds in event.get("quality", {}).items():
+            for c, q in conds.items():
+                if h not in hyps or c not in QUALITY_CONDITIONS or q.get("state") not in QUALITY_STATES:
+                    raise ValueError(f"quality needs a hypothesis, condition in {sorted(QUALITY_CONDITIONS)} and state "
+                                     f"in {sorted(QUALITY_STATES)}: {h} {c}")
+                if not q.get("evidence") or any(x not in ids for x in q["evidence"]):
+                    raise ValueError(f"quality {h} {c} needs evidence ids already in the ledger")
+        for h, lvl in event.get("set_approval", {}).items():
+            if h not in hyps or lvl not in APPROVAL:
+                raise ValueError(f"set_approval needs a hypothesis and a level in {sorted(APPROVAL)}: {h} {lvl}")
+        for h, reqs in event.get("set_prerequisites", {}).items():
+            if h not in hyps or not isinstance(reqs, list):
+                raise ValueError(f"set_prerequisites needs a hypothesis and a list: {h}")
+            for p in reqs:
+                m = p.get("met_by")
+                if not (p.get("id") and p.get("need") and p.get("unblock")) or (
+                        m is not None and not (m.get("experiment") and set(m.get("outcomes", [])) and
+                                               set(m["outcomes"]) <= OUTCOMES)):
+                    raise ValueError(f"prerequisite of {h} needs id, need, unblock and optional met_by "
+                                     f"{{experiment, outcomes}}: {p}")
+        declared = {h: {p["id"] for p in reqs} for e in events + [event] if e["kind"] == "decision"
+                    for h, reqs in e.get("set_prerequisites", {}).items()}
+        for h, met in event.get("meet_prerequisites", {}).items():
+            if not set(met) <= declared.get(h, set()):
+                raise ValueError(f"meet_prerequisites names undeclared prerequisites of {h}: {met}")
         prereg = {e["id"] for e in events if e["kind"] == "preregistration"}
         done = {e["experiment"] for e in events if e["kind"] == "result"}
         for x in event.get("withdraw", []):
@@ -277,12 +306,23 @@ def render(events, path=RENDERED):
             "扣掉資料探勘風險與同族群已試次數。失敗但能排除重要可能性的實驗同樣得分。公式見 `research_planner_v1.py`。",
             "「原始分」是輸入值算出的分數；「系統自動調整」由依賴圖推得，每項都附決策與證據編號，"
             "屬於系統建議，狀態變更仍需決策核准（見 2c）。前提失效的假說不排序（見 2a）。", "",
-            "| ID | 項目 | 狀態 | 原始分 | 系統自動調整（證據） | 最終分 | 推翻條件 |", "|---|---|---|---|---|---|---|"]
+            f"引擎 v{planner.ENGINE_VERSION}：生命週期、證據品質、前提、資料品質、執行資格、使用者核准分開計算；"
+            "**排名不代表可以正式執行**，執行資格與解除阻擋所需的最小工作見 2e。", "",
+            "| ID | 項目 | 狀態 | 原始分 | 系統自動調整（證據） | 最終分 | 執行資格 | 推翻條件 |",
+            "|---|---|---|---|---|---|---|---|"]
     cell = lambda t: str(t).replace("|", "&#124;")
-    for r in planner.ranking(events):
+    ranked = planner.ranking(events)
+    for r in ranked:
         adj = "<br>".join(f"{d:+g} {cell(w)}（{', '.join(c)}）" for d, w, c in r["adjust"]) or "—"
+        gate = "—" if r["kind"] == "repair" else "可執行" if r["ready"] else f"阻擋 {len(r['blockers'])} 項"
         out.append(f"| {r['id']} | {cell(r['title'])} | {r['status']} | {r['base'] if r['base'] is not None else '—'} | "
-                   f"{adj} | {r['score']} | {cell(r['falsified_if'])} |")
+                   f"{adj} | {r['score']} | {gate} | {cell(r['falsified_if'])} |")
+    out += ["", "## 2e. 執行前置條件（硬性；research_run_v1 在任何阻擋存在時拒絕正式執行）", ""]
+    for r in ranked:
+        if r["kind"] == "hypothesis" and r["blockers"]:
+            out.append(f"- **{r['id']}**（排名分 {r['score']}，核准層級 {r['approval']}）：")
+            out += [f"  - 阻擋：{b['what']} → 解除需要：{b['unblock']}"
+                    + (f"（{', '.join(x for x in b['evidence'] if x)}）" if any(b["evidence"]) else "") for b in r["blockers"]]
     a = planner.assess(events)
     out += ["", "## 2a. 前提失效（不排序；不等於假說被推翻）", ""]
     for h in hyps.values():
@@ -293,8 +333,11 @@ def render(events, path=RENDERED):
     for n, status, suggestion, reason, cited in planner.suggestions(events):
         out.append(f"| {n} | {status} | {suggestion} | {cell(reason)} | {', '.join(cited)} |")
     out += ["", "`annotate_only`：已有結論的假說、實驗結果、觀察與模型只標註其證據受影響，不改變狀態，也不宣稱過去策略失效。",
-            "", "## 2d. 重排紀錄（每次改變引擎輸入的決策造成的名次與分數變化）", ""]
-    for decision, moves in planner.rerank_log(events):
+            "", "## 2d. 重排紀錄（每次改變引擎輸入的決策造成的名次與分數變化）", "",
+            f"事件 seq < {planner.ENGINE_V2_FROM_SEQ} 的歷史由引擎 v1 計算並凍結於 "
+            "`research_memory/rerank_history_engine_v1.md`（不重算、不改寫）；v1→v2 對同一帳本的差異見 "
+            "`research_memory/engine_v2_rank_diff.md`。以下為 v2 起的紀錄；⚠ 表示負面狀態變更卻加分（引擎缺陷）。", ""]
+    for decision, moves in planner.rerank_log(events, planner.ENGINE_V2_FROM_SEQ):
         out.append(f"- **{decision}**：" + "；".join(moves))
     out += ["", "## 2b. 證據狀態分類（結論不得超出這個範圍）", ""]
     for status, label in STATUS_LABEL.items():
