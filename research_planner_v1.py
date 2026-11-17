@@ -191,6 +191,20 @@ def quality(events):
     return out
 
 
+def pending_results(events):
+    """{h: [(experiment, outcome)]}: decisive results on h with no set_status for h after them. The system suggests;
+    only a decision approves (a research conclusion is never self-approved)."""
+    prereg = {e["id"]: e["hypothesis"] for e in events if e["kind"] == "preregistration"}
+    out = {}
+    for e in events:
+        if e["kind"] == "result" and e["outcome"] in ("supported", "refuted"):
+            out.setdefault(prereg[e["experiment"]], []).append((e["experiment"], e["outcome"]))
+        elif e["kind"] == "decision":
+            for h in e.get("set_status", {}):
+                out.pop(h, None)
+    return out
+
+
 def approvals(events):
     """User approval level per hypothesis (decision.set_approval, last wins): {h: (level, decision id)}."""
     return {h: (lvl, e["id"]) for e in events if e["kind"] == "decision" for h, lvl in e.get("set_approval", {}).items()}
@@ -207,6 +221,9 @@ def readiness(events, h, a=None):
         blockers.append({"what": f"生命週期狀態 {status} 不可正式執行", "unblock": "以決策變更狀態（需核准）", "evidence": []})
     if a[h]["state"] == "premise_invalid":
         blockers.append({"what": "前提失效", "unblock": "先修復前提：" + why(a[h]), "evidence": cites(a[h])})
+    for exp, outcome in pending_results(events).get(h, []):
+        blockers.append({"what": f"已有判定結果 {exp}（{outcome}），狀態待使用者核准",
+                         "unblock": f"使用者以決策 set_status 核准（系統建議 {outcome}）", "evidence": [exp]})
     level, by = approvals(events).get(h, (None, None))
     if level in ("none", "design_only"):
         blockers.append({"what": f"使用者核准層級為 {level}（只可做設計與可行性檢查）",
@@ -285,7 +302,8 @@ def rank(events):
 def suggestions(events):
     """(node, approved status, engine suggestion, reason, evidence). Suggestions only: a decision approves them."""
     hyps, _, _ = rm.state(events)
-    out = []
+    out = [(h, hyps[h]["status"], outcome, f"實驗 {exp} 依預先登記判定 {outcome}", [exp])
+           for h, items in sorted(pending_results(events).items()) for exp, outcome in items]
     for n, x in sorted(assess(events).items()):
         status = hyps.get(n, {}).get("status")
         if status is None or status in TERMINAL:

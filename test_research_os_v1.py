@@ -472,6 +472,11 @@ class PriorityEngineV2Tests(unittest.TestCase):
                  {**result("E-5"), "outcome": "supported"})
         events = self.decide("D-2", set_approval={"H-1": "formal"})
         self.assertTrue(rp.readiness(events, "H-1")["ready"])
+        # a decisive result is a suggestion until a decision approves the status (never self-approved)
+        self.assertIn("待使用者核准", rp.readiness(events, "H-2")["blockers"][0]["what"])
+        self.assertIn(("H-2", "open", "supported"), [s[:3] for s in rp.suggestions(events)])
+        events = self.decide("D-3", set_status={"H-2": "supported"})
+        self.assertEqual(rp.pending_results(events), {})
 
     def test_bad_v2_inputs_are_rejected(self):
         for fields in ({"quality": {"H-1": {"underpowered": {"state": "open"}}}},
