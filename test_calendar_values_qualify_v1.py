@@ -1,8 +1,10 @@
+import io
 import os
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 
-from calendar_values_qualify_v1 import COLUMNS, check, sha256
+from calendar_values_qualify_v1 import COLUMNS, check, main, sha256
 
 HEADER = ",".join(COLUMNS)
 NFP, UNEMP, CRUDE = 840030016, 840030015, 840200001
@@ -33,6 +35,7 @@ class QualifyTests(unittest.TestCase):
             row(4, CRUDE, R1, R1, 0, "-1.200000", "0.500000", name="Crude"),
         ])
         self.assertTrue(r["format_ok"], r["errors"])
+        self.assertTrue(r["data_ok"])
         self.assertEqual(r["exploratory_usable_rows"], 2)
         self.assertEqual(r["excluded"]["缺 forecast"], 1)
         self.assertEqual(r["excluded"]["不在極性表"], 1)
@@ -91,6 +94,54 @@ class QualifyTests(unittest.TestCase):
             f.write(("\n".join([HEADER, row(1, NFP, R1, R1, 0, "1.0", "1.0", name="非農")]) + "\n").encode("gbk"))
         self.addCleanup(os.remove, path)
         self.assertTrue(check(path, "gbk")["format_ok"])
+
+    def test_header_only_is_well_formed_but_not_usable(self):
+        r = self.run_check([])
+        self.assertTrue(r["format_ok"])
+        self.assertFalse(r["data_ok"])
+        self.assertEqual(r["data_problems"], ["沒有資料列"])
+
+    def test_cli_exit_codes(self):
+        for lines, code in (([], 3), ([row(1, NFP, R1, R1, 0, "250.0", "180.0")], 0), (["bad"], 2)):
+            fd, path = tempfile.mkstemp(suffix=".csv")
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
+                f.write("\n".join([HEADER] + lines) + "\n")
+            self.addCleanup(os.remove, path)
+            with redirect_stdout(io.StringIO()):
+                self.assertEqual(main([path]), code)
+
+    def test_part_file_rejected_even_if_content_is_fine(self):
+        fd, path = tempfile.mkstemp(suffix=".csv.part")
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write("\n".join([HEADER, row(1, NFP, R1, R1, 0, "250.0", "180.0")]) + "\n")
+        self.addCleanup(os.remove, path)
+        r = check(path)
+        self.assertFalse(r["format_ok"])
+        self.assertFalse(r["data_ok"])
+        self.assertIn(".part", r["errors"][0])
+
+    def test_low_importance_excluded(self):
+        line = row(1, NFP, R1, R1, 0, "250.0", "180.0").replace(f"{NFP},3,", f"{NFP},1,")
+        r = self.run_check([line])
+        self.assertTrue(r["format_ok"])
+        self.assertEqual(r["excluded"], {"importance 不是 3": 1})
+        self.assertEqual(r["exploratory_usable_rows"], 0)
+        self.assertFalse(r["data_ok"])
+
+    def test_negative_revision_is_error_and_never_chosen(self):
+        r = self.run_check([
+            row(1, NFP, R1, R1, 0, "250.0", "180.0"),
+            row(2, NFP, R1, R1, -1, "999.0", "180.0"),
+        ])
+        self.assertFalse(r["format_ok"])
+        self.assertIn("revision=-1", r["errors"][0])
+        self.assertEqual(r["exploratory_usable_rows"], 1)
+        self.assertEqual(r["coverage"][str(NFP)]["rows"], 1)
+
+    def test_unrepresentable_time_is_readable_error(self):
+        r = self.run_check([row(1, NFP, 10**15, R1, 0, "250.0", "180.0")])
+        self.assertFalse(r["format_ok"])
+        self.assertIn("scheduled_time", r["errors"][0])
 
     def test_actual_after_export_is_contradiction(self):
         r = self.run_check([row(1, NFP, EXPORT + 3600, EXPORT + 3600, 0, "250.000000", "180.000000")])

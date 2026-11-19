@@ -308,25 +308,33 @@ v3 修訂（2026-11-20 審查）：
 **`ExportUsdCalendarValuesV2.mq5`**：以原腳本為底，只做必要修改。
 - 只讀經濟日曆並寫一個檔案；沒有任何下單、改單或持倉函式，也不會觸發研究。
 - 新增 `value_id`、`period`、`revision`、`revised_previous`、`export_time` 欄位。
-- **不覆寫**：檔名是 `usd_calendar_values_v2_<伺服器時間>.csv`。同名檔或 `.part` 已存在就拒絕執行。資料先寫進 `.part`，完整寫完才改名；改名不帶 FILE_REWRITE，所以不可能蓋掉既有檔案。任何一段讀取失敗，檔案就留在 `.part`（不能用）。
+- **不覆寫**：檔名是 `usd_calendar_values_v2_<伺服器時間>.csv`。同名檔或 `.part` 已存在就拒絕執行。資料先寫進 `.part`，完整寫完才改名；改名不帶 FILE_REWRITE，所以不可能蓋掉既有檔案。
+- **失敗就停（2026-11-20 第三輪）**：標頭與每一列的 `FileWrite()` 都檢查回傳值，列數只在確認寫入後才加。日曆讀取、事件查詢、寫入或 `FileFlush()` 任何一步失敗，就立即關檔並停止：檔案留在 `.part`（不能用），不改名，也不顯示成功。
+- 建檔前先檢查期間：起點、終點都要有效，而且起點早於終點。範圍正確但查無資料時，訊息會寫「0 rows (nothing to analyse)」；資格工具也會判定不可用。
+- 正常結束前先 `FileFlush()` 再關檔。這不能保證斷電或磁碟故障時資料仍完整。
 - 編碼：UTF-8（`CP_UTF8`）。舊腳本用的 FILE_ANSI 會寫出 GBK。
 - 數值：MT5 的 long ÷ 10^6，寫 6 位小數；`LONG_MIN` → 空字串；0 寫成 `0.000000`。
 - 時間：`scheduled_time`、`period`、`export_time` 都是伺服器時間的 epoch 秒，不轉 UTC。事件名稱裡的逗號換成分號（MT5 的 CSV 不加引號）。
-- 已用 `D:\XM2\MetaEditor64.exe` 編譯 scratchpad 裡的副本：0 錯誤、0 警告。沒有複製到 MT5 資料夾，也沒有執行。
+- 已用 `D:\XM2\MetaEditor64.exe` 編譯 scratchpad 裡的副本（第三輪修正後重新編譯，和 repo 檔的 SHA-256 相同）：0 錯誤、0 警告。沒有複製到 MT5 資料夾，也沒有執行。失敗路徑只做靜態檢查，沒有實際觸發寫入失敗。
 
 **`calendar_values_qualify_v1.py PATH [--encoding auto|gbk|…]`**：唯讀資格檢查。
 - 檢查：欄位名稱與順序、整數／數值型別、缺值、完全重複列、重複 `value_id`、同一 `(event_id, period, revision)` 數值矛盾、多個 revision 的期數、29 個極性事件的覆蓋、時間範圍與匯出時間。
 - 輸出：JSON 資格摘要，外加三項固定的「無法確認」：預期值是否公布前版本、actual 是否首發、R+2 分鐘前是否已收到。`point_in_time` 一律是 `Unknown`；`revision = 0`、有 value_id、actual 與下一期 previous 一致，都**不能**讓它變成合格。
 - 不再縮放數值；缺值保持缺值，不填 0。未轉換的 `LONG_MIN`（原值或 ÷10^6）會被當成格式錯誤。
 - 編碼預設 UTF-8 嚴格解碼，有 BOM 時用 UTF-16。GBK 檔會報錯，必須明確指定 `--encoding gbk`，不會默默讀錯。
-- 檢查前後比對輸入檔 SHA-256；不讀帳戶、不算任何績效。格式不合格時結束碼是 2。
-- `test_calendar_values_qualify_v1.py` 用合成 CSV 測試 8 項：不同 revision、缺 forecast、0 值、完全重複與重複 value_id、版本矛盾、錯誤格式（文字、未轉換 LONG_MIN、欄位數）、錯誤標頭、GBK 自動報錯／明確指定可讀、匯出後才公布卻有 actual。每項都驗證輸入檔雜湊不變。
+- 第三輪補強：
+  - 不是 `.csv` 的檔（包括 `.part`）一律拒絕，即使內容看起來完整。
+  - 探索可用列必須 importance = 3；其他重要性記為排除原因「importance 不是 3」。
+  - value_id／event_id 須 > 0；時間須落在可表示的範圍；revision ≥ 0、importance 0–3、impact_type 0–2，不符合就是可讀的列錯誤，不會讓工具崩潰。revision = −1 不可能被選成「最低 revision」。
+  - 「格式」（`format_ok`）和「有沒有可供回顧探索的資料」（`data_ok`、`data_problems`、`data_status`）分開輸出。沒有資料列，或全部列都被排除時，會列出原因。
+- 檢查前後比對輸入檔 SHA-256；不讀帳戶、不算任何績效。結束碼：0 = 可供回顧探索（不是首發合格）；2 = 格式／契約錯誤（含 `.part`）；3 = 格式正確但沒有可用資料。
+- `test_calendar_values_qualify_v1.py` 用合成 CSV 測試 14 項。第三輪新增 6 項：只有標頭、`.part` 拒絕、importance = 1、revision = −1、無法表示的時間、三種結束碼。原有 8 項：不同 revision、缺 forecast、0 值、完全重複與重複 value_id、版本矛盾、錯誤格式（文字、未轉換 LONG_MIN、欄位數）、錯誤標頭、GBK 自動報錯／明確指定可讀、匯出後才公布卻有 actual。每項都驗證輸入檔雜湊不變。
 
 **MT5 人工操作（只需一次）**：
 1. 把 repo 的 `ExportUsdCalendarValuesV2.mq5` 複製到 `MQL5\Scripts\`（不覆蓋舊的 `ExportUsdCalendarValues.mq5`，檔名不同）。
 2. 在 MetaEditor 開啟並按「編譯」；應顯示 0 errors。
 3. 在 MT5「導航器 → 腳本」把它拖到任一圖表。參數保持 `InpFrom = 2014.01.01`、`InpTo = 0`，按確定。
-4. 等跳出「export done: N rows -> Common\Files\usd_calendar_values_v2_….csv」。如果跳出 incomplete 或 rename failed，不要用那個檔，直接把訊息告訴我。
+4. 等跳出「export done: N rows -> Common\Files\usd_calendar_values_v2_….csv」。如果跳出 Export FAILED、Rename failed 或 0 rows，不要用那個檔，直接把訊息告訴我。
 5. 把完整檔名告訴我。我只執行 `.venv\Scripts\python.exe calendar_values_qualify_v1.py <路徑>` 回報資格，不算績效。
 
 #### 8.4.2 有效列與標準化暖機（固定規則）

@@ -6,6 +6,7 @@ by 10^6) and never converts server time to UTC. A historical export can NOT prov
 column (revision=0, value_id, actual == next previous) carries the first-receipt time, so that stays Unknown.
 
 Usage: python calendar_values_qualify_v1.py PATH [--encoding auto|utf-8|gbk|...]
+Exit: 0 = usable for retrospective exploration only, 2 = format/contract error (incl. .part), 3 = well-formed, no usable data.
 """
 import argparse
 import csv
@@ -15,7 +16,9 @@ import json
 import math
 import sys
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta
+
+EPOCH = datetime(1970, 1, 1)
 
 COLUMNS = ["value_id", "event_id", "importance", "scheduled_time", "period", "revision",
            "actual", "forecast", "previous", "revised_previous", "impact_type", "export_time", "name"]
@@ -28,6 +31,7 @@ POLARITY = {e: 1 for e in [840030016, 840190001, 840030018, 840020010, 840020011
                            840010007, 840010018, 840050014]}
 POLARITY.update({840030015: -1, 840140001: -1})
 LONG_MIN = -9223372036854775808
+MAX_TIME = 253402300799   # 9999-12-31 23:59:59, the last second datetime can format
 UNCONFIRMABLE = [
     "forecast 是否為公布前版本（匯出檔只有目前版本）",
     "actual 是否為首發值（revision、value_id、與下一期 previous 一致只支持格式與一致性）",
@@ -50,7 +54,7 @@ def decode(raw, encoding):
 
 def server_time(seconds):
     # MT5 stores trade-server wall time as epoch seconds; format it without any timezone conversion.
-    return datetime.fromtimestamp(seconds, timezone.utc).strftime("%Y-%m-%d %H:%M:%S") + " (server)"
+    return (EPOCH + timedelta(seconds=seconds)).strftime("%Y-%m-%d %H:%M:%S") + " (server)"
 
 
 def parse_value(text):
@@ -65,12 +69,33 @@ def parse_value(text):
     return v
 
 
+def check_range(rec):
+    """Basic identity/time/revision ranges; raises ValueError with a readable reason."""
+    for c in ("value_id", "event_id"):
+        if rec[c] <= 0:
+            raise ValueError(f"{c} 必須 > 0")
+    for c in ("scheduled_time", "period", "export_time"):
+        if not 0 <= rec[c] <= MAX_TIME:
+            raise ValueError(f"{c}={rec[c]} 超出可表示的時間範圍")
+    if rec["revision"] < 0:
+        raise ValueError(f"revision={rec['revision']} 無效")
+    if not 0 <= rec["importance"] <= 3:
+        raise ValueError(f"importance={rec['importance']} 無效")
+    if rec["impact_type"] not in (0, 1, 2):
+        raise ValueError(f"impact_type={rec['impact_type']} 無效")
+
+
 def check(path, encoding="auto"):
     before = sha256(path)
+    report = {"path": path, "sha256": before, "format_ok": True, "data_ok": False, "errors": [],
+              "data_problems": [], "notes": [],
+              "unconfirmable": UNCONFIRMABLE, "point_in_time": "Unknown（歷史匯出：只能回顧探索）"}
+    if not path.lower().endswith(".csv"):   # the exporter leaves unfinished output as .part; never accept it
+        report["format_ok"] = False
+        report["errors"].append("不是完成的 .csv（.part 等未完成檔一律拒絕）")
+        return report
     with open(path, "rb") as f:
         raw = f.read()
-    report = {"path": path, "sha256": before, "format_ok": True, "errors": [], "notes": [],
-              "unconfirmable": UNCONFIRMABLE, "point_in_time": "Unknown（歷史匯出：只能回顧探索）"}
     try:
         text = decode(raw, encoding)
     except UnicodeDecodeError as e:
@@ -97,6 +122,7 @@ def check(path, encoding="auto"):
                 rec[c] = int(rec[c])
             for c in VALUE_COLUMNS:
                 rec[c] = parse_value(rec[c])
+            check_range(rec)
         except ValueError as e:
             bad_lines["型別錯誤"] += 1
             report["errors"].append(f"第 {n} 行型別錯誤：{e}")
@@ -136,6 +162,8 @@ def check(path, encoding="auto"):
     for r in good:
         if r["event_id"] not in POLARITY:
             reasons["不在極性表"] += 1
+        elif r["importance"] != 3:
+            reasons["importance 不是 3"] += 1
         elif r["actual"] is None:
             reasons["缺 actual"] += 1
         elif r["forecast"] is None:
@@ -179,8 +207,17 @@ def check(path, encoding="auto"):
         "time_range": [server_time(min(r["scheduled_time"] for r in good)),
                        server_time(max(r["scheduled_time"] for r in good))] if good else None,
         "export_times": sorted({server_time(r["export_time"]) for r in good}),
-        "exploratory_usable_rows": len(usable), "excluded": dict(reasons), "coverage": coverage,
+        "exploratory_usable_rows": len(usable), "excluded": {k: v for k, v in reasons.items() if v},
+        "coverage": coverage,
     })
+    # Data sufficiency is separate from format: a well-formed file can still have nothing to explore.
+    if len(rows) == 1:
+        report["data_problems"].append("沒有資料列")
+    elif not usable:
+        report["data_problems"].append(f"沒有可供回顧探索的列；排除原因：{report['excluded'] or '全部列格式錯誤'}")
+    report["data_ok"] = report["format_ok"] and not report["data_problems"]
+    report["data_status"] = ("可供回顧探索（不是首發合格）" if report["data_ok"]
+                             else "不可進下一步：" + "；".join(report["errors"][:3] + report["data_problems"]))
     after = sha256(path)
     if after != before:
         raise RuntimeError("輸入檔在檢查期間被改動")
@@ -195,7 +232,7 @@ def main(argv=None):
     a = p.parse_args(argv)
     report = check(a.path, a.encoding)
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    return 0 if report["format_ok"] else 2
+    return 0 if report["data_ok"] else 2 if not report["format_ok"] else 3
 
 
 if __name__ == "__main__":
