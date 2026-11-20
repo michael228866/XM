@@ -143,6 +143,45 @@ class QualifyTests(unittest.TestCase):
         self.assertFalse(r["format_ok"])
         self.assertIn("scheduled_time", r["errors"][0])
 
+    def test_period_zero_releases_are_separate(self):
+        # Auctions/speeches have period=0: different scheduled_time are different releases, not conflicts.
+        r = self.run_check([
+            row(1, NFP, R1, 0, 0, "250.0", "180.0"),
+            row(2, NFP, R2, 0, 0, "150.0", "180.0"),
+        ])
+        self.assertTrue(r["format_ok"], r["errors"])
+        self.assertEqual(r["version_conflicts"], 0)
+        self.assertEqual(r["multi_revision_periods"], 0)
+        self.assertEqual(r["exploratory_usable_rows"], 2)
+
+    def test_period_zero_same_release_conflict_still_rejected(self):
+        r = self.run_check([
+            row(1, NFP, R1, 0, 0, "250.0", "180.0"),
+            row(2, NFP, R1, 0, 0, "260.0", "180.0"),
+        ])
+        self.assertFalse(r["format_ok"])
+        self.assertEqual(r["version_conflicts"], 1)
+        self.assertEqual(r["exploratory_usable_rows"], 0)
+
+    def test_period_zero_same_release_keeps_lowest_revision(self):
+        r = self.run_check([
+            row(1, NFP, R1, 0, 1, "240.0", "180.0"),
+            row(2, NFP, R1, 0, 0, "250.0", "180.0"),
+            row(3, NFP, R2, 0, 1, "150.0", "180.0"),
+        ])
+        self.assertTrue(r["format_ok"])
+        self.assertEqual(r["multi_revision_periods"], 1)
+        self.assertEqual(r["exploratory_usable_rows"], 2)
+        self.assertEqual(r["excluded"]["同期較高 revision"], 1)
+
+    def test_nonzero_period_different_time_same_revision_still_conflict(self):
+        r = self.run_check([
+            row(1, NFP, R1, R1, 0, "250.0", "180.0"),
+            row(2, NFP, R2, R1, 0, "250.0", "180.0"),
+        ])
+        self.assertFalse(r["format_ok"])
+        self.assertEqual(r["version_conflicts"], 1)
+
     def test_actual_after_export_is_contradiction(self):
         r = self.run_check([row(1, NFP, EXPORT + 3600, EXPORT + 3600, 0, "250.000000", "180.000000")])
         self.assertEqual(r["excluded"]["公布時間晚於匯出卻有 actual"], 1)

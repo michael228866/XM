@@ -1,6 +1,6 @@
 """Read-only data-qualification check for an ExportUsdCalendarValuesV2.mq5 CSV (STRATEGY_RESEARCH_2026_11.md 8.4).
 
-Checks format, types, missing values, duplicate value_id / (event_id, period, revision), event coverage and time range.
+Checks format, types, missing values, duplicate value_id / (release, revision) where a release is (event_id, period), or (event_id, scheduled_time) when period=0, event coverage and time range.
 It never computes strategy performance, never touches accounts, never rescales values (the exporter already divided
 by 10^6) and never converts server time to UTC. A historical export can NOT prove point-in-time availability: no
 column (revision=0, value_id, actual == next previous) carries the first-receipt time, so that stays Unknown.
@@ -67,6 +67,14 @@ def parse_value(text):
     if v == LONG_MIN or v == LONG_MIN / 1e6:
         raise ValueError("LONG_MIN 未轉成空值")
     return v
+
+
+def release_key(r):
+    """Group rows of one release. period=0 means MT5 has no reference period (auctions, speeches), so each
+    scheduled_time is its own release. This is a grouping rule only, not first-release or point-in-time evidence."""
+    if r["period"] == 0:
+        return ("release", r["event_id"], r["scheduled_time"])
+    return ("period", r["event_id"], r["period"])
 
 
 def check_range(rec):
@@ -138,19 +146,19 @@ def check(path, encoding="auto"):
     dup_ids = sorted(i for i, k in ids.items() if k > 1)
     versions = defaultdict(list)
     for r in good:
-        versions[(r["event_id"], r["period"], r["revision"])].append(r)
+        versions[release_key(r) + (r["revision"],)].append(r)
     conflicts = sorted(k for k, v in versions.items()
                        if len({(x["actual"], x["forecast"], x["scheduled_time"]) for x in v}) > 1)
     periods = defaultdict(set)
     for r in good:
-        periods[(r["event_id"], r["period"])].add(r["revision"])
+        periods[release_key(r)].add(r["revision"])
     multi_rev = sum(1 for v in periods.values() if len(v) > 1)
     if exact_dups:
         report["errors"].append(f"完全重複列 {exact_dups}")
     if dup_ids:
         report["errors"].append(f"重複 value_id {len(dup_ids)}：{dup_ids[:10]}")
     if conflicts:
-        report["errors"].append(f"同一 (event_id, period, revision) 數值互相矛盾 {len(conflicts)}：{conflicts[:10]}")
+        report["errors"].append(f"同一公布場次與 revision 數值互相矛盾 {len(conflicts)}：{conflicts[:10]}")
     if exact_dups or dup_ids or conflicts:
         report["format_ok"] = False
 
@@ -168,15 +176,15 @@ def check(path, encoding="auto"):
             reasons["缺 actual"] += 1
         elif r["forecast"] is None:
             reasons["缺 forecast"] += 1
-        elif (r["event_id"], r["period"], r["revision"]) in conflict_keys:
+        elif release_key(r) + (r["revision"],) in conflict_keys:
             reasons["版本矛盾"] += 1
         elif r["scheduled_time"] > r["export_time"]:
             reasons["公布時間晚於匯出卻有 actual"] += 1
         else:
             usable.append(r)
     first = {}
-    for r in usable:   # one row per (event_id, period): the lowest revision (format choice, not a first-release proof)
-        k = (r["event_id"], r["period"])
+    for r in usable:   # one row per release: the lowest revision (format choice, not a first-release proof)
+        k = release_key(r)
         if k not in first or r["revision"] < first[k]["revision"]:
             first[k] = r
     reasons["同期較高 revision"] += len(usable) - len(first)
@@ -197,7 +205,7 @@ def check(path, encoding="auto"):
     if absent:
         report["notes"].append(f"極性表中 {len(absent)} 個事件沒有任何列：{absent}")
     if multi_rev:
-        report["notes"].append(f"{multi_rev} 個 (event_id, period) 有多個 revision；探索只取最小 revision，仍不代表首發已證明")
+        report["notes"].append(f"{multi_rev} 個公布場次有多個 revision；探索只取最小 revision，仍不代表首發已證明")
     report["notes"].append("數值未再縮放（匯出端已除以 10^6）；時間為伺服器時間，未轉 UTC")
 
     report.update({
